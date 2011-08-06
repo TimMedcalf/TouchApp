@@ -31,13 +31,16 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+  [super viewDidLoad];
+  
+  self.navigationItem.title= @"";
+  
+  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"News"
+                                                                  style:UIBarButtonItemStyleBordered
+                                                                 target:nil
+                                                                 action:nil];
+  self.navigationItem.backBarButtonItem = backButton;
+  [backButton release];
 }
 
 - (void)viewDidUnload
@@ -49,7 +52,17 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
+  [super viewWillAppear:animated];
+
+	UINavigationBar *nb = self.navigationController.navigationBar;
+	nb.tintColor = [UIColor blackColor];
+  
+	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+		nb.layer.contents = (id)[UIImage imageNamed:@"news-nav-iPad"].CGImage;
+	}
+	else {
+		nb.layer.contents = (id)[UIImage imageNamed:@"news-nav"].CGImage;
+	}
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -77,30 +90,51 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+  // Return the number of sections.
+  return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+  // Return the number of rows in the section.
+  return (section == 0) ? 1 : 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+  NSString *CellIdentifier;
+  UITableViewCell *cell;
+  switch (indexPath.section)
+  {
+    case 0:
+    {
+      CellIdentifier = @"NewsHeader";
+      cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+      if (cell == nil) {
+          cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+          cell.selectionStyle = UITableViewCellSelectionStyleNone;
+      }
+      // Configure the cell...
+      cell.imageView.image = [UIImage imageNamed:@"newport-pylons"];
+      break;
     }
-    
-    // Configure the cell...
-    
-    return cell;
+    case 1:
+    default:
+    {
+      CellIdentifier = @"NewsItem";
+      cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+      if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+      }
+      // Configure the cell...
+    }
+  }
+  return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  return 128;
 }
 
 /*

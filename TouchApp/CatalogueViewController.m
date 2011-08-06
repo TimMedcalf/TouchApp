@@ -33,11 +33,14 @@
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+  self.navigationItem.title= @"";
+  
+  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Catalogue"
+                                                                 style:UIBarButtonItemStyleBordered
+                                                                target:nil
+                                                                action:nil];
+  
+  self.navigationItem.backBarButtonItem = backButton;
 }
 
 - (void)viewDidUnload
@@ -49,7 +52,18 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
+  [super viewWillAppear:animated];
+	
+  UINavigationBar *nb = self.navigationController.navigationBar;
+	
+  nb.tintColor = [UIColor colorWithRed:82/255.0 green:96/255.0 blue:45/255.0 alpha:1];
+  
+  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+		nb.layer.contents = (id)[UIImage imageNamed:@"catalog-nav-iPad"].CGImage;
+	}
+	else {
+		nb.layer.contents = (id)[UIImage imageNamed:@"catalog-nav"].CGImage;
+	}
 }
 
 - (void)viewDidAppear:(BOOL)animated
