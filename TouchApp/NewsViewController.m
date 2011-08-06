@@ -55,14 +55,8 @@
   [super viewWillAppear:animated];
 
 	UINavigationBar *nb = self.navigationController.navigationBar;
-	nb.tintColor = [UIColor blackColor];
-  
-	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-		nb.layer.contents = (id)[UIImage imageNamed:@"news-nav-iPad"].CGImage;
-	}
-	else {
-		nb.layer.contents = (id)[UIImage imageNamed:@"news-nav"].CGImage;
-	}
+	nb.tintColor = [UIColor blackColor];  
+  nb.layer.contents = (id)[UIImage imageNamed:@"news-nav"].CGImage;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -141,8 +135,7 @@
   else
   {
     return 44;
-  }
-  
+  }  
 }
 
 /*
