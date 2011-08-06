@@ -1,5 +1,5 @@
 //
-//  SecondViewController.h
+//  CatalogueViewController.h
 //  TouchApp
 //
 //  Created by Tim Medcalf on 05/08/2011.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SecondViewController : UIViewController
+@interface CatalogueViewController : UITableViewController
 
 @end
