@@ -12,8 +12,8 @@
 #import "AppManager.h"
 
 //number of seconds to wait before news refreshes
-NSInteger refreshTimer = 43200; //twelve hours
-
+//NSInteger refreshTimer = 43200; //twelve hours
+NSInteger refreshTimer = 0; //twelve hours
 NSString *const Key_FeedList_LastRefresh = @"lastRefresh";
 NSString *const Key_FeedList_ETag = @"etag";
 NSString *const Key_FeedList_FeedItems = @"FeedItems";
@@ -53,7 +53,7 @@ NSString *const Key_FeedList_FeedItems = @"FeedItems";
   if ((self = [super init]))
   {
     self.lastRefresh = [NSDate distantPast];
-    self.eTag = @"We aint got an eTag so this should do as a one that will nean we're defintely gonna get updated stuff";
+    //self.eTag = @"\"6dc039-f82c-4a9779a228ac0\"";
     self.items = [NSMutableArray array];
     self.feed = [self feedURL];
     NSString *tmpCacheFile = [[[self cacheFilename] lastPathComponent] stringByDeletingPathExtension];
@@ -97,6 +97,7 @@ NSString *const Key_FeedList_FeedItems = @"FeedItems";
 {
   NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:3];
   [dict setObject:self.lastRefresh forKey:Key_FeedList_LastRefresh];
+  if (self.eTag) [dict setObject:self.eTag forKey:Key_FeedList_ETag];
   
   NSMutableArray *itemsDicts = [NSMutableArray arrayWithCapacity:[self.items count]];
   for (FeedItem *item in self.items)
@@ -111,6 +112,7 @@ NSString *const Key_FeedList_FeedItems = @"FeedItems";
 {
   [self.items removeAllObjects];
   self.lastRefresh = [dict objectForKey:Key_FeedList_LastRefresh];
+  self.eTag = [dict objectForKey:Key_FeedList_ETag];
   NSArray *itemsArray = [dict objectForKey:Key_FeedList_FeedItems];
   for (NSDictionary *itemDict in itemsArray)
   {
@@ -155,8 +157,14 @@ NSString *const Key_FeedList_FeedItems = @"FeedItems";
   [[UIApplication sharedApplication] tjm_pushNetworkActivity];
   self.activeDownload = [NSMutableData data];
   // alloc+init and start an NSURLConnection; release on completion/failure
+  NSMutableURLRequest *tmpRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:self.feed]];
+  if (self.eTag) 
+  {
+    [tmpRequest addValue:self.eTag forHTTPHeaderField:@"If-None-Match"]; 
+  }
   NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:
-                           [NSURLRequest requestWithURL:[NSURL URLWithString:self.feed]] delegate:self];
+                           tmpRequest delegate:self];
+  [tmpRequest release];
   self.rssConnection = conn;
   [conn release];
 }

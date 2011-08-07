@@ -110,7 +110,7 @@ NSString *const XML_PubDate = @"pubDate";
   self.pubDate = [dict objectForKey:XML_PubDate];
   self.link = [dict objectForKey:XML_Link];
   self.title = [dict objectForKey:XML_Title];
-  self.description = @"";
+  self.description = [dict objectForKey:XML_Description];
   //but decription needs a bit of work!
   /*
   NSError *error = nil;
