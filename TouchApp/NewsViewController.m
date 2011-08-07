@@ -58,6 +58,7 @@ static NSInteger CellSubTitleTag = 51;
   
   if ([self.newsList.items count] == 0)
   {
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     UIActivityIndicatorView *tmpSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     CGPoint midPoint = self.view.center;
     midPoint.y -= self.navigationController.navigationBar.frame.size.height /2;
@@ -68,8 +69,6 @@ static NSInteger CellSubTitleTag = 51;
     [self.view addSubview:self.spinner];
     [tmpSpinner release];
   }
-
-  
   [self.newsList refreshFeed];
 }
 
@@ -79,6 +78,7 @@ static NSInteger CellSubTitleTag = 51;
   // Release any retained subviews of the main view.
   // e.g. self.myOutlet = nil;
   // TJM: (and anything else you alloc in the viewDidLoad!)
+  [self.newsList cancelRefresh];
   [self setNewsList:nil];
   [self setSpinner:nil];
 }
@@ -101,12 +101,14 @@ static NSInteger CellSubTitleTag = 51;
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
+  [super viewDidAppear:animated];
+  [self.newsList refreshFeed];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    [super viewWillDisappear:animated];
+  [self.newsList cancelRefresh];
+  [super viewWillDisappear:animated];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -230,7 +232,7 @@ static NSInteger CellSubTitleTag = 51;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  if (indexPath.section == 0)
+  if ((indexPath.section == 0) && (indexPath.row == 0))
   {
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
       return 307 + 1;
@@ -307,6 +309,7 @@ static NSInteger CellSubTitleTag = 51;
   {
     [self.spinner stopAnimating];
   }
+  self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
   [self.tableView reloadData];
 }
 

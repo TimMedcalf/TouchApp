@@ -13,7 +13,9 @@
 
 //number of seconds to wait before news refreshes
 //NSInteger refreshTimer = 43200; //twelve hours
-NSInteger refreshTimer = 0; //twelve hours
+NSInteger refreshTimer = 3600; //1 hour
+//NSInteger refreshTimer = 0; //immediate
+
 NSString *const Key_FeedList_LastRefresh = @"lastRefresh";
 NSString *const Key_FeedList_ETag = @"etag";
 NSString *const Key_FeedList_FeedItems = @"FeedItems";
@@ -53,7 +55,6 @@ NSString *const Key_FeedList_FeedItems = @"FeedItems";
   if ((self = [super init]))
   {
     self.lastRefresh = [NSDate distantPast];
-    //self.eTag = @"\"6dc039-f82c-4a9779a228ac0\"";
     self.items = [NSMutableArray array];
     self.feed = [self feedURL];
     NSString *tmpCacheFile = [[[self cacheFilename] lastPathComponent] stringByDeletingPathExtension];
@@ -129,7 +130,7 @@ NSString *const Key_FeedList_FeedItems = @"FeedItems";
 #pragma mark RSS Feed
 - (void)refreshFeed
 {
-  [self refreshFeedForced:NO];
+  if (!self.activeDownload) [self refreshFeedForced:NO];
 }
 
 - (void)refreshFeedForced:(BOOL)forced;
@@ -183,6 +184,11 @@ NSString *const Key_FeedList_FeedItems = @"FeedItems";
   [self.activeDownload appendData:data];
 }
 
+-(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+  self.eTag = [[(NSHTTPURLResponse *)response allHeaderFields] objectForKey:@"Etag"];
+}
+
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
@@ -226,34 +232,37 @@ NSString *const Key_FeedList_FeedItems = @"FeedItems";
 - (void)parseResultWithData:(NSData *)xmlData
 {
   //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
-  
-  // Create a new rssParser object based on the TouchXML "CXMLDocument" class, this is the
-  // object that actually grabs and processes the RSS data
-  CXMLDocument *rssParser = [[CXMLDocument alloc] initWithData:self.activeDownload options:0 error:nil];
+  if ([xmlData length] > 0)
+  {
+    
+    // Create a new rssParser object based on the TouchXML "CXMLDocument" class, this is the
+    // object that actually grabs and processes the RSS data
+    CXMLDocument *rssParser = [[CXMLDocument alloc] initWithData:self.activeDownload options:0 error:nil];
 
-  // Create a new Array object to be used with the looping of the results from the rssParser
-  NSString *baseURL = [[[rssParser rootElement] attributeForName:@"xml:base"] stringValue];
+    // Create a new Array object to be used with the looping of the results from the rssParser
+    NSString *baseURL = [[[rssParser rootElement] attributeForName:@"xml:base"] stringValue];
 
-  NSArray *resultNodes = [rssParser nodesForXPath:@"//item" error:nil];
+    NSArray *resultNodes = [rssParser nodesForXPath:@"//item" error:nil];
 
-  // Loop through the resultNodes to access each items' actual data
-  NSMutableArray *newFeedItems = [[NSMutableArray alloc] initWithCapacity:[resultNodes count]];
-  for (CXMLElement *resultElement in resultNodes)
-  { 
-    NSMutableDictionary *itemDict = [[NSMutableDictionary alloc] init];
-    for(int counter = 0; counter < [resultElement childCount]; counter++)
-    {
-      [itemDict setObject:[[resultElement childAtIndex:counter] stringValue] forKey:[[resultElement childAtIndex:counter] name]];
+    // Loop through the resultNodes to access each items' actual data
+    NSMutableArray *newFeedItems = [[NSMutableArray alloc] initWithCapacity:[resultNodes count]];
+    for (CXMLElement *resultElement in resultNodes)
+    { 
+      NSMutableDictionary *itemDict = [[NSMutableDictionary alloc] init];
+      for(int counter = 0; counter < [resultElement childCount]; counter++)
+      {
+        [itemDict setObject:[[resultElement childAtIndex:counter] stringValue] forKey:[[resultElement childAtIndex:counter] name]];
+      }
+      FeedItem *newFeedItem = [self initNewItemWithXMLDictionary:itemDict andBaseURL:baseURL];
+      [itemDict release]; itemDict= nil;
+      newFeedItem.delegate = self;
+      [newFeedItems addObject:newFeedItem];
+      [newFeedItem release]; newFeedItem = nil;
     }
-    FeedItem *newFeedItem = [self initNewItemWithXMLDictionary:itemDict andBaseURL:baseURL];
-    [itemDict release]; itemDict= nil;
-    newFeedItem.delegate = self;
-    [newFeedItems addObject:newFeedItem];
-    [newFeedItem release]; newFeedItem = nil;
+    [rssParser release]; rssParser = nil;
+    [self mergeExistingWithItems:newFeedItems];
+    [newFeedItems release]; newFeedItems = nil;
   }
-  [rssParser release]; rssParser = nil;
-  [self mergeExistingWithItems:newFeedItems];
-  [newFeedItems release]; newFeedItems = nil;
 }
 
 - (void)mergeExistingWithItems:(NSArray *)newItems
