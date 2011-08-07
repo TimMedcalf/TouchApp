@@ -8,6 +8,7 @@
 
 #import "NewsViewController.h"
 #import "NewsItem.h"
+#import "WebsiteViewController.h"
 
 static NSInteger CellTitleTag = 50;
 static NSInteger CellSubTitleTag = 51;
@@ -227,6 +228,7 @@ static NSInteger CellSubTitleTag = 51;
       subtitleLabel.text = currentItem.pubDate;//[NSDateFormatter localizedStringFromDate:currentItem.pubDate dateStyle:NSDateFormatterMediumStyle timeStyle:kCFDateFormatterShortStyle];
     }
   }
+  cell.selectionStyle = UITableViewCellSelectionStyleNone;
   return cell;
 }
 
@@ -291,14 +293,16 @@ static NSInteger CellSubTitleTag = 51;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+  // Navigation logic may go here. Create and push another view controller.
+  //return immediately if user selected header image
+  if (indexPath.section == 0) return;
+  
+  NewsItem *curItem = [self.newsList.items objectAtIndex:indexPath.row];
+  WebsiteViewController *controller = [[WebsiteViewController alloc] initWithNibName:@"WebsiteViewController" bundle:nil];
+  controller.HTMLString = curItem.description;
+  controller.dontHideNavigationBar = YES;
+  [self.navigationController pushViewController:controller animated:YES];
+  [controller release];
 }
 
 #pragma mark FeedListConsumerDelegates
