@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NewsList.h"
 
-@interface NewsViewController : UITableViewController
+@interface NewsViewController : UITableViewController <FeedListConsumerDelegate>
 
 @end

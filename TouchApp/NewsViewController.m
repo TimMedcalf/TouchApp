@@ -7,11 +7,20 @@
 //
 
 #import "NewsViewController.h"
+#import "NewsItem.h"
 
 static NSInteger CellTitleTag = 50;
 static NSInteger CellSubTitleTag = 51;
 
+@interface NewsViewController ()
+@property (nonatomic, retain) NewsList *newsList;
+@property (nonatomic, retain) UIActivityIndicatorView *spinner;
+@end
+
 @implementation NewsViewController
+
+@synthesize newsList = _newsList;
+@synthesize spinner = _spinner;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -41,13 +50,44 @@ static NSInteger CellSubTitleTag = 51;
   UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"News" style:UIBarButtonItemStyleBordered target:nil action:nil];
   self.navigationItem.backBarButtonItem = backButton;
   [backButton release];
+  
+  NewsList *tmpNewsList = [[NewsList alloc] init];
+  self.newsList = tmpNewsList;
+  [tmpNewsList release];
+  self.newsList.delegate = self;
+  
+  if ([self.newsList.items count] == 0)
+  {
+    UIActivityIndicatorView *tmpSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    CGPoint midPoint = self.view.center;
+    midPoint.y -= self.navigationController.navigationBar.frame.size.height /2;
+    tmpSpinner.center = midPoint;
+    [tmpSpinner startAnimating];
+    tmpSpinner.hidesWhenStopped = YES;
+    self.spinner = tmpSpinner;
+    [self.view addSubview:self.spinner];
+    [tmpSpinner release];
+  }
+
+  
+  [self.newsList refreshFeed];
 }
 
 - (void)viewDidUnload
 {
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+  [super viewDidUnload];
+  // Release any retained subviews of the main view.
+  // e.g. self.myOutlet = nil;
+  // TJM: (and anything else you alloc in the viewDidLoad!)
+  [self setNewsList:nil];
+  [self setSpinner:nil];
+}
+
+- (void)dealloc
+{
+  [_newsList release];
+  [_spinner release];
+  [super dealloc];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -91,7 +131,7 @@ static NSInteger CellSubTitleTag = 51;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
   // Return the number of rows in the section.
-  return (section == 0) ? 1 : 1;
+  return (section == 0) ? 1 : [self.newsList.items count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -175,12 +215,14 @@ static NSInteger CellSubTitleTag = 51;
       }
       // so, now to configure the cell...
       // first grab hold of the cell elements we need
+      NewsItem *currentItem = [self.newsList.items objectAtIndex:indexPath.row];
+      
       UILabel *titleLabel = (UILabel *)[cell viewWithTag:CellTitleTag];
       UILabel *subtitleLabel = (UILabel *)[cell viewWithTag:CellSubTitleTag];
       
       //got them...now set the text we want...
-      titleLabel.text = @"Tone 44V | Fennesz \"Seven Stars\"";
-      subtitleLabel.text = @"Posted on July 18, 2011";
+      titleLabel.text = currentItem.title;
+      subtitleLabel.text = currentItem.pubDate;//[NSDateFormatter localizedStringFromDate:currentItem.pubDate dateStyle:NSDateFormatterMediumStyle timeStyle:kCFDateFormatterShortStyle];
     }
   }
   return cell;
@@ -255,6 +297,32 @@ static NSInteger CellSubTitleTag = 51;
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      */
+}
+
+#pragma mark FeedListConsumerDelegates
+- (void)updateSource
+{
+  //NSLog(@"Refreshing...");
+  if ((self.spinner) && ([self.spinner isAnimating]))
+  {
+    [self.spinner stopAnimating];
+  }
+  [self.tableView reloadData];
+}
+
+- (void)updateImage:(NSInteger)index
+{
+}
+
+- (void)updateFailed
+{
+  if ((self.spinner) && ([self.spinner isAnimating]))
+  {
+    [self.spinner stopAnimating];
+  }
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No connection" message:@"Please check you are connected to the internet." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+  [alert show];
+  [alert release]; alert = nil;
 }
 
 @end

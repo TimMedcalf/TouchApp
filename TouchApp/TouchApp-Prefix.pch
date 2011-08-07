@@ -14,4 +14,5 @@
   #import <QuartzCore/QuartzCore.h>
   #import "TouchXML.h"
   #import "SynthesizeSingleton.h"
+  #import "UIApplication+TJMNetworkActivity.h"
 #endif
