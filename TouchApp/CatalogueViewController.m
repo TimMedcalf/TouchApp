@@ -41,6 +41,7 @@
                                                                 action:nil];
   
   self.navigationItem.backBarButtonItem = backButton;
+  [backButton release];
 }
 
 - (void)viewDidUnload

@@ -38,10 +38,7 @@ static NSInteger CellSubTitleTag = 51;
   
   self.navigationItem.title= @"";
   
-  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"News"
-                                                                  style:UIBarButtonItemStyleBordered
-                                                                 target:nil
-                                                                 action:nil];
+  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"News" style:UIBarButtonItemStyleBordered target:nil action:nil];
   self.navigationItem.backBarButtonItem = backButton;
   [backButton release];
 }
@@ -184,7 +181,6 @@ static NSInteger CellSubTitleTag = 51;
       //got them...now set the text we want...
       titleLabel.text = @"Tone 44V | Fennesz \"Seven Stars\"";
       subtitleLabel.text = @"Posted on July 18, 2011";
-
     }
   }
   return cell;

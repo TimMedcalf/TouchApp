@@ -7,6 +7,7 @@
 //
 
 #import "TouchAppAppDelegate.h"
+#import "AppManager.h"
 
 @implementation TouchAppAppDelegate
 
@@ -16,6 +17,33 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   // Override point for customization after application launch.
+  [AppManager instance];
+  
+  //clear the cache out whenever it's a new version - allows us to change data formats without worrying
+  //about whatever is stored already on the device
+  NSUserDefaults *Def = [NSUserDefaults standardUserDefaults];
+  NSString *Ver = [Def stringForKey:@"Version"];
+  NSString *CurVer = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleVersionKey];
+  if(Ver == nil || [Ver compare:CurVer] != 0)
+  {
+    if(Ver == nil)
+    {
+      //anything we want to run only once for the app?
+      
+    }
+    //Run once-per-upgrade code, if any
+    NSLog(@"Initialisation for version %@", CurVer);
+    //clear the cache folder!
+    NSError *error;
+    for (NSString *file in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[[AppManager instance]cacheFolder] error:&error])
+    {
+      NSLog(@"Clearing cached file : %@", file);
+      [[NSFileManager defaultManager] removeItemAtPath:[[[AppManager instance]cacheFolder] stringByAppendingPathComponent:file] error:&error];
+    }
+    
+    [Def setObject:CurVer forKey:@"Version"];
+  }
+
   // Add the tab bar controller's current view as a subview of the window
   self.window.rootViewController = self.tabBarController;
   [self.window makeKeyAndVisible];
