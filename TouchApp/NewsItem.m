@@ -79,8 +79,8 @@ NSString *const XML_PubDate = @"pubDate";
   //inject some CSS
   //note that strings can be run across multiple lines without having to reassign or append - just make sure quotes are at the start and end of each line
   return [NSString stringWithFormat:@"<meta name=\"viewport\" content=\"width=device-width\" />"
-	"<link rel=\"stylesheet\" media=\"only screen and (max-device-width: 480px)\" href=\"http://www.daveknapik.com/dropbox/mobile.css\" />"
-	"<link rel=\"stylesheet\" media=\"only screen and (min-device-width: 481px) and (max-device-width: 1024px)\" href=\"http://www.daveknapik.com/dropbox/ipad.css\" />"
+	"<link rel=\"stylesheet\" media=\"only screen and (max-device-width: 480px)\" href=\"mobile.css\" />"
+	"<link rel=\"stylesheet\" media=\"only screen and (min-device-width: 481px) and (max-device-width: 1024px)\" href=\"ipad.css\" />"
 	"<p id='title'><strong>%@</strong><br /></p>"
 	"<span class='bodycopy'>%@</span>", self.title,self.description];
 }

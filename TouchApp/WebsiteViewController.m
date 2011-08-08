@@ -104,13 +104,11 @@
   [self.navigationController setToolbarHidden:YES animated:YES];
   self.webView.delegate = self;
   if (self.HTMLString){
-    //NSLog(@"Loading HTMLString: %@", self.HTMLString);
-//    if (self.pageTitle)
-//      self.navigationItem.title = self.pageTitle;
-//    else
-//      self.navigationItem.title = @"News";
+    //set the baeURL to be local the for CSS loading...
+    NSString *path = [[NSBundle mainBundle] bundlePath];
+    NSURL *baseURL = [NSURL fileURLWithPath:path];
     self.segmentControl.hidden = YES;
-    [self.webView loadHTMLString:self.HTMLString baseURL:[NSURL URLWithString:self.baseURL]];
+    [self.webView loadHTMLString:self.HTMLString baseURL:baseURL];
   }
   else
   {

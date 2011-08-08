@@ -100,6 +100,8 @@
 		22CB4C4D13EFE96F008968D6 /* blackbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 22CB4C4B13EFE96F008968D6 /* blackbutton.png */; };
 		22CB4C4E13EFE96F008968D6 /* buyButtonGreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 22CB4C4C13EFE96F008968D6 /* buyButtonGreen.png */; };
 		22CB4C5113EFEA93008968D6 /* TJMLazyImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4C5013EFEA93008968D6 /* TJMLazyImageView.m */; };
+		22CB4C6213F08E90008968D6 /* ipad.css in Resources */ = {isa = PBXBuildFile; fileRef = 22CB4C6013F08E8E008968D6 /* ipad.css */; };
+		22CB4C6313F08E90008968D6 /* mobile.css in Resources */ = {isa = PBXBuildFile; fileRef = 22CB4C6113F08E8F008968D6 /* mobile.css */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -231,6 +233,8 @@
 		22CB4C4C13EFE96F008968D6 /* buyButtonGreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buyButtonGreen.png; sourceTree = "<group>"; };
 		22CB4C4F13EFEA93008968D6 /* TJMLazyImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJMLazyImageView.h; sourceTree = "<group>"; };
 		22CB4C5013EFEA93008968D6 /* TJMLazyImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TJMLazyImageView.m; sourceTree = "<group>"; };
+		22CB4C6013F08E8E008968D6 /* ipad.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = ipad.css; sourceTree = "<group>"; };
+		22CB4C6113F08E8F008968D6 /* mobile.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = mobile.css; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -548,6 +552,8 @@
 				22CB4C1313EE4CFA008968D6 /* NewsList.m */,
 				22CB4C1413EE4CFA008968D6 /* NewsItem.h */,
 				22CB4C1513EE4CFA008968D6 /* NewsItem.m */,
+				22CB4C6013F08E8E008968D6 /* ipad.css */,
+				22CB4C6113F08E8F008968D6 /* mobile.css */,
 			);
 			name = news;
 			sourceTree = "<group>";
@@ -699,6 +705,8 @@
 				22CB4C4913EFE654008968D6 /* CatalogueItemViewController.xib in Resources */,
 				22CB4C4D13EFE96F008968D6 /* blackbutton.png in Resources */,
 				22CB4C4E13EFE96F008968D6 /* buyButtonGreen.png in Resources */,
+				22CB4C6213F08E90008968D6 /* ipad.css in Resources */,
+				22CB4C6313F08E90008968D6 /* mobile.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
