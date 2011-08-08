@@ -246,7 +246,7 @@ static NSInteger CellSubTitleTag = 51;
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
       return 87;
     else
-      return 57;
+      return 58;
   }  
 }
 
@@ -299,7 +299,7 @@ static NSInteger CellSubTitleTag = 51;
   
   NewsItem *curItem = [self.newsList.items objectAtIndex:indexPath.row];
   WebsiteViewController *controller = [[WebsiteViewController alloc] initWithNibName:@"WebsiteViewController" bundle:nil];
-  controller.HTMLString = curItem.description;
+  controller.HTMLString = curItem.htmlForWebView;
   controller.dontHideNavigationBar = YES;
   [self.navigationController pushViewController:controller animated:YES];
   [controller release];
