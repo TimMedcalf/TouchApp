@@ -92,6 +92,9 @@
 		22CB4C2D13EEBF74008968D6 /* Arrow-Left.png in Resources */ = {isa = PBXBuildFile; fileRef = 22CB4C2513EEBF74008968D6 /* Arrow-Left.png */; };
 		22CB4C3513EFC9CE008968D6 /* CatalogueItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4C3413EFC9CE008968D6 /* CatalogueItem.m */; };
 		22CB4C3813EFD80B008968D6 /* CatalogueList.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4C3713EFD80B008968D6 /* CatalogueList.m */; };
+		22CB4C3B13EFE2EB008968D6 /* TJMAudioCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4C3A13EFE2EB008968D6 /* TJMAudioCenter.m */; };
+		22CB4C3D13EFE383008968D6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22CB4C3C13EFE382008968D6 /* AVFoundation.framework */; };
+		22CB4C3F13EFE38F008968D6 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22CB4C3E13EFE38E008968D6 /* CoreMedia.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -212,6 +215,10 @@
 		22CB4C3413EFC9CE008968D6 /* CatalogueItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatalogueItem.m; sourceTree = "<group>"; };
 		22CB4C3613EFD80A008968D6 /* CatalogueList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatalogueList.h; sourceTree = "<group>"; };
 		22CB4C3713EFD80B008968D6 /* CatalogueList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatalogueList.m; sourceTree = "<group>"; };
+		22CB4C3913EFE2EA008968D6 /* TJMAudioCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJMAudioCenter.h; sourceTree = "<group>"; };
+		22CB4C3A13EFE2EB008968D6 /* TJMAudioCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TJMAudioCenter.m; sourceTree = "<group>"; };
+		22CB4C3C13EFE382008968D6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		22CB4C3E13EFE38E008968D6 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +226,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22CB4C3F13EFE38F008968D6 /* CoreMedia.framework in Frameworks */,
+				22CB4C3D13EFE383008968D6 /* AVFoundation.framework in Frameworks */,
 				2229529913ECFC96001D174D /* QuartzCore.framework in Frameworks */,
 				222951C713EC496F001D174D /* UIKit.framework in Frameworks */,
 				222951C913EC496F001D174D /* Foundation.framework in Frameworks */,
@@ -250,6 +259,8 @@
 		222951C513EC496F001D174D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				22CB4C3E13EFE38E008968D6 /* CoreMedia.framework */,
+				22CB4C3C13EFE382008968D6 /* AVFoundation.framework */,
 				2229529813ECFC96001D174D /* QuartzCore.framework */,
 				222951C613EC496F001D174D /* UIKit.framework */,
 				222951C813EC496F001D174D /* Foundation.framework */,
@@ -398,6 +409,8 @@
 		22CB4B8A13EDD678008968D6 /* globals */ = {
 			isa = PBXGroup;
 			children = (
+				22CB4C3913EFE2EA008968D6 /* TJMAudioCenter.h */,
+				22CB4C3A13EFE2EB008968D6 /* TJMAudioCenter.m */,
 				222951D513EC496F001D174D /* TouchAppAppDelegate.h */,
 				222951D613EC496F001D174D /* TouchAppAppDelegate.m */,
 				222951D813EC496F001D174D /* MainWindow.xib */,
@@ -694,6 +707,7 @@
 				22CB4C1A13EEBC56008968D6 /* WebsiteViewController.m in Sources */,
 				22CB4C3513EFC9CE008968D6 /* CatalogueItem.m in Sources */,
 				22CB4C3813EFD80B008968D6 /* CatalogueList.m in Sources */,
+				22CB4C3B13EFE2EB008968D6 /* TJMAudioCenter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
