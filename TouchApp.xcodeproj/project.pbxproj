@@ -90,6 +90,8 @@
 		22CB4C2B13EEBF74008968D6 /* Arrow-Right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22CB4C2313EEBF74008968D6 /* Arrow-Right@2x.png */; };
 		22CB4C2C13EEBF74008968D6 /* Arrow-Right.png in Resources */ = {isa = PBXBuildFile; fileRef = 22CB4C2413EEBF74008968D6 /* Arrow-Right.png */; };
 		22CB4C2D13EEBF74008968D6 /* Arrow-Left.png in Resources */ = {isa = PBXBuildFile; fileRef = 22CB4C2513EEBF74008968D6 /* Arrow-Left.png */; };
+		22CB4C3513EFC9CE008968D6 /* CatalogueItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4C3413EFC9CE008968D6 /* CatalogueItem.m */; };
+		22CB4C3813EFD80B008968D6 /* CatalogueList.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4C3713EFD80B008968D6 /* CatalogueList.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -206,6 +208,10 @@
 		22CB4C2313EEBF74008968D6 /* Arrow-Right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Arrow-Right@2x.png"; sourceTree = "<group>"; };
 		22CB4C2413EEBF74008968D6 /* Arrow-Right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Arrow-Right.png"; sourceTree = "<group>"; };
 		22CB4C2513EEBF74008968D6 /* Arrow-Left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Arrow-Left.png"; sourceTree = "<group>"; };
+		22CB4C3313EFC9CE008968D6 /* CatalogueItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatalogueItem.h; sourceTree = "<group>"; };
+		22CB4C3413EFC9CE008968D6 /* CatalogueItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatalogueItem.m; sourceTree = "<group>"; };
+		22CB4C3613EFD80A008968D6 /* CatalogueList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatalogueList.h; sourceTree = "<group>"; };
+		22CB4C3713EFD80B008968D6 /* CatalogueList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatalogueList.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -464,6 +470,7 @@
 		22CB4BFD13EE4876008968D6 /* feeds */ = {
 			isa = PBXGroup;
 			children = (
+				22CB4C3213EFC98B008968D6 /* catalog */,
 				22CB4C1113EE4CEB008968D6 /* news */,
 				22CB4C0F13EE4BAC008968D6 /* base */,
 			);
@@ -533,6 +540,17 @@
 				22CB4C2513EEBF74008968D6 /* Arrow-Left.png */,
 			);
 			name = buttons;
+			sourceTree = "<group>";
+		};
+		22CB4C3213EFC98B008968D6 /* catalog */ = {
+			isa = PBXGroup;
+			children = (
+				22CB4C3313EFC9CE008968D6 /* CatalogueItem.h */,
+				22CB4C3413EFC9CE008968D6 /* CatalogueItem.m */,
+				22CB4C3613EFD80A008968D6 /* CatalogueList.h */,
+				22CB4C3713EFD80B008968D6 /* CatalogueList.m */,
+			);
+			name = catalog;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -674,6 +692,8 @@
 				22CB4C1613EE4CFA008968D6 /* NewsList.m in Sources */,
 				22CB4C1713EE4CFA008968D6 /* NewsItem.m in Sources */,
 				22CB4C1A13EEBC56008968D6 /* WebsiteViewController.m in Sources */,
+				22CB4C3513EFC9CE008968D6 /* CatalogueItem.m in Sources */,
+				22CB4C3813EFD80B008968D6 /* CatalogueList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

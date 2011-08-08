@@ -16,7 +16,7 @@
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) NSString *description;
 
-- (NSString *)htmlForWebView;
+
 
 
 @end

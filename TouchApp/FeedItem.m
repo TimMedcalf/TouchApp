@@ -130,8 +130,14 @@ NSString *const FeedItem_BaseURLKey = @"baseURL";
 
 - (NSComparisonResult)compare:(FeedItem *)item
 {
+  //override in subclass if you want something different
+  return NSOrderedSame;
+}
+
+- (NSString *)htmlForWebView
+{
   //override in subclass
-  return 0;
+  return @"override htmlForWebView!";
 }
 
 @end

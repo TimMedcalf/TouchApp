@@ -30,5 +30,5 @@
 - (NSMutableDictionary *)dictionaryRepresentation;
 - (BOOL)isEqualToItem:(FeedItem *)otherFeedItem;
 - (NSComparisonResult)compare:(FeedItem *)item;
-
+- (NSString *)htmlForWebView;
 @end
