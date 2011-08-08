@@ -95,6 +95,11 @@
 		22CB4C3B13EFE2EB008968D6 /* TJMAudioCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4C3A13EFE2EB008968D6 /* TJMAudioCenter.m */; };
 		22CB4C3D13EFE383008968D6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22CB4C3C13EFE382008968D6 /* AVFoundation.framework */; };
 		22CB4C3F13EFE38F008968D6 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22CB4C3E13EFE38E008968D6 /* CoreMedia.framework */; };
+		22CB4C4813EFE654008968D6 /* CatalogueItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4C4613EFE652008968D6 /* CatalogueItemViewController.m */; };
+		22CB4C4913EFE654008968D6 /* CatalogueItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22CB4C4713EFE653008968D6 /* CatalogueItemViewController.xib */; };
+		22CB4C4D13EFE96F008968D6 /* blackbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 22CB4C4B13EFE96F008968D6 /* blackbutton.png */; };
+		22CB4C4E13EFE96F008968D6 /* buyButtonGreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 22CB4C4C13EFE96F008968D6 /* buyButtonGreen.png */; };
+		22CB4C5113EFEA93008968D6 /* TJMLazyImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4C5013EFEA93008968D6 /* TJMLazyImageView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -219,6 +224,13 @@
 		22CB4C3A13EFE2EB008968D6 /* TJMAudioCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TJMAudioCenter.m; sourceTree = "<group>"; };
 		22CB4C3C13EFE382008968D6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		22CB4C3E13EFE38E008968D6 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		22CB4C4513EFE651008968D6 /* CatalogueItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatalogueItemViewController.h; sourceTree = "<group>"; };
+		22CB4C4613EFE652008968D6 /* CatalogueItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatalogueItemViewController.m; sourceTree = "<group>"; };
+		22CB4C4713EFE653008968D6 /* CatalogueItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CatalogueItemViewController.xib; sourceTree = "<group>"; };
+		22CB4C4B13EFE96F008968D6 /* blackbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackbutton.png; sourceTree = "<group>"; };
+		22CB4C4C13EFE96F008968D6 /* buyButtonGreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buyButtonGreen.png; sourceTree = "<group>"; };
+		22CB4C4F13EFEA93008968D6 /* TJMLazyImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJMLazyImageView.h; sourceTree = "<group>"; };
+		22CB4C5013EFEA93008968D6 /* TJMLazyImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TJMLazyImageView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,9 +309,7 @@
 		222951F113EC49F2001D174D /* controllers */ = {
 			isa = PBXGroup;
 			children = (
-				222951F213EC4B5D001D174D /* CatalogueViewController.h */,
-				222951F313EC4B5D001D174D /* CatalogueViewController.m */,
-				222951F413EC4B5D001D174D /* CatalogueViewController.xib */,
+				22CB4C4A13EFE847008968D6 /* Catalogue */,
 				2229524113ECEC0B001D174D /* NewsViewController.h */,
 				2229524213ECEC0B001D174D /* NewsViewController.m */,
 				2229524313ECEC0B001D174D /* NewsViewController.xib */,
@@ -495,6 +505,8 @@
 			children = (
 				22CB4C0513EE4A17008968D6 /* TJMLazyImage.h */,
 				22CB4C0613EE4A17008968D6 /* TJMLazyImage.m */,
+				22CB4C4F13EFEA93008968D6 /* TJMLazyImageView.h */,
+				22CB4C5013EFEA93008968D6 /* TJMLazyImageView.m */,
 			);
 			name = helpers;
 			sourceTree = "<group>";
@@ -543,6 +555,8 @@
 		22CB4C1D13EEBF62008968D6 /* buttons */ = {
 			isa = PBXGroup;
 			children = (
+				22CB4C4B13EFE96F008968D6 /* blackbutton.png */,
+				22CB4C4C13EFE96F008968D6 /* buyButtonGreen.png */,
 				22CB4C1E13EEBF74008968D6 /* Arrow-Left_greystate.png */,
 				22CB4C1F13EEBF74008968D6 /* Arrow-Right_greystate.png */,
 				22CB4C2013EEBF74008968D6 /* Arrow-Right_greystate@2x.png */,
@@ -564,6 +578,19 @@
 				22CB4C3713EFD80B008968D6 /* CatalogueList.m */,
 			);
 			name = catalog;
+			sourceTree = "<group>";
+		};
+		22CB4C4A13EFE847008968D6 /* Catalogue */ = {
+			isa = PBXGroup;
+			children = (
+				222951F213EC4B5D001D174D /* CatalogueViewController.h */,
+				222951F313EC4B5D001D174D /* CatalogueViewController.m */,
+				222951F413EC4B5D001D174D /* CatalogueViewController.xib */,
+				22CB4C4513EFE651008968D6 /* CatalogueItemViewController.h */,
+				22CB4C4613EFE652008968D6 /* CatalogueItemViewController.m */,
+				22CB4C4713EFE653008968D6 /* CatalogueItemViewController.xib */,
+			);
+			name = Catalogue;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -669,6 +696,9 @@
 				22CB4C2B13EEBF74008968D6 /* Arrow-Right@2x.png in Resources */,
 				22CB4C2C13EEBF74008968D6 /* Arrow-Right.png in Resources */,
 				22CB4C2D13EEBF74008968D6 /* Arrow-Left.png in Resources */,
+				22CB4C4913EFE654008968D6 /* CatalogueItemViewController.xib in Resources */,
+				22CB4C4D13EFE96F008968D6 /* blackbutton.png in Resources */,
+				22CB4C4E13EFE96F008968D6 /* buyButtonGreen.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -708,6 +738,8 @@
 				22CB4C3513EFC9CE008968D6 /* CatalogueItem.m in Sources */,
 				22CB4C3813EFD80B008968D6 /* CatalogueList.m in Sources */,
 				22CB4C3B13EFE2EB008968D6 /* TJMAudioCenter.m in Sources */,
+				22CB4C4813EFE654008968D6 /* CatalogueItemViewController.m in Sources */,
+				22CB4C5113EFEA93008968D6 /* TJMLazyImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

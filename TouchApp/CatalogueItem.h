@@ -14,8 +14,8 @@
 @property (nonatomic, retain) NSString *artist;
 @property (nonatomic, retain) NSString *catalogueNumber;
 @property (nonatomic, retain) NSString *description;
-@property (nonatomic, retain) NSURL    *mp3SampleURL;
-@property (nonatomic, retain) NSURL    *releaseURL;
+@property (nonatomic, retain) NSString *mp3SampleURL;
+@property (nonatomic, retain) NSString *releaseURL;
 @property (nonatomic, retain) NSString *itunesURL;
 @property (nonatomic, retain) NSString *releaseDateString;
 @property (nonatomic, retain) NSString *releaseDuration;

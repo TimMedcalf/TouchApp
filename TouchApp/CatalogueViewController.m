@@ -8,6 +8,7 @@
 
 #import "CatalogueViewController.h"
 #import "CatalogueItem.h"
+#import "CatalogueItemViewController.h"
 #import "WebsiteViewController.h"
 
 static NSInteger CellTitleTag = 50;
@@ -297,11 +298,9 @@ static NSInteger CellSubTitleTag = 51;
   // Navigation logic may go here. Create and push another view controller.
   //return immediately if user selected header image
   if (indexPath.section == 0) return;
-  
-  CatalogueItem *curItem = [self.catList.items objectAtIndex:indexPath.row];
-  WebsiteViewController *controller = [[WebsiteViewController alloc] initWithNibName:@"WebsiteViewController" bundle:nil];
-  controller.HTMLString = curItem.htmlForWebView;
-  controller.dontHideNavigationBar = YES;
+
+  CatalogueItemViewController *controller = [[CatalogueItemViewController alloc] initWithNibName:@"CatalogueItemViewController" bundle:nil];
+  controller.item = [self.catList.items objectAtIndex:indexPath.row];
   [self.navigationController pushViewController:controller animated:YES];
   [controller release];
 }
