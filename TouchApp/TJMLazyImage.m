@@ -72,7 +72,7 @@
   else
   {
     [self cacheImage];
-    return [UIImage imageNamed:@"placeholder.png"];
+    return [UIImage imageNamed:@"Icon"];
   }
 }
 
@@ -108,7 +108,7 @@
   else
   {
     [self cacheImage];
-    return [UIImage imageThumbnailWithImage:[UIImage imageNamed:@"placeholder.png"] ofSize:size];
+    return [UIImage imageThumbnailWithImage:[UIImage imageNamed:@"Icon"] ofSize:size];
   }
 }
 
@@ -120,7 +120,7 @@
 
 - (void)cacheImage
 {
-  //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
+  NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
   //first check whether we actually need to...is is already downloaded?
   if (![self imageCached]) [self startDownload];
 }
@@ -128,7 +128,7 @@
 #pragma mark lazyloader
 - (void)startDownload
 {
-  //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
+  NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
   [[UIApplication sharedApplication] tjm_pushNetworkActivity];
   self.activeDownload = [NSMutableData data];
   NSMutableURLRequest *tmpRequest = [[NSMutableURLRequest alloc] initWithURL:self.imageURL];
@@ -143,7 +143,7 @@
 
 - (void)cancelDownload
 { 
-  //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
+  NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
   if (self.activeDownload)
   {
     [self.imageConnection cancel];
@@ -157,11 +157,13 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
+  NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
   [self.activeDownload appendData:data];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
+  NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
   // Clear the activeDownload property to allow later attempts
   self.activeDownload = nil;
   
@@ -172,8 +174,8 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-  //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
-  //NSLog(@"%i",[self.activeDownload length]);
+  NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
+  NSLog(@"%i",[self.activeDownload length]);
   if (self.activeDownload)
   {
     if (![self.activeDownload writeToFile:self.cachePathAndFilename atomically:YES])

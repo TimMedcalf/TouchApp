@@ -9,62 +9,58 @@
 #import "TJMLazyImageView.h"
 
 @interface TJMLazyImageView ()
-@property (nonatomic, retain) NSString *imageURLString;
-@property (nonatomic, retain) NSString *cacheFilename;
 @property (nonatomic, retain) TJMLazyImage *lazyImage;
 @property (nonatomic, retain) UIImageView *imageView;
 @end;
 
 @implementation TJMLazyImageView
 
-@synthesize imageURLString = _imageURLString;
-@synthesize cacheFilename = _cacheFilename;
 @synthesize lazyImage = _lazyImage;
 @synthesize imageView = _imageView;
 
-
-- (id)initWithURL:(NSString *)imageURL cacheFilename:(NSString *)cacheFilename andFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)frame andLazyImage:(TJMLazyImage*)lazyImage
 {
-  if ((self = [super initWithFrame:frame]))
+  self = [super init];
+  if (self)
   {
-    self.imageURLString = imageURL;
-    self.cacheFilename = cacheFilename;
-    TJMLazyImage *tmpLazyImage = [[TJMLazyImage alloc] initWithURL:imageURL andCacheFilename:cacheFilename];
-    self.lazyImage = tmpLazyImage;
-    [tmpLazyImage release];
-    //NSLog(@"Setting background color");
-    self.backgroundColor = [UIColor greenColor];
+    self.frame = frame;
+    self.lazyImage = lazyImage;
+    self.backgroundColor = [UIColor clearColor];
+    self.lazyImage.delegate = self;
     UIImageView *tmpImageView = [[UIImageView alloc] initWithImage:[self.lazyImage getImage]];
-    tmpImageView.frame = self.frame;
+    tmpImageView.frame = CGRectMake(0,0,self.frame.size.width,self.frame.size.height);
     tmpImageView.clipsToBounds = YES;
-    tmpImageView.contentMode = UIViewContentModeScaleAspectFit;
+    tmpImageView.contentMode = UIViewContentModeScaleAspectFill;
     self.imageView = tmpImageView;
     [tmpImageView release]; tmpImageView = nil;
     [self addSubview:self.imageView];
+
   }
   return self;
 }
 
+
 - (void)dealloc
 {
-  NSLog(@"LazyImageView cancelDownload");
+  //NSLog(@"LazyImageView cancelDownload");
   [self.lazyImage cancelImageDownload];
-  [_imageURLString release];
-  [_cacheFilename release];
   [_lazyImage release];
   [_imageView release];
-  [super dealloc];  
+  [super dealloc];
 }
 
 #pragma mark TJMLazyImageDelegate
 - (void)imageUpdated
 {
+  NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
   [self.imageView removeFromSuperview];
   self.imageView = nil;
   UIImageView *tmpImageView = [[UIImageView alloc] initWithImage:[self.lazyImage getImage]];
-  tmpImageView.frame = self.frame;
-  tmpImageView.contentMode = UIViewContentModeScaleAspectFit;
+  tmpImageView.frame = CGRectMake(0,0,self.frame.size.width,self.frame.size.height);
+  tmpImageView.contentMode = UIViewContentModeScaleAspectFill;
+  tmpImageView.clipsToBounds = YES;
   self.imageView = tmpImageView;
+  [self addSubview:self.imageView];
   [tmpImageView release];
 }
 

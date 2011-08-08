@@ -19,7 +19,6 @@
 - (UIImage *)getImageThumbnailOfSize:(CGSize)size;
 - (BOOL)imageCached;
 
-
 @property (nonatomic, assign) id<TJMLazyImageDelegate, NSObject> delegate;
 
 @end

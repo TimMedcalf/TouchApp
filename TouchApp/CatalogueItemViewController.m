@@ -30,6 +30,8 @@
 
 - (void)dealloc
 {
+  if ([TJMAudioCenter instance].delegate == self) 
+    [TJMAudioCenter instance].delegate = nil;
   [_scrollView release];
   [_item release];
   [super dealloc];
@@ -117,13 +119,7 @@
 	//if ([self.cover_art_url length] != 0) {
   yAxisPlacement = yAxisPlacement + previousSubviewHeight + 5;
 	
-  UIImageView* cover_art = [[UIImageView alloc] initWithFrame:CGRectMake(5, yAxisPlacement, 150, 150)];
-  //[cover_art setDelegate:self];
-  //[cover_art showStatus:nil];
-	//cover_art.hidesExtras = YES;
-	//cover_art.hidesCaption = YES;
-  //cover_art.urlPath = self.cover_art_url;
-  
+  TJMLazyImageView* cover_art = [[TJMLazyImageView alloc] initWithFrame:CGRectMake(5, yAxisPlacement, 150, 150) andLazyImage:self.item.lazyImage];  
   [self.scrollView addSubview:cover_art];
   [cover_art release];
   previousSubviewHeight = cover_art.frame.size.height;
@@ -202,7 +198,6 @@
   //check we're not already playing
   if ([[TJMAudioCenter instance] statusCheckForURL:[NSURL URLWithString:self.item.mp3SampleURL]] == TJMAudioStatusCurrentPlaying)
     [self showPlaying];
-
 }
 
 - (void)viewDidUnload
@@ -284,5 +279,29 @@
 - (void)play {
   [self showLoading];
   [[TJMAudioCenter instance] playURL:[NSURL URLWithString:self.item.mp3SampleURL]];}
+
+#pragma mark TJM AudioCenterDelegate 
+-(void)URLDidFinish:(NSURL *)url
+{
+  if ([[NSURL URLWithString:self.item.mp3SampleURL] isEqual:url]) [self showPaused];
+}
+
+-(void)URLIsPlaying:(NSURL *)url
+{
+  if ([[NSURL URLWithString:self.item.mp3SampleURL] isEqual:url]) [self showPlaying];
+  
+}
+-(void)URLIsPaused:(NSURL *)url
+{
+  if ([[NSURL URLWithString:self.item.mp3SampleURL] isEqual:url]) [self showPaused];  
+}
+
+-(void)URLDidFail:(NSURL *)url
+{
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Audio stream failed." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	[alert show];
+	[alert autorelease];
+}
+
 
 @end

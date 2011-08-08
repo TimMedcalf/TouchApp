@@ -13,6 +13,7 @@
 @interface TJMLazyImageView : UIView <TJMLazyImageDelegate> {
 }
 
-- (id)initWithURL:(NSString *)imageURL cacheFilename:(NSString *)cacheFilename andFrame:(CGRect)frame;
+//- (id)initWithURL:(NSString *)imageURL cacheFilename:(NSString *)cacheFilename andFrame:(CGRect)frame;
+- (id)initWithFrame:(CGRect)frame andLazyImage:(TJMLazyImage*)lazyImage;
 
 @end

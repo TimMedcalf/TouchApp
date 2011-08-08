@@ -144,13 +144,13 @@ NSString *const Key_FeedList_FeedItems = @"FeedItems";
 - (void)cancelRefresh
 {
   if (self.activeDownload) [self cancelDownload];
-  for (FeedItem *item in self.items)
-  {
-    if (item.lazyImage)
-    {
-      [item.lazyImage cancelImageDownload];
-    }
-  }
+//  for (FeedItem *item in self.items)
+//  {
+//    if (item.lazyImage)
+//    {
+//      [item.lazyImage cancelImageDownload];
+//    }
+//  }
 }
 
 - (void)startDownload
