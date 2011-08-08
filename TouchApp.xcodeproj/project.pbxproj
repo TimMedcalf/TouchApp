@@ -102,6 +102,7 @@
 		22CB4C5113EFEA93008968D6 /* TJMLazyImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4C5013EFEA93008968D6 /* TJMLazyImageView.m */; };
 		22CB4C6213F08E90008968D6 /* ipad.css in Resources */ = {isa = PBXBuildFile; fileRef = 22CB4C6013F08E8E008968D6 /* ipad.css */; };
 		22CB4C6313F08E90008968D6 /* mobile.css in Resources */ = {isa = PBXBuildFile; fileRef = 22CB4C6113F08E8F008968D6 /* mobile.css */; };
+		22CB4C7213F0966F008968D6 /* RadioItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4C7113F0966F008968D6 /* RadioItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -235,6 +236,8 @@
 		22CB4C5013EFEA93008968D6 /* TJMLazyImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TJMLazyImageView.m; sourceTree = "<group>"; };
 		22CB4C6013F08E8E008968D6 /* ipad.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = ipad.css; sourceTree = "<group>"; };
 		22CB4C6113F08E8F008968D6 /* mobile.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = mobile.css; sourceTree = "<group>"; };
+		22CB4C7013F0966F008968D6 /* RadioItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioItem.h; sourceTree = "<group>"; };
+		22CB4C7113F0966F008968D6 /* RadioItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -497,6 +500,7 @@
 		22CB4BFD13EE4876008968D6 /* feeds */ = {
 			isa = PBXGroup;
 			children = (
+				22CB4C6F13F09637008968D6 /* radio */,
 				22CB4C3213EFC98B008968D6 /* catalog */,
 				22CB4C1113EE4CEB008968D6 /* news */,
 				22CB4C0F13EE4BAC008968D6 /* base */,
@@ -597,6 +601,15 @@
 				22CB4C4713EFE653008968D6 /* CatalogueItemViewController.xib */,
 			);
 			name = Catalogue;
+			sourceTree = "<group>";
+		};
+		22CB4C6F13F09637008968D6 /* radio */ = {
+			isa = PBXGroup;
+			children = (
+				22CB4C7013F0966F008968D6 /* RadioItem.h */,
+				22CB4C7113F0966F008968D6 /* RadioItem.m */,
+			);
+			name = radio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -748,6 +761,7 @@
 				22CB4C3B13EFE2EB008968D6 /* TJMAudioCenter.m in Sources */,
 				22CB4C4813EFE654008968D6 /* CatalogueItemViewController.m in Sources */,
 				22CB4C5113EFEA93008968D6 /* TJMLazyImageView.m in Sources */,
+				22CB4C7213F0966F008968D6 /* RadioItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
