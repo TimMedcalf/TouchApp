@@ -87,6 +87,8 @@ NSString *const Key_Cat_Publisher = @"publisher";
   self.releaseDuration = [dict objectForKey:Key_Cat_ReleaseDuration];
   self.trackListing = [dict objectForKey:Key_Cat_TrackListing];
   self.publisher = [dict objectForKey:Key_Cat_Publisher];
+  
+  NSLog(@"%@ - %@ - %@", self.catalogueNumber, self.artist, self.title);
 }
 
 - (void)populateDictionary:(NSMutableDictionary *)dict

@@ -21,6 +21,7 @@
 @property (nonatomic, assign) id<FeedListConsumerDelegate, NSObject> delegate;
 @property (nonatomic, retain) NSMutableArray *items;
 @property (nonatomic, retain) NSDate *lastRefresh;
+@property (nonatomic, retain) NSString *xpathOverride;
 
 - (void)refreshFeedForced:(BOOL)forced;
 - (void)refreshFeed;

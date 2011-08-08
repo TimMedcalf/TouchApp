@@ -27,9 +27,7 @@ NSString *const Key_FeedList_FeedItems = @"FeedItems";
 @property (nonatomic, retain) NSURLConnection *rssConnection;
 @property (nonatomic, retain) NSString *feed;
 @property (nonatomic, retain) NSString *cacheFile;
-
 @property (nonatomic, retain) NSString *eTag;
-
 
 - (void)saveItems;
 - (void)loadItems;
@@ -47,6 +45,7 @@ NSString *const Key_FeedList_FeedItems = @"FeedItems";
 @synthesize feed = _feed;
 @synthesize cacheFile = _cacheFile;
 @synthesize eTag = _eTag;
+@synthesize xpathOverride = _xpathOverride;
 
 #pragma mark lifecycle
 - (id)init
@@ -75,6 +74,7 @@ NSString *const Key_FeedList_FeedItems = @"FeedItems";
   [_rssConnection release];
   [_cacheFile release];
   [_eTag release];
+  [_xpathOverride release];
   [super dealloc];
 }
 
@@ -242,7 +242,14 @@ NSString *const Key_FeedList_FeedItems = @"FeedItems";
     // Create a new Array object to be used with the looping of the results from the rssParser
     NSString *baseURL = [[[rssParser rootElement] attributeForName:@"xml:base"] stringValue];
 
-    NSArray *resultNodes = [rssParser nodesForXPath:@"//item" error:nil];
+    NSString *tmpXPath = @"//";
+    
+    if (self.xpathOverride)
+      tmpXPath = [tmpXPath stringByAppendingString:self.xpathOverride];
+    else
+      tmpXPath = [tmpXPath stringByAppendingString:@"item"];
+    
+    NSArray *resultNodes = [rssParser nodesForXPath:tmpXPath error:nil];
 
     // Loop through the resultNodes to access each items' actual data
     NSMutableArray *newFeedItems = [[NSMutableArray alloc] initWithCapacity:[resultNodes count]];

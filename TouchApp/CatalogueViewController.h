@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CatalogueList.h"
 
-@interface CatalogueViewController : UITableViewController
+@interface CatalogueViewController : UITableViewController <FeedListConsumerDelegate>
 
 @end
