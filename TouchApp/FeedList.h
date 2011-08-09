@@ -38,4 +38,5 @@
 - (void)dataUpdated;
 - (NSString *)feedURL;
 - (NSString *)cacheFilename;
+- (BOOL) clearAllOnRefresh;
 @end

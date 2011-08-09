@@ -278,9 +278,16 @@ NSString *const Key_FeedList_FeedItems = @"FeedItems";
   //NSLog(@"Existing Count = %d",[self.items count]);
   //NSLog(@"Feed Count = %d",[newItems count]);  
   //okay, first, we need to put a marker on each FeedItem to make sure we still want it...is it still there?
-  for (FeedItem *existingItem in self.items)
+  if (![self clearAllOnRefresh])
   {
-    existingItem.updateFlag = NO;
+    for (FeedItem *existingItem in self.items)
+    {
+      existingItem.updateFlag = NO;
+    }
+  } 
+  else
+  {
+    [self.items removeAllObjects];  
   }
   //now loop thru the new items and see if it exists in the current list
   for (FeedItem *newItem in newItems)
@@ -362,6 +369,11 @@ NSString *const Key_FeedList_FeedItems = @"FeedItems";
 {
   //override in subclass to return filename to save the data to - no path necessary
   return nil;
+}
+
+- (BOOL) clearAllOnRefresh
+{
+  return NO;
 }
 
 

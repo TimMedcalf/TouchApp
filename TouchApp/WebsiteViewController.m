@@ -30,8 +30,6 @@
 @synthesize dontHideNavigationBar = _dontHideNavigationBar;
 @synthesize baseURL = _baseURL;
 @synthesize pageTitle = _pageTitle;
-@synthesize freshersMode = _fresherMode;
-
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {

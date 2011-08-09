@@ -21,6 +21,5 @@
 @property (nonatomic, assign) BOOL openLinksInNewView;
 @property (nonatomic, assign) BOOL dontHideNavigationBar;
 @property (nonatomic, retain) NSString *pageTitle;
-@property (nonatomic, assign) BOOL freshersMode;
   
 @end

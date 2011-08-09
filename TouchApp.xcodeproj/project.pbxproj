@@ -103,6 +103,9 @@
 		22CB4C6213F08E90008968D6 /* ipad.css in Resources */ = {isa = PBXBuildFile; fileRef = 22CB4C6013F08E8E008968D6 /* ipad.css */; };
 		22CB4C6313F08E90008968D6 /* mobile.css in Resources */ = {isa = PBXBuildFile; fileRef = 22CB4C6113F08E8F008968D6 /* mobile.css */; };
 		22CB4C7213F0966F008968D6 /* RadioItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4C7113F0966F008968D6 /* RadioItem.m */; };
+		22CB4CB813F1248E008968D6 /* RadioList.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4CB713F1248D008968D6 /* RadioList.m */; };
+		22CB4CBE13F12BDA008968D6 /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4CBC13F12BDA008968D6 /* RadioViewController.m */; };
+		22CB4CBF13F12BDA008968D6 /* RadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22CB4CBD13F12BDA008968D6 /* RadioViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -238,6 +241,11 @@
 		22CB4C6113F08E8F008968D6 /* mobile.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = mobile.css; sourceTree = "<group>"; };
 		22CB4C7013F0966F008968D6 /* RadioItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioItem.h; sourceTree = "<group>"; };
 		22CB4C7113F0966F008968D6 /* RadioItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioItem.m; sourceTree = "<group>"; };
+		22CB4CB613F1248D008968D6 /* RadioList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioList.h; sourceTree = "<group>"; };
+		22CB4CB713F1248D008968D6 /* RadioList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioList.m; sourceTree = "<group>"; };
+		22CB4CBB13F12BDA008968D6 /* RadioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioViewController.h; sourceTree = "<group>"; };
+		22CB4CBC13F12BDA008968D6 /* RadioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioViewController.m; sourceTree = "<group>"; };
+		22CB4CBD13F12BDA008968D6 /* RadioViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadioViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -316,13 +324,9 @@
 		222951F113EC49F2001D174D /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				22CB4CBA13F12BA4008968D6 /* Radio */,
 				22CB4C4A13EFE847008968D6 /* Catalogue */,
-				2229524113ECEC0B001D174D /* NewsViewController.h */,
-				2229524213ECEC0B001D174D /* NewsViewController.m */,
-				2229524313ECEC0B001D174D /* NewsViewController.xib */,
-				22CB4C1813EEBC55008968D6 /* WebsiteViewController.h */,
-				22CB4C1913EEBC55008968D6 /* WebsiteViewController.m */,
-				22CB4C1B13EEBC6C008968D6 /* WebsiteViewController.xib */,
+				22CB4CB913F12B2D008968D6 /* News */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -608,8 +612,33 @@
 			children = (
 				22CB4C7013F0966F008968D6 /* RadioItem.h */,
 				22CB4C7113F0966F008968D6 /* RadioItem.m */,
+				22CB4CB613F1248D008968D6 /* RadioList.h */,
+				22CB4CB713F1248D008968D6 /* RadioList.m */,
 			);
 			name = radio;
+			sourceTree = "<group>";
+		};
+		22CB4CB913F12B2D008968D6 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				22CB4C1813EEBC55008968D6 /* WebsiteViewController.h */,
+				22CB4C1913EEBC55008968D6 /* WebsiteViewController.m */,
+				22CB4C1B13EEBC6C008968D6 /* WebsiteViewController.xib */,
+				2229524113ECEC0B001D174D /* NewsViewController.h */,
+				2229524213ECEC0B001D174D /* NewsViewController.m */,
+				2229524313ECEC0B001D174D /* NewsViewController.xib */,
+			);
+			name = News;
+			sourceTree = "<group>";
+		};
+		22CB4CBA13F12BA4008968D6 /* Radio */ = {
+			isa = PBXGroup;
+			children = (
+				22CB4CBB13F12BDA008968D6 /* RadioViewController.h */,
+				22CB4CBC13F12BDA008968D6 /* RadioViewController.m */,
+				22CB4CBD13F12BDA008968D6 /* RadioViewController.xib */,
+			);
+			name = Radio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -720,6 +749,7 @@
 				22CB4C4E13EFE96F008968D6 /* buyButtonGreen.png in Resources */,
 				22CB4C6213F08E90008968D6 /* ipad.css in Resources */,
 				22CB4C6313F08E90008968D6 /* mobile.css in Resources */,
+				22CB4CBF13F12BDA008968D6 /* RadioViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -762,6 +792,8 @@
 				22CB4C4813EFE654008968D6 /* CatalogueItemViewController.m in Sources */,
 				22CB4C5113EFEA93008968D6 /* TJMLazyImageView.m in Sources */,
 				22CB4C7213F0966F008968D6 /* RadioItem.m in Sources */,
+				22CB4CB813F1248E008968D6 /* RadioList.m in Sources */,
+				22CB4CBE13F12BDA008968D6 /* RadioViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

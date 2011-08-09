@@ -1,26 +1,25 @@
 //
-//  NewsViewController.m
+//  RadioViewController.m
 //  TouchApp
 //
-//  Created by Tim Medcalf on 06/08/2011.
+//  Created by Tim Medcalf on 09/08/2011.
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
 
-#import "CatalogueViewController.h"
-#import "CatalogueItem.h"
-#import "CatalogueItemViewController.h"
+#import "RadioViewController.h"
+#import "RadioItem.h"
 
 static NSInteger CellTitleTag = 50;
 static NSInteger CellSubTitleTag = 51;
 
-@interface CatalogueViewController ()
-@property (nonatomic, retain) CatalogueList *catList;
+@interface RadioViewController ()
+@property (nonatomic, retain) RadioList *radioList;
 @property (nonatomic, retain) UIActivityIndicatorView *spinner;
 @end
 
-@implementation CatalogueViewController
+@implementation RadioViewController
 
-@synthesize catList = _catList;
+@synthesize radioList = _radioList;
 @synthesize spinner = _spinner;
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -48,17 +47,16 @@ static NSInteger CellSubTitleTag = 51;
   
   self.navigationItem.title= @"";
   
-  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Catalogue" style:UIBarButtonItemStyleBordered target:nil action:nil];
+  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Radio" style:UIBarButtonItemStyleBordered target:nil action:nil];
   self.navigationItem.backBarButtonItem = backButton;
   [backButton release];
   
-  CatalogueList *tmpCatList = [[CatalogueList alloc] init];
-  self.catList = tmpCatList;
-  self.catList.xpathOverride = @"release";
-  [tmpCatList release];
-  self.catList.delegate = self;
+  RadioList *tmpRadioList = [[RadioList alloc] init];
+  self.radioList = tmpRadioList;
+  [tmpRadioList release];
+  self.radioList.delegate = self;
   
-  if ([self.catList.items count] == 0)
+  if ([self.radioList.items count] == 0)
   {
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     UIActivityIndicatorView *tmpSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
@@ -71,7 +69,7 @@ static NSInteger CellSubTitleTag = 51;
     [self.view addSubview:self.spinner];
     [tmpSpinner release];
   }
-  [self.catList refreshFeed];
+  [self.radioList refreshFeed];
 }
 
 - (void)viewDidUnload
@@ -80,14 +78,14 @@ static NSInteger CellSubTitleTag = 51;
   // Release any retained subviews of the main view.
   // e.g. self.myOutlet = nil;
   // TJM: (and anything else you alloc in the viewDidLoad!)
-  [self.catList cancelRefresh];
-  [self setCatList:nil];
+  [self.radioList cancelRefresh];
+  [self setRadioList:nil];
   [self setSpinner:nil];
 }
 
 - (void)dealloc
 {
-  [_catList release];
+  [_radioList release];
   [_spinner release];
   [super dealloc];
 }
@@ -97,19 +95,19 @@ static NSInteger CellSubTitleTag = 51;
   [super viewWillAppear:animated];
   
 	UINavigationBar *nb = self.navigationController.navigationBar;
-	nb.tintColor = [UIColor colorWithRed:82/255.0 green:96/255.0 blue:45/255.0 alpha:1];
-  nb.layer.contents = (id)[UIImage imageNamed:@"catalog-nav"].CGImage;
+	nb.tintColor = [UIColor colorWithRed:176/255.0 green:169/255.0 blue:18/255.0 alpha:1];
+  nb.layer.contents = (id)[UIImage imageNamed:@"radio-nav"].CGImage;
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
   [super viewDidAppear:animated];
-  [self.catList refreshFeed];
+  [self.radioList refreshFeed];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-  [self.catList cancelRefresh];
+  [self.radioList cancelRefresh];
   [super viewWillDisappear:animated];
 }
 
@@ -135,7 +133,7 @@ static NSInteger CellSubTitleTag = 51;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
   // Return the number of rows in the section.
-  return (section == 0) ? 1 : [self.catList.items count];
+  return (section == 0) ? 1 : [self.radioList.items count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -146,20 +144,20 @@ static NSInteger CellSubTitleTag = 51;
   {
     case 0:
     {
-      CellIdentifier = @"CatalogHeader";
+      CellIdentifier = @"RadioHeader";
       cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
       if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
       }
       // Configure the cell...
-      cell.imageView.image = [UIImage imageNamed:@"catalogue-banner"];
+      cell.imageView.image = [UIImage imageNamed:@"radio-banner"];
       break;
     }
     case 1:
     default:
     {
-      CellIdentifier = @"CatalogItem";
+      CellIdentifier = @"RadioItem";
       cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
       if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
@@ -219,14 +217,14 @@ static NSInteger CellSubTitleTag = 51;
       }
       // so, now to configure the cell...
       // first grab hold of the cell elements we need
-      CatalogueItem *currentItem = [self.catList.items objectAtIndex:indexPath.row];
+      RadioItem *currentItem = [self.radioList.items objectAtIndex:indexPath.row];
       
       UILabel *titleLabel = (UILabel *)[cell viewWithTag:CellTitleTag];
       UILabel *subtitleLabel = (UILabel *)[cell viewWithTag:CellSubTitleTag];
       
       //got them...now set the text we want...
-      titleLabel.text = currentItem.artist;
-      subtitleLabel.text = currentItem.title;//[NSDateFormatter localizedStringFromDate:currentItem.pubDate dateStyle:NSDateFormatterMediumStyle timeStyle:kCFDateFormatterShortStyle];
+      titleLabel.text = currentItem.titleLabel;
+      subtitleLabel.text = currentItem.title;
     }
   }
   cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -251,44 +249,6 @@ static NSInteger CellSubTitleTag = 51;
   }  
 }
 
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
- }   
- else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }   
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
 
 #pragma mark - Table view delegate
 
@@ -297,11 +257,11 @@ static NSInteger CellSubTitleTag = 51;
   // Navigation logic may go here. Create and push another view controller.
   //return immediately if user selected header image
   if (indexPath.section == 0) return;
-
-  CatalogueItemViewController *controller = [[CatalogueItemViewController alloc] initWithNibName:@"CatalogueItemViewController" bundle:nil];
-  controller.item = [self.catList.items objectAtIndex:indexPath.row];
-  [self.navigationController pushViewController:controller animated:YES];
-  [controller release];
+  
+//  CatalogueItemViewController *controller = [[CatalogueItemViewController alloc] initWithNibName:@"CatalogueItemViewController" bundle:nil];
+//  controller.item = [self.catList.items objectAtIndex:indexPath.row];
+//  [self.navigationController pushViewController:controller animated:YES];
+//  [controller release];
 }
 
 #pragma mark FeedListConsumerDelegates
