@@ -29,6 +29,7 @@ NSString *const Key_FeedList_FeedItems = @"FeedItems";
 @property (nonatomic, retain) NSString *cacheFile;
 @property (nonatomic, retain) NSString *eTag;
 
+
 - (void)saveItems;
 - (void)loadItems;
 - (NSDictionary *)saveItemsToDictionary;
