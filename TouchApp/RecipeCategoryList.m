@@ -32,5 +32,16 @@
   return @"touchRecipeCategories";
 }
 
+- (void)dataUpdated
+{
+  NSMutableArray *delete = [NSMutableArray array];
+  for (RecipeCategoryItem *item in self.items)
+  {
+    if (([item.recipeTitle isEqualToString:@"left"]) || ([item.recipeTitle isEqualToString:@"right"]))
+      [delete addObject:item];
+  }
+  [self.items removeObjectsInArray:delete];
+}
+
 
 @end
