@@ -63,6 +63,8 @@
 		224FBC2914076B9C00749E42 /* RadioItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 224FBC2814076B9C00749E42 /* RadioItemViewController.xib */; };
 		224FBC2D1407F9DB00749E42 /* RecipeCategoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC2C1407F9DB00749E42 /* RecipeCategoryItem.m */; };
 		224FBC301407FCF400749E42 /* RecipeCategoryList.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC2F1407FCF400749E42 /* RecipeCategoryList.m */; };
+		224FBC351407FE3700749E42 /* RecipeCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC331407FE3700749E42 /* RecipeCategoryViewController.m */; };
+		224FBC361407FE3700749E42 /* RecipeCategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 224FBC341407FE3700749E42 /* RecipeCategoryViewController.xib */; };
 		22804A881407544B0083CE40 /* TJMImageResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 22804A831407544B0083CE40 /* TJMImageResource.m */; };
 		22804A891407544B0083CE40 /* TJMImageResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22804A851407544B0083CE40 /* TJMImageResourceManager.m */; };
 		22804A8A1407544B0083CE40 /* TJMImageResourceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22804A871407544B0083CE40 /* TJMImageResourceView.m */; };
@@ -179,6 +181,9 @@
 		224FBC2C1407F9DB00749E42 /* RecipeCategoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeCategoryItem.m; sourceTree = "<group>"; };
 		224FBC2E1407FCF400749E42 /* RecipeCategoryList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeCategoryList.h; sourceTree = "<group>"; };
 		224FBC2F1407FCF400749E42 /* RecipeCategoryList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeCategoryList.m; sourceTree = "<group>"; };
+		224FBC321407FE3700749E42 /* RecipeCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeCategoryViewController.h; sourceTree = "<group>"; };
+		224FBC331407FE3700749E42 /* RecipeCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeCategoryViewController.m; sourceTree = "<group>"; };
+		224FBC341407FE3700749E42 /* RecipeCategoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecipeCategoryViewController.xib; sourceTree = "<group>"; };
 		22804A821407544B0083CE40 /* TJMImageResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJMImageResource.h; sourceTree = "<group>"; };
 		22804A831407544B0083CE40 /* TJMImageResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TJMImageResource.m; sourceTree = "<group>"; };
 		22804A841407544B0083CE40 /* TJMImageResourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJMImageResourceManager.h; sourceTree = "<group>"; };
@@ -337,6 +342,7 @@
 		222951F113EC49F2001D174D /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				224FBC311407FDB100749E42 /* recipes */,
 				22CB4CBA13F12BA4008968D6 /* Radio */,
 				22CB4C4A13EFE847008968D6 /* Catalogue */,
 				22CB4CB913F12B2D008968D6 /* News */,
@@ -456,6 +462,16 @@
 				224FBC2C1407F9DB00749E42 /* RecipeCategoryItem.m */,
 				224FBC2E1407FCF400749E42 /* RecipeCategoryList.h */,
 				224FBC2F1407FCF400749E42 /* RecipeCategoryList.m */,
+			);
+			name = recipes;
+			sourceTree = "<group>";
+		};
+		224FBC311407FDB100749E42 /* recipes */ = {
+			isa = PBXGroup;
+			children = (
+				224FBC321407FE3700749E42 /* RecipeCategoryViewController.h */,
+				224FBC331407FE3700749E42 /* RecipeCategoryViewController.m */,
+				224FBC341407FE3700749E42 /* RecipeCategoryViewController.xib */,
 			);
 			name = recipes;
 			sourceTree = "<group>";
@@ -790,6 +806,7 @@
 				22CB4C6313F08E90008968D6 /* mobile.css in Resources */,
 				22CB4CBF13F12BDA008968D6 /* RadioViewController.xib in Resources */,
 				224FBC2914076B9C00749E42 /* RadioItemViewController.xib in Resources */,
+				224FBC361407FE3700749E42 /* RecipeCategoryViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -838,6 +855,7 @@
 				224FBC2714076B5E00749E42 /* RadioItemViewController.m in Sources */,
 				224FBC2D1407F9DB00749E42 /* RecipeCategoryItem.m in Sources */,
 				224FBC301407FCF400749E42 /* RecipeCategoryList.m in Sources */,
+				224FBC351407FE3700749E42 /* RecipeCategoryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
