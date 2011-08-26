@@ -86,13 +86,6 @@ NSString *const Key_Radio_TitleLabel = @"itunes:subtitle";
   if (self.episode_duration) [dict setObject:self.episode_duration forKey:Key_Radio_Duration];    
 }
 
-//this needs reimplementing!
-- (BOOL)isEqualToItem:(FeedItem *)otherFeedItem
-{
-  //we don't have any images to worry about so don't bother checking if they are equal - just replace the whole feed whenever it's updated
-  return NO;
-}
-
 - (NSComparisonResult)compare:(RadioItem *)item
 {
   //compare in reverse so that we get the newest at the top.
