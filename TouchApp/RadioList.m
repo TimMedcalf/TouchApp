@@ -32,9 +32,5 @@
   return @"touchRadio";
 }
 
-- (BOOL)clearAllOnRefresh
-{
-  return YES;
-}
 
 @end
