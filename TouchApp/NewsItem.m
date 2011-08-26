@@ -51,8 +51,9 @@ NSString *const XML_PubDate = @"pubDate";
   self.description = [dict objectForKey:DescriptionKey];
 }
 
-- (void)processXMLDictionary:(NSDictionary *)dict
-{  
+- (void)processXMLDictionary:(NSDictionary *)dict andBaseURL:(NSURL *)baseURL
+{
+  //NSLog(@"News Dict: %@", dict);
   self.pubDate = [dict objectForKey:XML_PubDate];
   self.link = [dict objectForKey:XML_Link];
   self.title = [dict objectForKey:XML_Title];
@@ -61,20 +62,13 @@ NSString *const XML_PubDate = @"pubDate";
 
 - (void)populateDictionary:(NSMutableDictionary *)dict
 {
-  [dict setObject:self.pubDate forKey:PubDateKey];
-  [dict setObject:self.link forKey:LinkKey];
-  [dict setObject:self.title forKey:TitleKey];
-  [dict setObject:self.description forKey:DescriptionKey];
-}
-- (BOOL)isEqualToItem:(NewsItem *)otherFeedItem
-{
-  return (([self.pubDate isEqualToString:otherFeedItem.pubDate]) &&
-          ([self.title isEqualToString:otherFeedItem.title]) &&
-          ([self.description isEqualToString:otherFeedItem.description]) &&
-          ([self.imageLink isEqualToString:otherFeedItem.imageLink]));
+  if (self.pubDate) [dict setObject:self.pubDate forKey:PubDateKey];
+  if (self.link) [dict setObject:self.link forKey:LinkKey];
+  if (self.title) [dict setObject:self.title forKey:TitleKey];
+  if (self.description) [dict setObject:self.description forKey:DescriptionKey];
 }
 
-- (NSString *) htmlForWebView
+- (NSString *)htmlForWebView
 {
   //inject some CSS
   //note that strings can be run across multiple lines without having to reassign or append - just make sure quotes are at the start and end of each line

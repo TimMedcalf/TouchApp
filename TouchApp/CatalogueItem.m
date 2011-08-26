@@ -71,10 +71,16 @@ NSString *const Key_Cat_Publisher = @"publisher";
   self.publisher = [dict objectForKey:Key_Cat_Publisher];
 }
 
-- (void)processXMLDictionary:(NSDictionary *)dict
+- (void)processXMLDictionary:(NSDictionary *)dict andBaseURL:(NSURL *)baseURL
 { 
   //lets get the parent fields out the way first
-  self.imageLink = [dict objectForKey:Key_Cat_CoverArt];
+  NSString *tmpImage = [dict objectForKey:Key_Cat_CoverArt];
+  if (tmpImage)
+  {
+    NSURL *tmpURL = [[NSURL alloc] initWithString:tmpImage relativeToURL:baseURL];
+    self.imageURL = tmpURL;
+    [tmpURL release];
+  }
   //okay, now the stuff that's unique to us...
   self.title = [dict objectForKey:Key_Cat_Title];
   self.artist = [dict objectForKey:Key_Cat_Artist];
@@ -105,15 +111,6 @@ NSString *const Key_Cat_Publisher = @"publisher";
   [dict setObject:self.publisher forKey:Key_Cat_Publisher];
 }
 
-//this needs reimplementing!
-  - (BOOL)isEqualToItem:(CatalogueItem *)otherFeedItem
-{
-  return (([self.catalogueNumber isEqualToString:otherFeedItem.catalogueNumber]) &&
-          ([self.title isEqualToString:otherFeedItem.title]) &&
-          ([self.artist isEqualToString:otherFeedItem.artist]) &&
-          ([self.description isEqualToString:otherFeedItem.description]) &&
-          ([self.imageLink isEqualToString:otherFeedItem.imageLink]));
-}
 
 
 

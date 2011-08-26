@@ -7,26 +7,22 @@
 //
 
 #import "FeedItem.h"
-#import "TJMLazyImage.h"
 
-NSString *const FeedItem_ImageLinkKey = @"imageLink";
-NSString *const FeedItem_CachedImageNameKey = @"cachedImageName";
-NSString *const FeedItem_BaseURLKey = @"baseURL";
+
+NSString *const FeedItem_ImageURLKey = @"imageURL";
 
 @interface FeedItem ()
+
 //things to override
 - (void)procesSavedDictionary:(NSDictionary *)dict;
-- (void)processXMLDictionary:(NSDictionary *)dict;
+- (void)processXMLDictionary:(NSDictionary *)dict andBaseURL:(NSURL *)baseURL;
+- (void)processRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL; 
 - (void)populateDictionary:(NSMutableDictionary *)dict;
 @end
 
 @implementation FeedItem
 
-@synthesize delegate = _delegate;
-@synthesize imageLink = _imageLink;
-@synthesize cachedImageName = _cachedImageName;
-@synthesize lazyImage = _lazyImage;
-@synthesize baseURL = _baseURL;
+@synthesize imageURL = _imageURL;
 
 @synthesize updateFlag = _updateFlag;
 
@@ -36,108 +32,87 @@ NSString *const FeedItem_BaseURLKey = @"baseURL";
   self = [super init];
   if (self)
   {
-    self.cachedImageName = [dict objectForKey:FeedItem_CachedImageNameKey];
-    self.imageLink = [dict objectForKey:FeedItem_ImageLinkKey];
-    self.baseURL = [dict objectForKey:FeedItem_BaseURLKey];
+    self.imageURL = [NSURL URLWithString:[dict objectForKey:FeedItem_ImageURLKey]];
     [self procesSavedDictionary:dict];
   }
   return self;
 }
 
-- (id)initWithXMLDictionary:(NSDictionary *)dict andBaseURL:(NSString *)baseURL
+- (id)initWithXMLDictionary:(NSDictionary *)dict andBaseURL:(NSURL *)baseURL
 {
   self = [super init];
   if (self)
   {
-    self.baseURL = baseURL;
-    [self processXMLDictionary:dict];
+    [self processXMLDictionary:dict andBaseURL:baseURL];
   }
   return self;
 }
 
+- (id)initWithRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL
+{
+  self = [super init];
+  if (self)
+  {
+    [self processRawXMLElement:element andBaseURL:baseURL];
+  }
+  return self;
+}
+
+
 - (NSMutableDictionary *)dictionaryRepresentation
 {
   NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:6];
-  if (self.imageLink) [dict setObject:self.imageLink forKey:FeedItem_ImageLinkKey];
-  if (self.cachedImageName) [dict setObject:self.cachedImageName forKey:FeedItem_CachedImageNameKey];
-  if (self.baseURL) [dict setObject:self.baseURL forKey:FeedItem_BaseURLKey];
+  if (self.imageURL) [dict setObject:[self.imageURL absoluteString] forKey:FeedItem_ImageURLKey];
   [self populateDictionary:dict];
   return dict;
 }
 
-- (void)setImageLink:(NSString *)link
-{
-  self.lazyImage = nil;
-  if ([link length] > 0)
-  {
-    _imageLink = [link retain];
-    if (!self.cachedImageName)
-    {
-      NSString *extension = [[link lastPathComponent] pathExtension];
-      CFUUIDRef theUUID = CFUUIDCreate(NULL);
-      CFStringRef string = CFUUIDCreateString(NULL, theUUID);
-      CFRelease(theUUID);
-      self.cachedImageName = [(NSString *)string autorelease];
-      self.cachedImageName = [self.cachedImageName stringByAppendingPathExtension:extension];
-    }
-    TJMLazyImage *tmpLazy = [[TJMLazyImage alloc] initWithURL:self.imageLink andCacheFilename:self.cachedImageName];
-    self.lazyImage = tmpLazy;
-    [tmpLazy release]; tmpLazy = nil;
-    self.lazyImage.delegate = self;
-  }
-}
 
 - (void)dealloc
 {
-  //NSLog(@"FeedItem [%@ %@]", [self class], NSStringFromSelector(_cmd));
-  //NSLog(@"Cancelling iomage download");
-  self.lazyImage.delegate = nil;
-  [self.lazyImage cancelImageDownload];
-  [_lazyImage release];
-  [_imageLink release];
-  [_cachedImageName release];
-  [_baseURL release];
+  [_imageURL release];
   [super dealloc];
 }
 
-#pragma mark TJMLazyImage delegate
-- (void)imageUpdated
-{
-  if (self.delegate) [self.delegate imageUpdated:self];
-}
 
 #pragma mark sublclass overrides
+
+
+
 - (void)procesSavedDictionary:(NSDictionary *)dict
 {
   //override in subclass
+  NSLog(@"Processing Saved Dictionary! This should be overridden!");
 }
 
-- (void)processXMLDictionary:(NSDictionary *)dict
+- (void)processXMLDictionary:(NSDictionary *)dict andBaseURL:(NSURL *)baseURL
 {
   //override in subclass
+  NSLog(@"Processing XML Dictionary! This should be overridden!");
+}
+
+- (void)processRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL
+{
+  //override in subclass
+  NSLog(@"Processing XML Raw Element! This should be overridden!");
 }
 
 - (void)populateDictionary:(NSMutableDictionary *)dict;
 {
   //override in subclass
-}
-
-- (BOOL)isEqualToItem:(FeedItem *)otherFeedItem
-{
-  //override in subclass
-  return ([self.imageLink isEqualToString:otherFeedItem.imageLink]);
+  NSLog(@"Populating dictionary! This should be overridden!");
 }
 
 - (NSComparisonResult)compare:(FeedItem *)item
 {
-  //override in subclass if you want something different
-  return NSOrderedSame;
+  //override in subclass
+  return 0;
 }
 
 - (NSString *)htmlForWebView
 {
-  //override in subclass
-  return @"override htmlForWebView!";
+  NSLog(@"should override htmlForWebView!");
+  return @"should override htmlForWebView!";
 }
 
 @end

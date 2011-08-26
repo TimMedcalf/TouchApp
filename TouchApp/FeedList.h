@@ -12,31 +12,30 @@
 
 @protocol FeedListConsumerDelegate
 - (void)updateSource;
-- (void)updateImage:(NSInteger)index;
 - (void)updateFailed;
 @end
 
-@interface FeedList : NSObject <FeedItemDelegate>
+@interface FeedList : NSObject
 
 @property (nonatomic, assign) id<FeedListConsumerDelegate, NSObject> delegate;
+@property (nonatomic, retain) NSURL *baseURL;
 @property (nonatomic, retain) NSMutableArray *items;
 @property (nonatomic, retain) NSDate *lastRefresh;
 @property (nonatomic, retain) NSString *xpathOverride;
+@property (nonatomic, assign) BOOL rawMode;
 
 - (void)refreshFeedForced:(BOOL)forced;
 - (void)refreshFeed;
 - (void)cancelRefresh;
 
-- (void)startDownload;
-- (void)cancelDownload;
-- (void)parseResultWithData:(NSData *)xmlData;
-- (void)mergeExistingWithItems:(NSArray *)newItems;
-
 //overrides
-- (FeedItem *)initNewItemWithXMLDictionary:itemDict andBaseURL:baseURL;
-- (FeedItem *)initNewItemWithDictionary:dictionary;
-- (void)dataUpdated;
+- (NSInteger)refreshTimerCount;
+- (FeedItem *)initNewItemWithXMLDictionary:(NSDictionary *)itemDict andBaseURL:(NSURL *)baseURL;
+- (FeedItem *)initNewItemWithRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL; 
+- (FeedItem *)initNewItemWithDictionary:(NSDictionary *)dictionary;
+
 - (NSString *)feedURL;
 - (NSString *)cacheFilename;
-- (BOOL) clearAllOnRefresh;
+
+- (void)dataUpdated;
 @end

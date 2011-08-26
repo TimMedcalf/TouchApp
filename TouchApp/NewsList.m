@@ -36,4 +36,9 @@
   return @"touchNews";
 }
 
+- (NSInteger)refreshTimerCount
+{
+  return 1;
+}
+
 @end

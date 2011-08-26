@@ -59,6 +59,9 @@
 		222952BC13ECFFE1001D174D /* harvest~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 222952B413ECFFE1001D174D /* harvest~iphone.png */; };
 		222952BD13ECFFE1001D174D /* newport-pylons~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 222952B513ECFFE1001D174D /* newport-pylons~ipad.png */; };
 		222952BE13ECFFE1001D174D /* newport-pylons~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 222952B613ECFFE1001D174D /* newport-pylons~iphone.png */; };
+		22804A881407544B0083CE40 /* TJMImageResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 22804A831407544B0083CE40 /* TJMImageResource.m */; };
+		22804A891407544B0083CE40 /* TJMImageResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22804A851407544B0083CE40 /* TJMImageResourceManager.m */; };
+		22804A8A1407544B0083CE40 /* TJMImageResourceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22804A871407544B0083CE40 /* TJMImageResourceView.m */; };
 		22CB4B8913EDD641008968D6 /* AppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4B8813EDD641008968D6 /* AppManager.m */; };
 		22CB4BEF13EE417E008968D6 /* CXMLDocument_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4BD413EE417E008968D6 /* CXMLDocument_CreationExtensions.m */; };
 		22CB4BF013EE417E008968D6 /* CXMLNode_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4BD613EE417E008968D6 /* CXMLNode_CreationExtensions.m */; };
@@ -167,6 +170,12 @@
 		222952B413ECFFE1001D174D /* harvest~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "harvest~iphone.png"; sourceTree = "<group>"; };
 		222952B513ECFFE1001D174D /* newport-pylons~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newport-pylons~ipad.png"; sourceTree = "<group>"; };
 		222952B613ECFFE1001D174D /* newport-pylons~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newport-pylons~iphone.png"; sourceTree = "<group>"; };
+		22804A821407544B0083CE40 /* TJMImageResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJMImageResource.h; sourceTree = "<group>"; };
+		22804A831407544B0083CE40 /* TJMImageResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TJMImageResource.m; sourceTree = "<group>"; };
+		22804A841407544B0083CE40 /* TJMImageResourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJMImageResourceManager.h; sourceTree = "<group>"; };
+		22804A851407544B0083CE40 /* TJMImageResourceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TJMImageResourceManager.m; sourceTree = "<group>"; };
+		22804A861407544B0083CE40 /* TJMImageResourceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJMImageResourceView.h; sourceTree = "<group>"; };
+		22804A871407544B0083CE40 /* TJMImageResourceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TJMImageResourceView.m; sourceTree = "<group>"; };
 		22CB4B8713EDD640008968D6 /* AppManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppManager.h; sourceTree = "<group>"; };
 		22CB4B8813EDD641008968D6 /* AppManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppManager.m; sourceTree = "<group>"; };
 		22CB4B8B13EDD69C008968D6 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
@@ -427,9 +436,23 @@
 			name = tableBanners;
 			sourceTree = "<group>";
 		};
+		22804A8C140754600083CE40 /* ImageResource */ = {
+			isa = PBXGroup;
+			children = (
+				22804A821407544B0083CE40 /* TJMImageResource.h */,
+				22804A831407544B0083CE40 /* TJMImageResource.m */,
+				22804A841407544B0083CE40 /* TJMImageResourceManager.h */,
+				22804A851407544B0083CE40 /* TJMImageResourceManager.m */,
+				22804A861407544B0083CE40 /* TJMImageResourceView.h */,
+				22804A871407544B0083CE40 /* TJMImageResourceView.m */,
+			);
+			name = ImageResource;
+			sourceTree = "<group>";
+		};
 		22CB4B8A13EDD678008968D6 /* globals */ = {
 			isa = PBXGroup;
 			children = (
+				22804A8C140754600083CE40 /* ImageResource */,
 				22CB4C3913EFE2EA008968D6 /* TJMAudioCenter.h */,
 				22CB4C3A13EFE2EB008968D6 /* TJMAudioCenter.m */,
 				222951D513EC496F001D174D /* TouchAppAppDelegate.h */,
@@ -794,6 +817,9 @@
 				22CB4C7213F0966F008968D6 /* RadioItem.m in Sources */,
 				22CB4CB813F1248E008968D6 /* RadioList.m in Sources */,
 				22CB4CBE13F12BDA008968D6 /* RadioViewController.m in Sources */,
+				22804A881407544B0083CE40 /* TJMImageResource.m in Sources */,
+				22804A891407544B0083CE40 /* TJMImageResourceManager.m in Sources */,
+				22804A8A1407544B0083CE40 /* TJMImageResourceView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

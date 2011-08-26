@@ -54,7 +54,7 @@ static NSInteger CellSubTitleTag = 51;
   
   CatalogueList *tmpCatList = [[CatalogueList alloc] init];
   self.catList = tmpCatList;
-  self.catList.xpathOverride = @"release";
+  self.catList.xpathOverride = @"//release";
   [tmpCatList release];
   self.catList.delegate = self;
   

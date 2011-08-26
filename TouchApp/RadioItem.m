@@ -56,7 +56,7 @@ NSString *const Key_Radio_TitleLabel = @"itunes:subtitle";
   self.episode_duration = [dict objectForKey:Key_Radio_Duration];
 }
 
-- (void)processXMLDictionary:(NSDictionary *)dict
+- (void)processXMLDictionary:(NSDictionary *)dict andBaseURL:(NSURL *)baseURL
 { 
   self.title = [dict objectForKey:Key_Radio_Title];
   self.titleLabel = [dict objectForKey:Key_Radio_TitleLabel];
@@ -75,14 +75,14 @@ NSString *const Key_Radio_TitleLabel = @"itunes:subtitle";
 
 - (void)populateDictionary:(NSMutableDictionary *)dict
 {
-  [dict setObject:self.title forKey:Key_Radio_Title];
-  [dict setObject:self.titleLabel forKey:Key_Radio_TitleLabel];
-  [dict setObject:self.author forKey:Key_Radio_Author];
-  [dict setObject:self.summary forKey:Key_Radio_Author];
-  [dict setObject:self.subtitle forKey:Key_Radio_SubTitle];
-  [dict setObject:self.pubDate forKey:Key_Radio_PubDate];
-  [dict setObject:self.link forKey:Key_Radio_Link];
-  [dict setObject:self.episode_duration forKey:Key_Radio_Duration];    
+  if (self.title) [dict setObject:self.title forKey:Key_Radio_Title];
+  if (self.titleLabel) [dict setObject:self.titleLabel forKey:Key_Radio_TitleLabel];
+  if (self.author) [dict setObject:self.author forKey:Key_Radio_Author];
+  if (self.summary) [dict setObject:self.summary forKey:Key_Radio_Author];
+  if (self.subtitle) [dict setObject:self.subtitle forKey:Key_Radio_SubTitle];
+  if (self.pubDate) [dict setObject:self.pubDate forKey:Key_Radio_PubDate];
+  if (self.link) [dict setObject:self.link forKey:Key_Radio_Link];
+  if (self.episode_duration) [dict setObject:self.episode_duration forKey:Key_Radio_Duration];    
 }
 
 //this needs reimplementing!
