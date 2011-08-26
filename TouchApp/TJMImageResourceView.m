@@ -92,7 +92,6 @@
   self.imageView = tmpImageView;
   [tmpImageView release];
   [self addSubview:self.imageView];
-  
 }
                                     
 

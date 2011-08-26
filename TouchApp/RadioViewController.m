@@ -7,6 +7,7 @@
 //
 
 #import "RadioViewController.h"
+#import "RadioItemViewController.h"
 #import "RadioItem.h"
 
 static NSInteger CellTitleTag = 50;
@@ -258,10 +259,10 @@ static NSInteger CellSubTitleTag = 51;
   //return immediately if user selected header image
   if (indexPath.section == 0) return;
   
-//  CatalogueItemViewController *controller = [[CatalogueItemViewController alloc] initWithNibName:@"CatalogueItemViewController" bundle:nil];
-//  controller.item = [self.catList.items objectAtIndex:indexPath.row];
-//  [self.navigationController pushViewController:controller animated:YES];
-//  [controller release];
+  RadioItemViewController *controller = [[RadioItemViewController alloc] initWithNibName:@"RadioItemViewController" bundle:nil];
+  controller.item = [self.radioList.items objectAtIndex:indexPath.row];
+  [self.navigationController pushViewController:controller animated:YES];
+  [controller release];
 }
 
 #pragma mark FeedListConsumerDelegates

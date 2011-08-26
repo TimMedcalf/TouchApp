@@ -122,8 +122,6 @@
 	//if ([self.cover_art_url length] != 0) {
   yAxisPlacement = yAxisPlacement + previousSubviewHeight + 5;
 	
-//  TJMLazyImageView *cover_art = [[TJMLazyImageView alloc] initWithFrame:CGRectMake(5, yAxisPlacement, 150, 150) andLazyImage:self.item.lazyImage];  
-//  [self.scrollView addSubview:cover_art];
   TJMImageResourceView *cover_art = [[TJMImageResourceView alloc] initWithFrame:CGRectMake(5, yAxisPlacement, 150, 150) andURL:self.item.imageURL];
   [self.scrollView addSubview:cover_art];
   [cover_art release];
