@@ -45,6 +45,7 @@ static NSInteger CellSubTitleTag = 51;
   
   RecipeCategoryList *tmpList = [[RecipeCategoryList alloc] init];
   self.catList = tmpList;
+  self.catList.xpathOverride = @"//category";
   [tmpList release];
   self.catList.delegate = self;
   
