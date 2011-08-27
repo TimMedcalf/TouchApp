@@ -180,9 +180,10 @@ static NSInteger CellSubTitleTag = 51;
 //        subtitleLabel.numberOfLines = 0;
         
         
+        
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
           //iPad
-          titleLabel.frame = CGRectMake(50,20,535,25);
+          titleLabel.frame = CGRectMake(50,29,535,30);
           titleLabel.font = [UIFont fontWithName:@"Helvetica" size:21]; 
           
 //          subtitleLabel.frame = CGRectMake(50,45,535,22);
@@ -192,7 +193,7 @@ static NSInteger CellSubTitleTag = 51;
         }
         else {
           //iPhone
-          titleLabel.frame = CGRectMake(17,16,247,15);
+          titleLabel.frame = CGRectMake(17,22,247,15);
           titleLabel.font = [UIFont fontWithName:@"Helvetica" size:14]; 
           
 //          subtitleLabel.frame = CGRectMake(17,31,247,15);
