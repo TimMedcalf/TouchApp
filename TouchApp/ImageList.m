@@ -26,16 +26,21 @@
 
 - (NSString *)feedURL
 {
-	NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
+	NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                               @"flickr.photosets.getPhotos", @"method",
                               @"72157627193886606", @"photoset_id",
-                              @"url_l,url_z,url_m,url_t", @"extras",
                               @"dcb74491ec5cbe64deb98b18df1125a9", @"api_key",
                               @"rest", @"format",
-                              //[NSString stringWithFormat:@"%lu", (unsigned long)page], @"page",
-                              //appDelegate.numberOfThumbnails, @"per_page",
-                              //@"1", @"nojsoncallback",
                               nil];
+  
+  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+  {
+    [parameters setObject:@"url_l,url_t" forKey:@"extras"];
+  }
+  else
+  {
+    [parameters setObject:@"url_z,url_t" forKey:@"extras"];   
+  }
 	
   return [NSString stringWithFormat:@"http://api.flickr.com/services/rest/?%@", [parameters gtm_httpArgumentsString]];
 }
