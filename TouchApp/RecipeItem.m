@@ -65,18 +65,6 @@ NSString *const Key_Recipe_PubDate = @"pubDate";
   return [item.recipePubDate compare:self.recipePubDate];
 }
 
-//NSString *recipeHTML = [NSString stringWithFormat:@"<meta name=\"viewport\" content=\"width=device-width\" />"];
-//
-//recipeHTML = [recipeHTML stringByAppendingString:@"<link rel=\"stylesheet\" media=\"only screen and (max-device-width: 480px)\" href=\"http://www.daveknapik.com/dropbox/mobile.css\" />"];
-//recipeHTML = [recipeHTML stringByAppendingString:@"<link rel=\"stylesheet\" media=\"only screen and (min-device-width: 481px) and (max-device-width: 1024px)\" href=\"http://www.daveknapik.com/dropbox/ipad.css\" />"];
-//
-//recipeHTML = [recipeHTML stringByAppendingString:@"<p id='title'><strong>"];
-//recipeHTML = [recipeHTML stringByAppendingString:self.recipe_title];
-//recipeHTML = [recipeHTML stringByAppendingString:@"</strong>"];
-//
-//recipeHTML = [recipeHTML stringByAppendingString:@"<br />by "];
-//recipeHTML = [recipeHTML stringByAppendingString:self.author];
-//recipeHTML = [recipeHTML stringByAppendingString:@"</p>"];
 - (NSString *)htmlForWebView
 {
   //inject some CSS
