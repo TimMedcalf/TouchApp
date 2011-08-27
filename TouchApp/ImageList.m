@@ -34,7 +34,7 @@
                               @"rest", @"format",
                               //[NSString stringWithFormat:@"%lu", (unsigned long)page], @"page",
                               //appDelegate.numberOfThumbnails, @"per_page",
-                              @"1", @"nojsoncallback",
+                              //@"1", @"nojsoncallback",
                               nil];
 	
   return [NSString stringWithFormat:@"http://api.flickr.com/services/rest/?%@", [parameters gtm_httpArgumentsString]];

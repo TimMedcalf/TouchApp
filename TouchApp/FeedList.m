@@ -307,6 +307,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 - (void)parseResultWithData:(NSData *)xmlData
 {
   NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
+  NSLog(@"%@",[NSString stringWithUTF8String:[xmlData bytes]]);
   
   // Create a new rssParser object based on the TouchXML "CXMLDocument" class, this is the
   // object that actually grabs and processes the RSS data
@@ -397,7 +398,8 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 - (NSInteger)refreshTimerCount
 {
   //number of seconds to wait before news refreshes - override for different time
-  return 43200; //twelve hours
+  //return 43200; //twelve hours
+  return 1;
 }
 
 - (void)dataUpdated
