@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NewsList.h"
+#import "ImageList.h"
 
-@interface NewsViewController : UITableViewController <FeedListConsumerDelegate>
+@interface ImageGalleryViewController : UITableViewController <FeedListConsumerDelegate>
 
 @end
