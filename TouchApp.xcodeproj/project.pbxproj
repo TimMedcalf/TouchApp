@@ -66,6 +66,8 @@
 		224FBC351407FE3700749E42 /* RecipeCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC331407FE3700749E42 /* RecipeCategoryViewController.m */; };
 		224FBC361407FE3700749E42 /* RecipeCategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 224FBC341407FE3700749E42 /* RecipeCategoryViewController.xib */; };
 		224FBC76140843B000749E42 /* RecipeItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC75140843AF00749E42 /* RecipeItem.m */; };
+		224FBC7A1408C25600749E42 /* RecipeBookList.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC791408C25600749E42 /* RecipeBookList.m */; };
+		224FBC7C1408C47200749E42 /* RecipeCategories.plist in Resources */ = {isa = PBXBuildFile; fileRef = 224FBC7B1408C47200749E42 /* RecipeCategories.plist */; };
 		22804A881407544B0083CE40 /* TJMImageResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 22804A831407544B0083CE40 /* TJMImageResource.m */; };
 		22804A891407544B0083CE40 /* TJMImageResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22804A851407544B0083CE40 /* TJMImageResourceManager.m */; };
 		22804A8A1407544B0083CE40 /* TJMImageResourceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22804A871407544B0083CE40 /* TJMImageResourceView.m */; };
@@ -187,6 +189,9 @@
 		224FBC341407FE3700749E42 /* RecipeCategoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecipeCategoryViewController.xib; sourceTree = "<group>"; };
 		224FBC74140843AF00749E42 /* RecipeItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeItem.h; sourceTree = "<group>"; };
 		224FBC75140843AF00749E42 /* RecipeItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeItem.m; sourceTree = "<group>"; };
+		224FBC781408C25500749E42 /* RecipeBookList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeBookList.h; sourceTree = "<group>"; };
+		224FBC791408C25600749E42 /* RecipeBookList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeBookList.m; sourceTree = "<group>"; };
+		224FBC7B1408C47200749E42 /* RecipeCategories.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RecipeCategories.plist; sourceTree = "<group>"; };
 		22804A821407544B0083CE40 /* TJMImageResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJMImageResource.h; sourceTree = "<group>"; };
 		22804A831407544B0083CE40 /* TJMImageResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TJMImageResource.m; sourceTree = "<group>"; };
 		22804A841407544B0083CE40 /* TJMImageResourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJMImageResourceManager.h; sourceTree = "<group>"; };
@@ -335,6 +340,7 @@
 			isa = PBXGroup;
 			children = (
 				222951CE13EC496F001D174D /* TouchApp-Info.plist */,
+				224FBC7B1408C47200749E42 /* RecipeCategories.plist */,
 				222951CF13EC496F001D174D /* InfoPlist.strings */,
 				222951D213EC496F001D174D /* main.m */,
 				222951D413EC496F001D174D /* TouchApp-Prefix.pch */,
@@ -467,6 +473,8 @@
 				224FBC2F1407FCF400749E42 /* RecipeCategoryList.m */,
 				224FBC74140843AF00749E42 /* RecipeItem.h */,
 				224FBC75140843AF00749E42 /* RecipeItem.m */,
+				224FBC781408C25500749E42 /* RecipeBookList.h */,
+				224FBC791408C25600749E42 /* RecipeBookList.m */,
 			);
 			name = recipes;
 			sourceTree = "<group>";
@@ -812,6 +820,7 @@
 				22CB4CBF13F12BDA008968D6 /* RadioViewController.xib in Resources */,
 				224FBC2914076B9C00749E42 /* RadioItemViewController.xib in Resources */,
 				224FBC361407FE3700749E42 /* RecipeCategoryViewController.xib in Resources */,
+				224FBC7C1408C47200749E42 /* RecipeCategories.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -862,6 +871,7 @@
 				224FBC301407FCF400749E42 /* RecipeCategoryList.m in Sources */,
 				224FBC351407FE3700749E42 /* RecipeCategoryViewController.m in Sources */,
 				224FBC76140843B000749E42 /* RecipeItem.m in Sources */,
+				224FBC7A1408C25600749E42 /* RecipeBookList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
