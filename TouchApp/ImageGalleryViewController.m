@@ -45,6 +45,7 @@ static NSInteger CellSubTitleTag = 51;
   
   ImageList *tmpList = [[ImageList alloc] init];
   self.imageList = tmpList;
+  self.imageList.xpathOverride = @"//photo";
   [tmpList release];
   self.imageList.delegate = self;
   
