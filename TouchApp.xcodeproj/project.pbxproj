@@ -65,6 +65,7 @@
 		224FBC301407FCF400749E42 /* RecipeCategoryList.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC2F1407FCF400749E42 /* RecipeCategoryList.m */; };
 		224FBC351407FE3700749E42 /* RecipeCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC331407FE3700749E42 /* RecipeCategoryViewController.m */; };
 		224FBC361407FE3700749E42 /* RecipeCategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 224FBC341407FE3700749E42 /* RecipeCategoryViewController.xib */; };
+		224FBC76140843B000749E42 /* RecipeItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC75140843AF00749E42 /* RecipeItem.m */; };
 		22804A881407544B0083CE40 /* TJMImageResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 22804A831407544B0083CE40 /* TJMImageResource.m */; };
 		22804A891407544B0083CE40 /* TJMImageResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22804A851407544B0083CE40 /* TJMImageResourceManager.m */; };
 		22804A8A1407544B0083CE40 /* TJMImageResourceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22804A871407544B0083CE40 /* TJMImageResourceView.m */; };
@@ -184,6 +185,8 @@
 		224FBC321407FE3700749E42 /* RecipeCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeCategoryViewController.h; sourceTree = "<group>"; };
 		224FBC331407FE3700749E42 /* RecipeCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeCategoryViewController.m; sourceTree = "<group>"; };
 		224FBC341407FE3700749E42 /* RecipeCategoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecipeCategoryViewController.xib; sourceTree = "<group>"; };
+		224FBC74140843AF00749E42 /* RecipeItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeItem.h; sourceTree = "<group>"; };
+		224FBC75140843AF00749E42 /* RecipeItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeItem.m; sourceTree = "<group>"; };
 		22804A821407544B0083CE40 /* TJMImageResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJMImageResource.h; sourceTree = "<group>"; };
 		22804A831407544B0083CE40 /* TJMImageResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TJMImageResource.m; sourceTree = "<group>"; };
 		22804A841407544B0083CE40 /* TJMImageResourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJMImageResourceManager.h; sourceTree = "<group>"; };
@@ -462,6 +465,8 @@
 				224FBC2C1407F9DB00749E42 /* RecipeCategoryItem.m */,
 				224FBC2E1407FCF400749E42 /* RecipeCategoryList.h */,
 				224FBC2F1407FCF400749E42 /* RecipeCategoryList.m */,
+				224FBC74140843AF00749E42 /* RecipeItem.h */,
+				224FBC75140843AF00749E42 /* RecipeItem.m */,
 			);
 			name = recipes;
 			sourceTree = "<group>";
@@ -856,6 +861,7 @@
 				224FBC2D1407F9DB00749E42 /* RecipeCategoryItem.m in Sources */,
 				224FBC301407FCF400749E42 /* RecipeCategoryList.m in Sources */,
 				224FBC351407FE3700749E42 /* RecipeCategoryViewController.m in Sources */,
+				224FBC76140843B000749E42 /* RecipeItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
