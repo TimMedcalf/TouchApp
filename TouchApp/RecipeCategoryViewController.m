@@ -11,7 +11,6 @@
 #import "RecipeCategoryItem.h"
 
 static NSInteger CellTitleTag = 50;
-static NSInteger CellSubTitleTag = 51;
 
 @interface RecipeCategoryViewController ()
 @property (nonatomic, retain) RecipeCategoryList *catList;
@@ -161,10 +160,7 @@ static NSInteger CellSubTitleTag = 51;
         //set the properties that change (i.e. the text)
         UILabel *titleLabel = [[UILabel alloc] init];
         titleLabel.tag = CellTitleTag;
-        UILabel *subtitleLabel = [[UILabel alloc] init];
-        subtitleLabel.tag = CellSubTitleTag;
-        UIImageView *disclosure = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"go"]];
-        //no need to tag the disclosure indicator cos we don't need to do anything with it once its added to the view
+        
         // Set the size, font, foreground color, background color
         titleLabel.textColor = [UIColor blackColor]; 
         titleLabel.textAlignment = UITextAlignmentLeft; 
@@ -172,41 +168,25 @@ static NSInteger CellSubTitleTag = 51;
         titleLabel.lineBreakMode = UILineBreakModeTailTruncation; 
         titleLabel.numberOfLines = 0; 
         
-        
-//        subtitleLabel.textColor = [UIColor grayColor]; 
-//        subtitleLabel.textAlignment = UITextAlignmentLeft; 
-//        subtitleLabel.contentMode = UIViewContentModeCenter; 
-//        subtitleLabel.lineBreakMode = UILineBreakModeTailTruncation; 
-//        subtitleLabel.numberOfLines = 0;
-        
-        
+        UIImageView *disclosure = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"go"]];
+        //no need to tag the disclosure indicator cos we don't need to do anything with it once its added to the view  
         
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
           //iPad
           titleLabel.frame = CGRectMake(50,29,535,30);
           titleLabel.font = [UIFont fontWithName:@"Helvetica" size:21]; 
-          
-//          subtitleLabel.frame = CGRectMake(50,45,535,22);
-//        subtitleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];           
-          
           disclosure.frame = CGRectMake(673, 19, 45, 45);
         }
         else {
           //iPhone
           titleLabel.frame = CGRectMake(17,22,247,15);
           titleLabel.font = [UIFont fontWithName:@"Helvetica" size:14]; 
-          
-//          subtitleLabel.frame = CGRectMake(17,31,247,15);
-//          subtitleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:10]; 
-          
           disclosure.frame = CGRectMake(273, 14, 30, 30);
         }
         //now they're all set up, add them to the cell's view and release them
         [cell addSubview:titleLabel];
-//        [cell addSubview:subtitleLabel];
         [cell addSubview:disclosure];
         [titleLabel release];
-//        [subtitleLabel release];
         [disclosure release];
       }
       // so, now to configure the cell...
