@@ -374,7 +374,7 @@
 		222951F113EC49F2001D174D /* controllers */ = {
 			isa = PBXGroup;
 			children = (
-				224FBC951409989800749E42 /* New Group */,
+				224FBC951409989800749E42 /* images */,
 				224FBC311407FDB100749E42 /* recipes */,
 				22CB4CBA13F12BA4008968D6 /* Radio */,
 				22CB4C4A13EFE847008968D6 /* Catalogue */,
@@ -527,14 +527,14 @@
 			name = images;
 			sourceTree = "<group>";
 		};
-		224FBC951409989800749E42 /* New Group */ = {
+		224FBC951409989800749E42 /* images */ = {
 			isa = PBXGroup;
 			children = (
 				224FBC901409987E00749E42 /* ImageGalleryViewController.h */,
 				224FBC911409987F00749E42 /* ImageGalleryViewController.m */,
 				224FBC921409988100749E42 /* ImageGalleryViewController.xib */,
 			);
-			name = "New Group";
+			name = images;
 			sourceTree = "<group>";
 		};
 		22804A8C140754600083CE40 /* ImageResource */ = {

@@ -31,7 +31,7 @@
                               @"72157627193886606", @"photoset_id",
                               @"url_l,url_z,url_m,url_t", @"extras",
                               @"dcb74491ec5cbe64deb98b18df1125a9", @"api_key",
-                              @"xml", @"format",
+                              @"rest", @"format",
                               //[NSString stringWithFormat:@"%lu", (unsigned long)page], @"page",
                               //appDelegate.numberOfThumbnails, @"per_page",
                               @"1", @"nojsoncallback",
