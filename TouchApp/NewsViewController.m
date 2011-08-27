@@ -60,7 +60,7 @@ static NSInteger CellSubTitleTag = 51;
   if ([self.newsList.items count] == 0)
   {
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    UIActivityIndicatorView *tmpSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    UIActivityIndicatorView *tmpSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     CGPoint midPoint = self.view.center;
     midPoint.y -= self.navigationController.navigationBar.frame.size.height /2;
     tmpSpinner.center = midPoint;
