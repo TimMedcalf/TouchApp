@@ -67,6 +67,25 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
   return self;
 }
 
+- (id)initWithoutLoading
+{
+  //NSLog(@"list alloc");
+  if ((self = [super init]))
+  {
+    self.lastRefresh = [NSDate distantPast];
+    self.items = [NSMutableArray array];
+  }
+  return self;
+}
+
+- (void)continueLoading
+{
+  self.feed = [self feedURL];
+  self.cacheFile = [[AppManager instance].cacheFolder stringByAppendingPathComponent:[[self cacheFilename] stringByAppendingPathExtension:@"plist"]];
+  [self loadItems];
+}
+
+
 /*
 - (id)initWithFeed:(NSString *)feed andFile:(NSString *)file;
 {

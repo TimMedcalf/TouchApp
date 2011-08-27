@@ -24,6 +24,10 @@
 @property (nonatomic, retain) NSString *xpathOverride;
 @property (nonatomic, assign) BOOL rawMode;
 
+//horrible hack to deal with the way we load touch recipe books...must be a better way of coping with this...
+- (id)initWithoutLoading;
+- (void)continueLoading;
+
 - (void)refreshFeedForced:(BOOL)forced;
 - (void)refreshFeed;
 - (void)cancelRefresh;
