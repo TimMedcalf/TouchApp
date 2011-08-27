@@ -21,6 +21,7 @@
   [super dealloc];
 }
 
+
 - (FeedItem *)initNewItemWithXMLDictionary:itemDict andBaseURL:baseURL
 {
   return [[RecipeItem alloc]initWithXMLDictionary:itemDict andBaseURL:baseURL];

@@ -8,8 +8,8 @@
 
 #import "RecipeItem.h"
 
-NSString *const Key_Recipe_Title = @"excerpt";
-NSString *const Key_Recipe_Excerpt = @"author";
+NSString *const Key_Recipe_Title = @"title";
+NSString *const Key_Recipe_Excerpt = @"excerpt";
 NSString *const Key_Recipe_Description = @"description";
 NSString *const Key_Recipe_PubDate = @"pubDate";
 

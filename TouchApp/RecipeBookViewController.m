@@ -1,34 +1,44 @@
 //
-//  RadioViewController.m
+//  NewsViewController.m
 //  TouchApp
 //
-//  Created by Tim Medcalf on 09/08/2011.
+//  Created by Tim Medcalf on 06/08/2011.
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
 
-#import "RecipeCategoryViewController.h"
 #import "RecipeBookViewController.h"
-#import "RecipeCategoryItem.h"
+#import "RecipeItem.h"
+#import "WebsiteViewController.h"
 
 static NSInteger CellTitleTag = 50;
 static NSInteger CellSubTitleTag = 51;
 
-@interface RecipeCategoryViewController ()
-@property (nonatomic, retain) RecipeCategoryList *catList;
+@interface RecipeBookViewController ()
+@property (nonatomic, retain) RecipeBookList *recipeList;
 @property (nonatomic, retain) UIActivityIndicatorView *spinner;
 @end
 
-@implementation RecipeCategoryViewController
+@implementation RecipeBookViewController
 
-@synthesize catList = _catList;
+@synthesize recipeList = _recipeList;
 @synthesize spinner = _spinner;
+@synthesize categoryName = _categoryName;
+
+- (id)initWithStyle:(UITableViewStyle)style
+{
+    self = [super initWithStyle:style];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
 
 - (void)didReceiveMemoryWarning
 {
-  // Releases the view if it doesn't have a superview.
-  [super didReceiveMemoryWarning];
-  
-  // Release any cached data, images, etc that aren't in use.
+    // Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+    
+    // Release any cached data, images, etc that aren't in use.
 }
 
 #pragma mark - View lifecycle
@@ -43,13 +53,15 @@ static NSInteger CellSubTitleTag = 51;
   self.navigationItem.backBarButtonItem = backButton;
   [backButton release];
   
-  RecipeCategoryList *tmpList = [[RecipeCategoryList alloc] init];
-  self.catList = tmpList;
-  self.catList.xpathOverride = @"//category";
+  RecipeBookList *tmpList = [[RecipeBookList alloc] initWithoutLoading];
+  self.recipeList = tmpList;
   [tmpList release];
-  self.catList.delegate = self;
+  self.recipeList.recipeCategory = self.categoryName;
+  [self.recipeList continueLoading];
+
+  self.recipeList.delegate = self;
   
-  if ([self.catList.items count] == 0)
+  if ([self.recipeList.items count] == 0)
   {
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     UIActivityIndicatorView *tmpSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -62,7 +74,7 @@ static NSInteger CellSubTitleTag = 51;
     [self.view addSubview:self.spinner];
     [tmpSpinner release];
   }
-  [self.catList refreshFeed];
+  [self.recipeList refreshFeed];
 }
 
 - (void)viewDidUnload
@@ -71,14 +83,14 @@ static NSInteger CellSubTitleTag = 51;
   // Release any retained subviews of the main view.
   // e.g. self.myOutlet = nil;
   // TJM: (and anything else you alloc in the viewDidLoad!)
-  [self.catList cancelRefresh];
-  [self setCatList:nil];
+  [self.recipeList cancelRefresh];
+  [self setRecipeList:nil];
   [self setSpinner:nil];
 }
 
 - (void)dealloc
 {
-  [_catList release];
+  [_recipeList release];
   [_spinner release];
   [super dealloc];
 }
@@ -86,33 +98,33 @@ static NSInteger CellSubTitleTag = 51;
 - (void)viewWillAppear:(BOOL)animated
 {
   [super viewWillAppear:animated];
-  
+
 	UINavigationBar *nb = self.navigationController.navigationBar;
-	nb.tintColor = [UIColor colorWithRed:32/255.0 green:70/255.0 blue:117/255.0 alpha:1];
+	nb.tintColor = [UIColor blackColor];  
   nb.layer.contents = (id)[UIImage imageNamed:@"recipes-nav"].CGImage;
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
   [super viewDidAppear:animated];
-  [self.catList refreshFeed];
+  [self.recipeList refreshFeed];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-  [self.catList cancelRefresh];
+  [self.recipeList cancelRefresh];
   [super viewWillDisappear:animated];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
-  [super viewDidDisappear:animated];
+    [super viewDidDisappear:animated];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-  // Return YES for supported orientations
-  return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    // Return YES for supported orientations
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 #pragma mark - Table view data source
@@ -126,7 +138,7 @@ static NSInteger CellSubTitleTag = 51;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
   // Return the number of rows in the section.
-  return (section == 0) ? 1 : [self.catList.items count];
+  return (section == 0) ? 1 : [self.recipeList.items count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -140,8 +152,8 @@ static NSInteger CellSubTitleTag = 51;
       CellIdentifier = @"RecipeHeader";
       cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
       if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+          cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+          cell.selectionStyle = UITableViewCellSelectionStyleNone;
       }
       // Configure the cell...
       cell.imageView.image = [UIImage imageNamed:@"harvest"];
@@ -150,7 +162,7 @@ static NSInteger CellSubTitleTag = 51;
     case 1:
     default:
     {
-      CellIdentifier = @"RecipeItem";
+      CellIdentifier = @"RecipeBookItem";
       cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
       if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
@@ -173,52 +185,51 @@ static NSInteger CellSubTitleTag = 51;
         titleLabel.numberOfLines = 0; 
         
         
-//        subtitleLabel.textColor = [UIColor grayColor]; 
-//        subtitleLabel.textAlignment = UITextAlignmentLeft; 
-//        subtitleLabel.contentMode = UIViewContentModeCenter; 
-//        subtitleLabel.lineBreakMode = UILineBreakModeTailTruncation; 
-//        subtitleLabel.numberOfLines = 0;
-        
+        subtitleLabel.textColor = [UIColor grayColor]; 
+        subtitleLabel.textAlignment = UITextAlignmentLeft; 
+        subtitleLabel.contentMode = UIViewContentModeCenter; 
+        subtitleLabel.lineBreakMode = UILineBreakModeTailTruncation; 
+        subtitleLabel.numberOfLines = 0;
         
         
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
           //iPad
-          titleLabel.frame = CGRectMake(50,29,535,30);
+          titleLabel.frame = CGRectMake(50,20,535,25);
           titleLabel.font = [UIFont fontWithName:@"Helvetica" size:21]; 
           
-//          subtitleLabel.frame = CGRectMake(50,45,535,22);
-//        subtitleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];           
+          subtitleLabel.frame = CGRectMake(50,45,535,22);
+          subtitleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];           
           
           disclosure.frame = CGRectMake(673, 19, 45, 45);
         }
         else {
           //iPhone
-          titleLabel.frame = CGRectMake(17,22,247,15);
+          titleLabel.frame = CGRectMake(17,16,247,15);
           titleLabel.font = [UIFont fontWithName:@"Helvetica" size:14]; 
           
-//          subtitleLabel.frame = CGRectMake(17,31,247,15);
-//          subtitleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:10]; 
-          
+          subtitleLabel.frame = CGRectMake(17,31,247,15);
+          subtitleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:10]; 
+
           disclosure.frame = CGRectMake(273, 14, 30, 30);
         }
         //now they're all set up, add them to the cell's view and release them
         [cell addSubview:titleLabel];
-//        [cell addSubview:subtitleLabel];
+        [cell addSubview:subtitleLabel];
         [cell addSubview:disclosure];
         [titleLabel release];
-//        [subtitleLabel release];
+        [subtitleLabel release];
         [disclosure release];
       }
       // so, now to configure the cell...
       // first grab hold of the cell elements we need
-      RecipeCategoryItem *currentItem = [self.catList.items objectAtIndex:indexPath.row];
+      RecipeItem *currentItem = [self.recipeList.items objectAtIndex:indexPath.row];
       
       UILabel *titleLabel = (UILabel *)[cell viewWithTag:CellTitleTag];
-      //UILabel *subtitleLabel = (UILabel *)[cell viewWithTag:CellSubTitleTag];
+      UILabel *subtitleLabel = (UILabel *)[cell viewWithTag:CellSubTitleTag];
       
       //got them...now set the text we want...
       titleLabel.text = currentItem.recipeTitle;
-      //subtitleLabel.text = currentItem.title;
+      subtitleLabel.text = currentItem.recipeExcerpt;//[NSDateFormatter localizedStringFromDate:currentItem.pubDate dateStyle:NSDateFormatterMediumStyle timeStyle:kCFDateFormatterShortStyle];
     }
   }
   cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -243,6 +254,44 @@ static NSInteger CellSubTitleTag = 51;
   }  
 }
 
+/*
+// Override to support conditional editing of the table view.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Return NO if you do not want the specified item to be editable.
+    return YES;
+}
+*/
+
+/*
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Delete the row from the data source
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }   
+    else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    }   
+}
+*/
+
+/*
+// Override to support rearranging the table view.
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+{
+}
+*/
+
+/*
+// Override to support conditional rearranging of the table view.
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Return NO if you do not want the item to be re-orderable.
+    return YES;
+}
+*/
 
 #pragma mark - Table view delegate
 
@@ -252,10 +301,10 @@ static NSInteger CellSubTitleTag = 51;
   //return immediately if user selected header image
   if (indexPath.section == 0) return;
   
-  RecipeCategoryItem *currentItem = [self.catList.items objectAtIndex:indexPath.row];
-  
-  RecipeBookViewController *controller = [[RecipeBookViewController alloc] initWithNibName:@"RecipeBookViewController" bundle:nil];
-  controller.categoryName = currentItem.recipeTitle;
+  RecipeItem *curItem = [self.recipeList.items objectAtIndex:indexPath.row];
+  WebsiteViewController *controller = [[WebsiteViewController alloc] initWithNibName:@"WebsiteViewController" bundle:nil];
+  controller.HTMLString = curItem.htmlForWebView;
+  controller.dontHideNavigationBar = YES;
   [self.navigationController pushViewController:controller animated:YES];
   [controller release];
 }
