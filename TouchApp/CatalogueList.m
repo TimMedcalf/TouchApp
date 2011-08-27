@@ -32,4 +32,9 @@
   return @"touchCatalogue";
 }
 
+- (NSInteger)refreshTimerCount
+{
+  return 3600;
+}
+
 @end

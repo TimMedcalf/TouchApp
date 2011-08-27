@@ -38,7 +38,7 @@
 
 - (NSInteger)refreshTimerCount
 {
-  return 1;
+  return 3600;
 }
 
 @end
