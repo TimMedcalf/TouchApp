@@ -277,9 +277,6 @@ static NSInteger CellSubTitleTag = 51;
   [self.tableView reloadData];
 }
 
-- (void)updateImage:(NSInteger)index
-{
-}
 
 - (void)updateFailed
 {

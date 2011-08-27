@@ -317,10 +317,6 @@ static NSInteger CellSubTitleTag = 51;
   [self.tableView reloadData];
 }
 
-- (void)updateImage:(NSInteger)index
-{
-}
-
 - (void)updateFailed
 {
   if ((self.spinner) && ([self.spinner isAnimating]))
