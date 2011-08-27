@@ -70,6 +70,12 @@
 		224FBC7C1408C47200749E42 /* RecipeCategories.plist in Resources */ = {isa = PBXBuildFile; fileRef = 224FBC7B1408C47200749E42 /* RecipeCategories.plist */; };
 		224FBC80140980B000749E42 /* RecipeBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC7E140980AF00749E42 /* RecipeBookViewController.m */; };
 		224FBC81140980B000749E42 /* RecipeBookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 224FBC7F140980AF00749E42 /* RecipeBookViewController.xib */; };
+		224FBC851409947B00749E42 /* ImageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC841409947B00749E42 /* ImageItem.m */; };
+		224FBC881409957900749E42 /* ImageList.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC871409957900749E42 /* ImageList.m */; };
+		224FBC8E1409977B00749E42 /* GTMNSString+URLArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC8B1409977B00749E42 /* GTMNSString+URLArguments.m */; };
+		224FBC8F1409977B00749E42 /* GTMNSDictionary+URLArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC8D1409977B00749E42 /* GTMNSDictionary+URLArguments.m */; };
+		224FBC931409988200749E42 /* ImageGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC911409987F00749E42 /* ImageGalleryViewController.m */; };
+		224FBC941409988200749E42 /* ImageGalleryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 224FBC921409988100749E42 /* ImageGalleryViewController.xib */; };
 		22804A881407544B0083CE40 /* TJMImageResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 22804A831407544B0083CE40 /* TJMImageResource.m */; };
 		22804A891407544B0083CE40 /* TJMImageResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22804A851407544B0083CE40 /* TJMImageResourceManager.m */; };
 		22804A8A1407544B0083CE40 /* TJMImageResourceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22804A871407544B0083CE40 /* TJMImageResourceView.m */; };
@@ -197,6 +203,18 @@
 		224FBC7D140980AF00749E42 /* RecipeBookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeBookViewController.h; sourceTree = "<group>"; };
 		224FBC7E140980AF00749E42 /* RecipeBookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeBookViewController.m; sourceTree = "<group>"; };
 		224FBC7F140980AF00749E42 /* RecipeBookViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecipeBookViewController.xib; sourceTree = "<group>"; };
+		224FBC831409947B00749E42 /* ImageItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageItem.h; sourceTree = "<group>"; };
+		224FBC841409947B00749E42 /* ImageItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageItem.m; sourceTree = "<group>"; };
+		224FBC861409957900749E42 /* ImageList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageList.h; sourceTree = "<group>"; };
+		224FBC871409957900749E42 /* ImageList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageList.m; sourceTree = "<group>"; };
+		224FBC891409977B00749E42 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
+		224FBC8A1409977B00749E42 /* GTMNSString+URLArguments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+URLArguments.h"; sourceTree = "<group>"; };
+		224FBC8B1409977B00749E42 /* GTMNSString+URLArguments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+URLArguments.m"; sourceTree = "<group>"; };
+		224FBC8C1409977B00749E42 /* GTMNSDictionary+URLArguments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSDictionary+URLArguments.h"; sourceTree = "<group>"; };
+		224FBC8D1409977B00749E42 /* GTMNSDictionary+URLArguments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSDictionary+URLArguments.m"; sourceTree = "<group>"; };
+		224FBC901409987E00749E42 /* ImageGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageGalleryViewController.h; sourceTree = "<group>"; };
+		224FBC911409987F00749E42 /* ImageGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageGalleryViewController.m; sourceTree = "<group>"; };
+		224FBC921409988100749E42 /* ImageGalleryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageGalleryViewController.xib; sourceTree = "<group>"; };
 		22804A821407544B0083CE40 /* TJMImageResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJMImageResource.h; sourceTree = "<group>"; };
 		22804A831407544B0083CE40 /* TJMImageResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TJMImageResource.m; sourceTree = "<group>"; };
 		22804A841407544B0083CE40 /* TJMImageResourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJMImageResourceManager.h; sourceTree = "<group>"; };
@@ -356,6 +374,9 @@
 		222951F113EC49F2001D174D /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				224FBC901409987E00749E42 /* ImageGalleryViewController.h */,
+				224FBC911409987F00749E42 /* ImageGalleryViewController.m */,
+				224FBC921409988100749E42 /* ImageGalleryViewController.xib */,
 				224FBC311407FDB100749E42 /* recipes */,
 				22CB4CBA13F12BA4008968D6 /* Radio */,
 				22CB4C4A13EFE847008968D6 /* Catalogue */,
@@ -497,6 +518,17 @@
 			name = recipes;
 			sourceTree = "<group>";
 		};
+		224FBC821409945200749E42 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				224FBC831409947B00749E42 /* ImageItem.h */,
+				224FBC841409947B00749E42 /* ImageItem.m */,
+				224FBC861409957900749E42 /* ImageList.h */,
+				224FBC871409957900749E42 /* ImageList.m */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
 		22804A8C140754600083CE40 /* ImageResource */ = {
 			isa = PBXGroup;
 			children = (
@@ -587,6 +619,7 @@
 		22CB4BFD13EE4876008968D6 /* feeds */ = {
 			isa = PBXGroup;
 			children = (
+				224FBC821409945200749E42 /* images */,
 				224FBC2A1407F9AE00749E42 /* recipes */,
 				22CB4C6F13F09637008968D6 /* radio */,
 				22CB4C3213EFC98B008968D6 /* catalog */,
@@ -599,6 +632,11 @@
 		22CB4C0813EE4A30008968D6 /* categories */ = {
 			isa = PBXGroup;
 			children = (
+				224FBC891409977B00749E42 /* GTMDefines.h */,
+				224FBC8A1409977B00749E42 /* GTMNSString+URLArguments.h */,
+				224FBC8B1409977B00749E42 /* GTMNSString+URLArguments.m */,
+				224FBC8C1409977B00749E42 /* GTMNSDictionary+URLArguments.h */,
+				224FBC8D1409977B00749E42 /* GTMNSDictionary+URLArguments.m */,
 				22CB4C0C13EE4A57008968D6 /* TJM_UIImage.h */,
 				22CB4C0D13EE4A57008968D6 /* TJM_UIImage.m */,
 				22CB4C0913EE4A41008968D6 /* UIApplication+TJMNetworkActivity.h */,
@@ -830,6 +868,7 @@
 				224FBC361407FE3700749E42 /* RecipeCategoryViewController.xib in Resources */,
 				224FBC7C1408C47200749E42 /* RecipeCategories.plist in Resources */,
 				224FBC81140980B000749E42 /* RecipeBookViewController.xib in Resources */,
+				224FBC941409988200749E42 /* ImageGalleryViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -882,6 +921,11 @@
 				224FBC76140843B000749E42 /* RecipeItem.m in Sources */,
 				224FBC7A1408C25600749E42 /* RecipeBookList.m in Sources */,
 				224FBC80140980B000749E42 /* RecipeBookViewController.m in Sources */,
+				224FBC851409947B00749E42 /* ImageItem.m in Sources */,
+				224FBC881409957900749E42 /* ImageList.m in Sources */,
+				224FBC8E1409977B00749E42 /* GTMNSString+URLArguments.m in Sources */,
+				224FBC8F1409977B00749E42 /* GTMNSDictionary+URLArguments.m in Sources */,
+				224FBC931409988200749E42 /* ImageGalleryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
