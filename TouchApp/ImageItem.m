@@ -14,57 +14,66 @@ NSString *const Key_Thumbnail_Saved = @"thumbnail";
 
 @implementation ImageItem
 
-@synthesize thumbnailPath = _thumbnailPath;
-@synthesize imagePath = _imagePath;
+@synthesize thumbnailURL = _thumbnailURL;
+@synthesize imageURL = _imageURL;
 
 - (void)dealloc
 {
-  [_thumbnailPath release];
-  [_imagePath release];
+  [_thumbnailURL release];
+  [_imageURL release];
   [super dealloc];
 }
 
 #pragma mark overrides from FeedItem
 - (void)procesSavedDictionary:(NSDictionary *)dict
 {
-  self.imagePath = [dict objectForKey:Key_Image_Saved];
-  self.thumbnailPath = [dict objectForKey:Key_Thumbnail_Saved];
+  if ([dict objectForKey:Key_Image_Saved])
+  {
+    NSURL *tmpURL = [[NSURL alloc] initWithString:[dict objectForKey:Key_Image_Saved]];
+    self.imageURL = tmpURL;
+    [tmpURL release];
+  }
+  if ([dict objectForKey:Key_Thumbnail_Saved])
+  {
+    NSURL *tmpURL = [[NSURL alloc] initWithString:[dict objectForKey:Key_Thumbnail_Saved]];
+    self.thumbnailURL = tmpURL;
+    [tmpURL release];
+  }
 }
 
 
 - (void)processRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL
 { 
-  self.thumbnailPath = [[element attributeForName:@"url_t"] stringValue];
+  //first do the thumbnail path
+  NSString *tmpPath = [[element attributeForName:@"url_t"] stringValue];
+  NSURL *tmpURL;
+  if (tmpPath)
+  {
+    tmpURL = [[NSURL alloc] initWithString:tmpPath];
+    self.thumbnailURL = tmpURL;
+    [tmpURL release];
+  }
+  //now the main image path
   if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
   {
-    self.imagePath = [[element attributeForName:@"url_l"] stringValue];
+    tmpPath = [[element attributeForName:@"url_l"] stringValue];
   }
   else
   {
-    self.imagePath = [[element attributeForName:@"url_z"] stringValue];
+    tmpPath = [[element attributeForName:@"url_z"] stringValue];
   }
-  
-  //NSLog(@" Image Dict = %@",dict);
-//  self.title = [dict objectForKey:Key_Radio_Title];
-//  self.titleLabel = [dict objectForKey:Key_Radio_TitleLabel];
-//  self.author = [dict objectForKey:Key_Radio_Author];
-//  self.summary = [dict objectForKey:Key_Radio_Summary];
-//  self.subtitle = [dict objectForKey:Key_Radio_SubTitle];
-//  NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
-//  [inputFormatter setLocale:[[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"] autorelease]];
-//  [inputFormatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss z"];
-//  NSString *dateStr = [dict objectForKey:Key_Radio_PubDate];
-//  self.pubDate = [inputFormatter dateFromString:dateStr];
-//  [inputFormatter release];
-//  self.link = [dict objectForKey:Key_Radio_Link];
-//  self.episode_duration = [dict objectForKey:Key_Radio_Duration];
-//  //NSLog(@"%@ - %@ - %@", self.catalogueNumber, self.artist, self.title);
+  if (tmpPath)
+  {
+    tmpURL = [[NSURL alloc] initWithString:tmpPath];
+    self.imageURL = tmpURL;
+    [tmpURL release];
+  }
 }
 
 - (void)populateDictionary:(NSMutableDictionary *)dict
 {
-  if (self.imagePath) [dict setObject:self.imagePath forKey:Key_Image_Saved];
-  if (self.thumbnailPath) [dict setObject:self.thumbnailPath forKey:Key_Thumbnail_Saved];
+  if (self.imageURL) [dict setObject:[self.imageURL absoluteString] forKey:Key_Image_Saved];
+  if (self.thumbnailURL) [dict setObject:[self.thumbnailURL absoluteString] forKey:Key_Thumbnail_Saved];
 }
 
 - (NSComparisonResult)compare:(ImageItem *)item

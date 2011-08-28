@@ -8,6 +8,9 @@
 
 #import "ImageGalleryViewController.h"
 #import "ImageItem.h"
+#import "TJMImageResource.h"
+#import "TJMImageResourceManager.h"
+#import "TJMImageResourceView.h"
 //#import "WebsiteViewController.h"
 
 static NSInteger CellTitleTag = 50;
@@ -194,6 +197,9 @@ static NSInteger CellSubTitleTag = 51;
   // first grab hold of the cell elements we need
   ImageItem *currentItem = [self.imageList.items objectAtIndex:indexPath.row];
   
+  TJMImageResourceView *tmpView = [[TJMImageResourceView alloc] initWithFrame:CGRectMake(0,0,50,50) andURL:currentItem.thumbnailURL];
+  [cell addSubview:tmpView];
+  [tmpView release];
   //UILabel *titleLabel = (UILabel *)[cell viewWithTag:CellTitleTag];
   //UILabel *subtitleLabel = (UILabel *)[cell viewWithTag:CellSubTitleTag];
   
@@ -206,20 +212,10 @@ static NSInteger CellSubTitleTag = 51;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  if ((indexPath.section == 0) && (indexPath.row == 0))
-  {
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-      return 307 + 1;
-    else
-      return 128 + 1;
-  }
+  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    return 87;
   else
-  {
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-      return 87;
-    else
-      return 58;
-  }  
+    return 58;
 }
 
 /*

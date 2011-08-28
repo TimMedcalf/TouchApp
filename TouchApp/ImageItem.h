@@ -10,7 +10,7 @@
 
 @interface ImageItem : FeedItem
 
-@property (nonatomic, retain) NSString *thumbnailPath;
-@property (nonatomic, retain) NSString *imagePath;
+@property (nonatomic, retain) NSURL *thumbnailURL;
+@property (nonatomic, retain) NSURL *imageURL;
 
 @end

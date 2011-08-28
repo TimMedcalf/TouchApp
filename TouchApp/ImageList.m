@@ -50,5 +50,12 @@
   return @"touchImageGallery";
 }
 
+- (NSInteger)refreshTimerCount
+{
+  //number of seconds to wait before news refreshes - override for different time
+  //return 43200; //twelve hours
+  return 10800;
+}
+
 
 @end
