@@ -31,8 +31,20 @@ NSString *const Key_Thumbnail_Saved = @"thumbnail";
   self.thumbnailPath = [dict objectForKey:Key_Thumbnail_Saved];
 }
 
-- (void)processXMLDictionary:(NSDictionary *)dict andBaseURL:(NSURL *)baseURL
+
+- (void)processRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL
 { 
+  self.thumbnailPath = [[element attributeForName:@"url_t"] stringValue];
+  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+  {
+    self.imagePath = [[element attributeForName:@"url_l"] stringValue];
+  }
+  else
+  {
+    self.imagePath = [[element attributeForName:@"url_z"] stringValue];
+  }
+  
+  //NSLog(@" Image Dict = %@",dict);
 //  self.title = [dict objectForKey:Key_Radio_Title];
 //  self.titleLabel = [dict objectForKey:Key_Radio_TitleLabel];
 //  self.author = [dict objectForKey:Key_Radio_Author];

@@ -306,8 +306,8 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 
 - (void)parseResultWithData:(NSData *)xmlData
 {
-  NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
-  NSLog(@"%@",[NSString stringWithUTF8String:[xmlData bytes]]);
+  //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
+  //NSLog(@"%@",[NSString stringWithUTF8String:[xmlData bytes]]);
   
   // Create a new rssParser object based on the TouchXML "CXMLDocument" class, this is the
   // object that actually grabs and processes the RSS data

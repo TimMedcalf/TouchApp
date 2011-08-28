@@ -14,9 +14,9 @@
 @implementation ImageList
 
 //overrides
-- (FeedItem *)initNewItemWithXMLDictionary:itemDict andBaseURL:baseURL
+- (FeedItem *)initNewItemWithRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL; 
 {
-  return [[ImageItem alloc]initWithXMLDictionary:itemDict andBaseURL:baseURL];
+  return [[ImageItem alloc]initWithRawXMLElement:element andBaseURL:baseURL];  
 }
 
 - (FeedItem *)initNewItemWithDictionary:dictionary
