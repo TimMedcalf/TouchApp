@@ -13,18 +13,28 @@
 #import "TJMImageResourceView.h"
 //#import "WebsiteViewController.h"
 
-static NSInteger CellTitleTag = 50;
-static NSInteger CellSubTitleTag = 51;
+static NSInteger CellImageTag = 51;
+
+static NSInteger iPhoneThumbnailWidth = 80;
+static NSInteger iPadThumbnailWidth = 96;
+
+static NSInteger iPhoneThumbnailRowCount = 4;
+static NSInteger iPadThumbnailRowCount = 8;
+
 
 @interface ImageGalleryViewController ()
 @property (nonatomic, retain) ImageList *imageList;
 @property (nonatomic, retain) UIActivityIndicatorView *spinner;
+@property (nonatomic, assign) NSInteger thumbnailWidth;
+@property (nonatomic, assign) NSInteger thumbnailRowCount;
 @end
 
 @implementation ImageGalleryViewController
 
 @synthesize imageList = _imageList;
 @synthesize spinner = _spinner;
+@synthesize thumbnailWidth = _thumbnailWidth;
+@synthesize thumbnailRowCount = _thumbnailRowCount;
 
 - (void)didReceiveMemoryWarning
 {
@@ -39,6 +49,18 @@ static NSInteger CellSubTitleTag = 51;
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  
+  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+  {
+    self.thumbnailWidth = iPadThumbnailWidth;
+    self.thumbnailRowCount = iPadThumbnailRowCount;
+  }
+  else
+  {
+    self.thumbnailWidth = iPhoneThumbnailWidth;
+    self.thumbnailRowCount = iPhoneThumbnailRowCount;
+  }
+    
   
   self.navigationItem.title= @"";
   
@@ -130,7 +152,12 @@ static NSInteger CellSubTitleTag = 51;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
   // Return the number of rows in the section.
-  return [self.imageList.items count];
+  div_t res = div([self.imageList.items count], self.thumbnailRowCount);
+  if (res.rem > 0)
+  {
+    NSLog(@"Rows = %i", res.quot+1);
+  }
+  return (res.rem > 0) ? res.quot+1 : res.quot;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -140,66 +167,33 @@ static NSInteger CellSubTitleTag = 51;
   if (cell == nil) {
     cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     
-    //we can't se the frame of the default labels and disclosure indicator
-    //so lets ignore them and just add some of our own to the view.
-    //if we tag them we can retrieve them later in the method so that we can
-    //set the properties that change (i.e. the text)
-    UILabel *titleLabel = [[UILabel alloc] init];
-    titleLabel.tag = CellTitleTag;
-    UILabel *subtitleLabel = [[UILabel alloc] init];
-    subtitleLabel.tag = CellSubTitleTag;
-    UIImageView *disclosure = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"go"]];
-    //no need to tag the disclosure indicator cos we don't need to do anything with it once its added to the view
-    // Set the size, font, foreground color, background color
-    titleLabel.textColor = [UIColor blackColor]; 
-    titleLabel.textAlignment = UITextAlignmentLeft; 
-    titleLabel.contentMode = UIViewContentModeCenter; 
-    titleLabel.lineBreakMode = UILineBreakModeTailTruncation; 
-    titleLabel.numberOfLines = 0; 
-    
-    
-    subtitleLabel.textColor = [UIColor grayColor]; 
-    subtitleLabel.textAlignment = UITextAlignmentLeft; 
-    subtitleLabel.contentMode = UIViewContentModeCenter; 
-    subtitleLabel.lineBreakMode = UILineBreakModeTailTruncation; 
-    subtitleLabel.numberOfLines = 0;
-    
-    
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-      //iPad
-      titleLabel.frame = CGRectMake(50,20,535,25);
-      titleLabel.font = [UIFont fontWithName:@"Helvetica" size:21]; 
-      
-      subtitleLabel.frame = CGRectMake(50,45,535,22);
-      subtitleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];           
-      
-      disclosure.frame = CGRectMake(673, 19, 45, 45);
-    }
-    else {
-      //iPhone
-      titleLabel.frame = CGRectMake(17,16,247,15);
-      titleLabel.font = [UIFont fontWithName:@"Helvetica" size:14]; 
-      
-      subtitleLabel.frame = CGRectMake(17,31,247,15);
-      subtitleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:10]; 
-
-      disclosure.frame = CGRectMake(273, 14, 30, 30);
-    }
-    //now they're all set up, add them to the cell's view and release them
-    [cell addSubview:titleLabel];
-    [cell addSubview:subtitleLabel];
-    [cell addSubview:disclosure];
-    [titleLabel release];
-    [subtitleLabel release];
-    [disclosure release];
+    TJMImageResourceView *tmpRes;
+    int offset = 0;
+    for (int i = 0; i < self.thumbnailRowCount; i++)
+    {
+      tmpRes = [[TJMImageResourceView alloc]initWithFrame:CGRectMake(offset,0,self.thumbnailWidth,self.thumbnailWidth)];
+      tmpRes.tag = CellImageTag + i;
+      [cell addSubview:tmpRes];
+      [tmpRes release];
+      tmpRes = nil;
+      offset += self.thumbnailWidth;
+    }    
   }
   // so, now to configure the cell...
   // first grab hold of the cell elements we need
-  ImageItem *currentItem = [self.imageList.items objectAtIndex:indexPath.row];
   
-  TJMImageResourceView *tmpView = [[TJMImageResourceView alloc] initWithFrame:CGRectMake(0,0,50,50) andURL:currentItem.thumbnailURL];
-  [cell addSubview:tmpView];
-  [tmpView release];
+  for (int i = 0; i < self.thumbnailRowCount; i++)
+  {
+    if (((indexPath.row * 4) + i) < [self.imageList.items count])
+    {
+      ImageItem *currentItem = [self.imageList.items objectAtIndex:((indexPath.row * 4) + i)];
+      //assign the image
+      TJMImageResourceView *res = (TJMImageResourceView *)[cell viewWithTag:(CellImageTag + i)];
+      [res setURL:currentItem.thumbnailURL];
+    }
+  }
+
+  
   //UILabel *titleLabel = (UILabel *)[cell viewWithTag:CellTitleTag];
   //UILabel *subtitleLabel = (UILabel *)[cell viewWithTag:CellSubTitleTag];
   
@@ -213,9 +207,9 @@ static NSInteger CellSubTitleTag = 51;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
   if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-    return 87;
+    return 96;
   else
-    return 58;
+    return 80;
 }
 
 /*
