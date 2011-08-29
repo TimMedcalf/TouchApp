@@ -78,7 +78,6 @@ NSString *const Key_Thumbnail_Saved = @"thumbnail";
 
 - (NSComparisonResult)compare:(ImageItem *)item
 {
-  //compare in reverse so that we get the newest at the top.
   return NSOrderedSame;
 }
 

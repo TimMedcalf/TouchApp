@@ -91,11 +91,13 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
       [tmpURL release];
     }
     self.lastModified = [dict objectForKey:Key_TJMImageResource_lastModified];
+    //NSLog(@"LM! = %@",self.lastModified);
     self.etag = [dict objectForKey:Key_TJMImageResource_etag];
+    //NSLog(@"Etag! = %@",self.etag);
     self.localFileName = [dict objectForKey:Key_TJMImageResource_localFileName];
     self.localFileExtension = [dict objectForKey:Key_TJMImageResource_localFileExtension];
     self.lastChecked = [dict objectForKey:Key_TJMImageResource_lastChecked];
-    self.lastAccessed = [dict objectForKey:Key_TJMImageResource_lastChecked];
+    self.lastAccessed = [dict objectForKey:Key_TJMImageResource_lastAccessed];
     if (!self.lastAccessed) self.lastAccessed = [NSDate distantPast];
     self.thumbnailPath = [dict objectForKey:Key_TJMImageResource_thumbnailPath];
   }

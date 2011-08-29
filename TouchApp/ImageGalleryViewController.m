@@ -153,10 +153,6 @@ static NSInteger iPadThumbnailRowCount = 8;
 {
   // Return the number of rows in the section.
   div_t res = div([self.imageList.items count], self.thumbnailRowCount);
-  if (res.rem > 0)
-  {
-    NSLog(@"Rows = %i", res.quot+1);
-  }
   return (res.rem > 0) ? res.quot+1 : res.quot;
 }
 
@@ -190,6 +186,11 @@ static NSInteger iPadThumbnailRowCount = 8;
       //assign the image
       TJMImageResourceView *res = (TJMImageResourceView *)[cell viewWithTag:(CellImageTag + i)];
       [res setURL:currentItem.thumbnailURL];
+    }
+    else
+    {
+      TJMImageResourceView *res = (TJMImageResourceView *)[cell viewWithTag:(CellImageTag + i)];
+      [res setURL:nil];
     }
   }
 

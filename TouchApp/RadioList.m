@@ -32,10 +32,10 @@
   return @"touchRadio";
 }
 
-- (NSInteger)refreshTimerCount
-{
-  return 3600;
-}
+//- (NSInteger)refreshTimerCount
+//{
+//  return 3600;
+//}
 
 
 @end

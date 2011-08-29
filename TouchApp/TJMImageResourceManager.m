@@ -79,7 +79,7 @@ SINGLETON_IMPLEMENTATION_FOR(TJMImageResourceManager)
     //NSLog(@"Save %@",imageKey);
     TJMImageResource *tmpRes = [self.imageResourceDict objectForKey:imageKey];
     if ([tmpRes.lastAccessed timeIntervalSinceNow] > TwoMonths)
-      //if the interval is greater than negative 2 months then they've used it in the last threee months - add it to the save list
+      //if the interval is greater than negative 2 months then they've used it in the last two months - add it to the save list
       [saveArray addObject:[tmpRes dictionaryRepresentation]];
     else
       [tmpRes clearCachedFiles];
@@ -118,13 +118,17 @@ SINGLETON_IMPLEMENTATION_FOR(TJMImageResourceManager)
 {
   //find the resource from the URL
   //NSLog(@"Number of image resources %i", [self.imageResourceDict count]);
-  TJMImageResource *resource = [self.imageResourceDict objectForKey:[imageURL absoluteString]];
-  //did we get one?
-  if (!resource)
+  TJMImageResource *resource = nil;
+  if (imageURL)
   {
-    resource = [[[TJMImageResource alloc] initWithURL:imageURL] autorelease];
-    [self.imageResourceDict setObject:resource forKey:[resource.imageURL absoluteString]];
-    //[self saveToFile];
+    resource = [self.imageResourceDict objectForKey:[imageURL absoluteString]];
+    //did we get one?
+    if (!resource)
+    {
+      resource = [[[TJMImageResource alloc] initWithURL:imageURL] autorelease];
+      [self.imageResourceDict setObject:resource forKey:[resource.imageURL absoluteString]];
+      //[self saveToFile];
+    }
   }
 
   return resource;

@@ -51,10 +51,10 @@
   return [NSString stringWithFormat:@"touchRecipeBook%@",self.recipeCategory];;
 }
 
-- (NSInteger)refreshTimerCount
-{
-  return 3600;
-}
+//- (NSInteger)refreshTimerCount
+//{
+//  return 3600;
+//}
 
 
 @end
