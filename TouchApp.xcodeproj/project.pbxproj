@@ -76,6 +76,10 @@
 		224FBC8F1409977B00749E42 /* GTMNSDictionary+URLArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC8D1409977B00749E42 /* GTMNSDictionary+URLArguments.m */; };
 		224FBC931409988200749E42 /* ImageGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC911409987F00749E42 /* ImageGalleryViewController.m */; };
 		224FBC941409988200749E42 /* ImageGalleryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 224FBC921409988100749E42 /* ImageGalleryViewController.xib */; };
+		22675204140B4AFB00726FAE /* ImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 226751FF140B4AFB00726FAE /* ImageScrollView.m */; };
+		22675205140B4AFB00726FAE /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22675201140B4AFB00726FAE /* PhotoViewController.m */; };
+		22675206140B4AFB00726FAE /* TilingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22675203140B4AFB00726FAE /* TilingView.m */; };
+		22675208140B4DDE00726FAE /* PhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22675207140B4DDE00726FAE /* PhotoViewController.xib */; };
 		22804A881407544B0083CE40 /* TJMImageResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 22804A831407544B0083CE40 /* TJMImageResource.m */; };
 		22804A891407544B0083CE40 /* TJMImageResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22804A851407544B0083CE40 /* TJMImageResourceManager.m */; };
 		22804A8A1407544B0083CE40 /* TJMImageResourceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22804A871407544B0083CE40 /* TJMImageResourceView.m */; };
@@ -215,6 +219,13 @@
 		224FBC901409987E00749E42 /* ImageGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageGalleryViewController.h; sourceTree = "<group>"; };
 		224FBC911409987F00749E42 /* ImageGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageGalleryViewController.m; sourceTree = "<group>"; };
 		224FBC921409988100749E42 /* ImageGalleryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageGalleryViewController.xib; sourceTree = "<group>"; };
+		226751FE140B4AFB00726FAE /* ImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageScrollView.h; sourceTree = "<group>"; };
+		226751FF140B4AFB00726FAE /* ImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageScrollView.m; sourceTree = "<group>"; };
+		22675200140B4AFB00726FAE /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
+		22675201140B4AFB00726FAE /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
+		22675202140B4AFB00726FAE /* TilingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TilingView.h; sourceTree = "<group>"; };
+		22675203140B4AFB00726FAE /* TilingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TilingView.m; sourceTree = "<group>"; };
+		22675207140B4DDE00726FAE /* PhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoViewController.xib; sourceTree = "<group>"; };
 		22804A821407544B0083CE40 /* TJMImageResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJMImageResource.h; sourceTree = "<group>"; };
 		22804A831407544B0083CE40 /* TJMImageResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TJMImageResource.m; sourceTree = "<group>"; };
 		22804A841407544B0083CE40 /* TJMImageResourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJMImageResourceManager.h; sourceTree = "<group>"; };
@@ -349,6 +360,7 @@
 		222951CC13EC496F001D174D /* TouchApp */ = {
 			isa = PBXGroup;
 			children = (
+				226751FD140B4AE400726FAE /* photoscroller */,
 				22CB4C0813EE4A30008968D6 /* categories */,
 				22CB4B8A13EDD678008968D6 /* globals */,
 				22CB4C1013EE4BC1008968D6 /* models */,
@@ -537,6 +549,20 @@
 			name = images;
 			sourceTree = "<group>";
 		};
+		226751FD140B4AE400726FAE /* photoscroller */ = {
+			isa = PBXGroup;
+			children = (
+				226751FE140B4AFB00726FAE /* ImageScrollView.h */,
+				226751FF140B4AFB00726FAE /* ImageScrollView.m */,
+				22675200140B4AFB00726FAE /* PhotoViewController.h */,
+				22675201140B4AFB00726FAE /* PhotoViewController.m */,
+				22675207140B4DDE00726FAE /* PhotoViewController.xib */,
+				22675202140B4AFB00726FAE /* TilingView.h */,
+				22675203140B4AFB00726FAE /* TilingView.m */,
+			);
+			name = photoscroller;
+			sourceTree = "<group>";
+		};
 		22804A8C140754600083CE40 /* ImageResource */ = {
 			isa = PBXGroup;
 			children = (
@@ -627,12 +653,12 @@
 		22CB4BFD13EE4876008968D6 /* feeds */ = {
 			isa = PBXGroup;
 			children = (
+				22CB4C0F13EE4BAC008968D6 /* base */,
 				224FBC821409945200749E42 /* images */,
 				224FBC2A1407F9AE00749E42 /* recipes */,
 				22CB4C6F13F09637008968D6 /* radio */,
 				22CB4C3213EFC98B008968D6 /* catalog */,
 				22CB4C1113EE4CEB008968D6 /* news */,
-				22CB4C0F13EE4BAC008968D6 /* base */,
 			);
 			name = feeds;
 			sourceTree = "<group>";
@@ -877,6 +903,7 @@
 				224FBC7C1408C47200749E42 /* RecipeCategories.plist in Resources */,
 				224FBC81140980B000749E42 /* RecipeBookViewController.xib in Resources */,
 				224FBC941409988200749E42 /* ImageGalleryViewController.xib in Resources */,
+				22675208140B4DDE00726FAE /* PhotoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -934,6 +961,9 @@
 				224FBC8E1409977B00749E42 /* GTMNSString+URLArguments.m in Sources */,
 				224FBC8F1409977B00749E42 /* GTMNSDictionary+URLArguments.m in Sources */,
 				224FBC931409988200749E42 /* ImageGalleryViewController.m in Sources */,
+				22675204140B4AFB00726FAE /* ImageScrollView.m in Sources */,
+				22675205140B4AFB00726FAE /* PhotoViewController.m in Sources */,
+				22675206140B4AFB00726FAE /* TilingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
