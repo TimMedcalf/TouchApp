@@ -288,7 +288,6 @@ static NSInteger iPadThumbnailRowCount = 8;
   {
     [self.spinner stopAnimating];
   }
-  self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
   [self.tableView reloadData];
 }
 
