@@ -114,7 +114,7 @@
 #pragma mark -
 #pragma mark Configure scrollView to display new image (tiled or not)
 
-- (void)displayImage:(UIImage *)image
+- (void)displayImage:(ImageItem *)image
 {
     // clear the previous imageView
     [imageView removeFromSuperview];
@@ -125,10 +125,10 @@
     self.zoomScale = 1.0;
     
     // make a new UIImageView for the new image
-    imageView = [[UIImageView alloc] initWithImage:image];
+    imageView = [[TJMImageResourceView alloc] initWithFrame:CGRectMake(0,0,320,480) andURL:image.imageURL];
     [self addSubview:imageView];
     
-    self.contentSize = [image size];
+    self.contentSize = imageView.frame.size;
     [self setMaxMinZoomScalesForCurrentBounds];
     self.zoomScale = self.minimumZoomScale;
 }

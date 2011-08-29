@@ -130,7 +130,7 @@
             [pagingScrollView addSubview:page];
             [visiblePages addObject:page];
         }
-    }    
+    }  
 }
 
 - (ImageScrollView *)dequeueRecycledPage
@@ -276,14 +276,12 @@
 //    return __imageData;
 //}
 
-- (UIImage *)imageAtIndex:(NSUInteger)index {
+- (ImageItem *)imageAtIndex:(NSUInteger)index {
     // use "imageWithContentsOfFile:" instead of "imageNamed:" here to avoid caching our images
     //NSString *imageName = [self imageNameAtIndex:index];
     //NSString *path = [[NSBundle mainBundle] pathForResource:imageName ofType:@"jpg"];
-    //return [UIImage imageWithContentsOfFile:path];
-  ImageItem *tmpImage = [self.imageList.items objectAtIndex:index];
-  TJMImageResource *tmpRes = [[TJMImageResourceManager instance] resourceForURL:tmpImage.imageURL];
-  return [tmpRes getImage];
+    //return [UIImage imageWithContentsOfFile:path];  
+  return [self.imageList.items objectAtIndex:index];
 }
 
 //- (NSString *)imageNameAtIndex:(NSUInteger)index {

@@ -46,14 +46,16 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "ImageItem.h"
+#import "TJMImageResourceView.h"
 
 @interface ImageScrollView : UIScrollView <UIScrollViewDelegate> {
-    UIView        *imageView;
-    NSUInteger     index;
+    TJMImageResourceView *imageView;
+    NSUInteger            index;
 }
 @property (assign) NSUInteger index;
 
-- (void)displayImage:(UIImage *)image;
+- (void)displayImage:(ImageItem *)image;
 - (void)displayTiledImageNamed:(NSString *)imageName size:(CGSize)imageSize;
 - (void)setMaxMinZoomScalesForCurrentBounds;
 
