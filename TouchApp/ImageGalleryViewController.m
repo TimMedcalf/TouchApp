@@ -27,6 +27,7 @@ static NSInteger iPadThumbnailRowCount = 8;
 @property (nonatomic, retain) UIActivityIndicatorView *spinner;
 @property (nonatomic, assign) NSInteger thumbnailWidth;
 @property (nonatomic, assign) NSInteger thumbnailRowCount;
+- (void)thumbnailTapped:(UIGestureRecognizer *)sender;
 @end
 
 @implementation ImageGalleryViewController
@@ -169,14 +170,15 @@ static NSInteger iPadThumbnailRowCount = 8;
     {
       tmpRes = [[TJMImageResourceView alloc]initWithFrame:CGRectMake(offset,0,self.thumbnailWidth,self.thumbnailWidth)];
       tmpRes.tag = CellImageTag + i;
+      UITapGestureRecognizer *tapper = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(thumbnailTapped:)];
+      [tmpRes addGestureRecognizer:tapper];
+      [tapper release];
       [cell addSubview:tmpRes];
       [tmpRes release];
       tmpRes = nil;
       offset += self.thumbnailWidth;
     }    
   }
-  // so, now to configure the cell...
-  // first grab hold of the cell elements we need
   
   for (int i = 0; i < self.thumbnailRowCount; i++)
   {
@@ -185,24 +187,25 @@ static NSInteger iPadThumbnailRowCount = 8;
       ImageItem *currentItem = [self.imageList.items objectAtIndex:((indexPath.row * 4) + i)];
       //assign the image
       TJMImageResourceView *res = (TJMImageResourceView *)[cell viewWithTag:(CellImageTag + i)];
+      res.index = (indexPath.row * 4) + i;
       [res setURL:currentItem.thumbnailURL];
     }
     else
     {
+      //if this cell is past the actual range of images we need to remove the preview...
       TJMImageResourceView *res = (TJMImageResourceView *)[cell viewWithTag:(CellImageTag + i)];
+      res.index = -1;
       [res setURL:nil];
     }
   }
-
-  
-  //UILabel *titleLabel = (UILabel *)[cell viewWithTag:CellTitleTag];
-  //UILabel *subtitleLabel = (UILabel *)[cell viewWithTag:CellSubTitleTag];
-  
-  //got them...now set the text we want...
-  //titleLabel.text = currentItem.title;
-  //subtitleLabel.text = currentItem.pubDate;//[NSDateFormatter localizedStringFromDate:currentItem.pubDate dateStyle:NSDateFormatterMediumStyle timeStyle:kCFDateFormatterShortStyle];
   cell.selectionStyle = UITableViewCellSelectionStyleNone;
   return cell;
+}
+
+- (void)thumbnailTapped:(UIGestureRecognizer *)sender
+{
+  TJMImageResourceView *res = (TJMImageResourceView *)sender.view;
+  NSLog(@"Tapped %i", res.index);
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

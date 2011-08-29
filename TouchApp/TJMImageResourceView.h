@@ -10,9 +10,13 @@
 
 @interface TJMImageResourceView : UIView
 
+//value to store any useful info - like an array index - not used internally.
+@property (nonatomic, assign) NSInteger index;
+
 - (id)initWithFrame:(CGRect)frame;
 - (id)initWithFrame:(CGRect)frame andURL:(NSURL *)url;
 - (id)initWithFrame:(CGRect)frame andURL:(NSURL *)url forThumbnailofSize:(CGSize)size;
 - (void)setURL:(NSURL *)url;
+
 
 @end
