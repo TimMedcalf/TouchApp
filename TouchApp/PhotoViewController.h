@@ -46,6 +46,7 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "ImageList.h"
 
 @class ImageScrollView;
 
@@ -59,6 +60,8 @@
     int           firstVisiblePageIndexBeforeRotation;
     CGFloat       percentScrolledIntoFirstVisiblePage;
 }
+@property (nonatomic, retain) ImageList *imageList;
+@property (nonatomic, assign) NSInteger initialIndex;
 
 - (void)configurePage:(ImageScrollView *)page forIndex:(NSUInteger)index;
 - (BOOL)isDisplayingPageForIndex:(NSUInteger)index;
@@ -71,7 +74,7 @@
 - (ImageScrollView *)dequeueRecycledPage;
 
 - (NSUInteger)imageCount;
-- (NSString *)imageNameAtIndex:(NSUInteger)index;
+//- (NSString *)imageNameAtIndex:(NSUInteger)index;
 - (CGSize)imageSizeAtIndex:(NSUInteger)index;
 - (UIImage *)imageAtIndex:(NSUInteger)index;
 

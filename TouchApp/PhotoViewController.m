@@ -51,10 +51,6 @@
 #import "ImageItem.h"
 #import "TJMImageResourceManager.h"
 
-@interface PhotoViewController ()
-@property (nonatomic, retain) ImageList *imageList;
-@property (nonatomic, assign) NSInteger initialIndex;
-@end
 
 @implementation PhotoViewController
 
@@ -85,19 +81,20 @@
 
 - (void)viewDidUnload
 {
-    [super viewDidUnload];
-    [pagingScrollView release];
-    pagingScrollView = nil;
-    [recycledPages release];
-    recycledPages = nil;
-    [visiblePages release];
-    visiblePages = nil;
+  [super viewDidUnload];
+  [pagingScrollView release];
+  pagingScrollView = nil;
+  [recycledPages release];
+  recycledPages = nil;
+  [visiblePages release];
+  visiblePages = nil;
 }
 
 - (void)dealloc
 {
-    [pagingScrollView release];
-    [super dealloc];
+  [pagingScrollView release];
+  [_imageList release];
+  [super dealloc];
 }
 
 
@@ -259,25 +256,25 @@
 #pragma mark -
 #pragma mark Image wrangling
 
-- (NSArray *)imageData {
-    static NSArray *__imageData = nil; // only load the imageData array once
-    if (__imageData == nil) {
-        // read the filenames/sizes out of a plist in the app bundle
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"ImageData" ofType:@"plist"];
-        NSData *plistData = [NSData dataWithContentsOfFile:path];
-        NSString *error; NSPropertyListFormat format;
-        __imageData = [[NSPropertyListSerialization propertyListFromData:plistData
-                                                        mutabilityOption:NSPropertyListImmutable
-                                                                  format:&format
-                                                        errorDescription:&error]
-                       retain];
-        if (!__imageData) {
-            NSLog(@"Failed to read image names. Error: %@", error);
-            [error release];
-        }
-    }
-    return __imageData;
-}
+//- (NSArray *)imageData {
+//    static NSArray *__imageData = nil; // only load the imageData array once
+//    if (__imageData == nil) {
+//        // read the filenames/sizes out of a plist in the app bundle
+//        NSString *path = [[NSBundle mainBundle] pathForResource:@"ImageData" ofType:@"plist"];
+//        NSData *plistData = [NSData dataWithContentsOfFile:path];
+//        NSString *error; NSPropertyListFormat format;
+//        __imageData = [[NSPropertyListSerialization propertyListFromData:plistData
+//                                                        mutabilityOption:NSPropertyListImmutable
+//                                                                  format:&format
+//                                                        errorDescription:&error]
+//                       retain];
+//        if (!__imageData) {
+//            NSLog(@"Failed to read image names. Error: %@", error);
+//            [error release];
+//        }
+//    }
+//    return __imageData;
+//}
 
 - (UIImage *)imageAtIndex:(NSUInteger)index {
     // use "imageWithContentsOfFile:" instead of "imageNamed:" here to avoid caching our images
@@ -289,31 +286,28 @@
   return [tmpRes getImage];
 }
 
-- (NSString *)imageNameAtIndex:(NSUInteger)index {
-    NSString *name = nil;
-    if (index < [self imageCount]) {
-        NSDictionary *data = [[self imageData] objectAtIndex:index];
-        name = [data valueForKey:@"name"];
-    }
-    return name;
-}
+//- (NSString *)imageNameAtIndex:(NSUInteger)index {
+//    NSString *name = nil;
+//    if (index < [self imageCount]) {
+//        NSDictionary *data = [[self imageData] objectAtIndex:index];
+//        name = [data valueForKey:@"name"];
+//    }
+//    return name;
+//}
 
 - (CGSize)imageSizeAtIndex:(NSUInteger)index {
-    CGSize size = CGSizeZero;
-    if (index < [self imageCount]) {
-        NSDictionary *data = [[self imageData] objectAtIndex:index];
-        size.width = [[data valueForKey:@"width"] floatValue];
-        size.height = [[data valueForKey:@"height"] floatValue];
-    }
-    return size;
+    //CGSize size = CGSizeZero;
+//    if (index < [self imageCount]) {
+//        NSDictionary *data = [[self imageData] objectAtIndex:index];
+//        size.width = [[data valueForKey:@"width"] floatValue];
+//        size.height = [[data valueForKey:@"height"] floatValue];
+//    }
+  //tmpHack!!!
+  return CGSizeMake(320,480);
 }
 
 - (NSUInteger)imageCount {
-    static NSUInteger __count = NSNotFound;  // only count the images once
-    if (__count == NSNotFound) {
-        __count = [[self imageData] count];
-    }
-    return __count;
+  return [self.imageList.items count];
 }
 
 

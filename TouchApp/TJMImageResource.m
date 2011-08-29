@@ -141,7 +141,17 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
   {
     self.lastAccessed = nil;
     self.lastAccessed = [NSDate date];
-    return [UIImage imageWithContentsOfFile:[self fullPathForLocalBaseImage]];
+    UIImage *tmpImage = [UIImage imageWithContentsOfFile:[self fullPathForLocalBaseImage]];
+    if (tmpImage)
+      return tmpImage;
+    else
+    {
+      //image corrupt? clear it and redownoad it...
+      NSLog(@"Redownloading");
+      [self clearCachedFiles];
+      [self cacheImage];
+      return [UIImage imageNamed:@"Icon.png"];
+    }
   }
   else
   {

@@ -11,6 +11,7 @@
 #import "TJMImageResource.h"
 #import "TJMImageResourceManager.h"
 #import "TJMImageResourceView.h"
+#import "PhotoViewController.h"
 //#import "WebsiteViewController.h"
 
 static NSInteger CellImageTag = 51;
@@ -206,6 +207,14 @@ static NSInteger iPadThumbnailRowCount = 8;
 {
   TJMImageResourceView *res = (TJMImageResourceView *)sender.view;
   NSLog(@"Tapped %i", res.index);
+  if (res.index >= 0)
+  {
+    PhotoViewController *photo = [[PhotoViewController alloc] initWithNibName:@"PhotoViewController" bundle:nil];
+    photo.imageList = self.imageList;
+    photo.initialIndex = res.index;
+    [self.navigationController pushViewController:photo animated:YES];
+    [photo release];
+  }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
