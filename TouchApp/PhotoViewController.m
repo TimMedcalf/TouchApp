@@ -57,26 +57,47 @@
 @synthesize imageList = _imageList;
 @synthesize initialIndex = initialIndex;
 
+
+- (id)initWithNibName:(NSString *)nibName bundle:(NSBundle *)nibBundle
+{
+  self = [super initWithNibName:nibName bundle:nibBundle];
+  if (self)
+  {
+    self.hidesBottomBarWhenPushed = YES;
+    self.navigationController.navigationBar.tintColor = nil;
+    self.navigationController.navigationBar.barStyle  = UIBarStyleBlack;
+    self.navigationController.navigationBar.translucent = YES;
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
+  }
+  return self;
+}
+
 #pragma mark -
 #pragma mark View loading and unloading
 
 - (void)loadView 
-{    
-    // Step 1: make the outer paging scroll view
-    CGRect pagingScrollViewFrame = [self frameForPagingScrollView];
-    pagingScrollView = [[UIScrollView alloc] initWithFrame:pagingScrollViewFrame];
-    pagingScrollView.pagingEnabled = YES;
-    pagingScrollView.backgroundColor = [UIColor blackColor];
-    pagingScrollView.showsVerticalScrollIndicator = NO;
-    pagingScrollView.showsHorizontalScrollIndicator = NO;
-    pagingScrollView.contentSize = [self contentSizeForPagingScrollView];
-    pagingScrollView.delegate = self;
-    self.view = pagingScrollView;
-    
-    // Step 2: prepare to tile content
-    recycledPages = [[NSMutableSet alloc] init];
-    visiblePages  = [[NSMutableSet alloc] init];
-    [self tilePages];
+{
+  self.hidesBottomBarWhenPushed = YES;
+	self.navigationController.navigationBar.tintColor = nil;
+  self.navigationController.navigationBar.barStyle  = UIBarStyleBlack;
+  self.navigationController.navigationBar.translucent = YES;
+  
+
+  // Step 1: make the outer paging scroll view
+  CGRect pagingScrollViewFrame = [self frameForPagingScrollView];
+  pagingScrollView = [[UIScrollView alloc] initWithFrame:pagingScrollViewFrame];
+  pagingScrollView.pagingEnabled = YES;
+  pagingScrollView.backgroundColor = [UIColor blackColor];
+  pagingScrollView.showsVerticalScrollIndicator = NO;
+  pagingScrollView.showsHorizontalScrollIndicator = NO;
+  pagingScrollView.contentSize = [self contentSizeForPagingScrollView];
+  pagingScrollView.delegate = self;
+  self.view = pagingScrollView;
+  
+  // Step 2: prepare to tile content
+  recycledPages = [[NSMutableSet alloc] init];
+  visiblePages  = [[NSMutableSet alloc] init];
+  [self tilePages];
 }
 
 - (void)viewDidUnload
@@ -225,7 +246,8 @@
 
 #pragma mark -
 #pragma mark  Frame calculations
-#define PADDING  10
+//#define PADDING  10
+#define PADDING  0
 
 - (CGRect)frameForPagingScrollView {
     CGRect frame = [[UIScreen mainScreen] bounds];
