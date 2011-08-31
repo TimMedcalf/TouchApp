@@ -61,11 +61,34 @@
 #pragma mark -
 #pragma mark View loading and unloading
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+  
+  if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+    // Custom initialization
+  }
+  self.hidesBottomBarWhenPushed = YES;
+  return self;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+  //[super viewWillAppear:NO];
+  //[[UIDevice currentDevice] setOrientation:UIInterfaceOrientationLandscapeRight];
+}
+
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  
+  self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(savePhoto)] autorelease]; 
 	
 	self.view.backgroundColor = [UIColor blackColor];
+  self.hidesBottomBarWhenPushed = YES;
+  self.navigationController.navigationBar.tintColor = nil;
+  self.navigationController.navigationBar.barStyle  = UIBarStyleBlack;
+  self.navigationController.navigationBar.translucent = YES;
+  [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
+  
 	self.wantsFullScreenLayout = YES;
 	
   //self.pagingScrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
@@ -83,39 +106,34 @@
   self.pagingScrollView.showsVerticalScrollIndicator=NO;
   self.pagingScrollView.showsHorizontalScrollIndicator=NO;
   self.pagingScrollView.backgroundColor = self.view.backgroundColor;
+  self.pagingScrollView.contentSize = [self contentSizeForPagingScrollView];
     
   recycledPages = [[NSMutableSet alloc] init];
   visiblePages  = [[NSMutableSet alloc] init];
   [self tilePages];
 }
 
-//- (void)loadView 
-//{
-////  self.hidesBottomBarWhenPushed = YES;
-////  self.wantsFullScreenLayout = YES;
-////  self.navigationController.navigationBar.tintColor = nil;
-////  self.navigationController.navigationBar.barStyle  = UIBarStyleBlack;
-////  self.navigationController.navigationBar.translucent = YES;
-////  [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
-////  self.wantsFullScreenLayout = YES;
-////
-////  // Step 1: make the outer paging scroll view
-////  CGRect pagingScrollViewFrame = [self frameForPagingScrollView];
-////  NSLog(@"pagingScrollViewFrame x=%f y=%f width=%f height=%f",pagingScrollViewFrame.origin.x, pagingScrollViewFrame.origin.y,pagingScrollViewFrame.size.width, pagingScrollViewFrame.size.height);
-////  pagingScrollView = [[UIScrollView alloc] initWithFrame:pagingScrollViewFrame];
-////  pagingScrollView.pagingEnabled = YES;
-////  pagingScrollView.backgroundColor = [UIColor blackColor];
-////  pagingScrollView.showsVerticalScrollIndicator = NO;
-////  pagingScrollView.showsHorizontalScrollIndicator = NO;
-////  pagingScrollView.contentSize = [self contentSizeForPagingScrollView];
-////  pagingScrollView.delegate = self;
-////  pagingScrollView.bounces = NO;
-////  self.view = pagingScrollView;
-//  
-//  
-//  // Step 2: prepare to tile content
-//
-//}
+- (void)savePhoto {
+	UIActionSheet *actionSheet = [[UIActionSheet alloc] 
+                                initWithTitle:nil
+                                delegate:self 
+                                cancelButtonTitle:@"Cancel" 
+                                destructiveButtonTitle:@"Save to Camera Roll" 
+                                otherButtonTitles:nil]; 
+  [actionSheet showInView:self.view]; 
+  [actionSheet release]; 
+	
+	
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
+	if (buttonIndex != [actionSheet cancelButtonIndex]) { 
+    //UIImage *image = current.image;
+    //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+  } 
+}
+
+
 
 - (void)viewDidUnload
 {
@@ -221,7 +239,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation 
 {
-    return YES;
+    return UIInterfaceOrientationIsLandscape(toInterfaceOrientation);
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration

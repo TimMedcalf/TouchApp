@@ -116,8 +116,12 @@ static NSInteger iPadThumbnailRowCount = 8;
   [super viewWillAppear:animated];
 
 	UINavigationBar *nb = self.navigationController.navigationBar;
+  nb.barStyle  = UIBarStyleBlack;
+  nb.translucent = NO;
 	nb.tintColor = [UIColor colorWithRed:195/255.0 green:54/255.0 blue:37/255.0 alpha:1]; 
   nb.layer.contents = (id)[UIImage imageNamed:@"images-nav"].CGImage;
+
+  [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -213,7 +217,8 @@ static NSInteger iPadThumbnailRowCount = 8;
     photo.imageList = self.imageList;
     photo.initialIndex = res.index;
     photo.wantsFullScreenLayout = YES;
-    [self.navigationController pushViewController:photo animated:YES];
+    //[self.navigationController pushViewController:photo animated:YES];
+    [self.navigationController presentModalViewController:photo animated:YES];
     [photo release];
   }
 }

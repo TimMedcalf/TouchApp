@@ -51,7 +51,7 @@
 
 @class ImageScrollView;
 
-@interface PhotoViewController : UIViewController <UIScrollViewDelegate> {
+@interface PhotoViewController : UIViewController <UIScrollViewDelegate, UIActionSheetDelegate> {
 
     
     NSMutableSet *recycledPages;
@@ -64,7 +64,7 @@
 
 @property (nonatomic, retain) ImageList *imageList;
 @property (nonatomic, assign) NSInteger initialIndex;
-@property (nonatomic, retain) UIScrollView *pagingScrollView;
+@property (nonatomic, retain) IBOutlet UIScrollView *pagingScrollView;
 
 - (void)configurePage:(ImageScrollView *)page forIndex:(NSUInteger)index;
 - (BOOL)isDisplayingPageForIndex:(NSUInteger)index;
