@@ -94,13 +94,6 @@
         frameToCenter.origin.y = 0;
     
     imageView.frame = frameToCenter;
-    
-//    if ([imageView isKindOfClass:[TilingView class]]) {
-//        // to handle the interaction between CATiledLayer and high resolution screens, we need to manually set the
-//        // tiling view's contentScaleFactor to 1.0. (If we omitted this, it would be 2.0 on high resolution screens,
-//        // which would cause the CATiledLayer to ask us for tiles of the wrong scales.)
-//        imageView.contentScaleFactor = 1.0;
-//    }
 }
 
 #pragma mark -
@@ -125,55 +118,37 @@
     self.zoomScale = 1.0;
     
     // make a new UIImageView for the new image
-    imageView = [[TJMImageResourceView alloc] initWithFrame:CGRectMake(0,0,320,480) andURL:image.imageURL];
-    [self addSubview:imageView];
+  //CGRect bounds = self.frame;
+  imageView = [[TJMImageResourceView alloc] initWithURL:image.imageURL];
+  //NSLog(@"Image Width = %f",imageView.imageView.image.size.width);
+  [self addSubview:imageView];
     
-    self.contentSize = imageView.frame.size;
-    [self setMaxMinZoomScalesForCurrentBounds];
-    self.zoomScale = self.minimumZoomScale;
+  self.contentSize = imageView.frame.size;
+  [self setMaxMinZoomScalesForCurrentBounds];
+  self.zoomScale = self.minimumZoomScale;
 }
-
-//- (void)displayTiledImageNamed:(NSString *)imageName size:(CGSize)imageSize
-//{
-//    // clear the previous imageView
-//    [imageView removeFromSuperview];
-//    [imageView release];
-//    imageView = nil;
-//    
-//    // reset our zoomScale to 1.0 before doing any further calculations
-//    self.zoomScale = 1.0;
-//    
-//    // make a new TilingView for the new image
-//    imageView = [[TilingView alloc] initWithImageName:imageName size:imageSize];
-//    [(TilingView *)imageView setAnnotates:YES]; // ** remove this line to remove the white tile grid **
-//    [self addSubview:imageView];
-//    
-//    self.contentSize = imageSize;
-//    [self setMaxMinZoomScalesForCurrentBounds];
-//    self.zoomScale = self.minimumZoomScale;
-//}
 
 - (void)setMaxMinZoomScalesForCurrentBounds
 {
-    CGSize boundsSize = self.bounds.size;
-    CGSize imageSize = imageView.bounds.size;
+  CGSize boundsSize = CGSizeMake(480,320);//self.bounds.size;
+  CGSize imageSize = imageView.imageView.image.size;
     
     // calculate min/max zoomscale
-    CGFloat xScale = boundsSize.width / imageSize.width;    // the scale needed to perfectly fit the image width-wise
-    CGFloat yScale = boundsSize.height / imageSize.height;  // the scale needed to perfectly fit the image height-wise
-    CGFloat minScale = MIN(xScale, yScale);                 // use minimum of these to allow the image to become fully visible
+  CGFloat xScale = boundsSize.width / imageSize.width;    // the scale needed to perfectly fit the image width-wise
+  CGFloat yScale = boundsSize.height / imageSize.height;  // the scale needed to perfectly fit the image height-wise
+  CGFloat minScale = MIN(xScale, yScale);                 // use minimum of these to allow the image to become fully visible
     
-    // on high resolution screens we have double the pixel density, so we will be seeing every pixel if we limit the
-    // maximum zoom scale to 0.5.
-    CGFloat maxScale = 1.0 / [[UIScreen mainScreen] scale];
+  // on high resolution screens we have double the pixel density, so we will be seeing every pixel if we limit the
+  // maximum zoom scale to 0.5.
+  CGFloat maxScale = 3 / [[UIScreen mainScreen] scale];
     
-    // don't let minScale exceed maxScale. (If the image is smaller than the screen, we don't want to force it to be zoomed.) 
-    if (minScale > maxScale) {
-        minScale = maxScale;
-    }
+  // don't let minScale exceed maxScale. (If the image is smaller than the screen, we don't want to force it to be zoomed.) 
+  if (minScale > maxScale) {
+      minScale = maxScale;
+  }
     
-    self.maximumZoomScale = maxScale;
-    self.minimumZoomScale = minScale;
+  self.maximumZoomScale = maxScale; 
+  self.minimumZoomScale = minScale;
 }
 
 #pragma mark -

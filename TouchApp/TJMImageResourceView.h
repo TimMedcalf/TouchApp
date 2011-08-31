@@ -19,6 +19,7 @@
 - (id)initWithFrame:(CGRect)frame andURL:(NSURL *)url;
 - (id)initWithFrame:(CGRect)frame andURL:(NSURL *)url forThumbnailofSize:(CGSize)size;
 - (void)setURL:(NSURL *)url;
+- (id)initWithURL:(NSURL *)url;
 
 
 

@@ -285,7 +285,8 @@
 #define PADDING  0
 
 - (CGRect)frameForPagingScrollView {
-    CGRect frame = [[UIScreen mainScreen] bounds];
+  //need to detect this automagically...
+  CGRect frame = CGRectMake(0,0,480,320);
     frame.origin.x -= PADDING;
     frame.size.width += (2 * PADDING);
   //
@@ -300,10 +301,10 @@
     // landscape orientation, the frame will still be in portrait because the pagingScrollView is the root view controller's
     // view, so its frame is in window coordinate space, which is never rotated. Its bounds, however, will be in landscape
     // because it has a rotation transform applied.
-    CGRect bounds = self.pagingScrollView.bounds;
+  CGRect bounds = CGRectMake(0,0,480,320); //self.pagingScrollView.bounds;
     CGRect pageFrame = bounds;
     pageFrame.size.width -= (2 * PADDING);
-    pageFrame.origin.x = (bounds.size.width * index) + PADDING;
+    pageFrame.origin.x = (480 * index) + PADDING;
   //
   pageFrame.origin.y = 0;
   //
@@ -313,9 +314,9 @@
 
 - (CGSize)contentSizeForPagingScrollView {
     // We have to use the paging scroll view's bounds to calculate the contentSize, for the same reason outlined above.
-    CGRect bounds = self.pagingScrollView.bounds;
-  NSLog(@"content size width=%f height=%f",bounds.size.width, bounds.size.height);
-    return CGSizeMake(bounds.size.width * [self imageCount], bounds.size.height);
+    //CGRect bounds = self.pagingScrollView.bounds;
+  //NSLog(@"content size width=%f height=%f",bounds.size.width, bounds.size.height);
+    return CGSizeMake(480 * [self imageCount], 320);
 }
 
 
@@ -339,7 +340,7 @@
 //        size.height = [[data valueForKey:@"height"] floatValue];
 //    }
   //tmpHack!!!
-  return CGSizeMake(320,480);
+  return CGSizeMake(480,320);
 }
 
 - (NSUInteger)imageCount {

@@ -43,6 +43,31 @@
   return self;
 }
 
+- (id)initWithURL:(NSURL *)url
+{
+  self = [super init];
+  if (self) {
+    self.url = url;
+    self.thumbnailSize = CGSizeMake(0,0);
+    TJMImageResource *tmpImageResource = [[TJMImageResourceManager instance] resourceForURL:self.url];
+    UIImage *image = [tmpImageResource getImage];
+    
+    UIImageView *tmpImageView = [[UIImageView alloc] initWithImage:image];
+    CGRect frame = self.frame;
+    frame.size = CGSizeMake(image.size.width,image.size.height);
+    self.frame = frame;
+    tmpImageView.frame = CGRectMake(0,0,image.size.width,image.size.height);   
+    tmpImageView.contentMode = UIViewContentModeScaleAspectFill;
+    tmpImageView.clipsToBounds = YES;
+    self.imageView = tmpImageView;
+    [tmpImageView release];
+    [self addSubview:self.imageView];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateImage) name:TJMImageResourceImageNeedsUpdating object:tmpImageResource];
+  }
+  return self;
+}
+
+
 - (id)initWithFrame:(CGRect)frame
 {
   self = [super initWithFrame:frame];
