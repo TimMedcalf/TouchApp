@@ -57,47 +57,67 @@
 @synthesize imageList = _imageList;
 @synthesize initialIndex = initialIndex;
 
-
-- (id)initWithNibName:(NSString *)nibName bundle:(NSBundle *)nibBundle
-{
-  self = [super initWithNibName:nibName bundle:nibBundle];
-  if (self)
-  {
-    self.hidesBottomBarWhenPushed = YES;
-    self.navigationController.navigationBar.tintColor = nil;
-    self.navigationController.navigationBar.barStyle  = UIBarStyleBlack;
-    self.navigationController.navigationBar.translucent = YES;
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
-  }
-  return self;
-}
-
 #pragma mark -
 #pragma mark View loading and unloading
 
+
+- (void)viewDidLoad {
+  [super viewDidLoad];
+	
+	self.view.backgroundColor = [UIColor blackColor];
+	self.wantsFullScreenLayout = YES;
+	
+	if (!pagingScrollView) {
+		
+		pagingScrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+		pagingScrollView.delegate=self;
+		pagingScrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+		pagingScrollView.multipleTouchEnabled=YES;
+		pagingScrollView.scrollEnabled=YES;
+		pagingScrollView.directionalLockEnabled=YES;
+		pagingScrollView.canCancelContentTouches=YES;
+		pagingScrollView.delaysContentTouches=YES;
+		pagingScrollView.clipsToBounds=YES;
+		pagingScrollView.alwaysBounceHorizontal=YES;
+		pagingScrollView.bounces=YES;
+		pagingScrollView.pagingEnabled=YES;
+		pagingScrollView.showsVerticalScrollIndicator=NO;
+		pagingScrollView.showsHorizontalScrollIndicator=NO;
+		pagingScrollView.backgroundColor = self.view.backgroundColor;
+		self.view = pagingScrollView;
+    
+    recycledPages = [[NSMutableSet alloc] init];
+    visiblePages  = [[NSMutableSet alloc] init];
+    [self tilePages];
+	}
+}
+
 - (void)loadView 
 {
-  self.hidesBottomBarWhenPushed = YES;
-	self.navigationController.navigationBar.tintColor = nil;
-  self.navigationController.navigationBar.barStyle  = UIBarStyleBlack;
-  self.navigationController.navigationBar.translucent = YES;
+//  self.hidesBottomBarWhenPushed = YES;
+//  self.wantsFullScreenLayout = YES;
+//  self.navigationController.navigationBar.tintColor = nil;
+//  self.navigationController.navigationBar.barStyle  = UIBarStyleBlack;
+//  self.navigationController.navigationBar.translucent = YES;
+//  [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
+//  self.wantsFullScreenLayout = YES;
+//
+//  // Step 1: make the outer paging scroll view
+//  CGRect pagingScrollViewFrame = [self frameForPagingScrollView];
+//  NSLog(@"pagingScrollViewFrame x=%f y=%f width=%f height=%f",pagingScrollViewFrame.origin.x, pagingScrollViewFrame.origin.y,pagingScrollViewFrame.size.width, pagingScrollViewFrame.size.height);
+//  pagingScrollView = [[UIScrollView alloc] initWithFrame:pagingScrollViewFrame];
+//  pagingScrollView.pagingEnabled = YES;
+//  pagingScrollView.backgroundColor = [UIColor blackColor];
+//  pagingScrollView.showsVerticalScrollIndicator = NO;
+//  pagingScrollView.showsHorizontalScrollIndicator = NO;
+//  pagingScrollView.contentSize = [self contentSizeForPagingScrollView];
+//  pagingScrollView.delegate = self;
+//  pagingScrollView.bounces = NO;
+//  self.view = pagingScrollView;
   
-
-  // Step 1: make the outer paging scroll view
-  CGRect pagingScrollViewFrame = [self frameForPagingScrollView];
-  pagingScrollView = [[UIScrollView alloc] initWithFrame:pagingScrollViewFrame];
-  pagingScrollView.pagingEnabled = YES;
-  pagingScrollView.backgroundColor = [UIColor blackColor];
-  pagingScrollView.showsVerticalScrollIndicator = NO;
-  pagingScrollView.showsHorizontalScrollIndicator = NO;
-  pagingScrollView.contentSize = [self contentSizeForPagingScrollView];
-  pagingScrollView.delegate = self;
-  self.view = pagingScrollView;
   
   // Step 2: prepare to tile content
-  recycledPages = [[NSMutableSet alloc] init];
-  visiblePages  = [[NSMutableSet alloc] init];
-  [self tilePages];
+
 }
 
 - (void)viewDidUnload
@@ -253,6 +273,10 @@
     CGRect frame = [[UIScreen mainScreen] bounds];
     frame.origin.x -= PADDING;
     frame.size.width += (2 * PADDING);
+  //
+//  frame.origin.y = 0;
+  //
+  NSLog(@"frameForPagingScrollView x=%f y=%f width=%f height=%f",frame.origin.x, frame.origin.y,frame.size.width, frame.size.height);
     return frame;
 }
 
@@ -265,12 +289,17 @@
     CGRect pageFrame = bounds;
     pageFrame.size.width -= (2 * PADDING);
     pageFrame.origin.x = (bounds.size.width * index) + PADDING;
+  //
+  pageFrame.origin.y = 0;
+  //
+    NSLog(@"frameForPageAtIndex x=%f y=%f width=%f height=%f",pageFrame.origin.x, pageFrame.origin.y,pageFrame.size.width, pageFrame.size.height);
     return pageFrame;
 }
 
 - (CGSize)contentSizeForPagingScrollView {
     // We have to use the paging scroll view's bounds to calculate the contentSize, for the same reason outlined above.
     CGRect bounds = pagingScrollView.bounds;
+  NSLog(@"content size width=%f height=%f",bounds.size.width, bounds.size.height);
     return CGSizeMake(bounds.size.width * [self imageCount], bounds.size.height);
 }
 
@@ -278,25 +307,6 @@
 #pragma mark -
 #pragma mark Image wrangling
 
-//- (NSArray *)imageData {
-//    static NSArray *__imageData = nil; // only load the imageData array once
-//    if (__imageData == nil) {
-//        // read the filenames/sizes out of a plist in the app bundle
-//        NSString *path = [[NSBundle mainBundle] pathForResource:@"ImageData" ofType:@"plist"];
-//        NSData *plistData = [NSData dataWithContentsOfFile:path];
-//        NSString *error; NSPropertyListFormat format;
-//        __imageData = [[NSPropertyListSerialization propertyListFromData:plistData
-//                                                        mutabilityOption:NSPropertyListImmutable
-//                                                                  format:&format
-//                                                        errorDescription:&error]
-//                       retain];
-//        if (!__imageData) {
-//            NSLog(@"Failed to read image names. Error: %@", error);
-//            [error release];
-//        }
-//    }
-//    return __imageData;
-//}
 
 - (ImageItem *)imageAtIndex:(NSUInteger)index {
     // use "imageWithContentsOfFile:" instead of "imageNamed:" here to avoid caching our images
@@ -305,15 +315,6 @@
     //return [UIImage imageWithContentsOfFile:path];  
   return [self.imageList.items objectAtIndex:index];
 }
-
-//- (NSString *)imageNameAtIndex:(NSUInteger)index {
-//    NSString *name = nil;
-//    if (index < [self imageCount]) {
-//        NSDictionary *data = [[self imageData] objectAtIndex:index];
-//        name = [data valueForKey:@"name"];
-//    }
-//    return name;
-//}
 
 - (CGSize)imageSizeAtIndex:(NSUInteger)index {
     //CGSize size = CGSizeZero;

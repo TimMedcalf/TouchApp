@@ -214,7 +214,7 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
 {
   return (
           ([[NSFileManager defaultManager] fileExistsAtPath:[self fullPathForLocalBaseImage]]) && 
-          ([self.lastChecked timeIntervalSinceNow] > -(3600 * 24 * 7)) &&
+          ([self.lastChecked timeIntervalSinceNow] > -(3600 * 24 * 30)) &&
           (!self.activeDownload));
 }
 

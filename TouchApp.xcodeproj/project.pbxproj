@@ -78,7 +78,6 @@
 		224FBC941409988200749E42 /* ImageGalleryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 224FBC921409988100749E42 /* ImageGalleryViewController.xib */; };
 		22675204140B4AFB00726FAE /* ImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 226751FF140B4AFB00726FAE /* ImageScrollView.m */; };
 		22675205140B4AFB00726FAE /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22675201140B4AFB00726FAE /* PhotoViewController.m */; };
-		22675206140B4AFB00726FAE /* TilingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22675203140B4AFB00726FAE /* TilingView.m */; };
 		22675208140B4DDE00726FAE /* PhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22675207140B4DDE00726FAE /* PhotoViewController.xib */; };
 		22804A881407544B0083CE40 /* TJMImageResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 22804A831407544B0083CE40 /* TJMImageResource.m */; };
 		22804A891407544B0083CE40 /* TJMImageResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22804A851407544B0083CE40 /* TJMImageResourceManager.m */; };
@@ -223,8 +222,6 @@
 		226751FF140B4AFB00726FAE /* ImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageScrollView.m; sourceTree = "<group>"; };
 		22675200140B4AFB00726FAE /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		22675201140B4AFB00726FAE /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
-		22675202140B4AFB00726FAE /* TilingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TilingView.h; sourceTree = "<group>"; };
-		22675203140B4AFB00726FAE /* TilingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TilingView.m; sourceTree = "<group>"; };
 		22675207140B4DDE00726FAE /* PhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoViewController.xib; sourceTree = "<group>"; };
 		22804A821407544B0083CE40 /* TJMImageResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJMImageResource.h; sourceTree = "<group>"; };
 		22804A831407544B0083CE40 /* TJMImageResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TJMImageResource.m; sourceTree = "<group>"; };
@@ -557,8 +554,6 @@
 				22675200140B4AFB00726FAE /* PhotoViewController.h */,
 				22675201140B4AFB00726FAE /* PhotoViewController.m */,
 				22675207140B4DDE00726FAE /* PhotoViewController.xib */,
-				22675202140B4AFB00726FAE /* TilingView.h */,
-				22675203140B4AFB00726FAE /* TilingView.m */,
 			);
 			name = photoscroller;
 			sourceTree = "<group>";
@@ -963,7 +958,6 @@
 				224FBC931409988200749E42 /* ImageGalleryViewController.m in Sources */,
 				22675204140B4AFB00726FAE /* ImageScrollView.m in Sources */,
 				22675205140B4AFB00726FAE /* PhotoViewController.m in Sources */,
-				22675206140B4AFB00726FAE /* TilingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
