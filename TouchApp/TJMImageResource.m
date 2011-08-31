@@ -212,14 +212,18 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
 
 - (BOOL)imageIsDownloaded
 {
-  return (([[NSFileManager defaultManager] fileExistsAtPath:[self fullPathForLocalBaseImage]]) && ([self.lastChecked timeIntervalSinceNow] > -(3600 * 24 * 7)));
+  return (
+          ([[NSFileManager defaultManager] fileExistsAtPath:[self fullPathForLocalBaseImage]]) && 
+          ([self.lastChecked timeIntervalSinceNow] > -(3600 * 24 * 7)) &&
+          (!self.activeDownload));
 }
 
 
 #pragma mark downloads
 - (void)cacheImage
 {
-  if (![self imageIsDownloaded]) [self startDownload];
+  if ((![self imageIsDownloaded]) && (!self.activeDownload)) 
+    [self startDownload];
 }
 
 - (void)startDownload
