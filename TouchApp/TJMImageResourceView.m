@@ -11,8 +11,8 @@
 #import "TJMImageResourceManager.h"
 
 @interface TJMImageResourceView ()
-@property (nonatomic, retain) UIImageView *imageView;
-@property (nonatomic, retain) NSURL *url;
+
+
 @property (nonatomic, assign) CGSize thumbnailSize;
 - (void)updateImage;
 @end
@@ -24,14 +24,13 @@
 @synthesize thumbnailSize = _thumbnailSize;
 @synthesize index = _index;
 
-
 - (id)initWithFrame:(CGRect)frame andURL:(NSURL *)url
 {
   self = [super initWithFrame:frame];
   if (self) {
     self.url = url;
     self.thumbnailSize = CGSizeMake(0,0);
-    TJMImageResource *tmpImageResource = [[TJMImageResourceManager instance] resourceForURL:self.url]; 
+    TJMImageResource *tmpImageResource = [[TJMImageResourceManager instance] resourceForURL:self.url];
     UIImageView *tmpImageView = [[UIImageView alloc] initWithImage:[tmpImageResource getImage]];
     tmpImageView.frame = CGRectMake(0,0,self.frame.size.width,self.frame.size.height);   
     tmpImageView.contentMode = UIViewContentModeScaleAspectFill;

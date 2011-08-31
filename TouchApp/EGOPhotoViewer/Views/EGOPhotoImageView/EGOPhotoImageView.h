@@ -28,14 +28,14 @@
 #import "EGOPhotoGlobal.h"
 #import "EGOPhotoSource.h"
 #import "EGOImageLoader.h"
+#import "TJMImageResource.h"
+#import "TJMImageResourceView.h"
 
 @class EGOPhotoScrollView, EGOPhotoCaptionView;
 
 @interface EGOPhotoImageView : UIView <EGOImageLoaderObserver, UIScrollViewDelegate>{
 @private
 	EGOPhotoScrollView *_scrollView;
-	id <EGOPhoto> _photo;
-	UIImageView *_imageView;
 	UIActivityIndicatorView *_activityView;
 	
 	BOOL _loading;
@@ -45,12 +45,12 @@
 	
 }
 
-@property(nonatomic,readonly) id <EGOPhoto> photo;
-@property(nonatomic,readonly) UIImageView *imageView;
+@property(nonatomic,retain) TJMImageResource *photo;
+@property(nonatomic,retain) TJMImageResourceView *imageView;
 @property(nonatomic,readonly) EGOPhotoScrollView *scrollView;
 @property(nonatomic,assign,getter=isLoading) BOOL loading;
 
-- (void)setPhoto:(id <EGOPhoto>)aPhoto;
+- (void)setPhoto:(TJMImageResource *)aPhoto;
 - (void)killScrollViewZoom;
 - (void)layoutScrollViewAnimated:(BOOL)animated;
 - (void)prepareForReusue;

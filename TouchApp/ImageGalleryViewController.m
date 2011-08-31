@@ -209,7 +209,7 @@ static NSInteger iPadThumbnailRowCount = 8;
   NSLog(@"Tapped %i", res.index);
   if (res.index >= 0)
   {
-    PhotoViewController *photo = [[PhotoViewController alloc] init]; //WithNibName:@"PhotoViewController" bundle:nil];
+    PhotoViewController *photo = [[PhotoViewController alloc] initWithNibName:@"PhotoViewController" bundle:nil];
     photo.imageList = self.imageList;
     photo.initialIndex = res.index;
     photo.wantsFullScreenLayout = YES;

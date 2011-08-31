@@ -104,105 +104,56 @@
 	
 }
 
-- (void)setPhoto:(id <EGOPhoto>)aPhoto{
+- (void)setPhoto:(TJMImageResource *)aPhoto{
 	
 	if (!aPhoto) return; 
 	if ([aPhoto isEqual:self.photo]) return;
 	
-	if (self.photo != nil) {
-		[[EGOImageLoader sharedImageLoader] cancelLoadForURL:self.photo.URL];
-	}
-	
 	[_photo release], _photo = nil;
 	_photo = [aPhoto retain];
 	
-	if (self.photo.image) {
-		
-		self.imageView.image = self.photo.image;
-		
-	} else {
-		
-		if ([self.photo.URL isFileURL]) {
-			
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 40000
-			
-			NSError *error = nil;
-			NSDictionary *attributes = [[NSFileManager defaultManager] attributesOfItemAtPath:[self.photo.URL path] error:&error];
-			NSInteger fileSize = [[attributes objectForKey:NSFileSize] integerValue];
-
-			if (fileSize >= 1048576 && [[[UIDevice currentDevice] systemVersion] floatValue] >= 4.0) {
-								
-				dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-					
-					UIImage *_image = nil;
-					NSData *_data = [NSData dataWithContentsOfURL:self.photo.URL];
-					if (!_data) {
-						[self handleFailedImage];
-					} else {
-						_image = [UIImage imageWithData:_data];
-					}
-					
-					dispatch_async(dispatch_get_main_queue(), ^{
-						
-						if (_image!=nil) {
-							[self setupImageViewWithImage:_image];
-						}
-						
-						
-					});
-								   
-				});
-		
-			} else {
-				
-				self.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:self.photo.URL]];
-				
-			}
-
-#else
-			self.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:self.photo.URL]];
-#endif
-			
-			
-		} else {
-			self.imageView.image = [[EGOImageLoader sharedImageLoader] imageForURL:self.photo.URL shouldLoadWithObserver:self];
-		}
-		
-	}
-	
-	if (self.imageView.image) {
-		
-		[_activityView stopAnimating];
-		self.userInteractionEnabled = YES;
-		
-		_loading=NO;
-		[[NSNotificationCenter defaultCenter] postNotificationName:@"EGOPhotoDidFinishLoading" object:[NSDictionary dictionaryWithObjectsAndKeys:self.photo, @"photo", [NSNumber numberWithBool:NO], @"failed", nil]];
-		
-		
-	} else {
-		
-		_loading = YES;
-		[_activityView startAnimating];
-		self.userInteractionEnabled= NO;
-		self.imageView.image = kEGOPhotoLoadingPlaceholder;
-	}
+	if (!self.imageView)
+  {
+    TJMImageResourceView *tmpView = [[TJMImageResourceView alloc] init];
+    self.imageView = tmpView;
+    [tmpView release];
+  }
+  [self.imageView setURL:self.photo.imageURL];  
+  
+// TODO - reinstate loading spinner code?	
+//	if (self.imageView.image) {
+//		
+//		[_activityView stopAnimating];
+//		self.userInteractionEnabled = YES;
+//		
+//		_loading=NO;
+//		[[NSNotificationCenter defaultCenter] postNotificationName:@"EGOPhotoDidFinishLoading" object:[NSDictionary dictionaryWithObjectsAndKeys:self.photo, @"photo", [NSNumber numberWithBool:NO], @"failed", nil]];
+//		
+//		
+//	} else {
+//		
+//		_loading = YES;
+//		[_activityView startAnimating];
+//		self.userInteractionEnabled= NO;
+//		self.imageView.image = kEGOPhotoLoadingPlaceholder;
+//	}
 	
 	[self layoutScrollViewAnimated:NO];
 }
 
-- (void)setupImageViewWithImage:(UIImage*)aImage {	
-	if (!aImage) return; 
-
-	_loading = NO;
-	[_activityView stopAnimating];
-	self.imageView.image = aImage; 
-	[self layoutScrollViewAnimated:NO];
-	
-	[[self layer] addAnimation:[self fadeAnimation] forKey:@"opacity"];
-	self.userInteractionEnabled = YES;
-	[[NSNotificationCenter defaultCenter] postNotificationName:@"EGOPhotoDidFinishLoading" object:[NSDictionary dictionaryWithObjectsAndKeys:self.photo, @"photo", [NSNumber numberWithBool:NO], @"failed", nil]];
-	
-}
+//- (void)setupImageViewWithImage:(UIImage*)aImage {	
+//	if (!aImage) return; 
+//
+//	_loading = NO;
+//	[_activityView stopAnimating];
+//	self.imageView.image = aImage; 
+//	[self layoutScrollViewAnimated:NO];
+//	
+//	[[self layer] addAnimation:[self fadeAnimation] forKey:@"opacity"];
+//	self.userInteractionEnabled = YES;
+//	[[NSNotificationCenter defaultCenter] postNotificationName:@"EGOPhotoDidFinishLoading" object:[NSDictionary dictionaryWithObjectsAndKeys:self.photo, @"photo", [NSNumber numberWithBool:NO], @"failed", nil]];
+//	
+//}
 
 - (void)prepareForReusue{
 	
@@ -211,16 +162,16 @@
 	
 }
 
-- (void)handleFailedImage{
-	
-	self.imageView.image = kEGOPhotoErrorPlaceholder;
-	self.photo.failed = YES;
-	[self layoutScrollViewAnimated:NO];
-	self.userInteractionEnabled = NO;
-	[_activityView stopAnimating];
-	[[NSNotificationCenter defaultCenter] postNotificationName:@"EGOPhotoDidFinishLoading" object:[NSDictionary dictionaryWithObjectsAndKeys:self.photo, @"photo", [NSNumber numberWithBool:YES], @"failed", nil]];
-	
-}
+//- (void)handleFailedImage{
+//	
+//	self.imageView.image = kEGOPhotoErrorPlaceholder;
+//	self.photo.failed = YES;
+//	[self layoutScrollViewAnimated:NO];
+//	self.userInteractionEnabled = NO;
+//	[_activityView stopAnimating];
+//	[[NSNotificationCenter defaultCenter] postNotificationName:@"EGOPhotoDidFinishLoading" object:[NSDictionary dictionaryWithObjectsAndKeys:self.photo, @"photo", [NSNumber numberWithBool:YES], @"failed", nil]];
+//	
+//}
 
 
 #pragma mark -
@@ -278,13 +229,13 @@
 		[UIView setAnimationDuration:0.0001];
 	}
 		
-	CGFloat hfactor = self.imageView.image.size.width / self.frame.size.width;
-	CGFloat vfactor = self.imageView.image.size.height / self.frame.size.height;
+	CGFloat hfactor = self.imageView.imageView.image.size.width / self.frame.size.width;
+	CGFloat vfactor = self.imageView.imageView.image.size.height / self.frame.size.height;
 	
 	CGFloat factor = MAX(hfactor, vfactor);
 	
-	CGFloat newWidth = self.imageView.image.size.width / factor;
-	CGFloat newHeight = self.imageView.image.size.height / factor;
+	CGFloat newWidth = self.imageView.imageView.image.size.width / factor;
+	CGFloat newHeight = self.imageView.imageView.image.size.height / factor;
 	
 	CGFloat leftOffset = (self.frame.size.width - newWidth) / 2;
 	CGFloat topOffset = (self.frame.size.height - newHeight) / 2;
@@ -305,11 +256,11 @@
 	
 	CGSize popoverSize = EGOPV_MAX_POPOVER_SIZE;
 	
-	if (!self.imageView.image) {
+	if (!self.imageView.imageView.image) {
 		return popoverSize;
 	}
 	
-	CGSize imageSize = self.imageView.image.size;
+	CGSize imageSize = self.imageView.imageView.image.size;
 	
 	if(imageSize.width > popoverSize.width || imageSize.height > popoverSize.height) {
 		
@@ -364,23 +315,23 @@
 #pragma mark -
 #pragma mark EGOImageLoader Callbacks
 
-- (void)imageLoaderDidLoad:(NSNotification*)notification {	
-	
-	if ([notification userInfo] == nil) return;
-	if(![[[notification userInfo] objectForKey:@"imageURL"] isEqual:self.photo.URL]) return;
-	
-	[self setupImageViewWithImage:[[notification userInfo] objectForKey:@"image"]];
-	
-}
-
-- (void)imageLoaderDidFailToLoad:(NSNotification*)notification {
-	
-	if ([notification userInfo] == nil) return;
-	if(![[[notification userInfo] objectForKey:@"imageURL"] isEqual:self.photo.URL]) return;
-	
-	[self handleFailedImage];
-	
-}
+//- (void)imageLoaderDidLoad:(NSNotification*)notification {	
+//	
+//	if ([notification userInfo] == nil) return;
+//	if(![[[notification userInfo] objectForKey:@"imageURL"] isEqual:self.photo.URL]) return;
+//	
+//	[self setupImageViewWithImage:[[notification userInfo] objectForKey:@"image"]];
+//	
+//}
+//
+//- (void)imageLoaderDidFailToLoad:(NSNotification*)notification {
+//	
+//	if ([notification userInfo] == nil) return;
+//	if(![[[notification userInfo] objectForKey:@"imageURL"] isEqual:self.photo.URL]) return;
+//	
+//	[self handleFailedImage];
+//	
+//}
 
 
 #pragma mark -
@@ -407,13 +358,13 @@
 	[UIView setAnimationDidStopSelector:@selector(killZoomAnimationDidStop:finished:context:)];
 	[UIView setAnimationDelegate:self];
 
-	CGFloat hfactor = self.imageView.image.size.width / self.frame.size.width;
-	CGFloat vfactor = self.imageView.image.size.height / self.frame.size.height;
+	CGFloat hfactor = self.imageView.imageView.image.size.width / self.frame.size.width;
+	CGFloat vfactor = self.imageView.imageView.image.size.height / self.frame.size.height;
 	
 	CGFloat factor = MAX(hfactor, vfactor);
 		
-	CGFloat newWidth = self.imageView.image.size.width / factor;
-	CGFloat newHeight = self.imageView.image.size.height / factor;
+	CGFloat newWidth = self.imageView.imageView.image.size.width / factor;
+	CGFloat newHeight = self.imageView.imageView.image.size.height / factor;
 		
 	CGFloat leftOffset = (self.frame.size.width - newWidth) / 2;
 	CGFloat topOffset = (self.frame.size.height - newHeight) / 2;
@@ -430,13 +381,13 @@
 
 - (CGRect)frameToFitCurrentView{
 	
-	CGFloat heightFactor = self.imageView.image.size.height / self.frame.size.height;
-	CGFloat widthFactor = self.imageView.image.size.width / self.frame.size.width;
+	CGFloat heightFactor = self.imageView.imageView.image.size.height / self.frame.size.height;
+	CGFloat widthFactor = self.imageView.imageView.image.size.width / self.frame.size.width;
 	
 	CGFloat scaleFactor = MAX(heightFactor, widthFactor);
 	
-	CGFloat newHeight = self.imageView.image.size.height / scaleFactor;
-	CGFloat newWidth = self.imageView.image.size.width / scaleFactor;
+	CGFloat newHeight = self.imageView.imageView.image.size.height / scaleFactor;
+	CGFloat newWidth = self.imageView.imageView.image.size.width / scaleFactor;
 	
 	
 	CGRect rect = CGRectMake((self.frame.size.width - newWidth)/2, (self.frame.size.height-newHeight)/2, newWidth, newHeight);
@@ -566,9 +517,9 @@
 
 - (void)dealloc {
 	
-	if (_photo) {
-		[[EGOImageLoader sharedImageLoader] cancelLoadForURL:self.photo.URL];
-	}
+//	if (_photo) {
+//		[[EGOImageLoader sharedImageLoader] cancelLoadForURL:self.photo.URL];
+//	}
 	
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	

@@ -551,7 +551,7 @@
 	[UIView setAnimationsEnabled:NO];
 	[_currentView killScrollViewZoom];
 	[UIView setAnimationsEnabled:enabled];
-	UIImageView *_currentImage = _currentView.imageView;
+	TJMImageResourceView *_currentImage = _currentView.imageView;
 	
 	UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
 	UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -562,9 +562,10 @@
 	[backgroundView release];
 	
 	CGRect newRect = [self.view convertRect:_currentView.scrollView.frame toView:_transferView];
-	UIImageView *_imageView = [[UIImageView alloc] initWithFrame:_fullScreen ? newRect : _transferView.bounds];	
+	TJMImageResourceView *_imageView = [[TJMImageResourceView alloc] initWithFrame:_fullScreen ? newRect : _transferView.bounds];	
 	_imageView.contentMode = UIViewContentModeScaleAspectFit;
-	[_imageView setImage:_currentImage.image];
+	[_imageView setURL:_currentImage.url];
+  
 	[_transferView addSubview:_imageView];
 	[_imageView release];
 	
@@ -919,31 +920,31 @@
 
 - (void)savePhoto{
 	
-	UIImageWriteToSavedPhotosAlbum(((EGOPhotoImageView*)[self.photoViews objectAtIndex:_pageIndex]).imageView.image, nil, nil, nil);
+	//UIImageWriteToSavedPhotosAlbum(((EGOPhotoImageView*)[self.photoViews objectAtIndex:_pageIndex]).imageView.image, nil, nil, nil);
 	
 }
 
 - (void)copyPhoto{
 	
-	[[UIPasteboard generalPasteboard] setData:UIImagePNGRepresentation(((EGOPhotoImageView*)[self.photoViews objectAtIndex:_pageIndex]).imageView.image) forPasteboardType:@"public.png"];
+	//[[UIPasteboard generalPasteboard] setData:UIImagePNGRepresentation(((EGOPhotoImageView*)[self.photoViews objectAtIndex:_pageIndex]).imageView.image) forPasteboardType:@"public.png"];
 	
 }
 
 - (void)emailPhoto{
 	
-	MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
-	[mailViewController setSubject:@"Shared Photo"];
-	[mailViewController addAttachmentData:[NSData dataWithData:UIImagePNGRepresentation(((EGOPhotoImageView*)[self.photoViews objectAtIndex:_pageIndex]).imageView.image)] mimeType:@"png" fileName:@"Photo.png"];
-	mailViewController.mailComposeDelegate = self;
-	
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 30200
-	if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) {
-		mailViewController.modalPresentationStyle = UIModalPresentationPageSheet;
-	}
-#endif
-	
-	[self presentModalViewController:mailViewController animated:YES];
-	[mailViewController release];
+//	MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
+//	[mailViewController setSubject:@"Shared Photo"];
+//	[mailViewController addAttachmentData:[NSData dataWithData:UIImagePNGRepresentation(((EGOPhotoImageView*)[self.photoViews objectAtIndex:_pageIndex]).imageView.image)] mimeType:@"png" fileName:@"Photo.png"];
+//	mailViewController.mailComposeDelegate = self;
+//	
+//#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 30200
+//	if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) {
+//		mailViewController.modalPresentationStyle = UIModalPresentationPageSheet;
+//	}
+//#endif
+//	
+//	[self presentModalViewController:mailViewController animated:YES];
+//	[mailViewController release];
 	
 }
 
