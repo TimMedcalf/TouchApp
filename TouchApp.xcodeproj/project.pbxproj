@@ -19,9 +19,6 @@
 		2229523713ECEA76001D174D /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2229523113ECEA76001D174D /* Default-Portrait~ipad.png */; };
 		2229523813ECEA76001D174D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 2229523213ECEA76001D174D /* Default.png */; };
 		2229523913ECEA76001D174D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2229523313ECEA76001D174D /* Default@2x.png */; };
-		2229523A13ECEA76001D174D /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 2229523413ECEA76001D174D /* Icon-72.png */; };
-		2229523B13ECEA76001D174D /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2229523513ECEA76001D174D /* Icon.png */; };
-		2229523C13ECEA76001D174D /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2229523613ECEA76001D174D /* Icon@2x.png */; };
 		2229524413ECEC0B001D174D /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2229524213ECEC0B001D174D /* NewsViewController.m */; };
 		2229524513ECEC0B001D174D /* NewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2229524313ECEC0B001D174D /* NewsViewController.xib */; };
 		2229526413ECEFB2001D174D /* go.png in Resources */ = {isa = PBXBuildFile; fileRef = 2229526313ECEFB2001D174D /* go.png */; };
@@ -84,6 +81,9 @@
 		22804A881407544B0083CE40 /* TJMImageResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 22804A831407544B0083CE40 /* TJMImageResource.m */; };
 		22804A891407544B0083CE40 /* TJMImageResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22804A851407544B0083CE40 /* TJMImageResourceManager.m */; };
 		22804A8A1407544B0083CE40 /* TJMImageResourceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22804A871407544B0083CE40 /* TJMImageResourceView.m */; };
+		22A3E4A2140FC6AF00CF2B0B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A3E4A1140FC6AF00CF2B0B /* Icon.png */; };
+		22A3E4A4140FC6BD00CF2B0B /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A3E4A3140FC6BD00CF2B0B /* Icon@2x.png */; };
+		22A3E4A6140FC6CA00CF2B0B /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A3E4A5140FC6CA00CF2B0B /* Icon-72.png */; };
 		22CB4B8913EDD641008968D6 /* AppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4B8813EDD641008968D6 /* AppManager.m */; };
 		22CB4BEF13EE417E008968D6 /* CXMLDocument_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4BD413EE417E008968D6 /* CXMLDocument_CreationExtensions.m */; };
 		22CB4BF013EE417E008968D6 /* CXMLNode_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4BD613EE417E008968D6 /* CXMLNode_CreationExtensions.m */; };
@@ -149,9 +149,6 @@
 		2229523113ECEA76001D174D /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		2229523213ECEA76001D174D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		2229523313ECEA76001D174D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		2229523413ECEA76001D174D /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
-		2229523513ECEA76001D174D /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		2229523613ECEA76001D174D /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		2229524113ECEC0B001D174D /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
 		2229524213ECEC0B001D174D /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
 		2229524313ECEC0B001D174D /* NewsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsViewController.xib; sourceTree = "<group>"; };
@@ -233,6 +230,9 @@
 		22804A851407544B0083CE40 /* TJMImageResourceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TJMImageResourceManager.m; sourceTree = "<group>"; };
 		22804A861407544B0083CE40 /* TJMImageResourceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJMImageResourceView.h; sourceTree = "<group>"; };
 		22804A871407544B0083CE40 /* TJMImageResourceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TJMImageResourceView.m; sourceTree = "<group>"; };
+		22A3E4A1140FC6AF00CF2B0B /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../Icon.png; sourceTree = "<group>"; };
+		22A3E4A3140FC6BD00CF2B0B /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../Icon@2x.png"; sourceTree = "<group>"; };
+		22A3E4A5140FC6CA00CF2B0B /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "../Icon-72.png"; sourceTree = "<group>"; };
 		22CB4B8713EDD640008968D6 /* AppManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppManager.h; sourceTree = "<group>"; };
 		22CB4B8813EDD641008968D6 /* AppManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppManager.m; sourceTree = "<group>"; };
 		22CB4B8B13EDD69C008968D6 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
@@ -425,9 +425,9 @@
 		2229524C13ECEF0D001D174D /* icons */ = {
 			isa = PBXGroup;
 			children = (
-				2229523413ECEA76001D174D /* Icon-72.png */,
-				2229523513ECEA76001D174D /* Icon.png */,
-				2229523613ECEA76001D174D /* Icon@2x.png */,
+				22A3E4A5140FC6CA00CF2B0B /* Icon-72.png */,
+				22A3E4A3140FC6BD00CF2B0B /* Icon@2x.png */,
+				22A3E4A1140FC6AF00CF2B0B /* Icon.png */,
 			);
 			name = icons;
 			sourceTree = "<group>";
@@ -847,9 +847,6 @@
 				2229523713ECEA76001D174D /* Default-Portrait~ipad.png in Resources */,
 				2229523813ECEA76001D174D /* Default.png in Resources */,
 				2229523913ECEA76001D174D /* Default@2x.png in Resources */,
-				2229523A13ECEA76001D174D /* Icon-72.png in Resources */,
-				2229523B13ECEA76001D174D /* Icon.png in Resources */,
-				2229523C13ECEA76001D174D /* Icon@2x.png in Resources */,
 				2229524513ECEC0B001D174D /* NewsViewController.xib in Resources */,
 				2229526413ECEFB2001D174D /* go.png in Resources */,
 				2229526F13ECEFF7001D174D /* catalog@2x.png in Resources */,
@@ -907,6 +904,9 @@
 				224FBC941409988200749E42 /* ImageGalleryViewController.xib in Resources */,
 				22675208140B4DDE00726FAE /* PhotoViewController.xib in Resources */,
 				223545FA140F9340008940F4 /* MainWindow-iPad.xib in Resources */,
+				22A3E4A2140FC6AF00CF2B0B /* Icon.png in Resources */,
+				22A3E4A4140FC6BD00CF2B0B /* Icon@2x.png in Resources */,
+				22A3E4A6140FC6CA00CF2B0B /* Icon-72.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1004,8 +1004,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Michael Harding (H4X7VSZ24H)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Michael Harding (H4X7VSZ24H)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: ErgoThis Ltd";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ErgoThis Ltd";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1020,8 +1020,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				PROVISIONING_PROFILE = "9CBA51BC-EADB-4993-B086-FAC1DF0F8243";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9CBA51BC-EADB-4993-B086-FAC1DF0F8243";
+				PROVISIONING_PROFILE = "B9258A95-B8E3-4C2B-9A10-91CF5A24E9D1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B9258A95-B8E3-4C2B-9A10-91CF5A24E9D1";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1031,8 +1031,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Michael Harding (H4X7VSZ24H)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Michael Harding (H4X7VSZ24H)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: ErgoThis Ltd";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ErgoThis Ltd";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
@@ -1041,8 +1041,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "9CBA51BC-EADB-4993-B086-FAC1DF0F8243";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9CBA51BC-EADB-4993-B086-FAC1DF0F8243";
+				PROVISIONING_PROFILE = "B9258A95-B8E3-4C2B-9A10-91CF5A24E9D1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B9258A95-B8E3-4C2B-9A10-91CF5A24E9D1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1052,8 +1052,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Tim Medcalf (LQ9PDTLE6X)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tim Medcalf (LQ9PDTLE6X)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TouchApp/TouchApp-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
@@ -1061,8 +1059,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "904DE46C-257A-417E-B2F0-E9180BBBFD83";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "904DE46C-257A-417E-B2F0-E9180BBBFD83";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1072,8 +1068,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Tim Medcalf (LQ9PDTLE6X)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tim Medcalf (LQ9PDTLE6X)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TouchApp/TouchApp-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
@@ -1081,8 +1075,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "904DE46C-257A-417E-B2F0-E9180BBBFD83";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "904DE46C-257A-417E-B2F0-E9180BBBFD83";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
