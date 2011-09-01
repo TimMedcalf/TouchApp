@@ -294,7 +294,7 @@
   //
   pageFrame.origin.y = 0;
   //
-  NSLog(@"frameForPageAtIndex x=%f y=%f width=%f height=%f",pageFrame.origin.x, pageFrame.origin.y,pageFrame.size.width, pageFrame.size.height);
+  //NSLog(@"frameForPageAtIndex x=%f y=%f width=%f height=%f",pageFrame.origin.x, pageFrame.origin.y,pageFrame.size.width, pageFrame.size.height);
   return pageFrame;
 }
 
