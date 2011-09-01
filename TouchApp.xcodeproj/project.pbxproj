@@ -59,6 +59,7 @@
 		222952BC13ECFFE1001D174D /* harvest~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 222952B413ECFFE1001D174D /* harvest~iphone.png */; };
 		222952BD13ECFFE1001D174D /* newport-pylons~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 222952B513ECFFE1001D174D /* newport-pylons~ipad.png */; };
 		222952BE13ECFFE1001D174D /* newport-pylons~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 222952B613ECFFE1001D174D /* newport-pylons~iphone.png */; };
+		223545FA140F9340008940F4 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 223545F8140F9340008940F4 /* MainWindow-iPad.xib */; };
 		224FBC2714076B5E00749E42 /* RadioItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC2614076B5E00749E42 /* RadioItemViewController.m */; };
 		224FBC2914076B9C00749E42 /* RadioItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 224FBC2814076B9C00749E42 /* RadioItemViewController.xib */; };
 		224FBC2D1407F9DB00749E42 /* RecipeCategoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC2C1407F9DB00749E42 /* RecipeCategoryItem.m */; };
@@ -189,6 +190,7 @@
 		222952B413ECFFE1001D174D /* harvest~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "harvest~iphone.png"; sourceTree = "<group>"; };
 		222952B513ECFFE1001D174D /* newport-pylons~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newport-pylons~ipad.png"; sourceTree = "<group>"; };
 		222952B613ECFFE1001D174D /* newport-pylons~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newport-pylons~iphone.png"; sourceTree = "<group>"; };
+		223545F9140F9340008940F4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "iPad/en.lproj/MainWindow-iPad.xib"; sourceTree = "<group>"; };
 		224FBC2514076B5E00749E42 /* RadioItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioItemViewController.h; sourceTree = "<group>"; };
 		224FBC2614076B5E00749E42 /* RadioItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioItemViewController.m; sourceTree = "<group>"; };
 		224FBC2814076B9C00749E42 /* RadioItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadioItemViewController.xib; sourceTree = "<group>"; };
@@ -361,6 +363,7 @@
 		222951CC13EC496F001D174D /* TouchApp */ = {
 			isa = PBXGroup;
 			children = (
+				223545F7140F933E008940F4 /* iPad */,
 				226751FD140B4AE400726FAE /* photoscroller */,
 				22CB4C0813EE4A30008968D6 /* categories */,
 				22CB4B8A13EDD678008968D6 /* globals */,
@@ -490,6 +493,14 @@
 				222952B613ECFFE1001D174D /* newport-pylons~iphone.png */,
 			);
 			name = tableBanners;
+			sourceTree = "<group>";
+		};
+		223545F7140F933E008940F4 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				223545F8140F9340008940F4 /* MainWindow-iPad.xib */,
+			);
+			name = iPad;
 			sourceTree = "<group>";
 		};
 		224FBBEB14076A5A00749E42 /* AudioCenter */ = {
@@ -903,6 +914,7 @@
 				224FBC81140980B000749E42 /* RecipeBookViewController.xib in Resources */,
 				224FBC941409988200749E42 /* ImageGalleryViewController.xib in Resources */,
 				22675208140B4DDE00726FAE /* PhotoViewController.xib in Resources */,
+				223545FA140F9340008940F4 /* MainWindow-iPad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -984,6 +996,14 @@
 			name = MainWindow.xib;
 			sourceTree = "<group>";
 		};
+		223545F8140F9340008940F4 /* MainWindow-iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				223545F9140F9340008940F4 /* en */,
+			);
+			name = "MainWindow-iPad.xib";
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -1040,12 +1060,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Tim Medcalf (LQ9PDTLE6X)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tim Medcalf (LQ9PDTLE6X)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TouchApp/TouchApp-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "TouchApp/TouchApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "904DE46C-257A-417E-B2F0-E9180BBBFD83";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "904DE46C-257A-417E-B2F0-E9180BBBFD83";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1054,12 +1080,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Tim Medcalf (LQ9PDTLE6X)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tim Medcalf (LQ9PDTLE6X)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TouchApp/TouchApp-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "TouchApp/TouchApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "904DE46C-257A-417E-B2F0-E9180BBBFD83";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "904DE46C-257A-417E-B2F0-E9180BBBFD83";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
