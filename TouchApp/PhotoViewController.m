@@ -61,6 +61,8 @@
 - (CGSize)forceSizeLandscape:(CGSize)size;
 - (NSInteger)centerPhotoIndex;
 - (void)setViewState;
+- (void)skipToPage:(NSUInteger)page;
+- (CGPoint)offsetForPageAtIndex:(NSUInteger)index;
 @end
 
 @implementation PhotoViewController
@@ -123,12 +125,13 @@
   self.pagingScrollView.showsHorizontalScrollIndicator=NO;
   self.pagingScrollView.backgroundColor = self.view.backgroundColor;
   self.pagingScrollView.contentSize = [self contentSizeForPagingScrollView];
-  //[self.pagingScrollView zoomToRect:CGRectMake((self.initialIndex * self.pagingScrollView.frame.size.width),0,self.pagingScrollView.frame.size.width,self.pagingScrollView.frame.size.height) animated:NO];
     
   recycledPages = [[NSMutableSet alloc] init];
   visiblePages  = [[NSMutableSet alloc] init];
+  [self skipToPage:self.initialIndex];
   [self tilePages];
   [self setViewState];
+
 }
 
 - (void)savePhoto {
@@ -221,12 +224,6 @@
   firstNeededPageIndex = MAX(firstNeededPageIndex, 0);
   lastNeededPageIndex  = MIN(lastNeededPageIndex, [self imageCount] - 1);
   
-  if (self.initialIndex >= 0)
-  {
-    firstNeededPageIndex = self.initialIndex;
-    lastNeededPageIndex = self.initialIndex;
-    self.initialIndex = -1;
-  }
   // Recycle no-longer-visible pages 
   for (ImageScrollView *page in visiblePages)
   {
@@ -430,6 +427,18 @@
 	return floor((self.pagingScrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
 }
 
+-(void)skipToPage:(NSUInteger)page;
+{ 
+  [self.pagingScrollView setContentOffset:[self offsetForPageAtIndex:page] animated:NO];  
+}
+
+- (CGPoint)offsetForPageAtIndex:(NSUInteger)index
+{                                                                                      
+  CGPoint offset;                                                                                                                                        
+  offset.x = (self.pagingScrollView.frame.size.width * index);                                                                                                 
+  offset.y = 0;                                                                                                                                   
+  return offset;                                                                                                                                     
+}
 
 
 @end
