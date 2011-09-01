@@ -80,6 +80,7 @@
     // Custom initialization
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleBarsNotification:) name:@"TJMPhotoViewToggleBars" object:nil];
     self.hidesBottomBarWhenPushed = YES;
+    self.initialIndex = 0;
   }
   return self;
 }
@@ -103,12 +104,10 @@
 	self.view.backgroundColor = [UIColor blackColor];
   self.hidesBottomBarWhenPushed = YES;
 
-  //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
   [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
   
 	self.wantsFullScreenLayout = YES;
 	
-  //self.pagingScrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
   self.pagingScrollView.delegate=self;
   self.pagingScrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
   self.pagingScrollView.multipleTouchEnabled=YES;
@@ -124,6 +123,7 @@
   self.pagingScrollView.showsHorizontalScrollIndicator=NO;
   self.pagingScrollView.backgroundColor = self.view.backgroundColor;
   self.pagingScrollView.contentSize = [self contentSizeForPagingScrollView];
+  //[self.pagingScrollView zoomToRect:CGRectMake((self.initialIndex * self.pagingScrollView.frame.size.width),0,self.pagingScrollView.frame.size.width,self.pagingScrollView.frame.size.height) animated:NO];
     
   recycledPages = [[NSMutableSet alloc] init];
   visiblePages  = [[NSMutableSet alloc] init];
@@ -148,8 +148,8 @@
   if ([self.imageList.items count] > 1) 
   {
     self.customNavigationItem.title = [NSString stringWithFormat:@"%i of %i", [self centerPhotoIndex]+1, [self.imageList.items count]];
-  }   
-  else 
+  }
+  else
   {
     self.title = @"";
   }
@@ -213,34 +213,46 @@
 
 - (void)tilePages 
 {
-    // Calculate which pages are visible
-    CGRect visibleBounds = self.pagingScrollView.bounds;
-    int firstNeededPageIndex = floorf(CGRectGetMinX(visibleBounds) / CGRectGetWidth(visibleBounds));
-    int lastNeededPageIndex  = floorf((CGRectGetMaxX(visibleBounds)-1) / CGRectGetWidth(visibleBounds));
-    firstNeededPageIndex = MAX(firstNeededPageIndex, 0);
-    lastNeededPageIndex  = MIN(lastNeededPageIndex, [self imageCount] - 1);
-    
-    // Recycle no-longer-visible pages 
-    for (ImageScrollView *page in visiblePages) {
-        if (page.index < firstNeededPageIndex || page.index > lastNeededPageIndex) {
-            [recycledPages addObject:page];
-            [page removeFromSuperview];
-        }
+
+  // Calculate which pages are visible
+  CGRect visibleBounds = self.pagingScrollView.bounds;
+  int firstNeededPageIndex = floorf(CGRectGetMinX(visibleBounds) / CGRectGetWidth(visibleBounds));
+  int lastNeededPageIndex  = floorf((CGRectGetMaxX(visibleBounds)-1) / CGRectGetWidth(visibleBounds));
+  firstNeededPageIndex = MAX(firstNeededPageIndex, 0);
+  lastNeededPageIndex  = MIN(lastNeededPageIndex, [self imageCount] - 1);
+  
+  if (self.initialIndex >= 0)
+  {
+    firstNeededPageIndex = self.initialIndex;
+    lastNeededPageIndex = self.initialIndex;
+    self.initialIndex = -1;
+  }
+  // Recycle no-longer-visible pages 
+  for (ImageScrollView *page in visiblePages)
+  {
+    if (page.index < firstNeededPageIndex || page.index > lastNeededPageIndex)
+    {
+      [recycledPages addObject:page];
+      [page removeFromSuperview];
     }
-    [visiblePages minusSet:recycledPages];
-    
-    // add missing pages
-    for (int index = firstNeededPageIndex; index <= lastNeededPageIndex; index++) {
-        if (![self isDisplayingPageForIndex:index]) {
-            ImageScrollView *page = [self dequeueRecycledPage];
-            if (page == nil) {
-                page = [[[ImageScrollView alloc] init] autorelease];
-            }
-            [self configurePage:page forIndex:index];
-            [self.pagingScrollView addSubview:page];
-            [visiblePages addObject:page];
-        }
-    }  
+  }
+  [visiblePages minusSet:recycledPages];
+  
+  // add missing pages
+  for (int index = firstNeededPageIndex; index <= lastNeededPageIndex; index++)
+  {
+    if (![self isDisplayingPageForIndex:index])
+    {
+      ImageScrollView *page = [self dequeueRecycledPage];
+      if (page == nil)
+      {
+        page = [[[ImageScrollView alloc] init] autorelease];
+      }
+      [self configurePage:page forIndex:index];
+      [self.pagingScrollView addSubview:page];
+      [visiblePages addObject:page];
+    }
+  }
 }
 
 - (ImageScrollView *)dequeueRecycledPage
