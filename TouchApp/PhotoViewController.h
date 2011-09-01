@@ -69,7 +69,7 @@
 - (void)configurePage:(ImageScrollView *)page forIndex:(NSUInteger)index;
 - (BOOL)isDisplayingPageForIndex:(NSUInteger)index;
 
-- (CGRect)frameForPagingScrollView;
+//- (CGRect)frameForPagingScrollView;
 - (CGRect)frameForPageAtIndex:(NSUInteger)index;
 - (CGSize)contentSizeForPagingScrollView;
 
@@ -77,8 +77,6 @@
 - (ImageScrollView *)dequeueRecycledPage;
 
 - (NSUInteger)imageCount;
-//- (NSString *)imageNameAtIndex:(NSUInteger)index;
-- (CGSize)imageSizeAtIndex:(NSUInteger)index;
 - (ImageItem *)imageAtIndex:(NSUInteger)index;
 
 @end

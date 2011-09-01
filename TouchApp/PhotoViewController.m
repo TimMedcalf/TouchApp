@@ -51,6 +51,14 @@
 #import "ImageItem.h"
 #import "TJMImageResourceManager.h"
 
+@interface PhotoViewController ()
+
+//methods to force view dimensions to landscape
+//useful because we know we're in landscape but the device
+//won't have updated some stuff by the time we need it.
+- (CGRect)forceRectLandscape:(CGRect)rect;
+- (CGSize)forceSizeLandscape:(CGSize)size;
+@end
 
 @implementation PhotoViewController
 
@@ -216,12 +224,6 @@
     page.index = index;
     page.frame = [self frameForPageAtIndex:index];
     
-    // Use tiled images
-    //[page displayTiledImageNamed:[self imageNameAtIndex:index]
-    //                        size:[self imageSizeAtIndex:index]];
-    
-    // To use full images instead of tiled images, replace the "displayTiledImageNamed:" call
-    // above by the following line:
     [page displayImage:[self imageAtIndex:index]];
 }
 
@@ -284,39 +286,22 @@
 //#define PADDING  10
 #define PADDING  0
 
-- (CGRect)frameForPagingScrollView {
-  //need to detect this automagically...
-  CGRect frame = CGRectMake(0,0,480,320);
-    frame.origin.x -= PADDING;
-    frame.size.width += (2 * PADDING);
-  //
-//  frame.origin.y = 0;
-  //
-  NSLog(@"frameForPagingScrollView x=%f y=%f width=%f height=%f",frame.origin.x, frame.origin.y,frame.size.width, frame.size.height);
-    return frame;
-}
 
 - (CGRect)frameForPageAtIndex:(NSUInteger)index {
-    // We have to use our paging scroll view's bounds, not frame, to calculate the page placement. When the device is in
-    // landscape orientation, the frame will still be in portrait because the pagingScrollView is the root view controller's
-    // view, so its frame is in window coordinate space, which is never rotated. Its bounds, however, will be in landscape
-    // because it has a rotation transform applied.
-  CGRect bounds = CGRectMake(0,0,480,320); //self.pagingScrollView.bounds;
-    CGRect pageFrame = bounds;
-    pageFrame.size.width -= (2 * PADDING);
-    pageFrame.origin.x = (480 * index) + PADDING;
+  CGRect pageFrame = [self forceRectLandscape:self.pagingScrollView.bounds];
+  pageFrame.size.width -= (2 * PADDING);
+  pageFrame.origin.x = (pageFrame.size.width * index) + PADDING;
   //
   pageFrame.origin.y = 0;
   //
-    NSLog(@"frameForPageAtIndex x=%f y=%f width=%f height=%f",pageFrame.origin.x, pageFrame.origin.y,pageFrame.size.width, pageFrame.size.height);
-    return pageFrame;
+  NSLog(@"frameForPageAtIndex x=%f y=%f width=%f height=%f",pageFrame.origin.x, pageFrame.origin.y,pageFrame.size.width, pageFrame.size.height);
+  return pageFrame;
 }
 
 - (CGSize)contentSizeForPagingScrollView {
-    // We have to use the paging scroll view's bounds to calculate the contentSize, for the same reason outlined above.
-    //CGRect bounds = self.pagingScrollView.bounds;
+  CGRect bounds = [self forceRectLandscape:self.pagingScrollView.bounds];
   //NSLog(@"content size width=%f height=%f",bounds.size.width, bounds.size.height);
-    return CGSizeMake(480 * [self imageCount], 320);
+  return CGSizeMake(bounds.size.width * [self imageCount], bounds.size.height);
 }
 
 
@@ -325,27 +310,28 @@
 
 
 - (ImageItem *)imageAtIndex:(NSUInteger)index {
-    // use "imageWithContentsOfFile:" instead of "imageNamed:" here to avoid caching our images
-    //NSString *imageName = [self imageNameAtIndex:index];
-    //NSString *path = [[NSBundle mainBundle] pathForResource:imageName ofType:@"jpg"];
-    //return [UIImage imageWithContentsOfFile:path];  
   return [self.imageList.items objectAtIndex:index];
 }
 
-- (CGSize)imageSizeAtIndex:(NSUInteger)index {
-    //CGSize size = CGSizeZero;
-//    if (index < [self imageCount]) {
-//        NSDictionary *data = [[self imageData] objectAtIndex:index];
-//        size.width = [[data valueForKey:@"width"] floatValue];
-//        size.height = [[data valueForKey:@"height"] floatValue];
-//    }
-  //tmpHack!!!
-  return CGSizeMake(480,320);
-}
 
 - (NSUInteger)imageCount {
   return [self.imageList.items count];
 }
+
+- (CGRect)forceRectLandscape:(CGRect)rect
+{
+  CGFloat width = MAX(rect.size.width, rect.size.height);
+  CGFloat height = MIN(rect.size.width, rect.size.height);
+  return CGRectMake(rect.origin.x, rect.origin.y,width,height);
+}
+
+- (CGSize)forceSizeLandscape:(CGSize)size
+{
+  CGFloat width = MAX(size.width, size.height);
+  CGFloat height = MIN(size.width, size.height);
+  return CGSizeMake(width, height);
+}
+
 
 
 @end

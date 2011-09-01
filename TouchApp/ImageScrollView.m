@@ -130,7 +130,8 @@
 
 - (void)setMaxMinZoomScalesForCurrentBounds
 {
-  CGSize boundsSize = CGSizeMake(480,320);//self.bounds.size;
+//  CGSize boundsSize = CGSizeMake(480,320);//self.bounds.size;
+  CGSize boundsSize = self.bounds.size;
   CGSize imageSize = imageView.imageView.image.size;
     
     // calculate min/max zoomscale
