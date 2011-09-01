@@ -64,6 +64,8 @@
 
 @property (nonatomic, retain) ImageList *imageList;
 @property (nonatomic, assign) NSInteger initialIndex;
+@property (nonatomic, retain) IBOutlet UINavigationBar *customNavigationBar;
+@property (nonatomic, retain) IBOutlet UINavigationItem *customNavigationItem;
 @property (nonatomic, retain) IBOutlet UIScrollView *pagingScrollView;
 
 - (void)configurePage:(ImageScrollView *)page forIndex:(NSUInteger)index;

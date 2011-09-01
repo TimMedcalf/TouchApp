@@ -363,7 +363,6 @@
 		222951CC13EC496F001D174D /* TouchApp */ = {
 			isa = PBXGroup;
 			children = (
-				223545F7140F933E008940F4 /* iPad */,
 				226751FD140B4AE400726FAE /* photoscroller */,
 				22CB4C0813EE4A30008968D6 /* categories */,
 				22CB4B8A13EDD678008968D6 /* globals */,
@@ -495,14 +494,6 @@
 			name = tableBanners;
 			sourceTree = "<group>";
 		};
-		223545F7140F933E008940F4 /* iPad */ = {
-			isa = PBXGroup;
-			children = (
-				223545F8140F9340008940F4 /* MainWindow-iPad.xib */,
-			);
-			name = iPad;
-			sourceTree = "<group>";
-		};
 		224FBBEB14076A5A00749E42 /* AudioCenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -594,6 +585,7 @@
 				222951D513EC496F001D174D /* TouchAppAppDelegate.h */,
 				222951D613EC496F001D174D /* TouchAppAppDelegate.m */,
 				222951D813EC496F001D174D /* MainWindow.xib */,
+				223545F8140F9340008940F4 /* MainWindow-iPad.xib */,
 				22CB4B8B13EDD69C008968D6 /* SynthesizeSingleton.h */,
 				22CB4B8713EDD640008968D6 /* AppManager.h */,
 				22CB4B8813EDD641008968D6 /* AppManager.m */,

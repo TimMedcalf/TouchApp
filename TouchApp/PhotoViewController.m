@@ -58,6 +58,8 @@
 //won't have updated some stuff by the time we need it.
 - (CGRect)forceRectLandscape:(CGRect)rect;
 - (CGSize)forceSizeLandscape:(CGSize)size;
+- (NSInteger)centerPhotoIndex;
+- (void)setViewState;
 @end
 
 @implementation PhotoViewController
@@ -65,6 +67,8 @@
 @synthesize imageList = _imageList;
 @synthesize initialIndex = initialIndex;
 @synthesize pagingScrollView = _pagingScrollView;
+@synthesize customNavigationBar = _customNavigationBar;
+@synthesize customNavigationItem = _customNavigationItem;
 
 #pragma mark -
 #pragma mark View loading and unloading
@@ -88,13 +92,15 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   
-  self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(savePhoto)] autorelease]; 
+  self.customNavigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(savePhoto)] autorelease];
+  self.customNavigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Images" style:UIBarButtonItemStylePlain target:self action:@selector(goBack)] autorelease];
+  self.customNavigationBar.tintColor = nil;
+  self.customNavigationBar.barStyle  = UIBarStyleBlack;
+  self.customNavigationBar.translucent = YES;
 	
 	self.view.backgroundColor = [UIColor blackColor];
   self.hidesBottomBarWhenPushed = YES;
-  self.navigationController.navigationBar.tintColor = nil;
-  self.navigationController.navigationBar.barStyle  = UIBarStyleBlack;
-  self.navigationController.navigationBar.translucent = YES;
+
   //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
   [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
   
@@ -120,6 +126,7 @@
   recycledPages = [[NSMutableSet alloc] init];
   visiblePages  = [[NSMutableSet alloc] init];
   [self tilePages];
+  [self setViewState];
 }
 
 - (void)savePhoto {
@@ -130,9 +137,24 @@
                                 destructiveButtonTitle:@"Save to Camera Roll" 
                                 otherButtonTitles:nil]; 
   [actionSheet showInView:self.view]; 
-  [actionSheet release]; 
+  [actionSheet release];
 	
 	
+}
+- (void)setViewState
+{
+  if ([self.imageList.items count] > 1) 
+  {
+    self.customNavigationItem.title = [NSString stringWithFormat:@"%i of %i", [self centerPhotoIndex]+1, [self.imageList.items count]];
+  }   
+  else 
+  {
+    self.title = @"";
+  }
+}
+
+- (void)goBack {
+  [self dismissModalViewControllerAnimated:YES];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
@@ -147,8 +169,9 @@
 - (void)viewDidUnload
 {
   [super viewDidUnload];
-  [_pagingScrollView release];
-  _pagingScrollView = nil;
+  [self setPagingScrollView:nil];
+  [self setCustomNavigationItem:nil];
+  [self setCustomNavigationBar:nil];
   [recycledPages release];
   recycledPages = nil;
   [visiblePages release];
@@ -158,6 +181,8 @@
 - (void)dealloc
 {
   [_pagingScrollView release];
+  [_customNavigationItem release];
+  [_customNavigationBar release];
   [_imageList release];
   [super dealloc];
 }
@@ -234,8 +259,42 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    [self tilePages];
+  [self tilePages];
+  [self setViewState];
+  
+//	NSInteger _index = [self centerPhotoIndex];
+//	if (_index >= [self.photoSource numberOfPhotos] || _index < 0) {
+//		return;
+//	}
+//	
+//	if (_pageIndex != _index && !_rotating) {
+//    
+//		[self setBarsHidden:YES animated:YES];
+//		_pageIndex = _index;
+//		[self setViewState];
+//		
+//		if (![scrollView isTracking]) {
+//			[self layoutScrollViewSubviews];
+//		}
+//		
+//	}
 }
+
+//- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+//	
+//	NSInteger _index = [self centerPhotoIndex];
+//	if (_index >= [self.photoSource numberOfPhotos] || _index < 0) {
+//		return;
+//	}
+//	
+//	[self moveToPhotoAtIndex:_index animated:YES];
+//  
+//}
+//
+//- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView{
+//	[self layoutScrollViewSubviews];
+//}
+
 
 #pragma mark -
 #pragma mark View controller rotation methods
@@ -331,6 +390,12 @@
   CGFloat width = MAX(size.width, size.height);
   CGFloat height = MIN(size.width, size.height);
   return CGSizeMake(width, height);
+}
+
+- (NSInteger)centerPhotoIndex
+{	
+	CGFloat pageWidth = self.pagingScrollView.frame.size.width;
+	return floor((self.pagingScrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
 }
 
 
