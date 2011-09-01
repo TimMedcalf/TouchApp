@@ -8,7 +8,7 @@
 
 #import "RecipeBookViewController.h"
 #import "RecipeItem.h"
-#import "WebsiteViewController.h"
+#import "RecipeItemViewController.h"
 
 static NSInteger CellTitleTag = 50;
 static NSInteger CellSubTitleTag = 51;
@@ -262,8 +262,9 @@ static NSInteger CellSubTitleTag = 51;
   if (indexPath.section == 0) return;
   
   RecipeItem *curItem = [self.recipeList.items objectAtIndex:indexPath.row];
-  WebsiteViewController *controller = [[WebsiteViewController alloc] initWithNibName:@"WebsiteViewController" bundle:nil];
+  RecipeItemViewController *controller = [[RecipeItemViewController alloc] initWithNibName:@"RecipeItemViewController" bundle:nil];
   controller.HTMLString = curItem.htmlForWebView;
+  controller.recipeItem = curItem;
   controller.dontHideNavigationBar = YES;
   [self.navigationController pushViewController:controller animated:YES];
   [controller release];

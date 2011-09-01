@@ -57,6 +57,8 @@
 		222952BD13ECFFE1001D174D /* newport-pylons~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 222952B513ECFFE1001D174D /* newport-pylons~ipad.png */; };
 		222952BE13ECFFE1001D174D /* newport-pylons~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 222952B613ECFFE1001D174D /* newport-pylons~iphone.png */; };
 		223545FA140F9340008940F4 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 223545F8140F9340008940F4 /* MainWindow-iPad.xib */; };
+		223595D9140FE2C3004A08C8 /* RecipeItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 223595D7140FE2C3004A08C8 /* RecipeItemViewController.m */; };
+		223595DA140FE2C3004A08C8 /* RecipeItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 223595D8140FE2C3004A08C8 /* RecipeItemViewController.xib */; };
 		224FBC2714076B5E00749E42 /* RadioItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC2614076B5E00749E42 /* RadioItemViewController.m */; };
 		224FBC2914076B9C00749E42 /* RadioItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 224FBC2814076B9C00749E42 /* RadioItemViewController.xib */; };
 		224FBC2D1407F9DB00749E42 /* RecipeCategoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC2C1407F9DB00749E42 /* RecipeCategoryItem.m */; };
@@ -188,6 +190,9 @@
 		222952B513ECFFE1001D174D /* newport-pylons~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newport-pylons~ipad.png"; sourceTree = "<group>"; };
 		222952B613ECFFE1001D174D /* newport-pylons~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newport-pylons~iphone.png"; sourceTree = "<group>"; };
 		223545F9140F9340008940F4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "iPad/en.lproj/MainWindow-iPad.xib"; sourceTree = "<group>"; };
+		223595D6140FE2C3004A08C8 /* RecipeItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeItemViewController.h; sourceTree = "<group>"; };
+		223595D7140FE2C3004A08C8 /* RecipeItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeItemViewController.m; sourceTree = "<group>"; };
+		223595D8140FE2C3004A08C8 /* RecipeItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecipeItemViewController.xib; sourceTree = "<group>"; };
 		224FBC2514076B5E00749E42 /* RadioItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioItemViewController.h; sourceTree = "<group>"; };
 		224FBC2614076B5E00749E42 /* RadioItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioItemViewController.m; sourceTree = "<group>"; };
 		224FBC2814076B9C00749E42 /* RadioItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadioItemViewController.xib; sourceTree = "<group>"; };
@@ -527,6 +532,9 @@
 				224FBC321407FE3700749E42 /* RecipeCategoryViewController.h */,
 				224FBC331407FE3700749E42 /* RecipeCategoryViewController.m */,
 				224FBC341407FE3700749E42 /* RecipeCategoryViewController.xib */,
+				223595D6140FE2C3004A08C8 /* RecipeItemViewController.h */,
+				223595D7140FE2C3004A08C8 /* RecipeItemViewController.m */,
+				223595D8140FE2C3004A08C8 /* RecipeItemViewController.xib */,
 			);
 			name = recipes;
 			sourceTree = "<group>";
@@ -907,6 +915,7 @@
 				22A3E4A2140FC6AF00CF2B0B /* Icon.png in Resources */,
 				22A3E4A4140FC6BD00CF2B0B /* Icon@2x.png in Resources */,
 				22A3E4A6140FC6CA00CF2B0B /* Icon-72.png in Resources */,
+				223595DA140FE2C3004A08C8 /* RecipeItemViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -966,6 +975,7 @@
 				224FBC931409988200749E42 /* ImageGalleryViewController.m in Sources */,
 				22675204140B4AFB00726FAE /* ImageScrollView.m in Sources */,
 				22675205140B4AFB00726FAE /* PhotoViewController.m in Sources */,
+				223595D9140FE2C3004A08C8 /* RecipeItemViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
