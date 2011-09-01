@@ -95,7 +95,8 @@
   self.navigationController.navigationBar.tintColor = nil;
   self.navigationController.navigationBar.barStyle  = UIBarStyleBlack;
   self.navigationController.navigationBar.translucent = YES;
-  [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
+  //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
+  [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
   
 	self.wantsFullScreenLayout = YES;
 	

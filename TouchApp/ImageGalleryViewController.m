@@ -121,7 +121,8 @@ static NSInteger iPadThumbnailRowCount = 8;
 	nb.tintColor = [UIColor colorWithRed:195/255.0 green:54/255.0 blue:37/255.0 alpha:1]; 
   nb.layer.contents = (id)[UIImage imageNamed:@"images-nav"].CGImage;
 
-  [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
+  //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
+  [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
 }
 
 - (void)viewDidAppear:(BOOL)animated
