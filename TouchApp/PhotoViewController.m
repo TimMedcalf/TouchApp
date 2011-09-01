@@ -50,6 +50,7 @@
 #import "ImageList.h"
 #import "ImageItem.h"
 #import "TJMImageResourceManager.h"
+#import "TJMImageResource.h"
 
 @interface PhotoViewController ()
 
@@ -77,8 +78,9 @@
   
   if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
     // Custom initialization
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleBarsNotification:) name:@"TJMPhotoViewToggleBars" object:nil];
+    self.hidesBottomBarWhenPushed = YES;
   }
-  self.hidesBottomBarWhenPushed = YES;
   return self;
 }
 
@@ -151,6 +153,20 @@
   {
     self.title = @"";
   }
+  if ([self.pagingScrollView isTracking])
+  {
+    if (![self.customNavigationBar isHidden]) self.customNavigationBar.hidden = YES;
+  }
+}
+
+- (void)hideBars;
+{
+  self.customNavigationBar.hidden = YES;
+}
+
+- (void)toggleBarsNotification:(NSNotification*)notification
+{
+  self.customNavigationBar.hidden = !self.customNavigationBar.hidden;
 }
 
 - (void)goBack {
@@ -158,9 +174,12 @@
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
-	if (buttonIndex != [actionSheet cancelButtonIndex]) { 
-    //UIImage *image = current.image;
-    //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+	if (buttonIndex != [actionSheet cancelButtonIndex]) 
+  { 
+    ImageItem *img = [self.imageList.items objectAtIndex:[self centerPhotoIndex]];
+    TJMImageResource *tmpRes = [[TJMImageResourceManager instance] resourceForURL:img.imageURL];
+    UIImage *image = [tmpRes getImage];
+    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
   } 
 }
 
@@ -180,6 +199,7 @@
 
 - (void)dealloc
 {
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
   [_pagingScrollView release];
   [_customNavigationItem release];
   [_customNavigationBar release];

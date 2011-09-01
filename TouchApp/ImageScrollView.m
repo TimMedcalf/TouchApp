@@ -209,4 +209,27 @@
     self.contentOffset = offset;
 }
 
+- (void)toggleBars{
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"TJMPhotoViewToggleBars" object:nil];
+}
+
+#pragma mark -
+#pragma mark Touches
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+	[super touchesBegan:touches withEvent:event];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+	[super touchesEnded:touches withEvent:event];
+	UITouch *touch = [touches anyObject];
+	
+	if (touch.tapCount == 1) {
+		[self performSelector:@selector(toggleBars) withObject:nil afterDelay:.2];
+	} else if (touch.tapCount == 2) {
+		[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(toggleBars) object:nil];
+		//[self zoomRectWithCenter:[[touches anyObject] locationInView:self]];
+	}
+}
+
 @end
