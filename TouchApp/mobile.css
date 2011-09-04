@@ -3,7 +3,7 @@ font: 12px/15px sans-serif;
 padding: 3px;
 color: #000;
 background: #FFFFFF;
-margin: 0;
+margin: 0 5px 0 5px;
 }
 
 .bodycopy, p {
@@ -12,6 +12,8 @@ margin: 0;
 
 p#title {
 	font-family: Helvetica, Arial, sans-serif;
+    font-size: 15;
+    font-weight: 100;
 }
 
 * {
@@ -32,7 +34,7 @@ font-weight: normal;
 }
 
 img { 
-max-width: 305px;
+max-width: 285px;
 }
 
 div {
