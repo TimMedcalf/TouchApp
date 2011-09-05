@@ -150,13 +150,13 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
       NSLog(@"Redownloading");
       [self clearCachedFiles];
       [self cacheImage];
-      return [UIImage imageNamed:@"Icon.png"];
+      return [UIImage imageNamed:@"placeholder.png"];
     }
   }
   else
   {
     [self cacheImage];
-    return [UIImage imageNamed:@"Icon.png"];
+    return [UIImage imageNamed:@"placeholder.png"];
   }
 }
 
@@ -192,7 +192,7 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
   else
   {
     [self cacheImage];
-    return [UIImage imageThumbnailWithImage:[UIImage imageNamed:@"Icon.png"] ofSize:size];
+    return [UIImage imageThumbnailWithImage:[UIImage imageNamed:@"placeholder.png"] ofSize:size];
   }
 }
 
