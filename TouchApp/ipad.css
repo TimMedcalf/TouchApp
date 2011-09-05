@@ -1,37 +1,54 @@
-html, body {
-font: 12px/15px sans-serif;
-padding: 3px;
-color: #000;
-background: #FFFFFF;
-margin: 8px 5px 0 5px;
+* {
+float: none;
+margin: 0;
+padding: 0;
 }
 
-hr { 
-    color: gray;
-    margin: 0 0 18px 0;
-    
+html, body {
+font: 12px/15px sans-serif;
+color: #000;
+background: #FFFFFF;
+}
+
+
+p {margin: 0px 25px 12px 25px; padding: 0;}
+
+
+p.bodycopy {
+    border-top: 1px #e0e0e0 solid;
+    margin: 0;
+    padding-top: 23px;
 }
 
 .bodycopy, p {
 	font-family: "Georgia", "Times New Roman", serif;
 }
 
-#pubdate {
+#pubdate, #byline {
     font-family: Helvetica, Arial, sans-serif;
     font-size: 10;
     font-weight: 700;
     color: gray;
 }
 
-p#title {
+#headerwrapper {display:table; height:90px;}
+#headercell {display:table-cell; vertical-align:middle;}
+
+#title {
 	font-family: Helvetica, Arial, sans-serif;
     font-size: 15;
     font-weight: 100;
-    margin: 0 0 18px 0;
+    margin: 21px 25px 21px 25px;
+    padding: 0;
 }
 
-* {
-float: none;
+.floatright {
+	float: right;
+}
+
+.floatright img {
+	margin: 0 0 2px 7px;
+	padding: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -39,7 +56,7 @@ font-weight: normal;
 }
 
 img { 
-max-width: 285px;
+max-width: 269px;
 }
 
 div {
@@ -81,12 +98,13 @@ padding: 0;
 		body{
 		  -webkit-text-size-adjust:none;
 		  font-family:Helvetica, Arial, Verdana, sans-serif;
-		  padding:5px;
+		  margin: 0;
+          padding: 0;
 		}
 	
 		li {
 		margin: 0;
-		padding: -5px;
-		}
+		padding: 0;		
+        }
 
 }

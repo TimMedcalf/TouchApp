@@ -75,8 +75,7 @@ NSString *const XML_PubDate = @"pubDate";
   return [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width\" />"
 	"<link rel=\"stylesheet\" media=\"only screen and (max-device-width: 480px)\" href=\"mobile.css\" />"
 	"<link rel=\"stylesheet\" media=\"only screen and (min-device-width: 481px) and (max-device-width: 1024px)\" href=\"ipad.css\" /></head>"
-	"<body><p id='title'><strong>%@</strong><br /><span id='pubdate'>%@</span><br /></p>"
-    "<hr />"
+	"<body><div id='headerwrapper'><div id='headercell'><div id='title'><strong>%@</strong><br /><span id='pubdate'>%@</span></div></div></div>"
     "<p class='bodycopy'>%@</p></body></html>", self.title,self.pubDate,self.description];
 }
 @end
