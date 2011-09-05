@@ -33,6 +33,7 @@ SINGLETON_INTERFACE_FOR(TJMAudioCenter)
 
 - (void)playURL:(NSURL *)url;
 - (void)pauseURL:(NSURL *)url;
+- (void)togglePlayPause;
 
 -(TJMAudioStatus)statusCheckForURL:(NSURL*)url;
 

@@ -225,6 +225,14 @@ SINGLETON_IMPLEMENTATION_FOR(TJMAudioCenter)
   }
 }
 
+- (void)togglePlayPause
+{
+  if (self.player.rate < 1)
+    self.player.rate = 1.0;
+  else
+    self.player.rate = 0.0;
+}
+
 
 
 

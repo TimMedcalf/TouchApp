@@ -62,12 +62,27 @@
 	}	
 }
 
-- (void)viewDidLoad {
-	//Touch320AppDelegate *appDelegate;
-	//appDelegate = (Touch320AppDelegate*)[UIApplication sharedApplication].delegate;
-	
+-(void)viewDidAppear:(BOOL)animated
+{
+  [super viewDidAppear:animated];
+  [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+  [self becomeFirstResponder];
+}
 
-	
+- (BOOL) canBecomeFirstResponder {
+  return YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+  [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
+  [self resignFirstResponder];
+  NSLog(@"Resign first responder");
+  [super viewWillDisappear:animated];
+}
+
+- (void)viewDidLoad
+{
+  [super viewDidLoad];  
   CGRect adjustedFrame = self.view.frame;
   if (!self.tabBarController.tabBar.hidden) adjustedFrame.size.height -= self.tabBarController.tabBar.frame.size.height;
 
@@ -315,6 +330,31 @@
   UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Audio stream failed." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 	[alert show];
 	[alert autorelease];
+}
+
+- (void) remoteControlReceivedWithEvent: (UIEvent *) receivedEvent {
+  
+  if (receivedEvent.type == UIEventTypeRemoteControl) {
+    
+    switch (receivedEvent.subtype) {
+        
+      case UIEventSubtypeRemoteControlTogglePlayPause:
+        NSLog(@"Toggle");
+        [[TJMAudioCenter instance] togglePlayPause];
+        break;
+        
+      case UIEventSubtypeRemoteControlPreviousTrack:
+        //[self previousTrack: nil];
+        break;
+        
+      case UIEventSubtypeRemoteControlNextTrack:
+        //[self nextTrack: nil];
+        break;
+        
+      default:
+        break;
+    }
+  }
 }
 
 
