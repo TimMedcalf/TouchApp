@@ -3,18 +3,34 @@ font: 12px/15px sans-serif;
 padding: 3px;
 color: #000;
 background: #FFFFFF;
-margin: 0 5px 0 5px;
+margin: 8px 5px 0 5px;
+}
+
+hr { 
+    color: gray;
+    margin: 0 0 18px 0;
+    
 }
 
 .bodycopy, p {
 	font-family: "Georgia", "Times New Roman", serif;
 }
 
+#pubdate {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 10;
+    font-weight: 700;
+    color: gray;
+}
+
 p#title {
 	font-family: Helvetica, Arial, sans-serif;
     font-size: 15;
     font-weight: 100;
+    margin: 0 0 18px 0;
 }
+
+p {margin: 0 0 12px 0;}
 
 * {
 float: none;
@@ -35,6 +51,7 @@ font-weight: normal;
 
 img { 
 max-width: 285px;
+margin: 0 0 12px 0;
 }
 
 div {
