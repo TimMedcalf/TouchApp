@@ -8,6 +8,11 @@
 
 #import "TJMAudioCenter.h"
 
+NSString * const TJMAudioCenterIsPlaying = @"TJMAudioCenterIsPlaying";
+NSString * const TJMAudioCenterIsPaused = @"TJMAudioCenterIsPaused";
+NSString * const TJMAudioCenterDidFail = @"TJMAudioCenterDidFail";
+NSString * const TJMAudioCenterDidFinish = @"TJMAudioCenterDidFinish";
+
 NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
 
 @interface TJMAudioCenter ()

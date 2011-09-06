@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString * const TJMAudioCenterIsPlaying;
+extern NSString * const TJMAudioCenterIsPaused;
+extern NSString * const TJMAudioCenterDidFail;
+extern NSString * const TJMAudioCenterDidFinish;
+
 typedef enum
 {
   TJMAudioStatusUnknown,
