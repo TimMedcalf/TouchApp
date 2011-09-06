@@ -23,7 +23,6 @@ typedef enum
 
 @protocol TJMAudioCenterDelegate <NSObject>
 @optional
-//-(void)URLReadyToPlay:(NSURL *)url;
 -(void)URLIsPlaying:(NSURL *)url;
 -(void)URLIsPaused:(NSURL *)url;
 -(void)URLDidFail:(NSURL *)url;

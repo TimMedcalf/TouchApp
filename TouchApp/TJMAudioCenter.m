@@ -59,16 +59,16 @@ SINGLETON_IMPLEMENTATION_FOR(TJMAudioCenter)
 
 - (void)playURL:(NSURL*) url
 {
-  NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
+  //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
   //if url matches existing playing item, just makes sure it's playing
   if ([self.URL isEqual:url]) 
   {
     self.player.rate = 1;
-    NSLog(@"[%@ %@] Rate =1", [self class], NSStringFromSelector(_cmd));
+    //NSLog(@"[%@ %@] Rate =1", [self class], NSStringFromSelector(_cmd));
   }
   else
   {
-    NSLog(@"[%@ %@] New url", [self class], NSStringFromSelector(_cmd));
+    //NSLog(@"[%@ %@] New url", [self class], NSStringFromSelector(_cmd));
     //remove notifications
     [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:self.player.currentItem];
     [self.player removeObserver:self forKeyPath:@"rate"];
@@ -89,7 +89,7 @@ SINGLETON_IMPLEMENTATION_FOR(TJMAudioCenter)
 
 - (void)pauseURL:(NSURL *)url
 {
-  NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
+  //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
   if ([self.URL isEqual:url])
   {
     self.player.rate = 0;
@@ -113,7 +113,7 @@ SINGLETON_IMPLEMENTATION_FOR(TJMAudioCenter)
       }
       else if (self.playWhenLoaded && (self.player.currentItem.status == AVPlayerStatusReadyToPlay))
       {
-        NSLog(@"Audio Ready To PLay");
+        //NSLog(@"Audio Ready To PLay");
         self.player.rate = 1;
         self.playWhenLoaded = NO;
       }
@@ -156,7 +156,7 @@ SINGLETON_IMPLEMENTATION_FOR(TJMAudioCenter)
 #pragma mark notifications
 //reset the stream to the start and pause it when it reaches the end, ready to play again.
 - (void)playerItemDidReachEnd:(NSNotification *)notification {
-  NSLog(@"Reached end of stream...");
+  //NSLog(@"Reached end of stream...");
   if (self.player)
   {
     [self.player seekToTime:kCMTimeZero];
@@ -165,7 +165,7 @@ SINGLETON_IMPLEMENTATION_FOR(TJMAudioCenter)
 }
 
 - (void) setupAudioSession {
-    NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
+  //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
   AVAudioSession *mySession = [AVAudioSession sharedInstance];
   
   // Specify that this object is the delegate of the audio session, so that
@@ -179,7 +179,7 @@ SINGLETON_IMPLEMENTATION_FOR(TJMAudioCenter)
   
   if (audioSessionError != nil) {
     
-    NSLog (@"Error setting audio session category.");
+    //NSLog (@"Error setting audio session category.");
     return;
   }
   
@@ -190,7 +190,7 @@ SINGLETON_IMPLEMENTATION_FOR(TJMAudioCenter)
   
   if (audioSessionError != nil) {
     
-    NSLog (@"Error activating audio session during initial setup.");
+    //NSLog (@"Error activating audio session during initial setup.");
     return;
   }
   
@@ -199,13 +199,13 @@ SINGLETON_IMPLEMENTATION_FOR(TJMAudioCenter)
 #pragma mark audiosession delegate
 - (void)beginInterruption
 {
-  NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
+  //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
   self.interruptedDuringPlayback = (self.player.rate == 1);
 }
 
 - (void)endInterruptionWithFlags:(NSUInteger)flags
 {
-    NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
+  //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
   // Test if the interruption that has just ended was one from which this app 
   //    should resume playback.
   if (flags & AVAudioSessionInterruptionFlags_ShouldResume) {
@@ -214,17 +214,17 @@ SINGLETON_IMPLEMENTATION_FOR(TJMAudioCenter)
     if ([[AVAudioSession sharedInstance] setActive: YES
                                          error: &endInterruptionError])
     {
-      NSLog (@"Audio session reactivated after interruption.");
+      //NSLog (@"Audio session reactivated after interruption.");
     
       if (self.interruptedDuringPlayback) {
-        NSLog (@"Restarting playback.");
+        //NSLog (@"Restarting playback.");
         self.interruptedDuringPlayback = NO;
         self.player.rate = 1.0;
       }
     }
     else
     {
-      NSLog (@"Unable to reactivate the audio session after the interruption ended - %@",endInterruptionError);
+      //NSLog (@"Unable to reactivate the audio session after the interruption ended - %@",endInterruptionError);
       return;
     }
   }
