@@ -145,13 +145,7 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
     if (tmpImage)
       return tmpImage;
     else
-    {
-      //image corrupt? clear it and redownoad it...
-      NSLog(@"Redownloading");
-      [self clearCachedFiles];
-      [self cacheImage];
       return [UIImage imageNamed:@"placeholder.png"];
-    }
   }
   else
   {

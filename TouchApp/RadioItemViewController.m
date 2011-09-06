@@ -76,7 +76,6 @@
 - (void)viewWillDisappear:(BOOL)animated {
   [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
   [self resignFirstResponder];
-  NSLog(@"Resign first responder");
   [super viewWillDisappear:animated];
 }
 
