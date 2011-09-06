@@ -156,6 +156,18 @@ SINGLETON_IMPLEMENTATION_FOR(TJMAudioCenter)
   return TJMAudioStatusUnknown;
 }
 
+-(TJMAudioStatus)statusCheck
+{
+  if (self.player.currentItem.status == AVPlayerStatusReadyToPlay) 
+  {
+    return (self.player.rate == 1) ? TJMAudioStatusCurrentPlaying : TJMAudioStatusCurrentPaused;
+  }
+  if (self.player.currentItem.status == AVPlayerStatusFailed) return TJMAudioStatusCurrentFailed;
+  //otherwise
+  NSLog(@"Error - playingPlayer.currentItem status unknown - this shouldn't happen");  
+  return TJMAudioStatusUnknown;
+}
+
 #pragma mark notifications
 //reset the stream to the start and pause it when it reaches the end, ready to play again.
 - (void)playerItemDidReachEnd:(NSNotification *)notification {
