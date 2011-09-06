@@ -100,7 +100,7 @@ SINGLETON_IMPLEMENTATION_FOR(TJMAudioCenter)
                         change:(NSDictionary *)change context:(void *)context
 { 
   //if we aint got a delegate just return - we've got no-one to inform!
-  if (!self.delegate) return;
+  //if (!self.delegate) return;
   
   if ([keyPath isEqualToString:@"status"])
   {
@@ -109,7 +109,8 @@ SINGLETON_IMPLEMENTATION_FOR(TJMAudioCenter)
       if (self.player.currentItem.status == AVPlayerStatusFailed)
       {
         [self.delegate URLDidFail:self.URL];
-        NSLog(@"Audio Failed");
+        [[NSNotificationCenter defaultCenter] postNotificationName:TJMAudioCenterDidFail object:self];
+        //NSLog(@"Audio Failed");
       }
       else if (self.playWhenLoaded && (self.player.currentItem.status == AVPlayerStatusReadyToPlay))
       {
@@ -125,13 +126,15 @@ SINGLETON_IMPLEMENTATION_FOR(TJMAudioCenter)
     {
       if (self.player.rate == 0)
       {
-        NSLog(@"Audio Paused");
+        //NSLog(@"Audio Paused");
         [self.delegate URLIsPaused:self.URL];
+        [[NSNotificationCenter defaultCenter] postNotificationName:TJMAudioCenterIsPaused object:self];
       }
       else
       {
-        NSLog(@"Audio Playing");
+        //NSLog(@"Audio Playing");
         [self.delegate URLIsPlaying:self.URL];
+        [[NSNotificationCenter defaultCenter] postNotificationName:TJMAudioCenterIsPlaying object:self];
       }
     }
   }
