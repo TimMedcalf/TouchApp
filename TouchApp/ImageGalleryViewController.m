@@ -48,7 +48,7 @@ static NSInteger iPadThumbnailRowCount = 8;
 
 #pragma mark - View lifecycle
 
-
+  
 - (void)viewDidLoad
 {
   [super viewDidLoad];
