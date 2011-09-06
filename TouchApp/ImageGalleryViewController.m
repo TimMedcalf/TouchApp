@@ -48,9 +48,17 @@ static NSInteger iPadThumbnailRowCount = 8;
 
 #pragma mark - View lifecycle
 
+
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+  
+  UINavigationBar *nb = self.navigationController.navigationBar;
+  nb.barStyle  = UIBarStyleBlack;
+  nb.translucent = NO;
+	nb.tintColor = [UIColor colorWithRed:195/255.0 green:54/255.0 blue:37/255.0 alpha:1]; 
+  nb.layer.contents = (id)[UIImage imageNamed:@"images-nav"].CGImage;
   
   if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
   {
@@ -62,7 +70,6 @@ static NSInteger iPadThumbnailRowCount = 8;
     self.thumbnailWidth = iPhoneThumbnailWidth;
     self.thumbnailRowCount = iPhoneThumbnailRowCount;
   }
-    
   
   self.navigationItem.title= @"";
   
@@ -114,20 +121,31 @@ static NSInteger iPadThumbnailRowCount = 8;
 - (void)viewWillAppear:(BOOL)animated
 {
   [super viewWillAppear:animated];
+  
+//	UINavigationBar *nb = self.navigationController.navigationBar;
+//  nb.barStyle  = UIBarStyleBlack;
+//  nb.translucent = NO;
+//	nb.tintColor = [UIColor colorWithRed:195/255.0 green:54/255.0 blue:37/255.0 alpha:1]; 
+//  nb.layer.contents = (id)[UIImage imageNamed:@"images-nav"].CGImage;
 
+  //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
+  [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+  
 	UINavigationBar *nb = self.navigationController.navigationBar;
   nb.barStyle  = UIBarStyleBlack;
   nb.translucent = NO;
 	nb.tintColor = [UIColor colorWithRed:195/255.0 green:54/255.0 blue:37/255.0 alpha:1]; 
   nb.layer.contents = (id)[UIImage imageNamed:@"images-nav"].CGImage;
-
-  //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
-  [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
   [super viewDidAppear:animated];
+	UINavigationBar *nb = self.navigationController.navigationBar;
+  nb.barStyle  = UIBarStyleBlack;
+  nb.translucent = NO;
+	nb.tintColor = [UIColor colorWithRed:195/255.0 green:54/255.0 blue:37/255.0 alpha:1]; 
+  nb.layer.contents = (id)[UIImage imageNamed:@"images-nav"].CGImage;
   [self.imageList refreshFeed];
 }
 
