@@ -65,17 +65,17 @@
 -(void)viewDidAppear:(BOOL)animated
 {
   [super viewDidAppear:animated];
-  [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
-  [self becomeFirstResponder];
+  //[[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+  //[self becomeFirstResponder];
 }
 
-- (BOOL) canBecomeFirstResponder {
-  return YES;
-}
+//- (BOOL) canBecomeFirstResponder {
+//  return YES;
+//}
 
 - (void)viewWillDisappear:(BOOL)animated {
-  [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
-  [self resignFirstResponder];
+  //[[UIApplication sharedApplication] endReceivingRemoteControlEvents];
+  //[self resignFirstResponder];
   [super viewWillDisappear:animated];
 }
 
@@ -331,30 +331,31 @@
 	[alert autorelease];
 }
 
-- (void) remoteControlReceivedWithEvent: (UIEvent *) receivedEvent {
-  
-  if (receivedEvent.type == UIEventTypeRemoteControl) {
-    
-    switch (receivedEvent.subtype) {
-        
-      case UIEventSubtypeRemoteControlTogglePlayPause:
-        NSLog(@"Toggle");
-        [[TJMAudioCenter instance] togglePlayPause];
-        break;
-        
-      case UIEventSubtypeRemoteControlPreviousTrack:
-        //[self previousTrack: nil];
-        break;
-        
-      case UIEventSubtypeRemoteControlNextTrack:
-        //[self nextTrack: nil];
-        break;
-        
-      default:
-        break;
-    }
-  }
-}
+
+//- (void) remoteControlReceivedWithEvent: (UIEvent *) receivedEvent {
+//  
+//  if (receivedEvent.type == UIEventTypeRemoteControl) {
+//    
+//    switch (receivedEvent.subtype) {
+//        
+//      case UIEventSubtypeRemoteControlTogglePlayPause:
+//        NSLog(@"Toggle");
+//        [[TJMAudioCenter instance] togglePlayPause];
+//        break;
+//        
+//      case UIEventSubtypeRemoteControlPreviousTrack:
+//        //[self previousTrack: nil];
+//        break;
+//        
+//      case UIEventSubtypeRemoteControlNextTrack:
+//        //[self nextTrack: nil];
+//        break;
+//        
+//      default:
+//        break;
+//    }
+//  }
+//}
 
 
 @end
