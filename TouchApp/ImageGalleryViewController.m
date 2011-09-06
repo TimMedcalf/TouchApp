@@ -54,6 +54,8 @@ static NSInteger iPadThumbnailRowCount = 8;
   [super viewDidLoad];
   [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
   
+  //self.view.backgroundColor = [UIColor blackColor];
+  
   UINavigationBar *nb = self.navigationController.navigationBar;
   nb.barStyle  = UIBarStyleBlack;
   nb.translucent = NO;
@@ -130,6 +132,7 @@ static NSInteger iPadThumbnailRowCount = 8;
 
   //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
   [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+  [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent]; 
   
 	UINavigationBar *nb = self.navigationController.navigationBar;
   nb.barStyle  = UIBarStyleBlack;

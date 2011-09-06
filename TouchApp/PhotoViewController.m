@@ -96,7 +96,7 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  
+  [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];  
   self.customNavigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(savePhoto)] autorelease];
   self.customNavigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Images" style:UIBarButtonItemStylePlain target:self action:@selector(goBack)] autorelease];
   self.customNavigationBar.tintColor = nil;
@@ -106,7 +106,7 @@
 	self.view.backgroundColor = [UIColor blackColor];
   self.hidesBottomBarWhenPushed = YES;
 
-  [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+  //[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
   
 	self.wantsFullScreenLayout = YES;
 	
@@ -158,18 +158,24 @@
   }
   if ([self.pagingScrollView isTracking])
   {
-    if (![self.customNavigationBar isHidden]) self.customNavigationBar.hidden = YES;
+    if (![self.customNavigationBar isHidden])
+    {
+      self.customNavigationBar.hidden = YES;
+      [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+    }
   }
 }
 
 - (void)hideBars;
 {
   self.customNavigationBar.hidden = YES;
+  [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
 }
 
 - (void)toggleBarsNotification:(NSNotification*)notification
 {
   self.customNavigationBar.hidden = !self.customNavigationBar.hidden;
+  [[UIApplication sharedApplication] setStatusBarHidden:self.customNavigationBar.hidden withAnimation:UIStatusBarAnimationNone];
 }
 
 - (void)goBack {
