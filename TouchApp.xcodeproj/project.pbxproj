@@ -230,7 +230,7 @@
 		224FBC901409987E00749E42 /* ImageGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageGalleryViewController.h; sourceTree = "<group>"; };
 		224FBC911409987F00749E42 /* ImageGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageGalleryViewController.m; sourceTree = "<group>"; };
 		224FBC921409988100749E42 /* ImageGalleryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageGalleryViewController.xib; sourceTree = "<group>"; };
-		2263104714176F87001B7841 /* TJMAudioTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = TJMAudioTableViewController.h; sourceTree = "<group>"; };
+		2263104714176F87001B7841 /* TJMAudioTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJMAudioTableViewController.h; sourceTree = "<group>"; };
 		2263104814176F87001B7841 /* TJMAudioTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TJMAudioTableViewController.m; sourceTree = "<group>"; };
 		226751FE140B4AFB00726FAE /* ImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageScrollView.h; sourceTree = "<group>"; };
 		226751FF140B4AFB00726FAE /* ImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageScrollView.m; sourceTree = "<group>"; };
