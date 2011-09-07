@@ -304,6 +304,7 @@ static NSInteger CellSubTitleTag = 51;
   WebsiteViewController *controller = [[WebsiteViewController alloc] initWithNibName:@"WebsiteViewController" bundle:nil];
   controller.HTMLString = curItem.htmlForWebView;
   controller.dontHideNavigationBar = YES;
+  controller.openLinksInNewView = YES;
   [self.navigationController pushViewController:controller animated:YES];
   [controller release];
 }

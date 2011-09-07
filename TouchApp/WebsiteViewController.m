@@ -33,6 +33,7 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
+  
   [super viewDidLoad];
   
   self.webView.backgroundColor = [UIColor whiteColor];
@@ -71,30 +72,35 @@
   self.navigationItem.backBarButtonItem = backButton;   // Affect child view controller’s back button.
   [backButton release];  
   
-  UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:
-                                          [NSArray arrayWithObjects:
-                                           [UIImage imageNamed:@"Arrow-Left.png"],
-                                           [UIImage imageNamed:@"Arrow-Right.png"],
-                                           nil]];
-  
-  [segmentedControl addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];
-  segmentedControl.frame = CGRectMake(0, 0, 70, 30);
-  segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
-  segmentedControl.momentary = YES;
-  
-  //defaultTintColor = [segmentedControl.tintColor retain];    // keep track of this for later
-  
-  UIBarButtonItem *segmentBarItem = [[UIBarButtonItem alloc] initWithCustomView:segmentedControl];
-  self.segmentControl = segmentedControl;
-  self.navigationItem.rightBarButtonItem = segmentBarItem;
-  [segmentBarItem release];
-  [segmentedControl release];
-  [self.segmentControl setEnabled:NO forSegmentAtIndex:0];
-  [self.segmentControl setEnabled:NO forSegmentAtIndex:1];
+  if (!self.openLinksInNewView)
+  {
+    UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:
+                                            [NSArray arrayWithObjects:
+                                             [UIImage imageNamed:@"Arrow-Left.png"],
+                                             [UIImage imageNamed:@"Arrow-Right.png"],
+                                             nil]];
+    
+    [segmentedControl addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];
+    segmentedControl.frame = CGRectMake(0, 0, 70, 30);
+    segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
+    segmentedControl.momentary = YES;
+    
+    //defaultTintColor = [segmentedControl.tintColor retain];    // keep track of this for later
+    
+    UIBarButtonItem *segmentBarItem = [[UIBarButtonItem alloc] initWithCustomView:segmentedControl];
+    self.segmentControl = segmentedControl;
+    self.navigationItem.rightBarButtonItem = segmentBarItem;
+    [segmentBarItem release];
+    [segmentedControl release];
+    [self.segmentControl setEnabled:NO forSegmentAtIndex:0];
+    [self.segmentControl setEnabled:NO forSegmentAtIndex:1];
+  }
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
+  [super viewWillAppear:animated];
+  
   //self.navigationController.toolbarHidden = NO;
   [self.navigationController setToolbarHidden:YES animated:YES];
   self.webView.delegate = self;
@@ -173,8 +179,6 @@
 
 - (void)singleTapGesture:(UITapGestureRecognizer *)tapGesture
 {
-  //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
-  //NSLog(@"tap");
   self.barTapTimer = [NSTimer scheduledTimerWithTimeInterval:0.30 target:self selector:@selector(timerBarToggleMethod:) userInfo:nil repeats: NO];
 }
 
@@ -189,6 +193,8 @@
   {
     WebsiteViewController *newWeb = [[WebsiteViewController alloc] initWithNibName:@"WebsiteViewController" bundle:nil];
     newWeb.initialURL = [request.URL absoluteString];
+    newWeb.dontHideNavigationBar = YES;
+    newWeb.disableAudioToggle = YES;
     [self.navigationController pushViewController:newWeb animated:YES];
     [newWeb release]; newWeb=nil;
     return NO;
@@ -201,23 +207,28 @@
 {
   // starting the load, show the activity indicator in the status bar
   [[UIApplication sharedApplication] tjm_pushNetworkActivity];
-  self.navigationItem.rightBarButtonItem.enabled = self.webView.canGoBack;
-  [self.segmentControl setEnabled:self.webView.canGoBack forSegmentAtIndex:0];
-  [self.segmentControl setEnabled:self.webView.canGoForward forSegmentAtIndex:1];
+  if (!self.openLinksInNewView)
+  {
+    self.navigationItem.rightBarButtonItem.enabled = self.webView.canGoBack;
+    [self.segmentControl setEnabled:self.webView.canGoBack forSegmentAtIndex:0];
+    [self.segmentControl setEnabled:self.webView.canGoForward forSegmentAtIndex:1];
+  }
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
   // finished loading, hide the activity indicator in the status bar
   [[UIApplication sharedApplication] tjm_popNetworkActivity];
-  //self.navigationItem.rightBarButtonItem.enabled = self.webView.canGoBack;
   if (!self.dontHideNavigationBar)
   {
     self.barTimer = [NSTimer scheduledTimerWithTimeInterval:5.00 target:self selector:@selector(timerBarHideMethod:) userInfo:nil repeats: NO];
   }
   
-  [self.segmentControl setEnabled:self.webView.canGoBack forSegmentAtIndex:0];
-  [self.segmentControl setEnabled:self.webView.canGoForward forSegmentAtIndex:1];  
+  if (!self.openLinksInNewView)
+  {
+    [self.segmentControl setEnabled:self.webView.canGoBack forSegmentAtIndex:0];
+    [self.segmentControl setEnabled:self.webView.canGoForward forSegmentAtIndex:1];
+  }
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
@@ -248,6 +259,8 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+  [super viewWillDisappear:animated];
+  
   if ( self.webView.loading ) {
     [self.webView stopLoading];
     [[UIApplication sharedApplication] tjm_popNetworkActivity];
@@ -261,6 +274,8 @@
   
   // Release any retained subviews of the main view.
   // e.g. self.myOutlet = nil;
+  [super viewDidUnload];
+  
   [self setWebView:nil];
   [self setSegmentControl:nil];
 }

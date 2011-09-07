@@ -13,7 +13,7 @@
 @interface WebsiteViewController : TJMAudioToggleViewController <UIWebViewDelegate, UIGestureRecognizerDelegate>
 
 @property (nonatomic, retain) IBOutlet UIWebView *webView;
-@property (nonatomic, retain) IBOutlet UISegmentedControl *segmentControl;
+@property (nonatomic, retain) UISegmentedControl *segmentControl;
 //load from a url
 @property (nonatomic, retain) NSString *initialURL;
 //load from a string
