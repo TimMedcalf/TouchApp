@@ -1048,8 +1048,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Tim Medcalf (LQ9PDTLE6X)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tim Medcalf (LQ9PDTLE6X)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Michael Harding";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Michael Harding";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1064,8 +1064,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				PROVISIONING_PROFILE = "904DE46C-257A-417E-B2F0-E9180BBBFD83";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "904DE46C-257A-417E-B2F0-E9180BBBFD83";
+				PROVISIONING_PROFILE = "243D5518-C79D-4330-9E70-E3F8EB98AF68";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "243D5518-C79D-4330-9E70-E3F8EB98AF68";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1075,8 +1075,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Tim Medcalf (LQ9PDTLE6X)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tim Medcalf (LQ9PDTLE6X)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Michael Harding";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Michael Harding";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
@@ -1085,8 +1085,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "904DE46C-257A-417E-B2F0-E9180BBBFD83";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "904DE46C-257A-417E-B2F0-E9180BBBFD83";
+				PROVISIONING_PROFILE = "243D5518-C79D-4330-9E70-E3F8EB98AF68";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "243D5518-C79D-4330-9E70-E3F8EB98AF68";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
