@@ -289,4 +289,10 @@ static NSInteger CellSubTitleTag = 51;
   [alert release]; alert = nil;
 }
 
+- (void)handleShake
+{
+  NSLog(@"radio - Shake!");
+  [self.radioList refreshFeedForced:YES];
+}
+
 @end

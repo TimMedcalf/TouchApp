@@ -327,4 +327,10 @@ static NSInteger CellSubTitleTag = 51;
   [alert release]; alert = nil;
 }
 
+- (void)handleShake
+{
+  NSLog(@"Catalogue - Shake!");
+  [self.catList refreshFeedForced:YES];
+}
+
 @end

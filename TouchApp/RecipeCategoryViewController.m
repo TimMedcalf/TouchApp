@@ -263,4 +263,10 @@ static NSInteger CellTitleTag = 50;
   [alert release]; alert = nil;
 }
 
+- (void)handleShake
+{
+  NSLog(@"recipe categories - Shake!");
+  [self.catList refreshFeedForced:YES];
+}
+
 @end

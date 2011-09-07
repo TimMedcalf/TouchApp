@@ -294,4 +294,10 @@ static NSInteger CellSubTitleTag = 51;
   [alert release]; alert = nil;
 }
 
+- (void)handleShake
+{
+  NSLog(@"recipe - Shake!");
+  [self.recipeList refreshFeedForced:YES];
+}
+
 @end

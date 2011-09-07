@@ -7,6 +7,7 @@
 //
 
 #import "TJMAudioTableViewController.h"
+#import "TouchApplication.h"
 
 @interface TJMAudioTableViewController ()
 - (void)configureAudioControl;
@@ -20,6 +21,7 @@
 {
   [super viewDidLoad];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(configureAudioControl) name:TJMAudioCenterStatusChange object:[TJMAudioCenter instance]];
+
 }
 
 - (void)configureAudioControl
@@ -47,6 +49,13 @@
 {
   [super viewWillAppear:animated];
   [self configureAudioControl];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleShake) name:TouchAppAllShookUp object:nil];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+  [super viewWillDisappear:animated];
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:TouchAppAllShookUp object:nil];  
 }
 
 - (void)viewDidUnload
@@ -58,12 +67,18 @@
 - (void)dealloc
 {
   [[NSNotificationCenter defaultCenter] removeObserver:self name:TJMAudioCenterStatusChange object:[TJMAudioCenter instance]];
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:TouchAppAllShookUp object:nil];
   [super dealloc];
 }
 
 - (void)togglePlay
 {
   [[TJMAudioCenter instance] togglePlayPause];
+}
+
+- (void)handleShake
+{
+  NSLog(@"View Shake!");
 }
 
 @end

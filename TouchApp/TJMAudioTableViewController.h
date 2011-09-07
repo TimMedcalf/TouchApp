@@ -10,4 +10,6 @@
 
 @interface TJMAudioTableViewController : UITableViewController
 
+- (void)handleShake;
+
 @end

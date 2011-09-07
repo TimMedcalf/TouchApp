@@ -10,6 +10,9 @@
 #import "AppManager.h"
 #import "TJMImageResourceManager.h"
 
+
+
+
 @implementation TouchAppAppDelegate
 
 @synthesize window = _window;

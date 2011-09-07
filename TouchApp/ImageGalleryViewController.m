@@ -330,4 +330,10 @@ static NSInteger iPadThumbnailRowCount = 8;
   [alert release]; alert = nil;
 }
 
+- (void)handleShake
+{
+  NSLog(@"images - Shake!");
+  [self.imageList refreshFeedForced:YES];
+}
+
 @end
