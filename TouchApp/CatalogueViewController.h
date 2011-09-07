@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "CatalogueList.h"
+#import "TJMAudioTableViewController.h"
 
-@interface CatalogueViewController : UITableViewController <FeedListConsumerDelegate>
+@interface CatalogueViewController : TJMAudioTableViewController <FeedListConsumerDelegate>
 
 @end

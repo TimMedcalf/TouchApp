@@ -18,8 +18,6 @@ static NSInteger CellSubTitleTag = 51;
 @interface NewsViewController ()
 @property (nonatomic, retain) NewsList *newsList;
 @property (nonatomic, retain) UIActivityIndicatorView *spinner;
-- (void)configureAudioControl;
-- (void)togglePlay;
 @end
 
 @implementation NewsViewController
@@ -56,8 +54,6 @@ static NSInteger CellSubTitleTag = 51;
   UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"News" style:UIBarButtonItemStyleBordered target:nil action:nil];
   self.navigationItem.backBarButtonItem = backButton;
   [backButton release];
-
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(configureAudioControl) name:TJMAudioCenterStatusChange object:[TJMAudioCenter instance]];
   
   NewsList *tmpNewsList = [[NewsList alloc] init];
   self.newsList = tmpNewsList;
@@ -80,37 +76,9 @@ static NSInteger CellSubTitleTag = 51;
   [self.newsList refreshFeed];
 }
 
-- (void)configureAudioControl
-{
-  //clear out the old button if there is one
-  self.navigationItem.rightBarButtonItem = nil;
-  
-  //check status of audio center...
-  TJMAudioStatus audio = [[TJMAudioCenter instance] statusCheck];
-  if (audio == TJMAudioStatusCurrentPlaying)
-  {  
-    UIBarButtonItem *playToggleButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPause target:self action:@selector(togglePlay)];
-    self.navigationItem.rightBarButtonItem = playToggleButton;
-    [playToggleButton release];
-  }
-  else if (audio == TJMAudioStatusCurrentPaused)
-  {  
-    UIBarButtonItem *playToggleButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(togglePlay)];
-    self.navigationItem.rightBarButtonItem = playToggleButton;
-    [playToggleButton release];
-  }
-}
-
-- (void)togglePlay
-{
-  [[TJMAudioCenter instance] togglePlayPause];
-  //[self configureAudioControl];
-}
-
 - (void)viewDidUnload
 {
   [super viewDidUnload];
-  [[NSNotificationCenter defaultCenter] removeObserver:self name:TJMAudioCenterStatusChange object:[TJMAudioCenter instance]];
   // Release any retained subviews of the main view.
   // e.g. self.myOutlet = nil;
   // TJM: (and anything else you alloc in the viewDidLoad!)
@@ -133,7 +101,6 @@ static NSInteger CellSubTitleTag = 51;
 	UINavigationBar *nb = self.navigationController.navigationBar;
 	nb.tintColor = [UIColor blackColor];  
   nb.layer.contents = (id)[UIImage imageNamed:@"news-nav"].CGImage;
-  [self configureAudioControl];
 }
 
 - (void)viewDidAppear:(BOOL)animated

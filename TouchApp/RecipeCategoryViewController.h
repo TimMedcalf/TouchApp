@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "RecipeCategoryList.h"
+#import "TJMAudioTableViewController.h"
 
-@interface RecipeCategoryViewController : UITableViewController <FeedListConsumerDelegate>
+@interface RecipeCategoryViewController : TJMAudioTableViewController <FeedListConsumerDelegate>
 
 @end

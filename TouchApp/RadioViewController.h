@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "RadioList.h"
+#import "TJMAudioTableViewController.h"
 
-@interface RadioViewController : UITableViewController <FeedListConsumerDelegate>
+@interface RadioViewController : TJMAudioTableViewController <FeedListConsumerDelegate>
 
 @end
