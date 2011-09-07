@@ -10,4 +10,6 @@
 
 @interface TJMAudioToggleViewController : UIViewController
 
+@property (nonatomic, assign) BOOL disableAudioToggle;
+
 @end

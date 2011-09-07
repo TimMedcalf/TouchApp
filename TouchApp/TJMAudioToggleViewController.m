@@ -15,6 +15,8 @@
 
 @implementation TJMAudioToggleViewController
 
+@synthesize disableAudioToggle = _disableAudioToggle;
+
 -(void)viewDidLoad
 {
   [super viewDidLoad];
@@ -24,22 +26,25 @@
 
 - (void)configureAudioControl
 {
-  //clear out the old button if there is one
-  self.navigationItem.rightBarButtonItem = nil;
-  
-  //check status of audio center...
-  TJMAudioStatus audio = [[TJMAudioCenter instance] statusCheck];
-  if (audio == TJMAudioStatusCurrentPlaying)
-  {  
-    UIBarButtonItem *playToggleButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPause target:self action:@selector(togglePlay)];
-    self.navigationItem.rightBarButtonItem = playToggleButton;
-    [playToggleButton release];
-  }
-  else if (audio == TJMAudioStatusCurrentPaused)
-  {  
-    UIBarButtonItem *playToggleButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(togglePlay)];
-    self.navigationItem.rightBarButtonItem = playToggleButton;
-    [playToggleButton release];
+  if (!self.disableAudioToggle)
+  {
+    //clear out the old button if there is one
+    self.navigationItem.rightBarButtonItem = nil;
+      
+    //check status of audio center...
+    TJMAudioStatus audio = [[TJMAudioCenter instance] statusCheck];
+    if (audio == TJMAudioStatusCurrentPlaying)
+    {  
+      UIBarButtonItem *playToggleButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPause target:self action:@selector(togglePlay)];
+      self.navigationItem.rightBarButtonItem = playToggleButton;
+      [playToggleButton release];
+    }
+    else if (audio == TJMAudioStatusCurrentPaused)
+    {  
+      UIBarButtonItem *playToggleButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(togglePlay)];
+      self.navigationItem.rightBarButtonItem = playToggleButton;
+      [playToggleButton release];
+    }
   }
 }
 
