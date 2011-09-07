@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "TJMAudioCenter.h"
 #import "RadioItem.h"
+#import "TJMAudioToggleViewController.h"
 
-@interface RadioItemViewController : UIViewController <TJMAudioCenterDelegate>
+@interface RadioItemViewController : TJMAudioToggleViewController <TJMAudioCenterDelegate>
 
 @property (nonatomic, retain) IBOutlet UIScrollView *radioItemView;
 

@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "CatalogueItem.h"
 #import "TJMAudioCenter.h"
+#import "TJMAudioToggleViewController.h"
 
-@interface CatalogueItemViewController : UIViewController <TJMAudioCenterDelegate>
+@interface CatalogueItemViewController : TJMAudioToggleViewController <TJMAudioCenterDelegate>
 
 @property (nonatomic, retain) IBOutlet UIScrollView *scrollView;
 

@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TJMAudioToggleViewController.h"
 
 
-@interface WebsiteViewController : UIViewController <UIWebViewDelegate, UIGestureRecognizerDelegate>
+@interface WebsiteViewController : TJMAudioToggleViewController <UIWebViewDelegate, UIGestureRecognizerDelegate>
 
 @property (nonatomic, retain) IBOutlet UIWebView *webView;
 @property (nonatomic, retain) IBOutlet UISegmentedControl *segmentControl;
@@ -21,5 +22,5 @@
 @property (nonatomic, assign) BOOL openLinksInNewView;
 @property (nonatomic, assign) BOOL dontHideNavigationBar;
 @property (nonatomic, retain) NSString *pageTitle;
-  
+
 @end
