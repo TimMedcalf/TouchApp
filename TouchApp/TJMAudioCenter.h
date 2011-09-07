@@ -8,10 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString * const TJMAudioCenterIsPlaying;
-extern NSString * const TJMAudioCenterIsPaused;
-extern NSString * const TJMAudioCenterDidFail;
-extern NSString * const TJMAudioCenterDidFinish;
+extern NSString * const TJMAudioCenterStatusChange;
 
 typedef enum
 {
@@ -26,7 +23,7 @@ typedef enum
 -(void)URLIsPlaying:(NSURL *)url;
 -(void)URLIsPaused:(NSURL *)url;
 -(void)URLDidFail:(NSURL *)url;
--(void)URLDidFinish:(NSURL *) url;
+-(void)URLDidFinish:(NSURL *)url;
 @end
 
 @interface TJMAudioCenter : NSObject <AVAudioSessionDelegate>

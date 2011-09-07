@@ -8,10 +8,7 @@
 
 #import "TJMAudioCenter.h"
 
-NSString * const TJMAudioCenterIsPlaying = @"TJMAudioCenterIsPlaying";
-NSString * const TJMAudioCenterIsPaused = @"TJMAudioCenterIsPaused";
-NSString * const TJMAudioCenterDidFail = @"TJMAudioCenterDidFail";
-NSString * const TJMAudioCenterDidFinish = @"TJMAudioCenterDidFinish";
+NSString * const TJMAudioCenterStatusChange = @"TJMAudioCenterStatusChange";
 
 NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
 
@@ -109,7 +106,7 @@ SINGLETON_IMPLEMENTATION_FOR(TJMAudioCenter)
       if (self.player.currentItem.status == AVPlayerStatusFailed)
       {
         [self.delegate URLDidFail:self.URL];
-        [[NSNotificationCenter defaultCenter] postNotificationName:TJMAudioCenterDidFail object:self];
+        [[NSNotificationCenter defaultCenter] postNotificationName:TJMAudioCenterStatusChange object:self];
         //NSLog(@"Audio Failed");
       }
       else if (self.playWhenLoaded && (self.player.currentItem.status == AVPlayerStatusReadyToPlay))
@@ -128,13 +125,13 @@ SINGLETON_IMPLEMENTATION_FOR(TJMAudioCenter)
       {
         //NSLog(@"Audio Paused");
         [self.delegate URLIsPaused:self.URL];
-        [[NSNotificationCenter defaultCenter] postNotificationName:TJMAudioCenterIsPaused object:self];
+        [[NSNotificationCenter defaultCenter] postNotificationName:TJMAudioCenterStatusChange object:self];
       }
       else
       {
         //NSLog(@"Audio Playing");
         [self.delegate URLIsPlaying:self.URL];
-        [[NSNotificationCenter defaultCenter] postNotificationName:TJMAudioCenterIsPlaying object:self];
+        [[NSNotificationCenter defaultCenter] postNotificationName:TJMAudioCenterStatusChange object:self];
       }
     }
   }
@@ -149,10 +146,7 @@ SINGLETON_IMPLEMENTATION_FOR(TJMAudioCenter)
       return (self.player.rate == 1) ? TJMAudioStatusCurrentPlaying : TJMAudioStatusCurrentPaused;
     }
     if (self.player.currentItem.status == AVPlayerStatusFailed) return TJMAudioStatusCurrentFailed;
-    //otherwise
-    NSLog(@"Error - playingPlayer.currentItem status unknown - this shouldn't happen");
   }
-  
   return TJMAudioStatusUnknown;
 }
 
@@ -164,7 +158,6 @@ SINGLETON_IMPLEMENTATION_FOR(TJMAudioCenter)
   }
   if (self.player.currentItem.status == AVPlayerStatusFailed) return TJMAudioStatusCurrentFailed;
   //otherwise
-  NSLog(@"Error - playingPlayer.currentItem status unknown - this shouldn't happen");  
   return TJMAudioStatusUnknown;
 }
 
@@ -176,6 +169,13 @@ SINGLETON_IMPLEMENTATION_FOR(TJMAudioCenter)
   {
     [self.player seekToTime:kCMTimeZero];
     self.player.rate = 0;
+    //remove the current stuff..
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:self.player.currentItem];
+    [self.player removeObserver:self forKeyPath:@"rate"];
+    [self.player.currentItem removeObserver:self forKeyPath:@"status"]; 
+    self.URL = nil;
+    self.player=nil;
+    [[NSNotificationCenter defaultCenter] postNotificationName:TJMAudioCenterStatusChange object:self];
   }
 }
 
