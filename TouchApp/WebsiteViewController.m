@@ -35,23 +35,20 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   
-//  if (self.openLinksInNewView)
-//  {
-//    UIView *tableBackground;
-//    if (self.freshersMode)
-//      tableBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Freshers-Guide-Background.jpg"]];
-//    else
-//      tableBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"table_background_notoolbar.jpg"]];
-//      
-//    [self.view insertSubview:tableBackground atIndex:0];
-//    [tableBackground release]; tableBackground = nil;
-//    self.webView.backgroundColor = [UIColor clearColor];
-//  }
-//  else
-//  {
-//    self.webView.backgroundColor = [UIColor blackColor];
-//  }
   self.webView.backgroundColor = [UIColor whiteColor];
+
+  //remove shadow when scrolling the background of the webview
+  for (UIView* subView in [self.webView subviews])
+  {
+    if ([subView isKindOfClass:[UIScrollView class]]) {
+      for (UIView* shadowView in [subView subviews])
+      {
+        if ([shadowView isKindOfClass:[UIImageView class]]) {
+          [shadowView setHidden:YES];
+        }
+      }
+    }
+  }  
   
   self.webView.delegate = self;
 
