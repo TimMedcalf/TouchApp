@@ -38,23 +38,12 @@ static NSInteger iPadThumbnailRowCount = 8;
 @synthesize thumbnailWidth = _thumbnailWidth;
 @synthesize thumbnailRowCount = _thumbnailRowCount;
 
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
-
 #pragma mark - View lifecycle
-
-  
+ 
 - (void)viewDidLoad
 {
   [super viewDidLoad];
   [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
-  
-  //self.view.backgroundColor = [UIColor blackColor];
   
   UINavigationBar *nb = self.navigationController.navigationBar;
   nb.barStyle  = UIBarStyleBlack;
@@ -107,7 +96,6 @@ static NSInteger iPadThumbnailRowCount = 8;
   [super viewDidUnload];
   // Release any retained subviews of the main view.
   // e.g. self.myOutlet = nil;
-  // TJM: (and anything else you alloc in the viewDidLoad!)
   [self.imageList cancelRefresh];
   [self setImageList:nil];
   [self setSpinner:nil];
@@ -124,13 +112,6 @@ static NSInteger iPadThumbnailRowCount = 8;
 {
   [super viewWillAppear:animated];
   
-//	UINavigationBar *nb = self.navigationController.navigationBar;
-//  nb.barStyle  = UIBarStyleBlack;
-//  nb.translucent = NO;
-//	nb.tintColor = [UIColor colorWithRed:195/255.0 green:54/255.0 blue:37/255.0 alpha:1]; 
-//  nb.layer.contents = (id)[UIImage imageNamed:@"images-nav"].CGImage;
-
-  //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
   [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
   [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent]; 
   
@@ -232,14 +213,12 @@ static NSInteger iPadThumbnailRowCount = 8;
 - (void)thumbnailTapped:(UIGestureRecognizer *)sender
 {
   TJMImageResourceView *res = (TJMImageResourceView *)sender.view;
-  //NSLog(@"Tapped %i", res.index);
   if (res.index >= 0)
   {
     PhotoViewController *photo = [[PhotoViewController alloc] initWithNibName:@"PhotoViewController" bundle:nil];
     photo.imageList = self.imageList;
     photo.initialIndex = res.index;
     photo.wantsFullScreenLayout = YES;
-    //[self.navigationController pushViewController:photo animated:YES];
     [self.navigationController presentModalViewController:photo animated:YES];
     [photo release];
   }
@@ -251,61 +230,6 @@ static NSInteger iPadThumbnailRowCount = 8;
     return 96;
   else
     return 80;
-}
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-//  // Navigation logic may go here. Create and push another view controller.
-//  //return immediately if user selected header image
-//  if (indexPath.section == 0) return;
-//  
-//  NewsItem *curItem = [self.newsList.items objectAtIndex:indexPath.row];
-//  WebsiteViewController *controller = [[WebsiteViewController alloc] initWithNibName:@"WebsiteViewController" bundle:nil];
-//  controller.HTMLString = curItem.htmlForWebView;
-//  controller.dontHideNavigationBar = YES;
-//  [self.navigationController pushViewController:controller animated:YES];
-//  [controller release];
 }
 
 #pragma mark FeedListConsumerDelegates
