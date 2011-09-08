@@ -101,6 +101,7 @@ NSString *const FeedItem_ImageURLKey = @"imageURL";
 {
   //override in subclass
   NSLog(@"Populating dictionary! This should be overridden!");
+  
 }
 
 - (NSComparisonResult)compare:(FeedItem *)item

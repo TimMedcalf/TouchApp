@@ -94,6 +94,7 @@
 		22A3E4A2140FC6AF00CF2B0B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A3E4A1140FC6AF00CF2B0B /* Icon.png */; };
 		22A3E4A4140FC6BD00CF2B0B /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A3E4A3140FC6BD00CF2B0B /* Icon@2x.png */; };
 		22A3E4A6140FC6CA00CF2B0B /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A3E4A5140FC6CA00CF2B0B /* Icon-72.png */; };
+		22B5ED5D1418BE01000F64FF /* placeholder480.png in Resources */ = {isa = PBXBuildFile; fileRef = 22B5ED5C1418BE00000F64FF /* placeholder480.png */; };
 		22CB4B8913EDD641008968D6 /* AppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4B8813EDD641008968D6 /* AppManager.m */; };
 		22CB4BEF13EE417E008968D6 /* CXMLDocument_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4BD413EE417E008968D6 /* CXMLDocument_CreationExtensions.m */; };
 		22CB4BF013EE417E008968D6 /* CXMLNode_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4BD613EE417E008968D6 /* CXMLNode_CreationExtensions.m */; };
@@ -257,6 +258,7 @@
 		22A3E4A1140FC6AF00CF2B0B /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../Icon.png; sourceTree = "<group>"; };
 		22A3E4A3140FC6BD00CF2B0B /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../Icon@2x.png"; sourceTree = "<group>"; };
 		22A3E4A5140FC6CA00CF2B0B /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "../Icon-72.png"; sourceTree = "<group>"; };
+		22B5ED5C1418BE00000F64FF /* placeholder480.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder480.png; sourceTree = "<group>"; };
 		22CB4B8713EDD640008968D6 /* AppManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppManager.h; sourceTree = "<group>"; };
 		22CB4B8813EDD641008968D6 /* AppManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppManager.m; sourceTree = "<group>"; };
 		22CB4B8B13EDD69C008968D6 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
@@ -769,6 +771,7 @@
 		22CB4C1D13EEBF62008968D6 /* buttons */ = {
 			isa = PBXGroup;
 			children = (
+				22B5ED5C1418BE00000F64FF /* placeholder480.png */,
 				227C56391414918900169F38 /* placeholder.png */,
 				22CB4C4B13EFE96F008968D6 /* blackbutton.png */,
 				22CB4C4C13EFE96F008968D6 /* buyButtonGreen.png */,
@@ -967,6 +970,7 @@
 				227C5696141656DD00169F38 /* 16-play@2x.png in Resources */,
 				227C5697141656DD00169F38 /* 17-pause.png in Resources */,
 				227C5698141656DD00169F38 /* 17-pause@2x.png in Resources */,
+				22B5ED5D1418BE01000F64FF /* placeholder480.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

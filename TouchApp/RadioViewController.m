@@ -291,7 +291,7 @@ static NSInteger CellSubTitleTag = 51;
 
 - (void)handleShake
 {
-  NSLog(@"radio - Shake!");
+  //NSLog(@"radio - Shake!");
   [self.radioList refreshFeedForced:YES];
 }
 

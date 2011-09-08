@@ -232,7 +232,7 @@ static NSInteger iPadThumbnailRowCount = 8;
 - (void)thumbnailTapped:(UIGestureRecognizer *)sender
 {
   TJMImageResourceView *res = (TJMImageResourceView *)sender.view;
-  NSLog(@"Tapped %i", res.index);
+  //NSLog(@"Tapped %i", res.index);
   if (res.index >= 0)
   {
     PhotoViewController *photo = [[PhotoViewController alloc] initWithNibName:@"PhotoViewController" bundle:nil];
@@ -332,7 +332,7 @@ static NSInteger iPadThumbnailRowCount = 8;
 
 - (void)handleShake
 {
-  NSLog(@"images - Shake!");
+  //NSLog(@"images - Shake!");
   [self.imageList refreshFeedForced:YES];
 }
 

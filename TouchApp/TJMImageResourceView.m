@@ -12,7 +12,7 @@
 
 @interface TJMImageResourceView ()
 
-
+@property (nonatomic, assign) UIViewContentMode imageContentMode;
 @property (nonatomic, assign) CGSize thumbnailSize;
 - (void)updateImage;
 @end
@@ -23,17 +23,19 @@
 @synthesize url = _url;
 @synthesize thumbnailSize = _thumbnailSize;
 @synthesize index = _index;
+@synthesize imageContentMode = _imageContentMode;
 
 - (id)initWithFrame:(CGRect)frame andURL:(NSURL *)url
 {
   self = [super initWithFrame:frame];
   if (self) {
+    self.imageContentMode = UIViewContentModeScaleAspectFill;
     self.url = url;
     self.thumbnailSize = CGSizeMake(0,0);
     TJMImageResource *tmpImageResource = [[TJMImageResourceManager instance] resourceForURL:self.url];
     UIImageView *tmpImageView = [[UIImageView alloc] initWithImage:[tmpImageResource getImage]];
     tmpImageView.frame = CGRectMake(0,0,self.frame.size.width,self.frame.size.height);   
-    tmpImageView.contentMode = UIViewContentModeScaleAspectFill;
+    tmpImageView.contentMode = self.imageContentMode;
     tmpImageView.clipsToBounds = YES;
     self.imageView = tmpImageView;
     [tmpImageView release];
@@ -47,6 +49,7 @@
 {
   self = [super init];
   if (self) {
+    self.imageContentMode = UIViewContentModeScaleAspectFill;
     self.url = url;
     self.thumbnailSize = CGSizeMake(0,0);
     TJMImageResource *tmpImageResource = [[TJMImageResourceManager instance] resourceForURL:self.url];
@@ -57,7 +60,7 @@
     frame.size = CGSizeMake(image.size.width,image.size.height);
     self.frame = frame;
     tmpImageView.frame = CGRectMake(0,0,image.size.width,image.size.height);   
-    tmpImageView.contentMode = UIViewContentModeScaleAspectFill;
+    tmpImageView.contentMode =  self.imageContentMode;
     tmpImageView.clipsToBounds = YES;
     self.imageView = tmpImageView;
     [tmpImageView release];
@@ -67,22 +70,34 @@
   return self;
 }
 
+- (id)initWithURL:(NSURL *)url forSize:(CGSize)size
+{
+  self = [super initWithFrame:CGRectMake(0,0,size.width,size.height)];
+  if (self) {
+    //NOTE THAT THIS IS DIFFERENT IF YOU EXPLICITLY SET THE SIZE!
+    self.imageContentMode = UIViewContentModeScaleAspectFit;
+    self.url = url;
+    self.thumbnailSize = CGSizeMake(0,0);
+    TJMImageResource *tmpImageResource = [[TJMImageResourceManager instance] resourceForURL:self.url];
+    UIImage *image = [tmpImageResource getImage];
+    UIImageView *tmpImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,size.width,size.height)];
+    tmpImageView.image = image;
+    tmpImageView.contentMode =  self.imageContentMode;
+    self.imageView = tmpImageView;
+    [tmpImageView release];
+    [self addSubview:self.imageView];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateImage) name:TJMImageResourceImageNeedsUpdating object:tmpImageResource];
+  }
+  return self;
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
   self = [super initWithFrame:frame];
   if (self) {
     //self.url = url;
+    self.imageContentMode = UIViewContentModeScaleAspectFill;
     self.thumbnailSize = CGSizeMake(0,0);
-//    TJMImageResource *tmpImageResource = [[TJMImageResourceManager instance] resourceForURL:self.url]; 
-//    UIImageView *tmpImageView = [[UIImageView alloc] initWithImage:[tmpImageResource getImage]];
-//    tmpImageView.frame = CGRectMake(0,0,self.frame.size.width,self.frame.size.height);   
-//    tmpImageView.contentMode = UIViewContentModeScaleAspectFill;
-//    tmpImageView.clipsToBounds = YES;
-//    self.imageView = tmpImageView;
-//    [tmpImageView release];
-//    [self addSubview:self.imageView];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateImage) name:TJMImageResourceImageNeedsUpdating object:tmpImageResource];
   }
   return self;
 }
@@ -99,7 +114,7 @@
   TJMImageResource *tmpImageResource = [[TJMImageResourceManager instance] resourceForURL:self.url]; 
   UIImageView *tmpImageView = [[UIImageView alloc] initWithImage:[tmpImageResource getImage]];
   tmpImageView.frame = CGRectMake(0,0,self.frame.size.width,self.frame.size.height);   
-  tmpImageView.contentMode = UIViewContentModeScaleAspectFill;
+  tmpImageView.contentMode = self.imageContentMode;
   tmpImageView.clipsToBounds = YES;
   self.imageView = tmpImageView;
   [tmpImageView release];
@@ -111,12 +126,13 @@
 {
   self = [super initWithFrame:frame];
   if (self) {
+    self.imageContentMode = UIViewContentModeScaleAspectFill;
     self.url = url;
     self.thumbnailSize = size;
     TJMImageResource *tmpImageResource = [[TJMImageResourceManager instance] resourceForURL:self.url]; 
     UIImageView *tmpImageView = [[UIImageView alloc] initWithImage:[tmpImageResource getImageThumbnailOfSize:size]];
     tmpImageView.frame = CGRectMake(0,0,self.frame.size.width,self.frame.size.height);
-    tmpImageView.contentMode = UIViewContentModeScaleAspectFill;
+    tmpImageView.contentMode = self.imageContentMode;
     tmpImageView.clipsToBounds = YES;
     self.imageView = tmpImageView;
     [tmpImageView release];
@@ -150,12 +166,13 @@
   else
     tmpImageView = [[UIImageView alloc] initWithImage:[tmpImageResource getImage]];
   tmpImageView.frame = CGRectMake(0,0,self.frame.size.width,self.frame.size.height);
-  tmpImageView.contentMode = UIViewContentModeScaleAspectFill;
+  tmpImageView.contentMode = self.imageContentMode;
   tmpImageView.clipsToBounds = YES;
   self.imageView = tmpImageView;
   [tmpImageView release];
   [self addSubview:self.imageView];
 }
+
                                     
 
 @end

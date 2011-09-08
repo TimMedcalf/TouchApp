@@ -154,6 +154,29 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
   }
 }
 
+- (UIImage *)getImageWithPreferredPlaceholder:(TJMImageResource *)placeholder
+{
+  //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
+  if ([self imageIsDownloaded])
+  {
+    self.lastAccessed = nil;
+    self.lastAccessed = [NSDate date];
+    UIImage *tmpImage = [UIImage imageWithContentsOfFile:[self fullPathForLocalBaseImage]];
+    if (tmpImage)
+      return tmpImage;
+    else
+      return [UIImage imageNamed:@"placeholder.png"];
+  }
+  else
+  {
+    [self cacheImage];
+    if ([placeholder imageIsDownloaded])
+      return placeholder.getImage;
+    else
+      return [UIImage imageNamed:@"placeholder.png"];
+  }
+}
+
 - (UIImage *)getImageThumbnailOfSize:(CGSize)size;
 {
   //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));

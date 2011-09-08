@@ -46,7 +46,6 @@
  */
 
 #import "ImageScrollView.h"
-//#import "TilingView.h"
 
 @implementation ImageScrollView
 @synthesize index;
@@ -74,26 +73,29 @@
 
 - (void)layoutSubviews 
 {
-    [super layoutSubviews];
-    
-    // center the image as it becomes smaller than the size of the screen
-    
-    CGSize boundsSize = self.bounds.size;
-    CGRect frameToCenter = imageView.frame;
-    
-    // center horizontally
-    if (frameToCenter.size.width < boundsSize.width)
-        frameToCenter.origin.x = (boundsSize.width - frameToCenter.size.width) / 2;
-    else
-        frameToCenter.origin.x = 0;
-    
-    // center vertically
-    if (frameToCenter.size.height < boundsSize.height)
-        frameToCenter.origin.y = (boundsSize.height - frameToCenter.size.height) / 2;
-    else
-        frameToCenter.origin.y = 0;
-    
-    imageView.frame = frameToCenter;
+  [super layoutSubviews];
+  
+  // center the image as it becomes smaller than the size of the screen
+  
+  CGSize boundsSize = self.bounds.size;
+  CGRect frameToCenter = imageView.frame;
+  //NSLog(@"[%@ %@] Frame = %f %f", [self class], NSStringFromSelector(_cmd), imageView.frame.size.width, imageView.frame.size.height);
+
+  
+  // center horizontally
+  if (frameToCenter.size.width < boundsSize.width)
+      frameToCenter.origin.x = (boundsSize.width - frameToCenter.size.width) / 2;
+  else
+      frameToCenter.origin.x = 0;
+  
+  // center vertically
+  if (frameToCenter.size.height < boundsSize.height)
+      frameToCenter.origin.y = (boundsSize.height - frameToCenter.size.height) / 2;
+  else
+      frameToCenter.origin.y = 0;
+  
+  imageView.frame = frameToCenter;
+  //NSLog(@"[%@ %@] Frame = %f %f", [self class], NSStringFromSelector(_cmd), imageView.frame.size.width, imageView.frame.size.height);
 }
 
 #pragma mark -
@@ -101,7 +103,7 @@
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
-    return imageView;
+  return imageView;
 }
 
 #pragma mark -
@@ -115,15 +117,16 @@
     imageView = nil;
     
     // reset our zoomScale to 1.0 before doing any further calculations
-    self.zoomScale = 1.0;
+  self.zoomScale = 1.0;
     
     // make a new UIImageView for the new image
-  //CGRect bounds = self.frame;
-  imageView = [[TJMImageResourceView alloc] initWithURL:image.imageURL];
+  imageView = [[TJMImageResourceView alloc] initWithURL:image.imageURL forSize:self.bounds.size];
+  //NSLog(@"[%@ %@] Frame = %f %f", [self class], NSStringFromSelector(_cmd), imageView.frame.size.width, imageView.frame.size.height);
   //NSLog(@"Image Width = %f",imageView.imageView.image.size.width);
   [self addSubview:imageView];
     
   self.contentSize = imageView.frame.size;
+    //NSLog(@"[%@ %@] Frame = %f %f", [self class], NSStringFromSelector(_cmd), imageView.frame.size.width, imageView.frame.size.height);
   [self setMaxMinZoomScalesForCurrentBounds];
   self.zoomScale = self.minimumZoomScale;
 }
@@ -132,7 +135,9 @@
 {
 //  CGSize boundsSize = CGSizeMake(480,320);//self.bounds.size;
   CGSize boundsSize = self.bounds.size;
-  CGSize imageSize = imageView.imageView.image.size;
+  //CGSize imageSize = imageView.imageView.image.size;
+  CGSize imageSize = imageView.imageView.frame.size;
+
     
     // calculate min/max zoomscale
   CGFloat xScale = boundsSize.width / imageSize.width;    // the scale needed to perfectly fit the image width-wise

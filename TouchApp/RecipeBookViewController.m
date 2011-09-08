@@ -296,7 +296,7 @@ static NSInteger CellSubTitleTag = 51;
 
 - (void)handleShake
 {
-  NSLog(@"recipe - Shake!");
+  //NSLog(@"recipe - Shake!");
   [self.recipeList refreshFeedForced:YES];
 }
 

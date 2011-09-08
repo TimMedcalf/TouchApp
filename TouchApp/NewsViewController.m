@@ -334,7 +334,7 @@ static NSInteger CellSubTitleTag = 51;
 
 - (void)handleShake
 {
-  NSLog(@"News - Shake!");
+  //NSLog(@"News - Shake!");
   [self.newsList refreshFeedForced:YES];
 }
 
