@@ -34,7 +34,7 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
 @property (nonatomic, retain) NSMutableData *activeDownload;
 @property (nonatomic, retain) NSURLConnection *activeConnection;
 
-- (void)cacheImage;
+
 - (void)startDownload;
 - (void)cancelDownload;
 
@@ -153,6 +153,7 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
     return [UIImage imageNamed:@"placeholder.png"];
   }
 }
+
 
 - (UIImage *)getImageWithPreferredPlaceholder:(TJMImageResource *)placeholder
 {

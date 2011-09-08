@@ -70,16 +70,20 @@
   return self;
 }
 
-- (id)initWithURL:(NSURL *)url forSize:(CGSize)size
+- (id)initWithImageItem:(ImageItem *)item forSize:(CGSize)size;
 {
   self = [super initWithFrame:CGRectMake(0,0,size.width,size.height)];
   if (self) {
     //NOTE THAT THIS IS DIFFERENT IF YOU EXPLICITLY SET THE SIZE!
     self.imageContentMode = UIViewContentModeScaleAspectFit;
-    self.url = url;
+    self.url = item.imageURL;
     self.thumbnailSize = CGSizeMake(0,0);
     TJMImageResource *tmpImageResource = [[TJMImageResourceManager instance] resourceForURL:self.url];
     UIImage *image = [tmpImageResource getImage];
+    if (!tmpImageResource.imageIsDownloaded)
+    {
+      image = [[[TJMImageResourceManager instance] resourceForURL:item.thumbnailURL] getImage];
+    }
     UIImageView *tmpImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,size.width,size.height)];
     tmpImageView.image = image;
     tmpImageView.contentMode =  self.imageContentMode;

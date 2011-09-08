@@ -120,9 +120,8 @@
   self.zoomScale = 1.0;
     
     // make a new UIImageView for the new image
-  imageView = [[TJMImageResourceView alloc] initWithURL:image.imageURL forSize:self.bounds.size];
-  //NSLog(@"[%@ %@] Frame = %f %f", [self class], NSStringFromSelector(_cmd), imageView.frame.size.width, imageView.frame.size.height);
-  //NSLog(@"Image Width = %f",imageView.imageView.image.size.width);
+  //imageView = [[TJMImageResourceView alloc] initWithURL:image.imageURL forSize:self.bounds.size];
+  imageView = [[TJMImageResourceView alloc] initWithImageItem:image forSize:self.bounds.size];
   [self addSubview:imageView];
     
   self.contentSize = imageView.frame.size;

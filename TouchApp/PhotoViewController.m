@@ -282,10 +282,11 @@
 
 - (void)configurePage:(ImageScrollView *)page forIndex:(NSUInteger)index
 {
-    page.index = index;
-    page.frame = [self frameForPageAtIndex:index];
-    
-    [page displayImage:[self imageAtIndex:index]];
+  page.index = index;
+  page.frame = [self frameForPageAtIndex:index];
+  
+  [page displayImage:[self imageAtIndex:index]];
+  
 }
 
 
@@ -405,6 +406,25 @@
 
 
 - (ImageItem *)imageAtIndex:(NSUInteger)index {
+
+  //try to ensure the thumbnails we need are going to be there
+  ImageItem *item = [self.imageList.items objectAtIndex:index];
+  [[[TJMImageResourceManager instance] resourceForURL:item.thumbnailURL]cacheImage];
+  
+  //try to ensure the thumbnails we need are going to be there
+  if (index < self.imageCount -1)
+  {
+    ImageItem *item = [self.imageList.items objectAtIndex:index+1];
+    [[[TJMImageResourceManager instance] resourceForURL:item.thumbnailURL]cacheImage];
+  }
+  
+  //try to ensure the thumbnails we need are going to be there
+  if (index > 0)
+  {
+    ImageItem *item = [self.imageList.items objectAtIndex:index-1];
+    [[[TJMImageResourceManager instance] resourceForURL:item.thumbnailURL]cacheImage];
+  }
+  
   return [self.imageList.items objectAtIndex:index];
 }
 
