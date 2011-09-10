@@ -118,8 +118,12 @@ static NSInteger iPadThumbnailRowCount = 8;
 	UINavigationBar *nb = self.navigationController.navigationBar;
   nb.barStyle  = UIBarStyleBlack;
   nb.translucent = NO;
-	nb.tintColor = [UIColor colorWithRed:195/255.0 green:54/255.0 blue:37/255.0 alpha:1]; 
-  nb.layer.contents = (id)[UIImage imageNamed:@"images-nav"].CGImage;
+	nb.tintColor = [UIColor colorWithRed:195/255.0 green:54/255.0 blue:37/255.0 alpha:1];
+  
+  if ([nb respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)])
+    [nb setBackgroundImage:[UIImage imageNamed:@"images-nav"] forBarMetrics:0];
+  else
+    nb.layer.contents = (id)[UIImage imageNamed:@"images-nav"].CGImage;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -129,7 +133,11 @@ static NSInteger iPadThumbnailRowCount = 8;
   nb.barStyle  = UIBarStyleBlack;
   nb.translucent = NO;
 	nb.tintColor = [UIColor colorWithRed:195/255.0 green:54/255.0 blue:37/255.0 alpha:1]; 
-  nb.layer.contents = (id)[UIImage imageNamed:@"images-nav"].CGImage;
+  if ([nb respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)])
+    [nb setBackgroundImage:[UIImage imageNamed:@"images-nav"] forBarMetrics:0];
+  else
+    nb.layer.contents = (id)[UIImage imageNamed:@"images-nav"].CGImage;
+
   [self.imageList refreshFeed];
 }
 

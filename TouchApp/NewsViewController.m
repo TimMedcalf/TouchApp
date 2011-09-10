@@ -99,8 +99,11 @@ static NSInteger CellSubTitleTag = 51;
   [super viewWillAppear:animated];
 
 	UINavigationBar *nb = self.navigationController.navigationBar;
-	nb.tintColor = [UIColor blackColor];  
-  nb.layer.contents = (id)[UIImage imageNamed:@"news-nav"].CGImage;
+	nb.tintColor = [UIColor blackColor];
+  if ([nb respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)])
+    [nb setBackgroundImage:[UIImage imageNamed:@"news-nav"] forBarMetrics:0];
+  else
+    nb.layer.contents = (id)[UIImage imageNamed:@"news-nav"].CGImage;
 }
 
 - (void)viewDidAppear:(BOOL)animated

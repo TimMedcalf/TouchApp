@@ -97,7 +97,11 @@ static NSInteger CellSubTitleTag = 51;
   
 	UINavigationBar *nb = self.navigationController.navigationBar;
 	nb.tintColor = [UIColor colorWithRed:176/255.0 green:169/255.0 blue:18/255.0 alpha:1];
-  nb.layer.contents = (id)[UIImage imageNamed:@"radio-nav"].CGImage;
+  if ([nb respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)])
+    [nb setBackgroundImage:[UIImage imageNamed:@"radio-nav"] forBarMetrics:0];
+  else
+    nb.layer.contents = (id)[UIImage imageNamed:@"radio-nav"].CGImage;
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
