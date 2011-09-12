@@ -8,7 +8,7 @@
 
 #import "CatalogueViewController.h"
 #import "CatalogueItem.h"
-#import "CatalogueItemViewController.h"
+#import "NewCatalogueItemViewController.h"
 
 static NSInteger CellTitleTag = 50;
 static NSInteger CellSubTitleTag = 51;
@@ -304,8 +304,13 @@ static NSInteger CellSubTitleTag = 51;
   //return immediately if user selected header image
   if (indexPath.section == 0) return;
 
-  CatalogueItemViewController *controller = [[CatalogueItemViewController alloc] initWithNibName:@"CatalogueItemViewController" bundle:nil];
-  controller.item = [self.catList.items objectAtIndex:indexPath.row];
+  CatalogueItem *curItem = [self.catList.items objectAtIndex:indexPath.row];
+  
+  NewCatalogueItemViewController *controller = [[NewCatalogueItemViewController alloc] initWithNibName:@"NewCatalogueItemViewController" bundle:nil];
+  controller.item = curItem;
+  controller.HTMLString = curItem.htmlForWebView;
+  controller.dontHideNavigationBar = YES;
+
   [self.navigationController pushViewController:controller animated:YES];
   [controller release];
 }

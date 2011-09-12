@@ -7,8 +7,9 @@
 //
 
 #import "RadioViewController.h"
-#import "RadioItemViewController.h"
+#import "NewRadioItemViewController.h"
 #import "RadioItem.h"
+
 
 static NSInteger CellTitleTag = 50;
 static NSInteger CellSubTitleTag = 51;
@@ -263,8 +264,13 @@ static NSInteger CellSubTitleTag = 51;
   //return immediately if user selected header image
   if (indexPath.section == 0) return;
   
-  RadioItemViewController *controller = [[RadioItemViewController alloc] initWithNibName:@"RadioItemViewController" bundle:nil];
-  controller.item = [self.radioList.items objectAtIndex:indexPath.row];
+  RadioItem *curItem = [self.radioList.items objectAtIndex:indexPath.row];
+  
+  NewRadioItemViewController *controller = [[NewRadioItemViewController alloc] initWithNibName:@"NewRadioItemViewController" bundle:nil];
+  controller.item = curItem;
+  controller.HTMLString = curItem.htmlForWebView;
+  controller.item = curItem;
+  controller.dontHideNavigationBar = YES;
   [self.navigationController pushViewController:controller animated:YES];
   [controller release];
 }
