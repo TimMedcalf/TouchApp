@@ -119,7 +119,7 @@ NSString *const Key_Cat_Publisher = @"publisher";
           "<link rel=\"stylesheet\" media=\"only screen and (max-device-width: 480px)\" href=\"mobile.css\" />"
           "<link rel=\"stylesheet\" media=\"only screen and (min-device-width: 481px) and (max-device-width: 1024px)\" href=\"ipad.css\" /></head>"
           "<body><div id='headerwrapper'><div id='headercell'><div id='title'><strong>%@</strong><br /><span id='byline'>By %@</span></div></div></div>"
-          "<p class='bodycopy'>%@</p></body></html>", self.title,self.artist,self.description];
+          "<p class='bodycopy'><p><img src='%@' /></p><p>%@</p></p></body></html>", self.title,self.artist,self.imageURL,self.description];
 }
 
 
