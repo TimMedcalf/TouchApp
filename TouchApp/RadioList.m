@@ -24,7 +24,7 @@
 
 - (NSString *)feedURL
 {
-  return @"http://www.touchshop.org/touchiphoneradio/podcast.xml";
+  return @"http://www.touchshop.org/touchradio/podcast.xml";
 }
 
 - (NSString *)cacheFilename
