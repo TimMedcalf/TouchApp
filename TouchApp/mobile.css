@@ -20,11 +20,26 @@ p.bodycopy {
     padding-top: 23px;
 }
 
+#playerwrapper {
+    border-top: 1px #e0e0e0 solid;
+    border-bottom: 1px #e0e0e0 solid; 
+    margin: 0;
+
+}
+
+#title, #playerwrapper div {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 15;
+    font-weight: 100;
+    margin: 21px 25px 21px 25px;
+    padding: 0;
+}
+
 .bodycopy, p {
 	font-family: "Georgia", "Times New Roman", serif;
 }
 
-#pubdate, #byline {
+#pubdate, #byline, .subtitle {
     font-family: Helvetica, Arial, sans-serif;
     font-size: 10;
     font-weight: 700;
@@ -33,14 +48,6 @@ p.bodycopy {
 
 #headerwrapper {display:table; height:90px;}
 #headercell {display:table-cell; vertical-align:middle;}
-
-#title {
-	font-family: Helvetica, Arial, sans-serif;
-    font-size: 15;
-    font-weight: 100;
-    margin: 21px 25px 21px 25px;
-    padding: 0;
-}
 
 .floatright {
 	float: right;

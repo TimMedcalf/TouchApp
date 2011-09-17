@@ -1,13 +1,13 @@
 * {
-float: none;
-margin: 0;
-padding: 0;
+    float: none;
+    margin: 0;
+    padding: 0;
 }
 
 html, body {
-font: 12px/15px sans-serif;
-color: #000;
-background: #FFFFFF;
+    font: 12px/15px sans-serif;
+    color: #000;
+    background: #FFFFFF;
 }
 
 
@@ -20,11 +20,26 @@ p.bodycopy {
     padding-top: 23px;
 }
 
+#playerwrapper {
+    border-top: 1px #e0e0e0 solid;
+    border-bottom: 1px #e0e0e0 solid; 
+    margin: 0;
+    
+}
+
+#title, #playerwrapper div {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 15;
+    font-weight: 100;
+    margin: 21px 25px 21px 25px;
+    padding: 0;
+}
+
 .bodycopy, p {
 	font-family: "Georgia", "Times New Roman", serif;
 }
 
-#pubdate, #byline {
+#pubdate, #byline, .subtitle {
     font-family: Helvetica, Arial, sans-serif;
     font-size: 10;
     font-weight: 700;
@@ -33,14 +48,6 @@ p.bodycopy {
 
 #headerwrapper {display:table; height:90px;}
 #headercell {display:table-cell; vertical-align:middle;}
-
-#title {
-	font-family: Helvetica, Arial, sans-serif;
-    font-size: 15;
-    font-weight: 100;
-    margin: 21px 25px 21px 25px;
-    padding: 0;
-}
 
 .floatright {
 	float: right;
@@ -52,11 +59,11 @@ p.bodycopy {
 }
 
 h1, h2, h3, h4, h5, h6 {
-font-weight: normal;
+    font-weight: normal;
 }
 
 img { 
-max-width: 269px;
+    max-width: 269px;
 }
 
 div {
@@ -65,27 +72,27 @@ div {
 }
 
 #nav,#nav li{
-  float:none!important;
-  clear:both!important;
-  margin:0!important;
-  padding:0;
-  text-align:left!important;
-  width:100%;
+    float:none!important;
+    clear:both!important;
+    margin:0!important;
+    padding:0;
+    text-align:left!important;
+    width:100%;
 }
 #nav li{
-  margin:0!important;
+    margin:0!important;
 }
 #nav li a{
-  display:block;
+    display:block;
 }
 
 #nav ul, #sections ul, #related ul {
-  list-style-type: none;
+    list-style-type: none;
 }
 
 ul {
-margin: 0 0 10px 0;
-padding: 0;
+    margin: 0 0 10px 0;
+    padding: 0;
 }
 
 @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) { 
