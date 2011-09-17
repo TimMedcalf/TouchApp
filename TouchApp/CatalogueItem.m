@@ -85,7 +85,11 @@ NSString *const Key_Cat_Publisher = @"publisher";
   self.title = [dict objectForKey:Key_Cat_Title];
   self.artist = [dict objectForKey:Key_Cat_Artist];
   self.catalogueNumber = [dict objectForKey:Key_Cat_CatalogueNumber];
-  self.description = [dict objectForKey:Key_Cat_Description];
+    
+  self.description = [[dict objectForKey:Key_Cat_Description]
+                      stringByReplacingOccurrencesOfString:@"\n\n" 
+                      withString:@"</p><p>"];
+
   self.mp3SampleURL = [dict objectForKey:Key_Cat_MP3SampleURL];
   self.releaseURL = [dict objectForKey:Key_Cat_ReleaseURL];
   self.itunesURL = [dict objectForKey:Key_Cat_Itunes_URL];
