@@ -61,7 +61,10 @@ NSString *const Key_Radio_TitleLabel = @"itunes:subtitle";
   self.title = [dict objectForKey:Key_Radio_Title];
   self.titleLabel = [dict objectForKey:Key_Radio_TitleLabel];
   self.author = [dict objectForKey:Key_Radio_Author];
-  self.summary = [dict objectForKey:Key_Radio_Summary];
+  
+  self.summary = [[dict objectForKey:Key_Radio_Summary]
+                  stringByReplacingOccurrencesOfString:@"\n\n" withString:@"</p><p>"];  
+    
   self.subtitle = [dict objectForKey:Key_Radio_SubTitle];
   NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
   [inputFormatter setLocale:[[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"] autorelease]];
