@@ -144,6 +144,8 @@
 		22CB4CB813F1248E008968D6 /* RadioList.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4CB713F1248D008968D6 /* RadioList.m */; };
 		22CB4CBE13F12BDA008968D6 /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4CBC13F12BDA008968D6 /* RadioViewController.m */; };
 		22CB4CBF13F12BDA008968D6 /* RadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22CB4CBD13F12BDA008968D6 /* RadioViewController.xib */; };
+		DEB0003E142582870059E43D /* jquery-1.6.4.min.js in Resources */ = {isa = PBXBuildFile; fileRef = DEB0003D142582870059E43D /* jquery-1.6.4.min.js */; };
+		DEB0004214258A260059E43D /* audiocontrol.js in Resources */ = {isa = PBXBuildFile; fileRef = DEB0004114258A260059E43D /* audiocontrol.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -344,6 +346,8 @@
 		22CB4CBB13F12BDA008968D6 /* RadioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioViewController.h; sourceTree = "<group>"; };
 		22CB4CBC13F12BDA008968D6 /* RadioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioViewController.m; sourceTree = "<group>"; };
 		22CB4CBD13F12BDA008968D6 /* RadioViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadioViewController.xib; sourceTree = "<group>"; };
+		DEB0003D142582870059E43D /* jquery-1.6.4.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "jquery-1.6.4.min.js"; sourceTree = "<group>"; };
+		DEB0004114258A260059E43D /* audiocontrol.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = audiocontrol.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -406,6 +410,7 @@
 				222951F113EC49F2001D174D /* controllers */,
 				222951CD13EC496F001D174D /* Supporting Files */,
 				2229523013ECEA5E001D174D /* gfx */,
+				DEB00040142589960059E43D /* javascripts */,
 			);
 			path = TouchApp;
 			sourceTree = "<group>";
@@ -731,6 +736,7 @@
 		22CB4BFC13EE47FC008968D6 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				DEB0003D142582870059E43D /* jquery-1.6.4.min.js */,
 				22CB4BB513EE4113008968D6 /* TouchXML */,
 			);
 			name = libs;
@@ -880,6 +886,14 @@
 			name = Radio;
 			sourceTree = "<group>";
 		};
+		DEB00040142589960059E43D /* javascripts */ = {
+			isa = PBXGroup;
+			children = (
+				DEB0004114258A260059E43D /* audiocontrol.js */,
+			);
+			name = javascripts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -930,6 +944,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEB0004214258A260059E43D /* audiocontrol.js in Resources */,
+				DEB0003E142582870059E43D /* jquery-1.6.4.min.js in Resources */,
 				222951D113EC496F001D174D /* InfoPlist.strings in Resources */,
 				222951DA13EC496F001D174D /* MainWindow.xib in Resources */,
 				222951F613EC4B5D001D174D /* CatalogueViewController.xib in Resources */,
