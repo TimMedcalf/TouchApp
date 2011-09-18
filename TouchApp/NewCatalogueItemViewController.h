@@ -16,5 +16,6 @@
 
 - (void)pause;
 - (void)play;
+- (void)togglePlayPauseInWebView;
 
 @end

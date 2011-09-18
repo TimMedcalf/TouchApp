@@ -19,16 +19,7 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    TJMAudioStatus audio = [[TJMAudioCenter instance] statusCheckForURL:[NSURL URLWithString:self.item.link]];
-    
-    if (audio == TJMAudioStatusCurrentPlaying)
-    {  
-        [self.webView stringByEvaluatingJavaScriptFromString:@"showPauseButton();"];
-    }
-    else if (audio == TJMAudioStatusCurrentPaused)
-    { 
-        [self.webView stringByEvaluatingJavaScriptFromString:@"showPlayButton();"];
-    }
+    [self togglePlayPauseInWebView];
     [super webViewDidFinishLoad:webView];
 }
 
@@ -48,6 +39,20 @@
     }
 }
 
+- (void)togglePlayPauseInWebView {
+    TJMAudioStatus audio = [[TJMAudioCenter instance] statusCheckForURL:[NSURL URLWithString:self.item.link]];
+    
+    if (audio == TJMAudioStatusCurrentPlaying)
+    {  
+        [self.webView stringByEvaluatingJavaScriptFromString:@"showPauseButton();"];
+    }
+    else if (audio == TJMAudioStatusCurrentPaused)
+    { 
+        [self.webView stringByEvaluatingJavaScriptFromString:@"showPlayButton();"];
+    }
+
+}
+
 - (void)pause {
     [[TJMAudioCenter instance] pauseURL:[NSURL URLWithString:self.item.link]];
 }
@@ -55,7 +60,6 @@
 - (void)play {
     [[TJMAudioCenter instance] playURL:[NSURL URLWithString:self.item.link]];
 }
-
 
 - (void)dealloc
 {

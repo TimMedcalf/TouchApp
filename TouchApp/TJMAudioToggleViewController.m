@@ -70,5 +70,8 @@
 - (void)togglePlay
 {
   [[TJMAudioCenter instance] togglePlayPause];
+  if ([self respondsToSelector:@selector(togglePlayPauseInWebView)]) {
+    [self togglePlayPauseInWebView];     
+  }
 }
 @end
