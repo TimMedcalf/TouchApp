@@ -270,6 +270,7 @@ static NSInteger CellSubTitleTag = 51;
   controller.HTMLString = curItem.htmlForWebView;
   controller.recipeItem = curItem;
   controller.dontHideNavigationBar = YES;
+  controller.disableAudioToggle = YES;
   [self.navigationController pushViewController:controller animated:YES];
   [controller release];
 }
