@@ -15,20 +15,21 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-//  if (([MFMailComposeViewController canSendMail]) && (self.recipeItem)) {
-//    UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"Email" style:UIBarButtonItemStylePlain target:self action:@selector(sendRecipe)];
-//    button.enabled = YES;
-//    self.navigationItem.rightBarButtonItem = button;
-//    [button release];
-//  }
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-  [super webViewDidFinishLoad:webView];
-//  if (self.navigationItem.rightBarButtonItem)
-//    self.navigationItem.rightBarButtonItem.enabled = YES;
-
+    TJMAudioStatus audio = [[TJMAudioCenter instance] statusCheckForURL:[NSURL URLWithString:self.item.link]];
+    
+    if (audio == TJMAudioStatusCurrentPlaying)
+    {  
+        [self.webView stringByEvaluatingJavaScriptFromString:@"showPauseButton();"];
+    }
+    else if (audio == TJMAudioStatusCurrentPaused)
+    { 
+        [self.webView stringByEvaluatingJavaScriptFromString:@"showPlayButton();"];
+    }
+    [super webViewDidFinishLoad:webView];
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
@@ -40,6 +41,7 @@
         else if ([[[[request URL] path] substringFromIndex:1] isEqualToString:@"pause"]) {
             [self pause];
         }
+        
         return NO; // prevent request
     } else {
         return YES; // allow request

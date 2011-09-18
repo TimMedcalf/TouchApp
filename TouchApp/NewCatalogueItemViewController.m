@@ -25,10 +25,17 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-  [super webViewDidFinishLoad:webView];
-//  if (self.navigationItem.rightBarButtonItem)
-//    self.navigationItem.rightBarButtonItem.enabled = YES;
-
+    TJMAudioStatus audio = [[TJMAudioCenter instance] statusCheckForURL:[NSURL URLWithString:self.item.mp3SampleURL]];
+    
+    if (audio == TJMAudioStatusCurrentPlaying)
+    {  
+        [self.webView stringByEvaluatingJavaScriptFromString:@"showPauseButton();"];
+    }
+    else if (audio == TJMAudioStatusCurrentPaused)
+    { 
+        [self.webView stringByEvaluatingJavaScriptFromString:@"showPlayButton();"];
+    }
+    [super webViewDidFinishLoad:webView];
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
