@@ -14,4 +14,7 @@
 
 @property (nonatomic, retain) CatalogueItem *item;
 
+- (void)pause;
+- (void)play;
+
 @end

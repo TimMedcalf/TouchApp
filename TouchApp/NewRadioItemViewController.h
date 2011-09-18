@@ -14,4 +14,7 @@
 
 @property (nonatomic, retain) RadioItem *item;
 
+- (void)pause;
+- (void)play;
+
 @end

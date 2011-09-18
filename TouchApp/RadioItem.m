@@ -116,8 +116,8 @@ NSString *const Key_Radio_TitleLabel = @"itunes:subtitle";
   return [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width\" />"
           "<link rel=\"stylesheet\" media=\"only screen and (max-device-width: 480px)\" href=\"mobile.css\" />"
           "<link rel=\"stylesheet\" media=\"only screen and (min-device-width: 481px) and (max-device-width: 1024px)\" href=\"ipad.css\" />"
-          "<script type=\"text/javascript\" src=\"jquery-1.6.4.min.js\"></script></head>"
-          "<script type=\"text/javascript\" src=\"audiocontrol.js\"></script>"
+          "<script type=\"text/javascript\" src=\"jquery-1.6.4.min.js\"></script>"
+          "<script type=\"text/javascript\" src=\"audiocontrol.js\"></script></head>"
           "<body><div id='headerwrapper'><div id='headercell'><div id='title'><strong>%@</strong><br /><span id='byline'>%@</span></div></div></div>"
           "<p class='bodycopy'><p><img src='%@' /></p><p>%@</p>"
           "<div id='playerwrapper'><div><strong>Play</strong><br /><span class='subtitle'>Tap here to stream audio</span></div></div></p></body></html>", 

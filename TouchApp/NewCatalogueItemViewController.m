@@ -31,35 +31,28 @@
 
 }
 
-//- (void)sendRecipe {
-//	MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
-//	controller.mailComposeDelegate = self;
-//	
-//	NSString *subject = [NSString stringWithFormat:@"A recipe cooked up by "];
-//	subject = [subject stringByAppendingString:self.recipeItem.recipeTitle];
-//	subject = [subject stringByAppendingString:@" for Touch"];
-//	
-//	NSString *recipeHTML = [NSString stringWithFormat:@"<p id='title'><strong>"];
-//	recipeHTML = [recipeHTML stringByAppendingString:self.recipeItem.recipeExcerpt];
-//	recipeHTML = [recipeHTML stringByAppendingString:@"</strong>"];
-//	recipeHTML = [recipeHTML stringByAppendingString:@"<br />by "];
-//	recipeHTML = [recipeHTML stringByAppendingString:self.recipeItem.recipeTitle];
-//	recipeHTML = [recipeHTML stringByAppendingString:@"</p>"];
-//	recipeHTML = [recipeHTML stringByAppendingString:self.recipeItem.recipeDescription];
-//	
-//	[controller setSubject:subject];
-//	[controller setMessageBody:recipeHTML isHTML:YES];
-//	
-//	[self presentModalViewController:controller animated:YES];
-//	
-//	[controller release];
-//}
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    if ([[[request URL] scheme] isEqualToString:@"js2objc"]) {
+        // remove leading / from path
+        if ([[[[request URL] path] substringFromIndex:1] isEqualToString:@"play"]) {
+            [self play];
+        }
+        else if ([[[[request URL] path] substringFromIndex:1] isEqualToString:@"pause"]) {
+            [self pause];
+        }
+        return NO; // prevent request
+    } else {
+        return YES; // allow request
+    }
+}
 
-//- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
-//	[self becomeFirstResponder];
-//	[self dismissModalViewControllerAnimated:YES];
-//}
+- (void)pause {
+    [[TJMAudioCenter instance] pauseURL:[NSURL URLWithString:self.item.mp3SampleURL]];
+}
 
+- (void)play {
+    [[TJMAudioCenter instance] playURL:[NSURL URLWithString:self.item.mp3SampleURL]];
+}
 
 
 - (void)dealloc
