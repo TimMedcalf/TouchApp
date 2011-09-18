@@ -78,7 +78,7 @@ NSString *const Key_Radio_TitleLabel = @"itunes:subtitle";
   self.episode_duration = [dict objectForKey:Key_Radio_Duration];
     
  
-  self.imageURL = [[NSURL alloc] 
+  NSURL * tmpURL = [[NSURL alloc] 
                    initWithString:[[[dict objectForKey:Key_Radio_Link] 
                                    stringByReplacingOccurrencesOfString:@".mp3" 
                                    withString:@".jpg"] 
@@ -86,6 +86,8 @@ NSString *const Key_Radio_TitleLabel = @"itunes:subtitle";
                                    withString:@"touchradio/images/"]
                    relativeToURL:baseURL];
     
+  self.imageURL = tmpURL;
+  [tmpURL release];
   //NSLog(@"%@ - %@ - %@", self.catalogueNumber, self.artist, self.title);
 }
 
