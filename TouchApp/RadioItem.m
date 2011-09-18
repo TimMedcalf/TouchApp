@@ -15,6 +15,8 @@ NSString *const Key_Radio_Link = @"guid";
 NSString *const Key_Radio_Duration = @"itunes:duration";
 NSString *const Key_Radio_TitleLabel = @"itunes:subtitle"; 
 
+NSString *const Key_ImageOverride = @"imageURL";
+
 
 #import "RadioItem.h"
 
@@ -78,16 +80,34 @@ NSString *const Key_Radio_TitleLabel = @"itunes:subtitle";
   self.episode_duration = [dict objectForKey:Key_Radio_Duration];
     
  
-  NSURL * tmpURL = [[NSURL alloc] 
-                   initWithString:[[[dict objectForKey:Key_Radio_Link] 
-                                   stringByReplacingOccurrencesOfString:@".mp3" 
-                                   withString:@".jpg"] 
-                                   stringByReplacingOccurrencesOfString:@"touchradio/" 
-                                   withString:@"touchradio/images/"]
-                   relativeToURL:baseURL];
-    
-  self.imageURL = tmpURL;
-  [tmpURL release];
+  NSURL * tmpURL;
+  
+  //first check if there is an image override location
+  if ([dict objectForKey:Key_ImageOverride])
+  {
+    NSString *tmpStr = [dict objectForKey:Key_ImageOverride];
+    if ([tmpStr length] > 0)
+    {
+      tmpURL = [[NSURL alloc] initWithString:tmpStr];
+      self.imageURL = tmpURL;
+      [tmpURL release];
+    }
+  }
+   
+  //if not, generate an image url as per normal...
+  if (!self.imageURL)
+  {
+    tmpURL = [[NSURL alloc] initWithString:[[[dict objectForKey:Key_Radio_Link] 
+                                             stringByReplacingOccurrencesOfString:@".mp3" 
+                                             withString:@".jpg"] 
+                                            stringByReplacingOccurrencesOfString:@"touchradio/" 
+                                            withString:@"touchradio/images/"]
+                             relativeToURL:baseURL];
+  
+    self.imageURL = tmpURL;
+    NSLog(@"Radio URL = %@", self.imageURL);
+    [tmpURL release];
+  }
   //NSLog(@"%@ - %@ - %@", self.catalogueNumber, self.artist, self.title);
 }
 
