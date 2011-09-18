@@ -269,7 +269,6 @@ static NSInteger CellSubTitleTag = 51;
   RecipeItemViewController *controller = [[RecipeItemViewController alloc] initWithNibName:@"RecipeItemViewController" bundle:nil];
   controller.HTMLString = curItem.htmlForWebView;
   controller.recipeItem = curItem;
-  controller.dontHideNavigationBar = YES;
   [self.navigationController pushViewController:controller animated:YES];
   [controller release];
 }
