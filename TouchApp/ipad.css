@@ -69,7 +69,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 img { 
-    max-width: 269px;
+    max-width: 267px;
+    border: 2px gray solid;
 }
 
 div {
@@ -99,6 +100,12 @@ div {
 ul {
     margin: 0 0 10px 0;
     padding: 0;
+}
+
+a {
+    text-decoration: none;
+    font-style: italic;
+    color: black;
 }
 
 @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) { 

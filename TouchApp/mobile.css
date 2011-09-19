@@ -69,7 +69,8 @@ font-weight: normal;
 }
 
 img { 
-max-width: 269px;
+    max-width: 267px;
+    border: 2px gray solid;
 }
 
 div {
