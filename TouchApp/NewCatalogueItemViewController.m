@@ -78,17 +78,20 @@
 #pragma mark TJM AudioCenterDelegate 
 -(void)URLDidFinish:(NSURL *)url
 {
-  //if ([[NSURL URLWithString:self.item.mp3SampleURL] isEqual:url]) [self showPaused];
+  if ([[NSURL URLWithString:self.item.mp3SampleURL] isEqual:url])
+    [self.webView stringByEvaluatingJavaScriptFromString:@"showPlayButton();"];
 }
 
 -(void)URLIsPlaying:(NSURL *)url
 {
-  //if ([[NSURL URLWithString:self.item.mp3SampleURL] isEqual:url]) [self showPlaying];
+  if ([[NSURL URLWithString:self.item.mp3SampleURL] isEqual:url])
+    [self.webView stringByEvaluatingJavaScriptFromString:@"showPauseButton();"];
   
 }
 -(void)URLIsPaused:(NSURL *)url
 {
-  //if ([[NSURL URLWithString:self.item.mp3SampleURL] isEqual:url]) [self showPaused];  
+  if ([[NSURL URLWithString:self.item.mp3SampleURL] isEqual:url])
+    [self.webView stringByEvaluatingJavaScriptFromString:@"showPlayButton();"];
 }
 
 -(void)URLDidFail:(NSURL *)url

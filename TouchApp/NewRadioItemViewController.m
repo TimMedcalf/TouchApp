@@ -53,8 +53,37 @@
     [[TJMAudioCenter instance] playURL:[NSURL URLWithString:self.item.link]];
 }
 
+#pragma mark TJM AudioCenterDelegate 
+-(void)URLDidFinish:(NSURL *)url
+{
+  if ([[NSURL URLWithString:self.item.link] isEqual:url])
+    [self.webView stringByEvaluatingJavaScriptFromString:@"showPlayButton();"];
+}
+
+-(void)URLIsPlaying:(NSURL *)url
+{
+  if ([[NSURL URLWithString:self.item.link] isEqual:url])
+    [self.webView stringByEvaluatingJavaScriptFromString:@"showPauseButton();"];
+  
+}
+-(void)URLIsPaused:(NSURL *)url
+{
+  if ([[NSURL URLWithString:self.item.link] isEqual:url])
+    [self.webView stringByEvaluatingJavaScriptFromString:@"showPlayButton();"];
+}
+
+-(void)URLDidFail:(NSURL *)url
+{
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Audio stream failed." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	[alert show];
+	[alert autorelease];
+}
+
+
 - (void)dealloc
 {
+  if ([TJMAudioCenter instance].delegate == self) 
+    [TJMAudioCenter instance].delegate = nil;
   [_item release];
   [super dealloc];
 }
