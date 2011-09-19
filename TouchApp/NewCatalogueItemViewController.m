@@ -1,10 +1,3 @@
-//
-//  ViewWebsiteViewController.m
-//  Habitat Fitted Kitchens
-//
-//  Created by Tim Medcalf on 01/03/2011.
-//  Copyright 2011 ErgoThis Ltd. All rights reserved.
-//
 
 #import "NewCatalogueItemViewController.h"
 
@@ -15,12 +8,7 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-//  if (([MFMailComposeViewController canSendMail]) && (self.recipeItem)) {
-//    UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"Email" style:UIBarButtonItemStylePlain target:self action:@selector(sendRecipe)];
-//    button.enabled = YES;
-//    self.navigationItem.rightBarButtonItem = button;
-//    [button release];
-//  }
+  [TJMAudioCenter instance].delegate = self;
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
@@ -71,7 +59,6 @@
     { 
         [self.webView stringByEvaluatingJavaScriptFromString:@"showPlayButton();"];
     }
-    
 }
 
 - (void)showBuyLinks {
@@ -82,8 +69,33 @@
 
 - (void)dealloc
 {
+  if ([TJMAudioCenter instance].delegate == self) 
+    [TJMAudioCenter instance].delegate = nil;
   [_item release];
   [super dealloc];
+}
+
+#pragma mark TJM AudioCenterDelegate 
+-(void)URLDidFinish:(NSURL *)url
+{
+  //if ([[NSURL URLWithString:self.item.mp3SampleURL] isEqual:url]) [self showPaused];
+}
+
+-(void)URLIsPlaying:(NSURL *)url
+{
+  //if ([[NSURL URLWithString:self.item.mp3SampleURL] isEqual:url]) [self showPlaying];
+  
+}
+-(void)URLIsPaused:(NSURL *)url
+{
+  //if ([[NSURL URLWithString:self.item.mp3SampleURL] isEqual:url]) [self showPaused];  
+}
+
+-(void)URLDidFail:(NSURL *)url
+{
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Audio stream failed." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	[alert show];
+	[alert autorelease];
 }
 
 @end

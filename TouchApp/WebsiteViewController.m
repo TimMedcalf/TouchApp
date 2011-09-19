@@ -194,7 +194,6 @@
     WebsiteViewController *newWeb = [[WebsiteViewController alloc] initWithNibName:@"WebsiteViewController" bundle:nil];
     newWeb.initialURL = [request.URL absoluteString];
     newWeb.dontHideNavigationBar = YES;
-    newWeb.disableAudioToggle = YES;
     [self.navigationController pushViewController:newWeb animated:YES];
     [newWeb release]; newWeb=nil;
     return NO;

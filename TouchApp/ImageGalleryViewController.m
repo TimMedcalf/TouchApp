@@ -12,7 +12,6 @@
 #import "TJMImageResourceManager.h"
 #import "TJMImageResourceView.h"
 #import "PhotoViewController.h"
-//#import "WebsiteViewController.h"
 
 static NSInteger CellImageTag = 51;
 

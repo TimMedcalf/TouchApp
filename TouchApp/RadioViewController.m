@@ -117,11 +117,6 @@ static NSInteger CellSubTitleTag = 51;
   [super viewWillDisappear:animated];
 }
 
-- (void)viewDidDisappear:(BOOL)animated
-{
-  [super viewDidDisappear:animated];
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
   // Return YES for supported orientations
@@ -252,7 +247,7 @@ static NSInteger CellSubTitleTag = 51;
       return 87;
     else
       return 58;
-  }  
+  } 
 }
 
 
@@ -270,7 +265,6 @@ static NSInteger CellSubTitleTag = 51;
   controller.item = curItem;
   controller.HTMLString = curItem.htmlForWebView;
   controller.item = curItem;
-  controller.dontHideNavigationBar = YES;
   [self.navigationController pushViewController:controller animated:YES];
   [controller release];
 }

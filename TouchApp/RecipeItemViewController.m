@@ -1,10 +1,3 @@
-//
-//  ViewWebsiteViewController.m
-//  Habitat Fitted Kitchens
-//
-//  Created by Tim Medcalf on 01/03/2011.
-//  Copyright 2011 ErgoThis Ltd. All rights reserved.
-//
 
 #import "RecipeItemViewController.h"
 
@@ -18,7 +11,6 @@
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) 
   {
-    self.dontHideNavigationBar = YES;
     self.disableAudioToggle = YES;
   }
   return self;
