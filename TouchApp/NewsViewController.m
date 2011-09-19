@@ -8,7 +8,7 @@
 
 #import "NewsViewController.h"
 #import "NewsItem.h"
-#import "WebsiteViewController.h"
+#import "HTMLItemViewController.h"
 #import "TJMAudioCenter.h"
 
 
@@ -304,10 +304,8 @@ static NSInteger CellSubTitleTag = 51;
   if (indexPath.section == 0) return;
   
   NewsItem *curItem = [self.newsList.items objectAtIndex:indexPath.row];
-  WebsiteViewController *controller = [[WebsiteViewController alloc] initWithNibName:@"WebsiteViewController" bundle:nil];
+  HTMLItemViewController *controller = [[HTMLItemViewController alloc] initWithNibName:@"HTMLItemViewController" bundle:nil];
   controller.HTMLString = curItem.htmlForWebView;
-  controller.dontHideNavigationBar = YES;
-  controller.openLinksInNewView = YES;
   [self.navigationController pushViewController:controller animated:YES];
   [controller release];
 }
