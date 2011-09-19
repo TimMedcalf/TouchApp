@@ -101,6 +101,12 @@ margin: 0 0 10px 0;
 padding: 0;
 }
 
+a {
+    text-decoration: none;
+    font-style: italic;
+    color: black;
+}
+
 @media only screen and (max-device-width: 480px) { 
 
 	.selector {
