@@ -69,7 +69,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 img { 
-    max-width: 269px;
+    max-width: 267px;
+    border: 2px gray solid;
 }
 
 div {
