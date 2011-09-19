@@ -20,6 +20,12 @@ p.bodycopy {
     padding-top: 23px;
 }
 
+#buywrapper {
+    border-top: 1px #e0e0e0 solid;
+    margin: 0;
+    display: none;
+}
+
 #playerwrapper {
     border-top: 1px #e0e0e0 solid;
     border-bottom: 1px #e0e0e0 solid; 
@@ -27,7 +33,7 @@ p.bodycopy {
     
 }
 
-#title, #playerwrapper div {
+#title, #playerwrapper div, #buywrapper div {
     font-family: Helvetica, Arial, sans-serif;
     font-size: 15;
     font-weight: 100;

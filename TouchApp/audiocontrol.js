@@ -21,6 +21,10 @@ $(function(){
     $('#playerwrapper').html("<div><strong>Pause</strong><br /><span class='subtitle'>Tap here to pause the audio stream</span></div>");
   }
   
+  showBuyLinks = function(){
+    $('#buywrapper').show();
+  }
+  
   $('#playerwrapper').click(function(){
     if (isPlaying){
         pause();
@@ -28,6 +32,10 @@ $(function(){
     else {
         play();
     }
+  });
+  
+  $('#buywrapper').click(function(){
+    document.location = 'js2objc:///buy';
   });
 });
 

@@ -126,6 +126,7 @@ NSString *const Key_Cat_Publisher = @"publisher";
           "<script type=\"text/javascript\" src=\"audiocontrol.js\"></script></head>"
           "<body><div id='headerwrapper'><div id='headercell'><div id='title'><strong>%@</strong><br /><span id='byline'>By %@</span></div></div></div>"
           "<p class='bodycopy'><p><img src='%@' /></p><p>%@</p>"
+          "<div id='buywrapper'><div><strong>Buy</strong><br /><span class='subtitle'>Tap here to visit the iTunes Store page for this release</span></div></div>"
           "<div id='playerwrapper'><div><strong>Play</strong><br /><span class='subtitle'>Tap here to stream audio</span></div></div></p></body></html>", 
           self.title,self.artist,self.imageURL,self.description];
 }

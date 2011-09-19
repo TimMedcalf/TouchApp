@@ -16,6 +16,8 @@
 
 - (void)pause;
 - (void)play;
+- (void)buy;
+- (void)showBuyLinks;
 - (void)togglePlayPauseInWebView;
 
 @end

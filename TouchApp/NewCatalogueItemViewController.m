@@ -25,6 +25,7 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
+    [self showBuyLinks];
     [self togglePlayPauseInWebView];
     [super webViewDidFinishLoad:webView];
 }
@@ -37,6 +38,9 @@
         }
         else if ([[[[request URL] path] substringFromIndex:1] isEqualToString:@"pause"]) {
             [self pause];
+        }
+        else if ([[[[request URL] path] substringFromIndex:1] isEqualToString:@"buy"] && [self.item.itunesURL length] != 0) {
+            [self buy];
         }
         return NO; // prevent request
     } else {
@@ -52,6 +56,10 @@
     [[TJMAudioCenter instance] playURL:[NSURL URLWithString:self.item.mp3SampleURL]];
 }
 
+- (void)buy {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.item.itunesURL]];
+}
+
 - (void)togglePlayPauseInWebView {
     TJMAudioStatus audio = [[TJMAudioCenter instance] statusCheckForURL:[NSURL URLWithString:self.item.mp3SampleURL]];
     
@@ -64,6 +72,12 @@
         [self.webView stringByEvaluatingJavaScriptFromString:@"showPlayButton();"];
     }
     
+}
+
+- (void)showBuyLinks {
+    if ([self.item.itunesURL length] != 0) {
+        [self.webView stringByEvaluatingJavaScriptFromString:@"showBuyLinks();"];
+    }
 }
 
 - (void)dealloc
