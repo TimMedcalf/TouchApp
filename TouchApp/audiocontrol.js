@@ -9,7 +9,6 @@ $(function(){
   play = function(){    
     //showPauseButton();
     showCachingButton();
-  isCaching = true;
     document.location = 'js2objc:///play';
   }
 
