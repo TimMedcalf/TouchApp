@@ -2,12 +2,14 @@ $(function(){
   isPlaying = false;
   
   pause = function(){
-    showPlayButton();
+    //showPlayButton();
     document.location = 'js2objc:///pause';
   }
   
   play = function(){    
-    showPauseButton();
+    //showPauseButton();
+    showCachingButton();
+  isCaching = true;
     document.location = 'js2objc:///play';
   }
 
@@ -21,16 +23,20 @@ $(function(){
     $('#playerwrapper').html("<div><strong>Pause</strong><br /><span class='subtitle'>Tap here to pause the audio stream</span></div>");
   }
   
+  showCachingButton = function(){
+    $('#playerwrapper').html("<div><strong>Caching...</strong><br /><span class='subtitle'>Please wait...</span></div>");
+  }
+  
   showBuyLinks = function(){
     $('#buywrapper').show();
   }
   
   $('#playerwrapper').click(function(){
     if (isPlaying){
-        pause();
+      pause();
     }
     else {
-        play();
+      play();
     }
   });
   
