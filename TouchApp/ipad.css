@@ -101,6 +101,12 @@ ul {
     padding: 0;
 }
 
+a {
+    text-decoration: none;
+    font-style: italic;
+    color: black;
+}
+
 @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) { 
 
 	.selector {
