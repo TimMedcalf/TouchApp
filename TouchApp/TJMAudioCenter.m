@@ -95,10 +95,7 @@ SINGLETON_IMPLEMENTATION_FOR(TJMAudioCenter)
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
                         change:(NSDictionary *)change context:(void *)context
-{ 
-  //if we aint got a delegate just return - we've got no-one to inform!
-  //if (!self.delegate) return;
-  
+{   
   if ([keyPath isEqualToString:@"status"])
   {
     if ([(NSString*)context isEqual: CurrentPlayerObserver])
@@ -125,8 +122,13 @@ SINGLETON_IMPLEMENTATION_FOR(TJMAudioCenter)
       if (self.player.rate == 0)
       {
         //NSLog(@"Audio Paused");
-        if ((self.delegate) && ([self.delegate respondsToSelector:@selector(URLIsPaused:)]))
-          [self.delegate URLIsPaused:self.URL];
+        //just check that the audio is loaded - this will get hit even if the audio still caching...
+        TJMAudioStatus audio = [self statusCheck];
+        if (audio == TJMAudioStatusCurrentPaused)
+        {
+          if ((self.delegate) && ([self.delegate respondsToSelector:@selector(URLIsPaused:)]))
+            [self.delegate URLIsPaused:self.URL];
+        }
         [[NSNotificationCenter defaultCenter] postNotificationName:TJMAudioCenterStatusChange object:self];
       }
       else

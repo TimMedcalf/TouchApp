@@ -13,6 +13,7 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
+  //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));  
     [self togglePlayPauseInWebView];
     [super webViewDidFinishLoad:webView];
 }
@@ -34,7 +35,7 @@
 }
 
 - (void)togglePlayPauseInWebView {
-  NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));  
+  //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));  
   TJMAudioStatus audio = [[TJMAudioCenter instance] statusCheckForURL:[NSURL URLWithString:self.item.link]];
   
   if (audio == TJMAudioStatusCurrentPlaying)
@@ -52,30 +53,34 @@
 }
 
 - (void)play {
-    [[TJMAudioCenter instance] playURL:[NSURL URLWithString:self.item.link]];
+  //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));  
+  [[TJMAudioCenter instance] playURL:[NSURL URLWithString:self.item.link]];
 }
 
 #pragma mark TJM AudioCenterDelegate 
 -(void)URLDidFinish:(NSURL *)url
 {
+  //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));  
   if ([[NSURL URLWithString:self.item.link] isEqual:url])
     [self.webView stringByEvaluatingJavaScriptFromString:@"showPlayButton();"];
 }
 
 -(void)URLIsPlaying:(NSURL *)url
 {
+  //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));  
   if ([[NSURL URLWithString:self.item.link] isEqual:url])
     [self.webView stringByEvaluatingJavaScriptFromString:@"showPauseButton();"];
-  
 }
 -(void)URLIsPaused:(NSURL *)url
 {
+  //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));  
   if ([[NSURL URLWithString:self.item.link] isEqual:url])
     [self.webView stringByEvaluatingJavaScriptFromString:@"showPlayButton();"];
 }
 
 -(void)URLDidFail:(NSURL *)url
 {
+  //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));  
   UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Audio stream failed." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 	[alert show];
 	[alert autorelease];
