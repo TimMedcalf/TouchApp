@@ -20,14 +20,6 @@ p.bodycopy {
     padding-top: 23px;
 }
 
-#packshot {
-    margin: 0px 92px 23px 90px; padding: 0;
-}
-
-#description {
-    margin: 23px 92px 23px 90px; padding: 0;
-}
-
 #buywrapper {
     border-top: 1px #e0e0e0 solid;
     margin: 0;
@@ -45,6 +37,7 @@ p.bodycopy {
     font-family: Helvetica, Arial, sans-serif;
     font-size: 21;
     font-weight: 100;
+    line-height: 23px;
     margin: 26px 92px 26px 90px;
     padding: 0;
 }
