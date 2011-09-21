@@ -20,6 +20,14 @@ p.bodycopy {
     padding-top: 23px;
 }
 
+#packshot {
+    margin: 0px 25px 23px 25px; padding: 0;
+}
+
+#description {
+    margin: 23px 25px 23px 25px; padding: 0;
+}
+
 #buywrapper {
     border-top: 1px #e0e0e0 solid;
     margin: 0;

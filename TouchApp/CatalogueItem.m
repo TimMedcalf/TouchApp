@@ -123,11 +123,14 @@ NSString *const Key_Cat_Publisher = @"publisher";
           "<link rel=\"stylesheet\" media=\"only screen and (max-device-width: 480px)\" href=\"mobile.css\" />"
           "<link rel=\"stylesheet\" media=\"only screen and (min-device-width: 481px) and (max-device-width: 1024px)\" href=\"ipad.css\" />"
           "<script type=\"text/javascript\" src=\"jquery-1.6.4.min.js\"></script>"
-          "<script type=\"text/javascript\" src=\"audiocontrol.js\"></script></head>"
-          "<body><div id='headerwrapper'><div id='headercell'><div id='title'><strong>%@</strong><br /><span id='byline'>By %@</span></div></div></div>"
-          "<p class='bodycopy'><p><img src='%@' /></p><p>%@</p>"
+          "<script type=\"text/javascript\" src=\"audiocontrol.js\"></script></head><body>"
+          "<div id='headerwrapper'><div id='headercell'><div id='title'><strong>%@</strong><br /><span id='byline'>By %@</span></div></div></div>"
+          "<p class='bodycopy'>"
+          "<p id='packshot'><img src='%@' /></p>"
           "<div id='buywrapper'><div><strong>Buy</strong><br /><span class='subtitle'>Tap here to visit the iTunes Store page for this release</span></div></div>"
-          "<div id='playerwrapper'><div><strong>Play</strong><br /><span class='subtitle'>Tap here to stream audio</span></div></div></p></body></html>", 
+          "<div id='playerwrapper'><div><strong>Play</strong><br /><span class='subtitle'>Tap here to stream audio</span></div></div>"
+          "<p id='description'>%@</p>"
+          "</p></body></html>", 
           self.title,self.artist,self.imageURL,self.description];
 }
 
