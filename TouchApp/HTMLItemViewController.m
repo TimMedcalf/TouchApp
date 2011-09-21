@@ -82,6 +82,14 @@
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
   //NSLog(@"Should Load");
+  
+  NSString *tmpStr = [[[request.URL absoluteString] pathExtension] lowercaseString];
+  if ([tmpStr isEqualToString:@"mp3"])
+  {
+    [[TJMAudioCenter instance] playURL:request.URL];
+    return NO;
+  }
+  
   if (navigationType == UIWebViewNavigationTypeLinkClicked )
   {
     WebsiteViewController *newWeb = [[WebsiteViewController alloc] initWithNibName:@"WebsiteViewController" bundle:nil];
