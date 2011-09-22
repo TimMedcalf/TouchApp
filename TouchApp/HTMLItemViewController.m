@@ -82,8 +82,17 @@
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
   //NSLog(@"Should Load");
+  // if user taps a link to load a touch radio page, trap it and do nothing
+  NSString *tmpStr = [request.URL absoluteString];
+  //NSLog(@"%@",tmpStr);
+  NSRange found = [tmpStr rangeOfString:@"http://www.touchradio.org.uk/"];
+  if (found.location != NSNotFound)
+  {
+    return NO;
+  }
   
-  NSString *tmpStr = [[[request.URL absoluteString] pathExtension] lowercaseString];
+  //if user taps an mp3 link, trap it and load it in the audio center
+  tmpStr = [[[request.URL absoluteString] pathExtension] lowercaseString];
   if ([tmpStr isEqualToString:@"mp3"])
   {
     [[TJMAudioCenter instance] playURL:request.URL];
