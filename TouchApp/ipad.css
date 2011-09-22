@@ -21,7 +21,7 @@ p.bodycopy {
 }
 
 #buywrapper {
-    border-top: 1px #e0e0e0 solid;
+    border-bottom: 1px #e0e0e0 solid;
     margin: 0;
     display: none;
 }
@@ -30,7 +30,6 @@ p.bodycopy {
     border-top: 1px #e0e0e0 solid;
     border-bottom: 1px #e0e0e0 solid; 
     margin: 0;
-    
 }
 
 #title, #playerwrapper div, #buywrapper div {
