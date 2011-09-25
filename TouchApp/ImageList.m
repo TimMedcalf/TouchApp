@@ -28,10 +28,12 @@
 {
 	NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                               @"flickr.photosets.getPhotos", @"method",
-                              @"72157627193886606", @"photoset_id",
+                              @"72157627750718372", @"photoset_id",
                               @"dcb74491ec5cbe64deb98b18df1125a9", @"api_key",
                               @"rest", @"format",
                               nil];
+  
+  //http://www.flickr.com/photos/touch33/sets/72157627750718372/
   
   if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
   {

@@ -117,6 +117,18 @@ NSString *const Key_Cat_Publisher = @"publisher";
 
 - (NSString *)htmlForWebView
 {
+  NSString *streamLink = @"";
+  if ((self.mp3SampleURL) && ([self.mp3SampleURL length] > 0))
+  {
+    streamLink = @"<div id='playerwrapper'><div><strong>Play</strong><br /><span class='subtitle'>Tap here to stream audio</span></div></div>";
+  }
+
+  NSString *buyLink = @"";
+  
+  if ((self.itunesURL) && ([self.itunesURL length] > 0))
+  {
+    buyLink = @"<div id='buywrapper'><div><strong>Buy</strong><br /><span class='subtitle'>Tap here to visit the iTunes Store page for this release</span></div></div>";
+  }
   //inject some CSS
   //note that strings can be run across multiple lines without having to reassign or append - just make sure quotes are at the start and end of each line
   return [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width\" />"
@@ -126,9 +138,9 @@ NSString *const Key_Cat_Publisher = @"publisher";
           "<script type=\"text/javascript\" src=\"audiocontrol.js\"></script></head>"
           "<body><div id='headerwrapper'><div id='headercell'><div id='title'><strong>%@</strong><br /><span id='byline'>By %@</span></div></div></div>"
           "<p class='bodycopy'><p><img src='%@' /></p><p>%@</p>"
-          "<div id='playerwrapper'><div><strong>Play</strong><br /><span class='subtitle'>Tap here to stream audio</span></div></div>"
-          "<div id='buywrapper'><div><strong>Buy</strong><br /><span class='subtitle'>Tap here to visit the iTunes Store page for this release</span></div></div></p></body></html>", 
-          self.title,self.artist,self.imageURL,self.description];
+          "%@"
+          "%@</p></body></html>", 
+          self.title,self.artist,self.imageURL,self.description, streamLink, buyLink];
 }
 
 

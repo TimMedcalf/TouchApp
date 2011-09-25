@@ -131,6 +131,11 @@ NSString *const Key_ImageOverride = @"imageURL";
 
 - (NSString *)htmlForWebView
 {
+  NSString *playerLink = @"";
+  if ([self.link length] > 0)
+  {
+    playerLink = @"<div id='playerwrapper'><div><strong>Play</strong><br /><span class='subtitle'>Tap here to stream audio</span></div></div>";
+  }
   //inject some CSS
   //note that strings can be run across multiple lines without having to reassign or append - just make sure quotes are at the start and end of each line
   return [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width\" />"
@@ -140,8 +145,8 @@ NSString *const Key_ImageOverride = @"imageURL";
           "<script type=\"text/javascript\" src=\"audiocontrol.js\"></script></head>"
           "<body><div id='headerwrapper'><div id='headercell'><div id='title'><strong>%@</strong><br /><span id='byline'>%@</span></div></div></div>"
           "<p class='bodycopy'><p><img src='%@' /></p><p>%@</p>"
-          "<div id='playerwrapper'><div><strong>Play</strong><br /><span class='subtitle'>Tap here to stream audio</span></div></div></p></body></html>", 
-          self.titleLabel,self.title,self.imageURL,self.summary];
+          "%@</p></body></html>", 
+          self.titleLabel,self.title,self.imageURL,self.summary,playerLink];
 }
 
 
