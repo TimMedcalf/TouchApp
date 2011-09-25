@@ -31,9 +31,7 @@
                               @"72157627750718372", @"photoset_id",
                               @"dcb74491ec5cbe64deb98b18df1125a9", @"api_key",
                               @"rest", @"format",
-                              nil];
-  
-  //http://www.flickr.com/photos/touch33/sets/72157627750718372/
+                                     nil];
   
   if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
   {
