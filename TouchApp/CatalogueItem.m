@@ -141,7 +141,7 @@ NSString *const Key_Cat_Publisher = @"publisher";
           "<p class='bodycopy'><p><img src='%@' /></p><p>%@</p><p>%@</p>"
           "%@"
           "%@</p></body></html>", 
-          self.title,self.artist,self.imageURL,self.description, self.trackListing, streamLink, buyLink];
+          self.title,self.artist,self.imageURL,self.trackListing,self.description, streamLink, buyLink];
 }
 
 
