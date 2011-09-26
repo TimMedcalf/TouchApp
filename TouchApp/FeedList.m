@@ -398,8 +398,8 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 - (NSInteger)refreshTimerCount
 {
   //number of seconds to wait before news refreshes - override for different time
-  return 43200; //twelve hours
-  //return 1;
+  return 21600; //six hours
+
 }
 
 - (void)dataUpdated
