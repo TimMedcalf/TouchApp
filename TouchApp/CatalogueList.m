@@ -24,7 +24,7 @@
 
 - (NSString *)feedURL
 {
-  return @"http://electric-mist-70.heroku.com/releases/publisher/Touch.xml";
+  return @"http://electric-window-7475.herokuapp.com/releases/publisher/Touch.xml";
 }
 
 - (NSString *)cacheFilename

@@ -26,10 +26,6 @@ $(function(){
     $('#playerwrapper').html("<div><strong>Caching...</strong><br /><span class='subtitle'>Please wait...</span></div>");
   }
   
-  showBuyLinks = function(){
-    $('#buywrapper').show();
-  }
-  
   $('#playerwrapper').click(function(){
     if (isPlaying){
       pause();

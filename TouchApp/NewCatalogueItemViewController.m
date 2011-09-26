@@ -13,7 +13,6 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    [self showBuyLinks];
     [self togglePlayPauseInWebView];
     [super webViewDidFinishLoad:webView];
 }
@@ -58,12 +57,6 @@
     else if (audio == TJMAudioStatusCurrentPaused)
     { 
         [self.webView stringByEvaluatingJavaScriptFromString:@"showPlayButton();"];
-    }
-}
-
-- (void)showBuyLinks {
-    if ([self.item.itunesURL length] != 0) {
-        [self.webView stringByEvaluatingJavaScriptFromString:@"showBuyLinks();"];
     }
 }
 
