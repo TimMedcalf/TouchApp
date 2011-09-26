@@ -86,16 +86,17 @@ NSString *const Key_Cat_Publisher = @"publisher";
   self.artist = [dict objectForKey:Key_Cat_Artist];
   self.catalogueNumber = [dict objectForKey:Key_Cat_CatalogueNumber];
     
-  self.description = [[dict objectForKey:Key_Cat_Description]
+  self.description = [[[dict objectForKey:Key_Cat_Description]
                       stringByReplacingOccurrencesOfString:@"\n\n" 
-                      withString:@"</p><p>"];
+                      withString:@"</p><p>"] stringByReplacingOccurrencesOfString:@"\r\n" withString:@"</p><p>"];
 
   self.mp3SampleURL = [dict objectForKey:Key_Cat_MP3SampleURL];
   self.releaseURL = [dict objectForKey:Key_Cat_ReleaseURL];
   self.itunesURL = [dict objectForKey:Key_Cat_Itunes_URL];
   self.releaseDateString = [dict objectForKey:Key_Cat_ReleaseDate];
   self.releaseDuration = [dict objectForKey:Key_Cat_ReleaseDuration];
-  self.trackListing = [dict objectForKey:Key_Cat_TrackListing];
+  self.trackListing = [[dict objectForKey:Key_Cat_TrackListing]
+                         stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
   self.publisher = [dict objectForKey:Key_Cat_Publisher];
   //NSLog(@"%@ - %@ - %@", self.catalogueNumber, self.artist, self.title);
 }
@@ -137,10 +138,10 @@ NSString *const Key_Cat_Publisher = @"publisher";
           "<script type=\"text/javascript\" src=\"jquery-1.6.4.min.js\"></script>"
           "<script type=\"text/javascript\" src=\"audiocontrol.js\"></script></head>"
           "<body><div id='headerwrapper'><div id='headercell'><div id='title'><strong>%@</strong><br /><span id='byline'>By %@</span></div></div></div>"
-          "<p class='bodycopy'><p><img src='%@' /></p><p>%@</p>"
+          "<p class='bodycopy'><p><img src='%@' /></p><p>%@</p><p>%@</p>"
           "%@"
           "%@</p></body></html>", 
-          self.title,self.artist,self.imageURL,self.description, streamLink, buyLink];
+          self.title,self.artist,self.imageURL,self.description, self.trackListing, streamLink, buyLink];
 }
 
 
