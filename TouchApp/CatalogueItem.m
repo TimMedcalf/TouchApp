@@ -138,9 +138,10 @@ NSString *const Key_Cat_Publisher = @"publisher";
           "<script type=\"text/javascript\" src=\"jquery-1.6.4.min.js\"></script>"
           "<script type=\"text/javascript\" src=\"audiocontrol.js\"></script></head>"
           "<body><div id='headerwrapper'><div id='headercell'><div id='title'><strong>%@</strong><br /><span id='byline'>By %@</span></div></div></div>"
-          "<p class='bodycopy'><p><img src='%@' /></p><p>%@</p><p>%@</p>"
+          "<div id=\"bodycopycontainer\"><p class='bodycopy'><p><img src='%@' /></p><p>%@</p><p>%@</p></p></div>"
           "%@"
-          "%@</p></body></html>", 
+          "%@"
+          "</body></html>", 
           self.title,self.artist,self.imageURL,self.trackListing,self.description, streamLink, buyLink];
 }
 

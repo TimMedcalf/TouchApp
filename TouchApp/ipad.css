@@ -20,6 +20,10 @@ p.bodycopy {
     padding-top: 23px;
 }
 
+#bodycopycontainer {
+    padding-bottom: 10px;
+}
+
 #buywrapper {
     border-bottom: 1px #e0e0e0 solid;
     margin: 0;

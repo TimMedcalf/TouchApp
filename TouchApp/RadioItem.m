@@ -144,8 +144,9 @@ NSString *const Key_ImageOverride = @"imageURL";
           "<script type=\"text/javascript\" src=\"jquery-1.6.4.min.js\"></script>"
           "<script type=\"text/javascript\" src=\"audiocontrol.js\"></script></head>"
           "<body><div id='headerwrapper'><div id='headercell'><div id='title'><strong>%@</strong><br /><span id='byline'>%@</span></div></div></div>"
-          "<p class='bodycopy'><p><img src='%@' /></p><p>%@</p>"
-          "%@</p></body></html>", 
+          "<div id=\"bodycopycontainer\"><p class='bodycopy'><p><img src='%@' /></p><p>%@</p></p></div>"
+          "%@"
+          "</body></html>", 
           self.titleLabel,self.title,self.imageURL,self.summary,playerLink];
 }
 

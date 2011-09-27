@@ -13,11 +13,14 @@ background: #FFFFFF;
 
 p {margin: 0px 25px 12px 25px; padding: 0;}
 
-
 p.bodycopy {
     border-top: 1px #e0e0e0 solid;
     margin: 0;
     padding-top: 23px;
+}
+
+#bodycopycontainer {
+    padding-bottom: 10px;
 }
 
 #buywrapper {
