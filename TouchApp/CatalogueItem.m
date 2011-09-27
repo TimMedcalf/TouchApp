@@ -123,6 +123,12 @@ NSString *const Key_Cat_Publisher = @"publisher";
   {
     streamLink = @"<div id='playerwrapper'><div><strong>Play</strong><br /><span class='subtitle'>Tap here to stream audio</span></div></div>";
   }
+    
+  NSString *trackListingLink = @"";
+  if ((self.trackListing) && ([self.trackListing length] > 0))
+  {
+      trackListingLink = [NSString stringWithFormat:@"<div id=\"tracklistingcontainer\"><p id=\"tracklisting\"><p>Track listing:</p><p>%@</p></div>",self.trackListing];
+  }
 
   NSString *buyLink = @"";
   
@@ -138,11 +144,13 @@ NSString *const Key_Cat_Publisher = @"publisher";
           "<script type=\"text/javascript\" src=\"jquery-1.6.4.min.js\"></script>"
           "<script type=\"text/javascript\" src=\"audiocontrol.js\"></script></head>"
           "<body><div id='headerwrapper'><div id='headercell'><div id='title'><strong>%@</strong><br /><span id='byline'>By %@</span></div></div></div>"
-          "<div id=\"bodycopycontainer\"><p class='bodycopy'><p><img src='%@' /></p><div id=\"tracklistingcontainer\"><p id=\"tracklisting\"><p>Track listing:</p><p>%@</p></div><p id=\"description\">%@</p></p></div>"
+          "<div id=\"bodycopycontainer\"><p class='bodycopy'><p><img src='%@' /></p>"
+          "%@"
+          "<p id=\"description\">%@</p></p></div>"
           "%@"
           "%@"
           "</body></html>", 
-          self.title,self.artist,self.imageURL,self.trackListing,self.description, streamLink, buyLink];
+          self.title,self.artist,self.imageURL,trackListingLink,self.description, streamLink, buyLink];
 }
 
 

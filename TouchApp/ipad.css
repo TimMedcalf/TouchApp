@@ -26,6 +26,7 @@ p.bodycopy {
 
 #tracklistingcontainer {
     margin: 0;
+    padding-bottom: 11px;
     border-bottom: 1px #e0e0e0 solid;
 }
 
