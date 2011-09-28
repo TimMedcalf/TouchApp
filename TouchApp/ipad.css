@@ -36,14 +36,23 @@ p.bodycopy {
     padding-top: 23px;
 }
 
+#buttoncontainer {
+    margin: 0;
+}
+
+#buttoncontainer > div {
+    border-bottom: 1px #e0e0e0 solid; 
+}
+
+#buttoncontainer > div:first-of-type {
+    border-top: 1px #e0e0e0 solid;
+}
+
 #buywrapper {
-    border-bottom: 1px #e0e0e0 solid;
     margin: 0;
 }
 
 #playerwrapper {
-    border-top: 1px #e0e0e0 solid;
-    border-bottom: 1px #e0e0e0 solid; 
     margin: 0;
 }
 
