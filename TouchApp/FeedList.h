@@ -13,6 +13,8 @@
 @protocol FeedListConsumerDelegate
 - (void)updateSource;
 - (void)updateFailed;
+@optional
+- (void)updateProgressWithPercent:(CGFloat)percentComplete;
 @end
 
 @interface FeedList : NSObject

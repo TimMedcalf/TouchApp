@@ -26,6 +26,9 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 @property (nonatomic, retain) NSString *cacheFile;
 @property (nonatomic, retain) NSString *etag;
 @property (nonatomic, retain) NSString *lastUpdated;
+@property (nonatomic, assign) NSInteger totalBytes;
+@property (nonatomic, assign) NSInteger bytesDownloaded;
+
 
 - (void)startDownload;
 - (void)cancelDownload;
@@ -51,6 +54,8 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 @synthesize baseURL = _baseURL;
 @synthesize xpathOverride = _xpathOverride;
 @synthesize rawMode = _rawMode;
+@synthesize totalBytes = _totalBytes;
+@synthesize bytesDownloaded = _bytesDownloaded;
 
 #pragma mark lifecycle
 - (id)init
@@ -242,27 +247,31 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 #pragma mark Download support (NSURLConnectionDelegate)
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
+  self.bytesDownloaded += [data length];
   [self.activeDownload appendData:data];
+  if ([self.delegate respondsToSelector:@selector(updateProgressWithPercent:)])
+  {
+    [self.delegate updateProgressWithPercent:(CGFloat)self.bytesDownloaded / self.totalBytes];
+  }
+    
 }
 
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
-  //store the etag
   //NSLog(@"%@",[(NSHTTPURLResponse *)response allHeaderFields]);
+  
+  //store the etag
   self.etag = [[(NSHTTPURLResponse *)response allHeaderFields] objectForKey:@"Etag"];
   //NSLog(@"Etag=%@",self.etag);
+  
+  //last modified date - keep it as a string to easily match the server's format.
   self.lastUpdated = [[(NSHTTPURLResponse *)response allHeaderFields] objectForKey:@"Last-Modified"];
   //NSLog(@"Last Modified Date : %@", self.lastUpdated);
-//  if (dateStr)
-//  {
-//    //NSLog(@"Last Modified String : %@",dateStr);
-//    NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
-//    [inputFormatter setLocale:[[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"] autorelease]];
-//    [inputFormatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss z"];
-//    self.lastUpdated = [inputFormatter dateFromString:dateStr];
-//    //NSLog(@"Last Modified Date : %@", self.lastUpdated);
-//    //NSLog(@"Current Date : %@",[NSDate date]);
-//  }
+  
+  // lets keep track of how big we are...and how much we've downloaded  
+  self.totalBytes = [response expectedContentLength];
+  self.bytesDownloaded = 0;
+
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
