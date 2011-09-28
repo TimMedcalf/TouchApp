@@ -105,7 +105,7 @@ NSString *const Key_ImageOverride = @"imageURL";
                              relativeToURL:baseURL];
   
     self.imageURL = tmpURL;
-    NSLog(@"Radio URL = %@", self.imageURL);
+    //NSLog(@"Radio URL = %@", self.imageURL);
     [tmpURL release];
   }
   //NSLog(@"%@ - %@ - %@", self.catalogueNumber, self.artist, self.title);

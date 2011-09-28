@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FeedList.h"
 
-@interface TJMAudioTableViewController : UITableViewController
+@interface TJMAudioTableViewController : UITableViewController <FeedListConsumerDelegate>
+
+@property (nonatomic, retain) UIProgressView *progressView;
 
 - (void)handleShake;
 

@@ -15,13 +15,13 @@ static NSInteger CellSubTitleTag = 51;
 
 @interface RecipeBookViewController ()
 @property (nonatomic, retain) RecipeBookList *recipeList;
-@property (nonatomic, retain) UIActivityIndicatorView *spinner;
+//@property (nonatomic, retain) UIActivityIndicatorView *spinner;
 @end
 
 @implementation RecipeBookViewController
 
 @synthesize recipeList = _recipeList;
-@synthesize spinner = _spinner;
+//@synthesize spinner = _spinner;
 @synthesize categoryName = _categoryName;
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -64,15 +64,17 @@ static NSInteger CellSubTitleTag = 51;
   if ([self.recipeList.items count] == 0)
   {
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    UIActivityIndicatorView *tmpSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    CGPoint midPoint = self.view.center;
-    midPoint.y -= self.navigationController.navigationBar.frame.size.height /2;
-    tmpSpinner.center = midPoint;
-    [tmpSpinner startAnimating];
-    tmpSpinner.hidesWhenStopped = YES;
-    self.spinner = tmpSpinner;
-    [self.view addSubview:self.spinner];
-    [tmpSpinner release];
+//    UIActivityIndicatorView *tmpSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+//    CGPoint midPoint = self.view.center;
+//    midPoint.y -= self.navigationController.navigationBar.frame.size.height /2;
+//    tmpSpinner.center = midPoint;
+//    [tmpSpinner startAnimating];
+//    tmpSpinner.hidesWhenStopped = YES;
+//    self.spinner = tmpSpinner;
+//    [self.view addSubview:self.spinner];
+//    [tmpSpinner release];
+    self.progressView.progress = 0;
+    self.progressView.hidden = NO;
   }
   [self.recipeList refreshFeed];
 }
@@ -85,13 +87,13 @@ static NSInteger CellSubTitleTag = 51;
   // TJM: (and anything else you alloc in the viewDidLoad!)
   [self.recipeList cancelRefresh];
   [self setRecipeList:nil];
-  [self setSpinner:nil];
+  //[self setSpinner:nil];
 }
 
 - (void)dealloc
 {
   [_recipeList release];
-  [_spinner release];
+  //[_spinner release];
   [super dealloc];
 }
 
@@ -277,10 +279,11 @@ static NSInteger CellSubTitleTag = 51;
 - (void)updateSource
 {
   //NSLog(@"Refreshing...");
-  if ((self.spinner) && ([self.spinner isAnimating]))
-  {
-    [self.spinner stopAnimating];
-  }
+//  if ((self.spinner) && ([self.spinner isAnimating]))
+//  {
+//    [self.spinner stopAnimating];
+//  }
+  [self.progressView setHidden:YES];
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
   [self.tableView reloadData];
 }
@@ -288,10 +291,11 @@ static NSInteger CellSubTitleTag = 51;
 
 - (void)updateFailed
 {
-  if ((self.spinner) && ([self.spinner isAnimating]))
-  {
-    [self.spinner stopAnimating];
-  }
+//  if ((self.spinner) && ([self.spinner isAnimating]))
+//  {
+//    [self.spinner stopAnimating];
+//  }
+  [self.progressView setHidden:YES];
   UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No connection" message:@"Please check you are connected to the internet." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
   [alert show];
   [alert release]; alert = nil;

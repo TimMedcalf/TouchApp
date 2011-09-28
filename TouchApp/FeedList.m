@@ -241,6 +241,8 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
   [self.rssConnection cancel];
   self.rssConnection = nil;
   self.activeDownload = nil;
+  self.etag = nil;
+  self.lastUpdated = nil;
   [[UIApplication sharedApplication] tjm_popNetworkActivity];
 }
 
@@ -249,11 +251,12 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 {
   self.bytesDownloaded += [data length];
   [self.activeDownload appendData:data];
+  //NSLog(@"Downloaded %d", [data length]);
   if ([self.delegate respondsToSelector:@selector(updateProgressWithPercent:)])
   {
+    //NSLog(@"Updating progress");
     [self.delegate updateProgressWithPercent:(CGFloat)self.bytesDownloaded / self.totalBytes];
   }
-    
 }
 
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response

@@ -11,9 +11,9 @@
 
 
 @protocol FeedListConsumerDelegate
+@optional
 - (void)updateSource;
 - (void)updateFailed;
-@optional
 - (void)updateProgressWithPercent:(CGFloat)percentComplete;
 @end
 

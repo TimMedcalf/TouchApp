@@ -2,9 +2,7 @@
 //  NewsViewController.m
 //  TouchApp
 //
-//  Created by Tim Medcalf on 06/08/2011.
-//  Copyright 2011 ErgoThis Ltd. All rights reserved.
-//
+
 
 #import "NewsViewController.h"
 #import "NewsItem.h"
@@ -17,13 +15,13 @@ static NSInteger CellSubTitleTag = 51;
 
 @interface NewsViewController ()
 @property (nonatomic, retain) NewsList *newsList;
-@property (nonatomic, retain) UIActivityIndicatorView *spinner;
+//@property (nonatomic, retain) UIActivityIndicatorView *spinner;
 @end
 
 @implementation NewsViewController
 
 @synthesize newsList = _newsList;
-@synthesize spinner = _spinner;
+//@synthesize spinner = _spinner;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -63,34 +61,40 @@ static NSInteger CellSubTitleTag = 51;
   if ([self.newsList.items count] == 0)
   {
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    UIActivityIndicatorView *tmpSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    CGPoint midPoint = self.view.center;
-    midPoint.y -= self.navigationController.navigationBar.frame.size.height / 2;      
-    tmpSpinner.center = midPoint;
-    [tmpSpinner startAnimating];
-    tmpSpinner.hidesWhenStopped = YES;
-    self.spinner = tmpSpinner;
-    [self.view addSubview:self.spinner];
-    [tmpSpinner release];
+//    UIActivityIndicatorView *tmpSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+//    CGPoint midPoint = self.view.center;
+//    midPoint.y -= self.navigationController.navigationBar.frame.size.height / 2;      
+//    tmpSpinner.center = midPoint;
+//    [tmpSpinner startAnimating];
+//    tmpSpinner.hidesWhenStopped = YES;
+//    self.spinner = tmpSpinner;
+//    [self.view addSubview:self.spinner];
+//    [tmpSpinner release];
+    self.progressView.progress = 0;
+    self.progressView.hidden = NO;
   }
   [self.newsList refreshFeed];
 }
 
 - (void)viewDidUnload
 {
-  [super viewDidUnload];
+
   // Release any retained subviews of the main view.
   // e.g. self.myOutlet = nil;
   // TJM: (and anything else you alloc in the viewDidLoad!)
+  
   [self.newsList cancelRefresh];
   [self setNewsList:nil];
-  [self setSpinner:nil];
+  //[self setSpinner:nil];
+
+  [super viewDidUnload];
 }
 
 - (void)dealloc
 {
   [_newsList release];
-  [_spinner release];
+  //[_spinner release];
+
   [super dealloc];
 }
 
@@ -256,51 +260,11 @@ static NSInteger CellSubTitleTag = 51;
   }  
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  // Navigation logic may go here. Create and push another view controller.
-  //return immediately if user selected header image
   if (indexPath.section == 0) return;
   
   NewsItem *curItem = [self.newsList.items objectAtIndex:indexPath.row];
@@ -314,20 +278,23 @@ static NSInteger CellSubTitleTag = 51;
 - (void)updateSource
 {
   //NSLog(@"Refreshing...");
-  if ((self.spinner) && ([self.spinner isAnimating]))
-  {
-    [self.spinner stopAnimating];
-  }
+//  if ((self.spinner) && ([self.spinner isAnimating]))
+//  {
+//    [self.spinner stopAnimating];
+//  }
+  [self.progressView setHidden:YES];
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
   [self.tableView reloadData];
 }
 
 - (void)updateFailed
 {
-  if ((self.spinner) && ([self.spinner isAnimating]))
-  {
-    [self.spinner stopAnimating];
-  }
+//  if ((self.spinner) && ([self.spinner isAnimating]))
+//  {
+//    [self.spinner stopAnimating];
+//  }
+  [self.progressView setHidden:YES];
+  
   UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No connection" message:@"Please check you are connected to the internet." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
   [alert show];
   [alert release]; alert = nil;

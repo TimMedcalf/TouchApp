@@ -10,6 +10,7 @@
 #import "TouchApplication.h"
 
 @interface TJMAudioTableViewController ()
+
 - (void)configureAudioControl;
 - (void)togglePlay;
 @end
@@ -17,11 +18,27 @@
 
 @implementation TJMAudioTableViewController
 
+@synthesize progressView = _progressView;
+
 -(void)viewDidLoad
 {
   [super viewDidLoad];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(configureAudioControl) name:TJMAudioCenterStatusChange object:[TJMAudioCenter instance]];
 
+  //create a progress bar that we can show in subclasses...
+  UIProgressView *tmpProgress = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
+  CGPoint midPoint = self.view.center;
+  midPoint.y = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 512 : 240;
+  CGRect frame = tmpProgress.frame; 
+  frame.size.width = self.navigationController.navigationBar.frame.size.width / 2;
+  tmpProgress.frame = frame;
+  tmpProgress.center = midPoint;
+  tmpProgress.progress = 0;
+  tmpProgress.hidden = YES;
+  self.progressView = tmpProgress;
+  [self.view addSubview:self.progressView];
+  [tmpProgress release];
+  
 }
 
 - (void)configureAudioControl
@@ -60,12 +77,14 @@
 
 - (void)viewDidUnload
 {
+  [self setProgressView:nil];
   [[NSNotificationCenter defaultCenter] removeObserver:self name:TJMAudioCenterStatusChange object:[TJMAudioCenter instance]];
   [super viewDidUnload];
 }
 
 - (void)dealloc
 {
+  [_progressView release];
   [[NSNotificationCenter defaultCenter] removeObserver:self name:TJMAudioCenterStatusChange object:[TJMAudioCenter instance]];
   [[NSNotificationCenter defaultCenter] removeObserver:self name:TouchAppAllShookUp object:nil];
   [super dealloc];
@@ -79,6 +98,13 @@
 - (void)handleShake
 {
   NSLog(@"View Shake!");
+}
+
+#pragma mark FeedListConsumer Delegates
+- (void)updateProgressWithPercent:(CGFloat)percentComplete;
+{
+  //NSLog(@"Progress Update %f",percentComplete);
+  [self.progressView setProgress:percentComplete];
 }
 
 @end
