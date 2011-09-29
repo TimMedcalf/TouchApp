@@ -8,6 +8,7 @@
 #import "NewsItem.h"
 #import "HTMLItemViewController.h"
 #import "TJMAudioCenter.h"
+#import "AppManager.h"
 
 
 static NSInteger CellTitleTag = 50;
@@ -53,9 +54,10 @@ static NSInteger CellSubTitleTag = 51;
   self.navigationItem.backBarButtonItem = backButton;
   [backButton release];
   
-  NewsList *tmpNewsList = [[NewsList alloc] init];
-  self.newsList = tmpNewsList;
-  [tmpNewsList release];
+  //NewsList *tmpNewsList = [[NewsList alloc] init];
+  //self.newsList = tmpNewsList;
+  //[tmpNewsList release];
+  self.newsList = [[AppManager instance] newsList];
   self.newsList.delegate = self;
   
   if ([self.newsList.items count] == 0)
@@ -83,7 +85,8 @@ static NSInteger CellSubTitleTag = 51;
   // e.g. self.myOutlet = nil;
   // TJM: (and anything else you alloc in the viewDidLoad!)
   
-  [self.newsList cancelRefresh];
+  //[self.newsList cancelRefresh];
+  self.newsList.delegate = nil;
   [self setNewsList:nil];
   //[self setSpinner:nil];
 
@@ -92,6 +95,7 @@ static NSInteger CellSubTitleTag = 51;
 
 - (void)dealloc
 {
+  self.newsList.delegate = nil;
   [_newsList release];
   //[_spinner release];
 
@@ -118,7 +122,7 @@ static NSInteger CellSubTitleTag = 51;
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-  [self.newsList cancelRefresh];
+  //[self.newsList cancelRefresh];
   [super viewWillDisappear:animated];
 }
 

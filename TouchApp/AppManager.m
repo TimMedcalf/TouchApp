@@ -7,14 +7,29 @@
 //
 
 #import "AppManager.h"
+#import "NewsList.h"
 
 NSString *const LMSUCache = @"TouchCache";
+
+@interface AppManager ()
+@property (nonatomic, retain) NewsList *internalNewsList;
+@property (nonatomic, retain) ImageList *internalImageList;
+@property (nonatomic, retain) CatalogueList *internalCatalogueList;
+@property (nonatomic, retain) RadioList *internalRadioList;
+@property (nonatomic, retain) RecipeCategoryList *internalRecipeList;
+@end
 
 @implementation AppManager
 
 SINGLETON_IMPLEMENTATION_FOR(AppManager)
 
 @synthesize cacheFolder = _cacheFolder;
+
+@synthesize internalNewsList = _internalNewsList;
+@synthesize internalImageList = _internalImageList;
+@synthesize internalCatalogueList = _internalCatalogueList;
+@synthesize internalRadioList = _internalRadioList;
+@synthesize internalRecipeList = _internalRecipeList;
 
 - (id)init
 {
@@ -30,10 +45,91 @@ SINGLETON_IMPLEMENTATION_FOR(AppManager)
   return self;
 }
 
+- (NewsList *)newsList
+{
+  if (!self.internalNewsList)
+  {
+    NewsList *tmpNewsList = [[NewsList alloc] init];
+    self.internalNewsList = tmpNewsList;
+    [tmpNewsList release];
+  }
+  return self.internalNewsList;
+}
+
+- (ImageList *)imageList
+{
+  if (!self.internalImageList)
+  {
+    ImageList *tmpImageList = [[ImageList alloc] init];
+    self.internalImageList = tmpImageList;
+    tmpImageList.xpathOverride = @"//photo";
+    tmpImageList.rawMode = YES;
+
+    [tmpImageList release];
+  }
+  return self.internalImageList;
+}
+
+- (CatalogueList *)catalogueList
+{
+  if (!self.internalCatalogueList)
+  {
+    CatalogueList *tmpList = [[CatalogueList alloc] init];
+    tmpList.xpathOverride = @"//release";
+    self.internalCatalogueList = tmpList;
+    [tmpList release];
+  }
+  return self.internalCatalogueList;
+}
+
+- (RadioList *)radioList
+{
+  if (!self.internalRadioList)
+  {
+    RadioList *tmpList = [[RadioList alloc] init];
+    self.internalRadioList = tmpList;
+    [tmpList release];
+  }
+  return self.internalRadioList;
+}
+
+- (RecipeCategoryList *)recipeList
+{
+  if (!self.internalRecipeList)
+  {
+    RecipeCategoryList *tmpList = [[RecipeCategoryList alloc] init];
+    tmpList.xpathOverride = @"//category";
+    self.internalRecipeList = tmpList;
+    [tmpList release];
+  }
+  return self.internalRecipeList;
+}
+
+- (void)cancelUpdates
+{
+  [self.internalCatalogueList cancelRefresh];
+  [self.internalRadioList cancelRefresh];
+  [self.internalNewsList cancelRefresh];
+  [self.internalImageList cancelRefresh];
+  [self.internalRecipeList cancelRefresh];
+}
+- (void)refreshAllFeeds
+{
+  [[self catalogueList] refreshFeed];
+  [[self radioList] refreshFeed];
+  [[self newsList] refreshFeed];
+  [[self imageList] refreshFeed];
+  [[self recipeList] refreshFeed];  
+}
 
 - (void) dealloc
 {
   [_cacheFolder release];
+  [_internalNewsList release];
+  [_internalImageList release];
+  [_internalCatalogueList release];
+  [_internalRadioList release];
+  [_internalRecipeList release];
   [super dealloc];
 }
 @end

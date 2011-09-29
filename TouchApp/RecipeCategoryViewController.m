@@ -9,6 +9,7 @@
 #import "RecipeCategoryViewController.h"
 #import "RecipeBookViewController.h"
 #import "RecipeCategoryItem.h"
+#import "AppManager.h"
 
 static NSInteger CellTitleTag = 50;
 
@@ -42,11 +43,15 @@ static NSInteger CellTitleTag = 50;
   self.navigationItem.backBarButtonItem = backButton;
   [backButton release];
   
-  RecipeCategoryList *tmpList = [[RecipeCategoryList alloc] init];
-  self.catList = tmpList;
-  self.catList.xpathOverride = @"//category";
-  [tmpList release];
+//  RecipeCategoryList *tmpList = [[RecipeCategoryList alloc] init];
+//  self.catList = tmpList;
+//  self.catList.xpathOverride = @"//category";
+//  [tmpList release];
+//  self.catList.delegate = self;
+  
+  self.catList = [[AppManager instance] recipeList];
   self.catList.delegate = self;
+  
   
   if ([self.catList.items count] == 0)
   {
@@ -72,13 +77,15 @@ static NSInteger CellTitleTag = 50;
   // Release any retained subviews of the main view.
   // e.g. self.myOutlet = nil;
   // TJM: (and anything else you alloc in the viewDidLoad!)
-  [self.catList cancelRefresh];
+  //[self.catList cancelRefresh];
+  [self.catList setDelegate:nil];
   [self setCatList:nil];
 //  [self setSpinner:nil];
 }
 
 - (void)dealloc
 {
+  [self.catList setDelegate:nil];
   [_catList release];
  // [_spinner release];
   [super dealloc];
@@ -94,7 +101,6 @@ static NSInteger CellTitleTag = 50;
     [nb setBackgroundImage:[UIImage imageNamed:@"recipes-nav"] forBarMetrics:0];
   else
     nb.layer.contents = (id)[UIImage imageNamed:@"recipes-nav"].CGImage;
-
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -105,7 +111,7 @@ static NSInteger CellTitleTag = 50;
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-  [self.catList cancelRefresh];
+  //[self.catList cancelRefresh];
   [super viewWillDisappear:animated];
 }
 

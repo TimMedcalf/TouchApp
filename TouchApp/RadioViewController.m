@@ -9,6 +9,7 @@
 #import "RadioViewController.h"
 #import "NewRadioItemViewController.h"
 #import "RadioItem.h"
+#import "AppManager.h"
 
 
 static NSInteger CellTitleTag = 50;
@@ -53,9 +54,12 @@ static NSInteger CellSubTitleTag = 51;
   self.navigationItem.backBarButtonItem = backButton;
   [backButton release];
   
-  RadioList *tmpRadioList = [[RadioList alloc] init];
-  self.radioList = tmpRadioList;
-  [tmpRadioList release];
+//  RadioList *tmpRadioList = [[RadioList alloc] init];
+//  self.radioList = tmpRadioList;
+//  [tmpRadioList release];
+//  self.radioList.delegate = self;
+  
+  self.radioList = [[AppManager instance] radioList];
   self.radioList.delegate = self;
   
   if ([self.radioList.items count] == 0)
@@ -82,13 +86,14 @@ static NSInteger CellSubTitleTag = 51;
   // Release any retained subviews of the main view.
   // e.g. self.myOutlet = nil;
   // TJM: (and anything else you alloc in the viewDidLoad!)
-  [self.radioList cancelRefresh];
+  [self.radioList setDelegate: nil];
   [self setRadioList:nil];
   //[self setSpinner:nil];
 }
 
 - (void)dealloc
 {
+  [self.radioList setDelegate: nil];
   [_radioList release];
   //[_spinner release];
   [super dealloc];
@@ -115,7 +120,7 @@ static NSInteger CellSubTitleTag = 51;
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-  [self.radioList cancelRefresh];
+  //[self.radioList cancelRefresh];
   [super viewWillDisappear:animated];
 }
 

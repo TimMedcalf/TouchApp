@@ -9,6 +9,7 @@
 #import "CatalogueViewController.h"
 #import "CatalogueItem.h"
 #import "NewCatalogueItemViewController.h"
+#import "AppManager.h"
 
 static NSInteger CellTitleTag = 50;
 static NSInteger CellSubTitleTag = 51;
@@ -52,10 +53,13 @@ static NSInteger CellSubTitleTag = 51;
   self.navigationItem.backBarButtonItem = backButton;
   [backButton release];
   
-  CatalogueList *tmpCatList = [[CatalogueList alloc] init];
-  self.catList = tmpCatList;
-  self.catList.xpathOverride = @"//release";
-  [tmpCatList release];
+//  CatalogueList *tmpCatList = [[CatalogueList alloc] init];
+//  self.catList = tmpCatList;
+//  self.catList.xpathOverride = @"//release";
+//  [tmpCatList release];
+//  self.catList.delegate = self;
+  
+  self.catList = [[AppManager instance] catalogueList];
   self.catList.delegate = self;
   
   if ([self.catList.items count] == 0)
@@ -82,13 +86,15 @@ static NSInteger CellSubTitleTag = 51;
   // Release any retained subviews of the main view.
   // e.g. self.myOutlet = nil;
   // TJM: (and anything else you alloc in the viewDidLoad!)
-  [self.catList cancelRefresh];
+  //[self.catList cancelRefresh];
+  [self.catList setDelegate:nil];
   [self setCatList:nil];
   //[self setSpinner:nil];
 }
 
 - (void)dealloc
 {
+  [self.catList setDelegate:nil];
   [_catList release];
   //[_spinner release];
   [super dealloc];
@@ -115,7 +121,7 @@ static NSInteger CellSubTitleTag = 51;
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-  [self.catList cancelRefresh];
+  //[self.catList cancelRefresh];
   [super viewWillDisappear:animated];
 }
 
