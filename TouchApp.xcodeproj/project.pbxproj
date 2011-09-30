@@ -95,6 +95,7 @@
 		22804A881407544B0083CE40 /* TJMImageResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 22804A831407544B0083CE40 /* TJMImageResource.m */; };
 		22804A891407544B0083CE40 /* TJMImageResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22804A851407544B0083CE40 /* TJMImageResourceManager.m */; };
 		22804A8A1407544B0083CE40 /* TJMImageResourceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22804A871407544B0083CE40 /* TJMImageResourceView.m */; };
+		2286E6D814357C5D00C4B275 /* TKProgressBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2286E6D714357C5D00C4B275 /* TKProgressBarView.m */; };
 		229890271427556400345AD3 /* HTMLItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 229890251427556400345AD3 /* HTMLItemViewController.m */; };
 		229890281427556400345AD3 /* HTMLItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 229890261427556400345AD3 /* HTMLItemViewController.xib */; };
 		22A3E4A2140FC6AF00CF2B0B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A3E4A1140FC6AF00CF2B0B /* Icon.png */; };
@@ -269,6 +270,8 @@
 		22804A851407544B0083CE40 /* TJMImageResourceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TJMImageResourceManager.m; sourceTree = "<group>"; };
 		22804A861407544B0083CE40 /* TJMImageResourceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJMImageResourceView.h; sourceTree = "<group>"; };
 		22804A871407544B0083CE40 /* TJMImageResourceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TJMImageResourceView.m; sourceTree = "<group>"; };
+		2286E6D614357C5D00C4B275 /* TKProgressBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKProgressBarView.h; sourceTree = "<group>"; };
+		2286E6D714357C5D00C4B275 /* TKProgressBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKProgressBarView.m; sourceTree = "<group>"; };
 		229890241427556400345AD3 /* HTMLItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLItemViewController.h; sourceTree = "<group>"; };
 		229890251427556400345AD3 /* HTMLItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLItemViewController.m; sourceTree = "<group>"; };
 		229890261427556400345AD3 /* HTMLItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HTMLItemViewController.xib; sourceTree = "<group>"; };
@@ -408,6 +411,7 @@
 		222951CC13EC496F001D174D /* TouchApp */ = {
 			isa = PBXGroup;
 			children = (
+				2286E6D414357C4300C4B275 /* tapku */,
 				226751FD140B4AE400726FAE /* photoscroller */,
 				22CB4C0813EE4A30008968D6 /* categories */,
 				22CB4B8A13EDD678008968D6 /* globals */,
@@ -674,6 +678,15 @@
 				22804A871407544B0083CE40 /* TJMImageResourceView.m */,
 			);
 			name = ImageResource;
+			sourceTree = "<group>";
+		};
+		2286E6D414357C4300C4B275 /* tapku */ = {
+			isa = PBXGroup;
+			children = (
+				2286E6D614357C5D00C4B275 /* TKProgressBarView.h */,
+				2286E6D714357C5D00C4B275 /* TKProgressBarView.m */,
+			);
+			name = tapku;
 			sourceTree = "<group>";
 		};
 		22CB4B8A13EDD678008968D6 /* globals */ = {
@@ -1096,6 +1109,7 @@
 				2252536D141E289200157205 /* NewCatalogueItemViewController.m in Sources */,
 				22525373141E2CA500157205 /* NewRadioItemViewController.m in Sources */,
 				229890271427556400345AD3 /* HTMLItemViewController.m in Sources */,
+				2286E6D814357C5D00C4B275 /* TKProgressBarView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

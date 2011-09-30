@@ -26,13 +26,11 @@
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(configureAudioControl) name:TJMAudioCenterStatusChange object:[TJMAudioCenter instance]];
 
   //create a progress bar that we can show in subclasses...
-  UIProgressView *tmpProgress = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
-  CGPoint midPoint = self.view.center;
-  midPoint.y = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 512 : 240;
-  CGRect frame = tmpProgress.frame; 
-  frame.size.width = self.navigationController.navigationBar.frame.size.width / 2;
-  tmpProgress.frame = frame;
-  tmpProgress.center = midPoint;
+  TKProgressBarView *tmpProgress = [[TKProgressBarView alloc] initWithStyle:TKProgressBarViewStyleLong];
+  //CGRect frame = tmpProgress.frame; 
+//  frame.origin.y = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 512 : 240;
+//  frame.origin.x = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 384 : 160;
+  tmpProgress.center = self.view.center;
   tmpProgress.progress = 0;
   tmpProgress.hidden = YES;
   self.progressView = tmpProgress;

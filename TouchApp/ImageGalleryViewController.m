@@ -42,6 +42,11 @@ static NSInteger iPadThumbnailRowCount = 8;
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  
+  CGRect frame = self.progressView.frame;
+  frame.origin.y = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 400: 160;
+  self.progressView.frame = frame;
+  
   [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
   
   UINavigationBar *nb = self.navigationController.navigationBar;
