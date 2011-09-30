@@ -115,11 +115,23 @@ SINGLETON_IMPLEMENTATION_FOR(AppManager)
 }
 - (void)refreshAllFeeds
 {
-  [[self catalogueList] refreshFeed];
-  [[self radioList] refreshFeed];
-  [[self newsList] refreshFeed];
-  [[self imageList] refreshFeed];
-  [[self recipeList] refreshFeed];  
+  // if nothing has been loaded before (so there'd be no items in news)
+  // then just refresh the news and super expensive catalogue
+  // the others can wait till the user taps on them
+  // but if it's been loaded before, just refresh them all...
+  if ([[self newsList].items count] == 0)
+  {
+    [[self newsList] refreshFeed];
+    [[self catalogueList] refreshFeed];
+  }
+  else
+  {
+    [[self newsList] refreshFeed];
+    [[self catalogueList] refreshFeed];
+    [[self radioList] refreshFeed];
+    [[self imageList] refreshFeed];
+    [[self recipeList] refreshFeed];
+  }
 }
 
 - (void) dealloc
