@@ -123,11 +123,16 @@ NSString *const Key_Cat_Publisher = @"publisher";
   {
     streamLink = @"<div id='playerwrapper'><div><strong>Play</strong><br /><span class='subtitle'>Tap here to stream audio</span></div></div>";
   }
+   
+  NSString *catalogueNumberDiv = @"";
+  if ((self.catalogueNumber) && ([self.catalogueNumber length] > 0)) {
+      catalogueNumberDiv = [NSString stringWithFormat:@"<div id='catalogue_number'>%@</div>",self.catalogueNumber];
+  }
     
-  NSString *trackListingLink = @"";
+  NSString *trackListingDiv = @"";
   if ((self.trackListing) && ([self.trackListing length] > 0))
   {
-      trackListingLink = [NSString stringWithFormat:@"<div id=\"tracklistingcontainer\"><p id=\"tracklisting\"><p>Track listing:</p><p>%@</p></div>",self.trackListing];
+      trackListingDiv = [NSString stringWithFormat:@"<div id=\"tracklistingcontainer\"><p id=\"tracklisting\"><p>Track listing:</p><p>%@</p></div>",self.trackListing];
   }
 
   NSString *buyLink = @"";
@@ -143,7 +148,13 @@ NSString *const Key_Cat_Publisher = @"publisher";
           "<link rel=\"stylesheet\" media=\"only screen and (min-device-width: 481px) and (max-device-width: 1024px)\" href=\"ipad.css\" />"
           "<script type=\"text/javascript\" src=\"jquery-1.6.4.min.js\"></script>"
           "<script type=\"text/javascript\" src=\"audiocontrol.js\"></script></head>"
-          "<body><div id='headerwrapper'><div id='headercell'><div id='title'><strong>%@</strong><br /><span id='byline'>By %@</span></div></div></div>"
+          "<body>"
+          "<div id='headerwrapper'><div id='headercell'><div id='title'>"
+          "<strong>%@</strong><br />"
+          "<div id='byline'>"
+          "<div id='artist'>%@</div>"
+          "%@"
+          "</div></div></div></div></div>"
           "<div id=\"bodycopycontainer\"><p class='bodycopy'><p><img src='%@' /></p>"
           "%@"
           "<p id=\"description\">%@</p></p></div>"
@@ -152,7 +163,7 @@ NSString *const Key_Cat_Publisher = @"publisher";
           "%@"
           "</div>"
           "</body></html>", 
-          self.title,self.artist,self.imageURL,trackListingLink,self.description, streamLink, buyLink];
+          self.title,self.artist,catalogueNumberDiv,self.imageURL,trackListingDiv,self.description, streamLink, buyLink];
 }
 
 

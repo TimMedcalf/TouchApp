@@ -74,6 +74,19 @@ p.bodycopy {
     color: gray;
 }
 
+#title {width:267px;}
+
+#byline {
+    width:100%; 
+    display:block; 
+    position:relative;
+}
+#catalogue_number {
+    position:absolute;
+    top:0;
+    right:0;
+}
+
 #headerwrapper {display:table; height:90px;}
 #headercell {display:table-cell; vertical-align:middle;}
 
