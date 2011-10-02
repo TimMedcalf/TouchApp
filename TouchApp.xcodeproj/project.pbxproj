@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22065B5014380B5400FAA48B /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 22065B4F14380B5400FAA48B /* iTunesArtwork */; };
 		222951C713EC496F001D174D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222951C613EC496F001D174D /* UIKit.framework */; };
 		222951C913EC496F001D174D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222951C813EC496F001D174D /* Foundation.framework */; };
 		222951CB13EC496F001D174D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222951CA13EC496F001D174D /* CoreGraphics.framework */; };
@@ -152,6 +153,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		22065B4F14380B5400FAA48B /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		222951C213EC496F001D174D /* TouchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		222951C613EC496F001D174D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		222951C813EC496F001D174D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -379,6 +381,7 @@
 		222951B713EC496F001D174D = {
 			isa = PBXGroup;
 			children = (
+				22065B4F14380B5400FAA48B /* iTunesArtwork */,
 				222951CC13EC496F001D174D /* TouchApp */,
 				22CB4BFC13EE47FC008968D6 /* libs */,
 				222951C513EC496F001D174D /* Frameworks */,
@@ -1043,6 +1046,7 @@
 				2252536E141E289200157205 /* NewCatalogueItemViewController.xib in Resources */,
 				22525374141E2CA500157205 /* NewRadioItemViewController.xib in Resources */,
 				229890281427556400345AD3 /* HTMLItemViewController.xib in Resources */,
+				22065B5014380B5400FAA48B /* iTunesArtwork in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1163,7 +1167,9 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				PROVISIONING_PROFILE = "D7398C11-8202-47B3-AB01-B166F57D28B5";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D7398C11-8202-47B3-AB01-B166F57D28B5";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1181,8 +1187,10 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "D7398C11-8202-47B3-AB01-B166F57D28B5";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D7398C11-8202-47B3-AB01-B166F57D28B5";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
