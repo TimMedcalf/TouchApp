@@ -90,9 +90,9 @@ NSString *const Key_Cat_Publisher = @"publisher";
                       stringByReplacingOccurrencesOfString:@"\n\n" 
                       withString:@"</p><p>"] stringByReplacingOccurrencesOfString:@"\r\n" withString:@"</p><p>"];
 
-  self.mp3SampleURL = [dict objectForKey:Key_Cat_MP3SampleURL];
-  self.releaseURL = [dict objectForKey:Key_Cat_ReleaseURL];
-  self.itunesURL = [dict objectForKey:Key_Cat_Itunes_URL];
+  self.mp3SampleURL = [[dict objectForKey:Key_Cat_MP3SampleURL] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+  self.releaseURL = [[dict objectForKey:Key_Cat_ReleaseURL] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+  self.itunesURL = [[dict objectForKey:Key_Cat_Itunes_URL] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
   self.releaseDateString = [dict objectForKey:Key_Cat_ReleaseDate];
   self.releaseDuration = [dict objectForKey:Key_Cat_ReleaseDuration];
   self.trackListing = [[dict objectForKey:Key_Cat_TrackListing]

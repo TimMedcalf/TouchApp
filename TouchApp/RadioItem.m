@@ -74,9 +74,9 @@ NSString *const Key_ImageOverride = @"imageURL";
   NSString *dateStr = [dict objectForKey:Key_Radio_PubDate];
   self.pubDate = [inputFormatter dateFromString:dateStr];
   [inputFormatter release];
-  self.link = [[dict objectForKey:Key_Radio_Link] 
+  self.link = [[[dict objectForKey:Key_Radio_Link] 
                stringByReplacingOccurrencesOfString:@"touchradio" 
-               withString:@"touchiphoneradio"];
+                withString:@"touchiphoneradio"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
   self.episode_duration = [dict objectForKey:Key_Radio_Duration];
     
  
