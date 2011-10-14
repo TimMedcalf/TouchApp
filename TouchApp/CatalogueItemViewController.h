@@ -12,15 +12,18 @@
 #import "TJMAudioToggleViewController.h"
 
 @interface CatalogueItemViewController : TJMAudioToggleViewController <TJMAudioCenterDelegate>
+{
+  UIActivityIndicatorView* activityIndicatorView;
+  UIButton* pauseButton;
+  UIButton* playButton;
+  UIButton* buyButton;
+}
 
 @property (nonatomic, retain) IBOutlet UIScrollView *scrollView;
 
 @property (nonatomic, retain) CatalogueItem *item;
 
-UIActivityIndicatorView* activityIndicatorView;
-UIButton* pauseButton;
-UIButton* playButton;
-UIButton* buyButton;
+
 
 - (void)pause;
 - (void)play;

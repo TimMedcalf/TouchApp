@@ -39,12 +39,14 @@
 	
 	CGRect r = s==TKProgressBarViewStyleLong ? CGRectMake(0, 0, 210, 20) : CGRectMake(0, 0, 180, 42);
 	
-	if(![super initWithFrame:r]) return nil;
-	
-	style = s;	
-	progress = 0;
-	self.backgroundColor = [UIColor clearColor];
-	
+  self = [super initWithFrame:r];
+  
+	if (self)
+  {    
+    style = s;	
+    progress = 0;
+    self.backgroundColor = [UIColor clearColor];
+  }
 	return self;
 }
 
