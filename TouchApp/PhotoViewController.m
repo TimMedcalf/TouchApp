@@ -98,7 +98,7 @@
   [super viewDidLoad];
   [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];  
   self.customNavigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(savePhoto)] autorelease];
-  self.customNavigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Images" style:UIBarButtonItemStylePlain target:self action:@selector(goBack)] autorelease];
+  self.customNavigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Photos" style:UIBarButtonItemStylePlain target:self action:@selector(goBack)] autorelease];
   self.customNavigationBar.tintColor = nil;
   self.customNavigationBar.barStyle  = UIBarStyleBlack;
   self.customNavigationBar.translucent = YES;

@@ -68,7 +68,7 @@ static NSInteger iPadThumbnailRowCount = 8;
   
   self.navigationItem.title= @"";
   
-  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Images" style:UIBarButtonItemStyleBordered target:nil action:nil];
+  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Photos" style:UIBarButtonItemStyleBordered target:nil action:nil];
   self.navigationItem.backBarButtonItem = backButton;
   [backButton release];
   
