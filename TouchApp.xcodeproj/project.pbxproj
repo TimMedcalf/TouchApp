@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		22065B5014380B5400FAA48B /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 22065B4F14380B5400FAA48B /* iTunesArtwork */; };
+		2224F62E14542C01005D9948 /* libFlurryAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2224F62D14542C01005D9948 /* libFlurryAnalytics.a */; };
 		222951C713EC496F001D174D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222951C613EC496F001D174D /* UIKit.framework */; };
 		222951C913EC496F001D174D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222951C813EC496F001D174D /* Foundation.framework */; };
 		222951CB13EC496F001D174D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222951CA13EC496F001D174D /* CoreGraphics.framework */; };
@@ -154,6 +155,8 @@
 
 /* Begin PBXFileReference section */
 		22065B4F14380B5400FAA48B /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
+		2224F62C14542C01005D9948 /* FlurryAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAnalytics.h; sourceTree = "<group>"; };
+		2224F62D14542C01005D9948 /* libFlurryAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryAnalytics.a; sourceTree = "<group>"; };
 		222951C213EC496F001D174D /* TouchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		222951C613EC496F001D174D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		222951C813EC496F001D174D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -372,15 +375,26 @@
 				222951C713EC496F001D174D /* UIKit.framework in Frameworks */,
 				222951C913EC496F001D174D /* Foundation.framework in Frameworks */,
 				222951CB13EC496F001D174D /* CoreGraphics.framework in Frameworks */,
+				2224F62E14542C01005D9948 /* libFlurryAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2224F62A14542BEB005D9948 /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				2224F62C14542C01005D9948 /* FlurryAnalytics.h */,
+				2224F62D14542C01005D9948 /* libFlurryAnalytics.a */,
+			);
+			name = Flurry;
+			sourceTree = "<group>";
+		};
 		222951B713EC496F001D174D = {
 			isa = PBXGroup;
 			children = (
+				2224F62A14542BEB005D9948 /* Flurry */,
 				22065B4F14380B5400FAA48B /* iTunesArtwork */,
 				222951CC13EC496F001D174D /* TouchApp */,
 				22CB4BFC13EE47FC008968D6 /* libs */,
@@ -1213,6 +1227,10 @@
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "TouchApp/TouchApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1230,6 +1248,10 @@
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "TouchApp/TouchApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

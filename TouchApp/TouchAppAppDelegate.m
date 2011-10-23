@@ -10,9 +10,14 @@
 #import "AppManager.h"
 #import "TJMImageResourceManager.h"
 
+#define DEVMODE
+#ifndef DEVMODE
+#import "FlurryAnalytics.h"
 
-
-
+@interface TouchAppAppDelegate ()
+void uncaughtExceptionHandler(NSException *exception);
+@end
+#endif
 @implementation TouchAppAppDelegate
 
 @synthesize window = _window;
@@ -20,6 +25,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+#ifndef DEVMODE
+  NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
+  [FlurryAnalytics startSession:@"EG1Y8QTDSQI2YWEFXFDJ"];
+#endif
   // Override point for customization after application launch.
   [AppManager instance];
   
@@ -106,6 +115,13 @@
   [_tabBarController release];
     [super dealloc];
 }
+
+#pragma mark flurry crash report
+#ifndef DEVMODE
+void uncaughtExceptionHandler(NSException *exception) {
+  [FlurryAnalytics logError:@"Uncaught" message:@"Crash!" exception:exception];
+}
+#endif
 
 
 
