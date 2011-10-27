@@ -10,12 +10,20 @@
 
 NSString *const Key_Image_Saved = @"image";
 NSString *const Key_Thumbnail_Saved = @"thumbnail";
+NSString *const Key_ImageItem_ImageWidth = @"imageWidth";
+NSString *const Key_ImageItem_ImageHeight = @"imageHeight";
+NSString *const Key_ImageItem_ThumbnailWidth = @"thumbnailWidth";
+NSString *const Key_ImageItem_ThumbnailHeight = @"thumbnailHeight";
 
 
 @implementation ImageItem
 
 @synthesize thumbnailURL = _thumbnailURL;
 @synthesize imageURL = _imageURL;
+@synthesize imageWidth = _imageWidth;
+@synthesize imageHeight = _imageHeight;
+@synthesize thumbnailWidth = _thumbnailWidth;
+@synthesize thumbnailHeight = _thumbnailHeight;
 
 - (void)dealloc
 {
@@ -39,6 +47,28 @@ NSString *const Key_Thumbnail_Saved = @"thumbnail";
     self.thumbnailURL = tmpURL;
     [tmpURL release];
   }
+  NSNumber *tmpNum;
+  if ([dict objectForKey:Key_ImageItem_ImageWidth])
+  {
+    tmpNum = [dict objectForKey:Key_ImageItem_ImageWidth];
+    self.imageWidth = [tmpNum integerValue];
+  }
+  if ([dict objectForKey:Key_ImageItem_ImageHeight])
+  {
+    tmpNum = [dict objectForKey:Key_ImageItem_ImageHeight];
+    self.imageHeight = [tmpNum integerValue];
+  }
+  if ([dict objectForKey:Key_ImageItem_ThumbnailWidth])
+  {
+    tmpNum = [dict objectForKey:Key_ImageItem_ThumbnailWidth];
+    self.thumbnailWidth = [tmpNum integerValue];
+  }
+  if ([dict objectForKey:Key_ImageItem_ThumbnailHeight])
+  {
+    tmpNum = [dict objectForKey:Key_ImageItem_ThumbnailHeight];
+    self.thumbnailHeight = [tmpNum integerValue];
+  }
+
 }
 
 
@@ -53,14 +83,19 @@ NSString *const Key_Thumbnail_Saved = @"thumbnail";
     self.thumbnailURL = tmpURL;
     [tmpURL release];
   }
-  //now the main image path
+  self.thumbnailWidth = [[[element attributeForName:@"width_t"] stringValue] integerValue]; 
+  self.thumbnailHeight = [[[element attributeForName:@"height_t"] stringValue] integerValue];
   if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
   {
     tmpPath = [[element attributeForName:@"url_l"] stringValue];
+    self.imageWidth = [[[element attributeForName:@"width_l"] stringValue] integerValue]; 
+    self.imageHeight = [[[element attributeForName:@"height_l"] stringValue] integerValue];    
   }
   else
   {
     tmpPath = [[element attributeForName:@"url_z"] stringValue];
+    self.imageWidth = [[[element attributeForName:@"width_z"] stringValue] integerValue]; 
+    self.imageHeight = [[[element attributeForName:@"height_z"] stringValue] integerValue];  
   }
   if (tmpPath)
   {
@@ -68,12 +103,17 @@ NSString *const Key_Thumbnail_Saved = @"thumbnail";
     self.imageURL = tmpURL;
     [tmpURL release];
   }
+  //NSLog(@"Image %d x %d", self.imageWidth, self.imageHeight);
 }
 
 - (void)populateDictionary:(NSMutableDictionary *)dict
 {
   if (self.imageURL) [dict setObject:[self.imageURL absoluteString] forKey:Key_Image_Saved];
   if (self.thumbnailURL) [dict setObject:[self.thumbnailURL absoluteString] forKey:Key_Thumbnail_Saved];
+  [dict setObject:[NSNumber numberWithInteger:self.imageWidth] forKey:Key_ImageItem_ImageWidth];
+  [dict setObject:[NSNumber numberWithInteger:self.imageHeight] forKey:Key_ImageItem_ImageHeight];
+  [dict setObject:[NSNumber numberWithInteger:self.thumbnailWidth] forKey:Key_ImageItem_ThumbnailWidth];
+  [dict setObject:[NSNumber numberWithInteger:self.thumbnailHeight] forKey:Key_ImageItem_ThumbnailHeight];
 }
 
 - (NSComparisonResult)compare:(ImageItem *)item
