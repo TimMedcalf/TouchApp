@@ -229,7 +229,9 @@ static NSInteger iPadThumbnailRowCount = 8;
 
 - (void)thumbnailTapped:(UIGestureRecognizer *)sender
 {
+
   TJMImageResourceView *res = (TJMImageResourceView *)sender.view;
+  NSLog(@"thumbnail tapped! %d",res.index);
   if (res.index >= 0)
   {
     PhotoViewController *photo = [[PhotoViewController alloc] initWithNibName:@"PhotoViewController" bundle:nil];

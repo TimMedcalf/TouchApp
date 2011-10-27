@@ -9,20 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "ImageItem.h"
 
-@interface TJMImageResourceView : UIView
+@interface TJMImageResourceView : UIImageView
 
 //value to store any useful info - like an array index - not used internally.
 @property (nonatomic, assign) NSInteger index;
-@property (nonatomic, retain) UIImageView *imageView;
 @property (nonatomic, retain) NSURL *url;
 
 
 - (id)initWithFrame:(CGRect)frame;
 - (id)initWithFrame:(CGRect)frame andURL:(NSURL *)url;
-- (id)initWithFrame:(CGRect)frame andURL:(NSURL *)url forThumbnailofSize:(CGSize)size;
 - (void)setURL:(NSURL *)url;
-- (id)initWithURL:(NSURL *)url;
-- (id)initWithImageItem:(ImageItem *)item forSize:(CGSize)size;
-
 
 @end

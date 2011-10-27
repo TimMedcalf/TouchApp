@@ -121,7 +121,9 @@
     
     // make a new UIImageView for the new image
   //imageView = [[TJMImageResourceView alloc] initWithURL:image.imageURL forSize:self.bounds.size];
-  imageView = [[TJMImageResourceView alloc] initWithImageItem:image forSize:self.bounds.size];
+  imageView = [[TJMImageResourceView alloc] initWithFrame:CGRectMake(0,0,self.bounds.size.width, self.bounds.size.height)];
+  imageView.url = image.imageURL;
+               
   [self addSubview:imageView];
     
   self.contentSize = imageView.frame.size;
@@ -135,7 +137,7 @@
 //  CGSize boundsSize = CGSizeMake(480,320);//self.bounds.size;
   CGSize boundsSize = self.bounds.size;
   //CGSize imageSize = imageView.imageView.image.size;
-  CGSize imageSize = imageView.imageView.frame.size;
+  CGSize imageSize = imageView.frame.size;
 
     
     // calculate min/max zoomscale
