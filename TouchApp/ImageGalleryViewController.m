@@ -206,12 +206,13 @@ static NSInteger iPadThumbnailRowCount = 8;
   
   for (int i = 0; i < self.thumbnailRowCount; i++)
   {
-    if (((indexPath.row * self.thumbnailRowCount) + i) < [self.imageList.items count])
+    NSInteger tmpIndex = (indexPath.row * self.thumbnailRowCount) + i;
+    if (tmpIndex < [self.imageList.items count])
     {
-      ImageItem *currentItem = [self.imageList.items objectAtIndex:((indexPath.row * self.thumbnailRowCount) + i)];
+      ImageItem *currentItem = [self.imageList.items objectAtIndex:tmpIndex];
       //assign the image
       TJMImageResourceView *res = (TJMImageResourceView *)[cell viewWithTag:(CellImageTag + i)];
-      res.index = (indexPath.row * self.thumbnailRowCount) + i;
+      res.index = tmpIndex;
       [res setURL:currentItem.thumbnailURL];
     }
     else
