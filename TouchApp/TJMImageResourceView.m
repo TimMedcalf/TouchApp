@@ -115,22 +115,22 @@
 
 - (void)setURL:(NSURL *)url;
 {
-  if (self.imageView)
-  {
-    [self.imageView removeFromSuperview];
-    self.imageView = nil;
-  }
   self.url = url;
-  self.thumbnailSize = CGSizeMake(0,0);
-  TJMImageResource *tmpImageResource = [[TJMImageResourceManager instance] resourceForURL:self.url]; 
-  UIImageView *tmpImageView = [[UIImageView alloc] initWithImage:[tmpImageResource getImage]];
-  tmpImageView.frame = CGRectMake(0,0,self.frame.size.width,self.frame.size.height);   
-  tmpImageView.contentMode = self.imageContentMode;
-  tmpImageView.clipsToBounds = YES;
-  tmpImageView.opaque = YES;
-  self.imageView = tmpImageView;
-  [tmpImageView release];
-  [self addSubview:self.imageView];
+  if (!self.imageView)
+  {
+    UIImageView *tmpImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,self.frame.size.width, self.frame.size.height)];
+    //tmpImageView.frame = CGRectMake(0,0,image.size.width,image.size.height);   
+    tmpImageView.contentMode =  UIViewContentModeScaleAspectFill;
+    tmpImageView.clipsToBounds = YES;
+    tmpImageView.opaque = YES;
+    self.imageView = tmpImageView;
+    [self addSubview:self.imageView];
+    [tmpImageView release];
+  }
+  //NSLog(@"Table Image");
+  //self.imageView.contentMode = UIViewContentModeScaleAspectFill;
+  TJMImageResource *tmpImageResource = [[TJMImageResourceManager instance] resourceForURL:self.url];
+  self.imageView.image = [tmpImageResource getImage];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateImage) name:TJMImageResourceImageNeedsUpdating object:tmpImageResource];
 }
 
@@ -168,24 +168,10 @@
 //update the image on screen when it gets updated...
 - (void)updateImage
 {
-  if (self.imageView)
-  {
-    [self.imageView removeFromSuperview];
-    self.imageView = nil;
-  }
+  //NSLog(@"Updating image");
+  //self.imageView.contentMode = UIViewContentModeScaleAspectFill;
   TJMImageResource *tmpImageResource = [[TJMImageResourceManager instance] resourceForURL:self.url];
-  UIImageView *tmpImageView;
-  if (self.thumbnailSize.width > 0)
-    tmpImageView = [[UIImageView alloc] initWithImage:[tmpImageResource getImageThumbnailOfSize:self.thumbnailSize]];
-  else
-    tmpImageView = [[UIImageView alloc] initWithImage:[tmpImageResource getImage]];
-  tmpImageView.frame = CGRectMake(0,0,self.frame.size.width,self.frame.size.height);
-  tmpImageView.contentMode = self.imageContentMode;
-  tmpImageView.clipsToBounds = YES;
-  tmpImageView.opaque = YES;
-  self.imageView = tmpImageView;
-  [tmpImageView release];
-  [self addSubview:self.imageView];
+  self.imageView.image = [tmpImageResource getImage];  
 }
 
                                     
