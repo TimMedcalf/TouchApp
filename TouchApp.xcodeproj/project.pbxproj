@@ -1170,8 +1170,8 @@
 					Armv6,
 					"$(ARCHS_STANDARD_32_BIT)",
 				);
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Michael Harding";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Michael Harding";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Tim Medcalf (LQ9PDTLE6X)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tim Medcalf (LQ9PDTLE6X)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1186,8 +1186,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
-				PROVISIONING_PROFILE = "D7398C11-8202-47B3-AB01-B166F57D28B5";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D7398C11-8202-47B3-AB01-B166F57D28B5";
+				PROVISIONING_PROFILE = "23B40765-086C-4A3E-966D-591AB8E07F1B";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "23B40765-086C-4A3E-966D-591AB8E07F1B";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1200,8 +1200,8 @@
 					Armv6,
 					"$(ARCHS_STANDARD_32_BIT)",
 				);
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Michael Harding";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Michael Harding";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Tim Medcalf (LQ9PDTLE6X)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tim Medcalf (LQ9PDTLE6X)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
@@ -1210,8 +1210,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "D7398C11-8202-47B3-AB01-B166F57D28B5";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D7398C11-8202-47B3-AB01-B166F57D28B5";
+				PROVISIONING_PROFILE = "23B40765-086C-4A3E-966D-591AB8E07F1B";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "23B40765-086C-4A3E-966D-591AB8E07F1B";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
