@@ -50,6 +50,29 @@
   return self;
 }
 
+- (id)initWithImageItem:(ImageItem *)item forSize:(CGSize)size;
+{
+  self = [super initWithFrame:CGRectMake(0,0,size.width,size.height)];
+  if (self) {
+    //NOTE THAT THIS IS DIFFERENT IF YOU EXPLICITLY SET THE SIZE!
+    self.contentMode = UIViewContentModeScaleAspectFit;
+    self.url = item.imageURL;
+    TJMImageResource *tmpImageResource = [[TJMImageResourceManager instance] resourceForURL:self.url];
+    UIImage *image = [tmpImageResource getImage];
+    if (!tmpImageResource.imageIsDownloaded)
+    {
+      image = [[[TJMImageResourceManager instance] resourceForURL:item.thumbnailURL] getImage];
+    }
+    //UIImageView *tmpImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,size.width,size.height)];
+    self.image = image;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateImage) name:TJMImageResourceImageNeedsUpdating object:tmpImageResource];
+  }
+  return self;
+}
+
+
+
+
 - (void)setURL:(NSURL *)url;
 {
   self.url = url;
