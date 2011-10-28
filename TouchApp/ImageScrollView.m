@@ -121,8 +121,8 @@
     
     // make a new UIImageView for the new image
   //imageView = [[TJMImageResourceView alloc] initWithURL:image.imageURL forSize:self.bounds.size];
-  imageView = [[TJMImageResourceView alloc] initWithFrame:CGRectMake(0,0,self.bounds.size.width, self.bounds.size.height)];
-  imageView.url = image.imageURL;
+  imageView = [[TJMImageResourceView alloc] initWithFrame:CGRectMake(0,0,self.bounds.size.width, self.bounds.size.height) andURL:image.imageURL];
+  imageView.contentMode = UIViewContentModeScaleAspectFit;
                
   [self addSubview:imageView];
     

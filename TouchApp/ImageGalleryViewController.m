@@ -82,15 +82,6 @@ static NSInteger iPadThumbnailRowCount = 8;
   if ([self.imageList.items count] == 0)
   {
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-//    UIActivityIndicatorView *tmpSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-//    CGPoint midPoint = self.view.center;
-//    midPoint.y -= self.navigationController.navigationBar.frame.size.height /2;
-//    tmpSpinner.center = midPoint;
-//    [tmpSpinner startAnimating];
-//    tmpSpinner.hidesWhenStopped = YES;
-//    self.spinner = tmpSpinner;
-//    [self.view addSubview:self.spinner];
-//    [tmpSpinner release];
     self.progressView.progress = 0;
     self.progressView.hidden = NO;
   }
