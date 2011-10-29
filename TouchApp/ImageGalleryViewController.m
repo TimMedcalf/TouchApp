@@ -228,7 +228,8 @@ static NSInteger iPadThumbnailRowCount = 8;
     PhotoViewController *photo = [[PhotoViewController alloc] initWithNibName:@"PhotoViewController" bundle:nil];
     photo.imageList = self.imageList;
     photo.initialIndex = res.index;
-    photo.wantsFullScreenLayout = YES;
+    photo.delegate = self;
+    //[self.navigationController pushViewController:photo animated:YES];
     [self.navigationController presentModalViewController:photo animated:YES];
     [photo release];
   }
@@ -270,6 +271,13 @@ static NSInteger iPadThumbnailRowCount = 8;
 {
   //NSLog(@"images - Shake!");
   [self.imageList refreshFeedForced:YES];
+}
+
+#pragma mark PhotoViewDelegate
+
+- (void)dismissPhotoView:(PhotoViewController *)photoViewController
+{
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 @end

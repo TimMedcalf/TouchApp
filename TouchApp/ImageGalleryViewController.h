@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "ImageList.h"
 #import "TJMAudioTableViewController.h"
+#import "PhotoViewController.h"
 
-@interface ImageGalleryViewController : TJMAudioTableViewController <FeedListConsumerDelegate>
+@interface ImageGalleryViewController : TJMAudioTableViewController <FeedListConsumerDelegate, PhotoViewDelegate>
 
 @end

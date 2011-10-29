@@ -73,6 +73,7 @@
 @synthesize pagingScrollView = _pagingScrollView;
 @synthesize customNavigationBar = _customNavigationBar;
 @synthesize customNavigationItem = _customNavigationItem;
+@synthesize delegate = _delegate;
 
 #pragma mark -
 #pragma mark View loading and unloading
@@ -88,20 +89,15 @@
   return self;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-  //[super viewWillAppear:NO];
-  //[[UIDevice currentDevice] setOrientation:UIInterfaceOrientationLandscapeRight];
-}
-
 
 - (void)viewDidLoad {
   [super viewDidLoad];
   [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];  
   self.customNavigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(savePhoto)] autorelease];
   self.customNavigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Photos" style:UIBarButtonItemStylePlain target:self action:@selector(goBack)] autorelease];
+
   self.customNavigationBar.tintColor = nil;
-  self.customNavigationBar.barStyle  = UIBarStyleBlack;
+  self.customNavigationBar.barStyle = UIBarStyleBlack;
   self.customNavigationBar.translucent = YES;
 	
 	self.view.backgroundColor = [UIColor blackColor];
@@ -180,7 +176,7 @@
 }
 
 - (void)goBack {
-  [self dismissModalViewControllerAnimated:YES];
+  [self.delegate dismissPhotoView:self];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
@@ -290,6 +286,15 @@
   
 }
 
+//- (void)layoutSubviews {
+//  [super layoutSubviews];
+//  
+//  // Let navBar tell us what height it would prefer at the current orientation
+//  CGFloat navBarHeight = [self.customNavigationBar sizeThatFits:self.bounds.size].height;
+//  
+//  // Resize navBar
+//  self.customNavigationBar.frame = CGRectMake(0, 0, self.bounds.size.width, navBarHeight);
+//}
 
 #pragma mark -
 #pragma mark ScrollView delegate methods
@@ -338,7 +343,8 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation 
 {
-    return UIInterfaceOrientationIsLandscape(toInterfaceOrientation);
+  NSLog(@"Should rotate?");
+  return (toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration

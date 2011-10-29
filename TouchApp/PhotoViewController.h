@@ -50,6 +50,11 @@
 #import "ImageItem.h"
 
 @class ImageScrollView;
+@class PhotoViewController;
+
+@protocol PhotoViewDelegate
+- (void)dismissPhotoView:(PhotoViewController *)photoViewController;
+@end
 
 @interface PhotoViewController : UIViewController <UIScrollViewDelegate, UIActionSheetDelegate> {
 
@@ -62,6 +67,7 @@
     CGFloat       percentScrolledIntoFirstVisiblePage;
 }
 
+@property (nonatomic, assign) id<PhotoViewDelegate,NSObject> delegate;
 @property (nonatomic, retain) ImageList *imageList;
 @property (nonatomic, assign) NSInteger initialIndex;
 @property (nonatomic, retain) IBOutlet UINavigationBar *customNavigationBar;
