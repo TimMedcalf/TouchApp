@@ -79,8 +79,6 @@
   
   CGSize boundsSize = self.bounds.size;
   CGRect frameToCenter = imageView.frame;
-  //NSLog(@"[%@ %@] Frame = %f %f", [self class], NSStringFromSelector(_cmd), imageView.frame.size.width, imageView.frame.size.height);
-
   
   // center horizontally
   if (frameToCenter.size.width < boundsSize.width)
@@ -111,34 +109,31 @@
 
 - (void)displayImage:(ImageItem *)image
 {
-    // clear the previous imageView
-    [imageView removeFromSuperview];
-    [imageView release];
-    imageView = nil;
+  // clear the previous imageView
+  [imageView removeFromSuperview];
+  [imageView release];
+  imageView = nil;
     
-    // reset our zoomScale to 1.0 before doing any further calculations
+  // reset our zoomScale to 1.0 before doing any further calculations
   self.zoomScale = 1.0;
     
-    // make a new UIImageView for the new image
+  // make a new UIImageView for the new image
   imageView = [[TJMImageResourceView alloc] initWithImageItem:image forSize:self.bounds.size];  
-  
-  imageView.contentMode = UIViewContentModeScaleAspectFit;
+ // imageView.contentMode = UIViewContentModeScaleAspectFit;
                
   [self addSubview:imageView];
-    
+  
+  //TJM Investigate this line,
   self.contentSize = imageView.frame.size;
-    //NSLog(@"[%@ %@] Frame = %f %f", [self class], NSStringFromSelector(_cmd), imageView.frame.size.width, imageView.frame.size.height);
+  
   [self setMaxMinZoomScalesForCurrentBounds];
   self.zoomScale = self.minimumZoomScale;
 }
 
 - (void)setMaxMinZoomScalesForCurrentBounds
 {
-//  CGSize boundsSize = CGSizeMake(480,320);//self.bounds.size;
   CGSize boundsSize = self.bounds.size;
-  //CGSize imageSize = imageView.imageView.image.size;
   CGSize imageSize = imageView.frame.size;
-
     
     // calculate min/max zoomscale
   CGFloat xScale = boundsSize.width / imageSize.width;    // the scale needed to perfectly fit the image width-wise

@@ -57,13 +57,14 @@
 //methods to force view dimensions to landscape
 //useful because we know we're in landscape but the device
 //won't have updated some stuff by the time we need it.
-- (CGRect)forceRectLandscape:(CGRect)rect;
-- (CGSize)forceSizeLandscape:(CGSize)size;
+//- (CGRect)forceRectLandscape:(CGRect)rect;
+//- (CGSize)forceSizeLandscape:(CGSize)size;
 
 - (NSInteger)centerPhotoIndex;
 - (void)setViewState;
 - (void)skipToPage:(NSUInteger)page;
 - (CGPoint)offsetForPageAtIndex:(NSUInteger)index;
+- (CGRect)frameForPagingScrollView;
 @end
 
 @implementation PhotoViewController
@@ -89,25 +90,30 @@
   return self;
 }
 
-
-- (void)viewDidLoad {
-  [super viewDidLoad];
-  [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];  
-  self.customNavigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(savePhoto)] autorelease];
-  self.customNavigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Photos" style:UIBarButtonItemStylePlain target:self action:@selector(goBack)] autorelease];
-
-  self.customNavigationBar.tintColor = nil;
-  self.customNavigationBar.barStyle = UIBarStyleBlack;
-  self.customNavigationBar.translucent = YES;
-	
-	self.view.backgroundColor = [UIColor blackColor];
+- (void)loadView 
+{    
+  //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
+//  self.customNavigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(savePhoto)] autorelease];
+//  self.customNavigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Photos" style:UIBarButtonItemStylePlain target:self action:@selector(goBack)] autorelease];
+//
+//  self.customNavigationBar.tintColor = nil;
+//  self.customNavigationBar.barStyle = UIBarStyleBlack;
+//  self.customNavigationBar.translucent = YES;
+  
+  //self.view.backgroundColor = [UIColor blackColor];
   self.hidesBottomBarWhenPushed = YES;
 
   //[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
   
-	self.wantsFullScreenLayout = YES;
-	
-  self.pagingScrollView.delegate=self;
+  self.wantsFullScreenLayout = YES;
+
+  // Step 1: make the outer paging scroll view
+  CGRect pagingScrollViewFrame = [self frameForPagingScrollView];
+  _pagingScrollView = [[UIScrollView alloc] initWithFrame:pagingScrollViewFrame];
+  self.pagingScrollView.pagingEnabled = YES;
+  self.pagingScrollView.backgroundColor = [UIColor blackColor];
+  self.pagingScrollView.contentSize = [self contentSizeForPagingScrollView];
+  self.pagingScrollView.delegate = self;
   self.pagingScrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
   self.pagingScrollView.multipleTouchEnabled=YES;
   self.pagingScrollView.scrollEnabled=YES;
@@ -117,17 +123,53 @@
   self.pagingScrollView.clipsToBounds=YES;
   self.pagingScrollView.alwaysBounceHorizontal=YES;
   self.pagingScrollView.bounces=YES;
-  self.pagingScrollView.pagingEnabled=YES;
-  self.pagingScrollView.showsVerticalScrollIndicator=NO;
-  self.pagingScrollView.showsHorizontalScrollIndicator=NO;
-  self.pagingScrollView.backgroundColor = self.view.backgroundColor;
-  self.pagingScrollView.contentSize = [self contentSizeForPagingScrollView];
-    
+
+  self.view = _pagingScrollView;
+  
+  // Step 2: prepare to tile content
   recycledPages = [[NSMutableSet alloc] init];
   visiblePages  = [[NSMutableSet alloc] init];
-  [self skipToPage:self.initialIndex];
   [self tilePages];
-  [self setViewState];
+}
+
+
+- (void)viewDidLoad {
+  [super viewDidLoad];
+//  [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];  
+//  self.customNavigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(savePhoto)] autorelease];
+//  self.customNavigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Photos" style:UIBarButtonItemStylePlain target:self action:@selector(goBack)] autorelease];
+//
+//  self.customNavigationBar.tintColor = nil;
+//  self.customNavigationBar.barStyle = UIBarStyleBlack;
+//  self.customNavigationBar.translucent = YES;
+//	
+//	self.view.backgroundColor = [UIColor blackColor];
+//  self.hidesBottomBarWhenPushed = YES;
+//
+//  //[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+//  
+//	self.wantsFullScreenLayout = YES;
+//	
+//  self.pagingScrollView.frame = [self frameForPagingScrollView];
+//  self.pagingScrollView.delegate=self;
+//  self.pagingScrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+//  self.pagingScrollView.multipleTouchEnabled=YES;
+//  self.pagingScrollView.scrollEnabled=YES;
+//  self.pagingScrollView.directionalLockEnabled=YES;
+//  self.pagingScrollView.canCancelContentTouches=YES;
+//  self.pagingScrollView.delaysContentTouches=YES;
+//  self.pagingScrollView.clipsToBounds=YES;
+//  self.pagingScrollView.alwaysBounceHorizontal=YES;
+//  self.pagingScrollView.bounces=YES;
+//  self.pagingScrollView.pagingEnabled=YES;
+//  self.pagingScrollView.showsVerticalScrollIndicator=NO;
+//  self.pagingScrollView.showsHorizontalScrollIndicator=NO;
+//  self.pagingScrollView.backgroundColor = self.view.backgroundColor;
+//  self.pagingScrollView.contentSize = [self contentSizeForPagingScrollView];
+    
+//  [self skipToPage:self.initialIndex];
+//  [self tilePages];
+//  [self setViewState];
 
 }
 
@@ -343,45 +385,45 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation 
 {
-  NSLog(@"Should rotate?");
+  //NSLog(@"Should rotate?");
   return (toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-    // here, our pagingScrollView bounds have not yet been updated for the new interface orientation. So this is a good
-    // place to calculate the content offset that we will need in the new orientation
-    CGFloat offset = self.pagingScrollView.contentOffset.x;
-    CGFloat pageWidth = self.pagingScrollView.bounds.size.width;
-    
-    if (offset >= 0) {
-        firstVisiblePageIndexBeforeRotation = floorf(offset / pageWidth);
-        percentScrolledIntoFirstVisiblePage = (offset - (firstVisiblePageIndexBeforeRotation * pageWidth)) / pageWidth;
-    } else {
-        firstVisiblePageIndexBeforeRotation = 0;
-        percentScrolledIntoFirstVisiblePage = offset / pageWidth;
-    }    
+  // here, our pagingScrollView bounds have not yet been updated for the new interface orientation. So this is a good
+  // place to calculate the content offset that we will need in the new orientation
+  CGFloat offset = self.pagingScrollView.contentOffset.x;
+  CGFloat pageWidth = self.pagingScrollView.bounds.size.width;
+  
+  if (offset >= 0) {
+    firstVisiblePageIndexBeforeRotation = floorf(offset / pageWidth);
+    percentScrolledIntoFirstVisiblePage = (offset - (firstVisiblePageIndexBeforeRotation * pageWidth)) / pageWidth;
+  } else {
+    firstVisiblePageIndexBeforeRotation = 0;
+    percentScrolledIntoFirstVisiblePage = offset / pageWidth;
+  }
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-    // recalculate contentSize based on current orientation
-    self.pagingScrollView.contentSize = [self contentSizeForPagingScrollView];
+  // recalculate contentSize based on current orientation
+  self.pagingScrollView.contentSize = [self contentSizeForPagingScrollView];
+  
+  // adjust frames and configuration of each visible page
+  for (ImageScrollView *page in visiblePages) {
+    CGPoint restorePoint = [page pointToCenterAfterRotation];
+    CGFloat restoreScale = [page scaleToRestoreAfterRotation];
+    page.frame = [self frameForPageAtIndex:page.index];
+    [page setMaxMinZoomScalesForCurrentBounds];
+    [page restoreCenterPoint:restorePoint scale:restoreScale];
     
-    // adjust frames and configuration of each visible page
-    for (ImageScrollView *page in visiblePages) {
-        CGPoint restorePoint = [page pointToCenterAfterRotation];
-        CGFloat restoreScale = [page scaleToRestoreAfterRotation];
-        page.frame = [self frameForPageAtIndex:page.index];
-        [page setMaxMinZoomScalesForCurrentBounds];
-        [page restoreCenterPoint:restorePoint scale:restoreScale];
-        
-    }
-    
-    // adjust contentOffset to preserve page location based on values collected prior to location
-    CGFloat pageWidth = self.pagingScrollView.bounds.size.width;
-    CGFloat newOffset = (firstVisiblePageIndexBeforeRotation * pageWidth) + (percentScrolledIntoFirstVisiblePage * pageWidth);
-    self.pagingScrollView.contentOffset = CGPointMake(newOffset, 0);
+  }
+  
+  // adjust contentOffset to preserve page location based on values collected prior to location
+  CGFloat pageWidth = self.pagingScrollView.bounds.size.width;
+  CGFloat newOffset = (firstVisiblePageIndexBeforeRotation * pageWidth) + (percentScrolledIntoFirstVisiblePage * pageWidth);
+  self.pagingScrollView.contentOffset = CGPointMake(newOffset, 0);
 }
 
 #pragma mark -
@@ -389,21 +431,39 @@
 //#define PADDING  10
 #define PADDING  0
 
+- (CGRect)frameForPagingScrollView {
+  CGRect frame = [[UIScreen mainScreen] bounds];
+  frame.origin.x -= PADDING;
+  frame.size.width += (2 * PADDING);
+  return frame;
+}
 
 - (CGRect)frameForPageAtIndex:(NSUInteger)index {
-  CGRect pageFrame = [self forceRectLandscape:self.pagingScrollView.bounds];
+  //TJM Code from v1.0
+//  CGRect pageFrame = [self forceRectLandscape:self.pagingScrollView.bounds];
+//  pageFrame.size.width -= (2 * PADDING);
+//  pageFrame.origin.x = (pageFrame.size.width * index) + PADDING;
+//  pageFrame.origin.y = 0;
+//  //NSLog(@"frameForPageAtIndex x=%f y=%f width=%f height=%f",pageFrame.origin.x, pageFrame.origin.y,pageFrame.size.width, pageFrame.size.height);
+//  return pageFrame;
+  
+  //original example code
+  CGRect bounds = self.pagingScrollView.bounds;
+  CGRect pageFrame = bounds;
   pageFrame.size.width -= (2 * PADDING);
-  pageFrame.origin.x = (pageFrame.size.width * index) + PADDING;
-  //
-  pageFrame.origin.y = 0;
-  //
-  //NSLog(@"frameForPageAtIndex x=%f y=%f width=%f height=%f",pageFrame.origin.x, pageFrame.origin.y,pageFrame.size.width, pageFrame.size.height);
+  pageFrame.origin.x = (bounds.size.width * index) + PADDING;
   return pageFrame;
+
 }
 
 - (CGSize)contentSizeForPagingScrollView {
-  CGRect bounds = [self forceRectLandscape:self.pagingScrollView.bounds];
-  //NSLog(@"content size width=%f height=%f",bounds.size.width, bounds.size.height);
+  //TJM 1.0
+//  CGRect bounds = [self forceRectLandscape:self.pagingScrollView.bounds];
+//  //NSLog(@"content size width=%f height=%f",bounds.size.width, bounds.size.height);
+//  return CGSizeMake(bounds.size.width * [self imageCount], bounds.size.height);
+
+  //orginal
+  CGRect bounds = self.pagingScrollView.bounds;
   return CGSizeMake(bounds.size.width * [self imageCount], bounds.size.height);
 }
 
@@ -440,19 +500,6 @@
   return [self.imageList.items count];
 }
 
-- (CGRect)forceRectLandscape:(CGRect)rect
-{
-  CGFloat width = MAX(rect.size.width, rect.size.height);
-  CGFloat height = MIN(rect.size.width, rect.size.height);
-  return CGRectMake(rect.origin.x, rect.origin.y,width,height);
-}
-
-- (CGSize)forceSizeLandscape:(CGSize)size
-{
-  CGFloat width = MAX(size.width, size.height);
-  CGFloat height = MIN(size.width, size.height);
-  return CGSizeMake(width, height);
-}
 
 - (NSInteger)centerPhotoIndex
 {	
