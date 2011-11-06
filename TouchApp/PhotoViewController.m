@@ -125,9 +125,10 @@
   
   [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
   UINavigationBar *tmpBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width,44)];
-  
   self.customNavigationBar = tmpBar;
+  self.customNavigationBar.autoresizingMask =  UIViewAutoresizingFlexibleWidth;
   [tmpBar release];
+  
   UINavigationItem *tmpItem = [[UINavigationItem alloc] initWithTitle:@""];
   self.customNavigationItem = tmpItem;
   [tmpItem release];
