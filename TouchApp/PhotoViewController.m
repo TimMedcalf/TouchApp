@@ -91,21 +91,11 @@
 }
 
 - (void)loadView 
-{    
-  //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
-//  self.customNavigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(savePhoto)] autorelease];
-//  self.customNavigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Photos" style:UIBarButtonItemStylePlain target:self action:@selector(goBack)] autorelease];
-//
-//  self.customNavigationBar.tintColor = nil;
-//  self.customNavigationBar.barStyle = UIBarStyleBlack;
-//  self.customNavigationBar.translucent = YES;
-  
-  //self.view.backgroundColor = [UIColor blackColor];
-  self.hidesBottomBarWhenPushed = YES;
-
-  //[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
-  
+{      
   self.wantsFullScreenLayout = YES;
+  
+  UIView *tmpView = [[UIView alloc] initWithFrame:[self frameForPagingScrollView]];
+  self.view = tmpView;
 
   // Step 1: make the outer paging scroll view
   CGRect pagingScrollViewFrame = [self frameForPagingScrollView];
@@ -124,12 +114,40 @@
   self.pagingScrollView.alwaysBounceHorizontal=YES;
   self.pagingScrollView.bounces=YES;
 
-  self.view = _pagingScrollView;
+  //self.view = _pagingScrollView;
+  [self.view addSubview:_pagingScrollView];
   
+ [self skipToPage:self.initialIndex];  [self skipToPage:self.initialIndex];
   // Step 2: prepare to tile content
   recycledPages = [[NSMutableSet alloc] init];
   visiblePages  = [[NSMutableSet alloc] init];
   [self tilePages];
+  
+  [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+  UINavigationBar *tmpBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width,44)];
+  
+  self.customNavigationBar = tmpBar;
+  [tmpBar release];
+  UINavigationItem *tmpItem = [[UINavigationItem alloc] initWithTitle:@""];
+  self.customNavigationItem = tmpItem;
+  [tmpItem release];
+  [self.customNavigationBar setItems:[NSArray arrayWithObject:self.customNavigationItem]];
+  
+  [self.view addSubview:self.customNavigationBar];
+  
+  self.customNavigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(savePhoto)] autorelease];
+  self.customNavigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Photos" style:UIBarButtonItemStylePlain target:self action:@selector(goBack)] autorelease];
+  self.customNavigationBar.tintColor = nil;
+  self.customNavigationBar.barStyle = UIBarStyleBlack;
+  self.customNavigationBar.translucent = YES;
+  
+  //self.view.backgroundColor = [UIColor blackColor];
+  self.hidesBottomBarWhenPushed = YES;
+  
+ 
+  
+
+
 }
 
 
@@ -214,7 +232,7 @@
 - (void)toggleBarsNotification:(NSNotification*)notification
 {
   self.customNavigationBar.hidden = !self.customNavigationBar.hidden;
-  [[UIApplication sharedApplication] setStatusBarHidden:self.customNavigationBar.hidden withAnimation:UIStatusBarAnimationNone];
+  //[[UIApplication sharedApplication] setStatusBarHidden:self.customNavigationBar.hidden withAnimation:UIStatusBarAnimationNone];
 }
 
 - (void)goBack {
