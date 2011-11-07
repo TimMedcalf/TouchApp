@@ -429,7 +429,9 @@
 //  return pageFrame;
   
   //original example code
-  CGRect bounds = self.pagingScrollView.bounds;
+  //CGRect bounds = self.pagingScrollView.bounds;
+  //CGRect bounds = self.pagingScrollView.frame;
+  CGRect bounds = self.view.bounds;
   CGRect pageFrame = bounds;
   pageFrame.size.width -= (2 * PADDING);
   pageFrame.origin.x = (bounds.size.width * index) + PADDING;
@@ -444,7 +446,9 @@
 //  return CGSizeMake(bounds.size.width * [self imageCount], bounds.size.height);
 
   //orginal
-  CGRect bounds = self.pagingScrollView.bounds;
+  //CGRect bounds = self.pagingScrollView.bounds;
+  //CGRect bounds = self.pagingScrollView.frame;
+  CGRect bounds = self.view.bounds;
   return CGSizeMake(bounds.size.width * [self imageCount], bounds.size.height);
 }
 
