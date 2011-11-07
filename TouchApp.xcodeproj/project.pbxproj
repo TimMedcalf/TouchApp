@@ -1167,11 +1167,11 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = (
-					Armv6,
+					armv6,
 					"$(ARCHS_STANDARD_32_BIT)",
 				);
-				CODE_SIGN_IDENTITY = "iPhone Developer: Tim Medcalf (LQ9PDTLE6X)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tim Medcalf (LQ9PDTLE6X)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Michael Harding";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Michael Harding";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1186,8 +1186,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
-				PROVISIONING_PROFILE = "2A37E07A-824B-4377-9779-433F328FB7C7";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2A37E07A-824B-4377-9779-433F328FB7C7";
+				PROVISIONING_PROFILE = "7B36597E-89EA-4121-B873-03D51CAAB7CC";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7B36597E-89EA-4121-B873-03D51CAAB7CC";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1197,11 +1197,11 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = (
-					Armv6,
+					armv6,
 					"$(ARCHS_STANDARD_32_BIT)",
 				);
-				CODE_SIGN_IDENTITY = "iPhone Developer: Tim Medcalf (LQ9PDTLE6X)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tim Medcalf (LQ9PDTLE6X)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Michael Harding";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Michael Harding";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
@@ -1210,8 +1210,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "2A37E07A-824B-4377-9779-433F328FB7C7";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2A37E07A-824B-4377-9779-433F328FB7C7";
+				PROVISIONING_PROFILE = "7B36597E-89EA-4121-B873-03D51CAAB7CC";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7B36597E-89EA-4121-B873-03D51CAAB7CC";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
