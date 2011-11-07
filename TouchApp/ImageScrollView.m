@@ -123,7 +123,7 @@
   
   //TJM Investigate this line,
   self.contentSize = [imageView.image size];
-  NSLog(@"Image content size width=%f height=%f", self.contentSize.width, self.contentSize.height);
+  //NSLog(@"Image content size width=%f height=%f", self.contentSize.width, self.contentSize.height);
   [self setMaxMinZoomScalesForCurrentBounds];
   self.zoomScale = self.minimumZoomScale;
 }
