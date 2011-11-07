@@ -19,6 +19,7 @@
 - (id)initWithFrame:(CGRect)frame;
 - (id)initWithFrame:(CGRect)frame andURL:(NSURL *)url;
 - (id)initWithImageItem:(ImageItem *)item forSize:(CGSize)size;
+- (id)initWithImageItem:(ImageItem *)item;
 - (void)setURL:(NSURL *)url;
 
 @end

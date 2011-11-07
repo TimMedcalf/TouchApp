@@ -118,14 +118,12 @@
   self.zoomScale = 1.0;
     
   // make a new UIImageView for the new image
-  imageView = [[TJMImageResourceView alloc] initWithImageItem:image forSize:self.bounds.size];  
- // imageView.contentMode = UIViewContentModeScaleAspectFit;
-               
+  imageView = [[TJMImageResourceView alloc] initWithImageItem:image];// forSize:self.bounds.size];               
   [self addSubview:imageView];
   
   //TJM Investigate this line,
-  self.contentSize = imageView.frame.size;
-  
+  self.contentSize = [imageView.image size];
+  NSLog(@"Image content size width=%f height=%f", self.contentSize.width, self.contentSize.height);
   [self setMaxMinZoomScalesForCurrentBounds];
   self.zoomScale = self.minimumZoomScale;
 }
@@ -133,7 +131,7 @@
 - (void)setMaxMinZoomScalesForCurrentBounds
 {
   CGSize boundsSize = self.bounds.size;
-  CGSize imageSize = imageView.frame.size;
+  CGSize imageSize = imageView.bounds.size;
     
     // calculate min/max zoomscale
   CGFloat xScale = boundsSize.width / imageSize.width;    // the scale needed to perfectly fit the image width-wise
@@ -142,7 +140,9 @@
     
   // on high resolution screens we have double the pixel density, so we will be seeing every pixel if we limit the
   // maximum zoom scale to 0.5.
-  CGFloat maxScale = 3 / [[UIScreen mainScreen] scale];
+  //         TJM was 3
+  //CGFloat maxScale = 1.0 / [[UIScreen mainScreen] scale];
+  CGFloat maxScale = 5 / [[UIScreen mainScreen] scale];
     
   // don't let minScale exceed maxScale. (If the image is smaller than the screen, we don't want to force it to be zoomed.) 
   if (minScale > maxScale) {
