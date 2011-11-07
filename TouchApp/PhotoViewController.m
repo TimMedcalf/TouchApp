@@ -96,6 +96,7 @@
   
   UIView *tmpView = [[UIView alloc] initWithFrame:[self frameForPagingScrollView]];
   self.view = tmpView;
+  [tmpView release];
 
   // Step 1: make the outer paging scroll view
   CGRect pagingScrollViewFrame = [self frameForPagingScrollView];
@@ -144,11 +145,6 @@
   
   //self.view.backgroundColor = [UIColor blackColor];
   self.hidesBottomBarWhenPushed = YES;
-  
- 
-  
-
-
 }
 
 
@@ -436,13 +432,29 @@
     page.frame = [self frameForPageAtIndex:page.index];
     [page setMaxMinZoomScalesForCurrentBounds];
     [page restoreCenterPoint:restorePoint scale:restoreScale];
-    
   }
   
   // adjust contentOffset to preserve page location based on values collected prior to location
   CGFloat pageWidth = self.pagingScrollView.bounds.size.width;
   CGFloat newOffset = (firstVisiblePageIndexBeforeRotation * pageWidth) + (percentScrolledIntoFirstVisiblePage * pageWidth);
   self.pagingScrollView.contentOffset = CGPointMake(newOffset, 0);
+  
+  
+  CGRect barFrame = self.customNavigationBar.frame;
+  if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation))
+  {
+    barFrame.size.height = 32;
+    [UIView animateWithDuration:duration animations:^(void){
+      self.customNavigationBar.frame = barFrame;
+    }];
+  }
+  else
+  {
+    barFrame.size.height = 44;
+    [UIView animateWithDuration:duration animations:^(void){
+      self.customNavigationBar.frame = barFrame;
+    }];
+  }
 }
 
 #pragma mark -
@@ -538,6 +550,8 @@
   offset.y = 0;                                                                                                                                   
   return offset;                                                                                                                                     
 }
+
+
 
 
 @end
