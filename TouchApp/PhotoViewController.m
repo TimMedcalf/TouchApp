@@ -147,47 +147,6 @@
   self.hidesBottomBarWhenPushed = YES;
 }
 
-
-- (void)viewDidLoad {
-  [super viewDidLoad];
-//  [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];  
-//  self.customNavigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(savePhoto)] autorelease];
-//  self.customNavigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Photos" style:UIBarButtonItemStylePlain target:self action:@selector(goBack)] autorelease];
-//
-//  self.customNavigationBar.tintColor = nil;
-//  self.customNavigationBar.barStyle = UIBarStyleBlack;
-//  self.customNavigationBar.translucent = YES;
-//	
-//	self.view.backgroundColor = [UIColor blackColor];
-//  self.hidesBottomBarWhenPushed = YES;
-//
-//  //[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
-//  
-//	self.wantsFullScreenLayout = YES;
-//	
-//  self.pagingScrollView.frame = [self frameForPagingScrollView];
-//  self.pagingScrollView.delegate=self;
-//  self.pagingScrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
-//  self.pagingScrollView.multipleTouchEnabled=YES;
-//  self.pagingScrollView.scrollEnabled=YES;
-//  self.pagingScrollView.directionalLockEnabled=YES;
-//  self.pagingScrollView.canCancelContentTouches=YES;
-//  self.pagingScrollView.delaysContentTouches=YES;
-//  self.pagingScrollView.clipsToBounds=YES;
-//  self.pagingScrollView.alwaysBounceHorizontal=YES;
-//  self.pagingScrollView.bounces=YES;
-//  self.pagingScrollView.pagingEnabled=YES;
-//  self.pagingScrollView.showsVerticalScrollIndicator=NO;
-//  self.pagingScrollView.showsHorizontalScrollIndicator=NO;
-//  self.pagingScrollView.backgroundColor = self.view.backgroundColor;
-//  self.pagingScrollView.contentSize = [self contentSizeForPagingScrollView];
-    
-//  [self skipToPage:self.initialIndex];
-//  [self tilePages];
-//  [self setViewState];
-
-}
-
 - (void)savePhoto {
 	UIActionSheet *actionSheet = [[UIActionSheet alloc] 
                                 initWithTitle:nil
@@ -343,15 +302,6 @@
   
 }
 
-//- (void)layoutSubviews {
-//  [super layoutSubviews];
-//  
-//  // Let navBar tell us what height it would prefer at the current orientation
-//  CGFloat navBarHeight = [self.customNavigationBar sizeThatFits:self.bounds.size].height;
-//  
-//  // Resize navBar
-//  self.customNavigationBar.frame = CGRectMake(0, 0, self.bounds.size.width, navBarHeight);
-//}
 
 #pragma mark -
 #pragma mark ScrollView delegate methods
