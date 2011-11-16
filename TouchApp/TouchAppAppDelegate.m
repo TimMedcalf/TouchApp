@@ -10,7 +10,7 @@
 #import "AppManager.h"
 #import "TJMImageResourceManager.h"
 
-#define DEVMODE
+//#define DEVMODE
 #ifndef DEVMODE
 #import "FlurryAnalytics.h"
 
@@ -28,6 +28,8 @@ void uncaughtExceptionHandler(NSException *exception);
 #ifndef DEVMODE
   NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
   [FlurryAnalytics startSession:@"EG1Y8QTDSQI2YWEFXFDJ"];
+  [FlurryAnalytics logEvent:@"DeviceInfo" withParameters:[NSDictionary dictionaryWithObject:[[UIDevice currentDevice] systemVersion] forKey:@"Firmware"]];
+  [FlurryAnalytics logAllPageViews:_tabBarController];
 #endif
   // Override point for customization after application launch.
   [AppManager instance];
