@@ -33,7 +33,7 @@
                               @"rest", @"format",
                                      nil];
   
-  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+  if ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) || ([[UIScreen mainScreen] scale] > 1))
   {
     [parameters setObject:@"url_l,url_t" forKey:@"extras"];
   }

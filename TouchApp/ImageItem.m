@@ -85,7 +85,7 @@ NSString *const Key_ImageItem_ThumbnailHeight = @"thumbnailHeight";
   }
   self.thumbnailWidth = [[[element attributeForName:@"width_t"] stringValue] integerValue]; 
   self.thumbnailHeight = [[[element attributeForName:@"height_t"] stringValue] integerValue];
-  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+  if ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) || ([[UIScreen mainScreen] scale] > 1))
   {
     tmpPath = [[element attributeForName:@"url_l"] stringValue];
     self.imageWidth = [[[element attributeForName:@"width_l"] stringValue] integerValue]; 
