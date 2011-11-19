@@ -11,13 +11,13 @@
 #import "TJMImageResourceManager.h"
 
 @interface TJMImageResourceView ()
-
-//@property (nonatomic, assign) UIViewContentMode imageContentMode;
+@property (nonatomic, retain) UIActivityIndicatorView *spinner;
 - (void)updateImage;
 @end
 
 @implementation TJMImageResourceView
 
+@synthesize spinner = _spinner;
 @synthesize url = _url;
 @synthesize index = _index;
 
@@ -74,16 +74,24 @@
 {
   self = [super initWithFrame:CGRectMake(0,0,item.imageWidth,item.imageHeight)];
   if (self) {
-    //NOTE THAT THIS IS DIFFERENT IF YOU EXPLICITLY SET THE SIZE!
     self.contentMode = UIViewContentModeScaleAspectFit;
     self.url = item.imageURL;
     TJMImageResource *tmpImageResource = [[TJMImageResourceManager instance] resourceForURL:self.url];
     UIImage *image = [tmpImageResource getImage];
     if (!tmpImageResource.imageIsDownloaded)
     {
+      NSLog(@"WIDTH = %f", self.frame.size.width);
+      UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+      spinner.center = self.center;
+      spinner.hidesWhenStopped = YES;
+      self.spinner = spinner;
+      [spinner release];
+      [self addSubview:self.spinner];
+      [self.spinner startAnimating];
+      self.spinner.hidden = NO;
+      self.spinner.autoresizingMask = UIViewAutoresizingNone;
       image = [[[TJMImageResourceManager instance] resourceForURL:item.thumbnailURL] getImage];
     }
-    //UIImageView *tmpImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,size.width,size.height)];
     self.image = image;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateImage) name:TJMImageResourceImageNeedsUpdating object:tmpImageResource];
   }
@@ -104,6 +112,7 @@
 - (void)dealloc
 {
   [[NSNotificationCenter defaultCenter] removeObserver:self name:TJMImageResourceImageNeedsUpdating object:nil];
+  [_spinner release];
   [_url release];
   [super dealloc];
 }
@@ -113,7 +122,8 @@
 {
   //NSLog(@"Updating image");
   TJMImageResource *tmpImageResource = [[TJMImageResourceManager instance] resourceForURL:self.url];
-  self.image = [tmpImageResource getImage];  
+  self.image = [tmpImageResource getImage];
+  if (self.spinner) [self.spinner stopAnimating];
 }
 
                                     
