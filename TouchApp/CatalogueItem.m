@@ -123,10 +123,31 @@ NSString *const Key_Cat_Publisher = @"publisher";
   {
     streamLink = @"<div id='playerwrapper'><div><strong>Play</strong><br /><span class='subtitle'>Tap here to stream audio</span></div></div>";
   }
-   
-  NSString *catalogueNumberDiv = @"";
+  
+  NSString *catalogueNumberReleaseDateDiv = @"";
+  if ((self.releaseDateString) && ([self.releaseDateString length] > 0)) {
+      NSDateFormatter *dateFormatSource = [[NSDateFormatter alloc] init];
+      [dateFormatSource setDateFormat:@"yyyy-MM-d"];
+      
+      NSDateFormatter *dateFormatDestination = [[NSDateFormatter alloc] init];
+      [dateFormatDestination setDateFormat:@"d MMMM yyyy"];
+      
+      NSDate *formattedDate = [dateFormatSource dateFromString:self.releaseDateString];
+      
+      NSString *releaseDateStringReformatted = [dateFormatDestination stringFromDate:formattedDate]; 
+      
+      [dateFormatDestination release];
+      [dateFormatSource release];
+    
+      catalogueNumberReleaseDateDiv = [NSString stringWithFormat:@"<span id='release_date'>Released: %@</span>",releaseDateStringReformatted];
+  }
+  
+  if (((self.releaseDateString) && ([self.releaseDateString length] > 0)) && ((self.catalogueNumber) && ([self.catalogueNumber length] > 0))) {
+      catalogueNumberReleaseDateDiv = [NSString stringWithFormat:@"%@&nbsp;&nbsp;|&nbsp;&nbsp;",catalogueNumberReleaseDateDiv];
+  }
+    
   if ((self.catalogueNumber) && ([self.catalogueNumber length] > 0)) {
-      catalogueNumberDiv = [NSString stringWithFormat:@"<div id='catalogue_number'>%@</div>",self.catalogueNumber];
+    catalogueNumberReleaseDateDiv = [NSString stringWithFormat:@"%@<span id='catalogue_number'>Catalogue #: %@</span>",catalogueNumberReleaseDateDiv,self.catalogueNumber];
   }
     
   NSString *trackListingDiv = @"";
@@ -144,15 +165,17 @@ NSString *const Key_Cat_Publisher = @"publisher";
   //inject some CSS
   //note that strings can be run across multiple lines without having to reassign or append - just make sure quotes are at the start and end of each line
   return [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width\" />"
-          "<link rel=\"stylesheet\" media=\"only screen and (max-device-width: 480px)\" href=\"mobile.css\" />"
-          "<link rel=\"stylesheet\" media=\"only screen and (min-device-width: 481px) and (max-device-width: 1024px)\" href=\"ipad.css\" />"
+          "<link rel=\"stylesheet\" media=\"only screen and (max-device-width: 480px)\" href=\"catalogue_item_iphone.css\" />"
+          "<link rel=\"stylesheet\" media=\"only screen and (min-device-width: 481px) and (max-device-width: 1024px)\" href=\"catalogue_item_ipad.css\" />"
           "<script type=\"text/javascript\" src=\"jquery-1.6.4.min.js\"></script>"
           "<script type=\"text/javascript\" src=\"audiocontrol.js\"></script></head>"
           "<body>"
-          "<div id='headerwrapper'><div id='headercell'><div id='title'>"
-          "<strong>%@</strong><br />"
-          "<div id='byline'>"
+          "<div id='headerwrapper'>"
+          "<div id='headercell'>"
+          "<div id='headercellinner'>"
+          "<div id='title'>%@</div>"
           "<div id='artist'>%@</div>"
+          "<div id='byline'>"
           "%@"
           "</div></div></div></div></div>"
           "<div id=\"bodycopycontainer\"><p class='bodycopy'><p><img src='%@' /></p>"
@@ -163,7 +186,7 @@ NSString *const Key_Cat_Publisher = @"publisher";
           "%@"
           "</div>"
           "</body></html>", 
-          self.title,self.artist,catalogueNumberDiv,self.imageURL,trackListingDiv,self.description, streamLink, buyLink];
+          self.title,self.artist,catalogueNumberReleaseDateDiv,self.imageURL,trackListingDiv,self.description, streamLink, buyLink];
 }
 
 

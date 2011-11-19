@@ -1,0 +1,162 @@
+* {
+    float: none;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    font: 18px/21px sans-serif;
+    color: #000;
+    background: #FFFFFF;
+}
+
+
+p {margin: 0px 92px 12px 90px; padding: 0;}
+
+
+p.bodycopy {
+    border-top: 1px #e0e0e0 solid;
+    margin: 0;
+    padding-top: 23px;
+}
+
+#bodycopycontainer {
+    padding-bottom: 11px;
+}
+
+#tracklistingcontainer {
+    margin: 0;
+    padding-bottom: 11px;
+    border-bottom: 1px #e0e0e0 solid;
+}
+
+#tracklisting {margin: 0 92px 23px 90px; padding: 0;}
+
+#description {
+    padding-top: 23px;
+}
+
+#buttoncontainer {
+    margin: 0;
+}
+
+#buttoncontainer > div {
+    border-bottom: 1px #e0e0e0 solid; 
+}
+
+#buttoncontainer > div:first-of-type {
+    border-top: 1px #e0e0e0 solid;
+}
+
+#buywrapper {
+    margin: 0;
+}
+
+#playerwrapper {
+    margin: 0;
+}
+
+#headercellinner, #playerwrapper div, #buywrapper div {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 21;
+    font-weight: 100;
+    line-height: 23px;
+    margin: 26px 92px 26px 90px;
+    padding: 0;
+}
+
+.bodycopy, p {
+	font-family: "Georgia", "Times New Roman", serif;
+}
+
+#pubdate, #byline, #title, .subtitle {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 15;
+    font-weight: 700;
+    color: gray;
+}
+
+#headercellinner {width:585px;}
+
+#byline, #title {
+    width:100%; 
+    display:block; 
+    position:relative;
+}
+
+#headerwrapper {display:table; height:96px;}
+#headercell {display:table-cell; vertical-align:middle;}
+
+.floatright {
+	float: right;
+}
+
+.floatright img {
+	margin: 0 0 2px 7px;
+	padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+}
+
+img { 
+    max-width: 585px;
+    border: 1px #e0e0e0 solid;
+}
+
+div {
+	margin:0;
+	padding:0;
+}
+
+#nav,#nav li{
+    float:none!important;
+    clear:both!important;
+    margin:0!important;
+    padding:0;
+    text-align:left!important;
+    width:100%;
+}
+#nav li{
+    margin:0!important;
+}
+#nav li a{
+    display:block;
+}
+
+#nav ul, #sections ul, #related ul {
+    list-style-type: none;
+}
+
+ul {
+    margin: 0 0 10px 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    font-style: italic;
+    color: black;
+}
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) { 
+    
+	.selector {
+		padding: 0;
+		margin: 0;
+    }
+    
+    body{
+        -webkit-text-size-adjust:none;
+        font-family:Helvetica, Arial, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+	
+    li {
+		margin: 0;
+		padding: 0;		
+    }
+    
+}
