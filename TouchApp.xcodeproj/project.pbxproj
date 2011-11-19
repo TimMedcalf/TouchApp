@@ -149,6 +149,8 @@
 		22CB4CB813F1248E008968D6 /* RadioList.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4CB713F1248D008968D6 /* RadioList.m */; };
 		22CB4CBE13F12BDA008968D6 /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4CBC13F12BDA008968D6 /* RadioViewController.m */; };
 		22CB4CBF13F12BDA008968D6 /* RadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22CB4CBD13F12BDA008968D6 /* RadioViewController.xib */; };
+		DE1475A6147848490065208F /* catalogue_item_iphone.css in Resources */ = {isa = PBXBuildFile; fileRef = DE1475A5147848490065208F /* catalogue_item_iphone.css */; };
+		DE1475A9147856030065208F /* catalogue_item_ipad.css in Resources */ = {isa = PBXBuildFile; fileRef = DE1475A8147856030065208F /* catalogue_item_ipad.css */; };
 		DEB0003E142582870059E43D /* jquery-1.6.4.min.js in Resources */ = {isa = PBXBuildFile; fileRef = DEB0003D142582870059E43D /* jquery-1.6.4.min.js */; };
 		DEB0004214258A260059E43D /* audiocontrol.js in Resources */ = {isa = PBXBuildFile; fileRef = DEB0004114258A260059E43D /* audiocontrol.js */; };
 /* End PBXBuildFile section */
@@ -359,6 +361,8 @@
 		22CB4CBB13F12BDA008968D6 /* RadioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioViewController.h; sourceTree = "<group>"; };
 		22CB4CBC13F12BDA008968D6 /* RadioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioViewController.m; sourceTree = "<group>"; };
 		22CB4CBD13F12BDA008968D6 /* RadioViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadioViewController.xib; sourceTree = "<group>"; };
+		DE1475A5147848490065208F /* catalogue_item_iphone.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = catalogue_item_iphone.css; sourceTree = "<group>"; };
+		DE1475A8147856030065208F /* catalogue_item_ipad.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = catalogue_item_ipad.css; sourceTree = "<group>"; };
 		DEB0003D142582870059E43D /* jquery-1.6.4.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "jquery-1.6.4.min.js"; sourceTree = "<group>"; };
 		DEB0004114258A260059E43D /* audiocontrol.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = audiocontrol.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -841,6 +845,8 @@
 				22CB4C1513EE4CFA008968D6 /* NewsItem.m */,
 				22CB4C6013F08E8E008968D6 /* ipad.css */,
 				22CB4C6113F08E8F008968D6 /* mobile.css */,
+				DE1475A5147848490065208F /* catalogue_item_iphone.css */,
+				DE1475A8147856030065208F /* catalogue_item_ipad.css */,
 			);
 			name = news;
 			sourceTree = "<group>";
@@ -1062,6 +1068,8 @@
 				22525374141E2CA500157205 /* NewRadioItemViewController.xib in Resources */,
 				229890281427556400345AD3 /* HTMLItemViewController.xib in Resources */,
 				22065B5014380B5400FAA48B /* iTunesArtwork in Resources */,
+				DE1475A6147848490065208F /* catalogue_item_iphone.css in Resources */,
+				DE1475A9147856030065208F /* catalogue_item_ipad.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
