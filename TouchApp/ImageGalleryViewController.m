@@ -12,6 +12,7 @@
 #import "TJMImageResourceManager.h"
 #import "TJMImageResourceView.h"
 #import "PhotoViewController.h"
+#import "FlurryAnalytics.h"
 
 static NSInteger CellImageTag = 51;
 
@@ -42,6 +43,7 @@ static NSInteger iPadThumbnailRowCount = 8;
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  [FlurryAnalytics logAllPageViews:self.navigationController];
   
   CGRect frame = self.progressView.frame;
   frame.origin.y = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 400: 160;
