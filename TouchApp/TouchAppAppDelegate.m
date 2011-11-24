@@ -101,7 +101,7 @@ void uncaughtExceptionHandler(NSException *exception);
   //NSLog(@"did become active");
   [[AppManager instance] refreshAllFeeds];
 }
-
+  
 - (void)applicationWillTerminate:(UIApplication *)application
 {
   /*

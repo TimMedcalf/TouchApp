@@ -11,7 +11,7 @@
 #import "TJMImageResourceManager.h"
 
 @interface TJMImageResourceView ()
-@property (nonatomic, retain) UIActivityIndicatorView *spinner;
+
 - (void)updateImage;
 @end
 

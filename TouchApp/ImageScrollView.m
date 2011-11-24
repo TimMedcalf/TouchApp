@@ -233,4 +233,11 @@
 	}
 }
 
+- (void)scrollViewDidZoom:(UIScrollView *)scrollView
+{
+  //NSLog(@"Scale %f",scrollView.zoomScale);
+  //resize the loading spinner to account for any scaling done on the view
+  imageView.spinner.transform = CGAffineTransformMakeScale(1/scrollView.zoomScale,1/scrollView.zoomScale);
+}
+
 @end
