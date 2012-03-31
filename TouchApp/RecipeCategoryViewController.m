@@ -24,6 +24,17 @@ static NSInteger CellTitleTag = 50;
 @synthesize catList = _catList;
 //@synthesize spinner = _spinner;
 
+- (id)initWithStyle:(UITableViewStyle)style
+{
+  self = [super initWithStyle:style];
+  if (self)
+  {
+    self.title = @"Recipes";
+    self.tabBarItem.image = [UIImage imageNamed:@"recipes"];
+  }
+  return self;
+}
+
 - (void)didReceiveMemoryWarning
 {
   // Releases the view if it doesn't have a superview.

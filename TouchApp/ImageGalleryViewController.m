@@ -39,6 +39,16 @@ static NSInteger iPadThumbnailRowCount = 8;
 @synthesize thumbnailRowCount = _thumbnailRowCount;
 
 #pragma mark - View lifecycle
+
+- (id)initWithStyle:(UITableViewStyle)style
+{
+  self = [super initWithStyle:style];
+  if (self) {
+    self.title = @"Photos";
+    self.tabBarItem.image = [UIImage imageNamed:@"images"];
+  }
+  return self;
+}
  
 - (void)viewDidLoad
 {

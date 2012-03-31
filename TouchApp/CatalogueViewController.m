@@ -30,6 +30,8 @@ static NSInteger CellSubTitleTag = 51;
   self = [super initWithStyle:style];
   if (self) {
     // Custom initialization
+    self.title = @"Catalogue";
+    self.tabBarItem.image = [UIImage imageNamed:@"catalog"];
   }
   return self;
 }

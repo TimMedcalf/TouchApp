@@ -30,7 +30,8 @@ static NSInteger CellSubTitleTag = 51;
 {
   self = [super initWithStyle:style];
   if (self) {
-    // Custom initialization
+    self.title = @"Radio";
+    self.tabBarItem.image = [UIImage imageNamed:@"radio"];
   }
   return self;
 }
