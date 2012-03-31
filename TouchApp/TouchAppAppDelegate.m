@@ -86,7 +86,7 @@ void uncaughtExceptionHandler(NSException *exception);
   //Catalogue
   CatalogueViewController *catVC = [[CatalogueViewController alloc] initWithStyle:UITableViewStylePlain];
   UINavigationController *catNav = [[UINavigationController alloc] initWithRootViewController:catVC];
-  [catVC release];
+  [catVC release];  
   
   //Radio
   RadioViewController *radioVC = [[RadioViewController alloc] initWithStyle:UITableViewStylePlain];
