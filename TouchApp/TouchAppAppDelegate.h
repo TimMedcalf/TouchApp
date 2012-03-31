@@ -12,8 +12,8 @@
 
 @interface TouchAppAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate>
 
-@property (nonatomic, retain) IBOutlet UIWindow *window;
+@property (strong, nonatomic) UIWindow *window;
 
-@property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
+@property (strong, nonatomic) UITabBarController *tabBarController;
 
 @end

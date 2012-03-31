@@ -8,12 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "TouchApplication.h"
+#import "TouchAppAppDelegate.h"
 
 int main(int argc, char *argv[])
 {
-  NSString* appClass = @"TouchApplication";  
-  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-  int retVal = UIApplicationMain(argc, argv, appClass, nil);
-  [pool release];
-  return retVal;
+  @autoreleasepool {
+    return UIApplicationMain(argc, argv, @"TouchApplication", NSStringFromClass([TouchAppAppDelegate class]));
+  }
 }

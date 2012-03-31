@@ -9,6 +9,13 @@
 #import "TouchAppAppDelegate.h"
 #import "AppManager.h"
 #import "TJMImageResourceManager.h"
+//root vc's
+#import "NewsViewController.h"
+#import "ImageGalleryViewController.h"
+#import "CatalogueViewController.h"
+#import "RadioViewController.h"
+#import "RecipeCategoryViewController.h"
+
 
 //#define DEVMODE
 #ifndef DEVMODE
@@ -61,10 +68,48 @@ void uncaughtExceptionHandler(NSException *exception);
   //load the image resource stuff...
   [TJMImageResourceManager instance];
   [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
-  // Add the tab bar controller's current view as a subview of the window
+  
+  
+  self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+  // Override point for customization after application launch.
+  
+  //News Views
+  NewsViewController *newsVC = [[NewsViewController alloc] initWithStyle:UITableViewStylePlain];
+  UINavigationController *newsNav = [[UINavigationController alloc] initWithRootViewController:newsVC];
+  [newsVC release];
+  
+  //Photos Views
+  ImageGalleryViewController *photoVC = [[ImageGalleryViewController alloc] initWithStyle:UITableViewStylePlain];
+  UINavigationController *photoNav = [[UINavigationController alloc] initWithRootViewController:photoVC];
+  [photoVC release];
+  
+  //Catalogue
+  CatalogueViewController *catVC = [[CatalogueViewController alloc] initWithStyle:UITableViewStylePlain];
+  UINavigationController *catNav = [[UINavigationController alloc] initWithRootViewController:catVC];
+  [catVC release];
+  
+  //Radio
+  RadioViewController *radioVC = [[RadioViewController alloc] initWithStyle:UITableViewStylePlain];
+  UINavigationController *radioNav = [[UINavigationController alloc] initWithRootViewController:radioVC];
+  [radioVC release];
+  
+  //Recipes
+  RecipeCategoryViewController *recipeVC = [[RecipeCategoryViewController alloc] initWithStyle:UITableViewStylePlain];
+  UINavigationController *recipeNav = [[UINavigationController alloc] initWithRootViewController:recipeVC];
+  [recipeVC release];
+  
+  
+  self.tabBarController = [[[UITabBarController alloc] init] autorelease];
+  self.tabBarController.viewControllers = [NSArray arrayWithObjects:newsNav, photoNav, catNav, radioNav, recipeNav, nil];
+  [newsNav release];
+  [photoNav release];
+  [catNav release];
+  [radioNav release];
+  [recipeNav release];
   self.window.rootViewController = self.tabBarController;
   [self.window makeKeyAndVisible];
   return YES;
+
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
