@@ -54,7 +54,7 @@ static NSInteger iPadThumbnailRowCount = 8;
   UINavigationBar *nb = self.navigationController.navigationBar;
   nb.barStyle  = UIBarStyleBlack;
   nb.translucent = NO;
-	nb.tintColor = [UIColor colorWithRed:195/255.0 green:54/255.0 blue:37/255.0 alpha:1]; 
+	nb.tintColor = [UIColor colorWithRed:195/255.0 green:54/255.0 blue:37/255.0 alpha:1];
   nb.layer.contents = (id)[UIImage imageNamed:@"images-nav"].CGImage;
   
   if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)

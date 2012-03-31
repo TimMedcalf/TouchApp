@@ -99,11 +99,10 @@ NSString *const Key_ImageOverride = @"imageURL";
   {
     tmpURL = [[NSURL alloc] initWithString:[[[dict objectForKey:Key_Radio_Link] 
                                              stringByReplacingOccurrencesOfString:@".mp3" 
-                                             withString:@".jpg"] 
+                                             withString:@".jpg"]
                                             stringByReplacingOccurrencesOfString:@"touchradio/" 
                                             withString:@"touchradio/images/"]
                              relativeToURL:baseURL];
-  
     self.imageURL = tmpURL;
     //NSLog(@"Radio URL = %@", self.imageURL);
     [tmpURL release];
