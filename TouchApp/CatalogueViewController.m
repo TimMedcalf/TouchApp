@@ -169,7 +169,10 @@ static NSInteger CellSubTitleTag = 51;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
       }
       // Configure the cell...
-      cell.imageView.image = [UIImage imageNamed:@"catalogue-banner"];
+      
+      UIImage *header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"catalogue_header" ofType:@"png"]];
+      [cell.imageView setImage:header];
+      [header release];      
       break;
     }
     case 1:

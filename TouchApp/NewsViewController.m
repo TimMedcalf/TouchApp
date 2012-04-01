@@ -170,7 +170,9 @@ static NSInteger CellSubTitleTag = 51;
           cell.selectionStyle = UITableViewCellSelectionStyleNone;
       }
       // Configure the cell...
-      cell.imageView.image = [UIImage imageNamed:@"newport-pylons"];
+      UIImage *header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"news_header" ofType:@"png"]];
+      [cell.imageView setImage:header];
+      [header release];
       break;
     }
     case 1:
