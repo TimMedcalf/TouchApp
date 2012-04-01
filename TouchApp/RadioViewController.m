@@ -164,7 +164,7 @@ static NSInteger CellSubTitleTag = 51;
       // Configure the cell...
       UIImage *header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"radio_header" ofType:@"png"]];
       [cell.imageView setImage:header];
-      [header release];  
+      [header release];
       break;
     }
     case 1:
