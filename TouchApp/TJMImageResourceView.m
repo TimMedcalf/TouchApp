@@ -80,7 +80,7 @@
     UIImage *image = [tmpImageResource getImage];
     if (!tmpImageResource.imageIsDownloaded)
     {
-      NSLog(@"WIDTH = %f", self.frame.size.width);
+      //NSLog(@"WIDTH = %f", self.frame.size.width);
       UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
       spinner.center = self.center;
       spinner.hidesWhenStopped = YES;
