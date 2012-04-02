@@ -12,7 +12,7 @@ NSString * const TouchAppAllShookUp = @"TouchAppAllShookUp";
 
 @implementation TouchApplication
 
--(id)init
+- (id)init
 {
   self = [super init];
   if (self)
