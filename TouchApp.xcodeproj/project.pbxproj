@@ -79,7 +79,6 @@
 		226310511417E923001B7841 /* TJMAudioToggleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 226310501417E923001B7841 /* TJMAudioToggleViewController.m */; };
 		22675204140B4AFB00726FAE /* ImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 226751FF140B4AFB00726FAE /* ImageScrollView.m */; };
 		22675205140B4AFB00726FAE /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22675201140B4AFB00726FAE /* PhotoViewController.m */; };
-		22675208140B4DDE00726FAE /* PhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22675207140B4DDE00726FAE /* PhotoViewController.xib */; };
 		2272020A140E4BDD005DD4B7 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22720209140E4BDD005DD4B7 /* MessageUI.framework */; };
 		227C563A1414918900169F38 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 227C56391414918900169F38 /* placeholder.png */; };
 		227C569014163D9200169F38 /* TouchApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 227C568F14163D9200169F38 /* TouchApplication.m */; };
@@ -257,7 +256,6 @@
 		226751FF140B4AFB00726FAE /* ImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageScrollView.m; sourceTree = "<group>"; };
 		22675200140B4AFB00726FAE /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		22675201140B4AFB00726FAE /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
-		22675207140B4DDE00726FAE /* PhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoViewController.xib; sourceTree = "<group>"; };
 		22720209140E4BDD005DD4B7 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		227C56391414918900169F38 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		227C568E14163D9100169F38 /* TouchApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchApplication.h; sourceTree = "<group>"; };
@@ -671,7 +669,6 @@
 				226751FF140B4AFB00726FAE /* ImageScrollView.m */,
 				22675200140B4AFB00726FAE /* PhotoViewController.h */,
 				22675201140B4AFB00726FAE /* PhotoViewController.m */,
-				22675207140B4DDE00726FAE /* PhotoViewController.xib */,
 			);
 			name = photoscroller;
 			sourceTree = "<group>";
@@ -1021,7 +1018,6 @@
 				22CB4C6213F08E90008968D6 /* ipad.css in Resources */,
 				22CB4C6313F08E90008968D6 /* mobile.css in Resources */,
 				224FBC7C1408C47200749E42 /* RecipeCategories.plist in Resources */,
-				22675208140B4DDE00726FAE /* PhotoViewController.xib in Resources */,
 				22A3E4A2140FC6AF00CF2B0B /* Icon.png in Resources */,
 				22A3E4A4140FC6BD00CF2B0B /* Icon@2x.png in Resources */,
 				22A3E4A6140FC6CA00CF2B0B /* Icon-72.png in Resources */,

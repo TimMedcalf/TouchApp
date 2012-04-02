@@ -237,11 +237,10 @@ static NSInteger iPadThumbnailRowCount = 8;
   //NSLog(@"thumbnail tapped! %d",res.index);
   if (res.index >= 0)
   {
-    PhotoViewController *photo = [[PhotoViewController alloc] initWithNibName:@"PhotoViewController" bundle:nil];
+    PhotoViewController *photo = [[PhotoViewController alloc] init];
     photo.imageList = self.imageList;
     photo.initialIndex = res.index;
     photo.delegate = self;
-    //[self.navigationController pushViewController:photo animated:YES];
     [self.navigationController presentModalViewController:photo animated:YES];
     [photo release];
   }
