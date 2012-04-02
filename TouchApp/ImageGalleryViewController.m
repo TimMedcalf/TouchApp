@@ -46,6 +46,7 @@ static NSInteger iPadThumbnailRowCount = 8;
   if (self) {
     self.title = @"Photos";
     self.tabBarItem.image = [UIImage imageNamed:@"images"];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone; 
   }
   return self;
 }
