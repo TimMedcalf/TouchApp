@@ -16,13 +16,11 @@ static NSInteger CellTitleTag = 50;
 
 @interface RecipeCategoryViewController ()
 @property (nonatomic, retain) RecipeCategoryList *catList;
-//@property (nonatomic, retain) UIActivityIndicatorView *spinner;
 @end
 
 @implementation RecipeCategoryViewController
 
 @synthesize catList = _catList;
-//@synthesize spinner = _spinner;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -56,12 +54,6 @@ static NSInteger CellTitleTag = 50;
   self.navigationItem.backBarButtonItem = backButton;
   [backButton release];
   
-//  RecipeCategoryList *tmpList = [[RecipeCategoryList alloc] init];
-//  self.catList = tmpList;
-//  self.catList.xpathOverride = @"//category";
-//  [tmpList release];
-//  self.catList.delegate = self;
-  
   self.catList = [[AppManager instance] recipeList];
   self.catList.delegate = self;
   
@@ -69,15 +61,6 @@ static NSInteger CellTitleTag = 50;
   if ([self.catList.items count] == 0)
   {
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-//    UIActivityIndicatorView *tmpSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-//    CGPoint midPoint = self.view.center;
-//    midPoint.y -= self.navigationController.navigationBar.frame.size.height /2;
-//    tmpSpinner.center = midPoint;
-//    [tmpSpinner startAnimating];
-//    tmpSpinner.hidesWhenStopped = YES;
-//    self.spinner = tmpSpinner;
-//    [self.view addSubview:self.spinner];
-//    [tmpSpinner release];
     self.progressView.progress = 0;
     self.progressView.hidden = NO;
   }
@@ -90,17 +73,14 @@ static NSInteger CellTitleTag = 50;
   // Release any retained subviews of the main view.
   // e.g. self.myOutlet = nil;
   // TJM: (and anything else you alloc in the viewDidLoad!)
-  //[self.catList cancelRefresh];
   [self.catList setDelegate:nil];
   [self setCatList:nil];
-//  [self setSpinner:nil];
 }
 
 - (void)dealloc
 {
   [self.catList setDelegate:nil];
   [_catList release];
- // [_spinner release];
   [super dealloc];
 }
 
@@ -261,7 +241,8 @@ static NSInteger CellTitleTag = 50;
   
   RecipeCategoryItem *currentItem = [self.catList.items objectAtIndex:indexPath.row];
   
-  RecipeBookViewController *controller = [[RecipeBookViewController alloc] initWithNibName:@"RecipeBookViewController" bundle:nil];
+  //RecipeBookViewController *controller = [[RecipeBookViewController alloc] initWithNibName:@"RecipeBookViewController" bundle:nil];
+  RecipeBookViewController *controller = [[RecipeBookViewController alloc] initWithStyle:UITableViewStylePlain];
   controller.categoryName = currentItem.recipeTitle;
   [self.navigationController pushViewController:controller animated:YES];
   [controller release];
@@ -270,11 +251,6 @@ static NSInteger CellTitleTag = 50;
 #pragma mark FeedListConsumerDelegates
 - (void)updateSource
 {
-  //NSLog(@"Refreshing...");
-//  if ((self.spinner) && ([self.spinner isAnimating]))
-//  {
-//    [self.spinner stopAnimating];
-//  }
   [self.progressView setHidden:YES];
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
   [self.tableView reloadData];
@@ -282,10 +258,7 @@ static NSInteger CellTitleTag = 50;
 
 - (void)updateFailed
 {
-//  if ((self.spinner) && ([self.spinner isAnimating]))
-//  {
-//    [self.spinner stopAnimating];
-//  }
+
   [self.progressView setHidden:YES];
   UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No connection" message:@"Please check you are connected to the internet." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
   [alert show];
