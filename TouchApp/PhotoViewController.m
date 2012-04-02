@@ -54,12 +54,6 @@
 
 @interface PhotoViewController ()
 
-//methods to force view dimensions to landscape
-//useful because we know we're in landscape but the device
-//won't have updated some stuff by the time we need it.
-//- (CGRect)forceRectLandscape:(CGRect)rect;
-//- (CGSize)forceSizeLandscape:(CGSize)size;
-
 - (NSInteger)centerPhotoIndex;
 - (void)setViewState;
 - (void)skipToPage:(NSUInteger)page;
