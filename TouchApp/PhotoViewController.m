@@ -114,17 +114,17 @@
   self.pagingScrollView.clipsToBounds=YES;
   self.pagingScrollView.alwaysBounceHorizontal=YES;
   self.pagingScrollView.bounces=YES;
-
-  //self.view = _pagingScrollView;
+  
   [self.view addSubview:_pagingScrollView];
   
- [self skipToPage:self.initialIndex];  [self skipToPage:self.initialIndex];
   // Step 2: prepare to tile content
   recycledPages = [[NSMutableSet alloc] init];
   visiblePages  = [[NSMutableSet alloc] init];
-  //[self tilePages];
+  [self tilePages];
+  [self skipToPage:self.initialIndex];
   
   [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+  
   UINavigationBar *tmpBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width,44)];
   self.customNavigationBar = tmpBar;
   self.customNavigationBar.autoresizingMask =  UIViewAutoresizingFlexibleWidth;
@@ -143,7 +143,6 @@
   self.customNavigationBar.barStyle = UIBarStyleBlack;
   self.customNavigationBar.translucent = YES;
   
-  //self.view.backgroundColor = [UIColor blackColor];
   self.hidesBottomBarWhenPushed = YES;
 }
 
