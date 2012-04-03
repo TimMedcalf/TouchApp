@@ -17,7 +17,8 @@
 static NSInteger CellImageTag = 51;
 
 static NSInteger iPhoneThumbnailWidth = 80;
-static NSInteger iPadThumbnailWidth = 96;
+static NSInteger iPadThumbnailWidthPortrait = 96;
+static NSInteger iPadThumbnailWidthLandscape = 128;
 
 static NSInteger iPhoneThumbnailRowCount = 4;
 static NSInteger iPadThumbnailRowCount = 8;
@@ -69,7 +70,8 @@ static NSInteger iPadThumbnailRowCount = 8;
   
   if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
   {
-    self.thumbnailWidth = iPadThumbnailWidth;
+    
+    self.thumbnailWidth = (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) ? iPadThumbnailWidthLandscape : iPadThumbnailWidthPortrait;
     self.thumbnailRowCount = iPadThumbnailRowCount;
   }
   else
@@ -166,8 +168,16 @@ static NSInteger iPadThumbnailRowCount = 8;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+  return (interfaceOrientation == UIInterfaceOrientationPortrait) || (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad);
 }
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+  self.thumbnailWidth = (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) ? iPadThumbnailWidthLandscape : iPadThumbnailWidthPortrait;
+  [self.tableView reloadData];
+}
+
+
 
 #pragma mark - Table view data source
 
@@ -186,7 +196,12 @@ static NSInteger iPadThumbnailRowCount = 8;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  NSString *CellIdentifier = @"ImageItem";
+  NSString *CellIdentifier;
+  if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation))
+    CellIdentifier = @"ImageItemLandscape";
+  else 
+    CellIdentifier = @"ImageItemPortrait";
+  NSLog(@"%@",CellIdentifier);
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
   if (cell == nil) {
     cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
@@ -248,10 +263,11 @@ static NSInteger iPadThumbnailRowCount = 8;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-    return 96;
-  else
-    return 80;
+//  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+//    return 96;
+//  else
+//    return 80;
+  return self.thumbnailWidth;
 }
 
 #pragma mark FeedListConsumerDelegates

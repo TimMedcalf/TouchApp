@@ -63,10 +63,12 @@
 }
 
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-  // Overriden to allow any orientation.
-  return UIInterfaceOrientationIsPortrait(interfaceOrientation);
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+  // Return YES for supported orientations
+  return (interfaceOrientation == UIInterfaceOrientationPortrait) || (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad);
 }
+
 
   
 #pragma mark Gestures

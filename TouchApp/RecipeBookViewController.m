@@ -64,15 +64,6 @@ static NSInteger CellSubTitleTag = 51;
   if ([self.recipeList.items count] == 0)
   {
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-//    UIActivityIndicatorView *tmpSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-//    CGPoint midPoint = self.view.center;
-//    midPoint.y -= self.navigationController.navigationBar.frame.size.height /2;
-//    tmpSpinner.center = midPoint;
-//    [tmpSpinner startAnimating];
-//    tmpSpinner.hidesWhenStopped = YES;
-//    self.spinner = tmpSpinner;
-//    [self.view addSubview:self.spinner];
-//    [tmpSpinner release];
     self.progressView.progress = 0;
     self.progressView.hidden = NO;
   }
@@ -130,7 +121,7 @@ static NSInteger CellSubTitleTag = 51;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+  return (interfaceOrientation == UIInterfaceOrientationPortrait) || (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad);
 }
 
 #pragma mark - Table view data source

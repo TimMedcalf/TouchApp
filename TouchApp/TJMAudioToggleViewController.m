@@ -70,9 +70,5 @@
 - (void)togglePlay
 {
   [[TJMAudioCenter instance] togglePlayPause];
-// No need to do this now...the delegate processing will handle it...
-//  if ([self respondsToSelector:@selector(togglePlayPauseInWebView)]) {
-//    [self performSelector:@selector(togglePlayPauseInWebView)]; 
-//  }
 }
 @end

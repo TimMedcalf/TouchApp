@@ -303,39 +303,7 @@
 {
   [self tilePages];
   [self setViewState];
-  
-//	NSInteger _index = [self centerPhotoIndex];
-//	if (_index >= [self.photoSource numberOfPhotos] || _index < 0) {
-//		return;
-//	}
-//	
-//	if (_pageIndex != _index && !_rotating) {
-//    
-//		[self setBarsHidden:YES animated:YES];
-//		_pageIndex = _index;
-//		[self setViewState];
-//		
-//		if (![scrollView isTracking]) {
-//			[self layoutScrollViewSubviews];
-//		}
-//		
-//	}
 }
-
-//- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-//	
-//	NSInteger _index = [self centerPhotoIndex];
-//	if (_index >= [self.photoSource numberOfPhotos] || _index < 0) {
-//		return;
-//	}
-//	
-//	[self moveToPhotoAtIndex:_index animated:YES];
-//  
-//}
-//
-//- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView{
-//	[self layoutScrollViewSubviews];
-//}
 
 
 #pragma mark -
@@ -412,19 +380,13 @@
   return frame;
 }
 
-- (CGRect)frameForPageAtIndex:(NSUInteger)index {
-  //TJM Code from v1.0
-//  CGRect pageFrame = [self forceRectLandscape:self.pagingScrollView.bounds];
-//  pageFrame.size.width -= (2 * PADDING);
-//  pageFrame.origin.x = (pageFrame.size.width * index) + PADDING;
-//  pageFrame.origin.y = 0;
-//  //NSLog(@"frameForPageAtIndex x=%f y=%f width=%f height=%f",pageFrame.origin.x, pageFrame.origin.y,pageFrame.size.width, pageFrame.size.height);
-//  return pageFrame;
-  
+- (CGRect)frameForPageAtIndex:(NSUInteger)index
+{
   //original example code
   //CGRect bounds = self.pagingScrollView.bounds;
   //CGRect bounds = self.pagingScrollView.frame;
   CGRect bounds = self.view.bounds;
+  NSLog(@"frameForPageAtIndex = %@",NSStringFromCGRect(bounds));
   CGRect pageFrame = bounds;
   pageFrame.size.width -= (2 * PADDING);
   pageFrame.origin.x = (bounds.size.width * index) + PADDING;
@@ -432,16 +394,13 @@
 
 }
 
-- (CGSize)contentSizeForPagingScrollView {
-  //TJM 1.0
-//  CGRect bounds = [self forceRectLandscape:self.pagingScrollView.bounds];
-//  //NSLog(@"content size width=%f height=%f",bounds.size.width, bounds.size.height);
-//  return CGSizeMake(bounds.size.width * [self imageCount], bounds.size.height);
-
+- (CGSize)contentSizeForPagingScrollView
+{
   //orginal
   //CGRect bounds = self.pagingScrollView.bounds;
   //CGRect bounds = self.pagingScrollView.frame;
   CGRect bounds = self.view.bounds;
+  NSLog(@"contentSizeForPagingScrollView = %@",NSStringFromCGRect(bounds));
   return CGSizeMake(bounds.size.width * [self imageCount], bounds.size.height);
 }
 
