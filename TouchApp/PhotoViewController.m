@@ -198,13 +198,13 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  NSLog(@"ViewDidLoad - %@", NSStringFromCGRect(self.view.frame));
+  //NSLog(@"ViewDidLoad - %@", NSStringFromCGRect(self.view.frame));
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
   [super viewWillAppear:animated];
-  NSLog(@"ViewWillAppear - %@", NSStringFromCGRect(self.view.frame));
+  //NSLog(@"ViewWillAppear - %@", NSStringFromCGRect(self.view.frame));
   [self tilePages];
   [self skipToPage:self.initialIndex];
 
@@ -300,9 +300,7 @@
 {
   page.index = index;
   page.frame = [self frameForPageAtIndex:index];
-  
   [page displayImage:[self imageAtIndex:index]];
-  
 }
 
 
@@ -321,8 +319,11 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation 
 {
-  //NSLog(@"Should rotate?");
-  return (toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+  //iPad can be upside down, but stop the Phone going that way..
+  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    return YES;
+  else
+    return (toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
