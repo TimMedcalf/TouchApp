@@ -73,13 +73,13 @@
 #pragma mark -
 #pragma mark View loading and unloading
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-  
-  if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-    // Custom initialization
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleBarsNotification:) name:@"TJMPhotoViewToggleBars" object:nil];
-    self.hidesBottomBarWhenPushed = YES;
+- (id)init
+{
+  self = [super init];
+  if (self)
+  {
     self.initialIndex = 0;
+    self.hidesBottomBarWhenPushed = YES;
   }
   return self;
 }
@@ -87,7 +87,6 @@
 - (void)loadView 
 {      
   self.wantsFullScreenLayout = YES;
-  
   UIView *tmpView = [[UIView alloc] initWithFrame:[self frameForPagingScrollView]];
   self.view = tmpView;
   [tmpView release];
@@ -114,8 +113,8 @@
   // Step 2: prepare to tile content
   recycledPages = [[NSMutableSet alloc] init];
   visiblePages  = [[NSMutableSet alloc] init];
-  [self tilePages];
-  [self skipToPage:self.initialIndex];
+  //[self tilePages];
+  //[self skipToPage:self.initialIndex];
   
   [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
   
@@ -136,8 +135,6 @@
   self.customNavigationBar.tintColor = nil;
   self.customNavigationBar.barStyle = UIBarStyleBlack;
   self.customNavigationBar.translucent = YES;
-  
-  self.hidesBottomBarWhenPushed = YES;
 }
 
 - (void)savePhoto {
@@ -198,6 +195,20 @@
   } 
 }
 
+- (void)viewDidLoad
+{
+  [super viewDidLoad];
+  NSLog(@"ViewDidLoad - %@", NSStringFromCGRect(self.view.frame));
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+  [super viewWillAppear:animated];
+  NSLog(@"ViewWillAppear - %@", NSStringFromCGRect(self.view.frame));
+  [self tilePages];
+  [self skipToPage:self.initialIndex];
+
+}
 
 
 - (void)viewDidUnload
@@ -228,7 +239,6 @@
 
 - (void)tilePages 
 {
-
   // Calculate which pages are visible
   CGRect visibleBounds = self.pagingScrollView.bounds;
   int firstNeededPageIndex = floorf(CGRectGetMinX(visibleBounds) / CGRectGetWidth(visibleBounds));
@@ -386,7 +396,7 @@
   //CGRect bounds = self.pagingScrollView.bounds;
   //CGRect bounds = self.pagingScrollView.frame;
   CGRect bounds = self.view.bounds;
-  NSLog(@"frameForPageAtIndex = %@",NSStringFromCGRect(bounds));
+  //NSLog(@"frameForPageAtIndex = %@",NSStringFromCGRect(bounds));
   CGRect pageFrame = bounds;
   pageFrame.size.width -= (2 * PADDING);
   pageFrame.origin.x = (bounds.size.width * index) + PADDING;
@@ -400,7 +410,7 @@
   //CGRect bounds = self.pagingScrollView.bounds;
   //CGRect bounds = self.pagingScrollView.frame;
   CGRect bounds = self.view.bounds;
-  NSLog(@"contentSizeForPagingScrollView = %@",NSStringFromCGRect(bounds));
+  //NSLog(@"contentSizeForPagingScrollView = %@",NSStringFromCGRect(bounds));
   return CGSizeMake(bounds.size.width * [self imageCount], bounds.size.height);
 }
 
@@ -431,7 +441,6 @@
   
   return [self.imageList.items objectAtIndex:index];
 }
-
 
 - (NSUInteger)imageCount {
   return [self.imageList.items count];
