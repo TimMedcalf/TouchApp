@@ -12,12 +12,12 @@
 @implementation CatalogueList
 
 //overrides
-- (FeedItem *)initNewItemWithXMLDictionary:itemDict andBaseURL:baseURL
+- (FeedItem *)newItemWithXMLDictionary:itemDict andBaseURL:baseURL
 {
   return [[CatalogueItem alloc]initWithXMLDictionary:itemDict andBaseURL:baseURL];
 }
 
-- (FeedItem *)initNewItemWithDictionary:dictionary
+- (FeedItem *)newItemWithDictionary:dictionary
 {
   return [[CatalogueItem alloc]initWithDictionary:dictionary];
 }

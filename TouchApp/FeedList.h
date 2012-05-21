@@ -36,9 +36,9 @@
 
 //overrides
 - (NSInteger)refreshTimerCount;
-- (FeedItem *)initNewItemWithXMLDictionary:(NSDictionary *)itemDict andBaseURL:(NSURL *)baseURL;
-- (FeedItem *)initNewItemWithRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL; 
-- (FeedItem *)initNewItemWithDictionary:(NSDictionary *)dictionary;
+- (FeedItem *)newItemWithXMLDictionary:(NSDictionary *)itemDict andBaseURL:(NSURL *)baseURL;
+- (FeedItem *)newItemWithRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL; 
+- (FeedItem *)newItemWithDictionary:(NSDictionary *)dictionary;
 
 - (NSString *)feedURL;
 - (NSString *)cacheFilename;

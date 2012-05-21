@@ -16,12 +16,12 @@
 
 
 //overrides
-- (FeedItem *)initNewItemWithXMLDictionary:itemDict andBaseURL:baseURL
+- (FeedItem *)newItemWithXMLDictionary:itemDict andBaseURL:baseURL
 {
   return [[NewsItem alloc]initWithXMLDictionary:itemDict andBaseURL:baseURL];
 }
 
-- (FeedItem *)initNewItemWithDictionary:dictionary
+- (FeedItem *)newItemWithDictionary:dictionary
 {
   return [[NewsItem alloc]initWithDictionary:dictionary];
 }

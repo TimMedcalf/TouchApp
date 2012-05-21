@@ -14,12 +14,12 @@
 @implementation ImageList
 
 //overrides
-- (FeedItem *)initNewItemWithRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL; 
+- (FeedItem *)newItemWithRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL; 
 {
   return [[ImageItem alloc]initWithRawXMLElement:element andBaseURL:baseURL];  
 }
 
-- (FeedItem *)initNewItemWithDictionary:dictionary
+- (FeedItem *)newItemWithDictionary:dictionary
 {
   return [[ImageItem alloc]initWithDictionary:dictionary];
 }

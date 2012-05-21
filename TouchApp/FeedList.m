@@ -180,7 +180,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
   NSArray *itemsArray = [dict objectForKey:Key_FeedItems];
   for (NSDictionary *itemDict in itemsArray)
   {
-    FeedItem *item =[self initNewItemWithDictionary:itemDict];
+    FeedItem *item =[self newItemWithDictionary:itemDict];
     [self.items addObject:item];
     [item release]; item = nil;
   }
@@ -355,7 +355,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
     { 
       if (self.rawMode)
       {
-        FeedItem *newFeedItem = [self initNewItemWithRawXMLElement:resultElement andBaseURL:self.baseURL];
+        FeedItem *newFeedItem = [self newItemWithRawXMLElement:resultElement andBaseURL:self.baseURL];
         [newFeedItems addObject:newFeedItem];
         [newFeedItem release]; newFeedItem = nil;
       }
@@ -367,7 +367,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
         {
           [itemDict setObject:[[resultElement childAtIndex:counter] stringValue] forKey:[[resultElement childAtIndex:counter] name]];
         }
-        FeedItem *newFeedItem = [self initNewItemWithXMLDictionary:itemDict andBaseURL:self.baseURL];
+        FeedItem *newFeedItem = [self newItemWithXMLDictionary:itemDict andBaseURL:self.baseURL];
         [itemDict release]; itemDict= nil;
         [newFeedItems addObject:newFeedItem];
         [newFeedItem release]; newFeedItem = nil;
@@ -392,17 +392,17 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 }
 
 //overrides
-- (FeedItem *)initNewItemWithXMLDictionary:(NSDictionary *)itemDict andBaseURL:(NSURL *)baseURL
+- (FeedItem *)newItemWithXMLDictionary:(NSDictionary *)itemDict andBaseURL:(NSURL *)baseURL
 {
   return [[FeedItem alloc]initWithXMLDictionary:itemDict andBaseURL:baseURL];
 }
 
-- (FeedItem *)initNewItemWithRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL
+- (FeedItem *)newItemWithRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL
 {
   return [[FeedItem alloc]initWithRawXMLElement:element andBaseURL:baseURL];  
 }
 
-- (FeedItem *)initNewItemWithDictionary:(NSDictionary *)dictionary
+- (FeedItem *)newItemWithDictionary:(NSDictionary *)dictionary
 {
   return [[FeedItem alloc] initWithDictionary:dictionary];
 }

@@ -12,12 +12,12 @@
 @implementation RadioList
 
 //overrides
-- (FeedItem *)initNewItemWithXMLDictionary:itemDict andBaseURL:baseURL
+- (FeedItem *)newItemWithXMLDictionary:itemDict andBaseURL:baseURL
 {
   return [[RadioItem alloc]initWithXMLDictionary:itemDict andBaseURL:baseURL];
 }
 
-- (FeedItem *)initNewItemWithDictionary:dictionary
+- (FeedItem *)newItemWithDictionary:dictionary
 {
   return [[RadioItem alloc]initWithDictionary:dictionary];
 }

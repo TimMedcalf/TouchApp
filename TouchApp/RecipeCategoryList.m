@@ -12,12 +12,12 @@
 @implementation RecipeCategoryList
 
 //overrides
-- (FeedItem *)initNewItemWithXMLDictionary:itemDict andBaseURL:baseURL
+- (FeedItem *)newItemWithXMLDictionary:itemDict andBaseURL:baseURL
 {
   return [[RecipeCategoryItem alloc]initWithXMLDictionary:itemDict andBaseURL:baseURL];
 }
 
-- (FeedItem *)initNewItemWithDictionary:dictionary
+- (FeedItem *)newItemWithDictionary:dictionary
 {
   return [[RecipeCategoryItem alloc]initWithDictionary:dictionary];
 }
