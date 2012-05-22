@@ -29,7 +29,7 @@ typedef enum
 
 @interface TJMAudioCenter : NSObject <AVAudioSessionDelegate>
 
-@property (nonatomic, assign) id<TJMAudioCenterDelegate> delegate;
+@property (nonatomic, unsafe_unretained) id<TJMAudioCenterDelegate> delegate;
 
 - (void)playURL:(NSURL *)url;
 - (void)pauseURL:(NSURL *)url;

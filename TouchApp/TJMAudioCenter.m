@@ -13,8 +13,8 @@ NSString *const TJMAudioCenterStatusChange = @"TJMAudioCenterStatusChange";
 NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
 
 @interface TJMAudioCenter ()
-@property (nonatomic, retain) AVPlayer *player;
-@property (nonatomic, retain) NSURL *URL;
+@property (nonatomic) AVPlayer *player;
+@property (nonatomic) NSURL *URL;
 @property (nonatomic, assign) BOOL playWhenLoaded;
 @property (nonatomic, assign) BOOL interruptedDuringPlayback;
 - (void) setupAudioSession;
@@ -52,10 +52,7 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
   [self.player.currentItem removeObserver:self forKeyPath:@"status"];
   [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:self.player.currentItem];
   
-  [_player release];
-  [_URL release];
   
-  [super dealloc];
 }
 
 

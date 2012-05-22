@@ -32,18 +32,6 @@ NSString *const Key_ImageOverride = @"imageURL";
 @synthesize episode_duration = _episode_duration;
 
 
-- (void)dealloc
-{
-  [_author release];
-  [_title release];
-  [_titleLabel release];
-  [_summary release];
-  [_subtitle release];
-  [_pubDate release];
-  [_link release];
-  [_episode_duration release];
-  [super dealloc];
-}
 
 #pragma mark overrides from FeedItem
 - (void)procesSavedDictionary:(NSDictionary *)dict
@@ -69,11 +57,10 @@ NSString *const Key_ImageOverride = @"imageURL";
     
   self.subtitle = [dict objectForKey:Key_Radio_SubTitle];
   NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
-  [inputFormatter setLocale:[[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"] autorelease]];
+  [inputFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
   [inputFormatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss z"];
   NSString *dateStr = [dict objectForKey:Key_Radio_PubDate];
   self.pubDate = [inputFormatter dateFromString:dateStr];
-  [inputFormatter release];
   self.link = [[[dict objectForKey:Key_Radio_Link] 
                stringByReplacingOccurrencesOfString:@"touchradio" 
                 withString:@"touchiphoneradio"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
@@ -90,7 +77,6 @@ NSString *const Key_ImageOverride = @"imageURL";
     {
       tmpURL = [[NSURL alloc] initWithString:tmpStr];
       self.imageURL = tmpURL;
-      [tmpURL release];
     }
   }
    
@@ -105,7 +91,6 @@ NSString *const Key_ImageOverride = @"imageURL";
                              relativeToURL:baseURL];
     self.imageURL = tmpURL;
     //NSLog(@"Radio URL = %@", self.imageURL);
-    [tmpURL release];
   }
   //NSLog(@"%@ - %@ - %@", self.catalogueNumber, self.artist, self.title);
 }

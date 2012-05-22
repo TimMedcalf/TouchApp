@@ -16,7 +16,7 @@ static NSInteger CellTitleTag = 50;
 static NSInteger CellSubTitleTag = 51;
 
 @interface NewsViewController ()
-@property (nonatomic, retain) NewsList *newsList;
+@property (nonatomic) NewsList *newsList;
 @end
 
 @implementation NewsViewController
@@ -53,13 +53,10 @@ static NSInteger CellSubTitleTag = 51;
   
   UIImage *header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"news_header" ofType:@"png"]];
   UIImageView *headerView = [[UIImageView alloc]initWithImage:header];
-  [header release];
   self.tableView.tableHeaderView = headerView;
-  [headerView release];
   
   UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"News" style:UIBarButtonItemStyleBordered target:nil action:nil];
   self.navigationItem.backBarButtonItem = backButton;
-  [backButton release];
   
   self.newsList = [[AppManager sharedInstance] newsList];
   self.newsList.delegate = self;
@@ -89,8 +86,6 @@ static NSInteger CellSubTitleTag = 51;
 - (void)dealloc
 {
   self.newsList.delegate = nil;
-  [_newsList release];
-  [super dealloc];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -139,7 +134,7 @@ static NSInteger CellSubTitleTag = 51;
   CellIdentifier = @"NewsItem";
   cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
   if (cell == nil) {
-    cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     //we can't se the frame of the default labels and disclosure indicator
     //so lets ignore them and just add some of our own to the view.
@@ -192,9 +187,6 @@ static NSInteger CellSubTitleTag = 51;
     [cell addSubview:titleLabel];
     [cell addSubview:subtitleLabel];
     [cell addSubview:disclosure];
-    [titleLabel release];
-    [subtitleLabel release];
-    [disclosure release];
   }
   // so, now to configure the cell...
   // first grab hold of the cell elements we need
@@ -223,7 +215,6 @@ static NSInteger CellSubTitleTag = 51;
   HTMLItemViewController *controller = [[HTMLItemViewController alloc] initWithNibName:@"HTMLItemViewController" bundle:nil];
   controller.HTMLString = curItem.htmlForWebView;
   [self.navigationController pushViewController:controller animated:YES];
-  [controller release];
 }
 
 #pragma mark FeedListConsumerDelegates
@@ -240,7 +231,7 @@ static NSInteger CellSubTitleTag = 51;
   
   UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No connection" message:@"Please check you are connected to the internet." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
   [alert show];
-  [alert release]; alert = nil;
+   alert = nil;
 }
 
 - (void)handleShake

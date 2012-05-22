@@ -23,16 +23,16 @@ NSString *const Key_TJMImageResource_lastAccessed = @"lastAccessed";
 NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
 
 @interface TJMImageResource ()
-@property (nonatomic, retain) NSString *lastModified;
-@property (nonatomic, retain) NSString *etag;
-@property (nonatomic, retain) NSString *localFileName;
-@property (nonatomic, retain) NSString *localFileExtension;
-@property (nonatomic, retain) NSDate   *lastChecked;
-@property (nonatomic, retain) NSString *thumbnailPath;
+@property (nonatomic) NSString *lastModified;
+@property (nonatomic) NSString *etag;
+@property (nonatomic) NSString *localFileName;
+@property (nonatomic) NSString *localFileExtension;
+@property (nonatomic) NSDate   *lastChecked;
+@property (nonatomic) NSString *thumbnailPath;
 
 
-@property (nonatomic, retain) NSMutableData *activeDownload;
-@property (nonatomic, retain) NSURLConnection *activeConnection;
+@property (nonatomic) NSMutableData *activeDownload;
+@property (nonatomic) NSURLConnection *activeConnection;
 
 
 - (void)startDownload;
@@ -72,7 +72,7 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
     CFStringRef string = CFUUIDCreateString(kCFAllocatorDefault, theUUID);
     CFRelease(theUUID);
     //self.localFileName = [(NSString *)string autorelease];
-    self.localFileName = [(__bridge NSString *)string autorelease];
+    self.localFileName = (__bridge NSString *)string;
     self.lastChecked = [NSDate distantPast];
     self.lastAccessed = [NSDate distantPast]; 
   }
@@ -89,7 +89,6 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
     {
       NSURL *tmpURL = [[NSURL alloc] initWithString:tmpURLString];
       self.imageURL = tmpURL;
-      [tmpURL release];
     }
     self.lastModified = [dict objectForKey:Key_TJMImageResource_lastModified];
     //NSLog(@"LM! = %@",self.lastModified);
@@ -119,19 +118,6 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
   return dict;
 }
 
-- (void)dealloc
-{
-  [_activeDownload release];
-  [_activeConnection release];
-  [_imageURL release];
-  [_lastModified release];
-  [_etag release];
-  [_localFileName release];
-  [_localFileExtension release];
-  [_lastChecked release];
-  [_thumbnailPath release];
-  [super dealloc];
-}
 
 #pragma mark image resourcing
 
@@ -254,9 +240,7 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
   if (self.lastModified) [tmpRequest addValue:self.lastModified forHTTPHeaderField:@"If-Modified-Since"];
   if (self.etag) [tmpRequest addValue:self.etag forHTTPHeaderField:@"If-None-Match"];
     NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:tmpRequest delegate:self];
-  [tmpRequest release];
   self.activeConnection = conn;
-  [conn release];
 }
 
 - (void)cancelDownload

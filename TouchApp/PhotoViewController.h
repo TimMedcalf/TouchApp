@@ -67,12 +67,12 @@
     CGFloat       percentScrolledIntoFirstVisiblePage;
 }
 
-@property (nonatomic, assign) id<PhotoViewDelegate,NSObject> delegate;
-@property (nonatomic, retain) ImageList *imageList;
+@property (nonatomic, unsafe_unretained) id<PhotoViewDelegate,NSObject> delegate;
+@property (nonatomic) ImageList *imageList;
 @property (nonatomic, assign) NSInteger initialIndex;
-@property (nonatomic, retain) IBOutlet UINavigationBar *customNavigationBar;
-@property (nonatomic, retain) IBOutlet UINavigationItem *customNavigationItem;
-@property (nonatomic, retain) IBOutlet UIScrollView *pagingScrollView;
+@property (nonatomic) IBOutlet UINavigationBar *customNavigationBar;
+@property (nonatomic) IBOutlet UINavigationItem *customNavigationItem;
+@property (nonatomic) IBOutlet UIScrollView *pagingScrollView;
 
 - (void)configurePage:(ImageScrollView *)page forIndex:(NSUInteger)index;
 - (BOOL)isDisplayingPageForIndex:(NSUInteger)index;

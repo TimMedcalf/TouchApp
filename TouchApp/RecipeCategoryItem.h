@@ -10,7 +10,7 @@
 
 @interface RecipeCategoryItem : FeedItem
 
-@property (nonatomic,retain) NSNumber *recipeId;
-@property (nonatomic, retain) NSString *recipeTitle;
+@property (nonatomic) NSNumber *recipeId;
+@property (nonatomic) NSString *recipeTitle;
 
 @end

@@ -10,16 +10,16 @@
 
 @interface CatalogueItem : FeedItem
 
-@property (nonatomic, retain) NSString *title;
-@property (nonatomic, retain) NSString *artist;
-@property (nonatomic, retain) NSString *catalogueNumber;
-@property (nonatomic, retain) NSString *description;
-@property (nonatomic, retain) NSString *mp3SampleURL;
-@property (nonatomic, retain) NSString *releaseURL;
-@property (nonatomic, retain) NSString *itunesURL;
-@property (nonatomic, retain) NSString *releaseDateString;
-@property (nonatomic, retain) NSString *releaseDuration;
-@property (nonatomic, retain) NSString *trackListing;
-@property (nonatomic, retain) NSString *publisher;
+@property (nonatomic) NSString *title;
+@property (nonatomic) NSString *artist;
+@property (nonatomic) NSString *catalogueNumber;
+@property (nonatomic) NSString *description;
+@property (nonatomic) NSString *mp3SampleURL;
+@property (nonatomic) NSString *releaseURL;
+@property (nonatomic) NSString *itunesURL;
+@property (nonatomic) NSString *releaseDateString;
+@property (nonatomic) NSString *releaseDuration;
+@property (nonatomic) NSString *trackListing;
+@property (nonatomic) NSString *publisher;
 
 @end

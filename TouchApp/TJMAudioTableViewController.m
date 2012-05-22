@@ -35,7 +35,6 @@
   tmpProgress.hidden = YES;
   self.progressView = tmpProgress;
   [self.view addSubview:self.progressView];
-  [tmpProgress release];
   
 }
 
@@ -50,13 +49,11 @@
   {  
     UIBarButtonItem *playToggleButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPause target:self action:@selector(togglePlay)];
     self.navigationItem.rightBarButtonItem = playToggleButton;
-    [playToggleButton release];
   }
   else if (audio == TJMAudioStatusCurrentPaused)
   {  
     UIBarButtonItem *playToggleButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(togglePlay)];
     self.navigationItem.rightBarButtonItem = playToggleButton;
-    [playToggleButton release];
   }
 }
 
@@ -82,10 +79,8 @@
 
 - (void)dealloc
 {
-  [_progressView release];
   [[NSNotificationCenter defaultCenter] removeObserver:self name:TJMAudioCenterStatusChange object:[TJMAudioCenter sharedInstance]];
   [[NSNotificationCenter defaultCenter] removeObserver:self name:TouchAppAllShookUp object:nil];
-  [super dealloc];
 }
 
 - (void)togglePlay

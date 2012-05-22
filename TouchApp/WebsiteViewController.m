@@ -11,8 +11,8 @@
 
 
 @interface WebsiteViewController ()
-@property (nonatomic, retain) NSTimer *barTimer;
-@property (nonatomic, retain) NSTimer *barTapTimer;
+@property (nonatomic) NSTimer *barTimer;
+@property (nonatomic) NSTimer *barTapTimer;
 - (void)singleTapGesture:(UITapGestureRecognizer *)tapGesture;
 - (void)navBackButtonTouched:(id)sender;
 - (void)navForwarButtonTouched:(id)sender;
@@ -61,7 +61,7 @@
   UITapGestureRecognizer *sgltapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapGesture:)];
   sgltapGesture.delegate = self;
   [self.webView addGestureRecognizer:sgltapGesture];
-  [sgltapGesture release]; sgltapGesture = nil;
+   sgltapGesture = nil;
   
   self.navigationItem.title = @"";
   UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back"
@@ -70,7 +70,6 @@
                                                                 action:nil];
   
   self.navigationItem.backBarButtonItem = backButton;   // Affect child view controller’s back button.
-  [backButton release];  
   
   if (!self.openLinksInNewView)
   {
@@ -90,8 +89,6 @@
     UIBarButtonItem *segmentBarItem = [[UIBarButtonItem alloc] initWithCustomView:segmentedControl];
     self.segmentControl = segmentedControl;
     self.navigationItem.rightBarButtonItem = segmentBarItem;
-    [segmentBarItem release];
-    [segmentedControl release];
     [self.segmentControl setEnabled:NO forSegmentAtIndex:0];
     [self.segmentControl setEnabled:NO forSegmentAtIndex:1];
   }
@@ -195,7 +192,7 @@
     newWeb.initialURL = [request.URL absoluteString];
     newWeb.dontHideNavigationBar = YES;
     [self.navigationController pushViewController:newWeb animated:YES];
-    [newWeb release]; newWeb=nil;
+     newWeb=nil;
     return NO;
   }
   return YES;
@@ -240,7 +237,7 @@
     {
       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error - website not found." message:@"Please check that you are connected to the internet." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
       [alert show];
-      [alert release]; alert = nil;
+       alert = nil;
       return;
     }
   }
@@ -279,17 +276,6 @@
   [self setSegmentControl:nil];
 }
 
-- (void)dealloc {
-  [_webView release];
-  [_barTimer release];
-  [_barTapTimer release];
-  [_segmentControl release];
-  [_initialURL release];
-  [_HTMLString release];
-  [_baseURL release];
-  [_pageTitle release];
-  [super dealloc];
-}
 
 
 @end

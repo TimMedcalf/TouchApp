@@ -37,13 +37,11 @@
     {  
       UIBarButtonItem *playToggleButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPause target:self action:@selector(togglePlay)];
       self.navigationItem.rightBarButtonItem = playToggleButton;
-      [playToggleButton release];
     }
     else if (audio == TJMAudioStatusCurrentPaused)
     {  
       UIBarButtonItem *playToggleButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(togglePlay)];
       self.navigationItem.rightBarButtonItem = playToggleButton;
-      [playToggleButton release];
     }
   }
 }
@@ -64,7 +62,6 @@
 - (void)dealloc
 {
   [[NSNotificationCenter defaultCenter] removeObserver:self name:TJMAudioCenterStatusChange object:[TJMAudioCenter sharedInstance]];
-  [super dealloc];
 }
 
 - (void)togglePlay

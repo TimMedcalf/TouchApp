@@ -10,13 +10,13 @@
 
 @interface RadioItem : FeedItem
 
-@property (nonatomic, retain) NSString *author;
-@property (nonatomic, retain) NSString *title;
-@property (nonatomic, retain) NSString *titleLabel;
-@property (nonatomic, retain) NSString *summary;
-@property (nonatomic, retain) NSString *subtitle;
-@property (nonatomic, retain) NSDate   *pubDate;
-@property (nonatomic, retain) NSString *link;
-@property (nonatomic, retain) NSString *episode_duration;
+@property (nonatomic) NSString *author;
+@property (nonatomic) NSString *title;
+@property (nonatomic) NSString *titleLabel;
+@property (nonatomic) NSString *summary;
+@property (nonatomic) NSString *subtitle;
+@property (nonatomic) NSDate   *pubDate;
+@property (nonatomic) NSString *link;
+@property (nonatomic) NSString *episode_duration;
 
 @end

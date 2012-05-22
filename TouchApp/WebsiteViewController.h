@@ -5,15 +5,15 @@
 
 @interface WebsiteViewController : UIViewController <UIWebViewDelegate, UIGestureRecognizerDelegate>
 
-@property (nonatomic, retain) IBOutlet UIWebView *webView;
-@property (nonatomic, retain) UISegmentedControl *segmentControl;
+@property (nonatomic) IBOutlet UIWebView *webView;
+@property (nonatomic) UISegmentedControl *segmentControl;
 //load from a url
-@property (nonatomic, retain) NSString *initialURL;
+@property (nonatomic) NSString *initialURL;
 //load from a string
-@property (nonatomic, retain) NSString *HTMLString;
-@property (nonatomic, retain) NSString *baseURL;
+@property (nonatomic) NSString *HTMLString;
+@property (nonatomic) NSString *baseURL;
 @property (nonatomic, assign) BOOL openLinksInNewView;
 @property (nonatomic, assign) BOOL dontHideNavigationBar;
-@property (nonatomic, retain) NSString *pageTitle;
+@property (nonatomic) NSString *pageTitle;
 
 @end

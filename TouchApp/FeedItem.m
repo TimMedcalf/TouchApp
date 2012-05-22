@@ -68,11 +68,6 @@ NSString *const FeedItem_ImageURLKey = @"imageURL";
 }
 
 
-- (void)dealloc
-{
-  [_imageURL release];
-  [super dealloc];
-}
 
 
 #pragma mark sublclass overrides

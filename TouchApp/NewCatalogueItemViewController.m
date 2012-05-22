@@ -67,8 +67,6 @@
 {
   if ([TJMAudioCenter sharedInstance].delegate == self) 
     [TJMAudioCenter sharedInstance].delegate = nil;
-  [_item release];
-  [super dealloc];
 }
 
 #pragma mark TJM AudioCenterDelegate 

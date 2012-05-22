@@ -10,6 +10,6 @@
 
 @interface RecipeBookList : FeedList
 
-@property (nonatomic, retain) NSString *recipeCategory;
+@property (nonatomic) NSString *recipeCategory;
 
 @end

@@ -25,12 +25,6 @@ NSString *const Key_ImageItem_ThumbnailHeight = @"thumbnailHeight";
 @synthesize thumbnailWidth = _thumbnailWidth;
 @synthesize thumbnailHeight = _thumbnailHeight;
 
-- (void)dealloc
-{
-  [_thumbnailURL release];
-  [_imageURL release];
-  [super dealloc];
-}
 
 #pragma mark overrides from FeedItem
 - (void)procesSavedDictionary:(NSDictionary *)dict
@@ -39,13 +33,11 @@ NSString *const Key_ImageItem_ThumbnailHeight = @"thumbnailHeight";
   {
     NSURL *tmpURL = [[NSURL alloc] initWithString:[dict objectForKey:Key_Image_Saved]];
     self.imageURL = tmpURL;
-    [tmpURL release];
   }
   if ([dict objectForKey:Key_Thumbnail_Saved])
   {
     NSURL *tmpURL = [[NSURL alloc] initWithString:[dict objectForKey:Key_Thumbnail_Saved]];
     self.thumbnailURL = tmpURL;
-    [tmpURL release];
   }
   NSNumber *tmpNum;
   if ([dict objectForKey:Key_ImageItem_ImageWidth])
@@ -81,7 +73,6 @@ NSString *const Key_ImageItem_ThumbnailHeight = @"thumbnailHeight";
   {
     tmpURL = [[NSURL alloc] initWithString:tmpPath];
     self.thumbnailURL = tmpURL;
-    [tmpURL release];
   }
   self.thumbnailWidth = [[[element attributeForName:@"width_t"] stringValue] integerValue]; 
   self.thumbnailHeight = [[[element attributeForName:@"height_t"] stringValue] integerValue];
@@ -101,7 +92,6 @@ NSString *const Key_ImageItem_ThumbnailHeight = @"thumbnailHeight";
   {
     tmpURL = [[NSURL alloc] initWithString:tmpPath];
     self.imageURL = tmpURL;
-    [tmpURL release];
   }
   //NSLog(@"Image %d x %d", self.imageWidth, self.imageHeight);
 }

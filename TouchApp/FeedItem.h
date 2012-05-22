@@ -11,7 +11,7 @@
 @class FeedItem;
 
 @interface FeedItem : NSObject
-@property (nonatomic, retain) NSURL *imageURL;
+@property (nonatomic) NSURL *imageURL;
 @property (nonatomic, assign) BOOL updateFlag;
 
 - (id)initWithDictionary:(NSDictionary *)dict;

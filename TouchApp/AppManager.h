@@ -17,7 +17,7 @@
 
 @interface AppManager : NSObject
 
-@property (nonatomic, retain) NSString *cacheFolder;
+@property (nonatomic) NSString *cacheFolder;
 
 - (NewsList *)newsList;
 - (ImageList *)imageList;

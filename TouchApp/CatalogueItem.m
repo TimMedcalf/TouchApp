@@ -39,21 +39,6 @@ NSString *const Key_Cat_Publisher = @"publisher";
 
 #pragma mark lifecycle
 
-- (void)dealloc
-{
-  [_title release];
-  [_artist release];
-  [_catalogueNumber release];
-  [_description release];
-  [_mp3SampleURL release];
-  [_releaseURL release];
-  [_itunesURL release];
-  [_releaseDateString release];
-  [_releaseDuration release];
-  [_trackListing release];
-  [_publisher release];
-  [super dealloc];
-}
 
 #pragma mark overrides from FeedItem
 - (void)procesSavedDictionary:(NSDictionary *)dict
@@ -79,7 +64,6 @@ NSString *const Key_Cat_Publisher = @"publisher";
   {
     NSURL *tmpURL = [[NSURL alloc] initWithString:tmpImage relativeToURL:baseURL];
     self.imageURL = tmpURL;
-    [tmpURL release];
   }
   //okay, now the stuff that's unique to us...
   self.title = [dict objectForKey:Key_Cat_Title];
@@ -136,8 +120,6 @@ NSString *const Key_Cat_Publisher = @"publisher";
       
       NSString *releaseDateStringReformatted = [dateFormatDestination stringFromDate:formattedDate]; 
       
-      [dateFormatDestination release];
-      [dateFormatSource release];
     
       catalogueNumberReleaseDateDiv = [NSString stringWithFormat:@"<span id='release_date'>Released: %@</span>",releaseDateStringReformatted];
   }

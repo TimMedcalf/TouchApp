@@ -20,12 +20,12 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 
 @interface FeedList ()
 //RSS Feed Updating
-@property (nonatomic, retain) NSMutableData *activeDownload;
-@property (nonatomic, retain) NSURLConnection *rssConnection;
-@property (nonatomic, retain) NSString *feed;
-@property (nonatomic, retain) NSString *cacheFile;
-@property (nonatomic, retain) NSString *etag;
-@property (nonatomic, retain) NSString *lastUpdated;
+@property (nonatomic) NSMutableData *activeDownload;
+@property (nonatomic) NSURLConnection *rssConnection;
+@property (nonatomic) NSString *feed;
+@property (nonatomic) NSString *cacheFile;
+@property (nonatomic) NSString *etag;
+@property (nonatomic) NSString *lastUpdated;
 @property (nonatomic, assign) NSInteger totalBytes;
 @property (nonatomic, assign) NSInteger bytesDownloaded;
 
@@ -111,17 +111,6 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 {
   //NSLog(@"list dealloc");
   if (self.activeDownload) [self cancelDownload];
-  [_feed release];
-  [_lastRefresh release];
-  [_items release];
-  [_activeDownload release];
-  [_rssConnection release];
-  [_cacheFile release];
-  [_etag release];
-  [_lastUpdated release];
-  [_baseURL release];
-  [_xpathOverride release];
-  [super dealloc];
 }
 
 #pragma mark load/save
@@ -144,7 +133,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
   {
     NSDictionary *loadDictionary = [[NSDictionary alloc]  initWithContentsOfFile:self.cacheFile];
     [self loadItemsFromDictionary:loadDictionary];
-    [loadDictionary release]; loadDictionary = nil;
+     loadDictionary = nil;
   }
 }
 
@@ -175,14 +164,13 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
   {
     NSURL *tmpURL = [[NSURL alloc] initWithString:tmpURLString];
     self.baseURL = tmpURL;
-    [tmpURL release];
   }
   NSArray *itemsArray = [dict objectForKey:Key_FeedItems];
   for (NSDictionary *itemDict in itemsArray)
   {
     FeedItem *item =[self newItemWithDictionary:itemDict];
     [self.items addObject:item];
-    [item release]; item = nil;
+     item = nil;
   }
   [self dataUpdated];
   if (self.delegate) [self.delegate updateSource];
@@ -231,9 +219,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 
   NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:
                            tmpRequest delegate:self];
-  [tmpRequest release];
   self.rssConnection = conn;
-  [conn release];
 }
 
 - (void)cancelDownload
@@ -336,7 +322,6 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
     {
       NSURL *tmpURL = [[NSURL alloc] initWithString:[[[rssParser rootElement] attributeForName:@"xml:base"] stringValue]];
       self.baseURL = tmpURL;
-      [tmpURL release];
     }
     
     NSString *xpath;
@@ -357,7 +342,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
       {
         FeedItem *newFeedItem = [self newItemWithRawXMLElement:resultElement andBaseURL:self.baseURL];
         [newFeedItems addObject:newFeedItem];
-        [newFeedItem release]; newFeedItem = nil;
+         newFeedItem = nil;
       }
       else
       {
@@ -368,12 +353,12 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
           [itemDict setObject:[[resultElement childAtIndex:counter] stringValue] forKey:[[resultElement childAtIndex:counter] name]];
         }
         FeedItem *newFeedItem = [self newItemWithXMLDictionary:itemDict andBaseURL:self.baseURL];
-        [itemDict release]; itemDict= nil;
+         itemDict= nil;
         [newFeedItems addObject:newFeedItem];
-        [newFeedItem release]; newFeedItem = nil;
+         newFeedItem = nil;
       }
     }
-    [rssParser release]; rssParser = nil;
+     rssParser = nil;
     [self.items removeAllObjects];
     [self.items addObjectsFromArray:newFeedItems];
     //nearly done, just need to make sure the items are sorted correctly
@@ -383,7 +368,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
       FeedItem *item2 = (FeedItem *)obj2;
       return [item1 compare:item2];
     }];
-    [newFeedItems release]; newFeedItems = nil;
+     newFeedItems = nil;
   }
   else
   {

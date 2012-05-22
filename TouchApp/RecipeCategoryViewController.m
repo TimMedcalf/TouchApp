@@ -15,7 +15,7 @@
 static NSInteger CellTitleTag = 50;
 
 @interface RecipeCategoryViewController ()
-@property (nonatomic, retain) RecipeCategoryList *catList;
+@property (nonatomic) RecipeCategoryList *catList;
 @end
 
 @implementation RecipeCategoryViewController
@@ -52,7 +52,6 @@ static NSInteger CellTitleTag = 50;
   
   UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Recipes" style:UIBarButtonItemStyleBordered target:nil action:nil];
   self.navigationItem.backBarButtonItem = backButton;
-  [backButton release];
   
   self.catList = [[AppManager sharedInstance] recipeList];
   self.catList.delegate = self;
@@ -80,8 +79,6 @@ static NSInteger CellTitleTag = 50;
 - (void)dealloc
 {
   [self.catList setDelegate:nil];
-  [_catList release];
-  [super dealloc];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -144,13 +141,12 @@ static NSInteger CellTitleTag = 50;
       CellIdentifier = @"RecipeHeader";
       cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
       if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
       }
       // Configure the cell...
       UIImage *header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"recipes_header" ofType:@"png"]];
       [cell.imageView setImage:header];
-      [header release];
       break;
     }
     case 1:
@@ -159,7 +155,7 @@ static NSInteger CellTitleTag = 50;
       CellIdentifier = @"RecipeItem";
       cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
       if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         
         //we can't se the frame of the default labels and disclosure indicator
         //so lets ignore them and just add some of our own to the view.
@@ -193,8 +189,6 @@ static NSInteger CellTitleTag = 50;
         //now they're all set up, add them to the cell's view and release them
         [cell addSubview:titleLabel];
         [cell addSubview:disclosure];
-        [titleLabel release];
-        [disclosure release];
       }
       // so, now to configure the cell...
       // first grab hold of the cell elements we need
@@ -245,7 +239,6 @@ static NSInteger CellTitleTag = 50;
   RecipeBookViewController *controller = [[RecipeBookViewController alloc] initWithStyle:UITableViewStylePlain];
   controller.categoryName = currentItem.recipeTitle;
   [self.navigationController pushViewController:controller animated:YES];
-  [controller release];
 }
 
 #pragma mark FeedListConsumerDelegates
@@ -262,7 +255,7 @@ static NSInteger CellTitleTag = 50;
   [self.progressView setHidden:YES];
   UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No connection" message:@"Please check you are connected to the internet." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
   [alert show];
-  [alert release]; alert = nil;
+   alert = nil;
 }
 
 - (void)handleShake

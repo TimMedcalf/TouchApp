@@ -101,8 +101,6 @@
 {
   if ([TJMAudioCenter sharedInstance].delegate == self) 
     [TJMAudioCenter sharedInstance].delegate = nil;
-  [_item release];
-  [super dealloc];
 }
 
 @end

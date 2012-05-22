@@ -24,7 +24,6 @@
     UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"Email" style:UIBarButtonItemStylePlain target:self action:@selector(sendRecipe)];
     button.enabled = YES;
     self.navigationItem.rightBarButtonItem = button;
-    [button release];
   }
 }
 
@@ -57,7 +56,6 @@
 	
 	[self presentModalViewController:controller animated:YES];
 	
-	[controller release];
 }
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
@@ -76,10 +74,5 @@
 }
 
 
-- (void)dealloc
-{
-  [_recipeItem release];
-  [super dealloc];
-}
 
 @end

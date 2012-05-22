@@ -32,14 +32,6 @@ NSString *const XML_PubDate = @"pubDate";
 
 #pragma mark lifecycle
 
-- (void)dealloc
-{
-  [_pubDate release];
-  [_link release];
-  [_title release];
-  [_description release];
-  [super dealloc];
-}
 
 
 #pragma mark overrides

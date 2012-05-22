@@ -11,7 +11,7 @@
 
 @interface TJMImageResourceManager : NSObject
 
-@property (nonatomic, retain) NSMutableDictionary *imageResourceDict;
+@property (nonatomic) NSMutableDictionary *imageResourceDict;
 
 - (TJMImageResource *)resourceForURL:(NSURL *)imageURL;
 - (void)save;

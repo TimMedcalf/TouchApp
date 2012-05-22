@@ -15,11 +15,6 @@
 
 //overrides
 
-- (void)dealloc
-{
-  [_recipeCategory release];
-  [super dealloc];
-}
 
 
 - (FeedItem *)newItemWithXMLDictionary:itemDict andBaseURL:baseURL
@@ -42,7 +37,7 @@
 	else {
 		returnVal = [NSString stringWithFormat:@"http://www.touchmusic.org.uk/recipebook/%@.xml",[self.recipeCategory lowercaseString]];
 	}
-  [dictionary release]; dictionary = nil;
+   dictionary = nil;
   return returnVal;
 }
 

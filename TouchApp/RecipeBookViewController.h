@@ -12,6 +12,6 @@
 
 @interface RecipeBookViewController : TJMAudioTableViewController <FeedListConsumerDelegate>
 
-@property (nonatomic, retain) NSString *categoryName;
+@property (nonatomic) NSString *categoryName;
 
 @end

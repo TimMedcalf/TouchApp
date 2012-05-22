@@ -13,8 +13,8 @@
 
 //value to store any useful info - like an array index - not used internally.
 @property (nonatomic, assign) NSInteger index;
-@property (nonatomic, retain) NSURL *url;
-@property (nonatomic, retain) UIActivityIndicatorView *spinner;
+@property (nonatomic) NSURL *url;
+@property (nonatomic) UIActivityIndicatorView *spinner;
 
 
 - (id)initWithFrame:(CGRect)frame;

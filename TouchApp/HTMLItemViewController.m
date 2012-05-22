@@ -44,7 +44,6 @@
                                                                 action:nil];
   
   self.navigationItem.backBarButtonItem = backButton;   // Affect child view controller’s back button.
-  [backButton release];  
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -107,7 +106,7 @@
     newWeb.initialURL = [request.URL absoluteString];
     newWeb.dontHideNavigationBar = YES;
     [self.navigationController pushViewController:newWeb animated:YES];
-    [newWeb release]; newWeb=nil;
+     newWeb=nil;
     return NO;
   }
   return YES;
@@ -136,7 +135,7 @@
     {
       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error - website not found." message:@"Please check that you are connected to the internet." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
       [alert show];
-      [alert release]; alert = nil;
+       alert = nil;
       return;
     }
   }
@@ -173,13 +172,6 @@
   [self setWebView:nil];
 }
 
-- (void)dealloc {
-  [_webView release];
-  [_HTMLString release];
-  [_baseURL release];
-  [_pageTitle release];
-  [super dealloc];
-}
 
 
 @end

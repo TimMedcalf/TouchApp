@@ -16,7 +16,7 @@ static NSInteger CellTitleTag = 50;
 static NSInteger CellSubTitleTag = 51;
 
 @interface CatalogueViewController ()
-@property (nonatomic, retain) CatalogueList *catList;
+@property (nonatomic) CatalogueList *catList;
 //@property (nonatomic, retain) UIActivityIndicatorView *spinner;
 @end
 
@@ -55,7 +55,6 @@ static NSInteger CellSubTitleTag = 51;
   
   UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Catalogue" style:UIBarButtonItemStyleBordered target:nil action:nil];
   self.navigationItem.backBarButtonItem = backButton;
-  [backButton release];
   
 //  CatalogueList *tmpCatList = [[CatalogueList alloc] init];
 //  self.catList = tmpCatList;
@@ -99,9 +98,7 @@ static NSInteger CellSubTitleTag = 51;
 - (void)dealloc
 {
   [self.catList setDelegate:nil];
-  [_catList release];
   //[_spinner release];
-  [super dealloc];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -165,14 +162,13 @@ static NSInteger CellSubTitleTag = 51;
       CellIdentifier = @"CatalogHeader";
       cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
       if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
       }
       // Configure the cell...
       
       UIImage *header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"catalogue_header" ofType:@"png"]];
       [cell.imageView setImage:header];
-      [header release];      
       break;
     }
     case 1:
@@ -181,7 +177,7 @@ static NSInteger CellSubTitleTag = 51;
       CellIdentifier = @"CatalogItem";
       cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
       if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         
         //we can't se the frame of the default labels and disclosure indicator
         //so lets ignore them and just add some of our own to the view.
@@ -232,9 +228,6 @@ static NSInteger CellSubTitleTag = 51;
         [cell addSubview:titleLabel];
         [cell addSubview:subtitleLabel];
         [cell addSubview:disclosure];
-        [titleLabel release];
-        [subtitleLabel release];
-        [disclosure release];
       }
       // so, now to configure the cell...
       // first grab hold of the cell elements we need
@@ -286,7 +279,6 @@ static NSInteger CellSubTitleTag = 51;
   controller.HTMLString = curItem.htmlForWebView;
 
   [self.navigationController pushViewController:controller animated:YES];
-  [controller release];
 }
 
 #pragma mark FeedListConsumerDelegates
@@ -311,7 +303,7 @@ static NSInteger CellSubTitleTag = 51;
   [self.progressView setHidden:YES];
   UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No connection" message:@"Please check you are connected to the internet." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
   [alert show];
-  [alert release]; alert = nil;
+   alert = nil;
 }
 
 - (void)handleShake

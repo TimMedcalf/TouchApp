@@ -14,11 +14,11 @@
 NSString *const LMSUCache = @"TouchCache";
 
 @interface AppManager ()
-@property (nonatomic, retain) NewsList *internalNewsList;
-@property (nonatomic, retain) ImageList *internalImageList;
-@property (nonatomic, retain) CatalogueList *internalCatalogueList;
-@property (nonatomic, retain) RadioList *internalRadioList;
-@property (nonatomic, retain) RecipeCategoryList *internalRecipeList;
+@property (nonatomic) NewsList *internalNewsList;
+@property (nonatomic) ImageList *internalImageList;
+@property (nonatomic) CatalogueList *internalCatalogueList;
+@property (nonatomic) RadioList *internalRadioList;
+@property (nonatomic) RecipeCategoryList *internalRecipeList;
 @end
 
 @implementation AppManager
@@ -58,7 +58,6 @@ NSString *const LMSUCache = @"TouchCache";
   {
     NewsList *tmpNewsList = [[NewsList alloc] init];
     self.internalNewsList = tmpNewsList;
-    [tmpNewsList release];
   }
   return self.internalNewsList;
 }
@@ -72,7 +71,6 @@ NSString *const LMSUCache = @"TouchCache";
     tmpImageList.xpathOverride = @"//photo";
     tmpImageList.rawMode = YES;
 
-    [tmpImageList release];
   }
   return self.internalImageList;
 }
@@ -84,7 +82,6 @@ NSString *const LMSUCache = @"TouchCache";
     CatalogueList *tmpList = [[CatalogueList alloc] init];
     tmpList.xpathOverride = @"//release";
     self.internalCatalogueList = tmpList;
-    [tmpList release];
   }
   return self.internalCatalogueList;
 }
@@ -95,7 +92,6 @@ NSString *const LMSUCache = @"TouchCache";
   {
     RadioList *tmpList = [[RadioList alloc] init];
     self.internalRadioList = tmpList;
-    [tmpList release];
   }
   return self.internalRadioList;
 }
@@ -107,7 +103,6 @@ NSString *const LMSUCache = @"TouchCache";
     RecipeCategoryList *tmpList = [[RecipeCategoryList alloc] init];
     tmpList.xpathOverride = @"//category";
     self.internalRecipeList = tmpList;
-    [tmpList release];
   }
   return self.internalRecipeList;
 }
@@ -141,14 +136,4 @@ NSString *const LMSUCache = @"TouchCache";
   }
 }
 
-- (void) dealloc
-{
-  [_cacheFolder release];
-  [_internalNewsList release];
-  [_internalImageList release];
-  [_internalCatalogueList release];
-  [_internalRadioList release];
-  [_internalRecipeList release];
-  [super dealloc];
-}
 @end

@@ -25,7 +25,7 @@ static NSInteger iPadThumbnailRowCount = 8;
 
 
 @interface ImageGalleryViewController ()
-@property (nonatomic, retain) ImageList *imageList;
+@property (nonatomic) ImageList *imageList;
 //@property (nonatomic, retain) UIActivityIndicatorView *spinner;
 @property (nonatomic, assign) NSInteger thumbnailWidth;
 @property (nonatomic, assign) NSInteger thumbnailRowCount;
@@ -84,13 +84,11 @@ static NSInteger iPadThumbnailRowCount = 8;
   
   UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Photos" style:UIBarButtonItemStyleBordered target:nil action:nil];
   self.navigationItem.backBarButtonItem = backButton;
-  [backButton release];
   
   ImageList *tmpList = [[ImageList alloc] init];
   self.imageList = tmpList;
   self.imageList.xpathOverride = @"//photo";
   self.imageList.rawMode = YES;
-  [tmpList release];
   self.imageList.delegate = self;
   
   if ([self.imageList.items count] == 0)
@@ -116,9 +114,7 @@ static NSInteger iPadThumbnailRowCount = 8;
 - (void)dealloc
 {
   [self.imageList setDelegate:nil];
-  [_imageList release];
   //[_spinner release];
-  [super dealloc];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -204,7 +200,7 @@ static NSInteger iPadThumbnailRowCount = 8;
   NSLog(@"%@",CellIdentifier);
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
   if (cell == nil) {
-    cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     
     TJMImageResourceView *tmpRes;
     int offset = 0;
@@ -214,9 +210,7 @@ static NSInteger iPadThumbnailRowCount = 8;
       tmpRes.tag = CellImageTag + i;
       UITapGestureRecognizer *tapper = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(thumbnailTapped:)];
       [tmpRes addGestureRecognizer:tapper];
-      [tapper release];
       [cell addSubview:tmpRes];
-      [tmpRes release];
       tmpRes = nil;
       offset += self.thumbnailWidth;
     }    
@@ -257,7 +251,6 @@ static NSInteger iPadThumbnailRowCount = 8;
     photo.initialIndex = res.index;
     photo.delegate = self;
     [self.navigationController presentModalViewController:photo animated:YES];
-    [photo release];
   }
 }
 
@@ -291,7 +284,7 @@ static NSInteger iPadThumbnailRowCount = 8;
   [self.progressView setHidden:YES];
   UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No connection" message:@"Please check you are connected to the internet." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
   [alert show];
-  [alert release]; alert = nil;
+   alert = nil;
 }
 
 - (void)handleShake

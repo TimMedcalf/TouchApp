@@ -41,11 +41,6 @@ NSInteger TwoMonths = -5184000;
 //  });
 }
 
-- (void)dealloc
-{
-  [_imageResourceDict release];
-  [super dealloc];
-}
 
 - (void)loadFromFile
 {
@@ -58,11 +53,8 @@ NSInteger TwoMonths = -5184000;
     {
       TJMImageResource *tmpImage = [[TJMImageResource alloc] initWithDictionary:itemDict];
       [tmpDict setObject:tmpImage forKey:[tmpImage.imageURL absoluteString]];
-      [tmpImage release];
     }
-    [tmpArray release];
     self.imageResourceDict = tmpDict;
-    [tmpDict release];
   }
   else
   {
@@ -116,7 +108,6 @@ NSInteger TwoMonths = -5184000;
 //  }
 //  [intermArray release];  
   [saveArray writeToFile:[[AppManager sharedInstance].cacheFolder stringByAppendingPathComponent:ResourceManifestFile] atomically:YES];
-  [saveArray release];
 }
 
 - (TJMImageResource *)resourceForURL:(NSURL *)imageURL
@@ -130,7 +121,7 @@ NSInteger TwoMonths = -5184000;
     //did we get one?
     if (!resource)
     {
-      resource = [[[TJMImageResource alloc] initWithURL:imageURL] autorelease];
+      resource = [[TJMImageResource alloc] initWithURL:imageURL];
       [self.imageResourceDict setObject:resource forKey:[resource.imageURL absoluteString]];
       //[self saveToFile];
     }

@@ -16,12 +16,6 @@ NSString *const Key_RCat_Title = @"title";
 @synthesize recipeId = _recipeId;
 @synthesize recipeTitle = _recipeTitle;
 
-- (void) dealloc
-{
-  [_recipeId release];
-  [_recipeTitle release];
-  [super dealloc];
-}
 
 #pragma mark overrides from FeedItem
 - (void)procesSavedDictionary:(NSDictionary *)dict

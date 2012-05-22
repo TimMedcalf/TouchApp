@@ -67,42 +67,32 @@ void uncaughtExceptionHandler(NSException *exception);
   [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
   
   
-  self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+  self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   // Override point for customization after application launch.
   
   //News Views
   NewsViewController *newsVC = [[NewsViewController alloc] initWithStyle:UITableViewStylePlain];
   UINavigationController *newsNav = [[UINavigationController alloc] initWithRootViewController:newsVC];
-  [newsVC release];
   
   //Photos Views
   ImageGalleryViewController *photoVC = [[ImageGalleryViewController alloc] initWithStyle:UITableViewStylePlain];
   UINavigationController *photoNav = [[UINavigationController alloc] initWithRootViewController:photoVC];
-  [photoVC release];
   
   //Catalogue
   CatalogueViewController *catVC = [[CatalogueViewController alloc] initWithStyle:UITableViewStylePlain];
   UINavigationController *catNav = [[UINavigationController alloc] initWithRootViewController:catVC];
-  [catVC release];  
   
   //Radio
   RadioViewController *radioVC = [[RadioViewController alloc] initWithStyle:UITableViewStylePlain];
   UINavigationController *radioNav = [[UINavigationController alloc] initWithRootViewController:radioVC];
-  [radioVC release];
   
   //Recipes
   RecipeCategoryViewController *recipeVC = [[RecipeCategoryViewController alloc] initWithStyle:UITableViewStylePlain];
   UINavigationController *recipeNav = [[UINavigationController alloc] initWithRootViewController:recipeVC];
-  [recipeVC release];
   
   
-  self.tabBarController = [[[UITabBarController alloc] init] autorelease];
+  self.tabBarController = [[UITabBarController alloc] init];
   self.tabBarController.viewControllers = [NSArray arrayWithObjects:newsNav, photoNav, catNav, radioNav, recipeNav, nil];
-  [newsNav release];
-  [photoNav release];
-  [catNav release];
-  [radioNav release];
-  [recipeNav release];
   self.window.rootViewController = self.tabBarController;
   [self.window makeKeyAndVisible];
   return YES;
@@ -153,12 +143,6 @@ void uncaughtExceptionHandler(NSException *exception);
    */
 }
 
-- (void)dealloc
-{
-  [_window release];
-  [_tabBarController release];
-    [super dealloc];
-}
 
 #pragma mark flurry crash report
 #ifndef DEVMODE

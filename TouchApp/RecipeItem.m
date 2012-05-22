@@ -20,14 +20,6 @@ NSString *const Key_Recipe_PubDate = @"pubDate";
 @synthesize recipeDescription = _recipeDescription;
 @synthesize recipePubDate = _recipePubDate;
 
-- (void)dealloc
-{
-  [_recipeTitle release];
-  [_recipeExcerpt release];
-  [_recipeDescription release];
-  [_recipePubDate release];
-  [super dealloc];
-}
 
 #pragma mark overrides from FeedItem
 - (void)procesSavedDictionary:(NSDictionary *)dict
@@ -44,11 +36,10 @@ NSString *const Key_Recipe_PubDate = @"pubDate";
   self.recipeExcerpt = [dict objectForKey:Key_Recipe_Excerpt];
   self.recipeDescription = [dict objectForKey:Key_Recipe_Description];
   NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
-  [inputFormatter setLocale:[[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"] autorelease]];
+  [inputFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
   [inputFormatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss z"];
   NSString *dateStr = [dict objectForKey:Key_Recipe_PubDate];
   self.recipePubDate = [inputFormatter dateFromString:dateStr];
-  [inputFormatter release];  
 }
 
 - (void)populateDictionary:(NSMutableDictionary *)dict

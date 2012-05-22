@@ -10,9 +10,9 @@
 
 @interface RecipeItem : FeedItem
 
-@property (nonatomic, retain) NSString *recipeTitle;
-@property (nonatomic, retain) NSString *recipeExcerpt;
-@property (nonatomic, retain) NSString *recipeDescription;
-@property (nonatomic, retain) NSDate *recipePubDate;
+@property (nonatomic) NSString *recipeTitle;
+@property (nonatomic) NSString *recipeExcerpt;
+@property (nonatomic) NSString *recipeDescription;
+@property (nonatomic) NSDate *recipePubDate;
 
 @end

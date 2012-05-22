@@ -85,7 +85,6 @@
       spinner.center = self.center;
       spinner.hidesWhenStopped = YES;
       self.spinner = spinner;
-      [spinner release];
       [self addSubview:self.spinner];
       [self.spinner startAnimating];
       self.spinner.hidden = NO;
@@ -112,9 +111,6 @@
 - (void)dealloc
 {
   [[NSNotificationCenter defaultCenter] removeObserver:self name:TJMImageResourceImageNeedsUpdating object:nil];
-  [_spinner release];
-  [_url release];
-  [super dealloc];
 }
 
 //update the image on screen when it gets updated...

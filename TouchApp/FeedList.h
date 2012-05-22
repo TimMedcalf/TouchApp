@@ -19,11 +19,11 @@
 
 @interface FeedList : NSObject
 
-@property (nonatomic, assign) id<FeedListConsumerDelegate, NSObject> delegate;
-@property (nonatomic, retain) NSURL *baseURL;
-@property (nonatomic, retain) NSMutableArray *items;
-@property (nonatomic, retain) NSDate *lastRefresh;
-@property (nonatomic, retain) NSString *xpathOverride;
+@property (nonatomic, unsafe_unretained) id<FeedListConsumerDelegate, NSObject> delegate;
+@property (nonatomic) NSURL *baseURL;
+@property (nonatomic) NSMutableArray *items;
+@property (nonatomic) NSDate *lastRefresh;
+@property (nonatomic) NSString *xpathOverride;
 @property (nonatomic, assign) BOOL rawMode;
 
 //dirty hack to deal with the way we load touch recipe books...probably a better way of coping with this...

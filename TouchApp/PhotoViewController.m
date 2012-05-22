@@ -89,7 +89,6 @@
   self.wantsFullScreenLayout = YES;
   UIView *tmpView = [[UIView alloc] initWithFrame:[self frameForPagingScrollView]];
   self.view = tmpView;
-  [tmpView release];
 
   // Step 1: make the outer paging scroll view
   CGRect pagingScrollViewFrame = [self frameForPagingScrollView];
@@ -121,17 +120,15 @@
   UINavigationBar *tmpBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width,44)];
   self.customNavigationBar = tmpBar;
   self.customNavigationBar.autoresizingMask =  UIViewAutoresizingFlexibleWidth;
-  [tmpBar release];
   
   UINavigationItem *tmpItem = [[UINavigationItem alloc] initWithTitle:@""];
   self.customNavigationItem = tmpItem;
-  [tmpItem release];
   [self.customNavigationBar setItems:[NSArray arrayWithObject:self.customNavigationItem]];
   
   [self.view addSubview:self.customNavigationBar];
   
-  self.customNavigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(savePhoto)] autorelease];
-  self.customNavigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Photos" style:UIBarButtonItemStylePlain target:self action:@selector(goBack)] autorelease];
+  self.customNavigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(savePhoto)];
+  self.customNavigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Photos" style:UIBarButtonItemStylePlain target:self action:@selector(goBack)];
   self.customNavigationBar.tintColor = nil;
   self.customNavigationBar.barStyle = UIBarStyleBlack;
   self.customNavigationBar.translucent = YES;
@@ -145,7 +142,6 @@
                                 destructiveButtonTitle:@"Save to Camera Roll" 
                                 otherButtonTitles:nil]; 
   [actionSheet showInView:self.view]; 
-  [actionSheet release];
 	
 	
 }
@@ -217,20 +213,13 @@
   [self setPagingScrollView:nil];
   [self setCustomNavigationItem:nil];
   [self setCustomNavigationBar:nil];
-  [recycledPages release];
   recycledPages = nil;
-  [visiblePages release];
   visiblePages = nil;
 }
 
 - (void)dealloc
 {
   [[NSNotificationCenter defaultCenter] removeObserver:self];
-  [_pagingScrollView release];
-  [_customNavigationItem release];
-  [_customNavigationBar release];
-  [_imageList release];
-  [super dealloc];
 }
 
 
@@ -265,7 +254,7 @@
       ImageScrollView *page = [self dequeueRecycledPage];
       if (page == nil)
       {
-        page = [[[ImageScrollView alloc] init] autorelease];
+        page = [[ImageScrollView alloc] init];
       }
       [self configurePage:page forIndex:index];
       [self.pagingScrollView addSubview:page];
