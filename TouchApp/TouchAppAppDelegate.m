@@ -37,10 +37,7 @@ void uncaughtExceptionHandler(NSException *exception);
   [FlurryAnalytics startSession:@"EG1Y8QTDSQI2YWEFXFDJ"];
   [FlurryAnalytics logEvent:@"DeviceInfo" withParameters:[NSDictionary dictionaryWithObject:[[UIDevice currentDevice] systemVersion] forKey:@"Firmware"]];
   [FlurryAnalytics logAllPageViews:_tabBarController];
-#endif
-  // Override point for customization after application launch.
-  [AppManager instance];
-  
+#endif  
   //clear the cache out whenever it's a new version - allows us to change data formats without worrying
   //about whatever is stored already on the device
   NSUserDefaults *Def = [NSUserDefaults standardUserDefaults];
@@ -57,16 +54,16 @@ void uncaughtExceptionHandler(NSException *exception);
     NSLog(@"Initialisation for version %@", CurVer);
     //clear the cache folder!
     NSError *error;
-    for (NSString *file in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[[AppManager instance]cacheFolder] error:&error])
+    for (NSString *file in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[[AppManager sharedInstance] cacheFolder] error:&error])
     {
       NSLog(@"Clearing cached file : %@", file);
-      [[NSFileManager defaultManager] removeItemAtPath:[[[AppManager instance]cacheFolder] stringByAppendingPathComponent:file] error:&error];
+      [[NSFileManager defaultManager] removeItemAtPath:[[[AppManager sharedInstance]cacheFolder] stringByAppendingPathComponent:file] error:&error];
     }
     
     [Def setObject:CurVer forKey:@"Version"];
   }
   //load the image resource stuff...
-  [TJMImageResourceManager instance];
+  [TJMImageResourceManager sharedInstance];
   [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
   
   
@@ -118,7 +115,7 @@ void uncaughtExceptionHandler(NSException *exception);
    Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
    Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
    */
-  [[AppManager instance] cancelUpdates];
+  [[AppManager sharedInstance] cancelUpdates];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -128,7 +125,7 @@ void uncaughtExceptionHandler(NSException *exception);
    If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
    */
   //save the image resource stuff...
-  [[TJMImageResourceManager instance] save];
+  [[TJMImageResourceManager sharedInstance] save];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -144,7 +141,7 @@ void uncaughtExceptionHandler(NSException *exception);
    Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
    */
   //NSLog(@"did become active");
-  [[AppManager instance] refreshAllFeeds];
+  [[AppManager sharedInstance] refreshAllFeeds];
 }
   
 - (void)applicationWillTerminate:(UIApplication *)application

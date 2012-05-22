@@ -66,7 +66,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
     self.lastRefresh = [NSDate distantPast];
     self.items = [NSMutableArray array];
     self.feed = [self feedURL];
-    self.cacheFile = [[AppManager instance].cacheFolder stringByAppendingPathComponent:[[self cacheFilename] stringByAppendingPathExtension:@"plist"]];
+    self.cacheFile = [[AppManager sharedInstance].cacheFolder stringByAppendingPathComponent:[[self cacheFilename] stringByAppendingPathExtension:@"plist"]];
     [self loadItems];
   }
   return self;
@@ -86,7 +86,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 - (void)continueLoading
 {
   self.feed = [self feedURL];
-  self.cacheFile = [[AppManager instance].cacheFolder stringByAppendingPathComponent:[[self cacheFilename] stringByAppendingPathExtension:@"plist"]];
+  self.cacheFile = [[AppManager sharedInstance].cacheFolder stringByAppendingPathComponent:[[self cacheFilename] stringByAppendingPathExtension:@"plist"]];
   [self loadItems];
 }
 

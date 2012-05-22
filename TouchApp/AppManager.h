@@ -12,11 +12,10 @@
 #import "CatalogueList.h"
 #import "RadioList.h"
 #import "RecipeCategoryList.h"
+#import "GCDSingleton.h"
 
 
 @interface AppManager : NSObject
-
-SINGLETON_INTERFACE_FOR(AppManager)
 
 @property (nonatomic, retain) NSString *cacheFolder;
 
@@ -28,5 +27,7 @@ SINGLETON_INTERFACE_FOR(AppManager)
 
 - (void)cancelUpdates;
 - (void)refreshAllFeeds;
+
++ (AppManager *)sharedInstance;
 
 @end

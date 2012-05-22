@@ -23,7 +23,7 @@
 -(void)viewDidLoad
 {
   [super viewDidLoad];
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(configureAudioControl) name:TJMAudioCenterStatusChange object:[TJMAudioCenter instance]];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(configureAudioControl) name:TJMAudioCenterStatusChange object:[TJMAudioCenter sharedInstance]];
 
   //create a progress bar that we can show in subclasses...
   TKProgressBarView *tmpProgress = [[TKProgressBarView alloc] initWithStyle:TKProgressBarViewStyleLong];
@@ -45,7 +45,7 @@
   self.navigationItem.rightBarButtonItem = nil;
   
   //check status of audio center...
-  TJMAudioStatus audio = [[TJMAudioCenter instance] statusCheck];
+  TJMAudioStatus audio = [[TJMAudioCenter sharedInstance] statusCheck];
   if (audio == TJMAudioStatusCurrentPlaying)
   {  
     UIBarButtonItem *playToggleButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPause target:self action:@selector(togglePlay)];
@@ -76,21 +76,21 @@
 - (void)viewDidUnload
 {
   [self setProgressView:nil];
-  [[NSNotificationCenter defaultCenter] removeObserver:self name:TJMAudioCenterStatusChange object:[TJMAudioCenter instance]];
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:TJMAudioCenterStatusChange object:[TJMAudioCenter sharedInstance]];
   [super viewDidUnload];
 }
 
 - (void)dealloc
 {
   [_progressView release];
-  [[NSNotificationCenter defaultCenter] removeObserver:self name:TJMAudioCenterStatusChange object:[TJMAudioCenter instance]];
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:TJMAudioCenterStatusChange object:[TJMAudioCenter sharedInstance]];
   [[NSNotificationCenter defaultCenter] removeObserver:self name:TouchAppAllShookUp object:nil];
   [super dealloc];
 }
 
 - (void)togglePlay
 {
-  [[TJMAudioCenter instance] togglePlayPause];
+  [[TJMAudioCenter sharedInstance] togglePlayPause];
 }
 
 - (void)handleShake

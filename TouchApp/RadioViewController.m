@@ -62,7 +62,7 @@ static NSInteger CellSubTitleTag = 51;
 //  [tmpRadioList release];
 //  self.radioList.delegate = self;
   
-  self.radioList = [[AppManager instance] radioList];
+  self.radioList = [[AppManager sharedInstance] radioList];
   self.radioList.delegate = self;
   
   if ([self.radioList.items count] == 0)

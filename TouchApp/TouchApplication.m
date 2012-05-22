@@ -34,7 +34,7 @@ NSString * const TouchAppAllShookUp = @"TouchAppAllShookUp";
   {
     switch (event.subtype) {          
       case UIEventSubtypeRemoteControlTogglePlayPause:
-        [[TJMAudioCenter instance] togglePlayPause];
+        [[TJMAudioCenter sharedInstance] togglePlayPause];
         break;
       case UIEventSubtypeRemoteControlPreviousTrack:
         //[self previousTrack: nil];

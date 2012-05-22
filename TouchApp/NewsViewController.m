@@ -61,7 +61,7 @@ static NSInteger CellSubTitleTag = 51;
   self.navigationItem.backBarButtonItem = backButton;
   [backButton release];
   
-  self.newsList = [[AppManager instance] newsList];
+  self.newsList = [[AppManager sharedInstance] newsList];
   self.newsList.delegate = self;
   
   if ([self.newsList.items count] == 0)

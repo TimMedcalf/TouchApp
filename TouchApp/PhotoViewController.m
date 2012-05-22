@@ -189,7 +189,7 @@
 	if (buttonIndex != [actionSheet cancelButtonIndex]) 
   { 
     ImageItem *img = [self.imageList.items objectAtIndex:[self centerPhotoIndex]];
-    TJMImageResource *tmpRes = [[TJMImageResourceManager instance] resourceForURL:img.imageURL];
+    TJMImageResource *tmpRes = [[TJMImageResourceManager sharedInstance] resourceForURL:img.imageURL];
     UIImage *image = [tmpRes getImage];
     UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
   } 
@@ -277,8 +277,10 @@
 - (ImageScrollView *)dequeueRecycledPage
 {
     ImageScrollView *page = [recycledPages anyObject];
-    if (page) {
-        [[page retain] autorelease];
+    if (page)
+    {
+        //ARC
+        //[[page retain] autorelease];
         [recycledPages removeObject:page];
     }
     return page;
@@ -424,20 +426,20 @@
 
   //try to ensure the thumbnails we need are going to be there
   ImageItem *item = [self.imageList.items objectAtIndex:index];
-  [[[TJMImageResourceManager instance] resourceForURL:item.thumbnailURL]cacheImage];
+  [[[TJMImageResourceManager sharedInstance] resourceForURL:item.thumbnailURL]cacheImage];
   
   //try to ensure the thumbnails we need are going to be there
   if (index < self.imageCount -1)
   {
     ImageItem *item = [self.imageList.items objectAtIndex:index+1];
-    [[[TJMImageResourceManager instance] resourceForURL:item.thumbnailURL]cacheImage];
+    [[[TJMImageResourceManager sharedInstance] resourceForURL:item.thumbnailURL]cacheImage];
   }
   
   //try to ensure the thumbnails we need are going to be there
   if (index > 0)
   {
     ImageItem *item = [self.imageList.items objectAtIndex:index-1];
-    [[[TJMImageResourceManager instance] resourceForURL:item.thumbnailURL]cacheImage];
+    [[[TJMImageResourceManager sharedInstance] resourceForURL:item.thumbnailURL]cacheImage];
   }
   
   return [self.imageList.items objectAtIndex:index];

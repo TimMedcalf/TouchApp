@@ -8,6 +8,8 @@
 
 #import "AppManager.h"
 #import "NewsList.h"
+#import "GCDSingleton.h"
+
 
 NSString *const LMSUCache = @"TouchCache";
 
@@ -20,8 +22,6 @@ NSString *const LMSUCache = @"TouchCache";
 @end
 
 @implementation AppManager
-
-SINGLETON_IMPLEMENTATION_FOR(AppManager)
 
 @synthesize cacheFolder = _cacheFolder;
 
@@ -43,6 +43,13 @@ SINGLETON_IMPLEMENTATION_FOR(AppManager)
     }
   }
   return self;
+}
+
++ (AppManager *)sharedInstance
+{
+//  DEFINE_SHARED_INSTANCE_USING_BLOCK(^{
+    return [[self alloc] init];
+//  });
 }
 
 - (NewsList *)newsList

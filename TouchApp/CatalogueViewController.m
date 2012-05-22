@@ -63,7 +63,7 @@ static NSInteger CellSubTitleTag = 51;
 //  [tmpCatList release];
 //  self.catList.delegate = self;
   
-  self.catList = [[AppManager instance] catalogueList];
+  self.catList = [[AppManager sharedInstance] catalogueList];
   self.catList.delegate = self;
   
   if ([self.catList.items count] == 0)

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GCDSingleton.h"
 
 extern NSString * const TJMAudioCenterStatusChange;
 
@@ -28,8 +29,6 @@ typedef enum
 
 @interface TJMAudioCenter : NSObject <AVAudioSessionDelegate>
 
-SINGLETON_INTERFACE_FOR(TJMAudioCenter)
-
 @property (nonatomic, assign) id<TJMAudioCenterDelegate> delegate;
 
 - (void)playURL:(NSURL *)url;
@@ -38,5 +37,7 @@ SINGLETON_INTERFACE_FOR(TJMAudioCenter)
 
 -(TJMAudioStatus)statusCheckForURL:(NSURL*)url;
 -(TJMAudioStatus)statusCheck;
+
++ (TJMAudioCenter *)sharedInstance;
 
 @end

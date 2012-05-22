@@ -21,8 +21,6 @@ NSInteger TwoMonths = -5184000;
 
 @implementation TJMImageResourceManager
 
-SINGLETON_IMPLEMENTATION_FOR(TJMImageResourceManager)
-
 @synthesize imageResourceDict = _imageResourceDict;
 
 
@@ -36,6 +34,13 @@ SINGLETON_IMPLEMENTATION_FOR(TJMImageResourceManager)
     return self;
 }
 
++ (id)sharedInstance
+{
+//  DEFINE_SHARED_INSTANCE_USING_BLOCK(^{
+    return [[self alloc] init];
+//  });
+}
+
 - (void)dealloc
 {
   [_imageResourceDict release];
@@ -45,7 +50,7 @@ SINGLETON_IMPLEMENTATION_FOR(TJMImageResourceManager)
 - (void)loadFromFile
 {
   self.imageResourceDict = nil;
-  NSArray *tmpArray = [[NSArray alloc] initWithContentsOfFile:[[AppManager instance].cacheFolder stringByAppendingPathComponent:ResourceManifestFile]];
+  NSArray *tmpArray = [[NSArray alloc] initWithContentsOfFile:[[AppManager sharedInstance].cacheFolder stringByAppendingPathComponent:ResourceManifestFile]];
   if (tmpArray)
   {
     NSMutableDictionary *tmpDict = [[NSMutableDictionary alloc] initWithCapacity:[tmpArray count]];
@@ -110,7 +115,7 @@ SINGLETON_IMPLEMENTATION_FOR(TJMImageResourceManager)
 //    [saveArray addObject:[image dictionaryRepresentation]];
 //  }
 //  [intermArray release];  
-  [saveArray writeToFile:[[AppManager instance].cacheFolder stringByAppendingPathComponent:ResourceManifestFile] atomically:YES];
+  [saveArray writeToFile:[[AppManager sharedInstance].cacheFolder stringByAppendingPathComponent:ResourceManifestFile] atomically:YES];
   [saveArray release];
 }
 

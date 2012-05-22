@@ -54,7 +54,7 @@ static NSInteger CellTitleTag = 50;
   self.navigationItem.backBarButtonItem = backButton;
   [backButton release];
   
-  self.catList = [[AppManager instance] recipeList];
+  self.catList = [[AppManager sharedInstance] recipeList];
   self.catList.delegate = self;
   
   

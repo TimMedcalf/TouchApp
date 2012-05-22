@@ -16,7 +16,6 @@
   #import <CoreMedia/CoreMedia.h>
   #import <MessageUI/MessageUI.h>
   #import "TouchXML.h"
-  #import "SynthesizeSingleton.h"
   #import "UIApplication+TJMNetworkActivity.h"
   #import "TJMAudioCenter.h"
 #endif

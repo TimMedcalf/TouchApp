@@ -30,7 +30,7 @@
     self.contentMode = UIViewContentModeScaleAspectFill;
     self.userInteractionEnabled = YES;
     self.url = url;
-    TJMImageResource *tmpImageResource = [[TJMImageResourceManager instance] resourceForURL:self.url];
+    TJMImageResource *tmpImageResource = [[TJMImageResourceManager sharedInstance] resourceForURL:self.url];
     self.image =  [tmpImageResource getImage];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateImage) name:TJMImageResourceImageNeedsUpdating object:tmpImageResource];
   } 
@@ -57,11 +57,11 @@
     //NOTE THAT THIS IS DIFFERENT IF YOU EXPLICITLY SET THE SIZE!
     self.contentMode = UIViewContentModeScaleAspectFit;
     self.url = item.imageURL;
-    TJMImageResource *tmpImageResource = [[TJMImageResourceManager instance] resourceForURL:self.url];
+    TJMImageResource *tmpImageResource = [[TJMImageResourceManager sharedInstance] resourceForURL:self.url];
     UIImage *image = [tmpImageResource getImage];
     if (!tmpImageResource.imageIsDownloaded)
     {
-      image = [[[TJMImageResourceManager instance] resourceForURL:item.thumbnailURL] getImage];
+      image = [[[TJMImageResourceManager sharedInstance] resourceForURL:item.thumbnailURL] getImage];
     }
     //UIImageView *tmpImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,size.width,size.height)];
     self.image = image;
@@ -76,7 +76,7 @@
   if (self) {
     self.contentMode = UIViewContentModeScaleAspectFit;
     self.url = item.imageURL;
-    TJMImageResource *tmpImageResource = [[TJMImageResourceManager instance] resourceForURL:self.url];
+    TJMImageResource *tmpImageResource = [[TJMImageResourceManager sharedInstance] resourceForURL:self.url];
     UIImage *image = [tmpImageResource getImage];
     if (!tmpImageResource.imageIsDownloaded)
     {
@@ -90,7 +90,7 @@
       [self.spinner startAnimating];
       self.spinner.hidden = NO;
       self.spinner.autoresizingMask = UIViewAutoresizingNone;
-      image = [[[TJMImageResourceManager instance] resourceForURL:item.thumbnailURL] getImage];
+      image = [[[TJMImageResourceManager sharedInstance] resourceForURL:item.thumbnailURL] getImage];
     }
     self.image = image;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateImage) name:TJMImageResourceImageNeedsUpdating object:tmpImageResource];
@@ -103,7 +103,7 @@
 - (void)setURL:(NSURL *)url;
 {
   self.url = url;
-  TJMImageResource *tmpImageResource = [[TJMImageResourceManager instance] resourceForURL:self.url];
+  TJMImageResource *tmpImageResource = [[TJMImageResourceManager sharedInstance] resourceForURL:self.url];
   self.image =  [tmpImageResource getImage];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateImage) name:TJMImageResourceImageNeedsUpdating object:tmpImageResource];
 }
@@ -121,7 +121,7 @@
 - (void)updateImage
 {
   //NSLog(@"Updating image");
-  TJMImageResource *tmpImageResource = [[TJMImageResourceManager instance] resourceForURL:self.url];
+  TJMImageResource *tmpImageResource = [[TJMImageResourceManager sharedInstance] resourceForURL:self.url];
   self.image = [tmpImageResource getImage];
   if (self.spinner) [self.spinner stopAnimating];
 }

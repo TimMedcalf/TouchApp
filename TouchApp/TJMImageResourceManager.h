@@ -11,11 +11,11 @@
 
 @interface TJMImageResourceManager : NSObject
 
-SINGLETON_INTERFACE_FOR(TJMImageResourceManager)
-
 @property (nonatomic, retain) NSMutableDictionary *imageResourceDict;
 
 - (TJMImageResource *)resourceForURL:(NSURL *)imageURL;
 - (void)save;
+
++ (id)sharedInstance;
 
 @end

@@ -9,7 +9,7 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  [TJMAudioCenter instance].delegate = self;
+  [TJMAudioCenter sharedInstance].delegate = self;
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
@@ -37,7 +37,7 @@
 
 - (void)togglePlayPauseInWebView {
   //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));  
-  TJMAudioStatus audio = [[TJMAudioCenter instance] statusCheckForURL:[NSURL URLWithString:self.item.link]];
+  TJMAudioStatus audio = [[TJMAudioCenter sharedInstance] statusCheckForURL:[NSURL URLWithString:self.item.link]];
   
   if (audio == TJMAudioStatusCurrentPlaying)
   {  
@@ -50,14 +50,14 @@
 }
 
 - (void)pause {
-    [[TJMAudioCenter instance] pauseURL:[NSURL URLWithString:self.item.link]];
+    [[TJMAudioCenter sharedInstance] pauseURL:[NSURL URLWithString:self.item.link]];
 }
 
 - (void)play {
   //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
   [FlurryAnalytics logEvent:@"Radio" withParameters:[NSDictionary dictionaryWithObject:_item.titleLabel forKey:@"Played"]];
   //NSLog(@"Trying to play - %@",self.item.link);
-  [[TJMAudioCenter instance] playURL:[NSURL URLWithString:self.item.link]];
+  [[TJMAudioCenter sharedInstance] playURL:[NSURL URLWithString:self.item.link]];
 }
 
 #pragma mark TJM AudioCenterDelegate 
@@ -86,7 +86,8 @@
   //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));  
   UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Audio stream failed." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 	[alert show];
-	[alert autorelease];
+  //ARC
+	//alert autorelease];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -98,8 +99,8 @@
 
 - (void)dealloc
 {
-  if ([TJMAudioCenter instance].delegate == self) 
-    [TJMAudioCenter instance].delegate = nil;
+  if ([TJMAudioCenter sharedInstance].delegate == self) 
+    [TJMAudioCenter sharedInstance].delegate = nil;
   [_item release];
   [super dealloc];
 }

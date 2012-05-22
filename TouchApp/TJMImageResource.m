@@ -71,7 +71,8 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
     CFUUIDRef theUUID = CFUUIDCreate(kCFAllocatorDefault);
     CFStringRef string = CFUUIDCreateString(kCFAllocatorDefault, theUUID);
     CFRelease(theUUID);
-    self.localFileName = [(NSString *)string autorelease];
+    //self.localFileName = [(NSString *)string autorelease];
+    self.localFileName = [(__bridge NSString *)string autorelease];
     self.lastChecked = [NSDate distantPast];
     self.lastAccessed = [NSDate distantPast]; 
   }
@@ -225,7 +226,7 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
 - (NSString *)fullPathForLocalBaseImage
 {
   NSString *filename = [self.localFileName stringByAppendingPathExtension:self.localFileExtension];
-  return [[AppManager instance].cacheFolder stringByAppendingPathComponent:filename];
+  return [[AppManager  sharedInstance].cacheFolder stringByAppendingPathComponent:filename];
 }
 
 - (BOOL)imageIsDownloaded

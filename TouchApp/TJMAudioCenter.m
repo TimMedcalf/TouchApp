@@ -8,7 +8,7 @@
 
 #import "TJMAudioCenter.h"
 
-NSString * const TJMAudioCenterStatusChange = @"TJMAudioCenterStatusChange";
+NSString *const TJMAudioCenterStatusChange = @"TJMAudioCenterStatusChange";
 
 NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
 
@@ -37,8 +37,13 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
   return self;
 }
 
++ (TJMAudioCenter *)sharedInstance
+{
+//  DEFINE_SHARED_INSTANCE_USING_BLOCK(^{
+    return [[self alloc] init];
+//  });
+}
 
-SINGLETON_IMPLEMENTATION_FOR(TJMAudioCenter)
 
 #pragma mark lifecycle  
 -(void) dealloc
@@ -75,8 +80,9 @@ SINGLETON_IMPLEMENTATION_FOR(TJMAudioCenter)
     self.player = [AVPlayer playerWithURL:url];
     self.URL = url;
     //reinstate notifications
-    [self.player.currentItem addObserver:self forKeyPath:@"status" options:0 context:CurrentPlayerObserver];
-    [self.player addObserver:self forKeyPath:@"rate" options:0 context:CurrentPlayerObserver];
+    //ARC
+    [self.player.currentItem addObserver:self forKeyPath:@"status" options:0 context:((__bridge void*)CurrentPlayerObserver)];
+    [self.player addObserver:self forKeyPath:@"rate" options:0 context:((__bridge void*)CurrentPlayerObserver)];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(playerItemDidReachEnd:)
                                                  name:AVPlayerItemDidPlayToEndTimeNotification
@@ -98,7 +104,7 @@ SINGLETON_IMPLEMENTATION_FOR(TJMAudioCenter)
 {   
   if ([keyPath isEqualToString:@"status"])
   {
-    if ([(NSString*)context isEqual: CurrentPlayerObserver])
+    if ([(__bridge NSString*)context isEqual: CurrentPlayerObserver])
     {
       if (self.player.currentItem.status == AVPlayerStatusFailed)
       {
@@ -117,7 +123,7 @@ SINGLETON_IMPLEMENTATION_FOR(TJMAudioCenter)
   }
   else if ([keyPath isEqualToString:@"rate"])
   {
-    if ([(NSString*)context isEqual: CurrentPlayerObserver])
+    if ([(__bridge NSString*)context isEqual: CurrentPlayerObserver])
     {
       if (self.player.rate == 0)
       {

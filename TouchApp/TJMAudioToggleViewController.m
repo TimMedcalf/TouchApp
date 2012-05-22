@@ -20,7 +20,7 @@
 -(void)viewDidLoad
 {
   [super viewDidLoad];
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(configureAudioControl) name:TJMAudioCenterStatusChange object:[TJMAudioCenter instance]];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(configureAudioControl) name:TJMAudioCenterStatusChange object:[TJMAudioCenter sharedInstance]];
   
 }
 
@@ -32,7 +32,7 @@
     self.navigationItem.rightBarButtonItem = nil;
       
     //check status of audio center...
-    TJMAudioStatus audio = [[TJMAudioCenter instance] statusCheck];
+    TJMAudioStatus audio = [[TJMAudioCenter sharedInstance] statusCheck];
     if (audio == TJMAudioStatusCurrentPlaying)
     {  
       UIBarButtonItem *playToggleButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPause target:self action:@selector(togglePlay)];
@@ -57,18 +57,18 @@
 
 - (void)viewDidUnload
 {
-  [[NSNotificationCenter defaultCenter] removeObserver:self name:TJMAudioCenterStatusChange object:[TJMAudioCenter instance]];
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:TJMAudioCenterStatusChange object:[TJMAudioCenter sharedInstance]];
   [super viewDidUnload];
 }
 
 - (void)dealloc
 {
-  [[NSNotificationCenter defaultCenter] removeObserver:self name:TJMAudioCenterStatusChange object:[TJMAudioCenter instance]];
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:TJMAudioCenterStatusChange object:[TJMAudioCenter sharedInstance]];
   [super dealloc];
 }
 
 - (void)togglePlay
 {
-  [[TJMAudioCenter instance] togglePlayPause];
+  [[TJMAudioCenter sharedInstance] togglePlayPause];
 }
 @end
