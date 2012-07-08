@@ -17,14 +17,12 @@ static NSInteger CellTitleTag = 50;
 static NSInteger CellSubTitleTag = 51;
 
 @interface RadioViewController ()
-@property (weak, weak, nonatomic) RadioList *radioList;
-//@property (nonatomic, retain) UIActivityIndicatorView *spinner;
+@property (strong, nonatomic) RadioList *radioList;
 @end
 
 @implementation RadioViewController
 
 @synthesize radioList = _radioList;
-//@synthesize spinner = _spinner;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

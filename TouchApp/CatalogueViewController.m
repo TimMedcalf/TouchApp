@@ -16,14 +16,12 @@ static NSInteger CellTitleTag = 50;
 static NSInteger CellSubTitleTag = 51;
 
 @interface CatalogueViewController ()
-@property (weak, weak, nonatomic) CatalogueList *catList;
-//@property (nonatomic, retain) UIActivityIndicatorView *spinner;
+@property (strong, nonatomic) CatalogueList *catList;
 @end
 
 @implementation CatalogueViewController
 
 @synthesize catList = _catList;
-//@synthesize spinner = _spinner;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

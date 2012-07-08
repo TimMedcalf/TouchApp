@@ -5,7 +5,7 @@
 
 @interface NewCatalogueItemViewController : HTMLItemViewController <TJMAudioCenterDelegate>
 
-@property (weak, nonatomic) CatalogueItem *item;
+@property (strong, nonatomic) CatalogueItem *item;
 
 - (void)pause;
 - (void)play;

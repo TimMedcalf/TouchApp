@@ -23,16 +23,16 @@ NSString *const Key_TJMImageResource_lastAccessed = @"lastAccessed";
 NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
 
 @interface TJMImageResource ()
-@property (weak, weak, nonatomic) NSString *lastModified;
-@property (weak, weak, nonatomic) NSString *etag;
-@property (weak, weak, nonatomic) NSString *localFileName;
-@property (weak, weak, nonatomic) NSString *localFileExtension;
-@property (weak, weak, nonatomic) NSDate   *lastChecked;
-@property (weak, weak, nonatomic) NSString *thumbnailPath;
+@property (strong, nonatomic) NSString *lastModified;
+@property (strong, nonatomic) NSString *etag;
+@property (strong, nonatomic) NSString *localFileName;
+@property (strong, nonatomic) NSString *localFileExtension;
+@property (strong, nonatomic) NSDate   *lastChecked;
+@property (strong, nonatomic) NSString *thumbnailPath;
 
 
-@property (weak, weak, nonatomic) NSMutableData *activeDownload;
-@property (weak, weak, nonatomic) NSURLConnection *activeConnection;
+@property (strong, nonatomic) NSMutableData *activeDownload;
+@property (strong, nonatomic) NSURLConnection *activeConnection;
 
 
 - (void)startDownload;
