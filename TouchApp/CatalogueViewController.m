@@ -16,7 +16,7 @@ static NSInteger CellTitleTag = 50;
 static NSInteger CellSubTitleTag = 51;
 
 @interface CatalogueViewController ()
-@property (nonatomic) CatalogueList *catList;
+@property (weak, weak, nonatomic) CatalogueList *catList;
 //@property (nonatomic, retain) UIActivityIndicatorView *spinner;
 @end
 

@@ -12,7 +12,7 @@
 
 @interface TJMAudioTableViewController : UITableViewController <FeedListConsumerDelegate>
 
-@property (nonatomic) TKProgressBarView *progressView;
+@property (weak, nonatomic) TKProgressBarView *progressView;
 
 - (void)handleShake;
 

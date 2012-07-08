@@ -5,7 +5,7 @@
 
 @interface NewRadioItemViewController : HTMLItemViewController <TJMAudioCenterDelegate>
 
-@property (nonatomic) RadioItem *item;
+@property (weak, nonatomic) RadioItem *item;
 
 - (void)pause;
 - (void)play;

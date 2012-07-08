@@ -16,7 +16,7 @@ static NSInteger CellTitleTag = 50;
 static NSInteger CellSubTitleTag = 51;
 
 @interface NewsViewController ()
-@property (nonatomic) NewsList *newsList;
+@property (weak, weak, nonatomic) NewsList *newsList;
 @end
 
 @implementation NewsViewController

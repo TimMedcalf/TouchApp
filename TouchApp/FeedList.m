@@ -20,12 +20,12 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 
 @interface FeedList ()
 //RSS Feed Updating
-@property (nonatomic) NSMutableData *activeDownload;
-@property (nonatomic) NSURLConnection *rssConnection;
-@property (nonatomic) NSString *feed;
-@property (nonatomic) NSString *cacheFile;
-@property (nonatomic) NSString *etag;
-@property (nonatomic) NSString *lastUpdated;
+@property (weak, weak, nonatomic) NSMutableData *activeDownload;
+@property (weak, weak, nonatomic) NSURLConnection *rssConnection;
+@property (weak, weak, nonatomic) NSString *feed;
+@property (weak, weak, nonatomic) NSString *cacheFile;
+@property (weak, weak, nonatomic) NSString *etag;
+@property (weak, weak, nonatomic) NSString *lastUpdated;
 @property (nonatomic, assign) NSInteger totalBytes;
 @property (nonatomic, assign) NSInteger bytesDownloaded;
 

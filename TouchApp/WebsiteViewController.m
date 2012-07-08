@@ -11,8 +11,8 @@
 
 
 @interface WebsiteViewController ()
-@property (nonatomic) NSTimer *barTimer;
-@property (nonatomic) NSTimer *barTapTimer;
+@property (weak, weak, nonatomic) NSTimer *barTimer;
+@property (weak, weak, nonatomic) NSTimer *barTapTimer;
 - (void)singleTapGesture:(UITapGestureRecognizer *)tapGesture;
 - (void)navBackButtonTouched:(id)sender;
 - (void)navForwarButtonTouched:(id)sender;

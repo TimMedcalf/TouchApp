@@ -14,7 +14,7 @@ static NSInteger CellTitleTag = 50;
 static NSInteger CellSubTitleTag = 51;
 
 @interface RecipeBookViewController ()
-@property (nonatomic) RecipeBookList *recipeList;
+@property (weak, weak, nonatomic) RecipeBookList *recipeList;
 //@property (nonatomic, retain) UIActivityIndicatorView *spinner;
 @end
 

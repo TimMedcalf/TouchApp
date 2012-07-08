@@ -14,11 +14,11 @@
 NSString *const LMSUCache = @"TouchCache";
 
 @interface AppManager ()
-@property (nonatomic) NewsList *internalNewsList;
-@property (nonatomic) ImageList *internalImageList;
-@property (nonatomic) CatalogueList *internalCatalogueList;
-@property (nonatomic) RadioList *internalRadioList;
-@property (nonatomic) RecipeCategoryList *internalRecipeList;
+@property (weak, weak, nonatomic) NewsList *internalNewsList;
+@property (weak, weak, nonatomic) ImageList *internalImageList;
+@property (weak, weak, nonatomic) CatalogueList *internalCatalogueList;
+@property (weak, weak, nonatomic) RadioList *internalRadioList;
+@property (weak, weak, nonatomic) RecipeCategoryList *internalRecipeList;
 @end
 
 @implementation AppManager

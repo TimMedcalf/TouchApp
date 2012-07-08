@@ -13,8 +13,8 @@ extern NSString * const TJMImageResourceImageNeedsUpdating;
 
 @interface TJMImageResource : NSObject
 
-@property (nonatomic) NSURL *imageURL;
-@property (nonatomic) NSDate *lastAccessed;
+@property (weak, nonatomic) NSURL *imageURL;
+@property (weak, nonatomic) NSDate *lastAccessed;
 
 - (id)initWithURL:(NSURL *)imageURL;
 - (id)initWithDictionary:(NSDictionary *)dict;

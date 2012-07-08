@@ -25,7 +25,7 @@ static NSInteger iPadThumbnailRowCount = 8;
 
 
 @interface ImageGalleryViewController ()
-@property (nonatomic) ImageList *imageList;
+@property (weak, weak, nonatomic) ImageList *imageList;
 //@property (nonatomic, retain) UIActivityIndicatorView *spinner;
 @property (nonatomic, assign) NSInteger thumbnailWidth;
 @property (nonatomic, assign) NSInteger thumbnailRowCount;

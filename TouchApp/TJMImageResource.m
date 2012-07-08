@@ -23,16 +23,16 @@ NSString *const Key_TJMImageResource_lastAccessed = @"lastAccessed";
 NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
 
 @interface TJMImageResource ()
-@property (nonatomic) NSString *lastModified;
-@property (nonatomic) NSString *etag;
-@property (nonatomic) NSString *localFileName;
-@property (nonatomic) NSString *localFileExtension;
-@property (nonatomic) NSDate   *lastChecked;
-@property (nonatomic) NSString *thumbnailPath;
+@property (weak, weak, nonatomic) NSString *lastModified;
+@property (weak, weak, nonatomic) NSString *etag;
+@property (weak, weak, nonatomic) NSString *localFileName;
+@property (weak, weak, nonatomic) NSString *localFileExtension;
+@property (weak, weak, nonatomic) NSDate   *lastChecked;
+@property (weak, weak, nonatomic) NSString *thumbnailPath;
 
 
-@property (nonatomic) NSMutableData *activeDownload;
-@property (nonatomic) NSURLConnection *activeConnection;
+@property (weak, weak, nonatomic) NSMutableData *activeDownload;
+@property (weak, weak, nonatomic) NSURLConnection *activeConnection;
 
 
 - (void)startDownload;
@@ -73,6 +73,7 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
     CFRelease(theUUID);
     //self.localFileName = [(NSString *)string autorelease];
     self.localFileName = (__bridge NSString *)string;
+      
     self.lastChecked = [NSDate distantPast];
     self.lastAccessed = [NSDate distantPast]; 
   }

@@ -6,7 +6,7 @@
 
 @interface RecipeItemViewController : HTMLItemViewController <MFMailComposeViewControllerDelegate>
 
-@property (nonatomic) RecipeItem *recipeItem;
+@property (weak, nonatomic) RecipeItem *recipeItem;
 
 - (void)sendRecipe;
   

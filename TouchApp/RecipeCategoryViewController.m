@@ -15,7 +15,7 @@
 static NSInteger CellTitleTag = 50;
 
 @interface RecipeCategoryViewController ()
-@property (nonatomic) RecipeCategoryList *catList;
+@property (weak, weak, nonatomic) RecipeCategoryList *catList;
 @end
 
 @implementation RecipeCategoryViewController
