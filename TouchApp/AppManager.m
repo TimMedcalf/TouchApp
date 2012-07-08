@@ -14,11 +14,11 @@
 NSString *const LMSUCache = @"TouchCache";
 
 @interface AppManager ()
-@property (weak, weak, nonatomic) NewsList *internalNewsList;
-@property (weak, weak, nonatomic) ImageList *internalImageList;
-@property (weak, weak, nonatomic) CatalogueList *internalCatalogueList;
-@property (weak, weak, nonatomic) RadioList *internalRadioList;
-@property (weak, weak, nonatomic) RecipeCategoryList *internalRecipeList;
+@property (strong, nonatomic) NewsList *internalNewsList;
+@property (strong, nonatomic) ImageList *internalImageList;
+@property (strong, nonatomic) CatalogueList *internalCatalogueList;
+@property (strong, nonatomic) RadioList *internalRadioList;
+@property (strong, nonatomic) RecipeCategoryList *internalRecipeList;
 @end
 
 @implementation AppManager
@@ -47,9 +47,9 @@ NSString *const LMSUCache = @"TouchCache";
 
 + (AppManager *)sharedInstance
 {
-//  DEFINE_SHARED_INSTANCE_USING_BLOCK(^{
+  DEFINE_SHARED_INSTANCE_USING_BLOCK(^{
     return [[self alloc] init];
-//  });
+  });
 }
 
 - (NewsList *)newsList

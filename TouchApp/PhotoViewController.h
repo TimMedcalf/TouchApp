@@ -68,10 +68,10 @@
 }
 
 @property (nonatomic, unsafe_unretained) id<PhotoViewDelegate,NSObject> delegate;
-@property (weak, nonatomic) ImageList *imageList;
+@property (strong, nonatomic) ImageList *imageList;
 @property (nonatomic, assign) NSInteger initialIndex;
-@property (weak, nonatomic) IBOutlet UINavigationBar *customNavigationBar;
-@property (weak, nonatomic) IBOutlet UINavigationItem *customNavigationItem;
+@property (strong, nonatomic) IBOutlet UINavigationBar *customNavigationBar;
+@property (strong, nonatomic) IBOutlet UINavigationItem *customNavigationItem;
 @property (nonatomic) IBOutlet UIScrollView *pagingScrollView;
 
 - (void)configurePage:(ImageScrollView *)page forIndex:(NSUInteger)index;

@@ -73,8 +73,9 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
     CFRelease(theUUID);
     //self.localFileName = [(NSString *)string autorelease];
     self.localFileName = (__bridge NSString *)string;
-      
+    CFRelease(string);
     self.lastChecked = [NSDate distantPast];
+
     self.lastAccessed = [NSDate distantPast]; 
   }
   return self;

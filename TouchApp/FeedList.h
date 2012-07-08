@@ -19,12 +19,12 @@
 
 @interface FeedList : NSObject
 
-@property (nonatomic, unsafe_unretained) id<FeedListConsumerDelegate, NSObject> delegate;
-@property (weak, nonatomic) NSURL *baseURL;
-@property (weak, nonatomic) NSMutableArray *items;
-@property (weak, nonatomic) NSDate *lastRefresh;
-@property (weak, nonatomic) NSString *xpathOverride;
-@property (nonatomic, assign) BOOL rawMode;
+@property (weak, nonatomic) id<FeedListConsumerDelegate, NSObject> delegate;
+@property (strong, nonatomic) NSURL *baseURL;
+@property (strong, nonatomic) NSMutableArray *items;
+@property (strong, nonatomic) NSDate *lastRefresh;
+@property (strong, nonatomic) NSString *xpathOverride;
+@property (assign, nonatomic) BOOL rawMode;
 
 //dirty hack to deal with the way we load touch recipe books...probably a better way of coping with this...
 - (id)initWithoutLoading;

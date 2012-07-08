@@ -10,8 +10,8 @@
 
 @interface ImageItem : FeedItem
 
-@property (weak, nonatomic) NSURL *thumbnailURL;
-@property (weak, nonatomic) NSURL *imageURL;
+@property (strong, nonatomic) NSURL *thumbnailURL;
+@property (strong, nonatomic) NSURL *imageURL;
 @property (nonatomic, assign) NSInteger imageWidth;
 @property (nonatomic, assign) NSInteger imageHeight;
 @property (nonatomic, assign) NSInteger thumbnailWidth;

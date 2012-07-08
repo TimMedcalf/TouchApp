@@ -18,4 +18,5 @@
   #import "TouchXML.h"
   #import "UIApplication+TJMNetworkActivity.h"
   #import "TJMAudioCenter.h"
+  #import "GCDSingleton.h"
 #endif

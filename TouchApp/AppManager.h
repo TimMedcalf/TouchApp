@@ -17,7 +17,7 @@
 
 @interface AppManager : NSObject
 
-@property (weak, nonatomic) NSString *cacheFolder;
+@property (strong, nonatomic) NSString *cacheFolder;
 
 - (NewsList *)newsList;
 - (ImageList *)imageList;

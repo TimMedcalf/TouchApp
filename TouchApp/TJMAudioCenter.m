@@ -7,14 +7,15 @@
 //
 
 #import "TJMAudioCenter.h"
+#import "GCDSingleton.h"
 
 NSString *const TJMAudioCenterStatusChange = @"TJMAudioCenterStatusChange";
 
 NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
 
 @interface TJMAudioCenter ()
-@property (weak, weak, nonatomic) AVPlayer *player;
-@property (weak, weak, nonatomic) NSURL *URL;
+@property (strong, nonatomic) AVPlayer *player;
+@property (strong, nonatomic) NSURL *URL;
 @property (nonatomic, assign) BOOL playWhenLoaded;
 @property (nonatomic, assign) BOOL interruptedDuringPlayback;
 - (void) setupAudioSession;
@@ -37,11 +38,11 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
   return self;
 }
 
-+ (TJMAudioCenter *)sharedInstance
++ (id)sharedInstance
 {
-//  DEFINE_SHARED_INSTANCE_USING_BLOCK(^{
+  DEFINE_SHARED_INSTANCE_USING_BLOCK(^{
     return [[self alloc] init];
-//  });
+  });
 }
 
 

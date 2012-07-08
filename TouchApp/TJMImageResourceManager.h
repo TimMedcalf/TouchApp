@@ -11,7 +11,7 @@
 
 @interface TJMImageResourceManager : NSObject
 
-@property (weak, nonatomic) NSMutableDictionary *imageResourceDict;
+@property (strong, nonatomic) NSMutableDictionary *imageResourceDict;
 
 - (TJMImageResource *)resourceForURL:(NSURL *)imageURL;
 - (void)save;

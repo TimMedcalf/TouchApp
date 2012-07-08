@@ -11,10 +11,10 @@
 
 @interface NewsItem : FeedItem
 
-@property (weak, nonatomic) NSString *pubDate;
-@property (weak, nonatomic) NSString *link;
-@property (weak, nonatomic) NSString *title;
-@property (weak, nonatomic) NSString *description;
+@property (strong, nonatomic) NSString *pubDate;
+@property (strong, nonatomic) NSString *link;
+@property (strong, nonatomic) NSString *title;
+@property (strong, nonatomic) NSString *description;
 
 
 

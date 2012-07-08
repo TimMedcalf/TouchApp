@@ -10,9 +10,9 @@
 
 @interface RecipeItem : FeedItem
 
-@property (weak, nonatomic) NSString *recipeTitle;
-@property (weak, nonatomic) NSString *recipeExcerpt;
-@property (weak, nonatomic) NSString *recipeDescription;
-@property (weak, nonatomic) NSDate *recipePubDate;
+@property (strong, nonatomic) NSString *recipeTitle;
+@property (strong, nonatomic) NSString *recipeExcerpt;
+@property (strong, nonatomic) NSString *recipeDescription;
+@property (strong, nonatomic) NSDate *recipePubDate;
 
 @end

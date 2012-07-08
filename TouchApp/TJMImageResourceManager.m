@@ -36,9 +36,9 @@ NSInteger TwoMonths = -5184000;
 
 + (id)sharedInstance
 {
-//  DEFINE_SHARED_INSTANCE_USING_BLOCK(^{
+  DEFINE_SHARED_INSTANCE_USING_BLOCK(^{
     return [[self alloc] init];
-//  });
+  });
 }
 
 
