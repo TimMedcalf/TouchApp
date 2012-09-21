@@ -86,22 +86,22 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
   self = [super init];
   if (self)
   {
-    NSString *tmpURLString = [dict objectForKey:Key_TJMImageResource_imageURL];
+    NSString *tmpURLString = dict[Key_TJMImageResource_imageURL];
     if (tmpURLString)
     {
       NSURL *tmpURL = [[NSURL alloc] initWithString:tmpURLString];
       self.imageURL = tmpURL;
     }
-    self.lastModified = [dict objectForKey:Key_TJMImageResource_lastModified];
+    self.lastModified = dict[Key_TJMImageResource_lastModified];
     //NSLog(@"LM! = %@",self.lastModified);
-    self.etag = [dict objectForKey:Key_TJMImageResource_etag];
+    self.etag = dict[Key_TJMImageResource_etag];
     //NSLog(@"Etag! = %@",self.etag);
-    self.localFileName = [dict objectForKey:Key_TJMImageResource_localFileName];
-    self.localFileExtension = [dict objectForKey:Key_TJMImageResource_localFileExtension];
-    self.lastChecked = [dict objectForKey:Key_TJMImageResource_lastChecked];
-    self.lastAccessed = [dict objectForKey:Key_TJMImageResource_lastAccessed];
+    self.localFileName = dict[Key_TJMImageResource_localFileName];
+    self.localFileExtension = dict[Key_TJMImageResource_localFileExtension];
+    self.lastChecked = dict[Key_TJMImageResource_lastChecked];
+    self.lastAccessed = dict[Key_TJMImageResource_lastAccessed];
     if (!self.lastAccessed) self.lastAccessed = [NSDate distantPast];
-    self.thumbnailPath = [dict objectForKey:Key_TJMImageResource_thumbnailPath];
+    self.thumbnailPath = dict[Key_TJMImageResource_thumbnailPath];
   }
   return self;
 }
@@ -109,14 +109,14 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
 - (NSDictionary *)dictionaryRepresentation
 {
   NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:7];
-  if (self.imageURL) [dict setObject:[self.imageURL absoluteString] forKey:Key_TJMImageResource_imageURL];
-  if (self.lastModified) [dict setObject:self.lastModified forKey:Key_TJMImageResource_lastModified];
-  if (self.etag) [dict setObject:self.etag forKey:Key_TJMImageResource_etag];
-  if (self.localFileName) [dict setObject:self.localFileName forKey:Key_TJMImageResource_localFileName];
-  if (self.localFileExtension) [dict setObject:self.localFileExtension forKey:Key_TJMImageResource_localFileExtension];
-  if (self.lastChecked) [dict setObject:self.lastChecked forKey:Key_TJMImageResource_lastChecked];
-  if (self.lastAccessed) [dict setObject:self.lastAccessed forKey:Key_TJMImageResource_lastAccessed];
-  if (self.thumbnailPath) [dict setObject:self.thumbnailPath forKey:Key_TJMImageResource_thumbnailPath];
+  if (self.imageURL) dict[Key_TJMImageResource_imageURL] = [self.imageURL absoluteString];
+  if (self.lastModified) dict[Key_TJMImageResource_lastModified] = self.lastModified;
+  if (self.etag) dict[Key_TJMImageResource_etag] = self.etag;
+  if (self.localFileName) dict[Key_TJMImageResource_localFileName] = self.localFileName;
+  if (self.localFileExtension) dict[Key_TJMImageResource_localFileExtension] = self.localFileExtension;
+  if (self.lastChecked) dict[Key_TJMImageResource_lastChecked] = self.lastChecked;
+  if (self.lastAccessed) dict[Key_TJMImageResource_lastAccessed] = self.lastAccessed;
+  if (self.thumbnailPath) dict[Key_TJMImageResource_thumbnailPath] = self.thumbnailPath;
   return dict;
 }
 
@@ -263,8 +263,8 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
 {
   //store the etag and lastModified strings if they're present
   //NSLog(@"%@",[(NSHTTPURLResponse *)response allHeaderFields]);
-  self.etag = [[(NSHTTPURLResponse *)response allHeaderFields] objectForKey:@"Etag"];
-  self.lastModified = [[(NSHTTPURLResponse *)response allHeaderFields] objectForKey:@"Last-Modified"];
+  self.etag = [(NSHTTPURLResponse *)response allHeaderFields][@"Etag"];
+  self.lastModified = [(NSHTTPURLResponse *)response allHeaderFields][@"Last-Modified"];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error

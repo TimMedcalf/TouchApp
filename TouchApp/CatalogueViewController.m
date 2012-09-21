@@ -229,7 +229,7 @@ static NSInteger CellSubTitleTag = 51;
       }
       // so, now to configure the cell...
       // first grab hold of the cell elements we need
-      CatalogueItem *currentItem = [self.catList.items objectAtIndex:indexPath.row];
+      CatalogueItem *currentItem = (self.catList.items)[indexPath.row];
       
       UILabel *titleLabel = (UILabel *)[cell viewWithTag:CellTitleTag];
       UILabel *subtitleLabel = (UILabel *)[cell viewWithTag:CellSubTitleTag];
@@ -270,7 +270,7 @@ static NSInteger CellSubTitleTag = 51;
   //return immediately if user selected header image
   if (indexPath.section == 0) return;
 
-  CatalogueItem *curItem = [self.catList.items objectAtIndex:indexPath.row];
+  CatalogueItem *curItem = (self.catList.items)[indexPath.row];
   
   NewCatalogueItemViewController *controller = [[NewCatalogueItemViewController alloc] initWithNibName:@"NewCatalogueItemViewController" bundle:nil];
   controller.item = curItem;

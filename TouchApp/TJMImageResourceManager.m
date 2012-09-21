@@ -52,7 +52,7 @@ NSInteger TwoMonths = -5184000;
     for (NSDictionary  *itemDict in tmpArray)
     {
       TJMImageResource *tmpImage = [[TJMImageResource alloc] initWithDictionary:itemDict];
-      [tmpDict setObject:tmpImage forKey:[tmpImage.imageURL absoluteString]];
+      tmpDict[[tmpImage.imageURL absoluteString]] = tmpImage;
     }
     self.imageResourceDict = tmpDict;
   }
@@ -74,7 +74,7 @@ NSInteger TwoMonths = -5184000;
   for (NSString *imageKey in self.imageResourceDict)
   {
     //NSLog(@"Save %@",imageKey);
-    TJMImageResource *tmpRes = [self.imageResourceDict objectForKey:imageKey];
+    TJMImageResource *tmpRes = (self.imageResourceDict)[imageKey];
     if ([tmpRes.lastAccessed timeIntervalSinceNow] > TwoMonths)
       //if the interval is greater than negative 2 months then they've used it in the last two months - add it to the save list
       [saveArray addObject:[tmpRes dictionaryRepresentation]];
@@ -117,12 +117,12 @@ NSInteger TwoMonths = -5184000;
   TJMImageResource *resource = nil;
   if (imageURL)
   {
-    resource = [self.imageResourceDict objectForKey:[imageURL absoluteString]];
+    resource = (self.imageResourceDict)[[imageURL absoluteString]];
     //did we get one?
     if (!resource)
     {
       resource = [[TJMImageResource alloc] initWithURL:imageURL];
-      [self.imageResourceDict setObject:resource forKey:[resource.imageURL absoluteString]];
+      (self.imageResourceDict)[[resource.imageURL absoluteString]] = resource;
       //[self saveToFile];
     }
   }

@@ -219,7 +219,7 @@ static NSInteger iPadThumbnailRowCount = 8;
     NSInteger tmpIndex = (indexPath.row * self.thumbnailRowCount) + i;
     if (tmpIndex < [self.imageList.items count])
     {
-      ImageItem *currentItem = [self.imageList.items objectAtIndex:tmpIndex];
+      ImageItem *currentItem = (self.imageList.items)[tmpIndex];
       //assign the image
       TJMImageResourceView *res = (TJMImageResourceView *)[cell viewWithTag:(CellImageTag + i)];
       res.index = tmpIndex;

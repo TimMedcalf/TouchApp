@@ -20,20 +20,20 @@ NSString *const Key_RCat_Title = @"title";
 #pragma mark overrides from FeedItem
 - (void)procesSavedDictionary:(NSDictionary *)dict
 {
-  self.recipeId = [dict objectForKey:Key_RCat_Id];
-  self.recipeTitle = [dict objectForKey:Key_RCat_Title];
+  self.recipeId = dict[Key_RCat_Id];
+  self.recipeTitle = dict[Key_RCat_Title];
 }
 
 - (void)processXMLDictionary:(NSDictionary *)dict andBaseURL:(NSURL *)baseURL
 { 
-  self.recipeId = [dict objectForKey:Key_RCat_Id];
-  self.recipeTitle = [dict objectForKey:Key_RCat_Title];
+  self.recipeId = dict[Key_RCat_Id];
+  self.recipeTitle = dict[Key_RCat_Title];
 }
 
 - (void)populateDictionary:(NSMutableDictionary *)dict
 {
-  if (self.recipeId) [dict setObject:self.recipeId forKey:Key_RCat_Id];
-  if (self.recipeTitle) [dict setObject:self.recipeTitle forKey:Key_RCat_Title];
+  if (self.recipeId) dict[Key_RCat_Id] = self.recipeId;
+  if (self.recipeTitle) dict[Key_RCat_Title] = self.recipeTitle;
 }
 
 - (NSComparisonResult)compare:(RecipeCategoryItem *)item

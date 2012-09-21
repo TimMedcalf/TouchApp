@@ -31,8 +31,8 @@
 {
   NSDictionary *dictionary = [[NSDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource: @"RecipeCategories" ofType:@"plist"]]; 
 	NSString *returnVal;
-	if ([dictionary objectForKey:self.recipeCategory]){
-		returnVal = [NSString stringWithFormat:@"http://www.touchmusic.org.uk/recipebook/%@",[dictionary objectForKey:self.recipeCategory]];
+	if (dictionary[self.recipeCategory]){
+		returnVal = [NSString stringWithFormat:@"http://www.touchmusic.org.uk/recipebook/%@",dictionary[self.recipeCategory]];
 	}
 	else {
 		returnVal = [NSString stringWithFormat:@"http://www.touchmusic.org.uk/recipebook/%@.xml",[self.recipeCategory lowercaseString]];

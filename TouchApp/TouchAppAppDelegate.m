@@ -35,14 +35,14 @@ void uncaughtExceptionHandler(NSException *exception);
 #ifndef DEVMODE
   NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
   [FlurryAnalytics startSession:@"EG1Y8QTDSQI2YWEFXFDJ"];
-  [FlurryAnalytics logEvent:@"DeviceInfo" withParameters:[NSDictionary dictionaryWithObject:[[UIDevice currentDevice] systemVersion] forKey:@"Firmware"]];
+  [FlurryAnalytics logEvent:@"DeviceInfo" withParameters:@{@"Firmware": [[UIDevice currentDevice] systemVersion]}];
   [FlurryAnalytics logAllPageViews:_tabBarController];
 #endif  
   //clear the cache out whenever it's a new version - allows us to change data formats without worrying
   //about whatever is stored already on the device
   NSUserDefaults *Def = [NSUserDefaults standardUserDefaults];
   NSString *Ver = [Def stringForKey:@"Version"];
-  NSString *CurVer = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleVersionKey];
+  NSString *CurVer = [[NSBundle mainBundle] infoDictionary][(NSString*)kCFBundleVersionKey];
   if(Ver == nil || [Ver compare:CurVer] != 0)
   {
     if(Ver == nil)
@@ -92,7 +92,7 @@ void uncaughtExceptionHandler(NSException *exception);
   
   
   self.tabBarController = [[UITabBarController alloc] init];
-  self.tabBarController.viewControllers = [NSArray arrayWithObjects:newsNav, photoNav, catNav, radioNav, recipeNav, nil];
+  self.tabBarController.viewControllers = @[newsNav, photoNav, catNav, radioNav, recipeNav];
   self.window.rootViewController = self.tabBarController;
   [self.window makeKeyAndVisible];
   return YES;

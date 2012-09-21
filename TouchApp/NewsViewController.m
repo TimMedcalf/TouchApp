@@ -190,7 +190,7 @@ static NSInteger CellSubTitleTag = 51;
   }
   // so, now to configure the cell...
   // first grab hold of the cell elements we need
-  NewsItem *currentItem = [self.newsList.items objectAtIndex:indexPath.row];
+  NewsItem *currentItem = (self.newsList.items)[indexPath.row];
   
   UILabel *titleLabel = (UILabel *)[cell viewWithTag:CellTitleTag];
   UILabel *subtitleLabel = (UILabel *)[cell viewWithTag:CellSubTitleTag];
@@ -211,7 +211,7 @@ static NSInteger CellSubTitleTag = 51;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  NewsItem *curItem = [self.newsList.items objectAtIndex:indexPath.row];
+  NewsItem *curItem = (self.newsList.items)[indexPath.row];
   HTMLItemViewController *controller = [[HTMLItemViewController alloc] initWithNibName:@"HTMLItemViewController" bundle:nil];
   controller.HTMLString = curItem.htmlForWebView;
   [self.navigationController pushViewController:controller animated:YES];

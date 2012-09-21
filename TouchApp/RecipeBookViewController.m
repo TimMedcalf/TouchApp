@@ -207,7 +207,7 @@ static NSInteger CellSubTitleTag = 51;
       }
       // so, now to configure the cell...
       // first grab hold of the cell elements we need
-      RecipeItem *currentItem = [self.recipeList.items objectAtIndex:indexPath.row];
+      RecipeItem *currentItem = (self.recipeList.items)[indexPath.row];
       
       UILabel *titleLabel = (UILabel *)[cell viewWithTag:CellTitleTag];
       UILabel *subtitleLabel = (UILabel *)[cell viewWithTag:CellSubTitleTag];
@@ -246,7 +246,7 @@ static NSInteger CellSubTitleTag = 51;
   //return immediately if user selected header image
   if (indexPath.section == 0) return;
   
-  RecipeItem *curItem = [self.recipeList.items objectAtIndex:indexPath.row];
+  RecipeItem *curItem = (self.recipeList.items)[indexPath.row];
   RecipeItemViewController *controller = [[RecipeItemViewController alloc] initWithNibName:@"RecipeItemViewController" bundle:nil];
   controller.HTMLString = curItem.htmlForWebView;
   controller.recipeItem = curItem;

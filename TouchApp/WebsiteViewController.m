@@ -74,10 +74,8 @@
   if (!self.openLinksInNewView)
   {
     UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:
-                                            [NSArray arrayWithObjects:
-                                             [UIImage imageNamed:@"Arrow-Left.png"],
-                                             [UIImage imageNamed:@"Arrow-Right.png"],
-                                             nil]];
+                                            @[[UIImage imageNamed:@"Arrow-Left.png"],
+                                             [UIImage imageNamed:@"Arrow-Right.png"]]];
     
     [segmentedControl addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];
     segmentedControl.frame = CGRectMake(0, 0, 70, 30);

@@ -35,11 +35,11 @@
   
   if ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) || ([[UIScreen mainScreen] scale] > 1))
   {
-    [parameters setObject:@"url_l,url_t" forKey:@"extras"];
+    parameters[@"extras"] = @"url_l,url_t";
   }
   else
   {
-    [parameters setObject:@"url_z,url_t" forKey:@"extras"];   
+    parameters[@"extras"] = @"url_z,url_t";   
   }
 	
   return [NSString stringWithFormat:@"http://api.flickr.com/services/rest/?%@", [parameters gtm_httpArgumentsString]];

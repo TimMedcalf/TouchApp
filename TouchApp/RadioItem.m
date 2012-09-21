@@ -36,43 +36,43 @@ NSString *const Key_ImageOverride = @"imageURL";
 #pragma mark overrides from FeedItem
 - (void)procesSavedDictionary:(NSDictionary *)dict
 {
-  self.title = [dict objectForKey:Key_Radio_Title];
-  self.titleLabel = [dict objectForKey:Key_Radio_TitleLabel];
-  self.author = [dict objectForKey:Key_Radio_Author];
-  self.summary = [dict objectForKey:Key_Radio_Summary];
-  self.subtitle = [dict objectForKey:Key_Radio_SubTitle];
-  self.pubDate = [dict objectForKey:Key_Radio_PubDate];
-  self.link = [dict objectForKey:Key_Radio_Link];
-  self.episode_duration = [dict objectForKey:Key_Radio_Duration];
+  self.title = dict[Key_Radio_Title];
+  self.titleLabel = dict[Key_Radio_TitleLabel];
+  self.author = dict[Key_Radio_Author];
+  self.summary = dict[Key_Radio_Summary];
+  self.subtitle = dict[Key_Radio_SubTitle];
+  self.pubDate = dict[Key_Radio_PubDate];
+  self.link = dict[Key_Radio_Link];
+  self.episode_duration = dict[Key_Radio_Duration];
 }
 
 - (void)processXMLDictionary:(NSDictionary *)dict andBaseURL:(NSURL *)baseURL
 { 
-  self.title = [dict objectForKey:Key_Radio_Title];
-  self.titleLabel = [dict objectForKey:Key_Radio_TitleLabel];
-  self.author = [dict objectForKey:Key_Radio_Author];
+  self.title = dict[Key_Radio_Title];
+  self.titleLabel = dict[Key_Radio_TitleLabel];
+  self.author = dict[Key_Radio_Author];
   
-  self.summary = [[dict objectForKey:Key_Radio_Summary]
+  self.summary = [dict[Key_Radio_Summary]
                   stringByReplacingOccurrencesOfString:@"\n\n" withString:@"</p><p>"];  
     
-  self.subtitle = [dict objectForKey:Key_Radio_SubTitle];
+  self.subtitle = dict[Key_Radio_SubTitle];
   NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
   [inputFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
   [inputFormatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss z"];
-  NSString *dateStr = [dict objectForKey:Key_Radio_PubDate];
+  NSString *dateStr = dict[Key_Radio_PubDate];
   self.pubDate = [inputFormatter dateFromString:dateStr];
-  self.link = [[[dict objectForKey:Key_Radio_Link] 
+  self.link = [[dict[Key_Radio_Link] 
                stringByReplacingOccurrencesOfString:@"touchradio" 
                 withString:@"touchiphoneradio"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-  self.episode_duration = [dict objectForKey:Key_Radio_Duration];
+  self.episode_duration = dict[Key_Radio_Duration];
     
  
   NSURL * tmpURL;
   
   //first check if there is an image override location
-  if ([dict objectForKey:Key_ImageOverride])
+  if (dict[Key_ImageOverride])
   {
-    NSString *tmpStr = [dict objectForKey:Key_ImageOverride];
+    NSString *tmpStr = dict[Key_ImageOverride];
     if ([tmpStr length] > 0)
     {
       tmpURL = [[NSURL alloc] initWithString:tmpStr];
@@ -83,7 +83,7 @@ NSString *const Key_ImageOverride = @"imageURL";
   //if not, generate an image url as per normal...
   if (!self.imageURL)
   {
-    tmpURL = [[NSURL alloc] initWithString:[[[dict objectForKey:Key_Radio_Link] 
+    tmpURL = [[NSURL alloc] initWithString:[[dict[Key_Radio_Link] 
                                              stringByReplacingOccurrencesOfString:@".mp3" 
                                              withString:@".jpg"]
                                             stringByReplacingOccurrencesOfString:@"touchradio/" 
@@ -97,14 +97,14 @@ NSString *const Key_ImageOverride = @"imageURL";
 
 - (void)populateDictionary:(NSMutableDictionary *)dict
 {
-  if (self.title) [dict setObject:self.title forKey:Key_Radio_Title];
-  if (self.titleLabel) [dict setObject:self.titleLabel forKey:Key_Radio_TitleLabel];
-  if (self.author) [dict setObject:self.author forKey:Key_Radio_Author];
-  if (self.summary) [dict setObject:self.summary forKey:Key_Radio_Summary];
-  if (self.subtitle) [dict setObject:self.subtitle forKey:Key_Radio_SubTitle];
-  if (self.pubDate) [dict setObject:self.pubDate forKey:Key_Radio_PubDate];
-  if (self.link) [dict setObject:self.link forKey:Key_Radio_Link];
-  if (self.episode_duration) [dict setObject:self.episode_duration forKey:Key_Radio_Duration];    
+  if (self.title) dict[Key_Radio_Title] = self.title;
+  if (self.titleLabel) dict[Key_Radio_TitleLabel] = self.titleLabel;
+  if (self.author) dict[Key_Radio_Author] = self.author;
+  if (self.summary) dict[Key_Radio_Summary] = self.summary;
+  if (self.subtitle) dict[Key_Radio_SubTitle] = self.subtitle;
+  if (self.pubDate) dict[Key_Radio_PubDate] = self.pubDate;
+  if (self.link) dict[Key_Radio_Link] = self.link;
+  if (self.episode_duration) dict[Key_Radio_Duration] = self.episode_duration;    
 }
 
 - (NSComparisonResult)compare:(RadioItem *)item

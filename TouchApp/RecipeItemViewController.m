@@ -61,7 +61,7 @@
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
   if (result == MFMailComposeResultSent)
   {
-    [FlurryAnalytics logEvent:@"Recipes" withParameters:[NSDictionary dictionaryWithObject:self.recipeItem.recipeExcerpt forKey:@"Emailed"]];
+    [FlurryAnalytics logEvent:@"Recipes" withParameters:@{@"Emailed": self.recipeItem.recipeExcerpt}];
   }
 	[self becomeFirstResponder];
 	[self dismissModalViewControllerAnimated:YES];

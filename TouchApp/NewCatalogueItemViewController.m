@@ -41,12 +41,12 @@
 }
 
 - (void)play {
-  [FlurryAnalytics logEvent:@"Catalogue" withParameters:[NSDictionary dictionaryWithObject:_item.title forKey:@"Played"]];
+  [FlurryAnalytics logEvent:@"Catalogue" withParameters:@{@"Played": _item.title}];
   [[TJMAudioCenter sharedInstance] playURL:[NSURL URLWithString:self.item.mp3SampleURL]];
 }
 
 - (void)buy {
-    [FlurryAnalytics logEvent:@"Catalogue" withParameters:[NSDictionary dictionaryWithObject:_item.title forKey:@"BuyPressed"]];
+    [FlurryAnalytics logEvent:@"Catalogue" withParameters:@{@"BuyPressed": _item.title}];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.item.itunesURL]];
 }
 

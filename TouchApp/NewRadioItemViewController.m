@@ -55,7 +55,7 @@
 
 - (void)play {
   //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
-  [FlurryAnalytics logEvent:@"Radio" withParameters:[NSDictionary dictionaryWithObject:_item.titleLabel forKey:@"Played"]];
+  [FlurryAnalytics logEvent:@"Radio" withParameters:@{@"Played": _item.titleLabel}];
   //NSLog(@"Trying to play - %@",self.item.link);
   [[TJMAudioCenter sharedInstance] playURL:[NSURL URLWithString:self.item.link]];
 }

@@ -123,7 +123,7 @@
   
   UINavigationItem *tmpItem = [[UINavigationItem alloc] initWithTitle:@""];
   self.customNavigationItem = tmpItem;
-  [self.customNavigationBar setItems:[NSArray arrayWithObject:self.customNavigationItem]];
+  [self.customNavigationBar setItems:@[self.customNavigationItem]];
   
   [self.view addSubview:self.customNavigationBar];
   
@@ -184,7 +184,7 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
 	if (buttonIndex != [actionSheet cancelButtonIndex]) 
   { 
-    ImageItem *img = [self.imageList.items objectAtIndex:[self centerPhotoIndex]];
+    ImageItem *img = (self.imageList.items)[[self centerPhotoIndex]];
     TJMImageResource *tmpRes = [[TJMImageResourceManager sharedInstance] resourceForURL:img.imageURL];
     UIImage *image = [tmpRes getImage];
     UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
@@ -414,24 +414,24 @@
 - (ImageItem *)imageAtIndex:(NSUInteger)index {
 
   //try to ensure the thumbnails we need are going to be there
-  ImageItem *item = [self.imageList.items objectAtIndex:index];
+  ImageItem *item = (self.imageList.items)[index];
   [[[TJMImageResourceManager sharedInstance] resourceForURL:item.thumbnailURL]cacheImage];
   
   //try to ensure the thumbnails we need are going to be there
   if (index < self.imageCount -1)
   {
-    ImageItem *item = [self.imageList.items objectAtIndex:index+1];
+    ImageItem *item = (self.imageList.items)[index+1];
     [[[TJMImageResourceManager sharedInstance] resourceForURL:item.thumbnailURL]cacheImage];
   }
   
   //try to ensure the thumbnails we need are going to be there
   if (index > 0)
   {
-    ImageItem *item = [self.imageList.items objectAtIndex:index-1];
+    ImageItem *item = (self.imageList.items)[index-1];
     [[[TJMImageResourceManager sharedInstance] resourceForURL:item.thumbnailURL]cacheImage];
   }
   
-  return [self.imageList.items objectAtIndex:index];
+  return (self.imageList.items)[index];
 }
 
 - (NSUInteger)imageCount {

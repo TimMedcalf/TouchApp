@@ -29,35 +29,35 @@ NSString *const Key_ImageItem_ThumbnailHeight = @"thumbnailHeight";
 #pragma mark overrides from FeedItem
 - (void)procesSavedDictionary:(NSDictionary *)dict
 {
-  if ([dict objectForKey:Key_Image_Saved])
+  if (dict[Key_Image_Saved])
   {
-    NSURL *tmpURL = [[NSURL alloc] initWithString:[dict objectForKey:Key_Image_Saved]];
+    NSURL *tmpURL = [[NSURL alloc] initWithString:dict[Key_Image_Saved]];
     self.imageURL = tmpURL;
   }
-  if ([dict objectForKey:Key_Thumbnail_Saved])
+  if (dict[Key_Thumbnail_Saved])
   {
-    NSURL *tmpURL = [[NSURL alloc] initWithString:[dict objectForKey:Key_Thumbnail_Saved]];
+    NSURL *tmpURL = [[NSURL alloc] initWithString:dict[Key_Thumbnail_Saved]];
     self.thumbnailURL = tmpURL;
   }
   NSNumber *tmpNum;
-  if ([dict objectForKey:Key_ImageItem_ImageWidth])
+  if (dict[Key_ImageItem_ImageWidth])
   {
-    tmpNum = [dict objectForKey:Key_ImageItem_ImageWidth];
+    tmpNum = dict[Key_ImageItem_ImageWidth];
     self.imageWidth = [tmpNum integerValue];
   }
-  if ([dict objectForKey:Key_ImageItem_ImageHeight])
+  if (dict[Key_ImageItem_ImageHeight])
   {
-    tmpNum = [dict objectForKey:Key_ImageItem_ImageHeight];
+    tmpNum = dict[Key_ImageItem_ImageHeight];
     self.imageHeight = [tmpNum integerValue];
   }
-  if ([dict objectForKey:Key_ImageItem_ThumbnailWidth])
+  if (dict[Key_ImageItem_ThumbnailWidth])
   {
-    tmpNum = [dict objectForKey:Key_ImageItem_ThumbnailWidth];
+    tmpNum = dict[Key_ImageItem_ThumbnailWidth];
     self.thumbnailWidth = [tmpNum integerValue];
   }
-  if ([dict objectForKey:Key_ImageItem_ThumbnailHeight])
+  if (dict[Key_ImageItem_ThumbnailHeight])
   {
-    tmpNum = [dict objectForKey:Key_ImageItem_ThumbnailHeight];
+    tmpNum = dict[Key_ImageItem_ThumbnailHeight];
     self.thumbnailHeight = [tmpNum integerValue];
   }
 
@@ -98,12 +98,12 @@ NSString *const Key_ImageItem_ThumbnailHeight = @"thumbnailHeight";
 
 - (void)populateDictionary:(NSMutableDictionary *)dict
 {
-  if (self.imageURL) [dict setObject:[self.imageURL absoluteString] forKey:Key_Image_Saved];
-  if (self.thumbnailURL) [dict setObject:[self.thumbnailURL absoluteString] forKey:Key_Thumbnail_Saved];
-  [dict setObject:[NSNumber numberWithInteger:self.imageWidth] forKey:Key_ImageItem_ImageWidth];
-  [dict setObject:[NSNumber numberWithInteger:self.imageHeight] forKey:Key_ImageItem_ImageHeight];
-  [dict setObject:[NSNumber numberWithInteger:self.thumbnailWidth] forKey:Key_ImageItem_ThumbnailWidth];
-  [dict setObject:[NSNumber numberWithInteger:self.thumbnailHeight] forKey:Key_ImageItem_ThumbnailHeight];
+  if (self.imageURL) dict[Key_Image_Saved] = [self.imageURL absoluteString];
+  if (self.thumbnailURL) dict[Key_Thumbnail_Saved] = [self.thumbnailURL absoluteString];
+  dict[Key_ImageItem_ImageWidth] = @(self.imageWidth);
+  dict[Key_ImageItem_ImageHeight] = @(self.imageHeight);
+  dict[Key_ImageItem_ThumbnailWidth] = @(self.thumbnailWidth);
+  dict[Key_ImageItem_ThumbnailHeight] = @(self.thumbnailHeight);
 }
 
 - (NSComparisonResult)compare:(ImageItem *)item

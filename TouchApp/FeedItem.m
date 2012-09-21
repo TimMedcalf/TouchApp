@@ -32,7 +32,7 @@ NSString *const FeedItem_ImageURLKey = @"imageURL";
   self = [super init];
   if (self)
   {
-    self.imageURL = [NSURL URLWithString:[dict objectForKey:FeedItem_ImageURLKey]];
+    self.imageURL = [NSURL URLWithString:dict[FeedItem_ImageURLKey]];
     [self procesSavedDictionary:dict];
   }
   return self;
@@ -62,7 +62,7 @@ NSString *const FeedItem_ImageURLKey = @"imageURL";
 - (NSMutableDictionary *)dictionaryRepresentation
 {
   NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:6];
-  if (self.imageURL) [dict setObject:[self.imageURL absoluteString] forKey:FeedItem_ImageURLKey];
+  if (self.imageURL) dict[FeedItem_ImageURLKey] = [self.imageURL absoluteString];
   [self populateDictionary:dict];
   return dict;
 }

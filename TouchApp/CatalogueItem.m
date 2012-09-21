@@ -43,61 +43,61 @@ NSString *const Key_Cat_Publisher = @"publisher";
 #pragma mark overrides from FeedItem
 - (void)procesSavedDictionary:(NSDictionary *)dict
 {
-  self.title = [dict objectForKey:Key_Cat_Title];
-  self.artist = [dict objectForKey:Key_Cat_Artist];
-  self.catalogueNumber = [dict objectForKey:Key_Cat_CatalogueNumber];
-  self.description = [dict objectForKey:Key_Cat_Description];
-  self.mp3SampleURL = [dict objectForKey:Key_Cat_MP3SampleURL];
-  self.releaseURL = [dict objectForKey:Key_Cat_ReleaseURL];
-  self.itunesURL = [dict objectForKey:Key_Cat_Itunes_URL];
-  self.releaseDateString = [dict objectForKey:Key_Cat_ReleaseDate];
-  self.releaseDuration = [dict objectForKey:Key_Cat_ReleaseDuration];
-  self.trackListing = [dict objectForKey:Key_Cat_TrackListing];
-  self.publisher = [dict objectForKey:Key_Cat_Publisher];
+  self.title = dict[Key_Cat_Title];
+  self.artist = dict[Key_Cat_Artist];
+  self.catalogueNumber = dict[Key_Cat_CatalogueNumber];
+  self.description = dict[Key_Cat_Description];
+  self.mp3SampleURL = dict[Key_Cat_MP3SampleURL];
+  self.releaseURL = dict[Key_Cat_ReleaseURL];
+  self.itunesURL = dict[Key_Cat_Itunes_URL];
+  self.releaseDateString = dict[Key_Cat_ReleaseDate];
+  self.releaseDuration = dict[Key_Cat_ReleaseDuration];
+  self.trackListing = dict[Key_Cat_TrackListing];
+  self.publisher = dict[Key_Cat_Publisher];
 }
 
 - (void)processXMLDictionary:(NSDictionary *)dict andBaseURL:(NSURL *)baseURL
 { 
   //lets get the parent fields out the way first
-  NSString *tmpImage = [dict objectForKey:Key_Cat_CoverArt];
+  NSString *tmpImage = dict[Key_Cat_CoverArt];
   if (tmpImage)
   {
     NSURL *tmpURL = [[NSURL alloc] initWithString:tmpImage relativeToURL:baseURL];
     self.imageURL = tmpURL;
   }
   //okay, now the stuff that's unique to us...
-  self.title = [dict objectForKey:Key_Cat_Title];
-  self.artist = [dict objectForKey:Key_Cat_Artist];
-  self.catalogueNumber = [dict objectForKey:Key_Cat_CatalogueNumber];
+  self.title = dict[Key_Cat_Title];
+  self.artist = dict[Key_Cat_Artist];
+  self.catalogueNumber = dict[Key_Cat_CatalogueNumber];
     
-  self.description = [[[dict objectForKey:Key_Cat_Description]
+  self.description = [[dict[Key_Cat_Description]
                       stringByReplacingOccurrencesOfString:@"\n\n" 
                       withString:@"</p><p>"] stringByReplacingOccurrencesOfString:@"\r\n" withString:@"</p><p>"];
 
-  self.mp3SampleURL = [[dict objectForKey:Key_Cat_MP3SampleURL] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-  self.releaseURL = [[dict objectForKey:Key_Cat_ReleaseURL] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-  self.itunesURL = [[dict objectForKey:Key_Cat_Itunes_URL] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-  self.releaseDateString = [dict objectForKey:Key_Cat_ReleaseDate];
-  self.releaseDuration = [dict objectForKey:Key_Cat_ReleaseDuration];
-  self.trackListing = [[dict objectForKey:Key_Cat_TrackListing]
+  self.mp3SampleURL = [dict[Key_Cat_MP3SampleURL] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+  self.releaseURL = [dict[Key_Cat_ReleaseURL] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+  self.itunesURL = [dict[Key_Cat_Itunes_URL] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+  self.releaseDateString = dict[Key_Cat_ReleaseDate];
+  self.releaseDuration = dict[Key_Cat_ReleaseDuration];
+  self.trackListing = [dict[Key_Cat_TrackListing]
                          stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
-  self.publisher = [dict objectForKey:Key_Cat_Publisher];
+  self.publisher = dict[Key_Cat_Publisher];
   //NSLog(@"%@ - %@ - %@", self.catalogueNumber, self.artist, self.title);
 }
 
 - (void)populateDictionary:(NSMutableDictionary *)dict
 {
-  [dict setObject:self.title forKey:Key_Cat_Title];
-  [dict setObject:self.artist forKey:Key_Cat_Artist];
-  [dict setObject:self.catalogueNumber forKey:Key_Cat_CatalogueNumber];
-  [dict setObject:self.description forKey:Key_Cat_Description];
-  [dict setObject:self.mp3SampleURL forKey:Key_Cat_MP3SampleURL];
-  [dict setObject:self.releaseURL forKey:Key_Cat_ReleaseURL];
-  [dict setObject:self.itunesURL forKey:Key_Cat_Itunes_URL];
-  [dict setObject:self.releaseDateString forKey:Key_Cat_ReleaseDate];
-  [dict setObject:self.releaseDuration forKey:Key_Cat_ReleaseDuration];
-  [dict setObject:self.trackListing forKey:Key_Cat_TrackListing];
-  [dict setObject:self.publisher forKey:Key_Cat_Publisher];
+  dict[Key_Cat_Title] = self.title;
+  dict[Key_Cat_Artist] = self.artist;
+  dict[Key_Cat_CatalogueNumber] = self.catalogueNumber;
+  dict[Key_Cat_Description] = self.description;
+  dict[Key_Cat_MP3SampleURL] = self.mp3SampleURL;
+  dict[Key_Cat_ReleaseURL] = self.releaseURL;
+  dict[Key_Cat_Itunes_URL] = self.itunesURL;
+  dict[Key_Cat_ReleaseDate] = self.releaseDateString;
+  dict[Key_Cat_ReleaseDuration] = self.releaseDuration;
+  dict[Key_Cat_TrackListing] = self.trackListing;
+  dict[Key_Cat_Publisher] = self.publisher;
 }
 
 - (NSString *)htmlForWebView

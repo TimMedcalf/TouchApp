@@ -192,7 +192,7 @@ static NSInteger CellTitleTag = 50;
       }
       // so, now to configure the cell...
       // first grab hold of the cell elements we need
-      RecipeCategoryItem *currentItem = [self.catList.items objectAtIndex:indexPath.row];
+      RecipeCategoryItem *currentItem = (self.catList.items)[indexPath.row];
       
       UILabel *titleLabel = (UILabel *)[cell viewWithTag:CellTitleTag];
       //UILabel *subtitleLabel = (UILabel *)[cell viewWithTag:CellSubTitleTag];
@@ -233,7 +233,7 @@ static NSInteger CellTitleTag = 50;
   //return immediately if user selected header image
   if (indexPath.section == 0) return;
   
-  RecipeCategoryItem *currentItem = [self.catList.items objectAtIndex:indexPath.row];
+  RecipeCategoryItem *currentItem = (self.catList.items)[indexPath.row];
   
   //RecipeBookViewController *controller = [[RecipeBookViewController alloc] initWithNibName:@"RecipeBookViewController" bundle:nil];
   RecipeBookViewController *controller = [[RecipeBookViewController alloc] initWithStyle:UITableViewStylePlain];

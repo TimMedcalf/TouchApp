@@ -37,27 +37,27 @@ NSString *const XML_PubDate = @"pubDate";
 #pragma mark overrides
 - (void)procesSavedDictionary:(NSDictionary *)dict
 {
-  self.pubDate = [dict objectForKey:PubDateKey];
-  self.link = [dict objectForKey:LinkKey];
-  self.title = [dict objectForKey:TitleKey];
-  self.description = [dict objectForKey:DescriptionKey];
+  self.pubDate = dict[PubDateKey];
+  self.link = dict[LinkKey];
+  self.title = dict[TitleKey];
+  self.description = dict[DescriptionKey];
 }
 
 - (void)processXMLDictionary:(NSDictionary *)dict andBaseURL:(NSURL *)baseURL
 {
   //NSLog(@"News Dict: %@", dict);
-  self.pubDate = [dict objectForKey:XML_PubDate];
-  self.link = [dict objectForKey:XML_Link];
-  self.title = [dict objectForKey:XML_Title];
-  self.description = [dict objectForKey:XML_Description];
+  self.pubDate = dict[XML_PubDate];
+  self.link = dict[XML_Link];
+  self.title = dict[XML_Title];
+  self.description = dict[XML_Description];
 }
 
 - (void)populateDictionary:(NSMutableDictionary *)dict
 {
-  if (self.pubDate) [dict setObject:self.pubDate forKey:PubDateKey];
-  if (self.link) [dict setObject:self.link forKey:LinkKey];
-  if (self.title) [dict setObject:self.title forKey:TitleKey];
-  if (self.description) [dict setObject:self.description forKey:DescriptionKey];
+  if (self.pubDate) dict[PubDateKey] = self.pubDate;
+  if (self.link) dict[LinkKey] = self.link;
+  if (self.title) dict[TitleKey] = self.title;
+  if (self.description) dict[DescriptionKey] = self.description;
 }
 
 - (NSString *)htmlForWebView

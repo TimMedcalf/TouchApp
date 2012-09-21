@@ -140,32 +140,32 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 - (NSDictionary *)saveItemsToDictionary
 {
   NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:2];
-  [dict setObject:self.lastRefresh forKey:Key_LastRefresh];
-  if (self.etag) [dict setObject:self.etag forKey:Key_Feed_Etag];
-  if (self.lastUpdated) [dict setObject:self.lastUpdated forKey:Key_Feed_LastUpdated];
-  if (self.baseURL) [dict setObject:[self.baseURL absoluteString] forKey:Key_Feed_BaseURL];
+  dict[Key_LastRefresh] = self.lastRefresh;
+  if (self.etag) dict[Key_Feed_Etag] = self.etag;
+  if (self.lastUpdated) dict[Key_Feed_LastUpdated] = self.lastUpdated;
+  if (self.baseURL) dict[Key_Feed_BaseURL] = [self.baseURL absoluteString];
   NSMutableArray *itemsDicts = [NSMutableArray arrayWithCapacity:[self.items count]];
   for (FeedItem *item in self.items)
   {
     [itemsDicts addObject:[item dictionaryRepresentation]];
   }
-  [dict setObject:itemsDicts forKey:Key_FeedItems];
+  dict[Key_FeedItems] = itemsDicts;
   return dict;
 }
 
 - (void)loadItemsFromDictionary:(NSDictionary *)dict
 {
   [self.items removeAllObjects];
-  self.lastRefresh = [dict objectForKey:Key_LastRefresh];
-  self.etag = [dict objectForKey:Key_Feed_Etag];
-  self.lastUpdated = [dict objectForKey:Key_Feed_LastUpdated];
-  NSString *tmpURLString = [dict objectForKey:Key_Feed_BaseURL];
+  self.lastRefresh = dict[Key_LastRefresh];
+  self.etag = dict[Key_Feed_Etag];
+  self.lastUpdated = dict[Key_Feed_LastUpdated];
+  NSString *tmpURLString = dict[Key_Feed_BaseURL];
   if (tmpURLString)
   {
     NSURL *tmpURL = [[NSURL alloc] initWithString:tmpURLString];
     self.baseURL = tmpURL;
   }
-  NSArray *itemsArray = [dict objectForKey:Key_FeedItems];
+  NSArray *itemsArray = dict[Key_FeedItems];
   for (NSDictionary *itemDict in itemsArray)
   {
     FeedItem *item =[self newItemWithDictionary:itemDict];
@@ -250,11 +250,11 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
   //NSLog(@"%@",[(NSHTTPURLResponse *)response allHeaderFields]);
   
   //store the etag
-  self.etag = [[(NSHTTPURLResponse *)response allHeaderFields] objectForKey:@"Etag"];
+  self.etag = [(NSHTTPURLResponse *)response allHeaderFields][@"Etag"];
   //NSLog(@"Etag=%@",self.etag);
   
   //last modified date - keep it as a string to easily match the server's format.
-  self.lastUpdated = [[(NSHTTPURLResponse *)response allHeaderFields] objectForKey:@"Last-Modified"];
+  self.lastUpdated = [(NSHTTPURLResponse *)response allHeaderFields][@"Last-Modified"];
   //NSLog(@"Last Modified Date : %@", self.lastUpdated);
   
   // lets keep track of how big we are...and how much we've downloaded  
@@ -350,7 +350,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
         NSMutableDictionary *itemDict = [[NSMutableDictionary alloc] init];
         for(int counter = 0; counter < [resultElement childCount]; counter++)
         {
-          [itemDict setObject:[[resultElement childAtIndex:counter] stringValue] forKey:[[resultElement childAtIndex:counter] name]];
+          itemDict[[[resultElement childAtIndex:counter] name]] = [[resultElement childAtIndex:counter] stringValue];
         }
         FeedItem *newFeedItem = [self newItemWithXMLDictionary:itemDict andBaseURL:self.baseURL];
          itemDict= nil;

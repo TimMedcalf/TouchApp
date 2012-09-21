@@ -222,7 +222,7 @@ static NSInteger CellSubTitleTag = 51;
       }
       // so, now to configure the cell...
       // first grab hold of the cell elements we need
-      RadioItem *currentItem = [self.radioList.items objectAtIndex:indexPath.row];
+      RadioItem *currentItem = (self.radioList.items)[indexPath.row];
       
       UILabel *titleLabel = (UILabel *)[cell viewWithTag:CellTitleTag];
       UILabel *subtitleLabel = (UILabel *)[cell viewWithTag:CellSubTitleTag];
@@ -263,7 +263,7 @@ static NSInteger CellSubTitleTag = 51;
   //return immediately if user selected header image
   if (indexPath.section == 0) return;
   
-  RadioItem *curItem = [self.radioList.items objectAtIndex:indexPath.row];
+  RadioItem *curItem = (self.radioList.items)[indexPath.row];
   
   NewRadioItemViewController *controller = [[NewRadioItemViewController alloc] initWithNibName:@"NewRadioItemViewController" bundle:nil];
   controller.item = curItem;

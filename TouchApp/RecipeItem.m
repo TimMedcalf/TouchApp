@@ -24,30 +24,30 @@ NSString *const Key_Recipe_PubDate = @"pubDate";
 #pragma mark overrides from FeedItem
 - (void)procesSavedDictionary:(NSDictionary *)dict
 {
-  self.recipeTitle = [dict objectForKey:Key_Recipe_Title];
-  self.recipeExcerpt = [dict objectForKey:Key_Recipe_Excerpt];
-  self.recipeDescription = [dict objectForKey:Key_Recipe_Description];
-  self.recipePubDate = [dict objectForKey:Key_Recipe_PubDate];
+  self.recipeTitle = dict[Key_Recipe_Title];
+  self.recipeExcerpt = dict[Key_Recipe_Excerpt];
+  self.recipeDescription = dict[Key_Recipe_Description];
+  self.recipePubDate = dict[Key_Recipe_PubDate];
 }
 
 - (void)processXMLDictionary:(NSDictionary *)dict andBaseURL:(NSURL *)baseURL
 { 
-  self.recipeTitle = [dict objectForKey:Key_Recipe_Title];
-  self.recipeExcerpt = [dict objectForKey:Key_Recipe_Excerpt];
-  self.recipeDescription = [dict objectForKey:Key_Recipe_Description];
+  self.recipeTitle = dict[Key_Recipe_Title];
+  self.recipeExcerpt = dict[Key_Recipe_Excerpt];
+  self.recipeDescription = dict[Key_Recipe_Description];
   NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
   [inputFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
   [inputFormatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss z"];
-  NSString *dateStr = [dict objectForKey:Key_Recipe_PubDate];
+  NSString *dateStr = dict[Key_Recipe_PubDate];
   self.recipePubDate = [inputFormatter dateFromString:dateStr];
 }
 
 - (void)populateDictionary:(NSMutableDictionary *)dict
 {
-  if (self.recipeTitle) [dict setObject:self.recipeTitle forKey:Key_Recipe_Title];
-  if (self.recipeExcerpt) [dict setObject:self.recipeExcerpt forKey:Key_Recipe_Excerpt];
-  if (self.recipeDescription) [dict setObject:self.recipeDescription forKey:Key_Recipe_Description];
-  if (self.recipePubDate) [dict setObject:self.recipePubDate forKey:Key_Recipe_PubDate];
+  if (self.recipeTitle) dict[Key_Recipe_Title] = self.recipeTitle;
+  if (self.recipeExcerpt) dict[Key_Recipe_Excerpt] = self.recipeExcerpt;
+  if (self.recipeDescription) dict[Key_Recipe_Description] = self.recipeDescription;
+  if (self.recipePubDate) dict[Key_Recipe_PubDate] = self.recipePubDate;
 }
 
 - (NSComparisonResult)compare:(RecipeItem *)item
