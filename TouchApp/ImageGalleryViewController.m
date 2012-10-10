@@ -126,7 +126,8 @@ static NSInteger iPadThumbnailRowCount = 8;
   nb.barStyle  = UIBarStyleBlack;
   nb.translucent = NO;
 	nb.tintColor = [UIColor colorWithRed:195/255.0 green:54/255.0 blue:37/255.0 alpha:1];
-  
+  self.tabBarController.tabBar.selectedImageTintColor = [UIColor colorWithRed:195/255.0 green:54/255.0 blue:37/255.0 alpha:1];
+
   if ([nb respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)])
     [nb setBackgroundImage:[UIImage imageNamed:@"images-nav"] forBarMetrics:0];
   else

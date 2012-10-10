@@ -98,6 +98,7 @@ static NSInteger CellSubTitleTag = 51;
     [nb setBackgroundImage:[UIImage imageNamed:@"news-nav"] forBarMetrics:0];
   else
     nb.layer.contents = (id)[UIImage imageNamed:@"news-nav"].CGImage;
+  self.tabBarController.tabBar.selectedImageTintColor = [UIColor whiteColor];
 }
 
 - (void)viewDidAppear:(BOOL)animated
