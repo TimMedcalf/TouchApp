@@ -317,6 +317,18 @@
     return (toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
+- (BOOL)shouldAutorotate {
+  return TRUE;
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    return UIInterfaceOrientationMaskAll;
+  else
+    return UIInterfaceOrientationMaskAllButUpsideDown;
+}
+
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
   // here, our pagingScrollView bounds have not yet been updated for the new interface orientation. So this is a good

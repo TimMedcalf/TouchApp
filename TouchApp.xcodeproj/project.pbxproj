@@ -76,6 +76,8 @@
 		2252536E141E289200157205 /* NewCatalogueItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2252536C141E289200157205 /* NewCatalogueItemViewController.xib */; };
 		22525373141E2CA500157205 /* NewRadioItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22525371141E2CA500157205 /* NewRadioItemViewController.m */; };
 		22525374141E2CA500157205 /* NewRadioItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22525372141E2CA500157205 /* NewRadioItemViewController.xib */; };
+		225556801625296000281138 /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2255567E1625296000281138 /* Default-Landscape@2x~ipad.png */; };
+		225556811625296000281138 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2255567F1625296000281138 /* Default-Landscape~ipad.png */; };
 		2263104914176F88001B7841 /* TJMAudioTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2263104814176F87001B7841 /* TJMAudioTableViewController.m */; };
 		226310511417E923001B7841 /* TJMAudioToggleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 226310501417E923001B7841 /* TJMAudioToggleViewController.m */; };
 		22675204140B4AFB00726FAE /* ImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 226751FF140B4AFB00726FAE /* ImageScrollView.m */; };
@@ -250,6 +252,8 @@
 		22525370141E2CA500157205 /* NewRadioItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewRadioItemViewController.h; sourceTree = "<group>"; };
 		22525371141E2CA500157205 /* NewRadioItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewRadioItemViewController.m; sourceTree = "<group>"; };
 		22525372141E2CA500157205 /* NewRadioItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewRadioItemViewController.xib; sourceTree = "<group>"; };
+		2255567E1625296000281138 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
+		2255567F1625296000281138 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		2263104714176F87001B7841 /* TJMAudioTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJMAudioTableViewController.h; sourceTree = "<group>"; };
 		2263104814176F87001B7841 /* TJMAudioTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TJMAudioTableViewController.m; sourceTree = "<group>"; };
 		2263104F1417E923001B7841 /* TJMAudioToggleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJMAudioToggleViewController.h; sourceTree = "<group>"; };
@@ -495,6 +499,8 @@
 		2229524A13ECEEF8001D174D /* Default Images */ = {
 			isa = PBXGroup;
 			children = (
+				2255567E1625296000281138 /* Default-Landscape@2x~ipad.png */,
+				2255567F1625296000281138 /* Default-Landscape~ipad.png */,
 				2206140C160C2082000E3880 /* Default-568h@2x.png */,
 				220A95F71526D13C0064463C /* Default-Portrait@2x~ipad.png */,
 				2229523113ECEA76001D174D /* Default-Portrait~ipad.png */,
@@ -1066,6 +1072,8 @@
 				220ADDE815295E5F0066A4A5 /* go~ipad.png in Resources */,
 				220ADDE915295E5F0066A4A5 /* go~iphone.png in Resources */,
 				2206140D160C2082000E3880 /* Default-568h@2x.png in Resources */,
+				225556801625296000281138 /* Default-Landscape@2x~ipad.png in Resources */,
+				225556811625296000281138 /* Default-Landscape~ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1200,7 +1208,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Michael Harding (H4X7VSZ24H)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Neil Barrington (7B6CJ92L4T)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TouchApp/TouchApp-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
@@ -1214,7 +1222,7 @@
 				);
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "D9A1DA24-7F1A-456C-B4A8-B7C75CEEC8A8";
+				PROVISIONING_PROFILE = "187522F8-3905-450D-8C5C-E6241D6D1551";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1225,7 +1233,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Michael Harding (H4X7VSZ24H)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Neil Barrington (7B6CJ92L4T)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TouchApp/TouchApp-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
@@ -1239,7 +1247,7 @@
 				);
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "D9A1DA24-7F1A-456C-B4A8-B7C75CEEC8A8";
+				PROVISIONING_PROFILE = "187522F8-3905-450D-8C5C-E6241D6D1551";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

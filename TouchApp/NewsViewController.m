@@ -113,6 +113,15 @@ static NSInteger CellSubTitleTag = 51;
   return (interfaceOrientation == UIInterfaceOrientationPortrait) || (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad);
 }
 
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    return UIInterfaceOrientationMaskAll;
+  else
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
