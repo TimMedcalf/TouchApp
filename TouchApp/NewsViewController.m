@@ -6,7 +6,7 @@
 
 #import "NewsViewController.h"
 #import "NewsItem.h"
-#import "HTMLItemViewController.h"
+#import "NewsItemViewController.h"
 #import "TJMAudioCenter.h"
 #import "AppManager.h"
 #import "FlurryAnalytics.h"
@@ -58,6 +58,8 @@ static NSInteger CellSubTitleTag = 51;
   UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"News" style:UIBarButtonItemStyleBordered target:nil action:nil];
   self.navigationItem.backBarButtonItem = backButton;
   
+  self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"headerText_news"]];
+  
   self.newsList = [[AppManager sharedInstance] newsList];
   self.newsList.delegate = self;
   
@@ -94,10 +96,7 @@ static NSInteger CellSubTitleTag = 51;
 
 	UINavigationBar *nb = self.navigationController.navigationBar;
 	nb.tintColor = [UIColor blackColor];
-  if ([nb respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)])
-    [nb setBackgroundImage:[UIImage imageNamed:@"news-nav"] forBarMetrics:0];
-  else
-    nb.layer.contents = (id)[UIImage imageNamed:@"news-nav"].CGImage;
+  [nb setBackgroundImage:[UIImage imageNamed:@"shim_news"] forBarMetrics:0];
   self.tabBarController.tabBar.selectedImageTintColor = [UIColor whiteColor];
 }
 
@@ -224,7 +223,7 @@ static NSInteger CellSubTitleTag = 51;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
   NewsItem *curItem = (self.newsList.items)[indexPath.row];
-  HTMLItemViewController *controller = [[HTMLItemViewController alloc] initWithNibName:@"HTMLItemViewController" bundle:nil];
+  NewsItemViewController *controller = [[NewsItemViewController alloc] initWithNibName:@"HTMLItemViewController" bundle:nil];
   controller.HTMLString = curItem.htmlForWebView;
   [self.navigationController pushViewController:controller animated:YES];
 }

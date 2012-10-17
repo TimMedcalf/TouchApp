@@ -58,6 +58,8 @@ static NSInteger CellSubTitleTag = 51;
   UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Catalogue" style:UIBarButtonItemStyleBordered target:nil action:nil];
   self.navigationItem.backBarButtonItem = backButton;
   
+  self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"headerText_catalog"]];
+  
 //  CatalogueList *tmpCatList = [[CatalogueList alloc] init];
 //  self.catList = tmpCatList;
 //  self.catList.xpathOverride = @"//release";

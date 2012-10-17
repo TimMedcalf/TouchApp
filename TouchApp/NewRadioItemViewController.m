@@ -10,6 +10,7 @@
 {
   [super viewDidLoad];
   [TJMAudioCenter sharedInstance].delegate = self;
+  self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"headerText_radio"]];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView

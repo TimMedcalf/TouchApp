@@ -55,6 +55,8 @@ static NSInteger CellSubTitleTag = 51;
   UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Recipes" style:UIBarButtonItemStyleBordered target:nil action:nil];
   self.navigationItem.backBarButtonItem = backButton;
   
+  self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"headerText_recipes"]];
+  
   RecipeBookList *tmpList = [[RecipeBookList alloc] initWithoutLoading];
   self.recipeList = tmpList;
   self.recipeList.recipeCategory = self.categoryName;
@@ -90,10 +92,7 @@ static NSInteger CellSubTitleTag = 51;
 	UINavigationBar *nb = self.navigationController.navigationBar;
 	nb.tintColor = [UIColor colorWithRed:32/255.0 green:70/255.0 blue:117/255.0 alpha:1];
   self.tabBarController.tabBar.selectedImageTintColor = nb.tintColor;
-  if ([nb respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)])
-    [nb setBackgroundImage:[UIImage imageNamed:@"recipes-nav"] forBarMetrics:0];
-  else
-    nb.layer.contents = (id)[UIImage imageNamed:@"recipes-nav"].CGImage;
+  [nb setBackgroundImage:[UIImage imageNamed:@"shim_recipes"] forBarMetrics:0];
 }
 
 - (void)viewDidAppear:(BOOL)animated

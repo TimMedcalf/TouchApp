@@ -83,6 +83,8 @@ static NSInteger iPadThumbnailRowCount = 8;
   UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Photos" style:UIBarButtonItemStyleBordered target:nil action:nil];
   self.navigationItem.backBarButtonItem = backButton;
   
+  self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"headerText_photos"]];
+  
   ImageList *tmpList = [[ImageList alloc] init];
   self.imageList = tmpList;
   self.imageList.xpathOverride = @"//photo";
@@ -128,10 +130,7 @@ static NSInteger iPadThumbnailRowCount = 8;
 	nb.tintColor = [UIColor colorWithRed:195/255.0 green:54/255.0 blue:37/255.0 alpha:1];
   self.tabBarController.tabBar.selectedImageTintColor = [UIColor colorWithRed:195/255.0 green:54/255.0 blue:37/255.0 alpha:1];
 
-  if ([nb respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)])
-    [nb setBackgroundImage:[UIImage imageNamed:@"images-nav"] forBarMetrics:0];
-  else
-    nb.layer.contents = (id)[UIImage imageNamed:@"images-nav"].CGImage;
+  [nb setBackgroundImage:[UIImage imageNamed:@"shim_photos"] forBarMetrics:0];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -141,10 +140,7 @@ static NSInteger iPadThumbnailRowCount = 8;
   nb.barStyle  = UIBarStyleBlack;
   nb.translucent = NO;
 	nb.tintColor = [UIColor colorWithRed:195/255.0 green:54/255.0 blue:37/255.0 alpha:1]; 
-  if ([nb respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)])
-    [nb setBackgroundImage:[UIImage imageNamed:@"images-nav"] forBarMetrics:0];
-  else
-    nb.layer.contents = (id)[UIImage imageNamed:@"images-nav"].CGImage;
+  [nb setBackgroundImage:[UIImage imageNamed:@"shim_photos"] forBarMetrics:0];
 
   [self.imageList refreshFeed];
 }

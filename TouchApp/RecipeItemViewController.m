@@ -24,6 +24,7 @@
     UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"Email" style:UIBarButtonItemStylePlain target:self action:@selector(sendRecipe)];
     button.enabled = YES;
     self.navigationItem.rightBarButtonItem = button;
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"headerText_recipes"]];
   }
 }
 

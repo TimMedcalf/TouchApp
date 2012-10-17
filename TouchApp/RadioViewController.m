@@ -58,6 +58,8 @@ static NSInteger CellSubTitleTag = 51;
   UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Radio" style:UIBarButtonItemStyleBordered target:nil action:nil];
   self.navigationItem.backBarButtonItem = backButton;
   
+  self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"headerText_radio"]];
+  
 //  RadioList *tmpRadioList = [[RadioList alloc] init];
 //  self.radioList = tmpRadioList;
 //  [tmpRadioList release];
@@ -108,11 +110,7 @@ static NSInteger CellSubTitleTag = 51;
 	UINavigationBar *nb = self.navigationController.navigationBar;
 	nb.tintColor = [UIColor colorWithRed:176/255.0 green:169/255.0 blue:18/255.0 alpha:1];
   self.tabBarController.tabBar.selectedImageTintColor = nb.tintColor;
-  if ([nb respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)])
-    [nb setBackgroundImage:[UIImage imageNamed:@"radio-nav"] forBarMetrics:0];
-  else
-    nb.layer.contents = (id)[UIImage imageNamed:@"radio-nav"].CGImage;
-
+  [nb setBackgroundImage:[UIImage imageNamed:@"shim_radio"] forBarMetrics:0];
 }
 
 - (void)viewDidAppear:(BOOL)animated

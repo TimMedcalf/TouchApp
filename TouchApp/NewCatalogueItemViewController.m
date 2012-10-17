@@ -10,6 +10,7 @@
 {
   [super viewDidLoad];
   [TJMAudioCenter sharedInstance].delegate = self;
+  self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"headerText_catalog"]];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
