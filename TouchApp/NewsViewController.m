@@ -174,13 +174,18 @@ static NSInteger CellSubTitleTag = 51;
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
     {
       //iPad
-      titleLabel.frame = CGRectMake(50,20,535,25);
-      titleLabel.font = [UIFont fontWithName:@"Helvetica" size:21]; 
+      titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+      titleLabel.frame = CGRectMake(50,20,cell.frame.size.width-233,25);
+      titleLabel.font = [UIFont fontWithName:@"Helvetica" size:21];
+      titleLabel.backgroundColor = [UIColor redColor];
       
-      subtitleLabel.frame = CGRectMake(50,45,535,22);
+      subtitleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+      subtitleLabel.frame = CGRectMake(50,45,cell.frame.size.width-233,22);
       subtitleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];           
       
-      disclosure.frame = CGRectMake(673, 19, 45, 45);
+      //disclosure.frame = CGRectMake(673, 19, 45, 45);
+      disclosure.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
+      disclosure.frame = CGRectMake(cell.frame.size.width-95, 19, 45, 45);
     }
     else
     {

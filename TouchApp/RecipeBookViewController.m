@@ -84,11 +84,11 @@ static NSInteger CellSubTitleTag = 51;
 
 	UINavigationBar *nb = self.navigationController.navigationBar;
 	nb.tintColor = [UIColor colorWithRed:32/255.0 green:70/255.0 blue:117/255.0 alpha:1];
+  self.tabBarController.tabBar.selectedImageTintColor = nb.tintColor;
   if ([nb respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)])
     [nb setBackgroundImage:[UIImage imageNamed:@"recipes-nav"] forBarMetrics:0];
   else
     nb.layer.contents = (id)[UIImage imageNamed:@"recipes-nav"].CGImage;
-
 }
 
 - (void)viewDidAppear:(BOOL)animated

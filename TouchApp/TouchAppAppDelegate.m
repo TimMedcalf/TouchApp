@@ -143,6 +143,10 @@ void uncaughtExceptionHandler(NSException *exception);
    */
 }
 
+- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
+{
+  return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? UIInterfaceOrientationMaskAll : UIInterfaceOrientationMaskPortrait;
+}
 
 #pragma mark flurry crash report
 #ifndef DEVMODE
