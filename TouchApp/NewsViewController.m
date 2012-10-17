@@ -175,14 +175,11 @@ static NSInteger CellSubTitleTag = 51;
     {
       //iPad
       titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-      titleLabel.frame = CGRectMake(50,20,cell.frame.size.width-233,25);
+      titleLabel.frame = CGRectMake(50,20,cell.frame.size.width-195,25);
       titleLabel.font = [UIFont fontWithName:@"Helvetica" size:21];
-      titleLabel.backgroundColor = [UIColor redColor];
-      
       subtitleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-      subtitleLabel.frame = CGRectMake(50,45,cell.frame.size.width-233,22);
-      subtitleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];           
-      
+      subtitleLabel.frame = CGRectMake(50,45,cell.frame.size.width-195,22);
+      subtitleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
       //disclosure.frame = CGRectMake(673, 19, 45, 45);
       disclosure.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
       disclosure.frame = CGRectMake(cell.frame.size.width-95, 19, 45, 45);
@@ -190,13 +187,13 @@ static NSInteger CellSubTitleTag = 51;
     else
     {
       //iPhone
-      titleLabel.frame = CGRectMake(17,16,247,15);
-      titleLabel.font = [UIFont fontWithName:@"Helvetica" size:14]; 
-      
-      subtitleLabel.frame = CGRectMake(17,31,247,15);
+      titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+      titleLabel.frame = CGRectMake(17,16,cell.frame.size.width-81,15);
+      titleLabel.font = [UIFont fontWithName:@"Helvetica" size:14];
+      subtitleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+      subtitleLabel.frame = CGRectMake(17,31,cell.frame.size.width-81,15);
       subtitleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:10]; 
-      
-      disclosure.frame = CGRectMake(273, 14, 30, 30);
+      disclosure.frame = CGRectMake(cell.frame.size.width-47, 14, 30, 30);
     }
     //now they're all set up, add them to the cell's view and release them
     [cell addSubview:titleLabel];
