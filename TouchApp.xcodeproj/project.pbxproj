@@ -517,25 +517,11 @@
 		2229523013ECEA5E001D174D /* gfx */ = {
 			isa = PBXGroup;
 			children = (
-				22F7C4D5162F5A04002E2CB6 /* shim_news.png */,
-				22F7C4D6162F5A04002E2CB6 /* shim_photos.png */,
-				22F7C4D7162F5A04002E2CB6 /* shim_radio.png */,
-				22F7C4D8162F5A04002E2CB6 /* shim_recipes.png */,
-				22F7C4C5162F5886002E2CB6 /* headerText_news.png */,
-				22F7C4C6162F5886002E2CB6 /* headerText_news@2x.png */,
-				22F7C4C7162F5886002E2CB6 /* headerText_photos.png */,
-				22F7C4C8162F5887002E2CB6 /* headerText_photos@2x.png */,
-				22F7C4C9162F5887002E2CB6 /* headerText_radio.png */,
-				22F7C4CA162F5887002E2CB6 /* headerText_radio@2x.png */,
-				22F7C4CB162F5887002E2CB6 /* headerText_recipes.png */,
-				22F7C4CC162F5887002E2CB6 /* headerText_recipes@2x.png */,
-				22F7C4C1162F558F002E2CB6 /* headerText_catalog.png */,
-				22F7C4C2162F558F002E2CB6 /* headerText_catalog@2x.png */,
-				22F7C4BE162F51BA002E2CB6 /* shim_catalog.png */,
+				22F7C4E0162FB49B002E2CB6 /* new NavBar */,
+				2229527913ECF0B8001D174D /* old navBar images */,
 				227C5699141656E600169F38 /* pauseplay */,
 				22CB4C1D13EEBF62008968D6 /* buttons */,
 				222952AE13ECFFB9001D174D /* tableHeaders */,
-				2229527913ECF0B8001D174D /* navBar images */,
 				2229526213ECEF9B001D174D /* disclosure */,
 				2229524D13ECEF32001D174D /* tabBar icons */,
 				2229524C13ECEF0D001D174D /* icons */,
@@ -597,7 +583,7 @@
 			name = disclosure;
 			sourceTree = "<group>";
 		};
-		2229527913ECF0B8001D174D /* navBar images */ = {
+		2229527913ECF0B8001D174D /* old navBar images */ = {
 			isa = PBXGroup;
 			children = (
 				220ADDD71528F9F70066A4A5 /* catalog-nav@2x~ipad.png */,
@@ -621,7 +607,7 @@
 				2229527E13ECF0E6001D174D /* recipes-nav~ipad.png */,
 				2229528713ECF0E6001D174D /* recipes-nav~iphone.png */,
 			);
-			name = "navBar images";
+			name = "old navBar images";
 			sourceTree = "<group>";
 		};
 		222952AE13ECFFB9001D174D /* tableHeaders */ = {
@@ -975,6 +961,28 @@
 				22CB4CBC13F12BDA008968D6 /* RadioViewController.m */,
 			);
 			name = Radio;
+			sourceTree = "<group>";
+		};
+		22F7C4E0162FB49B002E2CB6 /* new NavBar */ = {
+			isa = PBXGroup;
+			children = (
+				22F7C4D5162F5A04002E2CB6 /* shim_news.png */,
+				22F7C4D6162F5A04002E2CB6 /* shim_photos.png */,
+				22F7C4D7162F5A04002E2CB6 /* shim_radio.png */,
+				22F7C4D8162F5A04002E2CB6 /* shim_recipes.png */,
+				22F7C4BE162F51BA002E2CB6 /* shim_catalog.png */,
+				22F7C4C5162F5886002E2CB6 /* headerText_news.png */,
+				22F7C4C6162F5886002E2CB6 /* headerText_news@2x.png */,
+				22F7C4C7162F5886002E2CB6 /* headerText_photos.png */,
+				22F7C4C8162F5887002E2CB6 /* headerText_photos@2x.png */,
+				22F7C4C9162F5887002E2CB6 /* headerText_radio.png */,
+				22F7C4CA162F5887002E2CB6 /* headerText_radio@2x.png */,
+				22F7C4CB162F5887002E2CB6 /* headerText_recipes.png */,
+				22F7C4CC162F5887002E2CB6 /* headerText_recipes@2x.png */,
+				22F7C4C1162F558F002E2CB6 /* headerText_catalog.png */,
+				22F7C4C2162F558F002E2CB6 /* headerText_catalog@2x.png */,
+			);
+			name = "new NavBar";
 			sourceTree = "<group>";
 		};
 		DEB00040142589960059E43D /* javascripts */ = {
