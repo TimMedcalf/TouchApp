@@ -132,6 +132,7 @@
   self.customNavigationBar.tintColor = nil;
   self.customNavigationBar.barStyle = UIBarStyleBlack;
   self.customNavigationBar.translucent = YES;
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleBarsNotification:) name:@"TJMPhotoViewToggleBars" object:nil];
 }
 
 - (void)savePhoto {

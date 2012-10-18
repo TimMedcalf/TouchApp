@@ -197,7 +197,7 @@ static NSInteger iPadThumbnailRowCount = 8;
     CellIdentifier = @"ImageItemLandscape";
   else 
     CellIdentifier = @"ImageItemPortrait";
-  NSLog(@"%@",CellIdentifier);
+//  NSLog(@"%@",CellIdentifier);
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
   if (cell == nil) {
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
