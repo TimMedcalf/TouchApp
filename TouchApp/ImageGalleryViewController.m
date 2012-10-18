@@ -165,6 +165,11 @@ static NSInteger iPadThumbnailRowCount = 8;
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
   self.thumbnailWidth = (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) ? iPadThumbnailWidthLandscape : iPadThumbnailWidthPortrait;
+//  if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
+//    NSLog(@"reloading for Landscape!");
+//  } else {
+//    NSLog(@"reloading for Portrait!");
+//  }
   [self.tableView reloadData];
 }
 
@@ -203,12 +208,12 @@ static NSInteger iPadThumbnailRowCount = 8;
     {
       tmpRes = [[TJMImageResourceView alloc]initWithFrame:CGRectMake(offset,0,self.thumbnailWidth,self.thumbnailWidth)];
       tmpRes.tag = CellImageTag + i;
-      UITapGestureRecognizer *tapper = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(thumbnailTapped:)];
-      [tmpRes addGestureRecognizer:tapper];
-      [cell addSubview:tmpRes];
+      [cell.contentView addSubview:tmpRes];
       tmpRes = nil;
       offset += self.thumbnailWidth;
-    }    
+    }
+    UITapGestureRecognizer *tapper = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(thumbnailTapped:)];
+    [cell.contentView addGestureRecognizer:tapper];
   }
   
   for (int i = 0; i < self.thumbnailRowCount; i++)
@@ -234,11 +239,12 @@ static NSInteger iPadThumbnailRowCount = 8;
   return cell;
 }
 
-- (void)thumbnailTapped:(UIGestureRecognizer *)sender
-{
 
-  TJMImageResourceView *res = (TJMImageResourceView *)sender.view;
-  //NSLog(@"thumbnail tapped! %d",res.index);
+- (void)thumbnailTapped:(UITapGestureRecognizer *)sender
+{
+  CGPoint touchCoords = [sender locationInView:sender.view];
+  NSInteger cellIndex = (int)(touchCoords.x / self.thumbnailWidth);
+  TJMImageResourceView *res = (TJMImageResourceView *)[sender.view viewWithTag:(CellImageTag + cellIndex)];
   if (res.index >= 0)
   {
     PhotoViewController *photo = [[PhotoViewController alloc] init];
@@ -249,33 +255,21 @@ static NSInteger iPadThumbnailRowCount = 8;
   }
 }
 
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-//    return 96;
-//  else
-//    return 80;
   return self.thumbnailWidth;
 }
 
 #pragma mark FeedListConsumerDelegates
 - (void)updateSource
 {
-  //NSLog(@"Refreshing...");
-  //if ((self.spinner) && ([self.spinner isAnimating]))
-  //{
-  //  [self.spinner stopAnimating];
-  //}
   [self.progressView setHidden:YES];
   [self.tableView reloadData];
 }
 
 - (void)updateFailed
 {
-//  if ((self.spinner) && ([self.spinner isAnimating]))
-//  {
-//    [self.spinner stopAnimating];
-//  }
   [self.progressView setHidden:YES];
   UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No connection" message:@"Please check you are connected to the internet." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
   [alert show];
