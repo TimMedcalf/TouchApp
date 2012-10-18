@@ -97,7 +97,7 @@ static NSInteger CellSubTitleTag = 51;
 	UINavigationBar *nb = self.navigationController.navigationBar;
 	nb.tintColor = [UIColor blackColor];
   [nb setBackgroundImage:[UIImage imageNamed:@"shim_news"] forBarMetrics:0];
-  self.tabBarController.tabBar.selectedImageTintColor = [UIColor whiteColor];
+  self.tabBarController.tabBar.selectedImageTintColor = [UIColor lightGrayColor];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -162,13 +162,11 @@ static NSInteger CellSubTitleTag = 51;
     titleLabel.lineBreakMode = UILineBreakModeTailTruncation; 
     titleLabel.numberOfLines = 0; 
     
-    
     subtitleLabel.textColor = [UIColor grayColor]; 
     subtitleLabel.textAlignment = UITextAlignmentLeft; 
     subtitleLabel.contentMode = UIViewContentModeCenter; 
     subtitleLabel.lineBreakMode = UILineBreakModeTailTruncation; 
     subtitleLabel.numberOfLines = 0;
-    
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
     {
