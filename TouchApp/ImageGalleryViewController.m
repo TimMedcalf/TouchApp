@@ -197,7 +197,6 @@ static NSInteger iPadThumbnailRowCount = 8;
     CellIdentifier = @"ImageItemLandscape";
   else 
     CellIdentifier = @"ImageItemPortrait";
-//  NSLog(@"%@",CellIdentifier);
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
   if (cell == nil) {
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
@@ -251,7 +250,11 @@ static NSInteger iPadThumbnailRowCount = 8;
     photo.imageList = self.imageList;
     photo.initialIndex = res.index;
     photo.delegate = self;
-    [self.navigationController presentModalViewController:photo animated:YES];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+      [self.navigationController pushViewController:photo animated:YES];
+    } else {
+      [self.navigationController presentModalViewController:photo animated:YES];
+    }
   }
 }
 

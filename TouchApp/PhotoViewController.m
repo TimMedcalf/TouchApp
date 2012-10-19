@@ -202,6 +202,10 @@
 {
   [super viewWillAppear:animated];
   //NSLog(@"ViewWillAppear - %@", NSStringFromCGRect(self.view.frame));
+  
+  //hide the navbar if pushed from the iPad gallery... (instead of modal present used on phone)
+  self.navigationController.navigationBarHidden = YES;
+  
   [self tilePages];
   [self skipToPage:self.initialIndex];
 
