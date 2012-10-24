@@ -112,26 +112,31 @@
   // Step 2: prepare to tile content
   recycledPages = [[NSMutableSet alloc] init];
   visiblePages  = [[NSMutableSet alloc] init];
-  //[self tilePages];
-  //[self skipToPage:self.initialIndex];
-  
   [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+  //we need to create our own bar if on iPhone
+  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+
+    UINavigationBar *tmpBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width,44)];
+    self.customNavigationBar = tmpBar;
+    self.customNavigationBar.autoresizingMask =  UIViewAutoresizingFlexibleWidth;
+    
+    UINavigationItem *tmpItem = [[UINavigationItem alloc] initWithTitle:@""];
+    self.customNavigationItem = tmpItem;
+    [self.customNavigationBar setItems:@[self.customNavigationItem]];
+    
+    [self.view addSubview:self.customNavigationBar];
+    self.customNavigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(savePhoto)];
+    self.customNavigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Photos" style:UIBarButtonItemStylePlain target:self action:@selector(goBack)];
+    self.customNavigationBar.tintColor = nil;
+    self.customNavigationBar.barStyle = UIBarStyleBlack;
+    self.customNavigationBar.translucent = YES;
+  } else {
+    self.navigationController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(savePhoto)];
+    self.navigationController.navigationBar.tintColor = nil;
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    self.navigationController.navigationBar.translucent = YES;
+  }
   
-  UINavigationBar *tmpBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width,44)];
-  self.customNavigationBar = tmpBar;
-  self.customNavigationBar.autoresizingMask =  UIViewAutoresizingFlexibleWidth;
-  
-  UINavigationItem *tmpItem = [[UINavigationItem alloc] initWithTitle:@""];
-  self.customNavigationItem = tmpItem;
-  [self.customNavigationBar setItems:@[self.customNavigationItem]];
-  
-  [self.view addSubview:self.customNavigationBar];
-  
-  self.customNavigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(savePhoto)];
-  self.customNavigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Photos" style:UIBarButtonItemStylePlain target:self action:@selector(goBack)];
-  self.customNavigationBar.tintColor = nil;
-  self.customNavigationBar.barStyle = UIBarStyleBlack;
-  self.customNavigationBar.translucent = YES;
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleBarsNotification:) name:@"TJMPhotoViewToggleBars" object:nil];
 }
 
@@ -148,34 +153,47 @@
 }
 - (void)setViewState
 {
-  if ([self.imageList.items count] > 1) 
-  {
+  if ([self.imageList.items count] > 1) {
     self.customNavigationItem.title = [NSString stringWithFormat:@"%i of %i", [self centerPhotoIndex]+1, [self.imageList.items count]];
-  }
-  else
-  {
+  } else {
     self.title = @"";
   }
   if ([self.pagingScrollView isTracking])
   {
-    if (![self.customNavigationBar isHidden])
-    {
-      self.customNavigationBar.hidden = YES;
-      [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+      // TJM - Surely i can just set this to hidden? without checking if it is already??? investigate later..
+      if (![self.customNavigationBar isHidden])
+      {
+        self.customNavigationBar.hidden = YES;
+      }
+    } else {
+      if (!self.navigationController.navigationBarHidden)
+      {
+        self.navigationController.navigationBarHidden = YES;
+
+      }
     }
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
   }
 }
 
 - (void)hideBars;
 {
-  self.customNavigationBar.hidden = YES;
-  [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+       self.customNavigationBar.hidden = YES;
+     } else {
+        self.navigationController.navigationBarHidden = YES;
+     }
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
 }
 
 - (void)toggleBarsNotification:(NSNotification*)notification
 {
-  self.customNavigationBar.hidden = !self.customNavigationBar.hidden;
-  //[[UIApplication sharedApplication] setStatusBarHidden:self.customNavigationBar.hidden withAnimation:UIStatusBarAnimationNone];
+  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+    self.customNavigationBar.hidden = !self.customNavigationBar.hidden;
+  } else {
+    self.navigationController.navigationBarHidden = !self.navigationController.navigationBarHidden;
+  }
 }
 
 - (void)goBack {
@@ -188,7 +206,7 @@
     ImageItem *img = (self.imageList.items)[[self centerPhotoIndex]];
     TJMImageResource *tmpRes = [[TJMImageResourceManager sharedInstance] resourceForURL:img.imageURL];
     UIImage *image = [tmpRes getImage];
-    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil); 
   } 
 }
 
@@ -203,8 +221,13 @@
   [super viewWillAppear:animated];
   //NSLog(@"ViewWillAppear - %@", NSStringFromCGRect(self.view.frame));
   
+  
   //hide the navbar if pushed from the iPad gallery... (instead of modal present used on phone)
-  self.navigationController.navigationBarHidden = YES;
+  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+    self.navigationController.navigationBarHidden = YES;
+  } else {
+    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:0];
+  }
   
   [self tilePages];
   [self skipToPage:self.initialIndex];
