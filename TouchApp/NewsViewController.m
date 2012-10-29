@@ -17,6 +17,7 @@ static NSInteger CellSubTitleTag = 51;
 
 @interface NewsViewController ()
 @property (strong, nonatomic) NewsList *newsList;
+- (void)configureTableHeader;
 @end
 
 @implementation NewsViewController
@@ -51,9 +52,7 @@ static NSInteger CellSubTitleTag = 51;
   
   self.navigationItem.title= @"";
   
-  UIImage *header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"news_header" ofType:@"png"]];
-  UIImageView *headerView = [[UIImageView alloc]initWithImage:header];
-  self.tableView.tableHeaderView = headerView;
+  [self configureTableHeader];
   
   UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"News" style:UIBarButtonItemStyleBordered target:nil action:nil];
   self.navigationItem.backBarButtonItem = backButton;
@@ -70,6 +69,22 @@ static NSInteger CellSubTitleTag = 51;
     self.progressView.hidden = NO;
   }
   [self.newsList refreshFeed];
+}
+
+- (void)configureTableHeader {
+  UIImage *header = nil;
+  if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
+    header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"news_header" ofType:@"png"]];
+  } else {
+    header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"news_header_landscape" ofType:@"png"]];
+  }
+  UIImageView *headerView = [[UIImageView alloc]initWithImage:header];
+  self.tableView.tableHeaderView = headerView;
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+  [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+  [self configureTableHeader];
 }
 
 - (void)viewDidUnload
@@ -98,6 +113,7 @@ static NSInteger CellSubTitleTag = 51;
 	nb.tintColor = [UIColor blackColor];
   [nb setBackgroundImage:[UIImage imageNamed:@"shim_news"] forBarMetrics:0];
   self.tabBarController.tabBar.selectedImageTintColor = [UIColor lightGrayColor];
+  [self configureTableHeader];
 }
 
 - (void)viewDidAppear:(BOOL)animated
