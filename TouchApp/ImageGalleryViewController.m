@@ -122,7 +122,11 @@ static NSInteger iPadThumbnailRowCount = 8;
   [super viewWillAppear:animated];
   
   [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
-  [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent]; 
+  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
+  } else {
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
+  }
   
 	UINavigationBar *nb = self.navigationController.navigationBar;
   nb.barStyle  = UIBarStyleBlack;
