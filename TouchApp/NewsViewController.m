@@ -188,14 +188,14 @@ static NSInteger CellSubTitleTag = 51;
     {
       //iPad
       titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-      titleLabel.frame = CGRectMake(50,20,cell.frame.size.width-195,25);
+      titleLabel.frame = CGRectMake(50,17,cell.frame.size.width-195,25);
       titleLabel.font = [UIFont fontWithName:@"Helvetica" size:21];
       subtitleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-      subtitleLabel.frame = CGRectMake(50,45,cell.frame.size.width-195,22);
+      subtitleLabel.frame = CGRectMake(50,42,cell.frame.size.width-195,22);
       subtitleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
       //disclosure.frame = CGRectMake(673, 19, 45, 45);
       disclosure.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
-      disclosure.frame = CGRectMake(cell.frame.size.width-95, 19, 45, 45);
+      disclosure.frame = CGRectMake(cell.frame.size.width-95, 16, 45, 45);
     }
     else
     {
@@ -228,7 +228,7 @@ static NSInteger CellSubTitleTag = 51;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 87 : 58;
+  return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 81 : 58;
 }
 
 

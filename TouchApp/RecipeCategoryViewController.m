@@ -188,12 +188,12 @@ static NSInteger CellTitleTag = 50;
     {
       //iPad
       titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-      titleLabel.frame = CGRectMake(50,29,cell.frame.size.width-195,25);
+      titleLabel.frame = CGRectMake(50,26,cell.frame.size.width-195,25);
       titleLabel.font = [UIFont fontWithName:@"Helvetica" size:21];
 
       //disclosure.frame = CGRectMake(673, 19, 45, 45);
       disclosure.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
-      disclosure.frame = CGRectMake(cell.frame.size.width-95, 19, 45, 45);
+      disclosure.frame = CGRectMake(cell.frame.size.width-95, 16, 45, 45);
     }
     else
     {
@@ -224,7 +224,7 @@ static NSInteger CellTitleTag = 50;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-      return 87;
+      return 81;
     else
       return 58;
 }
