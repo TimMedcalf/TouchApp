@@ -18,6 +18,7 @@ static NSInteger CellSubTitleTag = 51;
 
 @interface RadioViewController ()
 @property (strong, nonatomic) RadioList *radioList;
+- (void)configureTableHeader;
 @end
 
 @implementation RadioViewController
@@ -51,9 +52,7 @@ static NSInteger CellSubTitleTag = 51;
   
   self.navigationItem.title= @"";
   
-  UIImage *header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"radio_header" ofType:@"png"]];
-  UIImageView *headerView = [[UIImageView alloc]initWithImage:header];
-  self.tableView.tableHeaderView = headerView;
+  [self configureTableHeader];
   
   UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Radio" style:UIBarButtonItemStyleBordered target:nil action:nil];
   self.navigationItem.backBarButtonItem = backButton;
@@ -86,6 +85,17 @@ static NSInteger CellSubTitleTag = 51;
   [self.radioList refreshFeed];
 }
 
+- (void)configureTableHeader {
+  UIImage *header = nil;
+  if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
+    header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"radio_header" ofType:@"png"]];
+  } else {
+    header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"radio_header_landscape" ofType:@"png"]];
+  }
+  UIImageView *headerView = [[UIImageView alloc]initWithImage:header];
+  self.tableView.tableHeaderView = headerView;
+}
+
 - (void)viewDidUnload
 {
   [super viewDidUnload];
@@ -111,6 +121,7 @@ static NSInteger CellSubTitleTag = 51;
 	nb.tintColor = [UIColor colorWithRed:176/255.0 green:169/255.0 blue:18/255.0 alpha:1];
   self.tabBarController.tabBar.selectedImageTintColor = nb.tintColor;
   [nb setBackgroundImage:[UIImage imageNamed:@"shim_radio"] forBarMetrics:0];
+  [self configureTableHeader];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -129,6 +140,19 @@ static NSInteger CellSubTitleTag = 51;
 {
   // Return YES for supported orientations
   return (interfaceOrientation == UIInterfaceOrientationPortrait) || (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad);
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+  [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+  [self configureTableHeader];
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    return UIInterfaceOrientationMaskAll;
+  else
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 

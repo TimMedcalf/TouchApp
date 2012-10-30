@@ -16,6 +16,7 @@ static NSInteger CellTitleTag = 50;
 
 @interface RecipeCategoryViewController ()
 @property (strong, nonatomic) RecipeCategoryList *catList;
+- (void)configureTableHeader;
 @end
 
 @implementation RecipeCategoryViewController
@@ -50,10 +51,7 @@ static NSInteger CellTitleTag = 50;
   
   self.navigationItem.title= @"";
   
-  UIImage *header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"recipes_header" ofType:@"png"]];
-  UIImageView *headerView = [[UIImageView alloc]initWithImage:header];
-  self.tableView.tableHeaderView = headerView;
-  
+  [self configureTableHeader];
   
   UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Recipes" style:UIBarButtonItemStyleBordered target:nil action:nil];
   self.navigationItem.backBarButtonItem = backButton;
@@ -73,6 +71,18 @@ static NSInteger CellTitleTag = 50;
   [self.catList refreshFeed];
 }
 
+- (void)configureTableHeader {
+  UIImage *header = nil;
+  if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
+    header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"recipes_header" ofType:@"png"]];
+  } else {
+    header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"recipes_header_landscape" ofType:@"png"]];
+  }
+  UIImageView *headerView = [[UIImageView alloc]initWithImage:header];
+  self.tableView.tableHeaderView = headerView;
+}
+
+
 - (void)viewDidUnload
 {
   [super viewDidUnload];
@@ -91,11 +101,11 @@ static NSInteger CellTitleTag = 50;
 - (void)viewWillAppear:(BOOL)animated
 {
   [super viewWillAppear:animated];
-  
 	UINavigationBar *nb = self.navigationController.navigationBar;
 	nb.tintColor = [UIColor colorWithRed:32/255.0 green:70/255.0 blue:117/255.0 alpha:1];
   self.tabBarController.tabBar.selectedImageTintColor = nb.tintColor;
   [nb setBackgroundImage:[UIImage imageNamed:@"shim_recipes"] forBarMetrics:0];
+  [self configureTableHeader];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -119,6 +129,19 @@ static NSInteger CellTitleTag = 50;
 {
   // Return YES for supported orientations
   return (interfaceOrientation == UIInterfaceOrientationPortrait) || (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad);
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+  [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+  [self configureTableHeader];
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    return UIInterfaceOrientationMaskAll;
+  else
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 #pragma mark - Table view data source

@@ -17,6 +17,7 @@ static NSInteger CellSubTitleTag = 51;
 
 @interface CatalogueViewController ()
 @property (strong, nonatomic) CatalogueList *catList;
+- (void)configureTableHeader;
 @end
 
 @implementation CatalogueViewController
@@ -51,9 +52,7 @@ static NSInteger CellSubTitleTag = 51;
   
   self.navigationItem.title= @"";
   
-  UIImage *header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"catalogue_header" ofType:@"png"]];
-  UIImageView *headerView = [[UIImageView alloc]initWithImage:header];
-  self.tableView.tableHeaderView = headerView;
+  [self configureTableHeader];
   
   UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Catalogue" style:UIBarButtonItemStyleBordered target:nil action:nil];
   self.navigationItem.backBarButtonItem = backButton;
@@ -87,6 +86,17 @@ static NSInteger CellSubTitleTag = 51;
   [self.catList refreshFeed];
 }
 
+- (void)configureTableHeader {
+  UIImage *header = nil;
+  if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
+    header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"catalogue_header" ofType:@"png"]];
+  } else {
+    header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"catalogue_header_landscape" ofType:@"png"]];
+  }
+  UIImageView *headerView = [[UIImageView alloc]initWithImage:header];
+  self.tableView.tableHeaderView = headerView;
+}
+
 - (void)viewDidUnload
 {
   [super viewDidUnload];
@@ -113,6 +123,7 @@ static NSInteger CellSubTitleTag = 51;
 	nb.tintColor = [UIColor colorWithRed:82/255.0 green:96/255.0 blue:45/255.0 alpha:1];
   self.tabBarController.tabBar.selectedImageTintColor = [UIColor colorWithRed:82/255.0 green:96/255.0 blue:45/255.0 alpha:1];
   [nb setBackgroundImage:[UIImage imageNamed:@"shim_catalog"] forBarMetrics:0];
+  [self configureTableHeader];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -136,6 +147,19 @@ static NSInteger CellSubTitleTag = 51;
 {
   // Return YES for supported orientations
   return (interfaceOrientation == UIInterfaceOrientationPortrait) || (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad);
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+  [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+  [self configureTableHeader];
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    return UIInterfaceOrientationMaskAll;
+  else
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 #pragma mark - Table view data source

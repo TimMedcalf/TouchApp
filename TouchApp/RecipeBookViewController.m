@@ -15,6 +15,7 @@ static NSInteger CellSubTitleTag = 51;
 
 @interface RecipeBookViewController ()
 @property (strong, nonatomic) RecipeBookList *recipeList;
+- (void)configureTableHeader;
 @end
 
 @implementation RecipeBookViewController
@@ -47,11 +48,8 @@ static NSInteger CellSubTitleTag = 51;
   
   self.navigationItem.title= @"";
   
-  UIImage *header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"recipes_header" ofType:@"png"]];
-  UIImageView *headerView = [[UIImageView alloc]initWithImage:header];
-  self.tableView.tableHeaderView = headerView;
+  [self configureTableHeader];
 
-  
   UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Recipes" style:UIBarButtonItemStyleBordered target:nil action:nil];
   self.navigationItem.backBarButtonItem = backButton;
   
@@ -73,6 +71,17 @@ static NSInteger CellSubTitleTag = 51;
   [self.recipeList refreshFeed];
 }
 
+- (void)configureTableHeader {
+  UIImage *header = nil;
+  if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
+    header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"recipes_header" ofType:@"png"]];
+  } else {
+    header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"recipes_header_landscape" ofType:@"png"]];
+  }
+  UIImageView *headerView = [[UIImageView alloc]initWithImage:header];
+  self.tableView.tableHeaderView = headerView;
+}
+
 - (void)viewDidUnload
 {
   [super viewDidUnload];
@@ -84,6 +93,11 @@ static NSInteger CellSubTitleTag = 51;
   //[self setSpinner:nil];
 }
 
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+  [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+  [self configureTableHeader];
+}
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -93,6 +107,7 @@ static NSInteger CellSubTitleTag = 51;
 	nb.tintColor = [UIColor colorWithRed:32/255.0 green:70/255.0 blue:117/255.0 alpha:1];
   self.tabBarController.tabBar.selectedImageTintColor = nb.tintColor;
   [nb setBackgroundImage:[UIImage imageNamed:@"shim_recipes"] forBarMetrics:0];
+  [self configureTableHeader];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -116,6 +131,14 @@ static NSInteger CellSubTitleTag = 51;
 {
     // Return YES for supported orientations
   return (interfaceOrientation == UIInterfaceOrientationPortrait) || (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad);
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    return UIInterfaceOrientationMaskAll;
+  else
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 #pragma mark - Table view data source
