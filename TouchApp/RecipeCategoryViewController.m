@@ -166,7 +166,13 @@ static NSInteger CellTitleTag = 50;
   cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
   if (cell == nil) {
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleGray;
+    cell.contentView.backgroundColor = [UIColor whiteColor];
+    UIView *selView = [[UIView alloc] initWithFrame:cell.bounds];
+    selView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    selView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.05];
+    cell.selectedBackgroundView = selView;
+   
     //we can't se the frame of the default labels and disclosure indicator
     //so lets ignore them and just add some of our own to the view.
     //if we tag them we can retrieve them later in the method so that we can
@@ -204,8 +210,8 @@ static NSInteger CellTitleTag = 50;
       disclosure.frame = CGRectMake(cell.frame.size.width-47, 14, 30, 30);
     }
     //now they're all set up, add them to the cell's view and release them
-    [cell addSubview:titleLabel];
-    [cell addSubview:disclosure];
+    [cell.contentView addSubview:titleLabel];
+    [cell.contentView addSubview:disclosure];
   }
   // so, now to configure the cell...
   // first grab hold of the cell elements we need
@@ -217,7 +223,6 @@ static NSInteger CellTitleTag = 50;
   //got them...now set the text we want...
   titleLabel.text = currentItem.recipeTitle;
   //subtitleLabel.text = currentItem.title;
-  cell.selectionStyle = UITableViewCellSelectionStyleNone;
   return cell;
 }
 

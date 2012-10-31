@@ -160,7 +160,12 @@ static NSInteger CellSubTitleTag = 51;
   cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
   if (cell == nil) {
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.selectionStyle = UITableViewCellSelectionStyleGray;
+    cell.contentView.backgroundColor = [UIColor whiteColor];
+    UIView *selView = [[UIView alloc] initWithFrame:cell.bounds];
+    selView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    selView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.05];
+    cell.selectedBackgroundView = selView;
     //we can't se the frame of the default labels and disclosure indicator
     //so lets ignore them and just add some of our own to the view.
     //if we tag them we can retrieve them later in the method so that we can
@@ -174,13 +179,15 @@ static NSInteger CellSubTitleTag = 51;
     // Set the size, font, foreground color, background color
     titleLabel.textColor = [UIColor blackColor]; 
     titleLabel.textAlignment = UITextAlignmentLeft; 
-    titleLabel.contentMode = UIViewContentModeCenter; 
+    titleLabel.contentMode = UIViewContentModeCenter;
+    titleLabel.backgroundColor = [UIColor clearColor];
     titleLabel.lineBreakMode = UILineBreakModeTailTruncation; 
     titleLabel.numberOfLines = 0; 
     
-    subtitleLabel.textColor = [UIColor grayColor]; 
+    subtitleLabel.textColor = [UIColor grayColor];
     subtitleLabel.textAlignment = UITextAlignmentLeft; 
-    subtitleLabel.contentMode = UIViewContentModeCenter; 
+    subtitleLabel.contentMode = UIViewContentModeCenter;
+    subtitleLabel.backgroundColor = [UIColor clearColor];
     subtitleLabel.lineBreakMode = UILineBreakModeTailTruncation; 
     subtitleLabel.numberOfLines = 0;
     
@@ -209,9 +216,9 @@ static NSInteger CellSubTitleTag = 51;
       disclosure.frame = CGRectMake(cell.frame.size.width-47, 14, 30, 30);
     }
     //now they're all set up, add them to the cell's view and release them
-    [cell addSubview:titleLabel];
-    [cell addSubview:subtitleLabel];
-    [cell addSubview:disclosure];
+    [cell.contentView addSubview:titleLabel];
+    [cell.contentView addSubview:subtitleLabel];
+    [cell.contentView addSubview:disclosure];
   }
   // so, now to configure the cell...
   // first grab hold of the cell elements we need
