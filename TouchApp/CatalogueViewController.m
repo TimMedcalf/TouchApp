@@ -52,8 +52,6 @@ static NSInteger CellSubTitleTag = 51;
   
   self.navigationItem.title= @"";
   
-  [self configureTableHeader];
-  
   UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Catalogue" style:UIBarButtonItemStyleBordered target:nil action:nil];
   self.navigationItem.backBarButtonItem = backButton;
   
