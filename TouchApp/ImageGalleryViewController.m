@@ -135,11 +135,20 @@ static NSInteger iPadThumbnailRowCount = 8;
   self.tabBarController.tabBar.selectedImageTintColor = [UIColor colorWithRed:195/255.0 green:54/255.0 blue:37/255.0 alpha:1];
 
   [nb setBackgroundImage:[UIImage imageNamed:@"shim_photos"] forBarMetrics:0];
+  self.navigationController.navigationBarHidden = NO;
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
   [super viewDidAppear:animated];
+  
+  [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
+  } else {
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
+  }
+  
 	UINavigationBar *nb = self.navigationController.navigationBar;
   nb.barStyle  = UIBarStyleBlack;
   nb.translucent = NO;

@@ -112,9 +112,11 @@
   // Step 2: prepare to tile content
   recycledPages = [[NSMutableSet alloc] init];
   visiblePages  = [[NSMutableSet alloc] init];
+  
   [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+  
   //we need to create our own bar if on iPhone
-  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+//  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
 
     UINavigationBar *tmpBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width,44)];
     self.customNavigationBar = tmpBar;
@@ -130,12 +132,9 @@
     self.customNavigationBar.tintColor = nil;
     self.customNavigationBar.barStyle = UIBarStyleBlack;
     self.customNavigationBar.translucent = YES;
-  } else {
-    self.navigationController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(savePhoto)];
-    self.navigationController.navigationBar.tintColor = nil;
-    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
-    self.navigationController.navigationBar.translucent = YES;
-  }
+//  } else {
+//    self.navigationController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(savePhoto)];
+//  }
   
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleBarsNotification:) name:@"TJMPhotoViewToggleBars" object:nil];
 }
@@ -160,44 +159,50 @@
   }
   if ([self.pagingScrollView isTracking])
   {
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+//    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
       // TJM - Surely i can just set this to hidden? without checking if it is already??? investigate later..
       if (![self.customNavigationBar isHidden])
       {
         self.customNavigationBar.hidden = YES;
       }
-    } else {
-      if (!self.navigationController.navigationBarHidden)
-      {
-        self.navigationController.navigationBarHidden = YES;
-
-      }
-    }
+//    } else {
+//      if (!self.navigationController.navigationBarHidden)
+//      {
+//        self.navigationController.navigationBarHidden = YES;
+//
+//      }
+//    }
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
   }
 }
 
 - (void)hideBars;
 {
-     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+//     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
        self.customNavigationBar.hidden = YES;
-     } else {
-        self.navigationController.navigationBarHidden = YES;
-     }
+//     } else {
+//        self.navigationController.navigationBarHidden = YES;
+//     }
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
 }
 
 - (void)toggleBarsNotification:(NSNotification*)notification
 {
-  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+//  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
     self.customNavigationBar.hidden = !self.customNavigationBar.hidden;
-  } else {
-    self.navigationController.navigationBarHidden = !self.navigationController.navigationBarHidden;
-  }
+//  } else {
+//    self.navigationController.navigationBarHidden = !self.navigationController.navigationBarHidden;
+//  }
 }
 
 - (void)goBack {
-  [self.delegate dismissPhotoView:self];
+  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+    self.customNavigationBar.hidden = YES;
+    [self.navigationController popViewControllerAnimated:YES];
+  } else {
+    [self.delegate dismissPhotoView:self];
+  }
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
@@ -223,15 +228,17 @@
   
   
   //hide the navbar if pushed from the iPad gallery... (instead of modal present used on phone)
-  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+//  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
     self.navigationController.navigationBarHidden = YES;
-  } else {
-    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:0];
-  }
+//  } else {
+//    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:0];
+//    self.navigationController.navigationBar.tintColor = nil;
+//    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+//    self.navigationController.navigationBar.translucent = YES;
+//  }
   
   [self tilePages];
   [self skipToPage:self.initialIndex];
-
 }
 
 
