@@ -477,7 +477,6 @@
     ImageItem *item = (self.imageList.items)[index-1];
     [[[TJMImageResourceManager sharedInstance] resourceForURL:item.thumbnailURL]cacheImage];
   }
-  
   return (self.imageList.items)[index];
 }
 

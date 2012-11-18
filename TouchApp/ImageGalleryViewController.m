@@ -177,12 +177,12 @@ static NSInteger iPadThumbnailRowCount = 8;
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
+  [self performSelector:@selector(performReloadAfterRotate) withObject:nil afterDelay:0];
+}
+
+- (void)performReloadAfterRotate
+{
   self.thumbnailWidth = (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) ? iPadThumbnailWidthLandscape : iPadThumbnailWidthPortrait;
-//  if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
-//    NSLog(@"reloading for Landscape!");
-//  } else {
-//    NSLog(@"reloading for Portrait!");
-//  }
   [self.tableView reloadData];
 }
 
