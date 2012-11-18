@@ -311,7 +311,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
   // object that actually grabs and processes the RSS data
   if ([xmlData length] > 0)
   {
-    NSLog(@"Parsing XML %u bytes from feed %@",[xmlData length], self.feed);
+    //NSLog(@"Parsing XML %u bytes from feed %@",[xmlData length], self.feed);
     CXMLDocument *rssParser = [[CXMLDocument alloc] initWithData:self.activeDownload options:0 error:nil];
 
     // Create a new Array object to be used with the looping of the results from the rssParser
