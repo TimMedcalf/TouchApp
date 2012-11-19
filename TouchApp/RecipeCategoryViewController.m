@@ -129,11 +129,6 @@ static NSInteger CellTitleTag = 50;
   return (interfaceOrientation == UIInterfaceOrientationPortrait) || (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad);
 }
 
-//- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-//  [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
-//  [self configureTableHeader];
-//}
-
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)orientation duration:(NSTimeInterval)duration
 {
   [super willRotateToInterfaceOrientation:orientation duration:duration];

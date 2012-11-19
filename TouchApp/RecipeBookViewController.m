@@ -91,11 +91,6 @@ static NSInteger CellSubTitleTag = 51;
   //[self setSpinner:nil];
 }
 
-//- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-//  [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
-//  [self configureTableHeader];
-//}
-
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)orientation duration:(NSTimeInterval)duration
 {
   [super willRotateToInterfaceOrientation:orientation duration:duration];
