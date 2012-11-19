@@ -80,10 +80,18 @@ static NSInteger CellSubTitleTag = 51;
   self.tableView.tableHeaderView = headerView;
 }
 
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-  [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
-  [self configureTableHeader];
+//- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+//  [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+//  [self configureTableHeader];
+//}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)orientation duration:(NSTimeInterval)duration
+{
+  [super willRotateToInterfaceOrientation:orientation duration:duration];
+  [self performSelector:@selector(configureTableHeader) withObject:nil afterDelay:duration / 2];
 }
+
+
 
 - (void)viewDidUnload
 {

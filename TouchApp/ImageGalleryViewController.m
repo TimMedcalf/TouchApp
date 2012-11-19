@@ -188,6 +188,7 @@ static NSInteger iPadThumbnailRowCount = 8;
 
 
 
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
