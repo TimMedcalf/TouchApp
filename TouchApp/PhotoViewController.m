@@ -115,26 +115,20 @@
   
   [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
   
-  //we need to create our own bar if on iPhone
-//  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-
-    UINavigationBar *tmpBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width,44)];
-    self.customNavigationBar = tmpBar;
-    self.customNavigationBar.autoresizingMask =  UIViewAutoresizingFlexibleWidth;
-    
-    UINavigationItem *tmpItem = [[UINavigationItem alloc] initWithTitle:@""];
-    self.customNavigationItem = tmpItem;
-    [self.customNavigationBar setItems:@[self.customNavigationItem]];
-    
-    [self.view addSubview:self.customNavigationBar];
-    self.customNavigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(savePhoto)];
-    self.customNavigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Photos" style:UIBarButtonItemStylePlain target:self action:@selector(goBack)];
-    self.customNavigationBar.tintColor = nil;
-    self.customNavigationBar.barStyle = UIBarStyleBlack;
-    self.customNavigationBar.translucent = YES;
-//  } else {
-//    self.navigationController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(savePhoto)];
-//  }
+  UINavigationBar *tmpBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width,44)];
+  self.customNavigationBar = tmpBar;
+  self.customNavigationBar.autoresizingMask =  UIViewAutoresizingFlexibleWidth;
+  
+  UINavigationItem *tmpItem = [[UINavigationItem alloc] initWithTitle:@""];
+  self.customNavigationItem = tmpItem;
+  [self.customNavigationBar setItems:@[self.customNavigationItem]];
+  
+  [self.view addSubview:self.customNavigationBar];
+  self.customNavigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(savePhoto)];
+  self.customNavigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Photos" style:UIBarButtonItemStylePlain target:self action:@selector(goBack)];
+  self.customNavigationBar.tintColor = nil;
+  self.customNavigationBar.barStyle = UIBarStyleBlack;
+  self.customNavigationBar.translucent = YES;
   
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleBarsNotification:) name:@"TJMPhotoViewToggleBars" object:nil];
 }
@@ -159,40 +153,14 @@
   }
   if ([self.pagingScrollView isTracking])
   {
-//    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-      // TJM - Surely i can just set this to hidden? without checking if it is already??? investigate later..
-      if (![self.customNavigationBar isHidden])
-      {
-        self.customNavigationBar.hidden = YES;
-      }
-//    } else {
-//      if (!self.navigationController.navigationBarHidden)
-//      {
-//        self.navigationController.navigationBarHidden = YES;
-//
-//      }
-//    }
+    self.customNavigationBar.hidden = YES;
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
   }
 }
 
-- (void)hideBars;
-{
-//     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-       self.customNavigationBar.hidden = YES;
-//     } else {
-//        self.navigationController.navigationBarHidden = YES;
-//     }
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
-}
-
 - (void)toggleBarsNotification:(NSNotification*)notification
 {
-//  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-    self.customNavigationBar.hidden = !self.customNavigationBar.hidden;
-//  } else {
-//    self.navigationController.navigationBarHidden = !self.navigationController.navigationBarHidden;
-//  }
+  self.customNavigationBar.hidden = !self.customNavigationBar.hidden;
 }
 
 - (void)goBack {
@@ -224,19 +192,9 @@
 - (void)viewWillAppear:(BOOL)animated
 {
   [super viewWillAppear:animated];
-  //NSLog(@"ViewWillAppear - %@", NSStringFromCGRect(self.view.frame));
-  
-  
-  //hide the navbar if pushed from the iPad gallery... (instead of modal present used on phone)
-//  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-    self.navigationController.navigationBarHidden = YES;
-//  } else {
-//    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:0];
-//    self.navigationController.navigationBar.tintColor = nil;
-//    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
-//    self.navigationController.navigationBar.translucent = YES;
-//  }
-  
+  self.pagingScrollView.contentSize = [self contentSizeForPagingScrollView];
+  //we use out own nav bar...
+  self.navigationController.navigationBarHidden = YES;
   [self tilePages];
   [self skipToPage:self.initialIndex];
 }
@@ -353,7 +311,7 @@
 }
 
 - (BOOL)shouldAutorotate {
-  return TRUE;
+  return YES;
 }
 
 - (NSUInteger)supportedInterfaceOrientations
