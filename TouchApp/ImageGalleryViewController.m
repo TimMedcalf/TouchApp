@@ -29,6 +29,7 @@ static NSInteger iPadThumbnailRowCount = 8;
 @property (nonatomic, assign) NSInteger thumbnailWidth;
 @property (nonatomic, assign) NSInteger thumbnailRowCount;
 - (void)thumbnailTapped:(UIGestureRecognizer *)sender;
+- (void)performReloadAfterRotate;
 @end
 
 @implementation ImageGalleryViewController
@@ -45,7 +46,11 @@ static NSInteger iPadThumbnailRowCount = 8;
   if (self) {
     self.title = @"Photos";
     self.tabBarItem.image = [UIImage imageNamed:@"images"];
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone; 
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.thumbnailRowCount = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? iPadThumbnailRowCount : iPhoneThumbnailRowCount;
+
+    //set default thumbnail width - will get overwritten in the viewdidload if on ipad
+    self.thumbnailWidth = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ?  iPadThumbnailWidthPortrait : iPhoneThumbnailWidth;
   }
   return self;
 }
@@ -65,18 +70,6 @@ static NSInteger iPadThumbnailRowCount = 8;
   nb.barStyle  = UIBarStyleBlack;
   nb.translucent = NO;
 	nb.tintColor = [UIColor colorWithRed:195/255.0 green:54/255.0 blue:37/255.0 alpha:1];
-  
-  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-  {
-    
-    self.thumbnailWidth = (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) ? iPadThumbnailWidthLandscape : iPadThumbnailWidthPortrait;
-    self.thumbnailRowCount = iPadThumbnailRowCount;
-  }
-  else
-  {
-    self.thumbnailWidth = iPhoneThumbnailWidth;
-    self.thumbnailRowCount = iPhoneThumbnailRowCount;
-  }
   
   self.navigationItem.title= @"";
   
@@ -136,6 +129,11 @@ static NSInteger iPadThumbnailRowCount = 8;
 
   [nb setBackgroundImage:[UIImage imageNamed:@"shim_photos"] forBarMetrics:0];
   self.navigationController.navigationBarHidden = NO;
+  
+  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+  {
+    self.thumbnailWidth = (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) ? iPadThumbnailWidthLandscape : iPadThumbnailWidthPortrait;
+  }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -175,19 +173,16 @@ static NSInteger iPadThumbnailRowCount = 8;
   return (interfaceOrientation == UIInterfaceOrientationPortrait) || (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad);
 }
 
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
-{
-  [self performSelector:@selector(performReloadAfterRotate) withObject:nil afterDelay:0];
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)orientation duration:(NSTimeInterval)duration {
+  [super willRotateToInterfaceOrientation:orientation duration:duration];
+  self.thumbnailWidth = (UIInterfaceOrientationIsLandscape(orientation)) ? iPadThumbnailWidthLandscape : iPadThumbnailWidthPortrait;
+  [self performSelector:@selector(performReloadAfterRotate) withObject:nil afterDelay:0.0];
 }
 
-- (void)performReloadAfterRotate
-{
-  self.thumbnailWidth = (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) ? iPadThumbnailWidthLandscape : iPadThumbnailWidthPortrait;
+- (void)performReloadAfterRotate {
+  NSLog(@"Reloading Gallery");
   [self.tableView reloadData];
 }
-
-
-
 
 #pragma mark - Table view data source
 
@@ -215,7 +210,7 @@ static NSInteger iPadThumbnailRowCount = 8;
   if (cell == nil) {
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     
-    TJMImageResourceView *tmpRes;
+    TJMImageResourceView *tmpRes = nil;
     int offset = 0;
     for (int i = 0; i < self.thumbnailRowCount; i++)
     {
