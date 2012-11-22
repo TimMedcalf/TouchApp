@@ -91,7 +91,8 @@ void uncaughtExceptionHandler(NSException *exception);
   UINavigationController *recipeNav = [[UINavigationController alloc] initWithRootViewController:recipeVC];
   
   
-  self.tabBarController = [[UITabBarController alloc] init];
+  //self.tabBarController = [[UITabBarController alloc] init];
+  self.tabBarController = [[RotatingTabBarController alloc] init];
   self.tabBarController.viewControllers = @[newsNav, photoNav, catNav, radioNav, recipeNav];
   self.window.rootViewController = self.tabBarController;
   [self.window makeKeyAndVisible];
@@ -145,7 +146,8 @@ void uncaughtExceptionHandler(NSException *exception);
 
 - (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
 {
-  return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? UIInterfaceOrientationMaskAll : UIInterfaceOrientationMaskPortrait;
+  return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? UIInterfaceOrientationMaskAll : UIInterfaceOrientationMaskAllButUpsideDown;
+  //return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? UIInterfaceOrientationMaskAll : UIInterfaceOrientationMaskPortrait;
 }
 
 #pragma mark flurry crash report

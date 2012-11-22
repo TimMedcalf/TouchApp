@@ -167,6 +167,18 @@ static NSInteger iPadThumbnailRowCount = 8;
     [super viewDidDisappear:animated];
 }
 
+- (BOOL)shouldAutorotate {
+  return YES;
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    return UIInterfaceOrientationMaskAll;
+  else
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations

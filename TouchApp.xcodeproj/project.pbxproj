@@ -15,6 +15,7 @@
 		220ADDE715295E5F0066A4A5 /* go@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 220ADDE315295E5F0066A4A5 /* go@2x~iphone.png */; };
 		220ADDE815295E5F0066A4A5 /* go~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 220ADDE415295E5F0066A4A5 /* go~ipad.png */; };
 		220ADDE915295E5F0066A4A5 /* go~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 220ADDE515295E5F0066A4A5 /* go~iphone.png */; };
+		220BBB4B165DE66500C5118B /* RotatingTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 220BBB4A165DE66500C5118B /* RotatingTabBarController.m */; };
 		2224F62E14542C01005D9948 /* libFlurryAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2224F62D14542C01005D9948 /* libFlurryAnalytics.a */; };
 		222951C713EC496F001D174D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222951C613EC496F001D174D /* UIKit.framework */; };
 		222951C913EC496F001D174D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222951C813EC496F001D174D /* Foundation.framework */; };
@@ -173,6 +174,8 @@
 		220ADDE315295E5F0066A4A5 /* go@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "go@2x~iphone.png"; sourceTree = "<group>"; };
 		220ADDE415295E5F0066A4A5 /* go~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "go~ipad.png"; sourceTree = "<group>"; };
 		220ADDE515295E5F0066A4A5 /* go~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "go~iphone.png"; sourceTree = "<group>"; };
+		220BBB49165DE66500C5118B /* RotatingTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotatingTabBarController.h; sourceTree = "<group>"; };
+		220BBB4A165DE66500C5118B /* RotatingTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotatingTabBarController.m; sourceTree = "<group>"; };
 		2224F62C14542C01005D9948 /* FlurryAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAnalytics.h; sourceTree = "<group>"; };
 		2224F62D14542C01005D9948 /* libFlurryAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryAnalytics.a; sourceTree = "<group>"; };
 		222951C213EC496F001D174D /* TouchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -636,6 +639,8 @@
 			children = (
 				224FBC901409987E00749E42 /* ImageGalleryViewController.h */,
 				224FBC911409987F00749E42 /* ImageGalleryViewController.m */,
+				220BBB49165DE66500C5118B /* RotatingTabBarController.h */,
+				220BBB4A165DE66500C5118B /* RotatingTabBarController.m */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -1165,6 +1170,7 @@
 				229890271427556400345AD3 /* HTMLItemViewController.m in Sources */,
 				2286E6D814357C5D00C4B275 /* TKProgressBarView.m in Sources */,
 				22F7C4DF162F5D1D002E2CB6 /* NewsItemViewController.m in Sources */,
+				220BBB4B165DE66500C5118B /* RotatingTabBarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
