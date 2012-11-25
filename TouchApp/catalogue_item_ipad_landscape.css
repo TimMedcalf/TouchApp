@@ -6,7 +6,7 @@
 
 html, body {
     font: 18px/21px sans-serif;
-    color: #000;
+    color: #FF0000;
     background: #FFFFFF;
 }
 
@@ -56,7 +56,7 @@ p.bodycopy {
     margin: 0;
 }
 
-#title, #playerwrapper div, #buywrapper div {
+#headercellinner, #playerwrapper div, #buywrapper div {
     font-family: Helvetica, Arial, sans-serif;
     font-size: 21;
     font-weight: 100;
@@ -69,24 +69,19 @@ p.bodycopy {
 	font-family: "Georgia", "Times New Roman", serif;
 }
 
-#pubdate, #byline, .subtitle {
+#pubdate, #byline, #title, .subtitle {
     font-family: Helvetica, Arial, sans-serif;
     font-size: 15;
     font-weight: 700;
     color: gray;
 }
 
-#title {width:585px;}
+#headercellinner {width:585px;}
 
-#byline {
+#byline, #title {
     width:100%; 
     display:block; 
     position:relative;
-}
-#catalogue_number {
-    position:absolute;
-    top:0;
-    right:0;
 }
 
 #headerwrapper {display:table; height:96px;}
@@ -146,22 +141,22 @@ a {
 }
 
 @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) { 
-
+    
 	.selector {
 		padding: 0;
 		margin: 0;
-		}
-		
-		body{
-		  -webkit-text-size-adjust:none;
-		  font-family:Helvetica, Arial, Verdana, sans-serif;
-		  margin: 0;
-          padding: 0;
-		}
+    }
+    
+    body{
+        -webkit-text-size-adjust:none;
+        font-family:Helvetica, Arial, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
 	
-		li {
+    li {
 		margin: 0;
 		padding: 0;		
-        }
-
+    }
+    
 }

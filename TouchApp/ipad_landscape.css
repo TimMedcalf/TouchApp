@@ -6,7 +6,7 @@
 
 html, body {
     font: 18px/21px sans-serif;
-    color: #FF0000;
+    color: #000;
     background: #FFFFFF;
 }
 
@@ -76,7 +76,7 @@ p.bodycopy {
     color: gray;
 }
 
-#title {width:585px;}
+#title {width:585;}
 
 #byline {
     width:100%; 
