@@ -78,6 +78,11 @@ static NSInteger CellSubTitleTag = 51;
   }
   UIImageView *headerView = [[UIImageView alloc]initWithImage:header];
   self.tableView.tableHeaderView = headerView;
+  
+  //add a blank view to the footer so that no empty table cells separator lines are visible
+  UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
+  v.backgroundColor = [UIColor clearColor];
+  [self.tableView setTableFooterView:v];
 }
 
 - (void)viewDidUnload

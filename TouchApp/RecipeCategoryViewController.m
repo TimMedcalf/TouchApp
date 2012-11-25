@@ -251,6 +251,7 @@ static NSInteger CellTitleTag = 50;
 {
   [self.progressView setHidden:YES];
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+  
   [self.tableView reloadData];
 }
 
