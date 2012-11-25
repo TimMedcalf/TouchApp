@@ -54,6 +54,7 @@
 
 @protocol PhotoViewDelegate
 - (void)dismissPhotoView:(PhotoViewController *)photoViewController;
+- (void)updateGalleryRotation;
 @end
 
 @interface PhotoViewController : UIViewController <UIScrollViewDelegate, UIActionSheetDelegate> {

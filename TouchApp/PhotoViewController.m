@@ -375,6 +375,11 @@
   }
 }
 
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+  [self.delegate updateGalleryRotation];
+}
+
 #pragma mark -
 #pragma mark  Frame calculations
 //#define PADDING  10

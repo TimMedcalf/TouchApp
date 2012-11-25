@@ -134,6 +134,8 @@ static NSInteger iPadThumbnailRowCount = 8;
   {
     self.thumbnailWidth = (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) ? iPadThumbnailWidthLandscape : iPadThumbnailWidthPortrait;
   }
+  
+  [self performSelector:@selector(performReloadAfterRotate) withObject:nil afterDelay:0.0];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -310,7 +312,12 @@ static NSInteger iPadThumbnailRowCount = 8;
 
 - (void)dismissPhotoView:(PhotoViewController *)photoViewController
 {
-    [self dismissModalViewControllerAnimated:YES];
+  [self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)updateGalleryRotation
+{
+  [self performReloadAfterRotate];
 }
 
 @end
