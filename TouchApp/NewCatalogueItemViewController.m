@@ -1,6 +1,6 @@
 
 #import "NewCatalogueItemViewController.h"
-#import "FlurryAnalytics.h"
+#import "Flurry.h"
 
 @implementation NewCatalogueItemViewController
 
@@ -42,12 +42,12 @@
 }
 
 - (void)play {
-  [FlurryAnalytics logEvent:@"Catalogue" withParameters:@{@"Played": _item.title}];
+  [Flurry logEvent:@"Catalogue" withParameters:@{@"Played": _item.title}];
   [[TJMAudioCenter sharedInstance] playURL:[NSURL URLWithString:self.item.mp3SampleURL]];
 }
 
 - (void)buy {
-    [FlurryAnalytics logEvent:@"Catalogue" withParameters:@{@"BuyPressed": _item.title}];
+    [Flurry logEvent:@"Catalogue" withParameters:@{@"BuyPressed": _item.title}];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.item.itunesURL]];
 }
 

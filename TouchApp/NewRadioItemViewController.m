@@ -1,6 +1,6 @@
 
 #import "NewRadioItemViewController.h"
-#import "FlurryAnalytics.h"
+#import "Flurry.h"
 
 @implementation NewRadioItemViewController
 
@@ -56,7 +56,7 @@
 
 - (void)play {
   //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
-  [FlurryAnalytics logEvent:@"Radio" withParameters:@{@"Played": _item.titleLabel}];
+  [Flurry logEvent:@"Radio" withParameters:@{@"Played": _item.titleLabel}];
   //NSLog(@"Trying to play - %@",self.item.link);
   [[TJMAudioCenter sharedInstance] playURL:[NSURL URLWithString:self.item.link]];
 }

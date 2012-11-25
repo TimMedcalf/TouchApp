@@ -9,7 +9,7 @@
 #import "NewsItemViewController.h"
 #import "TJMAudioCenter.h"
 #import "AppManager.h"
-#import "FlurryAnalytics.h"
+#import "Flurry.h"
 
 
 static NSInteger CellTitleTag = 50;
@@ -48,7 +48,7 @@ static NSInteger CellSubTitleTag = 51;
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  [FlurryAnalytics logAllPageViews:self.navigationController];
+  [Flurry logAllPageViews:self.navigationController];
   
   self.navigationItem.title= @"";
   

@@ -1,6 +1,6 @@
 
 #import "RecipeItemViewController.h"
-#import "FlurryAnalytics.h"
+#import "Flurry.h"
 
 
 @implementation RecipeItemViewController
@@ -62,7 +62,7 @@
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
   if (result == MFMailComposeResultSent)
   {
-    [FlurryAnalytics logEvent:@"Recipes" withParameters:@{@"Emailed": self.recipeItem.recipeExcerpt}];
+    [Flurry logEvent:@"Recipes" withParameters:@{@"Emailed": self.recipeItem.recipeExcerpt}];
   }
 	[self becomeFirstResponder];
 	[self dismissModalViewControllerAnimated:YES];

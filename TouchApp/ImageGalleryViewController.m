@@ -12,7 +12,7 @@
 #import "TJMImageResourceManager.h"
 #import "TJMImageResourceView.h"
 #import "PhotoViewController.h"
-#import "FlurryAnalytics.h"
+#import "Flurry.h"
 
 static NSInteger CellImageTag = 51;
 
@@ -58,7 +58,7 @@ static NSInteger iPadThumbnailRowCount = 8;
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  [FlurryAnalytics logAllPageViews:self.navigationController];
+  [Flurry logAllPageViews:self.navigationController];
   
   CGRect frame = self.progressView.frame;
   frame.origin.y = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 400: 160;
@@ -194,7 +194,7 @@ static NSInteger iPadThumbnailRowCount = 8;
 }
 
 - (void)performReloadAfterRotate {
-  NSLog(@"Reloading Gallery");
+  //NSLog(@"Reloading Gallery");
   [self.tableView reloadData];
 }
 

@@ -10,7 +10,7 @@
 #import "RecipeBookViewController.h"
 #import "RecipeCategoryItem.h"
 #import "AppManager.h"
-#import "FlurryAnalytics.h"
+#import "Flurry.h"
 
 static NSInteger CellTitleTag = 50;
 
@@ -47,7 +47,7 @@ static NSInteger CellTitleTag = 50;
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  [FlurryAnalytics logAllPageViews:self.navigationController];
+  [Flurry logAllPageViews:self.navigationController];
   
   self.navigationItem.title= @"";
   

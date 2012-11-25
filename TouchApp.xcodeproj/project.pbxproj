@@ -16,7 +16,6 @@
 		220ADDE815295E5F0066A4A5 /* go~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 220ADDE415295E5F0066A4A5 /* go~ipad.png */; };
 		220ADDE915295E5F0066A4A5 /* go~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 220ADDE515295E5F0066A4A5 /* go~iphone.png */; };
 		220BBB4B165DE66500C5118B /* RotatingTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 220BBB4A165DE66500C5118B /* RotatingTabBarController.m */; };
-		2224F62E14542C01005D9948 /* libFlurryAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2224F62D14542C01005D9948 /* libFlurryAnalytics.a */; };
 		222951C713EC496F001D174D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222951C613EC496F001D174D /* UIKit.framework */; };
 		222951C913EC496F001D174D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222951C813EC496F001D174D /* Foundation.framework */; };
 		222951CB13EC496F001D174D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222951CA13EC496F001D174D /* CoreGraphics.framework */; };
@@ -127,6 +126,8 @@
 		22CB4C7213F0966F008968D6 /* RadioItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4C7113F0966F008968D6 /* RadioItem.m */; };
 		22CB4CB813F1248E008968D6 /* RadioList.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4CB713F1248D008968D6 /* RadioList.m */; };
 		22CB4CBE13F12BDA008968D6 /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4CBC13F12BDA008968D6 /* RadioViewController.m */; };
+		22DEDC9C1661FC5D00CAC08E /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22DEDC9B1661FC5D00CAC08E /* libFlurry.a */; };
+		22DEDC9E1661FD6400CAC08E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22DEDC9D1661FD6400CAC08E /* SystemConfiguration.framework */; };
 		22F630021528413300C98F2F /* catalogue_header@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 22F62FF21528413300C98F2F /* catalogue_header@2x~ipad.png */; };
 		22F630031528413300C98F2F /* catalogue_header@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 22F62FF31528413300C98F2F /* catalogue_header@2x~iphone.png */; };
 		22F630041528413300C98F2F /* catalogue_header~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 22F62FF41528413300C98F2F /* catalogue_header~ipad.png */; };
@@ -176,8 +177,6 @@
 		220ADDE515295E5F0066A4A5 /* go~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "go~iphone.png"; sourceTree = "<group>"; };
 		220BBB49165DE66500C5118B /* RotatingTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotatingTabBarController.h; sourceTree = "<group>"; };
 		220BBB4A165DE66500C5118B /* RotatingTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotatingTabBarController.m; sourceTree = "<group>"; };
-		2224F62C14542C01005D9948 /* FlurryAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAnalytics.h; sourceTree = "<group>"; };
-		2224F62D14542C01005D9948 /* libFlurryAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryAnalytics.a; sourceTree = "<group>"; };
 		222951C213EC496F001D174D /* TouchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		222951C613EC496F001D174D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		222951C813EC496F001D174D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -348,6 +347,9 @@
 		22CB4CB713F1248D008968D6 /* RadioList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioList.m; sourceTree = "<group>"; };
 		22CB4CBB13F12BDA008968D6 /* RadioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioViewController.h; sourceTree = "<group>"; };
 		22CB4CBC13F12BDA008968D6 /* RadioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioViewController.m; sourceTree = "<group>"; };
+		22DEDC9A1661FC5D00CAC08E /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		22DEDC9B1661FC5D00CAC08E /* libFlurry.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry.a; sourceTree = "<group>"; };
+		22DEDC9D1661FD6400CAC08E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		22F62FF21528413300C98F2F /* catalogue_header@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "catalogue_header@2x~ipad.png"; sourceTree = "<group>"; };
 		22F62FF31528413300C98F2F /* catalogue_header@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "catalogue_header@2x~iphone.png"; sourceTree = "<group>"; };
 		22F62FF41528413300C98F2F /* catalogue_header~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "catalogue_header~ipad.png"; sourceTree = "<group>"; };
@@ -392,6 +394,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22DEDC9E1661FD6400CAC08E /* SystemConfiguration.framework in Frameworks */,
 				2272020A140E4BDD005DD4B7 /* MessageUI.framework in Frameworks */,
 				22CB4C3F13EFE38F008968D6 /* CoreMedia.framework in Frameworks */,
 				22CB4C3D13EFE383008968D6 /* AVFoundation.framework in Frameworks */,
@@ -399,26 +402,18 @@
 				222951C713EC496F001D174D /* UIKit.framework in Frameworks */,
 				222951C913EC496F001D174D /* Foundation.framework in Frameworks */,
 				222951CB13EC496F001D174D /* CoreGraphics.framework in Frameworks */,
-				2224F62E14542C01005D9948 /* libFlurryAnalytics.a in Frameworks */,
+				22DEDC9C1661FC5D00CAC08E /* libFlurry.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2224F62A14542BEB005D9948 /* Flurry */ = {
-			isa = PBXGroup;
-			children = (
-				2224F62C14542C01005D9948 /* FlurryAnalytics.h */,
-				2224F62D14542C01005D9948 /* libFlurryAnalytics.a */,
-			);
-			name = Flurry;
-			sourceTree = "<group>";
-		};
 		222951B713EC496F001D174D = {
 			isa = PBXGroup;
 			children = (
-				2224F62A14542BEB005D9948 /* Flurry */,
+				22DEDC9D1661FD6400CAC08E /* SystemConfiguration.framework */,
+				22DEDC991661FC5D00CAC08E /* Flurry */,
 				22065B4F14380B5400FAA48B /* iTunesArtwork */,
 				222951CC13EC496F001D174D /* TouchApp */,
 				22CB4BFC13EE47FC008968D6 /* libs */,
@@ -932,6 +927,15 @@
 			name = Radio;
 			sourceTree = "<group>";
 		};
+		22DEDC991661FC5D00CAC08E /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				22DEDC9A1661FC5D00CAC08E /* Flurry.h */,
+				22DEDC9B1661FC5D00CAC08E /* libFlurry.a */,
+			);
+			path = Flurry;
+			sourceTree = "<group>";
+		};
 		22F7C4E0162FB49B002E2CB6 /* new NavBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -1193,7 +1197,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Tim Medcalf (LQ9PDTLE6X)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Michael Harding (H4X7VSZ24H)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1209,7 +1213,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				PROVISIONING_PROFILE = "46F5A24E-EE16-4A43-A9A4-D89A3D720449";
+				PROVISIONING_PROFILE = "8F1CAA70-B353-497B-B00C-DF57EAA6EA7D";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1219,7 +1223,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Tim Medcalf (LQ9PDTLE6X)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Michael Harding (H4X7VSZ24H)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_THUMB_SUPPORT = NO;
@@ -1229,7 +1233,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "46F5A24E-EE16-4A43-A9A4-D89A3D720449";
+				PROVISIONING_PROFILE = "8F1CAA70-B353-497B-B00C-DF57EAA6EA7D";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1240,7 +1244,6 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Neil Barrington (7B6CJ92L4T)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TouchApp/TouchApp-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
@@ -1251,10 +1254,10 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/Flurry\"",
 				);
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "187522F8-3905-450D-8C5C-E6241D6D1551";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1265,7 +1268,6 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Neil Barrington (7B6CJ92L4T)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TouchApp/TouchApp-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
@@ -1276,10 +1278,10 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/Flurry\"",
 				);
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "187522F8-3905-450D-8C5C-E6241D6D1551";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

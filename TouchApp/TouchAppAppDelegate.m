@@ -19,7 +19,7 @@
 
 //#define DEVMODE
 #ifndef DEVMODE
-#import "FlurryAnalytics.h"
+#import "Flurry.h"
 
 @interface TouchAppAppDelegate ()
 void uncaughtExceptionHandler(NSException *exception);
@@ -34,9 +34,9 @@ void uncaughtExceptionHandler(NSException *exception);
 {
 #ifndef DEVMODE
   NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
-  [FlurryAnalytics startSession:@"EG1Y8QTDSQI2YWEFXFDJ"];
-  [FlurryAnalytics logEvent:@"DeviceInfo" withParameters:@{@"Firmware": [[UIDevice currentDevice] systemVersion]}];
-  [FlurryAnalytics logAllPageViews:_tabBarController];
+  [Flurry startSession:@"EG1Y8QTDSQI2YWEFXFDJ"];
+  [Flurry logEvent:@"DeviceInfo" withParameters:@{@"Firmware": [[UIDevice currentDevice] systemVersion]}];
+  [Flurry logAllPageViews:_tabBarController];
 #endif  
   //clear the cache out whenever it's a new version - allows us to change data formats without worrying
   //about whatever is stored already on the device
@@ -153,7 +153,7 @@ void uncaughtExceptionHandler(NSException *exception);
 #pragma mark flurry crash report
 #ifndef DEVMODE
 void uncaughtExceptionHandler(NSException *exception) {
-  [FlurryAnalytics logError:@"Uncaught" message:@"Crash!" exception:exception];
+  [Flurry logError:@"Uncaught" message:@"Crash!" exception:exception];
 }
 #endif
 
