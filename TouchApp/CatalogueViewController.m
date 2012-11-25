@@ -119,7 +119,7 @@ static NSInteger CellSubTitleTag = 51;
   
 	UINavigationBar *nb = self.navigationController.navigationBar;
 	nb.tintColor = [UIColor colorWithRed:82/255.0 green:96/255.0 blue:45/255.0 alpha:1];
-  //self.tabBarController.tabBar.selectedImageTintColor = [UIColor colorWithRed:82/255.0 green:96/255.0 blue:45/255.0 alpha:1];
+  self.tabBarController.tabBar.selectedImageTintColor = [UIColor colorWithRed:82/255.0 green:96/255.0 blue:45/255.0 alpha:1];
   [nb setBackgroundImage:[UIImage imageNamed:@"shim_catalog"] forBarMetrics:0];
   [self configureTableHeader];
 }

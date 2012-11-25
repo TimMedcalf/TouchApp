@@ -101,7 +101,7 @@ static NSInteger CellTitleTag = 50;
   [super viewWillAppear:animated];
 	UINavigationBar *nb = self.navigationController.navigationBar;
 	nb.tintColor = [UIColor colorWithRed:32/255.0 green:70/255.0 blue:117/255.0 alpha:1];
-  //self.tabBarController.tabBar.selectedImageTintColor = nb.tintColor;
+  self.tabBarController.tabBar.selectedImageTintColor = nb.tintColor;
   [nb setBackgroundImage:[UIImage imageNamed:@"shim_recipes"] forBarMetrics:0];
   [self configureTableHeader];
 }
