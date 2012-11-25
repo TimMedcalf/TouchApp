@@ -71,7 +71,6 @@
   [super layoutSubviews];
   
   // center the image as it becomes smaller than the size of the screen
-  
   CGSize boundsSize = self.bounds.size;
   CGRect frameToCenter = imageView.frame;
   

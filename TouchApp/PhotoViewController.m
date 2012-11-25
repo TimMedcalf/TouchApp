@@ -187,12 +187,12 @@
   //NSLog(@"ViewDidLoad - %@", NSStringFromCGRect(self.view.frame));
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)viewDidAppear:(BOOL)animated
 {
-  [super viewWillAppear:animated];
+  self.navigationController.navigationBarHidden = YES;
+  [super viewDidAppear:animated];
   self.pagingScrollView.contentSize = [self contentSizeForPagingScrollView];
   //we use out own nav bar...
-  self.navigationController.navigationBarHidden = YES;
   [self tilePages];
   [self skipToPage:self.initialIndex];
 }
@@ -410,6 +410,7 @@
   //CGRect bounds = self.pagingScrollView.bounds;
   //CGRect bounds = self.pagingScrollView.frame;
   CGRect bounds = self.view.bounds;
+  
   //NSLog(@"contentSizeForPagingScrollView = %@",NSStringFromCGRect(bounds));
   return CGSizeMake(bounds.size.width * [self imageCount], bounds.size.height);
 }
