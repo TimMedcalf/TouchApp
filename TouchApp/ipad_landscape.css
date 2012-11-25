@@ -6,7 +6,7 @@
 
 html, body {
     font: 18px/21px sans-serif;
-    color: #000;
+    color: #FF0000;
     background: #FFFFFF;
 }
 
@@ -14,7 +14,7 @@ html, body {
 p {margin: 0px 92px 12px 90px; padding: 0;}
 
 
-p.bodycopy {/Users/tim/Dropbox/code/TouchApp/TouchApp/ipad_landscape.css
+p.bodycopy {
     border-top: 1px #e0e0e0 solid;
     margin: 0;
     padding-top: 23px;

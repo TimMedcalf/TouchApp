@@ -16,6 +16,7 @@
 		220ADDE815295E5F0066A4A5 /* go~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 220ADDE415295E5F0066A4A5 /* go~ipad.png */; };
 		220ADDE915295E5F0066A4A5 /* go~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 220ADDE515295E5F0066A4A5 /* go~iphone.png */; };
 		220BBB4B165DE66500C5118B /* RotatingTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 220BBB4A165DE66500C5118B /* RotatingTabBarController.m */; };
+		22150F93166283A600B9A75F /* ipad_landscape.css in Resources */ = {isa = PBXBuildFile; fileRef = 22150F92166283A600B9A75F /* ipad_landscape.css */; };
 		222951C713EC496F001D174D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222951C613EC496F001D174D /* UIKit.framework */; };
 		222951C913EC496F001D174D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222951C813EC496F001D174D /* Foundation.framework */; };
 		222951CB13EC496F001D174D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222951CA13EC496F001D174D /* CoreGraphics.framework */; };
@@ -177,6 +178,7 @@
 		220ADDE515295E5F0066A4A5 /* go~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "go~iphone.png"; sourceTree = "<group>"; };
 		220BBB49165DE66500C5118B /* RotatingTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotatingTabBarController.h; sourceTree = "<group>"; };
 		220BBB4A165DE66500C5118B /* RotatingTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotatingTabBarController.m; sourceTree = "<group>"; };
+		22150F92166283A600B9A75F /* ipad_landscape.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = ipad_landscape.css; sourceTree = "<group>"; };
 		222951C213EC496F001D174D /* TouchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		222951C613EC496F001D174D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		222951C813EC496F001D174D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -847,6 +849,7 @@
 				22CB4C1413EE4CFA008968D6 /* NewsItem.h */,
 				22CB4C1513EE4CFA008968D6 /* NewsItem.m */,
 				22CB4C6013F08E8E008968D6 /* ipad.css */,
+				22150F92166283A600B9A75F /* ipad_landscape.css */,
 				22CB4C6113F08E8F008968D6 /* mobile.css */,
 				DE1475A5147848490065208F /* catalogue_item_iphone.css */,
 				DE1475A8147856030065208F /* catalogue_item_ipad.css */,
@@ -1108,6 +1111,7 @@
 				225E2D20164041DC00F3E3C3 /* radio_header_landscape~ipad.png in Resources */,
 				225E2D21164041DC00F3E3C3 /* recipes_header_landscape@2x~ipad.png in Resources */,
 				225E2D22164041DC00F3E3C3 /* recipes_header_landscape~ipad.png in Resources */,
+				22150F93166283A600B9A75F /* ipad_landscape.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
