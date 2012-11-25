@@ -18,6 +18,7 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
 @property (strong, nonatomic) NSURL *URL;
 @property (nonatomic, assign) BOOL playWhenLoaded;
 @property (nonatomic, assign) BOOL interruptedDuringPlayback;
+@property (nonatomic, assign) BOOL audioSessionInitialised;
 - (void) setupAudioSession;
 @end
 
@@ -33,7 +34,8 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
 {
   if ((self = [super init]))
   {
-    [self setupAudioSession];
+    //not doing this as I think it's what's causing the device music to stop...
+    //[self setupAudioSession];
   }
   return self;
 }
@@ -59,6 +61,7 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
 
 - (void)playURL:(NSURL*) url
 {
+  [self setupAudioSession];
   //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
   //if url matches existing playing item, just makes sure it's playing
   if ([self.URL isEqual:url]) 
@@ -189,6 +192,8 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
 }
 
 - (void) setupAudioSession {
+  if (self.audioSessionInitialised) return;
+  self.audioSessionInitialised = YES;
   //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
   AVAudioSession *mySession = [AVAudioSession sharedInstance];
   
@@ -200,7 +205,7 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
   NSError *audioSessionError = nil;
   [mySession setCategory: AVAudioSessionCategoryPlayback
                    error: &audioSessionError];
-  
+
   if (audioSessionError != nil) {
     
     //NSLog (@"Error setting audio session category.");
@@ -256,6 +261,7 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
 
 - (void)togglePlayPause
 {
+  [self setupAudioSession];
   if (self.player.rate < 1)
     self.player.rate = 1.0;
   else

@@ -100,7 +100,7 @@ NSInteger TwoMonths = -5184000;
 //    }
 //    [intermArray removeObjectsInRange:NSMakeRange(0, [intermArray count] - 2)];
 //  }
-  NSLog(@"Saving %i **********", [saveArray count]);
+//  NSLog(@"Saving %i **********", [saveArray count]);
 //  NSMutableArray *saveArray = [[NSMutableArray alloc] initWithCapacity:[intermArray count]];
 //  for (TJMImageResource *image in intermArray)
 //  {
