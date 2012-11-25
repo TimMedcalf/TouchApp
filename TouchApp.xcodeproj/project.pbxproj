@@ -857,8 +857,8 @@
 		22CB4C1D13EEBF62008968D6 /* buttons */ = {
 			isa = PBXGroup;
 			children = (
-				227C56391414918900169F38 /* placeholder.png */,
 				22CB4C1E13EEBF74008968D6 /* Arrow-Left_greystate.png */,
+				227C56391414918900169F38 /* placeholder.png */,
 				22CB4C1F13EEBF74008968D6 /* Arrow-Right_greystate.png */,
 				22CB4C2013EEBF74008968D6 /* Arrow-Right_greystate@2x.png */,
 				22CB4C2113EEBF74008968D6 /* Arrow-Left_greystate@2x.png */,

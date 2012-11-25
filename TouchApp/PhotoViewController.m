@@ -125,7 +125,7 @@
   
   [self.view addSubview:self.customNavigationBar];
   self.customNavigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(savePhoto)];
-  self.customNavigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Photos" style:UIBarButtonItemStylePlain target:self action:@selector(goBack)];
+  self.customNavigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(goBack)];
   self.customNavigationBar.tintColor = nil;
   self.customNavigationBar.barStyle = UIBarStyleBlack;
   self.customNavigationBar.translucent = YES;
@@ -140,9 +140,7 @@
                                 cancelButtonTitle:@"Cancel" 
                                 destructiveButtonTitle:@"Save to Camera Roll" 
                                 otherButtonTitles:nil]; 
-  [actionSheet showInView:self.view]; 
-	
-	
+  [actionSheet showInView:self.view];
 }
 - (void)setViewState
 {
