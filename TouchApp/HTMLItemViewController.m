@@ -96,6 +96,7 @@
   tmpStr = [[[request.URL absoluteString] pathExtension] lowercaseString];
   if ([tmpStr isEqualToString:@"mp3"])
   {
+    [[TJMAudioCenter sharedInstance] setCurrentPlayingWithInfoForArtist:nil album:nil andTitle:nil];
     [[TJMAudioCenter sharedInstance] playURL:request.URL];
     return NO;
   }

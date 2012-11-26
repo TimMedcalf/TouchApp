@@ -15,6 +15,7 @@
   #import <AVFoundation/AVFoundation.h>
   #import <CoreMedia/CoreMedia.h>
   #import <MessageUI/MessageUI.h>
+  #import  <MediaPlayer/MediaPlayer.h>
   #import "TouchXML.h"
   #import "UIApplication+TJMNetworkActivity.h"
   #import "TJMAudioCenter.h"

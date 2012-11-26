@@ -19,7 +19,9 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
 @property (nonatomic, assign) BOOL playWhenLoaded;
 @property (nonatomic, assign) BOOL interruptedDuringPlayback;
 @property (nonatomic, assign) BOOL audioSessionInitialised;
+@property (nonatomic, strong) NSDictionary *nowPlaying;
 - (void) setupAudioSession;
+- (void) populateNowPlayingInfo;
 @end
 
 @implementation TJMAudioCenter
@@ -89,6 +91,7 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
                                                  name:AVPlayerItemDidPlayToEndTimeNotification
                                                object:self.player.currentItem];
   }
+  [self populateNowPlayingInfo];
 }
 
 - (void)pauseURL:(NSURL *)url
@@ -266,6 +269,26 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
     self.player.rate = 1.0;
   else
     self.player.rate = 0.0;
+  [self populateNowPlayingInfo];
+}
+
+- (void)setCurrentPlayingWithInfoForArtist:(NSString *)artist album:(NSString *)album andTitle:(NSString *)title
+{
+  if ((!artist) && (!album) && (!title)) {
+    self.nowPlaying = nil;
+  } else {
+    NSMutableDictionary *mediaProperties = [NSMutableDictionary dictionaryWithCapacity:4];
+    [mediaProperties setObject:@"Touch" forKey:MPMediaItemPropertyAlbumArtist];
+    if (artist) [mediaProperties setObject:artist forKey:MPMediaItemPropertyArtist];
+    if (album) [mediaProperties setObject:album forKey:MPMediaItemPropertyAlbumTitle];
+    if (title) [mediaProperties setObject:title forKey:MPMediaItemPropertyTitle];
+    self.nowPlaying = [NSDictionary dictionaryWithDictionary:mediaProperties];
+  }
+}
+
+- (void) populateNowPlayingInfo {
+  MPNowPlayingInfoCenter *center = [MPNowPlayingInfoCenter defaultCenter];
+  center.nowPlayingInfo = self.nowPlaying;
 }
 
 

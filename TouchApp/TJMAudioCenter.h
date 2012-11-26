@@ -38,6 +38,8 @@ typedef enum
 -(TJMAudioStatus)statusCheckForURL:(NSURL*)url;
 -(TJMAudioStatus)statusCheck;
 
+- (void)setCurrentPlayingWithInfoForArtist:(NSString *)artist album:(NSString *)album andTitle:(NSString *)title;
+
 + (TJMAudioCenter *)sharedInstance;
 
 @end

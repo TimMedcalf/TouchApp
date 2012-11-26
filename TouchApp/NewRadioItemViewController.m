@@ -58,6 +58,7 @@
   //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
   [Flurry logEvent:@"Radio" withParameters:@{@"Played": _item.titleLabel}];
   //NSLog(@"Trying to play - %@",self.item.link);
+  [[TJMAudioCenter sharedInstance] setCurrentPlayingWithInfoForArtist:nil album:self.item.title andTitle:self.item.titleLabel];
   [[TJMAudioCenter sharedInstance] playURL:[NSURL URLWithString:self.item.link]];
 }
 
