@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2206140D160C2082000E3880 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2206140C160C2082000E3880 /* Default-568h@2x.png */; };
-		22065B5014380B5400FAA48B /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 22065B4F14380B5400FAA48B /* iTunesArtwork */; };
+		22065B5014380B5400FAA48B /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 22065B4F14380B5400FAA48B /* iTunesArtwork.png */; };
 		220A95F61526CE220064463C /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 220A95F51526CE220064463C /* Icon-72@2x.png */; };
 		220A95F81526D13C0064463C /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 220A95F71526D13C0064463C /* Default-Portrait@2x~ipad.png */; };
 		220ADDE615295E5F0066A4A5 /* go@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 220ADDE215295E5F0066A4A5 /* go@2x~ipad.png */; };
@@ -170,7 +170,7 @@
 
 /* Begin PBXFileReference section */
 		2206140C160C2082000E3880 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		22065B4F14380B5400FAA48B /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
+		22065B4F14380B5400FAA48B /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = SOURCE_ROOT; };
 		220A95F51526CE220064463C /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = SOURCE_ROOT; };
 		220A95F71526D13C0064463C /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
 		220ADDE215295E5F0066A4A5 /* go@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "go@2x~ipad.png"; sourceTree = "<group>"; };
@@ -416,9 +416,8 @@
 		222951B713EC496F001D174D = {
 			isa = PBXGroup;
 			children = (
-				22DEDC9D1661FD6400CAC08E /* SystemConfiguration.framework */,
 				22DEDC991661FC5D00CAC08E /* Flurry */,
-				22065B4F14380B5400FAA48B /* iTunesArtwork */,
+				22065B4F14380B5400FAA48B /* iTunesArtwork.png */,
 				222951CC13EC496F001D174D /* TouchApp */,
 				22CB4BFC13EE47FC008968D6 /* libs */,
 				222951C513EC496F001D174D /* Frameworks */,
@@ -439,6 +438,7 @@
 		222951C513EC496F001D174D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				22DEDC9D1661FD6400CAC08E /* SystemConfiguration.framework */,
 				22720209140E4BDD005DD4B7 /* MessageUI.framework */,
 				22CB4C3E13EFE38E008968D6 /* CoreMedia.framework */,
 				22CB4C3C13EFE382008968D6 /* AVFoundation.framework */,
@@ -1063,7 +1063,7 @@
 				2252536E141E289200157205 /* NewCatalogueItemViewController.xib in Resources */,
 				22525374141E2CA500157205 /* NewRadioItemViewController.xib in Resources */,
 				229890281427556400345AD3 /* HTMLItemViewController.xib in Resources */,
-				22065B5014380B5400FAA48B /* iTunesArtwork in Resources */,
+				22065B5014380B5400FAA48B /* iTunesArtwork.png in Resources */,
 				DE1475A6147848490065208F /* catalogue_item_iphone.css in Resources */,
 				DE1475A9147856030065208F /* catalogue_item_ipad.css in Resources */,
 				220A95F61526CE220064463C /* Icon-72@2x.png in Resources */,
