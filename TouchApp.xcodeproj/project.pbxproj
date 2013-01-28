@@ -16,6 +16,7 @@
 		220ADDE815295E5F0066A4A5 /* go~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 220ADDE415295E5F0066A4A5 /* go~ipad.png */; };
 		220ADDE915295E5F0066A4A5 /* go~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 220ADDE515295E5F0066A4A5 /* go~iphone.png */; };
 		220BBB4B165DE66500C5118B /* RotatingTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 220BBB4A165DE66500C5118B /* RotatingTabBarController.m */; };
+		2211EB1D16B642560038C9B7 /* UIApplication+TJMNetworkWarning.m in Sources */ = {isa = PBXBuildFile; fileRef = 2211EB1C16B642560038C9B7 /* UIApplication+TJMNetworkWarning.m */; };
 		22150F93166283A600B9A75F /* ipad_landscape.css in Resources */ = {isa = PBXBuildFile; fileRef = 22150F92166283A600B9A75F /* ipad_landscape.css */; };
 		22150F951662A8C900B9A75F /* catalogue_item_ipad_landscape.css in Resources */ = {isa = PBXBuildFile; fileRef = 22150F941662A8C900B9A75F /* catalogue_item_ipad_landscape.css */; };
 		22198A211692DC9600E73E71 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 22198A1D1692DC9600E73E71 /* Icon-Small-50.png */; };
@@ -184,6 +185,8 @@
 		220ADDE515295E5F0066A4A5 /* go~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "go~iphone.png"; sourceTree = "<group>"; };
 		220BBB49165DE66500C5118B /* RotatingTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotatingTabBarController.h; sourceTree = "<group>"; };
 		220BBB4A165DE66500C5118B /* RotatingTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotatingTabBarController.m; sourceTree = "<group>"; };
+		2211EB1B16B642560038C9B7 /* UIApplication+TJMNetworkWarning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+TJMNetworkWarning.h"; sourceTree = "<group>"; };
+		2211EB1C16B642560038C9B7 /* UIApplication+TJMNetworkWarning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+TJMNetworkWarning.m"; sourceTree = "<group>"; };
 		22150F92166283A600B9A75F /* ipad_landscape.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = ipad_landscape.css; sourceTree = "<group>"; };
 		22150F941662A8C900B9A75F /* catalogue_item_ipad_landscape.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = catalogue_item_ipad_landscape.css; sourceTree = "<group>"; };
 		22198A1D1692DC9600E73E71 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = SOURCE_ROOT; };
@@ -836,6 +839,8 @@
 				22CB4C0D13EE4A57008968D6 /* TJM_UIImage.m */,
 				22CB4C0913EE4A41008968D6 /* UIApplication+TJMNetworkActivity.h */,
 				22CB4C0A13EE4A41008968D6 /* UIApplication+TJMNetworkActivity.m */,
+				2211EB1B16B642560038C9B7 /* UIApplication+TJMNetworkWarning.h */,
+				2211EB1C16B642560038C9B7 /* UIApplication+TJMNetworkWarning.m */,
 			);
 			name = categories;
 			sourceTree = "<group>";
@@ -1203,6 +1208,7 @@
 				2286E6D814357C5D00C4B275 /* TKProgressBarView.m in Sources */,
 				22F7C4DF162F5D1D002E2CB6 /* NewsItemViewController.m in Sources */,
 				220BBB4B165DE66500C5118B /* RotatingTabBarController.m in Sources */,
+				2211EB1D16B642560038C9B7 /* UIApplication+TJMNetworkWarning.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1272,7 +1278,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Michael Harding";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TouchApp/TouchApp-Prefix.pch";
@@ -1288,7 +1294,7 @@
 				);
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4BA3ABB2-B43B-4620-A380-1D1C0859B899";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1299,7 +1305,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Michael Harding";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TouchApp/TouchApp-Prefix.pch";
@@ -1315,7 +1321,7 @@
 				);
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4BA3ABB2-B43B-4620-A380-1D1C0859B899";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

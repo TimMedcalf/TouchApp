@@ -13,6 +13,7 @@
 #import "TJMImageResourceView.h"
 #import "PhotoViewController.h"
 #import "Flurry.h"
+#import "UIApplication+TJMNetworkWarning.h"
 
 static NSInteger CellImageTag = 51;
 
@@ -297,9 +298,7 @@ static NSInteger iPadThumbnailRowCount = 8;
 - (void)updateFailed
 {
   [self.progressView setHidden:YES];
-  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No connection" message:@"Please check you are connected to the internet." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-  [alert show];
-   alert = nil;
+  [[UIApplication sharedApplication] showNetworkWarning];
 }
 
 - (void)handleShake

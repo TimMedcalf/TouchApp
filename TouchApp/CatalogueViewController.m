@@ -11,6 +11,7 @@
 #import "NewCatalogueItemViewController.h"
 #import "AppManager.h"
 #import "Flurry.h"
+#import "UIApplication+TJMNetworkWarning.h"
 
 static NSInteger CellTitleTag = 50;
 static NSInteger CellSubTitleTag = 51;
@@ -283,11 +284,6 @@ static NSInteger CellSubTitleTag = 51;
 #pragma mark FeedListConsumerDelegates
 - (void)updateSource
 {
-  //NSLog(@"Refreshing...");
-//  if ((self.spinner) && ([self.spinner isAnimating]))
-//  {
-//    [self.spinner stopAnimating];
-//  }
   [self.progressView setHidden:YES];
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
   [self.tableView reloadData];
@@ -295,19 +291,12 @@ static NSInteger CellSubTitleTag = 51;
 
 - (void)updateFailed
 {
-//  if ((self.spinner) && ([self.spinner isAnimating]))
-//  {
-//    [self.spinner stopAnimating];
-//  }
   [self.progressView setHidden:YES];
-  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No connection" message:@"Please check you are connected to the internet." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-  [alert show];
-   alert = nil;
+  [[UIApplication sharedApplication] showNetworkWarning];
 }
 
 - (void)handleShake
 {
-  //NSLog(@"Catalogue - Shake!");
   [self.catList refreshFeedForced:YES];
 }
 

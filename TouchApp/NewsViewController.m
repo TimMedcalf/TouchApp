@@ -10,6 +10,7 @@
 #import "TJMAudioCenter.h"
 #import "AppManager.h"
 #import "Flurry.h"
+#import "UIApplication+TJMNetworkWarning.h"
 
 
 static NSInteger CellTitleTag = 50;
@@ -263,10 +264,7 @@ static NSInteger CellSubTitleTag = 51;
 - (void)updateFailed
 {
   [self.progressView setHidden:YES];
-  
-  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No connection" message:@"Please check you are connected to the internet." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-  [alert show];
-   alert = nil;
+  [[UIApplication sharedApplication] showNetworkWarning];
 }
 
 - (void)handleShake

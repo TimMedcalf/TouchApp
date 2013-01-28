@@ -85,11 +85,9 @@
 
 -(void)URLDidFail:(NSURL *)url
 {
-  //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));  
   UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Audio stream failed." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 	[alert show];
-  //ARC
-	//alert autorelease];
+
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
