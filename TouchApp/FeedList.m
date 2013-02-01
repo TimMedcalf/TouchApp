@@ -205,7 +205,8 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
   self.activeDownload = [NSMutableData data];
   // alloc+init and start an NSURLConnection; release on completion/failure
   //NSLog(@"%@", self.feed);
-  NSMutableURLRequest *tmpRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:self.feed] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60];
+  //NSMutableURLRequest *tmpRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:self.feed] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60];
+  NSMutableURLRequest *tmpRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:self.feed] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:60];
   if (self.etag) 
   {
     //NSLog(@"Adding If-None-Match Header");
@@ -247,7 +248,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
-  //NSLog(@"%@",[(NSHTTPURLResponse *)response allHeaderFields]);
+  NSLog(@"%@",[(NSHTTPURLResponse *)response allHeaderFields]);
   
   //store the etag
   self.etag = [(NSHTTPURLResponse *)response allHeaderFields][@"Etag"];
