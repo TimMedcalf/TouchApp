@@ -68,14 +68,14 @@ static NSInteger CellTitleTag = 50;
     self.progressView.hidden = NO;
   }
   [self.catList refreshFeed];
-}
+} 
 
 - (void)configureTableHeader {
   UIImage *header = nil;
   if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
-    header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"recipes_header" ofType:@"png"]];
+    header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"recipes_header" ofType:@"jpg"]];
   } else {
-    header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"recipes_header_landscape" ofType:@"png"]];
+    header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"recipes_header_landscape" ofType:@"jpg"]];
   }
   UIImageView *headerView = [[UIImageView alloc]initWithImage:header];
   self.tableView.tableHeaderView = headerView;

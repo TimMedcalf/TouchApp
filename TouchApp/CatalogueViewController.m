@@ -88,9 +88,9 @@ static NSInteger CellSubTitleTag = 51;
 - (void)configureTableHeader {
   UIImage *header = nil;
   if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
-    header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"catalogue_header" ofType:@"png"]];
+    header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"catalogue_header" ofType:@"jpg"]];
   } else {
-    header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"catalogue_header_landscape" ofType:@"png"]];
+    header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"catalogue_header_landscape" ofType:@"jpg"]];
   }
   UIImageView *headerView = [[UIImageView alloc]initWithImage:header];
   self.tableView.tableHeaderView = headerView;
