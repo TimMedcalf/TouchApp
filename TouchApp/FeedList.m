@@ -248,7 +248,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
-  NSLog(@"%@",[(NSHTTPURLResponse *)response allHeaderFields]);
+  //NSLog(@"%@",[(NSHTTPURLResponse *)response allHeaderFields]);
   
   //store the etag
   self.etag = [(NSHTTPURLResponse *)response allHeaderFields][@"Etag"];
@@ -278,6 +278,9 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 {  
   if (self.activeDownload)
   {
+    //download size check
+    //NSLog(@"Download: %@, %i", self.feedURL, [self.activeDownload length]);
+    
     [self parseResultWithData:self.activeDownload];
     //then update the lastRefresh property
     self.lastRefresh = [NSDate date];
@@ -373,7 +376,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
   }
   else
   {
-    NSLog(@"0 updated bytes from feed %@",self.feed);
+    //NSLog(@"0 updated bytes from %@",self.feed);
   }
 }
 
@@ -396,8 +399,10 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 - (NSInteger)refreshTimerCount
 {
   //number of seconds to wait before feed refreshes - override for different time
-  return 25200; // 7 hours - read it in the morning, and see if there's anything new at the end of the day!
-
+  //return 25200; // 7 hours - read it in the morning, and see if there's anything new at the end of the day!
+  
+  // refresh feed every 30 minutes
+  return 1800;
 }
 
 - (void)dataUpdated

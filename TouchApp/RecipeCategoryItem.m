@@ -42,9 +42,9 @@ NSString *const Key_RCat_Title = @"title";
   return [self.recipeTitle compare:item.recipeTitle];
 }
 
-- (NSInteger)refreshTimerCount
-{
-  return 3600;
-}
+//- (NSInteger)refreshTimerCount
+//{
+//  return 3600;
+//}
 
 @end
