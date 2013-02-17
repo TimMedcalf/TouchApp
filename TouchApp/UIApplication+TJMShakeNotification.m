@@ -20,7 +20,7 @@ static NSUInteger tjm_shakeCount = 0;
   NSInteger timeSince = [now timeIntervalSince1970];
   if ((timeSince - tjm_lastShake) < 10) {
     tjm_shakeCount += 1;
-    if (tjm_shakeCount > 4) {
+    if (tjm_shakeCount > 2) {
       [[NSNotificationCenter defaultCenter] postNotificationName:TouchAppAllShookUp object:self];
       tjm_shakeCount = 0;
     }
