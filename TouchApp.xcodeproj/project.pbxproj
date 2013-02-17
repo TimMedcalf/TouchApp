@@ -45,6 +45,8 @@
 		2229527713ECEFF7001D174D /* radio.png in Resources */ = {isa = PBXBuildFile; fileRef = 2229526D13ECEFF7001D174D /* radio.png */; };
 		2229527813ECEFF7001D174D /* recipes.png in Resources */ = {isa = PBXBuildFile; fileRef = 2229526E13ECEFF7001D174D /* recipes.png */; };
 		2229529913ECFC96001D174D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2229529813ECFC96001D174D /* QuartzCore.framework */; };
+		222DF1CA16D09C4000D749D2 /* UIApplication+TJMShakeNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 222DF1C916D09C4000D749D2 /* UIApplication+TJMShakeNotification.m */; };
+		222DF1CD16D09D3B00D749D2 /* TouchConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 222DF1CC16D09D3B00D749D2 /* TouchConstants.m */; };
 		223595D9140FE2C3004A08C8 /* RecipeItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 223595D7140FE2C3004A08C8 /* RecipeItemViewController.m */; };
 		223595DA140FE2C3004A08C8 /* RecipeItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 223595D8140FE2C3004A08C8 /* RecipeItemViewController.xib */; };
 		224FBC2D1407F9DB00749E42 /* RecipeCategoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC2C1407F9DB00749E42 /* RecipeCategoryItem.m */; };
@@ -221,6 +223,10 @@
 		2229526D13ECEFF7001D174D /* radio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio.png; sourceTree = "<group>"; };
 		2229526E13ECEFF7001D174D /* recipes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recipes.png; sourceTree = "<group>"; };
 		2229529813ECFC96001D174D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		222DF1C816D09C4000D749D2 /* UIApplication+TJMShakeNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+TJMShakeNotification.h"; sourceTree = "<group>"; };
+		222DF1C916D09C4000D749D2 /* UIApplication+TJMShakeNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+TJMShakeNotification.m"; sourceTree = "<group>"; };
+		222DF1CB16D09D3A00D749D2 /* TouchConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchConstants.h; sourceTree = "<group>"; };
+		222DF1CC16D09D3B00D749D2 /* TouchConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchConstants.m; sourceTree = "<group>"; };
 		223595D6140FE2C3004A08C8 /* RecipeItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeItemViewController.h; sourceTree = "<group>"; };
 		223595D7140FE2C3004A08C8 /* RecipeItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeItemViewController.m; sourceTree = "<group>"; };
 		223595D8140FE2C3004A08C8 /* RecipeItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecipeItemViewController.xib; sourceTree = "<group>"; };
@@ -750,6 +756,8 @@
 				22CB4B8813EDD641008968D6 /* AppManager.m */,
 				227C568E14163D9100169F38 /* TouchApplication.h */,
 				227C568F14163D9200169F38 /* TouchApplication.m */,
+				222DF1CB16D09D3A00D749D2 /* TouchConstants.h */,
+				222DF1CC16D09D3B00D749D2 /* TouchConstants.m */,
 			);
 			name = globals;
 			sourceTree = "<group>";
@@ -841,6 +849,8 @@
 				22CB4C0A13EE4A41008968D6 /* UIApplication+TJMNetworkActivity.m */,
 				2211EB1B16B642560038C9B7 /* UIApplication+TJMNetworkWarning.h */,
 				2211EB1C16B642560038C9B7 /* UIApplication+TJMNetworkWarning.m */,
+				222DF1C816D09C4000D749D2 /* UIApplication+TJMShakeNotification.h */,
+				222DF1C916D09C4000D749D2 /* UIApplication+TJMShakeNotification.m */,
 			);
 			name = categories;
 			sourceTree = "<group>";
@@ -1209,6 +1219,8 @@
 				22F7C4DF162F5D1D002E2CB6 /* NewsItemViewController.m in Sources */,
 				220BBB4B165DE66500C5118B /* RotatingTabBarController.m in Sources */,
 				2211EB1D16B642560038C9B7 /* UIApplication+TJMNetworkWarning.m in Sources */,
+				222DF1CA16D09C4000D749D2 /* UIApplication+TJMShakeNotification.m in Sources */,
+				222DF1CD16D09D3B00D749D2 /* TouchConstants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

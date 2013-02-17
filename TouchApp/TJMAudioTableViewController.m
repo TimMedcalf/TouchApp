@@ -8,6 +8,7 @@
 
 #import "TJMAudioTableViewController.h"
 #import "TouchApplication.h"
+#import "TouchConstants.h"
 
 @interface TJMAudioTableViewController ()
 

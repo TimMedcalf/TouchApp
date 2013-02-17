@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-extern NSString * const TouchAppAllShookUp;
-
 @interface TouchApplication : UIApplication
 
 @end

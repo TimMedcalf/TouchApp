@@ -7,8 +7,7 @@
 //
 
 #import "TouchApplication.h"
-
-NSString * const TouchAppAllShookUp = @"TouchAppAllShookUp";
+#import "UIApplication+TJMShakeNotification.h"
 
 @implementation TouchApplication
 
@@ -52,7 +51,8 @@ NSString * const TouchAppAllShookUp = @"TouchAppAllShookUp";
     if (event.subtype == UIEventSubtypeMotionShake)
     {
       //NSLog(@"Shakey!");
-      [[NSNotificationCenter defaultCenter] postNotificationName:TouchAppAllShookUp object:self];
+      //[[NSNotificationCenter defaultCenter] postNotificationName:TouchAppAllShookUp object:self];
+      [self sendShakeNotification];
     }
   } 
   else
