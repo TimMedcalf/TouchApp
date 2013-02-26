@@ -275,7 +275,7 @@ static NSInteger CellSubTitleTag = 51;
 {
 
   [self.progressView setHidden:YES];
-  [self.touchLogo setHidden:NO];
+  [self.touchLogo setHidden:([self.recipeList.items count] > 0)];
   [[UIApplication sharedApplication] showNetworkWarning];
 }
 

@@ -290,7 +290,7 @@ static NSInteger CellSubTitleTag = 51;
 - (void)updateFailed
 {
   [self.progressView setHidden:YES];
-  [self.touchLogo setHidden:NO];
+  [self.touchLogo setHidden:([self.radioList.items count] > 0)];
   [[UIApplication sharedApplication] showNetworkWarning];
 }
 
