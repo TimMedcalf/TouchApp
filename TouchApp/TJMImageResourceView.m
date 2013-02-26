@@ -122,6 +122,18 @@
   if (self.spinner) [self.spinner stopAnimating];
 }
 
+//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+//  NSLog(@"Touch Began!");
+//  [super touchesBegan:touches withEvent:event];
+//
+//}
+//
+//- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+//  NSLog(@"Touch End!");
+//  [super touchesEnded:touches withEvent:event];
+//
+//}
+
                                     
 
 @end
