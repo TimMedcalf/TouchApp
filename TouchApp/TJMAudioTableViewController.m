@@ -38,7 +38,7 @@
   tmpProgress.center = self.view.center;
   CGRect frame = tmpProgress.frame;
   frame.origin.y = CGRectGetMaxY(self.touchLogo.frame) + tmpProgress.frame.size.height;
-  tmpProgress.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin;
+  tmpProgress.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin; 
   tmpProgress.frame = frame;
   tmpProgress.progress = 0;
   tmpProgress.hidden = YES;
