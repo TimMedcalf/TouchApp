@@ -61,10 +61,6 @@ static NSInteger iPadThumbnailRowCount = 8;
   [super viewDidLoad];
   [Flurry logAllPageViews:self.navigationController];
   
-  CGRect frame = self.progressView.frame;
-  frame.origin.y = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 400: 160;
-  self.progressView.frame = frame;
-  
   [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
   
   UINavigationBar *nb = self.navigationController.navigationBar;
@@ -90,6 +86,7 @@ static NSInteger iPadThumbnailRowCount = 8;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.progressView.progress = 0;
     self.progressView.hidden = NO;
+    [self.touchLogo setHidden:NO];
   }
   [self.imageList refreshFeed];
 }
@@ -292,12 +289,15 @@ static NSInteger iPadThumbnailRowCount = 8;
 - (void)updateSource
 {
   [self.progressView setHidden:YES];
+  [self.touchLogo setHidden:YES];
   [self.tableView reloadData];
 }
 
 - (void)updateFailed
 {
   [self.progressView setHidden:YES];
+  [self.touchLogo setHidden:NO];
+  
   [[UIApplication sharedApplication] showNetworkWarning];
 }
 

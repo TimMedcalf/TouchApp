@@ -66,6 +66,7 @@ static NSInteger CellTitleTag = 50;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.progressView.progress = 0;
     self.progressView.hidden = NO;
+    [self.touchLogo setHidden:NO];
   }
   [self.catList refreshFeed];
 } 
@@ -251,6 +252,7 @@ static NSInteger CellTitleTag = 50;
 - (void)updateSource
 {
   [self.progressView setHidden:YES];
+  [self.touchLogo setHidden:YES];
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
   
   [self.tableView reloadData];
@@ -260,6 +262,7 @@ static NSInteger CellTitleTag = 50;
 {
 
   [self.progressView setHidden:YES];
+  [self.touchLogo setHidden:NO];
   [[UIApplication sharedApplication] showNetworkWarning];
 }
 

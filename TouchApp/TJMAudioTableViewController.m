@@ -25,18 +25,26 @@
 {
   [super viewDidLoad];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(configureAudioControl) name:TJMAudioCenterStatusChange object:[TJMAudioCenter sharedInstance]];
-
+  
   //create a progress bar that we can show in subclasses...
   TKProgressBarView *tmpProgress = [[TKProgressBarView alloc] initWithStyle:TKProgressBarViewStyleLong];
-  //CGRect frame = tmpProgress.frame; 
-//  frame.origin.y = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 512 : 240;
-//  frame.origin.x = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 384 : 160;
+  self.touchLogo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"TouchLogo"]];
+  self.touchLogo.alpha = 0.2;
+  self.touchLogo.center = CGPointMake(self.view.center.x,self.view.center.y - tmpProgress.frame.size.height);
+  self.touchLogo.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+  self.touchLogo.hidden = YES;
+  
+  [self.view addSubview:self.touchLogo];
   tmpProgress.center = self.view.center;
+  CGRect frame = tmpProgress.frame;
+  frame.origin.y = CGRectGetMaxY(self.touchLogo.frame) + tmpProgress.frame.size.height;
+  tmpProgress.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin;
+  tmpProgress.frame = frame;
   tmpProgress.progress = 0;
   tmpProgress.hidden = YES;
   self.progressView = tmpProgress;
   [self.view addSubview:self.progressView];
-  
+
 }
 
 - (void)configureAudioControl
@@ -74,6 +82,7 @@
 - (void)viewDidUnload
 {
   [self setProgressView:nil];
+  [self setTouchLogo:nil];
   [[NSNotificationCenter defaultCenter] removeObserver:self name:TJMAudioCenterStatusChange object:[TJMAudioCenter sharedInstance]];
   [super viewDidUnload];
 }
