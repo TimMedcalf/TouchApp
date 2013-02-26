@@ -93,6 +93,17 @@
   [[NSNotificationCenter defaultCenter] removeObserver:self name:TouchAppAllShookUp object:nil];
 }
 
+- (void)viewWillLayoutSubviews {
+  CGFloat y = self.tableView.frame.size.height - self.tableView.tableHeaderView.bounds.size.height;
+  CGFloat midPoint = floor(y/2);
+  self.touchLogo.center = CGPointMake(self.view.center.x,self.tableView.tableHeaderView.bounds.size.height + midPoint - self.progressView.bounds.size.height);
+  self.progressView.center = self.view.center;
+  CGRect frame = self.progressView.frame;
+  frame.origin.y = CGRectGetMaxY(self.touchLogo.frame) + self.progressView.frame.size.height;
+  self.progressView.frame = frame;
+  
+}
+
 - (void)togglePlay
 {
   [[TJMAudioCenter sharedInstance] togglePlayPause];
