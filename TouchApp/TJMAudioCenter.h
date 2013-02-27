@@ -31,6 +31,7 @@ typedef enum
 
 @property (weak, nonatomic) id<TJMAudioCenterDelegate> delegate;
 
+- (void)playURL:(NSURL *)url withTitle:(NSString *)title;
 - (void)playURL:(NSURL *)url;
 - (void)pauseURL:(NSURL *)url;
 - (void)togglePlayPause;

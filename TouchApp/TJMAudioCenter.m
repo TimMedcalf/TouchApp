@@ -8,6 +8,7 @@
 
 #import "TJMAudioCenter.h"
 #import "GCDSingleton.h"
+#import "Flurry.h"
 
 NSString *const TJMAudioCenterStatusChange = @"TJMAudioCenterStatusChange";
 
@@ -16,6 +17,7 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
 @interface TJMAudioCenter ()
 @property (strong, nonatomic) AVPlayer *player;
 @property (strong, nonatomic) NSURL *URL;
+@property (strong, nonatomic) NSString *URLTitle;
 @property (nonatomic, assign) BOOL playWhenLoaded;
 @property (nonatomic, assign) BOOL interruptedDuringPlayback;
 @property (nonatomic, assign) BOOL audioSessionInitialised;
@@ -60,9 +62,12 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
   
 }
 
+- (void)playURL:(NSURL*)url {
+  [self playURL:url withTitle:nil];
+}
 
-- (void)playURL:(NSURL*) url
-{
+
+- (void)playURL:(NSURL*)url withTitle:(NSString *)title {
   [self setupAudioSession];
   //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
   //if url matches existing playing item, just makes sure it's playing
@@ -73,7 +78,11 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
   }
   else
   {
-    //NSLog(@"[%@ %@] New url", [self class], NSStringFromSelector(_cmd));
+    if (title) {
+      //NSLog(@"Flurry Radio Played_FromStart %@", title);
+      [Flurry logEvent:@"Radio" withParameters:@{@"Played_FromStart": title}];
+    }
+    self.URLTitle = title;
     //remove notifications
     [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:self.player.currentItem];
     [self.player removeObserver:self forKeyPath:@"rate"];
@@ -182,6 +191,12 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
   //NSLog(@"Reached end of stream...");
   if (self.player)
   {
+    if (self.URLTitle) {
+      //NSLog(@"Flurry Radio Played_ToEnd %@", self.URLTitle);
+      [Flurry logEvent:@"Radio" withParameters:@{@"Played_ToEnd": self.URLTitle}];
+      self.URLTitle = nil;
+    }
+  
     [self.player seekToTime:kCMTimeZero];
     self.player.rate = 0;
     //remove the current stuff..
