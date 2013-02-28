@@ -54,7 +54,7 @@
 
 - (NSInteger)refreshTimerCount
 {
-  return 43200; //12 hours
+  return 25200; //7 hours
 }
 
 
