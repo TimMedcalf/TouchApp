@@ -67,7 +67,6 @@ static NSInteger CellSubTitleTag = 51;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.progressView.progress = 0;
     [self.progressView setHidden:NO];
-    [self.touchLogo setHidden:NO];
   }
   [self.newsList refreshFeed];
 }
@@ -258,7 +257,7 @@ static NSInteger CellSubTitleTag = 51;
 - (void)updateSource
 {
   [self.progressView setHidden:YES];
-  [self.touchLogo setHidden:YES];
+  [self hideTouch];
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
   [self.tableView reloadData];
 }
@@ -266,7 +265,7 @@ static NSInteger CellSubTitleTag = 51;
 - (void)updateFailed
 {
   [self.progressView setHidden:YES];
-  [self.touchLogo setHidden:([self.newsList.items count] > 0)];
+  if ([self.newsList.items count] == 0) [self showTouch];
   [[UIApplication sharedApplication] showNetworkWarning];
 }
 

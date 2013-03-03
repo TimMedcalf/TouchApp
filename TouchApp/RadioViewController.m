@@ -58,29 +58,14 @@ static NSInteger CellSubTitleTag = 51;
   
   self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"headerText_radio"]];
   
-//  RadioList *tmpRadioList = [[RadioList alloc] init];
-//  self.radioList = tmpRadioList;
-//  [tmpRadioList release];
-//  self.radioList.delegate = self;
-  
   self.radioList = [[AppManager sharedInstance] radioList];
   self.radioList.delegate = self;
   
   if ([self.radioList.items count] == 0)
   {
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-//    UIActivityIndicatorView *tmpSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-//    CGPoint midPoint = self.view.center;
-//    midPoint.y -= self.navigationController.navigationBar.frame.size.height /2;
-//    tmpSpinner.center = midPoint;
-//    [tmpSpinner startAnimating];
-//    tmpSpinner.hidesWhenStopped = YES;
-//    self.spinner = tmpSpinner;
-//    [self.view addSubview:self.spinner];
-//    [tmpSpinner release];
     self.progressView.progress = 0;
     self.progressView.hidden = NO;
-    [self.touchLogo setHidden:NO];
   }
   [self.radioList refreshFeed];
 }
@@ -99,18 +84,13 @@ static NSInteger CellSubTitleTag = 51;
 - (void)viewDidUnload
 {
   [super viewDidUnload];
-  // Release any retained subviews of the main view.
-  // e.g. self.myOutlet = nil;
-  // TJM: (and anything else you alloc in the viewDidLoad!)
   [self.radioList setDelegate: nil];
   [self setRadioList:nil];
-  //[self setSpinner:nil];
 }
 
 - (void)dealloc
 {
   [self.radioList setDelegate: nil];
-  //[_spinner release];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -281,7 +261,7 @@ static NSInteger CellSubTitleTag = 51;
 - (void)updateSource
 {
   [self.progressView setHidden:YES];
-  [self.touchLogo setHidden:YES];
+  [self hideTouch];
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
   [self.tableView reloadData];
 }
@@ -290,7 +270,7 @@ static NSInteger CellSubTitleTag = 51;
 - (void)updateFailed
 {
   [self.progressView setHidden:YES];
-  [self.touchLogo setHidden:([self.radioList.items count] > 0)];
+  if ([self.radioList.items count] == 0) [self showTouch];
   [[UIApplication sharedApplication] showNetworkWarning];
 }
 

@@ -86,7 +86,6 @@ static NSInteger iPadThumbnailRowCount = 8;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.progressView.progress = 0;
     self.progressView.hidden = NO;
-    [self.touchLogo setHidden:NO];
   }
   [self.imageList refreshFeed];
 }
@@ -289,15 +288,14 @@ static NSInteger iPadThumbnailRowCount = 8;
 - (void)updateSource
 {
   [self.progressView setHidden:YES];
-  [self.touchLogo setHidden:YES];
+  [self hideTouch];
   [self.tableView reloadData];
 }
 
 - (void)updateFailed
 {
   [self.progressView setHidden:YES];
-  [self.touchLogo setHidden:([self.imageList.items count] > 0)];
-  
+  if ([self.imageList.items count] == 0) [self showTouch];
   [[UIApplication sharedApplication] showNetworkWarning];
 }
 
