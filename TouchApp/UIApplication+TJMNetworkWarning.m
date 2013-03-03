@@ -23,5 +23,8 @@ static NSUInteger tjm_lastNetworkWarning = 0;
   }
 }
 
+- (void)resetNetworkWarning {
+  tjm_lastNetworkWarning = 0;
+}
 
 @end

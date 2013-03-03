@@ -11,5 +11,6 @@
 @interface UIApplication (TJMNetworkWarning)
 
 - (void)showNetworkWarning;
+- (void)resetNetworkWarning;
 
 @end
