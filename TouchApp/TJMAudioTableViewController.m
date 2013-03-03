@@ -9,12 +9,14 @@
 #import "TJMAudioTableViewController.h"
 #import "TouchApplication.h"
 #import "TouchConstants.h"
+#import "UIApplication+TJMNetworkWarning.h"
 
 @interface TJMAudioTableViewController ()
 
 - (void)configureAudioControl;
 - (void)togglePlay;
-@end
+
+@end;
 
 
 @implementation TJMAudioTableViewController
@@ -29,22 +31,19 @@
   //create a progress bar that we can show in subclasses...
   TKProgressBarView *tmpProgress = [[TKProgressBarView alloc] initWithStyle:TKProgressBarViewStyleLong];
   self.touchLogo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"TouchLogo"]];
-  self.touchLogo.alpha = 0.2;
-  self.touchLogo.center = CGPointMake(self.view.center.x,self.view.center.y - tmpProgress.frame.size.height);
+  self.touchLogo.center = CGPointMake(CGRectGetMidX(self.view.bounds),CGRectGetMidY(self.view.bounds));
   self.touchLogo.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-  self.touchLogo.hidden = YES;
+  self.touchLogo.alpha = 0.f;
+  self.touchLogo.userInteractionEnabled = YES;
+  [self.touchLogo addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchTapped:)]];
   
   [self.view addSubview:self.touchLogo];
-  tmpProgress.center = self.view.center;
-  CGRect frame = tmpProgress.frame;
-  frame.origin.y = CGRectGetMaxY(self.touchLogo.frame) + tmpProgress.frame.size.height;
+  tmpProgress.center = CGPointMake(CGRectGetMidX(self.view.bounds),CGRectGetMidY(self.view.bounds));
   tmpProgress.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin; 
-  tmpProgress.frame = frame;
   tmpProgress.progress = 0;
   tmpProgress.hidden = YES;
   self.progressView = tmpProgress;
   [self.view addSubview:self.progressView];
-
 }
 
 - (void)configureAudioControl
@@ -97,17 +96,19 @@
   [super viewWillLayoutSubviews];
   CGFloat y = self.tableView.frame.size.height - self.tableView.tableHeaderView.bounds.size.height;
   CGFloat midPoint = floor(y/2);
-  self.touchLogo.center = CGPointMake(self.view.center.x,self.tableView.tableHeaderView.bounds.size.height + midPoint - self.progressView.bounds.size.height);
-  self.progressView.center = self.view.center;
-  CGRect frame = self.progressView.frame;
-  frame.origin.y = CGRectGetMaxY(self.touchLogo.frame) + self.progressView.frame.size.height;
-  self.progressView.frame = frame;
-  
+  self.touchLogo.center = CGPointMake(self.view.center.x,self.tableView.tableHeaderView.bounds.size.height + midPoint);
+  self.progressView.center = self.touchLogo.center;
 }
 
 - (void)togglePlay
 {
   [[TJMAudioCenter sharedInstance] togglePlayPause];
+}
+   
+- (void)touchTapped:(UITapGestureRecognizer *)tapper {
+  //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
+  [[UIApplication sharedApplication] resetNetworkWarning];
+  [self handleShake];
 }
 
 - (void)handleShake
@@ -120,6 +121,18 @@
 {
   //NSLog(@"Progress Update %f",percentComplete);
   [self.progressView setProgress:percentComplete];
+}
+
+- (void)showTouch {
+  [UIView animateWithDuration:0.4 animations:^(void){
+    self.touchLogo.alpha = 0.2f;
+  }];
+}
+
+- (void)hideTouch {
+  [UIView animateWithDuration:0.4 animations:^(void){
+    self.touchLogo.alpha = 0.f;
+  }];
 }
 
 @end

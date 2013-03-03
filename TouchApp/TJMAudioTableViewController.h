@@ -16,5 +16,7 @@
 @property (strong, nonatomic) UIImageView *touchLogo;
 
 - (void)handleShake;
+- (void)showTouch;
+- (void)hideTouch;
 
 @end
