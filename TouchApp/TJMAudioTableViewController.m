@@ -95,7 +95,7 @@
 - (void)viewWillLayoutSubviews {
   [super viewWillLayoutSubviews];
   CGFloat y = self.tableView.frame.size.height - self.tableView.tableHeaderView.bounds.size.height;
-  CGFloat midPoint = floor(y/2);
+  CGFloat midPoint = floorf(y/2);
   self.touchLogo.center = CGPointMake(self.view.center.x,self.tableView.tableHeaderView.bounds.size.height + midPoint);
   self.progressView.center = self.touchLogo.center;
 }

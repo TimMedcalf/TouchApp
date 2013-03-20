@@ -37,7 +37,6 @@
 	else {
 		returnVal = [NSString stringWithFormat:@"http://www.touchmusic.org.uk/recipebook/%@.xml",[[self.recipeCategory lowercaseString] stringByReplacingOccurrencesOfString:@" " withString:@""]];
 	}
-  dictionary = nil;
   //NSLog(@"Getting recipe file: %@",returnVal);
   return returnVal;
 }

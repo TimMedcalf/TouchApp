@@ -102,7 +102,7 @@ NSString *const FeedItem_ImageURLKey = @"imageURL";
 - (NSComparisonResult)compare:(FeedItem *)item
 {
   //override in subclass
-  return 0;
+  return NSOrderedSame;
 }
 
 - (NSString *)htmlForWebView

@@ -148,7 +148,7 @@ NSString *const Key_ImageItem_ThumbnailHeight = @"thumbnailHeight";
   dict[Key_ImageItem_ThumbnailHeight] = @(self.thumbnailHeight);
 }
 
-- (NSComparisonResult)compare:(ImageItem *)item
+- (NSComparisonResult)compare:(FeedItem *)item
 {
   return NSOrderedSame;
 }

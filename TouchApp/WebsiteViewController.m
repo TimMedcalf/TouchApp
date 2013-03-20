@@ -61,7 +61,6 @@
   UITapGestureRecognizer *sgltapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapGesture:)];
   sgltapGesture.delegate = self;
   [self.webView addGestureRecognizer:sgltapGesture];
-   sgltapGesture = nil;
   
   self.navigationItem.title = @"";
   UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back"
@@ -190,7 +189,6 @@
     newWeb.initialURL = [request.URL absoluteString];
     newWeb.dontHideNavigationBar = YES;
     [self.navigationController pushViewController:newWeb animated:YES];
-     newWeb=nil;
     return NO;
   }
   return YES;
@@ -235,7 +233,6 @@
     {
       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error - website not found." message:@"Please check that you are connected to the internet." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
       [alert show];
-       alert = nil;
       return;
     }
   }

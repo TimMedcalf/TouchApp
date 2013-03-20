@@ -107,10 +107,11 @@ NSString *const Key_ImageOverride = @"imageURL";
   if (self.episode_duration) dict[Key_Radio_Duration] = self.episode_duration;    
 }
 
-- (NSComparisonResult)compare:(RadioItem *)item
+- (NSComparisonResult)compare:(FeedItem *)item
 {
   //compare in reverse so that we get the newest at the top.
-  return [item.pubDate compare:self.pubDate];
+
+  return [((RadioItem *)item).pubDate compare:self.pubDate];
 }
 
 - (NSString *)htmlForWebView

@@ -221,8 +221,8 @@
 {
   // Calculate which pages are visible
   CGRect visibleBounds = self.pagingScrollView.bounds;
-  int firstNeededPageIndex = floorf(CGRectGetMinX(visibleBounds) / CGRectGetWidth(visibleBounds));
-  int lastNeededPageIndex  = floorf((CGRectGetMaxX(visibleBounds)-1) / CGRectGetWidth(visibleBounds));
+  int firstNeededPageIndex = (int)floorf(CGRectGetMinX(visibleBounds) / CGRectGetWidth(visibleBounds));
+  int lastNeededPageIndex  = (int)floorf((CGRectGetMaxX(visibleBounds)-1) / CGRectGetWidth(visibleBounds));
   firstNeededPageIndex = MAX(firstNeededPageIndex, 0);
   lastNeededPageIndex  = MIN(lastNeededPageIndex, [self imageCount] - 1);
   
@@ -429,14 +429,14 @@
   //try to ensure the thumbnails we need are going to be there
   if (index < self.imageCount -1)
   {
-    ImageItem *item = (self.imageList.items)[index+1];
+    item = (self.imageList.items)[index+1];
     [[[TJMImageResourceManager sharedInstance] resourceForURL:item.thumbnailURL]cacheImage];
   }
   
   //try to ensure the thumbnails we need are going to be there
   if (index > 0)
   {
-    ImageItem *item = (self.imageList.items)[index-1];
+    item = (self.imageList.items)[index-1];
     [[[TJMImageResourceManager sharedInstance] resourceForURL:item.thumbnailURL]cacheImage];
   }
   return (self.imageList.items)[index];
@@ -450,7 +450,7 @@
 - (NSInteger)centerPhotoIndex
 {	
 	CGFloat pageWidth = self.pagingScrollView.frame.size.width;
-	return floor((self.pagingScrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+	return (int)floor((self.pagingScrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
 }
 
 -(void)skipToPage:(NSUInteger)page;

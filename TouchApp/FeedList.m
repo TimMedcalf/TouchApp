@@ -131,9 +131,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
    // NSString *file = [[AppManager instance].cacheFolder stringByAppendingPathComponent:[self.cacheFile stringByAppendingPathExtension:@"plist"]];
   if ([[NSFileManager defaultManager] fileExistsAtPath:self.cacheFile])
   {
-    NSDictionary *loadDictionary = [[NSDictionary alloc]  initWithContentsOfFile:self.cacheFile];
-    [self loadItemsFromDictionary:loadDictionary];
-     loadDictionary = nil;
+    [self loadItemsFromDictionary:[[NSDictionary alloc]  initWithContentsOfFile:self.cacheFile]];
   }
 }
 
@@ -168,9 +166,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
   NSArray *itemsArray = dict[Key_FeedItems];
   for (NSDictionary *itemDict in itemsArray)
   {
-    FeedItem *item =[self newItemWithDictionary:itemDict];
-    [self.items addObject:item];
-     item = nil;
+    [self.items addObject:[self newItemWithDictionary:itemDict]];
   }
   [self dataUpdated];
   if (self.delegate) [self.delegate updateSource];
@@ -342,17 +338,11 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
     
     for (CXMLElement *resultElement in resultNodes)
     { 
-      if (self.rawMode)
-      {
-        FeedItem *newFeedItem = [self newItemWithRawXMLElement:resultElement andBaseURL:self.baseURL];
-        [newFeedItems addObject:newFeedItem];
-         newFeedItem = nil;
-      }
-      else
-      {
-
+      if (self.rawMode) {
+        [newFeedItems addObject:[self newItemWithRawXMLElement:resultElement andBaseURL:self.baseURL]];
+      } else {
         NSMutableDictionary *itemDict = [[NSMutableDictionary alloc] init];
-        for(int counter = 0; counter < [resultElement childCount]; counter++)
+        for(uint counter = 0; counter < [resultElement childCount]; counter++)
         {
           itemDict[[[resultElement childAtIndex:counter] name]] = [[resultElement childAtIndex:counter] stringValue];
         }

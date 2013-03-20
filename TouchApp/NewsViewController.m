@@ -115,7 +115,7 @@ static NSInteger CellSubTitleTag = 51;
 
 	UINavigationBar *nb = self.navigationController.navigationBar;
 	nb.tintColor = [UIColor blackColor];
-  [nb setBackgroundImage:[UIImage imageNamed:@"shim_news"] forBarMetrics:0];
+  [nb setBackgroundImage:[UIImage imageNamed:@"shim_news"] forBarMetrics:UIBarMetricsDefault];
   self.tabBarController.tabBar.selectedImageTintColor = [UIColor lightGrayColor];
   [self configureTableHeader];
 }
@@ -182,17 +182,17 @@ static NSInteger CellSubTitleTag = 51;
     //no need to tag the disclosure indicator cos we don't need to do anything with it once its added to the view
     // Set the size, font, foreground color, background color
     titleLabel.textColor = [UIColor blackColor]; 
-    titleLabel.textAlignment = UITextAlignmentLeft; 
+    titleLabel.textAlignment = NSTextAlignmentLeft;
     titleLabel.contentMode = UIViewContentModeCenter;
     titleLabel.backgroundColor = [UIColor clearColor];
-    titleLabel.lineBreakMode = UILineBreakModeTailTruncation; 
+    titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     titleLabel.numberOfLines = 0; 
     
     subtitleLabel.textColor = [UIColor grayColor];
-    subtitleLabel.textAlignment = UITextAlignmentLeft; 
+    subtitleLabel.textAlignment = NSTextAlignmentLeft;
     subtitleLabel.contentMode = UIViewContentModeCenter;
     subtitleLabel.backgroundColor = [UIColor clearColor];
-    subtitleLabel.lineBreakMode = UILineBreakModeTailTruncation; 
+    subtitleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     subtitleLabel.numberOfLines = 0;
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)

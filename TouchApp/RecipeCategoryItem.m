@@ -36,10 +36,10 @@ NSString *const Key_RCat_Title = @"title";
   if (self.recipeTitle) dict[Key_RCat_Title] = self.recipeTitle;
 }
 
-- (NSComparisonResult)compare:(RecipeCategoryItem *)item
+- (NSComparisonResult)compare:(FeedItem *)item
 {
   //compare in reverse so that we get the newest at the top.
-  return [self.recipeTitle compare:item.recipeTitle];
+  return [self.recipeTitle compare:((RecipeCategoryItem *)item).recipeTitle];
 }
 
 //- (NSInteger)refreshTimerCount

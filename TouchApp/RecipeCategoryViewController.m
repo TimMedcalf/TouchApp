@@ -103,7 +103,7 @@ static NSInteger CellTitleTag = 50;
 	UINavigationBar *nb = self.navigationController.navigationBar;
 	nb.tintColor = [UIColor colorWithRed:32/255.0 green:70/255.0 blue:117/255.0 alpha:1];
   self.tabBarController.tabBar.selectedImageTintColor = nb.tintColor;
-  [nb setBackgroundImage:[UIImage imageNamed:@"shim_recipes"] forBarMetrics:0];
+  [nb setBackgroundImage:[UIImage imageNamed:@"shim_recipes"] forBarMetrics:UIBarMetricsDefault];
   [self configureTableHeader];
 }
 
@@ -182,9 +182,9 @@ static NSInteger CellTitleTag = 50;
     
     // Set the size, font, foreground color, background color
     titleLabel.textColor = [UIColor blackColor]; 
-    titleLabel.textAlignment = UITextAlignmentLeft; 
+    titleLabel.textAlignment = NSTextAlignmentLeft;
     titleLabel.contentMode = UIViewContentModeCenter; 
-    titleLabel.lineBreakMode = UILineBreakModeTailTruncation; 
+    titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     titleLabel.numberOfLines = 0; 
     
     UIImageView *disclosure = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"go"]];

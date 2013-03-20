@@ -29,7 +29,7 @@ static NSInteger iPadThumbnailRowCount = 8;
 @property (strong, nonatomic) ImageList *imageList;
 @property (nonatomic, assign) NSInteger thumbnailWidth;
 @property (nonatomic, assign) NSInteger thumbnailRowCount;
-- (void)thumbnailTapped:(UIGestureRecognizer *)sender;
+- (void)thumbnailTapped:(UITapGestureRecognizer *)sender;
 - (void)performReloadAfterRotate;
 @end
 
@@ -124,7 +124,7 @@ static NSInteger iPadThumbnailRowCount = 8;
 	nb.tintColor = [UIColor colorWithRed:195/255.0 green:54/255.0 blue:37/255.0 alpha:1];
   self.tabBarController.tabBar.selectedImageTintColor = [UIColor colorWithRed:195/255.0 green:54/255.0 blue:37/255.0 alpha:1];
 
-  [nb setBackgroundImage:[UIImage imageNamed:@"shim_photos"] forBarMetrics:0];
+  [nb setBackgroundImage:[UIImage imageNamed:@"shim_photos"] forBarMetrics:UIBarMetricsDefault];
   self.navigationController.navigationBarHidden = NO;
   
   if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
@@ -150,7 +150,7 @@ static NSInteger iPadThumbnailRowCount = 8;
   nb.barStyle  = UIBarStyleBlack;
   nb.translucent = NO;
 	nb.tintColor = [UIColor colorWithRed:195/255.0 green:54/255.0 blue:37/255.0 alpha:1]; 
-  [nb setBackgroundImage:[UIImage imageNamed:@"shim_photos"] forBarMetrics:0];
+  [nb setBackgroundImage:[UIImage imageNamed:@"shim_photos"] forBarMetrics:UIBarMetricsDefault];
 
   [self.imageList refreshFeed];
 }

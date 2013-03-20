@@ -50,10 +50,10 @@ NSString *const Key_Recipe_PubDate = @"pubDate";
   if (self.recipePubDate) dict[Key_Recipe_PubDate] = self.recipePubDate;
 }
 
-- (NSComparisonResult)compare:(RecipeItem *)item
+- (NSComparisonResult)compare:(FeedItem *)item
 {
   //compare in reverse so that we get the newest at the top.
-  return [item.recipePubDate compare:self.recipePubDate];
+  return [((RecipeItem *)item).recipePubDate compare:self.recipePubDate];
 }
 
 - (NSString *)htmlForWebView
