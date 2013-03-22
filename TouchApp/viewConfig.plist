@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>news</key>
+	<dict>
+		<key>title</key>
+		<string>News</string>
+		<key>tabBarImage</key>
+		<string>news</string>
+		<key>shim</key>
+		<string>shim_news</string>
+		<key>headerText</key>
+		<string>headerText_news</string>
+		<key>tableHeader</key>
+		<string>news_header</string>
+		<key>iconTintW</key>
+		<real>0.67</real>
+		<key>iconTintR</key>
+		<real>0.67</real>
+		<key>iconTintG</key>
+		<real>0.67</real>
+		<key>iconTintB</key>
+		<real>0.67</real>
+		<key>barTintW</key>
+		<integer>0</integer>
+		<key>barTintR</key>
+		<integer>0</integer>
+		<key>barTintG</key>
+		<integer>0</integer>
+		<key>barTintB</key>
+		<integer>0</integer>
+	</dict>
+</dict>
+</plist>
