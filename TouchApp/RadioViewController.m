@@ -72,13 +72,6 @@
   self.tableView.tableHeaderView = headerView;
 }
 
-- (void)viewDidUnload
-{
-  [super viewDidUnload];
-  [self.radioList setDelegate: nil];
-  [self setRadioList:nil];
-}
-
 - (void)dealloc
 {
   [self.radioList setDelegate: nil];

@@ -79,21 +79,6 @@
   [self performSelector:@selector(configureTableHeader) withObject:nil afterDelay:duration / 2];
 }
 
-
-
-- (void)viewDidUnload
-{
-
-  // Release any retained subviews of the main view.
-  // e.g. self.myOutlet = nil;
-  // TJM: (and anything else you alloc in the viewDidLoad!)
-  
-  self.newsList.delegate = nil;
-  [self setNewsList:nil];
-
-  [super viewDidUnload];
-}
-
 - (void)dealloc
 {
   self.newsList.delegate = nil;

@@ -253,16 +253,5 @@
 }
 
 
-- (void)viewDidUnload {
-  
-  // Release any retained subviews of the main view.
-  // e.g. self.myOutlet = nil;
-  [super viewDidUnload];
-  
-  [self setWebView:nil];
-  [self setSegmentControl:nil];
-}
-
-
 
 @end

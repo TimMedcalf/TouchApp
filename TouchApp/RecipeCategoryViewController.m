@@ -74,16 +74,6 @@
 }
 
 
-- (void)viewDidUnload
-{
-  [super viewDidUnload];
-  // Release any retained subviews of the main view.
-  // e.g. self.myOutlet = nil;
-  // TJM: (and anything else you alloc in the viewDidLoad!)
-  [self.catList setDelegate:nil];
-  [self setCatList:nil];
-}
-
 - (void)dealloc
 {
   [self.catList setDelegate:nil];

@@ -91,22 +91,6 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 }
 
 
-/*
-- (id)initWithFeed:(NSString *)feed andFile:(NSString *)file;
-{
-  //NSLog(@"list alloc");
-  if ((self = [super init]))
-  {
-    self.lastRefresh = [NSDate distantPast];
-    self.items = [NSMutableArray arrayWithCapacity:20];
-    self.feed = feed;
-    self.cacheFile = file;
-    [self loadItems];
-  }
-  return self;
-}
- */
-
 -(void) dealloc
 {
   //NSLog(@"list dealloc");
@@ -116,19 +100,11 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 #pragma mark load/save
 - (void)saveItems
 {
-  //NSLog(@"Save");
-  //NSArray *folders = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-  //NSString *file = [[folders lastObject] stringByAppendingPathComponent:[self.cacheFile stringByAppendingPathExtension:@"plist"]];
-  //NSString *file = [[AppManager instance].cacheFolder stringByAppendingPathComponent:[self.cacheFile stringByAppendingPathExtension:@"plist"]];
   [[self saveItemsToDictionary] writeToFile:self.cacheFile atomically:YES];
 }
 
 - (void)loadItems;
 {
-  //NSLog(@"Load");
-  //NSArray *folders = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-  //NSString *file = [[folders lastObject] stringByAppendingPathComponent:[self.cacheFile stringByAppendingPathExtension:@"plist"]];
-   // NSString *file = [[AppManager instance].cacheFolder stringByAppendingPathComponent:[self.cacheFile stringByAppendingPathExtension:@"plist"]];
   if ([[NSFileManager defaultManager] fileExistsAtPath:self.cacheFile])
   {
     [self loadItemsFromDictionary:[[NSDictionary alloc]  initWithContentsOfFile:self.cacheFile]];

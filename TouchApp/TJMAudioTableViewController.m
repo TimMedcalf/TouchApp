@@ -78,14 +78,6 @@
   [[NSNotificationCenter defaultCenter] removeObserver:self name:TouchAppAllShookUp object:nil];  
 }
 
-- (void)viewDidUnload
-{
-  [self setProgressView:nil];
-  [self setTouchLogo:nil];
-  [[NSNotificationCenter defaultCenter] removeObserver:self name:TJMAudioCenterStatusChange object:[TJMAudioCenter sharedInstance]];
-  [super viewDidUnload];
-}
-
 - (void)dealloc
 {
   [[NSNotificationCenter defaultCenter] removeObserver:self name:TJMAudioCenterStatusChange object:[TJMAudioCenter sharedInstance]];

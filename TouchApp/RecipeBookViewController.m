@@ -22,15 +22,6 @@
 @synthesize recipeList = _recipeList;
 @synthesize categoryName = _categoryName;
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 
 #pragma mark - View lifecycle
 
@@ -75,17 +66,6 @@
   UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
   v.backgroundColor = [UIColor clearColor];
   [self.tableView setTableFooterView:v];
-}
-
-- (void)viewDidUnload
-{
-  [super viewDidUnload];
-  // Release any retained subviews of the main view.
-  // e.g. self.myOutlet = nil;
-  // TJM: (and anything else you alloc in the viewDidLoad!)
-  [self.recipeList cancelRefresh];
-  [self setRecipeList:nil];
-  //[self setSpinner:nil];
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)orientation duration:(NSTimeInterval)duration

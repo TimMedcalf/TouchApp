@@ -197,17 +197,6 @@
   [self skipToPage:self.initialIndex];
 }
 
-
-- (void)viewDidUnload
-{
-  [super viewDidUnload];
-  [self setPagingScrollView:nil];
-  [self setCustomNavigationItem:nil];
-  [self setCustomNavigationBar:nil];
-  recycledPages = nil;
-  visiblePages = nil;
-}
-
 - (void)dealloc
 {
   [[NSNotificationCenter defaultCenter] removeObserver:self];

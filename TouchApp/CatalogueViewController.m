@@ -72,14 +72,6 @@
   self.tableView.tableHeaderView = headerView;
 }
 
-- (void)viewDidUnload
-{
-  [super viewDidUnload];
-  [self.catList setDelegate:nil];
-  [self setCatList:nil];
-
-}
-
 - (void)dealloc
 {
   [self.catList setDelegate:nil];

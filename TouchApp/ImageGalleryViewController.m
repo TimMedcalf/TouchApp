@@ -90,21 +90,10 @@ static NSInteger iPadThumbnailRowCount = 8;
   [self.imageList refreshFeed];
 }
 
-- (void)viewDidUnload
-{
-  [super viewDidUnload];
-  // Release any retained subviews of the main view.
-  // e.g. self.myOutlet = nil;
-  //[self.imageList cancelRefresh];
-  [self.imageList setDelegate:nil];
-  [self setImageList:nil];
-  //[self setSpinner:nil];
-}
 
 - (void)dealloc
 {
   [self.imageList setDelegate:nil];
-  //[_spinner release];
 }
 
 - (void)viewWillAppear:(BOOL)animated
