@@ -34,13 +34,14 @@
   return self;
 }
 
-
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
   [super viewDidLoad];
   [Flurry logAllPageViews:self.navigationController];
+  
+  self.tableView.rowHeight = [TouchTableCell rowHeight];
   
   self.navigationItem.title= @"";
   
@@ -51,7 +52,6 @@
   
   self.catList = [[AppManager sharedInstance] recipeList];
   self.catList.delegate = self;
-  
   
   if ([self.catList.items count] == 0)
   {
@@ -138,14 +138,6 @@
   RecipeCategoryItem *currentItem = (self.catList.items)[indexPath.row];
   cell.titleLabel.text = currentItem.recipeTitle;
   return cell;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-      return 81;
-    else
-      return 58;
 }
 
 

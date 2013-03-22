@@ -42,6 +42,8 @@
   [super viewDidLoad];
   [Flurry logAllPageViews:self.navigationController];
   
+  self.tableView.rowHeight = [TouchTableCell rowHeight];
+  
   self.navigationItem.title= @"";
   
   UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
@@ -140,14 +142,6 @@
   cell.titleLabel.text = currentItem.titleLabel;
   cell.subtitleLabel.text = currentItem.title;
   return cell;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-    return 81;
-  else
-    return 58;
 }
 
 

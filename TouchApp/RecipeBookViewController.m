@@ -29,6 +29,8 @@
 {
   [super viewDidLoad];
   
+  self.tableView.rowHeight = [TouchTableCell rowHeight];
+  
   self.navigationItem.title= @"";
 
   UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
@@ -138,13 +140,7 @@
   return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-    return 81;
-  else
-    return 58;
-}
+
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

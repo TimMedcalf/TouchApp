@@ -92,4 +92,12 @@ NSString * const TouchTableCellSubtitleReuseID = @"TouchTableCellSubtitleReuseID
     // Configure the view for the selected state
 }
 
+#pragma mark class methods
+
++ (CGFloat)rowHeight {
+  return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 81 : 58;
+}
+
+
+
 @end

@@ -19,4 +19,6 @@ FOUNDATION_EXPORT NSString * const TouchTableCellSubtitleReuseID;
 @property (nonatomic, strong, readonly) UILabel *titleLabel;
 @property (nonatomic, strong, readonly) UILabel *subtitleLabel;
 
++ (CGFloat)rowHeight;
+
 @end

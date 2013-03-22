@@ -42,11 +42,12 @@
   [super viewDidLoad];
   [Flurry logAllPageViews:self.navigationController];
   
+  self.tableView.rowHeight = [TouchTableCell rowHeight];
+  
   self.navigationItem.title= @"";
   
   UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
   self.navigationItem.backBarButtonItem = backButton;
-  
   self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"headerText_catalog"]];
   
   self.catList = [[AppManager sharedInstance] catalogueList];
@@ -140,15 +141,6 @@
   cell.subtitleLabel.text = currentItem.title;//[NSDateFormatter localizedStringFromDate:currentItem.pubDate dateStyle:NSDateFormatterMediumStyle timeStyle:kCFDateFormatterShortStyle];
   return cell;
 }
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-    return 81;
-  else
-    return 58;
-}
-
 
 #pragma mark - Table view delegate
 
