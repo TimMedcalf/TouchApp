@@ -45,6 +45,7 @@
 		2229527713ECEFF7001D174D /* radio.png in Resources */ = {isa = PBXBuildFile; fileRef = 2229526D13ECEFF7001D174D /* radio.png */; };
 		2229527813ECEFF7001D174D /* recipes.png in Resources */ = {isa = PBXBuildFile; fileRef = 2229526E13ECEFF7001D174D /* recipes.png */; };
 		2229529913ECFC96001D174D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2229529813ECFC96001D174D /* QuartzCore.framework */; };
+		2229EBDF16FC24ED0087B090 /* TouchTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2229EBDE16FC24ED0087B090 /* TouchTableCell.m */; };
 		222DF1CA16D09C4000D749D2 /* UIApplication+TJMShakeNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 222DF1C916D09C4000D749D2 /* UIApplication+TJMShakeNotification.m */; };
 		222DF1CD16D09D3B00D749D2 /* TouchConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 222DF1CC16D09D3B00D749D2 /* TouchConstants.m */; };
 		222DF1E616D0A90F00D749D2 /* catalogue_header_landscape@2x~ipad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 222DF1CE16D0A90F00D749D2 /* catalogue_header_landscape@2x~ipad.jpg */; };
@@ -227,6 +228,8 @@
 		2229526D13ECEFF7001D174D /* radio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio.png; sourceTree = "<group>"; };
 		2229526E13ECEFF7001D174D /* recipes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recipes.png; sourceTree = "<group>"; };
 		2229529813ECFC96001D174D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		2229EBDD16FC24ED0087B090 /* TouchTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchTableCell.h; sourceTree = "<group>"; };
+		2229EBDE16FC24ED0087B090 /* TouchTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchTableCell.m; sourceTree = "<group>"; };
 		222DF1C816D09C4000D749D2 /* UIApplication+TJMShakeNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+TJMShakeNotification.h"; sourceTree = "<group>"; };
 		222DF1C916D09C4000D749D2 /* UIApplication+TJMShakeNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+TJMShakeNotification.m"; sourceTree = "<group>"; };
 		222DF1CB16D09D3A00D749D2 /* TouchConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchConstants.h; sourceTree = "<group>"; };
@@ -487,6 +490,7 @@
 				22CB4C0813EE4A30008968D6 /* categories */,
 				22CB4B8A13EDD678008968D6 /* globals */,
 				22CB4C1013EE4BC1008968D6 /* models */,
+				2229EBDC16FC24BD0087B090 /* Tables */,
 				222951F113EC49F2001D174D /* controllers */,
 				222951CD13EC496F001D174D /* Supporting Files */,
 				2229523013ECEA5E001D174D /* gfx */,
@@ -623,6 +627,15 @@
 				222DF1E516D0A90F00D749D2 /* recipes_header~iphone.jpg */,
 			);
 			name = tableHeaders;
+			sourceTree = "<group>";
+		};
+		2229EBDC16FC24BD0087B090 /* Tables */ = {
+			isa = PBXGroup;
+			children = (
+				2229EBDD16FC24ED0087B090 /* TouchTableCell.h */,
+				2229EBDE16FC24ED0087B090 /* TouchTableCell.m */,
+			);
+			name = Tables;
 			sourceTree = "<group>";
 		};
 		224FBBEB14076A5A00749E42 /* AudioCenter */ = {
@@ -1237,6 +1250,7 @@
 				2211EB1D16B642560038C9B7 /* UIApplication+TJMNetworkWarning.m in Sources */,
 				222DF1CA16D09C4000D749D2 /* UIApplication+TJMShakeNotification.m in Sources */,
 				222DF1CD16D09D3B00D749D2 /* TouchConstants.m in Sources */,
+				2229EBDF16FC24ED0087B090 /* TouchTableCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
