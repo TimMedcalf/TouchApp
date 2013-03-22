@@ -4,7 +4,6 @@
 
 @implementation NewCatalogueItemViewController
 
-@synthesize item = _item;
 
 - (void)viewDidLoad
 {

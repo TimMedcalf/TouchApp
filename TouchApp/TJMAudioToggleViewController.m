@@ -15,8 +15,6 @@
 
 @implementation TJMAudioToggleViewController
 
-@synthesize disableAudioToggle = _disableAudioToggle;
-
 -(void)viewDidLoad
 {
   [super viewDidLoad];

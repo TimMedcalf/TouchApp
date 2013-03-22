@@ -22,10 +22,6 @@ NSString *const FeedItem_ImageURLKey = @"imageURL";
 
 @implementation FeedItem
 
-@synthesize imageURL = _imageURL;
-
-@synthesize updateFlag = _updateFlag;
-
 
 - (id)initWithDictionary:(NSDictionary *)dict
 {

@@ -38,10 +38,9 @@ typedef enum {
 
 @interface TKProgressBarView : UIView {
 	TKProgressBarViewStyle style;
-	float progress;
 }
 
 - (id) initWithStyle:(TKProgressBarViewStyle)style;
-@property (assign,nonatomic) float progress; // a value between 0.0 and 1.0
+@property (assign,nonatomic) CGFloat progress; // a value between 0.0 and 1.0
 
 @end

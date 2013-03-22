@@ -42,20 +42,6 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 
 @implementation FeedList
 
-@synthesize delegate = _delegate;
-@synthesize lastRefresh = _lastRefresh;
-@synthesize items = _items;
-@synthesize activeDownload = _activeDownload;
-@synthesize rssConnection = _rssConnection;
-@synthesize feed = _feed;
-@synthesize cacheFile = _cacheFile;
-@synthesize etag = _etag;
-@synthesize lastUpdated = _lastUpdated;
-@synthesize baseURL = _baseURL;
-@synthesize xpathOverride = _xpathOverride;
-@synthesize rawMode = _rawMode;
-@synthesize totalBytes = _totalBytes;
-@synthesize bytesDownloaded = _bytesDownloaded;
 
 #pragma mark lifecycle
 - (id)init

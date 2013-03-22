@@ -18,13 +18,6 @@ NSString *const Key_ImageItem_ThumbnailHeight = @"thumbnailHeight";
 
 @implementation ImageItem
 
-@synthesize thumbnailURL = _thumbnailURL;
-@synthesize imageURL = _imageURL;
-@synthesize imageWidth = _imageWidth;
-@synthesize imageHeight = _imageHeight;
-@synthesize thumbnailWidth = _thumbnailWidth;
-@synthesize thumbnailHeight = _thumbnailHeight;
-
 
 #pragma mark overrides from FeedItem
 - (void)procesSavedDictionary:(NSDictionary *)dict

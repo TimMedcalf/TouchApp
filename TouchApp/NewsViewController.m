@@ -20,8 +20,6 @@
 
 @implementation NewsViewController
 
-@synthesize newsList = _newsList;
-
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad

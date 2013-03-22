@@ -5,8 +5,6 @@
 
 @implementation RecipeItemViewController
 
-@synthesize recipeItem = _recipeItem;
-
 - (id) init
 {
   self = [super init];

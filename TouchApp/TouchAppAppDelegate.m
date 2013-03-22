@@ -27,9 +27,6 @@ void uncaughtExceptionHandler(NSException *exception);
 #endif
 @implementation TouchAppAppDelegate
 
-@synthesize window = _window;
-@synthesize tabBarController = _tabBarController;
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 #ifndef DEVMODE

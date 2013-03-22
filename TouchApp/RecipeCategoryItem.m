@@ -13,10 +13,6 @@ NSString *const Key_RCat_Title = @"title";
 
 @implementation RecipeCategoryItem
 
-@synthesize recipeId = _recipeId;
-@synthesize recipeTitle = _recipeTitle;
-
-
 #pragma mark overrides from FeedItem
 - (void)procesSavedDictionary:(NSDictionary *)dict
 {

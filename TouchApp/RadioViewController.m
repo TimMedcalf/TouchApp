@@ -21,8 +21,6 @@
 
 @implementation RadioViewController
 
-@synthesize radioList = _radioList;
-
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad

@@ -17,10 +17,6 @@
 
 @implementation TJMImageResourceView
 
-@synthesize spinner = _spinner;
-@synthesize url = _url;
-@synthesize index = _index;
-
 - (id)initWithFrame:(CGRect)frame andURL:(NSURL *)url
 {
   self = [super initWithFrame:frame];

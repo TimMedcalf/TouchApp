@@ -4,8 +4,6 @@
 
 @implementation NewRadioItemViewController
 
-@synthesize item = _item;
-
 - (void)viewDidLoad
 {
   [super viewDidLoad];

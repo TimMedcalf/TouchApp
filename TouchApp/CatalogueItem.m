@@ -25,18 +25,6 @@ NSString *const Key_Cat_Publisher = @"publisher";
 
 @implementation CatalogueItem
 
-@synthesize title = _title;
-@synthesize artist = _artist;
-@synthesize catalogueNumber = _catalogueNumber;
-@synthesize description = _description;
-@synthesize mp3SampleURL = _mp3SampleURL;
-@synthesize releaseURL = _releaseURL;
-@synthesize itunesURL = _itunesURL;
-@synthesize releaseDateString = _releaseDateString;
-@synthesize releaseDuration = _releaseDuration;
-@synthesize trackListing = _trackListing;
-@synthesize publisher = _publisher;
-
 #pragma mark lifecycle
 
 

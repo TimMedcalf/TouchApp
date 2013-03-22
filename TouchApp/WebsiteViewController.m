@@ -20,17 +20,6 @@
 
 @implementation WebsiteViewController
 
-@synthesize webView = _webView;
-@synthesize barTimer = _barTimer;
-@synthesize barTapTimer = _barTapTimer;
-@synthesize segmentControl = _segmentControl;
-@synthesize initialURL = _initialURL;
-@synthesize HTMLString = _HTMLString;
-@synthesize openLinksInNewView = _openLinksInNewView;
-@synthesize dontHideNavigationBar = _dontHideNavigationBar;
-@synthesize baseURL = _baseURL;
-@synthesize pageTitle = _pageTitle;
-
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
   

@@ -44,20 +44,6 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
 
 @implementation TJMImageResource
 
-@synthesize imageURL = _imageURL;
-@synthesize lastModified = _lastModified;
-@synthesize etag = _etag;
-@synthesize localFileName = _localFileName;
-@synthesize localFileExtension = _localFileExtension;
-@synthesize lastChecked = _lastChecked;
-@synthesize lastAccessed = _lastAccessed;
-@synthesize thumbnailPath = _thumbnailPath;
-
-
-@synthesize activeDownload = _activeDownload;
-@synthesize activeConnection = _activeConnection;
-
-
 #pragma mark lifecycle
 
 - (id)initWithURL:(NSURL *)imageURL;

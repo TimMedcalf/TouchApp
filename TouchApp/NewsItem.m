@@ -24,10 +24,6 @@ NSString *const XML_PubDate = @"pubDate";
 
 @implementation NewsItem
 
-@synthesize pubDate = _pubDate;
-@synthesize link = _link;
-@synthesize title = _title;
-@synthesize description = _description;
 
 
 #pragma mark lifecycle

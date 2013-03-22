@@ -20,9 +20,6 @@
 
 @implementation RecipeCategoryViewController
 
-@synthesize catList = _catList;
-
-
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad

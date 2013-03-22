@@ -18,10 +18,6 @@
 
 @implementation RecipeBookViewController
 
-@synthesize recipeList = _recipeList;
-@synthesize categoryName = _categoryName;
-
-
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad

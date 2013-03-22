@@ -33,7 +33,6 @@
 
 
 @implementation TKProgressBarView
-@synthesize progress;
 
 - (id) initWithStyle:(TKProgressBarViewStyle)s{
 	
@@ -44,7 +43,7 @@
 	if (self)
   {    
     style = s;	
-    progress = 0;
+    self.progress = 0;
     self.backgroundColor = [UIColor clearColor];
   }
 	return self;
@@ -55,8 +54,8 @@
 	
 	if(style == TKProgressBarViewStyleLong && p > 0 && p < 0.08) p = 0.08;
 	else if(style == TKProgressBarViewStyleShort && p > 0 && p < 0.17) p = 0.17;
-	if(p == progress) return;
-	progress = p;
+	if(p == _progress) return;
+	_progress = p;
 	[self setNeedsDisplay];
 }
 

@@ -28,11 +28,6 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
 
 @implementation TJMAudioCenter
 
-@synthesize player = _player;
-@synthesize URL = _URL;
-@synthesize delegate = _delegate;
-@synthesize playWhenLoaded = _playWhenLoaded;
-@synthesize interruptedDuringPlayback = _interruptedDuringPlayback;
 
 -(id) init
 {

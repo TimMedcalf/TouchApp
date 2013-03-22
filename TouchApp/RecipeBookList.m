@@ -11,8 +11,6 @@
 
 @implementation RecipeBookList
 
-@synthesize recipeCategory = _recipeCategory;
-
 //overrides
 
 

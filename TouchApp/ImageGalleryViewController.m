@@ -35,9 +35,6 @@ static NSInteger iPadThumbnailRowCount = 8;
 
 @implementation ImageGalleryViewController
 
-@synthesize imageList = _imageList;
-@synthesize thumbnailWidth = _thumbnailWidth;
-@synthesize thumbnailRowCount = _thumbnailRowCount;
 
 #pragma mark - View lifecycle
 

@@ -63,13 +63,6 @@
 
 @implementation PhotoViewController
 
-@synthesize imageList = _imageList;
-@synthesize initialIndex = initialIndex;
-@synthesize pagingScrollView = _pagingScrollView;
-@synthesize customNavigationBar = _customNavigationBar;
-@synthesize customNavigationItem = _customNavigationItem;
-@synthesize delegate = _delegate;
-
 #pragma mark -
 #pragma mark View loading and unloading
 

@@ -51,12 +51,10 @@
 
 @interface ImageScrollView : UIScrollView <UIScrollViewDelegate> {
     TJMImageResourceView *imageView;
-    NSUInteger            index;
 }
 @property (assign) NSUInteger index;
 
 - (void)displayImage:(ImageItem *)image;
-//- (void)displayTiledImageNamed:(NSString *)imageName size:(CGSize)imageSize;
 - (void)setMaxMinZoomScalesForCurrentBounds;
 
 - (CGPoint)pointToCenterAfterRotation;

@@ -48,7 +48,6 @@
 #import "ImageScrollView.h"
 
 @implementation ImageScrollView
-@synthesize index;
 
 - (id)initWithFrame:(CGRect)frame
 {

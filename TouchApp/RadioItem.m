@@ -22,17 +22,6 @@ NSString *const Key_ImageOverride = @"imageURL";
 
 @implementation RadioItem
 
-@synthesize author = _author;
-@synthesize title = _title;
-@synthesize titleLabel = _titleLabel;
-@synthesize summary = _summary;
-@synthesize subtitle = _subtitle;
-@synthesize pubDate = _pubDate;
-@synthesize link =_link;
-@synthesize episode_duration = _episode_duration;
-
-
-
 #pragma mark overrides from FeedItem
 - (void)procesSavedDictionary:(NSDictionary *)dict
 {

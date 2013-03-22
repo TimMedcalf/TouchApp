@@ -21,9 +21,6 @@ NSInteger TwoMonths = -5184000;
 
 @implementation TJMImageResourceManager
 
-@synthesize imageResourceDict = _imageResourceDict;
-
-
 - (id)init
 {
     self = [super init];

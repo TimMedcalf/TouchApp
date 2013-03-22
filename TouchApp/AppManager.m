@@ -23,14 +23,6 @@ NSString *const LMSUCache = @"TouchCache";
 
 @implementation AppManager
 
-@synthesize cacheFolder = _cacheFolder;
-
-@synthesize internalNewsList = _internalNewsList;
-@synthesize internalImageList = _internalImageList;
-@synthesize internalCatalogueList = _internalCatalogueList;
-@synthesize internalRadioList = _internalRadioList;
-@synthesize internalRecipeList = _internalRecipeList;
-
 - (id)init
 {
   if ((self = [super init]))

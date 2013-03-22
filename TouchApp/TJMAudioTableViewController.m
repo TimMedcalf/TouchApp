@@ -21,8 +21,6 @@
 
 @implementation TJMAudioTableViewController
 
-@synthesize progressView = _progressView;
-
 -(void)viewDidLoad
 {
   [super viewDidLoad];
