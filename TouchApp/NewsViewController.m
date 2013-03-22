@@ -83,7 +83,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
   NewsItem *curItem = (self.newsList.items)[indexPath.row];
-  NewsItemViewController *controller = [[NewsItemViewController alloc] initWithNibName:@"HTMLItemViewController" bundle:nil];
+  NewsItemViewController *controller = [[NewsItemViewController alloc] init];//  WithNibName:@"HTMLItemViewController" bundle:nil];
   controller.HTMLString = curItem.htmlForWebView;
   [self.navigationController pushViewController:controller animated:YES];
 }

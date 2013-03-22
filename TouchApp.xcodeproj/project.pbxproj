@@ -75,7 +75,6 @@
 		223202B516E0739E00D4F8F1 /* TouchLogo~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 223202B316E0739E00D4F8F1 /* TouchLogo~ipad.png */; };
 		223202B616E0739E00D4F8F1 /* TouchLogo@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 223202B416E0739E00D4F8F1 /* TouchLogo@2x~ipad.png */; };
 		223595D9140FE2C3004A08C8 /* RecipeItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 223595D7140FE2C3004A08C8 /* RecipeItemViewController.m */; };
-		223595DA140FE2C3004A08C8 /* RecipeItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 223595D8140FE2C3004A08C8 /* RecipeItemViewController.xib */; };
 		224FBC2D1407F9DB00749E42 /* RecipeCategoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC2C1407F9DB00749E42 /* RecipeCategoryItem.m */; };
 		224FBC301407FCF400749E42 /* RecipeCategoryList.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC2F1407FCF400749E42 /* RecipeCategoryList.m */; };
 		224FBC351407FE3700749E42 /* RecipeCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC331407FE3700749E42 /* RecipeCategoryViewController.m */; };
@@ -89,9 +88,7 @@
 		224FBC8F1409977B00749E42 /* GTMNSDictionary+URLArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC8D1409977B00749E42 /* GTMNSDictionary+URLArguments.m */; };
 		224FBC931409988200749E42 /* ImageGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC911409987F00749E42 /* ImageGalleryViewController.m */; };
 		2252536D141E289200157205 /* NewCatalogueItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2252536B141E289200157205 /* NewCatalogueItemViewController.m */; };
-		2252536E141E289200157205 /* NewCatalogueItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2252536C141E289200157205 /* NewCatalogueItemViewController.xib */; };
 		22525373141E2CA500157205 /* NewRadioItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22525371141E2CA500157205 /* NewRadioItemViewController.m */; };
-		22525374141E2CA500157205 /* NewRadioItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22525372141E2CA500157205 /* NewRadioItemViewController.xib */; };
 		225556801625296000281138 /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2255567E1625296000281138 /* Default-Landscape@2x~ipad.png */; };
 		225556811625296000281138 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2255567F1625296000281138 /* Default-Landscape~ipad.png */; };
 		225C5BA716FC695400346816 /* viewConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 225C5BA616FC695300346816 /* viewConfig.plist */; };
@@ -113,7 +110,6 @@
 		22804A8A1407544B0083CE40 /* TJMImageResourceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22804A871407544B0083CE40 /* TJMImageResourceView.m */; };
 		2286E6D814357C5D00C4B275 /* TKProgressBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2286E6D714357C5D00C4B275 /* TKProgressBarView.m */; };
 		229890271427556400345AD3 /* HTMLItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 229890251427556400345AD3 /* HTMLItemViewController.m */; };
-		229890281427556400345AD3 /* HTMLItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 229890261427556400345AD3 /* HTMLItemViewController.xib */; };
 		22A3E4A2140FC6AF00CF2B0B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A3E4A1140FC6AF00CF2B0B /* Icon.png */; };
 		22A3E4A4140FC6BD00CF2B0B /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A3E4A3140FC6BD00CF2B0B /* Icon@2x.png */; };
 		22A3E4A6140FC6CA00CF2B0B /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A3E4A5140FC6CA00CF2B0B /* Icon-72.png */; };
@@ -264,7 +260,6 @@
 		223202B416E0739E00D4F8F1 /* TouchLogo@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TouchLogo@2x~ipad.png"; sourceTree = "<group>"; };
 		223595D6140FE2C3004A08C8 /* RecipeItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeItemViewController.h; sourceTree = "<group>"; };
 		223595D7140FE2C3004A08C8 /* RecipeItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeItemViewController.m; sourceTree = "<group>"; };
-		223595D8140FE2C3004A08C8 /* RecipeItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecipeItemViewController.xib; sourceTree = "<group>"; };
 		224FBC2B1407F9DB00749E42 /* RecipeCategoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeCategoryItem.h; sourceTree = "<group>"; };
 		224FBC2C1407F9DB00749E42 /* RecipeCategoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeCategoryItem.m; sourceTree = "<group>"; };
 		224FBC2E1407FCF400749E42 /* RecipeCategoryList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeCategoryList.h; sourceTree = "<group>"; };
@@ -291,10 +286,8 @@
 		224FBC911409987F00749E42 /* ImageGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageGalleryViewController.m; sourceTree = "<group>"; };
 		2252536A141E289200157205 /* NewCatalogueItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewCatalogueItemViewController.h; sourceTree = "<group>"; };
 		2252536B141E289200157205 /* NewCatalogueItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewCatalogueItemViewController.m; sourceTree = "<group>"; };
-		2252536C141E289200157205 /* NewCatalogueItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewCatalogueItemViewController.xib; sourceTree = "<group>"; };
 		22525370141E2CA500157205 /* NewRadioItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewRadioItemViewController.h; sourceTree = "<group>"; };
 		22525371141E2CA500157205 /* NewRadioItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewRadioItemViewController.m; sourceTree = "<group>"; };
-		22525372141E2CA500157205 /* NewRadioItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewRadioItemViewController.xib; sourceTree = "<group>"; };
 		2255567E1625296000281138 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
 		2255567F1625296000281138 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		225C5BA616FC695300346816 /* viewConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = viewConfig.plist; sourceTree = "<group>"; };
@@ -328,7 +321,6 @@
 		2286E6D714357C5D00C4B275 /* TKProgressBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKProgressBarView.m; sourceTree = "<group>"; };
 		229890241427556400345AD3 /* HTMLItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLItemViewController.h; sourceTree = "<group>"; };
 		229890251427556400345AD3 /* HTMLItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLItemViewController.m; sourceTree = "<group>"; };
-		229890261427556400345AD3 /* HTMLItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HTMLItemViewController.xib; sourceTree = "<group>"; };
 		22A3E4A1140FC6AF00CF2B0B /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../Icon.png; sourceTree = "<group>"; };
 		22A3E4A3140FC6BD00CF2B0B /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../Icon@2x.png"; sourceTree = "<group>"; };
 		22A3E4A5140FC6CA00CF2B0B /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "../Icon-72.png"; sourceTree = "<group>"; };
@@ -676,7 +668,6 @@
 				224FBC331407FE3700749E42 /* RecipeCategoryViewController.m */,
 				223595D6140FE2C3004A08C8 /* RecipeItemViewController.h */,
 				223595D7140FE2C3004A08C8 /* RecipeItemViewController.m */,
-				223595D8140FE2C3004A08C8 /* RecipeItemViewController.xib */,
 			);
 			name = recipes;
 			sourceTree = "<group>";
@@ -714,7 +705,6 @@
 				22CB4C1B13EEBC6C008968D6 /* WebsiteViewController.xib */,
 				229890241427556400345AD3 /* HTMLItemViewController.h */,
 				229890251427556400345AD3 /* HTMLItemViewController.m */,
-				229890261427556400345AD3 /* HTMLItemViewController.xib */,
 				2263104714176F87001B7841 /* TJMAudioTableViewController.h */,
 				2263104814176F87001B7841 /* TJMAudioTableViewController.m */,
 				2263104F1417E923001B7841 /* TJMAudioToggleViewController.h */,
@@ -945,7 +935,6 @@
 			children = (
 				2252536A141E289200157205 /* NewCatalogueItemViewController.h */,
 				2252536B141E289200157205 /* NewCatalogueItemViewController.m */,
-				2252536C141E289200157205 /* NewCatalogueItemViewController.xib */,
 				222951F213EC4B5D001D174D /* CatalogueViewController.h */,
 				222951F313EC4B5D001D174D /* CatalogueViewController.m */,
 			);
@@ -979,7 +968,6 @@
 			children = (
 				22525370141E2CA500157205 /* NewRadioItemViewController.h */,
 				22525371141E2CA500157205 /* NewRadioItemViewController.m */,
-				22525372141E2CA500157205 /* NewRadioItemViewController.xib */,
 				22CB4CBB13F12BDA008968D6 /* RadioViewController.h */,
 				22CB4CBC13F12BDA008968D6 /* RadioViewController.m */,
 			);
@@ -1118,15 +1106,11 @@
 				22A3E4A2140FC6AF00CF2B0B /* Icon.png in Resources */,
 				22A3E4A4140FC6BD00CF2B0B /* Icon@2x.png in Resources */,
 				22A3E4A6140FC6CA00CF2B0B /* Icon-72.png in Resources */,
-				223595DA140FE2C3004A08C8 /* RecipeItemViewController.xib in Resources */,
 				227C563A1414918900169F38 /* placeholder.png in Resources */,
 				227C5695141656DD00169F38 /* 16-play.png in Resources */,
 				227C5696141656DD00169F38 /* 16-play@2x.png in Resources */,
 				227C5697141656DD00169F38 /* 17-pause.png in Resources */,
 				227C5698141656DD00169F38 /* 17-pause@2x.png in Resources */,
-				2252536E141E289200157205 /* NewCatalogueItemViewController.xib in Resources */,
-				22525374141E2CA500157205 /* NewRadioItemViewController.xib in Resources */,
-				229890281427556400345AD3 /* HTMLItemViewController.xib in Resources */,
 				22065B5014380B5400FAA48B /* iTunesArtwork.png in Resources */,
 				DE1475A6147848490065208F /* catalogue_item_iphone.css in Resources */,
 				DE1475A9147856030065208F /* catalogue_item_ipad.css in Resources */,

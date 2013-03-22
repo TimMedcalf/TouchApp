@@ -90,7 +90,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {  
   RecipeItem *curItem = (self.recipeList.items)[indexPath.row];
-  RecipeItemViewController *controller = [[RecipeItemViewController alloc] initWithNibName:@"RecipeItemViewController" bundle:nil];
+  RecipeItemViewController *controller = [[RecipeItemViewController alloc] init];
   controller.HTMLString = curItem.htmlForWebView;
   controller.recipeItem = curItem;
   [self.navigationController pushViewController:controller animated:YES];

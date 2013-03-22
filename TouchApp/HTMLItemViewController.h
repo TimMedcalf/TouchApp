@@ -5,10 +5,11 @@
 
 @interface HTMLItemViewController : TJMAudioToggleViewController <UIWebViewDelegate, UIGestureRecognizerDelegate>
 
-@property (strong, nonatomic) IBOutlet UIWebView *webView;
+@property (strong, nonatomic) UIWebView *webView;
 //load from a string
 @property (strong, nonatomic) NSString *HTMLString;
 @property (strong, nonatomic) NSString *baseURL;
 @property (strong, nonatomic) NSString *pageTitle;
+
 
 @end

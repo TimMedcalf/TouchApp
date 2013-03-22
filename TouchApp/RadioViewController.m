@@ -81,7 +81,7 @@
   
   RadioItem *curItem = (self.radioList.items)[indexPath.row];
   
-  NewRadioItemViewController *controller = [[NewRadioItemViewController alloc] initWithNibName:@"NewRadioItemViewController" bundle:nil];
+  NewRadioItemViewController *controller = [[NewRadioItemViewController alloc] init];
   controller.item = curItem;
   controller.HTMLString = curItem.htmlForWebView;
   controller.item = curItem;

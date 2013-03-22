@@ -83,8 +83,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {  
   RecipeCategoryItem *currentItem = (self.catList.items)[indexPath.row];
-  
-  //RecipeBookViewController *controller = [[RecipeBookViewController alloc] initWithNibName:@"RecipeBookViewController" bundle:nil];
   RecipeBookViewController *controller = [[RecipeBookViewController alloc] initWithSettingsDictionary:self.settings];
   controller.categoryName = currentItem.recipeTitle;
   [self.navigationController pushViewController:controller animated:YES];

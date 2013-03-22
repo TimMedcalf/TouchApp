@@ -85,7 +85,7 @@
 
   CatalogueItem *curItem = (self.catList.items)[indexPath.row];
   
-  NewCatalogueItemViewController *controller = [[NewCatalogueItemViewController alloc] initWithNibName:@"NewCatalogueItemViewController" bundle:nil];
+  NewCatalogueItemViewController *controller = [[NewCatalogueItemViewController alloc] init]; //]WithNibName:@"HTMLItemViewController.xib" bundle:nil];
   controller.item = curItem;
   controller.HTMLString = curItem.htmlForWebView;
 

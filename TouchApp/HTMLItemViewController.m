@@ -3,18 +3,22 @@
 #import "WebsiteViewController.h"
 #import "UIApplication+TJMNetworkActivity.h"
 
+@interface HTMLItemViewController ()
+
+@end
+
 
 @implementation HTMLItemViewController
 
-@synthesize webView = _webView;
-@synthesize HTMLString = _HTMLString;
-@synthesize baseURL = _baseURL;
-@synthesize pageTitle = _pageTitle;
-
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+
 - (void)viewDidLoad {
   
   [super viewDidLoad];
+  
+  self.webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+  self.webView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+  [self.view addSubview:self.webView];
   
   self.webView.backgroundColor = [UIColor whiteColor];
 
@@ -67,15 +71,6 @@
   // Return YES for supported orientations
   return (interfaceOrientation == UIInterfaceOrientationPortrait) || (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad);
 }
-
-
-  
-#pragma mark Gestures
-//- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
-//{
-//  //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
-//  return YES;
-//}
 
 
 #pragma mark UIWebView Delegate
