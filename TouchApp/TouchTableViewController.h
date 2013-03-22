@@ -7,11 +7,17 @@
 //
 
 #import "TJMAudioTableViewController.h"
+#import "FeedList.h"
 
-@interface TouchTableViewController : TJMAudioTableViewController
+@interface TouchTableViewController : TJMAudioTableViewController <FeedListConsumerDelegate>
 
 @property (nonatomic, strong, readonly) NSDictionary *settings;
+@property (nonatomic, strong, readonly) FeedList *feedList;
 
 - (id)initWithSettingsDictionary:(NSDictionary *)settings;
+- (id)initWithSettingsDictionary:(NSDictionary *)settings andFeedList:(FeedList *)feedList;
+
+// this should be put into a subclass!
+- (id)initWithSettingsDictionary:(NSDictionary *)settings andRecipeCategoryNamed:(NSString *)category;
 
 @end

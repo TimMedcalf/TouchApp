@@ -11,6 +11,6 @@
 #import "TJMAudioTableViewController.h"
 #import "TouchTableViewController.h"
 
-@interface CatalogueViewController : TouchTableViewController <FeedListConsumerDelegate>
+@interface CatalogueViewController : TouchTableViewController
 
 @end

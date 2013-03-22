@@ -4,9 +4,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NewsList.h"
 #import "TouchTableViewController.h"
 
-@interface NewsViewController : TouchTableViewController <FeedListConsumerDelegate>
+@interface NewsViewController : TouchTableViewController
 
 @end

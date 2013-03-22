@@ -10,6 +10,6 @@
 #import "RadioList.h"
 #import "TouchTableViewController.h"
 
-@interface RadioViewController : TouchTableViewController <FeedListConsumerDelegate>
+@interface RadioViewController : TouchTableViewController
 
 @end

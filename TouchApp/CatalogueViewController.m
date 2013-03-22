@@ -14,40 +14,7 @@
 #import "UIApplication+TJMNetworkWarning.h"
 #import "TouchTableCell.h"
 
-@interface CatalogueViewController ()
-@property (strong, nonatomic) CatalogueList *catList;
-@end
-
 @implementation CatalogueViewController
-
-#pragma mark - View lifecycle
-
-- (void)viewDidLoad
-{
-  [super viewDidLoad];
-  
-  self.catList = [[AppManager sharedInstance] catalogueList];
-  self.catList.delegate = self;
-  
-  if ([self.catList.items count] == 0)
-  {
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.progressView.progress = 0;
-    self.progressView.hidden = NO;
-  }
-  [self.catList refreshFeed];
-}
-
-- (void)dealloc
-{
-  [self.catList setDelegate:nil];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-  [super viewDidAppear:animated];
-  [self.catList refreshFeed];
-}
 
 
 #pragma mark - Table view data source
@@ -61,7 +28,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
   // Return the number of rows in the section.
-  return [self.catList.items count];
+  return [self.feedList.items count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -70,7 +37,7 @@
   if (!cell) {
     cell = [[TouchTableCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:TouchTableCellSubtitleReuseID];
   }
-  CatalogueItem *currentItem = (self.catList.items)[indexPath.row];
+  CatalogueItem *currentItem = (CatalogueItem *)self.feedList.items[indexPath.row];
   cell.titleLabel.text = currentItem.artist;
   cell.subtitleLabel.text = currentItem.title;//[NSDateFormatter localizedStringFromDate:currentItem.pubDate dateStyle:NSDateFormatterMediumStyle timeStyle:kCFDateFormatterShortStyle];
   return cell;
@@ -81,34 +48,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-  CatalogueItem *curItem = (self.catList.items)[indexPath.row];
+  CatalogueItem *curItem = (CatalogueItem *)self.feedList.items[indexPath.row];
   
   NewCatalogueItemViewController *controller = [[NewCatalogueItemViewController alloc] init]; //]WithNibName:@"HTMLItemViewController.xib" bundle:nil];
   controller.item = curItem;
   controller.HTMLString = curItem.htmlForWebView;
 
   [self.navigationController pushViewController:controller animated:YES];
-}
-
-#pragma mark FeedListConsumerDelegates
-- (void)updateSource
-{
-  [self.progressView setHidden:YES];
-  [self hideTouch];
-  self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-  [self.tableView reloadData];
-}
-
-- (void)updateFailed
-{
-  [self.progressView setHidden:YES];
-  if ([self.catList.items count] == 0) [self showTouch];
-  [[UIApplication sharedApplication] showNetworkWarning];
-}
-
-- (void)handleShake
-{
-  [self.catList refreshFeedForced:YES];
 }
 
 @end

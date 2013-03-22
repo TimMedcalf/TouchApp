@@ -72,7 +72,7 @@ void uncaughtExceptionHandler(NSException *exception);
   
   //News Views
   //NewsViewController *newsVC = [[NewsViewController alloc] initWithStyle:UITableViewStylePlain];
-  NewsViewController *newsVC = [[NewsViewController alloc] initWithSettingsDictionary:masterSettings[@"news"]];
+  NewsViewController *newsVC = [[NewsViewController alloc] initWithSettingsDictionary:masterSettings[@"news"] andFeedList:[AppManager sharedInstance].newsList];
   UINavigationController *newsNav = [[UINavigationController alloc] initWithRootViewController:newsVC];
   
   //Photos Views
@@ -80,15 +80,15 @@ void uncaughtExceptionHandler(NSException *exception);
   UINavigationController *photoNav = [[UINavigationController alloc] initWithRootViewController:photoVC];
   
   //Catalogue
-  CatalogueViewController *catVC = [[CatalogueViewController alloc] initWithSettingsDictionary:masterSettings[@"catalogue"]];
+  CatalogueViewController *catVC = [[CatalogueViewController alloc] initWithSettingsDictionary:masterSettings[@"catalogue"] andFeedList:[AppManager sharedInstance].catalogueList];
   UINavigationController *catNav = [[UINavigationController alloc] initWithRootViewController:catVC];
   
   //Radio
-  RadioViewController *radioVC = [[RadioViewController alloc] initWithSettingsDictionary:masterSettings[@"radio"]];
+  RadioViewController *radioVC = [[RadioViewController alloc] initWithSettingsDictionary:masterSettings[@"radio"] andFeedList:[AppManager sharedInstance].radioList];
   UINavigationController *radioNav = [[UINavigationController alloc] initWithRootViewController:radioVC];
   
   //Recipes
-  RecipeCategoryViewController *recipeVC = [[RecipeCategoryViewController alloc] initWithSettingsDictionary:masterSettings[@"recipes"]];
+  RecipeCategoryViewController *recipeVC = [[RecipeCategoryViewController alloc] initWithSettingsDictionary:masterSettings[@"recipes"] andFeedList:[AppManager sharedInstance].recipeList];
   UINavigationController *recipeNav = [[UINavigationController alloc] initWithRootViewController:recipeVC];
   
   self.tabBarController = [[RotatingTabBarController alloc] init];

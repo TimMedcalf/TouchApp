@@ -14,40 +14,8 @@
 #import "UIApplication+TJMNetworkWarning.h"
 #import "TouchTableCell.h"
 
-@interface RecipeCategoryViewController ()
-@property (strong, nonatomic) RecipeCategoryList *catList;
-@end
 
 @implementation RecipeCategoryViewController
-
-#pragma mark - View lifecycle
-
-- (void)viewDidLoad
-{
-  [super viewDidLoad];
-  
-  self.catList = [[AppManager sharedInstance] recipeList];
-  self.catList.delegate = self;
-  
-  if ([self.catList.items count] == 0)
-  {
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.progressView.progress = 0;
-    self.progressView.hidden = NO;
-  }
-  [self.catList refreshFeed];
-} 
-
-- (void)dealloc
-{
-  [self.catList setDelegate:nil];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-  [super viewDidAppear:animated];
-  [self.catList refreshFeed];
-}
 
 #pragma mark - Table view data source
 
@@ -60,7 +28,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
   // Return the number of rows in the section.
-  return [self.catList.items count];
+  return [self.feedList.items count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -69,7 +37,7 @@
   if (!cell) {
     cell = [[TouchTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TouchTableCellDefaultReuseID];
   }
-  RecipeCategoryItem *currentItem = (self.catList.items)[indexPath.row];
+  RecipeCategoryItem *currentItem = (RecipeCategoryItem *)self.feedList.items[indexPath.row];
   cell.titleLabel.text = currentItem.recipeTitle;
   return cell;
 }
@@ -79,32 +47,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {  
-  RecipeCategoryItem *currentItem = (self.catList.items)[indexPath.row];
-  RecipeBookViewController *controller = [[RecipeBookViewController alloc] initWithSettingsDictionary:self.settings];
-  controller.categoryName = currentItem.recipeTitle;
+  RecipeCategoryItem *currentItem = (RecipeCategoryItem *)self.feedList.items[indexPath.row];
+  RecipeBookViewController *controller = [[RecipeBookViewController alloc] initWithSettingsDictionary:self.settings andRecipeCategoryNamed:currentItem.recipeTitle];
   [self.navigationController pushViewController:controller animated:YES];
 }
 
-#pragma mark FeedListConsumerDelegates
-- (void)updateSource
-{
-  [self.progressView setHidden:YES];
-  [self hideTouch];
-  self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-  [self.tableView reloadData];
-}
-
-- (void)updateFailed
-{
-  [self.progressView setHidden:YES];
-  if ([self.catList.items count] == 0) [self showTouch];
-  [[UIApplication sharedApplication] showNetworkWarning];
-}
-
-- (void)handleShake
-{
-  //NSLog(@"recipe categories - Shake!");
-  [self.catList refreshFeedForced:YES];
-}
 
 @end

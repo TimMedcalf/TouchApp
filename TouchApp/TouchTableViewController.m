@@ -9,6 +9,8 @@
 #import "TouchTableViewController.h"
 #import "TouchTableCell.h"
 #import "Flurry.h"
+#import "UIApplication+TJMNetworkWarning.h"
+#import "RecipeBookList.h"
 
 NSString *const Key_Title = @"title";
 NSString *const Key_TabBarImage = @"tabBarImage";
@@ -27,6 +29,8 @@ NSString *const Key_BarTintB = @"barTintB";
 
 @interface TouchTableViewController ()
 @property (nonatomic, strong) NSDictionary *settings;
+@property (nonatomic, strong) FeedList *feedList;
+@property (nonatomic, strong) NSString *recipeCategory;
 - (void)configureTableHeader;
 @end
 
@@ -42,6 +46,30 @@ NSString *const Key_BarTintB = @"barTintB";
   return self;
 }
 
+- (id)initWithSettingsDictionary:(NSDictionary *)settings andFeedList:(FeedList *)feedList {
+  self = [super initWithStyle:UITableViewStylePlain];
+  if (self) {
+    self.settings = settings;
+    self.feedList = feedList;
+    self.title = self.settings[Key_Title];
+    self.tabBarItem.image = [UIImage imageNamed:self.settings[Key_TabBarImage]];
+  }
+  return self;
+}
+
+// this should be put into a subclass!
+- (id)initWithSettingsDictionary:(NSDictionary *)settings andRecipeCategoryNamed:(NSString *)category {
+  self = [super initWithStyle:UITableViewStylePlain];
+  if (self) {
+    self.settings = settings;
+    self.recipeCategory = category;
+    self.title = self.settings[Key_Title];
+    self.tabBarItem.image = [UIImage imageNamed:self.settings[Key_TabBarImage]];
+  }
+  return self;
+}
+
+
 - (void)viewDidLoad
 {
   [super viewDidLoad];
@@ -55,6 +83,28 @@ NSString *const Key_BarTintB = @"barTintB";
   self.navigationItem.backBarButtonItem = backButton;
   
   self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:self.settings[Key_HeaderText]]];
+  
+  if (self.recipeCategory) {
+    RecipeBookList *tmpList = [[RecipeBookList alloc] initWithoutLoading];
+    tmpList.recipeCategory = self.recipeCategory;
+    [tmpList continueLoading];
+    self.feedList = tmpList;
+  }
+  
+  self.feedList.delegate = self;
+    
+  if ([self.feedList.items count] == 0)
+  {
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.progressView.progress = 0;
+    [self.progressView setHidden:NO];
+  }
+  [self.feedList refreshFeed];
+}
+
+- (void)dealloc
+{
+  self.feedList.delegate = nil;
 }
 
 - (void)configureTableHeader {
@@ -66,6 +116,12 @@ NSString *const Key_BarTintB = @"barTintB";
   }
   UIImageView *headerView = [[UIImageView alloc]initWithImage:header];
   self.tableView.tableHeaderView = headerView;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+  [super viewDidAppear:animated];
+  [self.feedList refreshFeed];
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)orientation duration:(NSTimeInterval)duration
@@ -116,6 +172,26 @@ NSString *const Key_BarTintB = @"barTintB";
     return UIInterfaceOrientationMaskPortrait;
 }
 
+#pragma mark FeedListConsumerDelegates
+- (void)updateSource
+{
+  [self.progressView setHidden:YES];
+  [self hideTouch];
+  self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+  [self.tableView reloadData];
+}
+
+- (void)updateFailed
+{
+  [self.progressView setHidden:YES];
+  if ([self.feedList.items count] == 0) [self showTouch];
+  [[UIApplication sharedApplication] showNetworkWarning];
+}
+
+- (void)handleShake
+{
+  [self.feedList refreshFeedForced:YES];
+}
 
 
 @end
