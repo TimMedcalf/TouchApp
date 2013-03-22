@@ -26,7 +26,6 @@ NSString * const TouchTableCellSubtitleReuseID = @"TouchTableCellSubtitleReuseID
   self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
   if (self) {
     self.titleLabel = [[UILabel alloc] init];
-    //self.titleLabel.tag = TouchTableCellTitleTag;
     self.disclosure = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"go"]];
     self.disclosure.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
     self.selectionStyle = UITableViewCellSelectionStyleGray;
@@ -42,18 +41,17 @@ NSString * const TouchTableCellSubtitleReuseID = @"TouchTableCellSubtitleReuseID
     self.titleLabel.backgroundColor = [UIColor clearColor];
     self.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     self.titleLabel.font = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? [UIFont fontWithName:@"Helvetica" size:21] : [UIFont fontWithName:@"Helvetica" size:14];
-    self.titleLabel.numberOfLines = 0; //shouldn't this be 1?
+    self.titleLabel.numberOfLines = 1;
     
     if (style == UITableViewCellStyleSubtitle) {
       self.subtitleLabel = [[UILabel alloc] init];
-      //self.subtitleLabel.tag = TouchTableCellSubtitleTag;
       self.subtitleLabel.textColor = [UIColor grayColor];
       self.subtitleLabel.textAlignment = NSTextAlignmentLeft;
       self.subtitleLabel.contentMode = UIViewContentModeCenter;
       self.subtitleLabel.backgroundColor = [UIColor clearColor];
       self.subtitleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
       self.subtitleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-      self.subtitleLabel.numberOfLines = 0; //shouldn't this be 1?
+      self.subtitleLabel.numberOfLines = 1;
 
       if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         //iPad
@@ -69,7 +67,7 @@ NSString * const TouchTableCellSubtitleReuseID = @"TouchTableCellSubtitleReuseID
         self.subtitleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:10];
         self.disclosure.frame = CGRectMake(self.frame.size.width-47, 14, 30, 30);
       }
-    } else {            
+    } else {
       if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         //iPad
         self.titleLabel.frame = CGRectMake(50,26,self.frame.size.width-195,25);

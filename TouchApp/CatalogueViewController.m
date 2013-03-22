@@ -12,9 +12,7 @@
 #import "AppManager.h"
 #import "Flurry.h"
 #import "UIApplication+TJMNetworkWarning.h"
-
-static NSInteger CellTitleTag = 50;
-static NSInteger CellSubTitleTag = 51;
+#import "TouchTableCell.h"
 
 @interface CatalogueViewController ()
 @property (strong, nonatomic) CatalogueList *catList;
@@ -158,83 +156,13 @@ static NSInteger CellSubTitleTag = 51;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  NSString *CellIdentifier;
-  UITableViewCell *cell;
-  CellIdentifier = @"CatalogItem";
-  cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-  if (cell == nil) {
-    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    cell.selectionStyle = UITableViewCellSelectionStyleGray;
-    cell.contentView.backgroundColor = [UIColor whiteColor];
-    UIView *selView = [[UIView alloc] initWithFrame:cell.bounds];
-    selView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-    selView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.05];
-    cell.selectedBackgroundView = selView;
-
-    //we can't se the frame of the default labels and disclosure indicator
-    //so lets ignore them and just add some of our own to the view.
-    //if we tag them we can retrieve them later in the method so that we can
-    //set the properties that change (i.e. the text)
-    UILabel *titleLabel = [[UILabel alloc] init];
-    titleLabel.tag = CellTitleTag;
-    UILabel *subtitleLabel = [[UILabel alloc] init];
-    subtitleLabel.tag = CellSubTitleTag;
-    UIImageView *disclosure = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"go"]];
-    //no need to tag the disclosure indicator cos we don't need to do anything with it once its added to the view
-    // Set the size, font, foreground color, background color
-    titleLabel.textColor = [UIColor blackColor]; 
-    titleLabel.textAlignment = NSTextAlignmentLeft;
-    titleLabel.contentMode = UIViewContentModeCenter; 
-    titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
-    titleLabel.numberOfLines = 0; 
-    
-    
-    subtitleLabel.textColor = [UIColor grayColor]; 
-    subtitleLabel.textAlignment = NSTextAlignmentLeft;
-    subtitleLabel.contentMode = UIViewContentModeCenter; 
-    subtitleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
-    subtitleLabel.numberOfLines = 0;
-    
-    
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-    {
-      //iPad
-      titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-      titleLabel.frame = CGRectMake(50,17,cell.frame.size.width-195,25);
-      titleLabel.font = [UIFont fontWithName:@"Helvetica" size:21];
-      subtitleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-      subtitleLabel.frame = CGRectMake(50,42,cell.frame.size.width-195,22);
-      subtitleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
-      //disclosure.frame = CGRectMake(673, 19, 45, 45);
-      disclosure.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
-      disclosure.frame = CGRectMake(cell.frame.size.width-95, 16, 45, 45);
-    }
-    else
-    {
-      //iPhone
-      titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-      titleLabel.frame = CGRectMake(17,16,cell.frame.size.width-81,15);
-      titleLabel.font = [UIFont fontWithName:@"Helvetica" size:14];
-      subtitleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-      subtitleLabel.frame = CGRectMake(17,31,cell.frame.size.width-81,15);
-      subtitleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:10];
-      disclosure.frame = CGRectMake(cell.frame.size.width-47, 14, 30, 30);
-    }
-    //now they're all set up, add them to the cell's view and release them
-    [cell.contentView addSubview:titleLabel];
-    [cell.contentView addSubview:subtitleLabel];
-    [cell.contentView addSubview:disclosure];
+  TouchTableCell *cell = [tableView dequeueReusableCellWithIdentifier:TouchTableCellSubtitleReuseID];
+  if (!cell) {
+    cell = [[TouchTableCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:TouchTableCellSubtitleReuseID];
   }
-  // so, now to configure the cell...
-  // first grab hold of the cell elements we need
   CatalogueItem *currentItem = (self.catList.items)[indexPath.row];
-  
-  UILabel *titleLabel = (UILabel *)[cell viewWithTag:CellTitleTag];
-  UILabel *subtitleLabel = (UILabel *)[cell viewWithTag:CellSubTitleTag];
-  
-  //got them...now set the text we want...
-  titleLabel.text = currentItem.artist;
-  subtitleLabel.text = currentItem.title;//[NSDateFormatter localizedStringFromDate:currentItem.pubDate dateStyle:NSDateFormatterMediumStyle timeStyle:kCFDateFormatterShortStyle];
+  cell.titleLabel.text = currentItem.artist;
+  cell.subtitleLabel.text = currentItem.title;//[NSDateFormatter localizedStringFromDate:currentItem.pubDate dateStyle:NSDateFormatterMediumStyle timeStyle:kCFDateFormatterShortStyle];
   return cell;
 }
 

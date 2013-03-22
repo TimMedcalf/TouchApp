@@ -12,8 +12,7 @@
 #import "AppManager.h"
 #import "Flurry.h"
 #import "UIApplication+TJMNetworkWarning.h"
-
-static NSInteger CellTitleTag = 50;
+#import "TouchTableCell.h"
 
 @interface RecipeCategoryViewController ()
 @property (strong, nonatomic) RecipeCategoryList *catList;
@@ -160,69 +159,12 @@ static NSInteger CellTitleTag = 50;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  NSString *CellIdentifier;
-  UITableViewCell *cell;
-  CellIdentifier = @"RecipeItem";
-  cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-  if (cell == nil) {
-    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    cell.selectionStyle = UITableViewCellSelectionStyleGray;
-    cell.contentView.backgroundColor = [UIColor whiteColor];
-    UIView *selView = [[UIView alloc] initWithFrame:cell.bounds];
-    selView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-    selView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.05];
-    cell.selectedBackgroundView = selView;
-   
-    //we can't se the frame of the default labels and disclosure indicator
-    //so lets ignore them and just add some of our own to the view.
-    //if we tag them we can retrieve them later in the method so that we can
-    //set the properties that change (i.e. the text)
-    UILabel *titleLabel = [[UILabel alloc] init];
-    titleLabel.tag = CellTitleTag;
-    
-    // Set the size, font, foreground color, background color
-    titleLabel.textColor = [UIColor blackColor]; 
-    titleLabel.textAlignment = NSTextAlignmentLeft;
-    titleLabel.contentMode = UIViewContentModeCenter; 
-    titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
-    titleLabel.numberOfLines = 0; 
-    
-    UIImageView *disclosure = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"go"]];
-    //no need to tag the disclosure indicator cos we don't need to do anything with it once its added to the view  
-        
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-    {
-      //iPad
-      titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-      titleLabel.frame = CGRectMake(50,26,cell.frame.size.width-195,25);
-      titleLabel.font = [UIFont fontWithName:@"Helvetica" size:21];
-
-      //disclosure.frame = CGRectMake(673, 19, 45, 45);
-      disclosure.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
-      disclosure.frame = CGRectMake(cell.frame.size.width-95, 16, 45, 45);
-    }
-    else
-    {
-      //iPhone
-      titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-      titleLabel.frame = CGRectMake(17,22,cell.frame.size.width-81,15);
-      titleLabel.font = [UIFont fontWithName:@"Helvetica" size:14];
-      disclosure.frame = CGRectMake(cell.frame.size.width-47, 14, 30, 30);
-    }
-    //now they're all set up, add them to the cell's view and release them
-    [cell.contentView addSubview:titleLabel];
-    [cell.contentView addSubview:disclosure];
+  TouchTableCell *cell = [tableView dequeueReusableCellWithIdentifier:TouchTableCellDefaultReuseID];
+  if (!cell) {
+    cell = [[TouchTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TouchTableCellDefaultReuseID];
   }
-  // so, now to configure the cell...
-  // first grab hold of the cell elements we need
   RecipeCategoryItem *currentItem = (self.catList.items)[indexPath.row];
-  
-  UILabel *titleLabel = (UILabel *)[cell viewWithTag:CellTitleTag];
-  //UILabel *subtitleLabel = (UILabel *)[cell viewWithTag:CellSubTitleTag];
-  
-  //got them...now set the text we want...
-  titleLabel.text = currentItem.recipeTitle;
-  //subtitleLabel.text = currentItem.title;
+  cell.titleLabel.text = currentItem.recipeTitle;
   return cell;
 }
 
