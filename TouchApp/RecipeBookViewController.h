@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "RecipeBookList.h"
-#import "TJMAudioTableViewController.h"
+#import "TouchTableViewController.h"
 
-@interface RecipeBookViewController : TJMAudioTableViewController <FeedListConsumerDelegate>
+@interface RecipeBookViewController : TouchTableViewController <FeedListConsumerDelegate>
 
 @property (strong, nonatomic) NSString *categoryName;
 

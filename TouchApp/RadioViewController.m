@@ -17,39 +17,17 @@
 
 @interface RadioViewController ()
 @property (strong, nonatomic) RadioList *radioList;
-- (void)configureTableHeader;
 @end
 
 @implementation RadioViewController
 
 @synthesize radioList = _radioList;
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-  self = [super initWithStyle:style];
-  if (self) {
-    self.title = @"Radio";
-    self.tabBarItem.image = [UIImage imageNamed:@"radio"];
-  }
-  return self;
-}
-
-
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  [Flurry logAllPageViews:self.navigationController];
-  
-  self.tableView.rowHeight = [TouchTableCell rowHeight];
-  
-  self.navigationItem.title= @"";
-  
-  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
-  self.navigationItem.backBarButtonItem = backButton;
-  
-  self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"headerText_radio"]];
   
   self.radioList = [[AppManager sharedInstance] radioList];
   self.radioList.delegate = self;
@@ -63,58 +41,9 @@
   [self.radioList refreshFeed];
 }
 
-- (void)configureTableHeader {
-  UIImage *header = nil;
-  if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
-    header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"radio_header" ofType:@"jpg"]];
-  } else {
-    header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"radio_header_landscape" ofType:@"jpg"]];
-  }
-  UIImageView *headerView = [[UIImageView alloc]initWithImage:header];
-  self.tableView.tableHeaderView = headerView;
-}
-
 - (void)dealloc
 {
   [self.radioList setDelegate: nil];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-  [super viewWillAppear:animated];
-  
-	UINavigationBar *nb = self.navigationController.navigationBar;
-	nb.tintColor = [UIColor colorWithRed:176/255.0 green:169/255.0 blue:18/255.0 alpha:1];
-  self.tabBarController.tabBar.selectedImageTintColor = nb.tintColor;
-  [nb setBackgroundImage:[UIImage imageNamed:@"shim_radio"] forBarMetrics:UIBarMetricsDefault];
-  [self configureTableHeader];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-  [super viewDidAppear:animated];
-  [self.radioList refreshFeed];
-}
-
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-  // Return YES for supported orientations
-  return (interfaceOrientation == UIInterfaceOrientationPortrait) || (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad);
-}
-
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)orientation duration:(NSTimeInterval)duration
-{
-  [super willRotateToInterfaceOrientation:orientation duration:duration];
-  [self performSelector:@selector(configureTableHeader) withObject:nil afterDelay:duration / 2];
-}
-
-- (NSUInteger)supportedInterfaceOrientations
-{
-  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-    return UIInterfaceOrientationMaskAll;
-  else
-    return UIInterfaceOrientationMaskPortrait;
 }
 
 

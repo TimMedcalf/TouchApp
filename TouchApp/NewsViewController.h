@@ -5,8 +5,8 @@
 
 #import <UIKit/UIKit.h>
 #import "NewsList.h"
-#import "TJMAudioTableViewController.h"
+#import "TouchTableViewController.h"
 
-@interface NewsViewController : TJMAudioTableViewController <FeedListConsumerDelegate>
+@interface NewsViewController : TouchTableViewController <FeedListConsumerDelegate>
 
 @end

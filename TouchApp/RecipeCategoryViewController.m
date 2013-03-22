@@ -16,39 +16,18 @@
 
 @interface RecipeCategoryViewController ()
 @property (strong, nonatomic) RecipeCategoryList *catList;
-- (void)configureTableHeader;
 @end
 
 @implementation RecipeCategoryViewController
 
 @synthesize catList = _catList;
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-  self = [super initWithStyle:style];
-  if (self)
-  {
-    self.title = @"Recipes";
-    self.tabBarItem.image = [UIImage imageNamed:@"recipes"];
-  }
-  return self;
-}
 
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  [Flurry logAllPageViews:self.navigationController];
-  
-  self.tableView.rowHeight = [TouchTableCell rowHeight];
-  
-  self.navigationItem.title= @"";
-  
-  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
-  self.navigationItem.backBarButtonItem = backButton;
-  
-  self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"headerText_recipes"]];
   
   self.catList = [[AppManager sharedInstance] recipeList];
   self.catList.delegate = self;
@@ -62,57 +41,15 @@
   [self.catList refreshFeed];
 } 
 
-- (void)configureTableHeader {
-  UIImage *header = nil;
-  if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
-    header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"recipes_header" ofType:@"jpg"]];
-  } else {
-    header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"recipes_header_landscape" ofType:@"jpg"]];
-  }
-  UIImageView *headerView = [[UIImageView alloc]initWithImage:header];
-  self.tableView.tableHeaderView = headerView;
-}
-
-
 - (void)dealloc
 {
   [self.catList setDelegate:nil];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-  [super viewWillAppear:animated];
-	UINavigationBar *nb = self.navigationController.navigationBar;
-	nb.tintColor = [UIColor colorWithRed:32/255.0 green:70/255.0 blue:117/255.0 alpha:1];
-  self.tabBarController.tabBar.selectedImageTintColor = nb.tintColor;
-  [nb setBackgroundImage:[UIImage imageNamed:@"shim_recipes"] forBarMetrics:UIBarMetricsDefault];
-  [self configureTableHeader];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
   [super viewDidAppear:animated];
   [self.catList refreshFeed];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-  // Return YES for supported orientations
-  return (interfaceOrientation == UIInterfaceOrientationPortrait) || (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad);
-}
-
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)orientation duration:(NSTimeInterval)duration
-{
-  [super willRotateToInterfaceOrientation:orientation duration:duration];
-  [self performSelector:@selector(configureTableHeader) withObject:nil afterDelay:duration / 2];
-}
-
-- (NSUInteger)supportedInterfaceOrientations
-{
-  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-    return UIInterfaceOrientationMaskAll;
-  else
-    return UIInterfaceOrientationMaskPortrait;
 }
 
 #pragma mark - Table view data source
@@ -148,7 +85,7 @@
   RecipeCategoryItem *currentItem = (self.catList.items)[indexPath.row];
   
   //RecipeBookViewController *controller = [[RecipeBookViewController alloc] initWithNibName:@"RecipeBookViewController" bundle:nil];
-  RecipeBookViewController *controller = [[RecipeBookViewController alloc] initWithStyle:UITableViewStylePlain];
+  RecipeBookViewController *controller = [[RecipeBookViewController alloc] initWithSettingsDictionary:self.settings];
   controller.categoryName = currentItem.recipeTitle;
   [self.navigationController pushViewController:controller animated:YES];
 }

@@ -16,20 +16,83 @@
 		<string>news_header</string>
 		<key>iconTintW</key>
 		<real>0.67</real>
-		<key>iconTintR</key>
-		<real>0.67</real>
-		<key>iconTintG</key>
-		<real>0.67</real>
-		<key>iconTintB</key>
-		<real>0.67</real>
 		<key>barTintW</key>
 		<integer>0</integer>
+	</dict>
+	<key>catalogue</key>
+	<dict>
+		<key>title</key>
+		<string>Catalogue</string>
+		<key>tabBarImage</key>
+		<string>catalog</string>
+		<key>shim</key>
+		<string>shim_catalog</string>
+		<key>headerText</key>
+		<string>headerText_catalog</string>
+		<key>tableHeader</key>
+		<string>catalogue_header</string>
+		<key>iconTintR</key>
+		<real>0.322</real>
+		<key>iconTintG</key>
+		<real>0.376</real>
+		<key>iconTintB</key>
+		<real>0.176</real>
 		<key>barTintR</key>
-		<integer>0</integer>
+		<real>0.322</real>
 		<key>barTintG</key>
-		<integer>0</integer>
+		<real>0.376</real>
 		<key>barTintB</key>
-		<integer>0</integer>
+		<real>0.176</real>
+	</dict>
+	<key>radio</key>
+	<dict>
+		<key>title</key>
+		<string>Radio</string>
+		<key>tabBarImage</key>
+		<string>radio</string>
+		<key>shim</key>
+		<string>shim_radio</string>
+		<key>headerText</key>
+		<string>headerText_radio</string>
+		<key>tableHeader</key>
+		<string>radio_header</string>
+		<key>iconTintR</key>
+		<real>0.6899999999999999</real>
+		<key>iconTintG</key>
+		<real>0.663</real>
+		<key>iconTintB</key>
+		<real>0.07099999999999999</real>
+		<key>barTintR</key>
+		<real>0.6899999999999999</real>
+		<key>barTintG</key>
+		<real>0.663</real>
+		<key>barTintB</key>
+		<real>0.07099999999999999</real>
+	</dict>
+	<key>recipes</key>
+	<dict>
+		<key>title</key>
+		<string>Recipes</string>
+		<key>tabBarImage</key>
+		<string>recipes</string>
+		<key>shim</key>
+		<string>shim_recipes</string>
+		<key>headerText</key>
+		<string>headerText_recipes</string>
+		<key>tableHeader</key>
+		<string>recipes_header</string>
+		<key>iconTintR</key>
+		<real>0.125</real>
+		<key>iconTintG</key>
+		<real>0.275</real>
+		<key>iconTintB</key>
+		<real>0.459</real>
+		<key>barTintR</key>
+		<real>0.125</real>
+		<key>barTintG</key>
+		<real>0.275</real>
+		<key>barTintB</key>
+		<real>0.459</real>
 	</dict>
 </dict>
 </plist>

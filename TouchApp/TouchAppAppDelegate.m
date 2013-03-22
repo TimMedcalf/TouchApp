@@ -70,8 +70,12 @@ void uncaughtExceptionHandler(NSException *exception);
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   // Override point for customization after application launch.
   
+  //load the settings dict...
+  NSDictionary *masterSettings = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"viewConfig" ofType:@"plist"]];
+  
   //News Views
-  NewsViewController *newsVC = [[NewsViewController alloc] initWithStyle:UITableViewStylePlain];
+  //NewsViewController *newsVC = [[NewsViewController alloc] initWithStyle:UITableViewStylePlain];
+  NewsViewController *newsVC = [[NewsViewController alloc] initWithSettingsDictionary:masterSettings[@"news"]];
   UINavigationController *newsNav = [[UINavigationController alloc] initWithRootViewController:newsVC];
   
   //Photos Views
@@ -79,19 +83,17 @@ void uncaughtExceptionHandler(NSException *exception);
   UINavigationController *photoNav = [[UINavigationController alloc] initWithRootViewController:photoVC];
   
   //Catalogue
-  CatalogueViewController *catVC = [[CatalogueViewController alloc] initWithStyle:UITableViewStylePlain];
+  CatalogueViewController *catVC = [[CatalogueViewController alloc] initWithSettingsDictionary:masterSettings[@"catalogue"]];
   UINavigationController *catNav = [[UINavigationController alloc] initWithRootViewController:catVC];
   
   //Radio
-  RadioViewController *radioVC = [[RadioViewController alloc] initWithStyle:UITableViewStylePlain];
+  RadioViewController *radioVC = [[RadioViewController alloc] initWithSettingsDictionary:masterSettings[@"radio"]];
   UINavigationController *radioNav = [[UINavigationController alloc] initWithRootViewController:radioVC];
   
   //Recipes
-  RecipeCategoryViewController *recipeVC = [[RecipeCategoryViewController alloc] initWithStyle:UITableViewStylePlain];
+  RecipeCategoryViewController *recipeVC = [[RecipeCategoryViewController alloc] initWithSettingsDictionary:masterSettings[@"recipes"]];
   UINavigationController *recipeNav = [[UINavigationController alloc] initWithRootViewController:recipeVC];
   
-  
-  //self.tabBarController = [[UITabBarController alloc] init];
   self.tabBarController = [[RotatingTabBarController alloc] init];
   self.tabBarController.viewControllers = @[newsNav, photoNav, catNav, radioNav, recipeNav];
   self.window.rootViewController = self.tabBarController;
