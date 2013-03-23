@@ -29,7 +29,7 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
 @implementation TJMAudioCenter
 
 
--(id) init
+-(id)init
 {
   if ((self = [super init]))
   {

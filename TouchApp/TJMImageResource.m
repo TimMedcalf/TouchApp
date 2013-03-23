@@ -67,7 +67,7 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
   return self;
 }
 
-- (id) initWithDictionary:(NSDictionary *)dict
+- (id)initWithDictionary:(NSDictionary *)dict
 {
   self = [super init];
   if (self)
