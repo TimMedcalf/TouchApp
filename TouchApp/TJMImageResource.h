@@ -26,6 +26,6 @@ extern NSString * const TJMImageResourceImageNeedsUpdating;
 - (void)cacheImage;
 - (UIImage *)getImage;
 - (UIImage *)getImageWithPreferredPlaceholder:(TJMImageResource *)placeholder;
-- (UIImage *)getImageThumbnailOfSize:(CGSize)size;
+//- (UIImage *)getImageThumbnailOfSize:(CGSize)size;
 
 @end
