@@ -14,7 +14,7 @@ NSString *const Key_ImageItem_ImageWidth = @"imageWidth";
 NSString *const Key_ImageItem_ImageHeight = @"imageHeight";
 NSString *const Key_ImageItem_ThumbnailWidth = @"thumbnailWidth";
 NSString *const Key_ImageItem_ThumbnailHeight = @"thumbnailHeight";
-
+NSString *const Key_ImageItem_PhotoId = @"photoId";
 
 @implementation ImageItem
 
@@ -52,6 +52,9 @@ NSString *const Key_ImageItem_ThumbnailHeight = @"thumbnailHeight";
   {
     tmpNum = dict[Key_ImageItem_ThumbnailHeight];
     self.thumbnailHeight = [tmpNum integerValue];
+  }
+  if (dict[Key_ImageItem_PhotoId]) {
+    self.photoId = dict[Key_ImageItem_PhotoId];
   }
 
 }
@@ -129,6 +132,7 @@ NSString *const Key_ImageItem_ThumbnailHeight = @"thumbnailHeight";
   self.imageWidth = [[[element attributeForName:[NSString stringWithFormat:@"width_%@",imageSuffix]] stringValue] integerValue];
   self.imageHeight = [[[element attributeForName:[NSString stringWithFormat:@"height_%@",imageSuffix]] stringValue] integerValue];
   //NSLog(@"Image %d x %d", self.imageWidth, self.imageHeight);
+  self.photoId = [[element attributeForName:@"id"] stringValue];
 }
 
 - (void)populateDictionary:(NSMutableDictionary *)dict
@@ -139,11 +143,17 @@ NSString *const Key_ImageItem_ThumbnailHeight = @"thumbnailHeight";
   dict[Key_ImageItem_ImageHeight] = @(self.imageHeight);
   dict[Key_ImageItem_ThumbnailWidth] = @(self.thumbnailWidth);
   dict[Key_ImageItem_ThumbnailHeight] = @(self.thumbnailHeight);
+  if (self.photoId) dict[Key_ImageItem_PhotoId] = self.photoId;
 }
+
 
 - (NSComparisonResult)compare:(FeedItem *)item
 {
-  return NSOrderedSame;
+  //compare in reverse so that we get the newest at the top.
+  if ((((ImageItem *)item).photoId) && (self.photoId))
+    return [((ImageItem *)item).photoId compare:self.photoId];
+  else
+    return NSOrderedSame;
 }
 
 @end

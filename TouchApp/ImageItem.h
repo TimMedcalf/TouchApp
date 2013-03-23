@@ -16,5 +16,6 @@
 @property (nonatomic, assign) NSInteger imageHeight;
 @property (nonatomic, assign) NSInteger thumbnailWidth;
 @property (nonatomic, assign) NSInteger thumbnailHeight;
+@property (nonatomic, assign) NSString *photoId;
 
 @end

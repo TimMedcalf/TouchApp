@@ -24,12 +24,6 @@
   return [[ImageItem alloc]initWithDictionary:dictionary];
 }
 
-- (void)sortItems {
-  //just got them from flickr....now lets reverse the order...
-  NSArray* reversedArray = [[self.items reverseObjectEnumerator] allObjects];
-  self.items = [NSMutableArray arrayWithArray:reversedArray];
-}
-
 - (NSString *)feedURL
 {
 	NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -49,7 +43,7 @@
 //  }
   
   parameters[@"extras"] = @"url_sq, url_t, url_s, url_q, url_m, url_n, url_z, url_l, url_h, url_k, url_o";
-	
+//	NSLog(@"%@",[NSString stringWithFormat:@"http://api.flickr.com/services/rest/?%@", [parameters gtm_httpArgumentsString]]);
   return [NSString stringWithFormat:@"http://api.flickr.com/services/rest/?%@", [parameters gtm_httpArgumentsString]];
 }
 

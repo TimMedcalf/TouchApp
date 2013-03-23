@@ -241,7 +241,6 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
     self.lastRefresh = [NSDate date];
     //done...lets save the date
     [self saveItems];
-    [self sortItems];
     [self dataUpdated];
     //tell delegate we've updated...
     if (self.delegate) [self.delegate updateSource];
