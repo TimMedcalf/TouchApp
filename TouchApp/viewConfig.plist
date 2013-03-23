@@ -31,12 +31,6 @@
 		<string>headerText_catalog</string>
 		<key>tableHeader</key>
 		<string>catalogue_header</string>
-		<key>iconTintR</key>
-		<real>0.322</real>
-		<key>iconTintG</key>
-		<real>0.376</real>
-		<key>iconTintB</key>
-		<real>0.176</real>
 		<key>barTintR</key>
 		<real>0.322</real>
 		<key>barTintG</key>
@@ -56,12 +50,6 @@
 		<string>headerText_radio</string>
 		<key>tableHeader</key>
 		<string>radio_header</string>
-		<key>iconTintR</key>
-		<real>0.6899999999999999</real>
-		<key>iconTintG</key>
-		<real>0.663</real>
-		<key>iconTintB</key>
-		<real>0.07099999999999999</real>
 		<key>barTintR</key>
 		<real>0.6899999999999999</real>
 		<key>barTintG</key>
@@ -81,12 +69,6 @@
 		<string>headerText_recipes</string>
 		<key>tableHeader</key>
 		<string>recipes_header</string>
-		<key>iconTintR</key>
-		<real>0.125</real>
-		<key>iconTintG</key>
-		<real>0.275</real>
-		<key>iconTintB</key>
-		<real>0.459</real>
 		<key>barTintR</key>
 		<real>0.125</real>
 		<key>barTintG</key>

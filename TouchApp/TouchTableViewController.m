@@ -17,14 +17,14 @@ NSString *const Key_TabBarImage = @"tabBarImage";
 NSString *const Key_Shim = @"shim";
 NSString *const Key_HeaderText = @"headerText";
 NSString *const Key_TableHeader = @"tableHeader";
-NSString *const Key_IconTintW = @"iconTintW";
-NSString *const Key_IconTintR = @"iconTintR";
-NSString *const Key_IconTintG = @"iconTintG";
-NSString *const Key_IconTintB = @"iconTintB";
 NSString *const Key_BarTintW = @"barTintW";
 NSString *const Key_BarTintR = @"barTintR";
 NSString *const Key_BarTintG = @"barTintG";
 NSString *const Key_BarTintB = @"barTintB";
+NSString *const Key_IconTintW = @"iconTintW";
+NSString *const Key_IconTintR = @"iconTintR";
+NSString *const Key_IconTintG = @"iconTintG";
+NSString *const Key_IconTintB = @"iconTintB";
 
 
 @interface TouchTableViewController ()
@@ -37,12 +37,7 @@ NSString *const Key_BarTintB = @"barTintB";
 @implementation TouchTableViewController
 
 - (id)initWithSettingsDictionary:(NSDictionary *)settings {
-  self = [super initWithStyle:UITableViewStylePlain];
-  if (self) {
-    self.settings = settings;
-    self.title = self.settings[Key_Title];
-    self.tabBarItem.image = [UIImage imageNamed:self.settings[Key_TabBarImage]];
-  }
+  self = [self initWithSettingsDictionary:settings andFeedList:nil];
   return self;
 }
 
@@ -56,7 +51,6 @@ NSString *const Key_BarTintB = @"barTintB";
   }
   return self;
 }
-
 
 - (void)viewDidLoad
 {
@@ -137,11 +131,14 @@ NSString *const Key_BarTintB = @"barTintB";
   UIColor *iconColor = nil;
   if (self.settings[Key_IconTintW])
     iconColor = [UIColor colorWithWhite:((NSNumber *)self.settings[Key_BarTintW]).floatValue alpha:1.];
-  else
+  else if (self.settings[Key_IconTintR]) {
     iconColor = [UIColor colorWithRed:((NSNumber *)self.settings[Key_IconTintR]).floatValue
                                green:((NSNumber *)self.settings[Key_IconTintG]).floatValue
                                 blue:((NSNumber *)self.settings[Key_IconTintB]).floatValue
                                alpha:1.];
+  } else {
+    iconColor = barColor;
+  }
   self.tabBarController.tabBar.selectedImageTintColor = iconColor;
   [self configureTableHeader];
 }
