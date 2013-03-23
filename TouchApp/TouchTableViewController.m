@@ -130,7 +130,7 @@ NSString *const Key_IconTintB = @"iconTintB";
   [nb setBackgroundImage:[UIImage imageNamed:self.settings[Key_Shim]] forBarMetrics:UIBarMetricsDefault];
   UIColor *iconColor = nil;
   if (self.settings[Key_IconTintW])
-    iconColor = [UIColor colorWithWhite:((NSNumber *)self.settings[Key_BarTintW]).floatValue alpha:1.];
+    iconColor = [UIColor colorWithWhite:((NSNumber *)self.settings[Key_IconTintW]).floatValue alpha:1.];
   else if (self.settings[Key_IconTintR]) {
     iconColor = [UIColor colorWithRed:((NSNumber *)self.settings[Key_IconTintR]).floatValue
                                green:((NSNumber *)self.settings[Key_IconTintG]).floatValue
