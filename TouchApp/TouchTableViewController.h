@@ -16,8 +16,6 @@
 
 - (id)initWithSettingsDictionary:(NSDictionary *)settings;
 - (id)initWithSettingsDictionary:(NSDictionary *)settings andFeedList:(FeedList *)feedList;
-
-// this should be put into a subclass!
-- (id)initWithSettingsDictionary:(NSDictionary *)settings andRecipeCategoryNamed:(NSString *)category;
+- (FeedList *)feedSetup;
 
 @end

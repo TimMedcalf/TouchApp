@@ -30,7 +30,7 @@ NSString *const Key_BarTintB = @"barTintB";
 @interface TouchTableViewController ()
 @property (nonatomic, strong) NSDictionary *settings;
 @property (nonatomic, strong) FeedList *feedList;
-@property (nonatomic, strong) NSString *recipeCategory;
+
 - (void)configureTableHeader;
 @end
 
@@ -57,18 +57,6 @@ NSString *const Key_BarTintB = @"barTintB";
   return self;
 }
 
-// this should be put into a subclass!
-- (id)initWithSettingsDictionary:(NSDictionary *)settings andRecipeCategoryNamed:(NSString *)category {
-  self = [super initWithStyle:UITableViewStylePlain];
-  if (self) {
-    self.settings = settings;
-    self.recipeCategory = category;
-    self.title = self.settings[Key_Title];
-    self.tabBarItem.image = [UIImage imageNamed:self.settings[Key_TabBarImage]];
-  }
-  return self;
-}
-
 
 - (void)viewDidLoad
 {
@@ -84,12 +72,7 @@ NSString *const Key_BarTintB = @"barTintB";
   
   self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:self.settings[Key_HeaderText]]];
   
-  if (self.recipeCategory) {
-    RecipeBookList *tmpList = [[RecipeBookList alloc] initWithoutLoading];
-    tmpList.recipeCategory = self.recipeCategory;
-    [tmpList continueLoading];
-    self.feedList = tmpList;
-  }
+  if (!self.feedList) self.feedList = [self feedSetup];
   
   self.feedList.delegate = self;
     
@@ -100,6 +83,11 @@ NSString *const Key_BarTintB = @"barTintB";
     [self.progressView setHidden:NO];
   }
   [self.feedList refreshFeed];
+}
+
+- (FeedList *)feedSetup {
+  //override in subclasses!
+  return nil;
 }
 
 - (void)dealloc
@@ -170,6 +158,19 @@ NSString *const Key_BarTintB = @"barTintB";
     return UIInterfaceOrientationMaskAll;
   else
     return UIInterfaceOrientationMaskPortrait;
+}
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+  // Return the number of sections.
+  return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+  // Return the number of rows in the section.
+  return [self.feedList.items count];
 }
 
 #pragma mark FeedListConsumerDelegates

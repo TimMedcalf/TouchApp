@@ -12,10 +12,29 @@
 #import "UIApplication+TJMNetworkWarning.h"
 #import "TouchTableCell.h"
 
+@interface RecipeBookViewController ()
+@property (nonatomic, strong) NSString *recipeCategory;
+@end
 
 @implementation RecipeBookViewController
 
 #pragma mark - View lifecycle
+
+// this should be put into a subclass!
+- (id)initWithSettingsDictionary:(NSDictionary *)settings andRecipeCategoryNamed:(NSString *)category {
+  self = [super initWithSettingsDictionary:settings];
+  if (self) {
+    self.recipeCategory = category;
+  }
+  return self;
+}
+
+- (FeedList *)feedSetup {
+  RecipeBookList *tmpList = [[RecipeBookList alloc] initWithoutLoading];
+  tmpList.recipeCategory = self.recipeCategory;
+  [tmpList continueLoading];
+  return tmpList;
+}
 
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -23,20 +42,7 @@
   [super viewWillDisappear:animated];
 }
 
-
 #pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-  // Return the number of sections.
-  return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-  // Return the number of rows in the section.
-  return [self.feedList.items count];
-}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
