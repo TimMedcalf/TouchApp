@@ -46,11 +46,9 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 #pragma mark lifecycle
 - (id)init
 {
-  //NSLog(@"list alloc");
-  if ((self = [super init]))
+  self = [self initWithoutLoading];
+  if (self)
   {
-    self.lastRefresh = [NSDate distantPast];
-    self.items = [NSMutableArray array];
     self.feed = [self feedURL];
     self.cacheFile = [[AppManager sharedInstance].cacheFolder stringByAppendingPathComponent:[[self cacheFilename] stringByAppendingPathExtension:@"plist"]];
     [self loadItems];
@@ -60,7 +58,6 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 
 - (id)initWithoutLoading
 {
-  //NSLog(@"list alloc");
   if ((self = [super init]))
   {
     self.lastRefresh = [NSDate distantPast];
@@ -244,6 +241,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
     self.lastRefresh = [NSDate date];
     //done...lets save the date
     [self saveItems];
+    [self sortItems];
     [self dataUpdated];
     //tell delegate we've updated...
     if (self.delegate) [self.delegate updateSource];
@@ -256,6 +254,10 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
   
   // call our delegate and tell it that our icon is ready for display
   //[delegate appImageDidLoad:self.indexPathInTableView];
+}
+
+- (void)sortItems {
+  // can override in subclasses if required...
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge

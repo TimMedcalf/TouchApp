@@ -43,5 +43,6 @@
 - (NSString *)feedURL;
 - (NSString *)cacheFilename;
 
+- (void)sortItems;
 - (void)dataUpdated;
 @end

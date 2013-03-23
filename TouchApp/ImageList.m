@@ -24,6 +24,12 @@
   return [[ImageItem alloc]initWithDictionary:dictionary];
 }
 
+- (void)sortItems {
+  //just got them from flickr....now lets reverse the order...
+  NSArray* reversedArray = [[self.items reverseObjectEnumerator] allObjects];
+  self.items = [NSMutableArray arrayWithArray:reversedArray];
+}
+
 - (NSString *)feedURL
 {
 	NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithObjectsAndKeys:
