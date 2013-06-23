@@ -29,6 +29,7 @@ void uncaughtExceptionHandler(NSException *exception);
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
 #ifndef DEVMODE
   NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
   [Flurry startSession:@"EG1Y8QTDSQI2YWEFXFDJ"];
