@@ -288,10 +288,10 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
     self.nowPlaying = nil;
   } else {
     NSMutableDictionary *mediaProperties = [NSMutableDictionary dictionaryWithCapacity:4];
-    [mediaProperties setObject:@"Touch" forKey:MPMediaItemPropertyAlbumArtist];
-    if (artist) [mediaProperties setObject:artist forKey:MPMediaItemPropertyArtist];
-    if (album) [mediaProperties setObject:album forKey:MPMediaItemPropertyAlbumTitle];
-    if (title) [mediaProperties setObject:title forKey:MPMediaItemPropertyTitle];
+    mediaProperties[MPMediaItemPropertyAlbumArtist] = @"Touch";
+    if (artist) mediaProperties[MPMediaItemPropertyArtist] = artist;
+    if (album) mediaProperties[MPMediaItemPropertyAlbumTitle] = album;
+    if (title) mediaProperties[MPMediaItemPropertyTitle] = title;
     self.nowPlaying = [NSDictionary dictionaryWithDictionary:mediaProperties];
   }
 }
