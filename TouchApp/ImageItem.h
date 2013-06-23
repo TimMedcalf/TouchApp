@@ -18,4 +18,7 @@
 @property (nonatomic, assign) NSInteger thumbnailHeight;
 @property (nonatomic, assign) NSString *photoId;
 
++ (NSString *)thumbnailFlickrSuffix;
++ (NSString *)imageFlickrSuffix;
+
 @end

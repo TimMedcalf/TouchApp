@@ -18,6 +18,18 @@ NSString *const Key_ImageItem_PhotoId = @"photoId";
 
 @implementation ImageItem
 
+// return the right flickr image size suffix for the thumbnail on this device (url_s etc)
++ (NSString *)thumbnailFlickrSuffix {
+  if ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) || ([[UIScreen mainScreen] scale] > 1)) return @"s";
+  return @"t";
+}
+
+// return the right flickr image size suffix for the image on this device (url_l etc)
++ (NSString *)imageFlickrSuffix {
+  if ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) || ([[UIScreen mainScreen] scale] > 1)) return @"l";
+  return @"z";
+}
+
 
 #pragma mark overrides from FeedItem
 - (void)procesSavedDictionary:(NSDictionary *)dict
@@ -93,26 +105,9 @@ NSString *const Key_ImageItem_PhotoId = @"photoId";
 //k: (null)x(null) (only populated for new images... 2048 on longest side)
 //o: 2048x1370
   
-  NSString *thumbnailSuffix = @"t";
-  NSString *imageSuffix = @"z";
-  
-  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-    if ([[UIScreen mainScreen] scale] > 1) {
-      thumbnailSuffix = @"s";
-      imageSuffix = @"l";      
-    } else {
-      //didn't like the square format when it was being used as a temp image while the full one loads..
-      //thumbnailSuffix = @"q";
-      thumbnailSuffix = @"s";
-      imageSuffix = @"l";
-    }
-  } else {
-    if ([[UIScreen mainScreen] scale] > 1) {
-      thumbnailSuffix = @"s";
-      imageSuffix = @"l";
-    }
-  }
-  
+  NSString *thumbnailSuffix = [ImageItem thumbnailFlickrSuffix];
+  NSString *imageSuffix = [ImageItem imageFlickrSuffix];
+
   NSString *tmpPath = nil;
   NSURL *tmpURL = nil;
   
@@ -121,6 +116,8 @@ NSString *const Key_ImageItem_PhotoId = @"photoId";
     tmpURL = [[NSURL alloc] initWithString:tmpPath];
     self.thumbnailURL = tmpURL;
   }
+
+  
   self.thumbnailWidth = [[[element attributeForName:[NSString stringWithFormat:@"width_%@",thumbnailSuffix]] stringValue] integerValue];
   self.thumbnailHeight = [[[element attributeForName:[NSString stringWithFormat:@"height_%@",thumbnailSuffix]] stringValue] integerValue];
   

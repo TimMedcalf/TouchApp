@@ -33,17 +33,9 @@
                               @"rest", @"format",
                                      nil];
   
-//  if ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) || ([[UIScreen mainScreen] scale] > 1))
-//  {
-//    parameters[@"extras"] = @"url_l,url_t";
-//  }
-//  else
-//  {
-//    parameters[@"extras"] = @"url_z,url_t";   
-//  }
+  //set the extra key to request the right image sizes for the device
+  parameters[@"extras"] = [NSString stringWithFormat:@"url_%@, url_%@",[ImageItem thumbnailFlickrSuffix], [ImageItem imageFlickrSuffix]];
   
-  parameters[@"extras"] = @"url_sq, url_t, url_s, url_q, url_m, url_n, url_z, url_l, url_h, url_k, url_o";
-//	NSLog(@"%@",[NSString stringWithFormat:@"http://api.flickr.com/services/rest/?%@", [parameters gtm_httpArgumentsString]]);
   return [NSString stringWithFormat:@"http://api.flickr.com/services/rest/?%@", [parameters gtm_httpArgumentsString]];
 }
 
@@ -56,6 +48,9 @@
 {
   return 25200; //7 hours
 }
+
+
+
 
 
 @end
