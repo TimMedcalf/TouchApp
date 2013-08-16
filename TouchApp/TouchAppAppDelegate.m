@@ -20,10 +20,6 @@
 //#define DEVMODE
 #ifndef DEVMODE
 #import "Flurry.h"
-
-@interface TouchAppAppDelegate ()
-void uncaughtExceptionHandler(NSException *exception);
-@end
 #endif
 @implementation TouchAppAppDelegate
 
@@ -31,7 +27,7 @@ void uncaughtExceptionHandler(NSException *exception);
 {
   //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
 #ifndef DEVMODE
-  NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
+  [Flurry setCrashReportingEnabled:YES];
   [Flurry startSession:@"EG1Y8QTDSQI2YWEFXFDJ"];
   [Flurry logEvent:@"DeviceInfo" withParameters:@{@"Firmware": [[UIDevice currentDevice] systemVersion]}];
   [Flurry logAllPageViews:_tabBarController];
@@ -46,7 +42,6 @@ void uncaughtExceptionHandler(NSException *exception);
     if(Ver == nil)
     {
       //anything we want to run only once for the app?
-      
     }
     //Run once-per-upgrade code, if any
     NSLog(@"Initialisation for version %@", CurVer);
@@ -57,7 +52,6 @@ void uncaughtExceptionHandler(NSException *exception);
       NSLog(@"Clearing cached file : %@", file);
       [[NSFileManager defaultManager] removeItemAtPath:[[[AppManager sharedInstance]cacheFolder] stringByAppendingPathComponent:file] error:&error];
     }
-    
     [Def setObject:CurVer forKey:@"Version"];
   }
   //load the image resource stuff...
@@ -149,14 +143,5 @@ void uncaughtExceptionHandler(NSException *exception);
   return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? UIInterfaceOrientationMaskAll : UIInterfaceOrientationMaskAllButUpsideDown;
   //return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? UIInterfaceOrientationMaskAll : UIInterfaceOrientationMaskPortrait;
 }
-
-#pragma mark flurry crash report
-#ifndef DEVMODE
-void uncaughtExceptionHandler(NSException *exception) {
-  [Flurry logError:@"Uncaught" message:@"Crash!" exception:exception];
-}
-#endif
-
-
 
 @end

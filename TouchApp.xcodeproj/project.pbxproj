@@ -109,6 +109,8 @@
 		22804A881407544B0083CE40 /* TJMImageResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 22804A831407544B0083CE40 /* TJMImageResource.m */; };
 		22804A891407544B0083CE40 /* TJMImageResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22804A851407544B0083CE40 /* TJMImageResourceManager.m */; };
 		22804A8A1407544B0083CE40 /* TJMImageResourceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22804A871407544B0083CE40 /* TJMImageResourceView.m */; };
+		22824AB517BDD6DC00C9D569 /* libFlurry_4.2.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22824AB417BDD6DC00C9D569 /* libFlurry_4.2.3.a */; };
+		22824AB717BDD74400C9D569 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22824AB617BDD74400C9D569 /* Security.framework */; };
 		2286E6D814357C5D00C4B275 /* TKProgressBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2286E6D714357C5D00C4B275 /* TKProgressBarView.m */; };
 		229890271427556400345AD3 /* HTMLItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 229890251427556400345AD3 /* HTMLItemViewController.m */; };
 		22A3E4A2140FC6AF00CF2B0B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A3E4A1140FC6AF00CF2B0B /* Icon.png */; };
@@ -156,7 +158,6 @@
 		22CB4CBE13F12BDA008968D6 /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4CBC13F12BDA008968D6 /* RadioViewController.m */; };
 		22D8994F16E35EE300143AC6 /* TouchLogo@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 22D8994D16E35EE300143AC6 /* TouchLogo@2x~iphone.png */; };
 		22D8995016E35EE300143AC6 /* TouchLogo~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 22D8994E16E35EE300143AC6 /* TouchLogo~iphone.png */; };
-		22DEDC9C1661FC5D00CAC08E /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22DEDC9B1661FC5D00CAC08E /* libFlurry.a */; };
 		22F7C4BF162F51BA002E2CB6 /* shim_catalog.png in Resources */ = {isa = PBXBuildFile; fileRef = 22F7C4BE162F51BA002E2CB6 /* shim_catalog.png */; };
 		22F7C4C3162F558F002E2CB6 /* headerText_catalog.png in Resources */ = {isa = PBXBuildFile; fileRef = 22F7C4C1162F558F002E2CB6 /* headerText_catalog.png */; };
 		22F7C4C4162F558F002E2CB6 /* headerText_catalog@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22F7C4C2162F558F002E2CB6 /* headerText_catalog@2x.png */; };
@@ -317,6 +318,8 @@
 		22804A851407544B0083CE40 /* TJMImageResourceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TJMImageResourceManager.m; sourceTree = "<group>"; };
 		22804A861407544B0083CE40 /* TJMImageResourceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJMImageResourceView.h; sourceTree = "<group>"; };
 		22804A871407544B0083CE40 /* TJMImageResourceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TJMImageResourceView.m; sourceTree = "<group>"; };
+		22824AB417BDD6DC00C9D569 /* libFlurry_4.2.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.2.3.a; sourceTree = "<group>"; };
+		22824AB617BDD74400C9D569 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		2286E6D614357C5D00C4B275 /* TKProgressBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKProgressBarView.h; sourceTree = "<group>"; };
 		2286E6D714357C5D00C4B275 /* TKProgressBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKProgressBarView.m; sourceTree = "<group>"; };
 		229890241427556400345AD3 /* HTMLItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLItemViewController.h; sourceTree = "<group>"; };
@@ -395,7 +398,6 @@
 		22D8994D16E35EE300143AC6 /* TouchLogo@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TouchLogo@2x~iphone.png"; sourceTree = "<group>"; };
 		22D8994E16E35EE300143AC6 /* TouchLogo~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TouchLogo~iphone.png"; sourceTree = "<group>"; };
 		22DEDC9A1661FC5D00CAC08E /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
-		22DEDC9B1661FC5D00CAC08E /* libFlurry.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry.a; sourceTree = "<group>"; };
 		22DEDC9D1661FD6400CAC08E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		22F7C4BE162F51BA002E2CB6 /* shim_catalog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shim_catalog.png; sourceTree = "<group>"; };
 		22F7C4C1162F558F002E2CB6 /* headerText_catalog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = headerText_catalog.png; sourceTree = "<group>"; };
@@ -425,6 +427,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22824AB717BDD74400C9D569 /* Security.framework in Frameworks */,
 				225C5BAB16FCA5EA00346816 /* SystemConfiguration.framework in Frameworks */,
 				225E2A02166417DE00DB1B29 /* MediaPlayer.framework in Frameworks */,
 				2272020A140E4BDD005DD4B7 /* MessageUI.framework in Frameworks */,
@@ -434,7 +437,7 @@
 				222951C713EC496F001D174D /* UIKit.framework in Frameworks */,
 				222951C913EC496F001D174D /* Foundation.framework in Frameworks */,
 				222951CB13EC496F001D174D /* CoreGraphics.framework in Frameworks */,
-				22DEDC9C1661FC5D00CAC08E /* libFlurry.a in Frameworks */,
+				22824AB517BDD6DC00C9D569 /* libFlurry_4.2.3.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,6 +447,7 @@
 		222951B713EC496F001D174D = {
 			isa = PBXGroup;
 			children = (
+				22824AB617BDD74400C9D569 /* Security.framework */,
 				22DEDC991661FC5D00CAC08E /* Flurry */,
 				22065B4F14380B5400FAA48B /* iTunesArtwork.png */,
 				222951CC13EC496F001D174D /* TouchApp */,
@@ -977,8 +981,8 @@
 		22DEDC991661FC5D00CAC08E /* Flurry */ = {
 			isa = PBXGroup;
 			children = (
+				22824AB417BDD6DC00C9D569 /* libFlurry_4.2.3.a */,
 				22DEDC9A1661FC5D00CAC08E /* Flurry.h */,
-				22DEDC9B1661FC5D00CAC08E /* libFlurry.a */,
 			);
 			path = Flurry;
 			sourceTree = "<group>";
