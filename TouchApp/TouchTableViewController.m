@@ -117,6 +117,8 @@ NSString *const Key_IconTintB = @"iconTintB";
   [super viewWillAppear:animated];
   
 	UINavigationBar *nb = self.navigationController.navigationBar;
+  nb.barStyle  = UIBarStyleBlack;
+  nb.translucent = NO;
   
   UIColor *barColor = nil;
   if (self.settings[Key_BarTintW])
@@ -189,6 +191,11 @@ NSString *const Key_IconTintB = @"iconTintB";
 - (void)handleShake
 {
   [self.feedList refreshFeedForced:YES];
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+  return UIStatusBarStyleLightContent;
 }
 
 
