@@ -26,6 +26,8 @@
 
 - (NSString *)feedURL
 {
+  //note, this gives this url:
+  //http://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&photoset_id=72157627750718372&extras=url_t%2C%20url_z&format=rest&api_key=dcb74491ec5cbe64deb98b18df1125a9
 	NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                               @"flickr.photosets.getPhotos", @"method",
                               @"72157627750718372", @"photoset_id",
