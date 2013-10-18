@@ -148,7 +148,7 @@ NSString *const Key_ImageItem_PhotoId = @"photoId";
 {
   //compare in reverse so that we get the newest at the top.
   if ((((ImageItem *)item).photoId) && (self.photoId))
-    return [((ImageItem *)item).photoId compare:self.photoId];
+    return [((ImageItem *)item).photoId compare:self.photoId options:NSNumericSearch];
   else
     return NSOrderedSame;
 }
