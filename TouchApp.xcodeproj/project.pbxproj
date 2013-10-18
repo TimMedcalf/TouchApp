@@ -1330,8 +1330,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
-					"\\\"$(SRCROOT)/Flurry\\\"",
-					/Users/tim/Dropbox/code/TouchApp/Flurry,
+					"$(SRCROOT)/Flurry",
 				);
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1358,8 +1357,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
-					"\\\"$(SRCROOT)/Flurry\\\"",
-					/Users/tim/Dropbox/code/TouchApp/Flurry,
+					"$(SRCROOT)/Flurry",
 				);
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
