@@ -7,7 +7,6 @@
 //
 
 #import "FeedList.h"
-#import "CXMLDocument.h"
 #import "FeedItem.h"
 #import "AppManager.h"
 
@@ -26,7 +25,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 @property (strong, nonatomic) NSString *cacheFile;
 @property (strong, nonatomic) NSString *etag;
 @property (strong, nonatomic) NSString *lastUpdated;
-@property (assign, nonatomic) NSInteger totalBytes;
+@property (assign, nonatomic) long long int totalBytes;
 @property (assign, nonatomic) NSInteger bytesDownloaded;
 
 

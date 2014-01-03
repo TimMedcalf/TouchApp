@@ -10,7 +10,7 @@
 #import "TouchTableCell.h"
 #import "Flurry.h"
 #import "UIApplication+TJMNetworkWarning.h"
-#import "RecipeBookList.h"
+#import "TKProgressBarView.h"
 
 NSString *const Key_Title = @"title";
 NSString *const Key_TabBarImage = @"tabBarImage";

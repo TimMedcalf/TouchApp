@@ -6,21 +6,9 @@
 //
 
 #import "TJM_UIImage.h"
-#import "AppManager.h"
 
 @implementation UIImage (TJM_UIImage)
 
-//+(UIImage *)imageThumbnailWithFile:(NSString *)imageFile ofSize:(CGSize)size cached:(BOOL)cached
-//{
-//  //work out what the cached thumbname one would be
-//  //first get the attibutes of the bundled file
-//
-//  NSString* file = [name stringByDeletingPathExtension];
-//  NSString* extension = [name pathExtension];
-//  NSError *error;    
-//  NSDictionary *attributes = [[NSFileManager defaultManager] attributesOfItemAtPath:[NSBundle mainBundle] pathForResource:file ofType:extension] error:&[error)];
-//  
-//}
 
 +(UIImage *)imageThumbnailWithFile:(NSString *)imageFile ofSize:(CGSize)size
 {

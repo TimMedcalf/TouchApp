@@ -7,8 +7,8 @@
 //
 
 #import "TJMImageResourceManager.h"
-#import "TJMImageResource.h"
 #import "AppManager.h"
+#import "TJMImageResource.h"
 
 NSString *const ResourceManifestFile = @"TJMImageResourceManifest.plist";
 

@@ -7,8 +7,6 @@
 //
 
 #import "NewsItem.h"
-#import "FeedItem.h"
-//#import "HTMLParser.h"
 
 //keys we use in our own dictionary (saving and loading)
 NSString *const PubDateKey = @"pubDate";

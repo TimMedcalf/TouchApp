@@ -9,9 +9,6 @@
 #import "CatalogueViewController.h"
 #import "CatalogueItem.h"
 #import "NewCatalogueItemViewController.h"
-#import "AppManager.h"
-#import "Flurry.h"
-#import "UIApplication+TJMNetworkWarning.h"
 #import "TouchTableCell.h"
 
 @implementation CatalogueViewController

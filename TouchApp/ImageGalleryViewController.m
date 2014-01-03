@@ -7,13 +7,10 @@
 //
 
 #import "ImageGalleryViewController.h"
-#import "ImageItem.h"
-#import "TJMImageResource.h"
-#import "TJMImageResourceManager.h"
 #import "TJMImageResourceView.h"
-#import "PhotoViewController.h"
 #import "Flurry.h"
 #import "UIApplication+TJMNetworkWarning.h"
+#import "TKProgressBarView.h"
 
 static NSInteger CellImageTag = 51;
 

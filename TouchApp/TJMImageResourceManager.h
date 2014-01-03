@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TJMImageResource.h"
+
+@class TJMImageResource;
 
 @interface TJMImageResourceManager : NSObject
 

@@ -7,13 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NewsList.h"
-#import "ImageList.h"
-#import "CatalogueList.h"
-#import "RadioList.h"
-#import "RecipeCategoryList.h"
 #import "GCDSingleton.h"
 
+@class NewsList, ImageList, CatalogueList, RadioList,RecipeCategoryList;
 
 @interface AppManager : NSObject
 

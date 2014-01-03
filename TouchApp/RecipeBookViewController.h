@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RecipeBookList.h"
 #import "TouchTableViewController.h"
 
 @interface RecipeBookViewController : TouchTableViewController <FeedListConsumerDelegate>

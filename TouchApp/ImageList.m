@@ -8,7 +8,6 @@
 
 #import "ImageList.h"
 #import "ImageItem.h"
-#import "GTMDefines.h"
 #import "GTMNSDictionary+URLArguments.h"
 
 @implementation ImageList

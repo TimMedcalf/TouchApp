@@ -8,8 +8,7 @@
 @property (strong, nonatomic) UIWebView *webView;
 //load from a string
 @property (strong, nonatomic) NSString *HTMLString;
-@property (strong, nonatomic) NSString *baseURL;
-@property (strong, nonatomic) NSString *pageTitle;
+
 
 
 @end

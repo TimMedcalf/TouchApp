@@ -6,8 +6,6 @@
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "TouchApplication.h"
 #import "TouchAppAppDelegate.h"
 
 int main(int argc, char *argv[])

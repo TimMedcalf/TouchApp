@@ -12,8 +12,6 @@ static NSUInteger tjm_networkActivityCount = 0;
 
 @implementation UIApplication (UIApplication_TJMNetworkActivity)
 
-
-
 -(NSUInteger)tjm_networkActivityCount
 {
   return tjm_networkActivityCount;

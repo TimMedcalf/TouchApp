@@ -9,9 +9,6 @@
 #import "RecipeCategoryViewController.h"
 #import "RecipeBookViewController.h"
 #import "RecipeCategoryItem.h"
-#import "AppManager.h"
-#import "Flurry.h"
-#import "UIApplication+TJMNetworkWarning.h"
 #import "TouchTableCell.h"
 
 

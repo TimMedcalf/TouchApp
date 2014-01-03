@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "FeedList.h"
-#import "NewsItem.h"
-
 
 @interface NewsList : FeedList
 

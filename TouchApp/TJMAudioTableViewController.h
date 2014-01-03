@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "FeedList.h"
-#import "TKProgressBarView.h"
+
+@class TKProgressBarView;
 
 @interface TJMAudioTableViewController : UITableViewController <FeedListConsumerDelegate>
 

@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FeedItem.h"
 
+@class FeedItem;
 
 @protocol FeedListConsumerDelegate
 @optional

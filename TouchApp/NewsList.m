@@ -7,7 +7,6 @@
 //
 
 #import "NewsList.h"
-#import "CXMLDocument.h"
 #import "NewsItem.h"
 
 

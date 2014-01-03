@@ -6,8 +6,6 @@
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
 
-#import "TJMAudioCenter.h"
-#import "GCDSingleton.h"
 #import "Flurry.h"
 
 NSString *const TJMAudioCenterStatusChange = @"TJMAudioCenterStatusChange";

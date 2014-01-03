@@ -7,9 +7,12 @@
 //
 
 #import "AppManager.h"
+#import "FeedList.h"
 #import "NewsList.h"
-#import "GCDSingleton.h"
-
+#import "ImageList.h"
+#import "CatalogueList.h"
+#import "RadioList.h"
+#import "RecipeCategoryList.h"
 
 NSString *const LMSUCache = @"TouchCache";
 
