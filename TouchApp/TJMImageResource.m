@@ -7,7 +7,6 @@
 //
 #import "TJMImageResource.h"
 #import "AppManager.h"
-#import "TJM_UIImage.h"
 
 NSString * const TJMImageResourceImageNeedsUpdating = @"TJMImageResourceImageNeedsUpdating";
 
