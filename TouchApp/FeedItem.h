@@ -12,7 +12,6 @@
 
 @interface FeedItem : NSObject
 @property (strong, nonatomic) NSURL *imageURL;
-@property (assign, nonatomic) BOOL updateFlag;
 
 - (id)initWithDictionary:(NSDictionary *)dict;
 - (id)initWithXMLDictionary:(NSDictionary *)dict andBaseURL:(NSURL *)baseURL;

@@ -284,10 +284,7 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation 
 {
   //iPad can be upside down, but stop the Phone going that way..
-  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-    return YES;
-  else
-    return (toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+    return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad || toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;
 }
 
 - (BOOL)shouldAutorotate {

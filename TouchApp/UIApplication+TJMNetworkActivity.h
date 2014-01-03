@@ -11,7 +11,7 @@
 
 @interface UIApplication (UIApplication_TJMNetworkActivity)
 
-@property (nonatomic, assign, readonly) NSUInteger tjm_networkActivityCount;
+//@property (nonatomic, assign, readonly) NSUInteger tjm_networkActivityCount;
 
 -(void) tjm_pushNetworkActivity;
 -(void) tjm_popNetworkActivity;

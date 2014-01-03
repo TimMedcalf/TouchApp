@@ -3,8 +3,8 @@
 #import "WebsiteViewController.h"
 
 @interface HTMLItemViewController ()
-@property (strong, nonatomic) NSString *baseURL;
-@property (strong, nonatomic) NSString *pageTitle;
+//@property (strong, nonatomic) NSString *baseURL;
+//@property (strong, nonatomic) NSString *pageTitle;
 @end
 
 

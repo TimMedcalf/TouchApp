@@ -15,6 +15,9 @@
 #import "CatalogueViewController.h"
 #import "RadioViewController.h"
 #import "RecipeCategoryViewController.h"
+#import "NewsList.h"
+#import "RecipeCategoryList.h"
+#import "RadioList.h"
 
 
 //#define DEVMODE

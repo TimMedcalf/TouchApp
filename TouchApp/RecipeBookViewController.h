@@ -11,7 +11,7 @@
 
 @interface RecipeBookViewController : TouchTableViewController <FeedListConsumerDelegate>
 
-@property (strong, nonatomic) NSString *categoryName;
+//@property (strong, nonatomic) NSString *categoryName;
 
 - (id)initWithSettingsDictionary:(NSDictionary *)settings andRecipeCategoryNamed:(NSString *)category;
 
