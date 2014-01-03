@@ -48,6 +48,12 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 0
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 3
 
+// FlurrySDK
+#define COCOAPODS_POD_AVAILABLE_FlurrySDK
+#define COCOAPODS_VERSION_MAJOR_FlurrySDK 4
+#define COCOAPODS_VERSION_MINOR_FlurrySDK 3
+#define COCOAPODS_VERSION_PATCH_FlurrySDK 0
+
 // Reachability
 #define COCOAPODS_POD_AVAILABLE_Reachability
 #define COCOAPODS_VERSION_MAJOR_Reachability 3
