@@ -95,11 +95,12 @@ static NSInteger iPadThumbnailRowCount = 8;
   [super viewWillAppear:animated];
   
   [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
-  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
-  } else {
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
-  }
+//  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) { iOS7Change
+//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
+//  } else {
+//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
+//  }
+  [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
   
 	UINavigationBar *nb = self.navigationController.navigationBar;
   nb.barStyle  = UIBarStyleBlack;
@@ -123,11 +124,12 @@ static NSInteger iPadThumbnailRowCount = 8;
   [super viewDidAppear:animated];
   
   [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
-  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
-  } else {
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
-  }
+//  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) { iOS7Change
+//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
+//  } else {
+//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
+//  }
+  [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
   
 	UINavigationBar *nb = self.navigationController.navigationBar;
   nb.barStyle  = UIBarStyleBlack;
@@ -256,7 +258,8 @@ static NSInteger iPadThumbnailRowCount = 8;
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
       [self.navigationController pushViewController:photo animated:YES];
     } else {
-      [self.navigationController presentModalViewController:photo animated:YES];
+      //[self.navigationController presentModalViewController:photo animated:YES]; iOS7Change
+      [self.navigationController presentViewController:photo animated:YES completion:nil];
     }
   }
 }
@@ -292,7 +295,8 @@ static NSInteger iPadThumbnailRowCount = 8;
 
 - (void)dismissPhotoView:(PhotoViewController *)photoViewController
 {
-  [self dismissModalViewControllerAnimated:YES];
+//  [self dismissModalViewControllerAnimated:YES]; iOS7Change
+  [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)updateGalleryRotation

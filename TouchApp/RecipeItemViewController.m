@@ -53,7 +53,8 @@
 	[controller setSubject:subject];
 	[controller setMessageBody:recipeHTML isHTML:YES];
 	
-	[self presentModalViewController:controller animated:YES];
+	//[self presentModalViewController:controller animated:YES]; iOS7Change
+  [self presentViewController:controller animated:YES completion:nil];
 	
 }
 
@@ -63,7 +64,9 @@
     [Flurry logEvent:@"Recipes" withParameters:@{@"Emailed": self.recipeItem.recipeExcerpt}];
   }
 	[self becomeFirstResponder];
-	[self dismissModalViewControllerAnimated:YES];
+	//[self dismissModalViewControllerAnimated:YES]; iOS7Change
+  [self dismissViewControllerAnimated:YES completion:nil];
+
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

@@ -248,8 +248,9 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
   //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
   // Test if the interruption that has just ended was one from which this app 
   //    should resume playback.
-  if (flags & AVAudioSessionInterruptionFlags_ShouldResume) {
-    
+
+  //if (flags & AVAudioSessionInterruptionFlags_ShouldResume) { iOS7Change
+  if (flags & AVAudioSessionInterruptionOptionShouldResume) {
     NSError *endInterruptionError = nil;
     if ([[AVAudioSession sharedInstance] setActive: YES
                                          error: &endInterruptionError])

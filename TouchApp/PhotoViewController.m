@@ -79,7 +79,7 @@
 
 - (void)loadView 
 {      
-  self.wantsFullScreenLayout = YES;
+  //self.wantsFullScreenLayout = YES; iOS7Change
   UIView *tmpView = [[UIView alloc] initWithFrame:[self frameForPagingScrollView]];
   self.view = tmpView;
 
