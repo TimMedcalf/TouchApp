@@ -27,7 +27,7 @@ typedef enum
 -(void)URLDidFinish:(NSURL *)url;
 @end
 
-@interface TJMAudioCenter : NSObject <AVAudioSessionDelegate>
+@interface TJMAudioCenter : NSObject
 
 @property (weak, nonatomic) id<TJMAudioCenterDelegate> delegate;
 

@@ -22,6 +22,8 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
 @property (nonatomic, strong) NSDictionary *nowPlaying;
 - (void) setupAudioSession;
 - (void) populateNowPlayingInfo;
+- (void)observeNotifications;
+- (void)unobserveNotifications;
 @end
 
 @implementation TJMAudioCenter
@@ -31,8 +33,7 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
 {
   if ((self = [super init]))
   {
-    //not doing this as I think it's what's causing the device music to stop...
-    //[self setupAudioSession];
+    [self observeNotifications];
   }
   return self;
 }
@@ -51,8 +52,14 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
   [self.player removeObserver:self forKeyPath:@"rate"];
   [self.player.currentItem removeObserver:self forKeyPath:@"status"];
   [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:self.player.currentItem];
-  
-  
+  [self unobserveNotifications];
+}
+
+- (void)observeNotifications {
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(beginInterruption:) name:AVAudioSessionInterruptionNotification object:nil];
+}
+- (void)unobserveNotifications {
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:AVAudioSessionInterruptionNotification object:nil];
 }
 
 - (void)playURL:(NSURL*)url {
@@ -210,7 +217,8 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
   
   // Specify that this object is the delegate of the audio session, so that
   //    this object's endInterruption method will be invoked when needed.
-  [mySession setDelegate: self];
+  //[mySession setDelegate: self]; iOS7Change - deprecated, using AVAudioSessionInterruptionNotification instead.
+  
   
   // Assign the Playback category to the audio session.
   NSError *audioSessionError = nil;
@@ -236,40 +244,41 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
   
 }
 
-#pragma mark audiosession delegate
-- (void)beginInterruption
-{
-  //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
-  self.interruptedDuringPlayback = (self.player.rate == 1);
-}
+#pragma mark AVAudioSessionInterruptionNotification
 
-- (void)endInterruptionWithFlags:(NSUInteger)flags
-{
-  //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
-  // Test if the interruption that has just ended was one from which this app 
-  //    should resume playback.
-
-  //if (flags & AVAudioSessionInterruptionFlags_ShouldResume) { iOS7Change
-  if (flags & AVAudioSessionInterruptionOptionShouldResume) {
-    NSError *endInterruptionError = nil;
-    if ([[AVAudioSession sharedInstance] setActive: YES
-                                         error: &endInterruptionError])
-    {
-      //NSLog (@"Audio session reactivated after interruption.");
-    
-      if (self.interruptedDuringPlayback) {
-        //NSLog (@"Restarting playback.");
-        self.interruptedDuringPlayback = NO;
-        self.player.rate = 1.0;
+- (void)audioSessionInterruptionNotification:(NSNotification *)notification {
+  //get the interruption type string
+  AVAudioSessionInterruptionType interruptionType = [notification.userInfo[AVAudioSessionInterruptionTypeKey] unsignedIntegerValue];
+  //find out whether the interruption has started or ended
+  switch (interruptionType) {
+    case AVAudioSessionInterruptionTypeBegan: {
+      NSLog(@"AVAudioSessionInterruptionTypeBegan");
+      self.interruptedDuringPlayback = (self.player.rate == 1);
+      break;
+    }
+    case AVAudioSessionInterruptionTypeEnded: {
+      NSLog(@"AVAudioSessionInterruptionTypeEnded");
+      AVAudioSessionInterruptionOptions options = [notification.userInfo[AVAudioSessionInterruptionOptionKey] unsignedIntegerValue];
+      if (options & AVAudioSessionInterruptionOptionShouldResume) {
+        NSError *endInterruptionError = nil;
+        if ([[AVAudioSession sharedInstance] setActive: YES error: &endInterruptionError]) {
+          //NSLog (@"Audio session reactivated after interruption.");
+          if (self.interruptedDuringPlayback) {
+            //NSLog (@"Restarting playback.");
+            self.interruptedDuringPlayback = NO;
+            self.player.rate = 1.0;
+          }
+        } else {
+          NSLog (@"Unable to reactivate the audio session after the interruption ended - %@",endInterruptionError.userInfo);
+        }
       }
+      break;
     }
-    else
-    {
-      //NSLog (@"Unable to reactivate the audio session after the interruption ended - %@",endInterruptionError);
-      return;
-    }
+    default:
+      break;
   }
 }
+# pragma mark -
 
 - (void)togglePlayPause
 {
