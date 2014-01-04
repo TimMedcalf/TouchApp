@@ -7,10 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2206140D160C2082000E3880 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2206140C160C2082000E3880 /* Default-568h@2x.png */; };
 		22065B5014380B5400FAA48B /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 22065B4F14380B5400FAA48B /* iTunesArtwork.png */; };
 		220A95F61526CE220064463C /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 220A95F51526CE220064463C /* Icon-72@2x.png */; };
-		220A95F81526D13C0064463C /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 220A95F71526D13C0064463C /* Default-Portrait@2x~ipad.png */; };
 		220ADDE615295E5F0066A4A5 /* go@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 220ADDE215295E5F0066A4A5 /* go@2x~ipad.png */; };
 		220ADDE715295E5F0066A4A5 /* go@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 220ADDE315295E5F0066A4A5 /* go@2x~iphone.png */; };
 		220ADDE815295E5F0066A4A5 /* go~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 220ADDE415295E5F0066A4A5 /* go~ipad.png */; };
@@ -30,9 +28,6 @@
 		222951D313EC496F001D174D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 222951D213EC496F001D174D /* main.m */; };
 		222951D713EC496F001D174D /* TouchAppAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 222951D613EC496F001D174D /* TouchAppAppDelegate.m */; };
 		222951F513EC4B5D001D174D /* CatalogueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 222951F313EC4B5D001D174D /* CatalogueViewController.m */; };
-		2229523713ECEA76001D174D /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2229523113ECEA76001D174D /* Default-Portrait~ipad.png */; };
-		2229523813ECEA76001D174D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 2229523213ECEA76001D174D /* Default.png */; };
-		2229523913ECEA76001D174D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2229523313ECEA76001D174D /* Default@2x.png */; };
 		2229524413ECEC0B001D174D /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2229524213ECEC0B001D174D /* NewsViewController.m */; };
 		2229526F13ECEFF7001D174D /* catalog@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2229526513ECEFF7001D174D /* catalog@2x.png */; };
 		2229527013ECEFF7001D174D /* images@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2229526613ECEFF7001D174D /* images@2x.png */; };
@@ -89,8 +84,6 @@
 		224FBC931409988200749E42 /* ImageGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC911409987F00749E42 /* ImageGalleryViewController.m */; };
 		2252536D141E289200157205 /* NewCatalogueItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2252536B141E289200157205 /* NewCatalogueItemViewController.m */; };
 		22525373141E2CA500157205 /* NewRadioItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22525371141E2CA500157205 /* NewRadioItemViewController.m */; };
-		225556801625296000281138 /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2255567E1625296000281138 /* Default-Landscape@2x~ipad.png */; };
-		225556811625296000281138 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2255567F1625296000281138 /* Default-Landscape~ipad.png */; };
 		225C5BA716FC695400346816 /* viewConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 225C5BA616FC695300346816 /* viewConfig.plist */; };
 		225C5BAA16FC88B900346816 /* TouchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 225C5BA916FC88B900346816 /* TouchTableViewController.m */; };
 		225C5BAB16FCA5EA00346816 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22DEDC9D1661FD6400CAC08E /* SystemConfiguration.framework */; };
@@ -173,6 +166,7 @@
 		22F7C4DB162F5A05002E2CB6 /* shim_radio.png in Resources */ = {isa = PBXBuildFile; fileRef = 22F7C4D7162F5A04002E2CB6 /* shim_radio.png */; };
 		22F7C4DC162F5A05002E2CB6 /* shim_recipes.png in Resources */ = {isa = PBXBuildFile; fileRef = 22F7C4D8162F5A04002E2CB6 /* shim_recipes.png */; };
 		22F7C4DF162F5D1D002E2CB6 /* NewsItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F7C4DE162F5D1D002E2CB6 /* NewsItemViewController.m */; };
+		495551F01877DE6F00F8330D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 495551EF1877DE6F00F8330D /* Images.xcassets */; };
 		DC3D662380AA40ED9E295110 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846741C095B429E9F68A96B /* libPods.a */; };
 		DE1475A6147848490065208F /* catalogue_item_iphone.css in Resources */ = {isa = PBXBuildFile; fileRef = DE1475A5147848490065208F /* catalogue_item_iphone.css */; };
 		DE1475A9147856030065208F /* catalogue_item_ipad.css in Resources */ = {isa = PBXBuildFile; fileRef = DE1475A8147856030065208F /* catalogue_item_ipad.css */; };
@@ -181,10 +175,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2206140C160C2082000E3880 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		22065B4F14380B5400FAA48B /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = SOURCE_ROOT; };
 		220A95F51526CE220064463C /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = SOURCE_ROOT; };
-		220A95F71526D13C0064463C /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
 		220ADDE215295E5F0066A4A5 /* go@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "go@2x~ipad.png"; sourceTree = "<group>"; };
 		220ADDE315295E5F0066A4A5 /* go@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "go@2x~iphone.png"; sourceTree = "<group>"; };
 		220ADDE415295E5F0066A4A5 /* go~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "go~ipad.png"; sourceTree = "<group>"; };
@@ -211,9 +203,6 @@
 		222951D613EC496F001D174D /* TouchAppAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TouchAppAppDelegate.m; sourceTree = "<group>"; };
 		222951F213EC4B5D001D174D /* CatalogueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatalogueViewController.h; sourceTree = "<group>"; };
 		222951F313EC4B5D001D174D /* CatalogueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatalogueViewController.m; sourceTree = "<group>"; };
-		2229523113ECEA76001D174D /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
-		2229523213ECEA76001D174D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		2229523313ECEA76001D174D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		2229524113ECEC0B001D174D /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
 		2229524213ECEC0B001D174D /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
 		2229526513ECEFF7001D174D /* catalog@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "catalog@2x.png"; sourceTree = "<group>"; };
@@ -289,8 +278,6 @@
 		2252536B141E289200157205 /* NewCatalogueItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewCatalogueItemViewController.m; sourceTree = "<group>"; };
 		22525370141E2CA500157205 /* NewRadioItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewRadioItemViewController.h; sourceTree = "<group>"; };
 		22525371141E2CA500157205 /* NewRadioItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewRadioItemViewController.m; sourceTree = "<group>"; };
-		2255567E1625296000281138 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
-		2255567F1625296000281138 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		225C5BA616FC695300346816 /* viewConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = viewConfig.plist; sourceTree = "<group>"; };
 		225C5BA816FC88B800346816 /* TouchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchTableViewController.h; sourceTree = "<group>"; };
 		225C5BA916FC88B900346816 /* TouchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchTableViewController.m; sourceTree = "<group>"; };
@@ -416,6 +403,7 @@
 		22F7C4DE162F5D1D002E2CB6 /* NewsItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsItemViewController.m; sourceTree = "<group>"; };
 		2846741C095B429E9F68A96B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FE2A47116EA40479BEF9EB7 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		495551EF1877DE6F00F8330D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		DE1475A5147848490065208F /* catalogue_item_iphone.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = catalogue_item_iphone.css; sourceTree = "<group>"; };
 		DE1475A8147856030065208F /* catalogue_item_ipad.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = catalogue_item_ipad.css; sourceTree = "<group>"; };
 		DEB0003D142582870059E43D /* jquery-1.6.4.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "jquery-1.6.4.min.js"; sourceTree = "<group>"; };
@@ -497,6 +485,7 @@
 				222951CD13EC496F001D174D /* Supporting Files */,
 				2229523013ECEA5E001D174D /* gfx */,
 				DEB00040142589960059E43D /* javascripts */,
+				495551EF1877DE6F00F8330D /* Images.xcassets */,
 			);
 			path = TouchApp;
 			sourceTree = "<group>";
@@ -547,13 +536,6 @@
 		2229524A13ECEEF8001D174D /* Default Images */ = {
 			isa = PBXGroup;
 			children = (
-				2255567E1625296000281138 /* Default-Landscape@2x~ipad.png */,
-				2255567F1625296000281138 /* Default-Landscape~ipad.png */,
-				2206140C160C2082000E3880 /* Default-568h@2x.png */,
-				220A95F71526D13C0064463C /* Default-Portrait@2x~ipad.png */,
-				2229523113ECEA76001D174D /* Default-Portrait~ipad.png */,
-				2229523213ECEA76001D174D /* Default.png */,
-				2229523313ECEA76001D174D /* Default@2x.png */,
 			);
 			name = "Default Images";
 			sourceTree = "<group>";
@@ -1076,9 +1058,6 @@
 				DEB0004214258A260059E43D /* audiocontrol.js in Resources */,
 				DEB0003E142582870059E43D /* jquery-1.6.4.min.js in Resources */,
 				222951D113EC496F001D174D /* InfoPlist.strings in Resources */,
-				2229523713ECEA76001D174D /* Default-Portrait~ipad.png in Resources */,
-				2229523813ECEA76001D174D /* Default.png in Resources */,
-				2229523913ECEA76001D174D /* Default@2x.png in Resources */,
 				2229526F13ECEFF7001D174D /* catalog@2x.png in Resources */,
 				2229527013ECEFF7001D174D /* images@2x.png in Resources */,
 				2229527113ECEFF7001D174D /* news@2x.png in Resources */,
@@ -1113,14 +1092,10 @@
 				DE1475A6147848490065208F /* catalogue_item_iphone.css in Resources */,
 				DE1475A9147856030065208F /* catalogue_item_ipad.css in Resources */,
 				220A95F61526CE220064463C /* Icon-72@2x.png in Resources */,
-				220A95F81526D13C0064463C /* Default-Portrait@2x~ipad.png in Resources */,
 				220ADDE615295E5F0066A4A5 /* go@2x~ipad.png in Resources */,
 				220ADDE715295E5F0066A4A5 /* go@2x~iphone.png in Resources */,
 				220ADDE815295E5F0066A4A5 /* go~ipad.png in Resources */,
 				220ADDE915295E5F0066A4A5 /* go~iphone.png in Resources */,
-				2206140D160C2082000E3880 /* Default-568h@2x.png in Resources */,
-				225556801625296000281138 /* Default-Landscape@2x~ipad.png in Resources */,
-				225556811625296000281138 /* Default-Landscape~ipad.png in Resources */,
 				22F7C4BF162F51BA002E2CB6 /* shim_catalog.png in Resources */,
 				22F7C4C3162F558F002E2CB6 /* headerText_catalog.png in Resources */,
 				22F7C4C4162F558F002E2CB6 /* headerText_catalog@2x.png in Resources */,
@@ -1154,6 +1129,7 @@
 				222DF1EF16D0A90F00D749D2 /* news_header@2x~iphone.jpg in Resources */,
 				222DF1F016D0A90F00D749D2 /* news_header~ipad.jpg in Resources */,
 				222DF1F116D0A90F00D749D2 /* news_header~iphone.jpg in Resources */,
+				495551F01877DE6F00F8330D /* Images.xcassets in Resources */,
 				222DF1F216D0A90F00D749D2 /* radio_header_landscape@2x~ipad.jpg in Resources */,
 				222DF1F316D0A90F00D749D2 /* radio_header_landscape~ipad.jpg in Resources */,
 				222DF1F416D0A90F00D749D2 /* radio_header@2x~ipad.jpg in Resources */,
@@ -1345,6 +1321,8 @@
 			baseConfigurationReference = 2FE2A47116EA40479BEF9EB7 /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Michael Harding (65668BBRTH)";
 				COMPRESS_PNG_FILES = NO;
@@ -1380,6 +1358,8 @@
 			baseConfigurationReference = 2FE2A47116EA40479BEF9EB7 /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Michael Harding (65668BBRTH)";
 				COMPRESS_PNG_FILES = NO;

@@ -29,12 +29,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
-#ifndef DEVMODE
+#ifndef DEBUG
   [Flurry setCrashReportingEnabled:YES];
   [Flurry startSession:@"EG1Y8QTDSQI2YWEFXFDJ"];
   [Flurry logEvent:@"DeviceInfo" withParameters:@{@"Firmware": [[UIDevice currentDevice] systemVersion]}];
   [Flurry logAllPageViews:_tabBarController];
-#endif  
+#endif
   //clear the cache out whenever it's a new version - allows us to change data formats without worrying
   //about whatever is stored already on the device
   NSUserDefaults *Def = [NSUserDefaults standardUserDefaults];
