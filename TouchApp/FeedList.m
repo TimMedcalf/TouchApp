@@ -309,9 +309,9 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
           itemDict[[[resultElement childAtIndex:counter] name]] = [[resultElement childAtIndex:counter] stringValue];
         }
         FeedItem *newFeedItem = [self newItemWithXMLDictionary:itemDict andBaseURL:self.baseURL];
-         itemDict= nil;
         [newFeedItems addObject:newFeedItem];
-         newFeedItem = nil;
+        itemDict = nil;
+        newFeedItem = nil;
       }
     }
      rssParser = nil;
