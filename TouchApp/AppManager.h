@@ -25,6 +25,6 @@
 - (void)cancelUpdates;
 - (void)refreshAllFeeds;
 
-+ (AppManager *)sharedInstance;
++ (instancetype)sharedInstance;
 
 @end

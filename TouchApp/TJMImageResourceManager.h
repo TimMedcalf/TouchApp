@@ -18,6 +18,6 @@
 - (TJMImageResource *)resourceForURL:(NSURL *)imageURL;
 - (void)save;
 
-+ (id)sharedInstance;
++ (instancetype)sharedInstance;
 
 @end

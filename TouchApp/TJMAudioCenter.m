@@ -39,7 +39,7 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
   return self;
 }
 
-+ (id)sharedInstance {
++ (instancetype)sharedInstance {
   DEFINE_SHARED_INSTANCE_USING_BLOCK(^{
     return [[self alloc] init];
   });

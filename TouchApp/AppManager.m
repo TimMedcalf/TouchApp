@@ -42,7 +42,7 @@ NSString *const LMSUCache = @"TouchCache";
   return self;
 }
 
-+ (AppManager *)sharedInstance {
++ (instancetype)sharedInstance {
   DEFINE_SHARED_INSTANCE_USING_BLOCK(^{
     return [[self alloc] init];
   });

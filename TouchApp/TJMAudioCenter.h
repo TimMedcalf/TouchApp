@@ -42,6 +42,6 @@ typedef NS_ENUM(NSInteger, TJMAudioStatus) {
 
 - (void)setCurrentPlayingWithInfoForArtist:(NSString *)artist album:(NSString *)album andTitle:(NSString *)title;
 
-+ (TJMAudioCenter *)sharedInstance;
++ (instancetype)sharedInstance;
 
 @end
