@@ -31,10 +31,10 @@
 
 #import <UIKit/UIKit.h>
 
-typedef enum {
+typedef NS_ENUM(NSInteger,TKProgressBarViewStyle) {
 	TKProgressBarViewStyleLong,
 	TKProgressBarViewStyleShort
-} TKProgressBarViewStyle;
+};
 
 @interface TKProgressBarView : UIView {
 	TKProgressBarViewStyle style;

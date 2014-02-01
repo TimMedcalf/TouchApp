@@ -11,13 +11,12 @@
 
 extern NSString *const TJMAudioCenterStatusChange;
 
-typedef enum
-{
+typedef NS_ENUM(NSInteger, TJMAudioStatus) {
   TJMAudioStatusUnknown,
   TJMAudioStatusCurrentPlaying,
   TJMAudioStatusCurrentPaused,
   TJMAudioStatusCurrentFailed,
-} TJMAudioStatus;
+};
 
 @protocol TJMAudioCenterDelegate <NSObject>
 @optional
