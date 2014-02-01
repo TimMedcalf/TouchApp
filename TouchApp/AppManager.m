@@ -33,8 +33,7 @@ NSString *const LMSUCache = @"TouchCache";
 - (id)init {
   if ((self = [super init])) {
     NSError *error;
-    self.cacheFolder = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:LMSUCache];
-    
+    self.cacheFolder = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:LMSUCache];    
     if (![[NSFileManager defaultManager] createDirectoryAtPath:self.cacheFolder withIntermediateDirectories:YES attributes:nil error:&error]) {
       NSLog(@"Error creating caches subfolder : %@", error);
     }
