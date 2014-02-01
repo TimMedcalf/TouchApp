@@ -8,6 +8,7 @@
 
 #import "FeedItem.h"
 
+
 @interface RecipeCategoryItem : FeedItem
 
 @property (strong, nonatomic) NSNumber *recipeId;

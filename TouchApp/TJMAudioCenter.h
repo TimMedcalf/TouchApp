@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "GCDSingleton.h"
 
-extern NSString * const TJMAudioCenterStatusChange;
+extern NSString *const TJMAudioCenterStatusChange;
 
 typedef enum
 {
@@ -21,11 +21,13 @@ typedef enum
 
 @protocol TJMAudioCenterDelegate <NSObject>
 @optional
--(void)URLIsPlaying:(NSURL *)url;
--(void)URLIsPaused:(NSURL *)url;
--(void)URLDidFail:(NSURL *)url;
--(void)URLDidFinish:(NSURL *)url;
+- (void)URLIsPlaying:(NSURL *)url;
+- (void)URLIsPaused:(NSURL *)url;
+- (void)URLDidFail:(NSURL *)url;
+- (void)URLDidFinish:(NSURL *)url;
+
 @end
+
 
 @interface TJMAudioCenter : NSObject
 
@@ -36,8 +38,8 @@ typedef enum
 - (void)pauseURL:(NSURL *)url;
 - (void)togglePlayPause;
 
--(TJMAudioStatus)statusCheckForURL:(NSURL*)url;
--(TJMAudioStatus)statusCheck;
+- (TJMAudioStatus)statusCheckForURL:(NSURL *)url;
+- (TJMAudioStatus)statusCheck;
 
 - (void)setCurrentPlayingWithInfoForArtist:(NSString *)artist album:(NSString *)album andTitle:(NSString *)title;
 

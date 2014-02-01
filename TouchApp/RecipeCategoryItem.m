@@ -11,36 +11,34 @@
 NSString *const Key_RCat_Id = @"id";
 NSString *const Key_RCat_Title = @"title";
 
+
 @implementation RecipeCategoryItem
 
 #pragma mark overrides from FeedItem
-- (void)procesSavedDictionary:(NSDictionary *)dict
-{
-  self.recipeId = dict[Key_RCat_Id];
-  self.recipeTitle = dict[Key_RCat_Title];
-}
-
-- (void)processXMLDictionary:(NSDictionary *)dict andBaseURL:(NSURL *)baseURL
-{ 
-  self.recipeId = dict[Key_RCat_Id];
-  self.recipeTitle = dict[Key_RCat_Title];
-}
-
-- (void)populateDictionary:(NSMutableDictionary *)dict
-{
-  if (self.recipeId) dict[Key_RCat_Id] = self.recipeId;
-  if (self.recipeTitle) dict[Key_RCat_Title] = self.recipeTitle;
-}
-
-- (NSComparisonResult)compare:(FeedItem *)item
-{
-  //compare in reverse so that we get the newest at the top.
-  return [self.recipeTitle compare:((RecipeCategoryItem *)item).recipeTitle];
-}
 
 //- (NSInteger)refreshTimerCount
 //{
 //  return 3600;
 //}
+
+- (void)procesSavedDictionary:(NSDictionary *)dict {
+  self.recipeId = dict[Key_RCat_Id];
+  self.recipeTitle = dict[Key_RCat_Title];
+}
+
+- (void)processXMLDictionary:(NSDictionary *)dict andBaseURL:(NSURL *)baseURL {
+  self.recipeId = dict[Key_RCat_Id];
+  self.recipeTitle = dict[Key_RCat_Title];
+}
+
+- (void)populateDictionary:(NSMutableDictionary *)dict {
+  if (self.recipeId) dict[Key_RCat_Id] = self.recipeId;
+  if (self.recipeTitle) dict[Key_RCat_Title] = self.recipeTitle;
+}
+
+- (NSComparisonResult)compare:(FeedItem *)item {
+  //compare in reverse so that we get the newest at the top.
+  return [self.recipeTitle compare:((RecipeCategoryItem *)item).recipeTitle];
+}
 
 @end

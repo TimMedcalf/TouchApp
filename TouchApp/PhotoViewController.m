@@ -52,6 +52,7 @@
 #import "TJMImageResourceManager.h"
 #import "TJMImageResource.h"
 
+
 @interface PhotoViewController ()
 
 - (NSInteger)centerPhotoIndex;
@@ -59,26 +60,24 @@
 - (void)skipToPage:(NSUInteger)page;
 - (CGPoint)offsetForPageAtIndex:(NSUInteger)index;
 - (CGRect)frameForPagingScrollView;
+
 @end
+
 
 @implementation PhotoViewController
 
-#pragma mark -
-#pragma mark View loading and unloading
+#pragma - mark View loading and unloading
 
-- (id)init
-{
+- (id)init {
   self = [super init];
-  if (self)
-  {
+  if (self) {
     self.initialIndex = 0;
     self.hidesBottomBarWhenPushed = YES;
   }
   return self;
 }
 
-- (void)loadView 
-{      
+- (void)loadView  {
   //self.wantsFullScreenLayout = YES; iOS7Change
   UIView *tmpView = [[UIView alloc] initWithFrame:[self frameForPagingScrollView]];
   self.view = tmpView;
@@ -91,14 +90,14 @@
   self.pagingScrollView.contentSize = [self contentSizeForPagingScrollView];
   self.pagingScrollView.delegate = self;
   self.pagingScrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
-  self.pagingScrollView.multipleTouchEnabled=YES;
-  self.pagingScrollView.scrollEnabled=YES;
-  self.pagingScrollView.directionalLockEnabled=YES;
-  self.pagingScrollView.canCancelContentTouches=YES;
-  self.pagingScrollView.delaysContentTouches=YES;
-  self.pagingScrollView.clipsToBounds=YES;
-  self.pagingScrollView.alwaysBounceHorizontal=YES;
-  self.pagingScrollView.bounces=YES;
+  self.pagingScrollView.multipleTouchEnabled = YES;
+  self.pagingScrollView.scrollEnabled = YES;
+  self.pagingScrollView.directionalLockEnabled = YES;
+  self.pagingScrollView.canCancelContentTouches = YES;
+  self.pagingScrollView.delaysContentTouches = YES;
+  self.pagingScrollView.clipsToBounds = YES;
+  self.pagingScrollView.alwaysBounceHorizontal = YES;
+  self.pagingScrollView.bounces = YES;
   
   [self.view addSubview:_pagingScrollView];
   
@@ -108,7 +107,7 @@
   
   [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
   
-  UINavigationBar *tmpBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width,44)];
+  UINavigationBar *tmpBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
   self.customNavigationBar = tmpBar;
   self.customNavigationBar.autoresizingMask =  UIViewAutoresizingFlexibleWidth;
   
@@ -135,22 +134,20 @@
                                 otherButtonTitles:nil]; 
   [actionSheet showInView:self.view];
 }
-- (void)setViewState
-{
+
+- (void)setViewState {
   if ([self.imageList.items count] > 1) {
     self.customNavigationItem.title = [NSString stringWithFormat:@"%i of %i", [self centerPhotoIndex]+1, [self.imageList.items count]];
   } else {
     self.title = @"";
   }
-  if ([self.pagingScrollView isTracking])
-  {
+  if ([self.pagingScrollView isTracking]) {
     self.customNavigationBar.hidden = YES;
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
   }
 }
 
-- (void)toggleBarsNotification:(NSNotification*)notification
-{
+- (void)toggleBarsNotification:(NSNotification *)notification {
   self.customNavigationBar.hidden = !self.customNavigationBar.hidden;
 }
 
@@ -165,8 +162,7 @@
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
-	if (buttonIndex != [actionSheet cancelButtonIndex]) 
-  { 
+	if (buttonIndex != [actionSheet cancelButtonIndex]) {
     ImageItem *img = (self.imageList.items)[[self centerPhotoIndex]];
     TJMImageResource *tmpRes = [[TJMImageResourceManager sharedInstance] resourceForURL:img.imageURL];
     UIImage *image = [tmpRes getImage];
@@ -174,14 +170,12 @@
   } 
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
   [super viewDidLoad];
   //NSLog(@"ViewDidLoad - %@", NSStringFromCGRect(self.view.frame));
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
+- (void)viewDidAppear:(BOOL)animated {
   self.navigationController.navigationBarHidden = YES;
   [super viewDidAppear:animated];
   self.pagingScrollView.contentSize = [self contentSizeForPagingScrollView];
@@ -190,17 +184,12 @@
   [self skipToPage:self.initialIndex];
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-
-#pragma mark -
-#pragma mark Tiling and page configuration
-
-- (void)tilePages 
-{
+#pragma mark - Tiling and page configuration
+- (void)tilePages  {
   // Calculate which pages are visible
   CGRect visibleBounds = self.pagingScrollView.bounds;
   int firstNeededPageIndex = (int)floorf(CGRectGetMinX(visibleBounds) / CGRectGetWidth(visibleBounds));
@@ -209,10 +198,8 @@
   lastNeededPageIndex  = MIN(lastNeededPageIndex, [self imageCount] - 1);
   
   // Recycle no-longer-visible pages 
-  for (ImageScrollView *page in visiblePages)
-  {
-    if (page.index < firstNeededPageIndex || page.index > lastNeededPageIndex)
-    {
+  for (ImageScrollView *page in visiblePages) {
+    if (page.index < firstNeededPageIndex || page.index > lastNeededPageIndex) {
       [recycledPages addObject:page];
       [page removeFromSuperview];
     }
@@ -220,13 +207,10 @@
   [visiblePages minusSet:recycledPages];
   
   // add missing pages
-  for (int index = firstNeededPageIndex; index <= lastNeededPageIndex; index++)
-  {
-    if (![self isDisplayingPageForIndex:index])
-    {
+  for (int index = firstNeededPageIndex; index <= lastNeededPageIndex; index++) {
+    if (![self isDisplayingPageForIndex:index]) {
       ImageScrollView *page = [self dequeueRecycledPage];
-      if (page == nil)
-      {
+      if (page == nil) {
         page = [[ImageScrollView alloc] init];
       }
       [self configurePage:page forIndex:index];
@@ -236,11 +220,9 @@
   }
 }
 
-- (ImageScrollView *)dequeueRecycledPage
-{
+- (ImageScrollView *)dequeueRecycledPage {
     ImageScrollView *page = [recycledPages anyObject];
-    if (page)
-    {
+    if (page) {
         //ARC
         //[[page retain] autorelease];
         [recycledPages removeObject:page];
@@ -248,8 +230,7 @@
     return page;
 }
 
-- (BOOL)isDisplayingPageForIndex:(NSUInteger)index
-{
+- (BOOL)isDisplayingPageForIndex:(NSUInteger)index {
     BOOL foundPage = NO;
     for (ImageScrollView *page in visiblePages) {
         if (page.index == index) {
@@ -260,29 +241,20 @@
     return foundPage;
 }
 
-- (void)configurePage:(ImageScrollView *)page forIndex:(NSUInteger)index
-{
+- (void)configurePage:(ImageScrollView *)page forIndex:(NSUInteger)index {
   page.index = index;
   page.frame = [self frameForPageAtIndex:index];
   [page displayImage:[self imageAtIndex:index]];
 }
 
-
-#pragma mark -
-#pragma mark ScrollView delegate methods
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
+#pragma mark - ScrollView delegate methods
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
   [self tilePages];
   [self setViewState];
 }
 
-
-#pragma mark -
-#pragma mark View controller rotation methods
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation 
-{
+#pragma mark - View controller rotation methods
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
   //iPad can be upside down, but stop the Phone going that way..
     return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad || toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;
 }
@@ -291,16 +263,16 @@
   return YES;
 }
 
-- (NSUInteger)supportedInterfaceOrientations
-{
-  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+- (NSUInteger)supportedInterfaceOrientations {
+  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
     return UIInterfaceOrientationMaskAll;
-  else
+  } else {
     return UIInterfaceOrientationMaskAllButUpsideDown;
+  }
+  return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? UIInterfaceOrientationMaskAll : UIInterfaceOrientationMaskAllButUpsideDown;
 }
 
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
-{
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
   // here, our pagingScrollView bounds have not yet been updated for the new interface orientation. So this is a good
   // place to calculate the content offset that we will need in the new orientation
   CGFloat offset = self.pagingScrollView.contentOffset.x;
@@ -315,8 +287,7 @@
   }
 }
 
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
-{
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
   // recalculate contentSize based on current orientation
   self.pagingScrollView.contentSize = [self contentSizeForPagingScrollView];
   
@@ -336,15 +307,12 @@
   
   
   CGRect barFrame = self.customNavigationBar.frame;
-  if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation))
-  {
+  if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
     barFrame.size.height = 32;
     [UIView animateWithDuration:duration animations:^(void){
       self.customNavigationBar.frame = barFrame;
     }];
-  }
-  else
-  {
+  } else {
     barFrame.size.height = 44;
     [UIView animateWithDuration:duration animations:^(void){
       self.customNavigationBar.frame = barFrame;
@@ -352,8 +320,7 @@
   }
 }
 
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
-{
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
   [self.delegate updateGalleryRotation];
 }
 
@@ -369,8 +336,7 @@
   return frame;
 }
 
-- (CGRect)frameForPageAtIndex:(NSUInteger)index
-{
+- (CGRect)frameForPageAtIndex:(NSUInteger)index {
   //original example code
   //CGRect bounds = self.pagingScrollView.bounds;
   //CGRect bounds = self.pagingScrollView.frame;
@@ -383,8 +349,7 @@
 
 }
 
-- (CGSize)contentSizeForPagingScrollView
-{
+- (CGSize)contentSizeForPagingScrollView {
   //orginal
   //CGRect bounds = self.pagingScrollView.bounds;
   //CGRect bounds = self.pagingScrollView.frame;
@@ -394,11 +359,7 @@
   return CGSizeMake(bounds.size.width * [self imageCount], bounds.size.height);
 }
 
-
-#pragma mark -
-#pragma mark Image wrangling
-
-
+#pragma mark - Image wrangling
 - (ImageItem *)imageAtIndex:(NSUInteger)index {
 
   //try to ensure the thumbnails we need are going to be there
@@ -406,15 +367,13 @@
   [[[TJMImageResourceManager sharedInstance] resourceForURL:item.thumbnailURL]cacheImage];
   
   //try to ensure the thumbnails we need are going to be there
-  if (index < self.imageCount -1)
-  {
+  if (index < self.imageCount -1) {
     item = (self.imageList.items)[index+1];
     [[[TJMImageResourceManager sharedInstance] resourceForURL:item.thumbnailURL]cacheImage];
   }
   
   //try to ensure the thumbnails we need are going to be there
-  if (index > 0)
-  {
+  if (index > 0) {
     item = (self.imageList.items)[index-1];
     [[[TJMImageResourceManager sharedInstance] resourceForURL:item.thumbnailURL]cacheImage];
   }
@@ -425,27 +384,20 @@
   return [self.imageList.items count];
 }
 
-
-- (NSInteger)centerPhotoIndex
-{	
+- (NSInteger)centerPhotoIndex {
 	CGFloat pageWidth = self.pagingScrollView.frame.size.width;
 	return (int)floor((self.pagingScrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
 }
 
--(void)skipToPage:(NSUInteger)page;
-{ 
+- (void)skipToPage:(NSUInteger)page {
   [self.pagingScrollView setContentOffset:[self offsetForPageAtIndex:page] animated:NO];  
 }
 
-- (CGPoint)offsetForPageAtIndex:(NSUInteger)index
-{                                                                                      
+- (CGPoint)offsetForPageAtIndex:(NSUInteger)index {
   CGPoint offset;                                                                                                                                        
   offset.x = (self.pagingScrollView.frame.size.width * index);                                                                                                 
   offset.y = 0;                                                                                                                                   
   return offset;                                                                                                                                     
 }
-
-
-
 
 @end

@@ -11,8 +11,9 @@
 //#define TouchTableCellTitleTag 6712
 //#define TouchTableCellSubtitleTag 6713
 
-FOUNDATION_EXPORT NSString * const TouchTableCellDefaultReuseID;
-FOUNDATION_EXPORT NSString * const TouchTableCellSubtitleReuseID;
+FOUNDATION_EXPORT NSString *const TouchTableCellDefaultReuseID;
+FOUNDATION_EXPORT NSString *const TouchTableCellSubtitleReuseID;
+
 
 @interface TouchTableCell : UITableViewCell
 

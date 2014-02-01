@@ -10,6 +10,7 @@
 
 @class TJMImageResource;
 
+
 @interface TJMImageResourceManager : NSObject
 
 @property (strong, nonatomic) NSMutableDictionary *imageResourceDict;

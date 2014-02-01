@@ -11,6 +11,7 @@
 
 @class TKProgressBarView;
 
+
 @interface TJMAudioTableViewController : UITableViewController <FeedListConsumerDelegate>
 
 @property (strong, nonatomic) TKProgressBarView *progressView;

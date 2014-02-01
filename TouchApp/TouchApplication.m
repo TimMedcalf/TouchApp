@@ -9,27 +9,23 @@
 #import "TouchApplication.h"
 #import "UIApplication+TJMShakeNotification.h"
 
+
 @implementation TouchApplication
 
-- (id)init
-{
+- (id)init {
   self = [super init];
-  if (self)
-  {
+  if (self) {
     [self beginReceivingRemoteControlEvents];
   }
   return self;
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
   [self endReceivingRemoteControlEvents];
 }
 
-- (void)sendEvent:(UIEvent *)event
-{
-  if (event.type == UIEventTypeRemoteControl)
-  {
+- (void)sendEvent:(UIEvent *)event {
+  if (event.type == UIEventTypeRemoteControl) {
     switch (event.subtype) {          
       case UIEventSubtypeRemoteControlTogglePlayPause:
         [[TJMAudioCenter sharedInstance] togglePlayPause];
@@ -45,18 +41,15 @@
       default:
         break;
     }
-  }
-  else if (event.type == UIEventTypeMotion)
-  {
-    if (event.subtype == UIEventSubtypeMotionShake)
-    {
+  } else if (event.type == UIEventTypeMotion) {
+    if (event.subtype == UIEventSubtypeMotionShake) {
       //NSLog(@"Shakey!");
       //[[NSNotificationCenter defaultCenter] postNotificationName:TouchAppAllShookUp object:self];
       [self sendShakeNotification];
     }
-  } 
-  else
+  } else {
     [super sendEvent:event];
+  }
 }
 
 @end

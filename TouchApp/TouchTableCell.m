@@ -7,21 +7,24 @@
 //
 
 
-NSString * const TouchTableCellDefaultReuseID = @"TouchTableCellDefaultReuseID";
-NSString * const TouchTableCellSubtitleReuseID = @"TouchTableCellSubtitleReuseID";
+NSString *const TouchTableCellDefaultReuseID = @"TouchTableCellDefaultReuseID";
+NSString *const TouchTableCellSubtitleReuseID = @"TouchTableCellSubtitleReuseID";
 
 #import "TouchTableCell.h"
 
+
 @interface TouchTableCell ()
+
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *subtitleLabel;
 @property (nonatomic, strong) UIImageView *disclosure;
+
 @end
+
 
 @implementation TouchTableCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
   //touch cells can only handle the default and subtitle styles
   self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
   if (self) {
@@ -55,26 +58,26 @@ NSString * const TouchTableCellSubtitleReuseID = @"TouchTableCellSubtitleReuseID
 
       if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         //iPad
-        self.titleLabel.frame = CGRectMake(50,17,self.frame.size.width-195,25);
-        self.subtitleLabel.frame = CGRectMake(50,42,self.frame.size.width-195,22);
+        self.titleLabel.frame = CGRectMake(50, 17, self.frame.size.width-195, 25);
+        self.subtitleLabel.frame = CGRectMake(50, 42, self.frame.size.width-195, 22);
         self.subtitleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
         self.disclosure.frame = CGRectMake(self.frame.size.width-95, 16, 45, 45);
       } else {
         //iPhone
-        self.titleLabel.frame = CGRectMake(17,16,self.frame.size.width-81,15);
+        self.titleLabel.frame = CGRectMake(17, 16, self.frame.size.width-81, 15);
         self.subtitleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-        self.subtitleLabel.frame = CGRectMake(17,31,self.frame.size.width-81,15);
+        self.subtitleLabel.frame = CGRectMake(17, 31, self.frame.size.width-81, 15);
         self.subtitleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:10];
         self.disclosure.frame = CGRectMake(self.frame.size.width-47, 14, 30, 30);
       }
     } else {
       if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         //iPad
-        self.titleLabel.frame = CGRectMake(50,26,self.frame.size.width-195,25);
+        self.titleLabel.frame = CGRectMake(50, 26, self.frame.size.width-195, 25);
         self.disclosure.frame = CGRectMake(self.frame.size.width-95, 16, 45, 45);
       } else {
         //iPhone
-        self.titleLabel.frame = CGRectMake(17,22,self.frame.size.width-81,15);
+        self.titleLabel.frame = CGRectMake(17, 22, self.frame.size.width-81, 15);
         self.disclosure.frame = CGRectMake(self.frame.size.width-47, 14, 30, 30);
       }
     }
@@ -85,19 +88,15 @@ NSString * const TouchTableCellSubtitleReuseID = @"TouchTableCellSubtitleReuseID
   return self;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
 }
 
 #pragma mark class methods
-
 + (CGFloat)rowHeight {
   return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 81 : 58;
 }
-
-
 
 @end

@@ -9,32 +9,30 @@
 #import "CatalogueList.h"
 #import "CatalogueItem.h"
 
+
 @implementation CatalogueList
 
 //overrides
-- (FeedItem *)newItemWithXMLDictionary:itemDict andBaseURL:baseURL
-{
-  return [[CatalogueItem alloc]initWithXMLDictionary:itemDict andBaseURL:baseURL];
-}
-
-- (FeedItem *)newItemWithDictionary:dictionary
-{
-  return [[CatalogueItem alloc]initWithDictionary:dictionary];
-}
-
-- (NSString *)feedURL
-{
-  return @"http://electric-window-7475.herokuapp.com/releases/publisher/Touch.xml";
-}
-
-- (NSString *)cacheFilename
-{
-  return @"touchCatalogue";
-}
 
 //- (NSInteger)refreshTimerCount
 //{
 //  return 3600;
 //}
+
+- (FeedItem *)newItemWithXMLDictionary:itemDict andBaseURL:baseURL {
+  return [[CatalogueItem alloc]initWithXMLDictionary:itemDict andBaseURL:baseURL];
+}
+
+- (FeedItem *)newItemWithDictionary:dictionary {
+  return [[CatalogueItem alloc]initWithDictionary:dictionary];
+}
+
+- (NSString *)feedURL {
+  return @"http://electric-window-7475.herokuapp.com/releases/publisher/Touch.xml";
+}
+
+- (NSString *)cacheFilename {
+  return @"touchCatalogue";
+}
 
 @end

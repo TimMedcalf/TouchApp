@@ -12,6 +12,7 @@
 static NSTimeInterval tjm_lastShake = 0;
 static NSUInteger tjm_shakeCount = 0;
 
+
 @implementation UIApplication (TJMShakeNotification)
 
 - (void)sendShakeNotification {

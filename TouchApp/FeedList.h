@@ -11,11 +11,14 @@
 @class FeedItem;
 
 @protocol FeedListConsumerDelegate
+
 @optional
 - (void)updateSource;
 - (void)updateFailed;
 - (void)updateProgressWithPercent:(CGFloat)percentComplete;
+
 @end
+
 
 @interface FeedList : NSObject
 
@@ -45,4 +48,5 @@
 
 - (void)sortItems;
 - (void)dataUpdated;
+
 @end

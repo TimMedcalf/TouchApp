@@ -2,18 +2,16 @@
 #import "NewCatalogueItemViewController.h"
 #import "Flurry.h"
 
+
 @implementation NewCatalogueItemViewController
 
-
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
   [super viewDidLoad];
   [TJMAudioCenter sharedInstance].delegate = self;
   self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"headerText_catalog"]];
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
     [self togglePlayPauseInWebView];
     [super webViewDidFinishLoad:webView];
 }
@@ -23,11 +21,9 @@
         // remove leading / from path
         if ([[[[request URL] path] substringFromIndex:1] isEqualToString:@"play"]) {
             [self play];
-        }
-        else if ([[[[request URL] path] substringFromIndex:1] isEqualToString:@"pause"]) {
+        } else if ([[[[request URL] path] substringFromIndex:1] isEqualToString:@"pause"]) {
             [self pause];
-        }
-        else if ([[[[request URL] path] substringFromIndex:1] isEqualToString:@"buy"] && [self.item.itunesURL length] != 0) {
+        } else if ([[[[request URL] path] substringFromIndex:1] isEqualToString:@"buy"] && [self.item.itunesURL length] != 0) {
             [self buy];
         }
         return NO; // prevent request
@@ -54,52 +50,43 @@
 - (void)togglePlayPauseInWebView {
     TJMAudioStatus audio = [[TJMAudioCenter sharedInstance] statusCheckForURL:[NSURL URLWithString:self.item.mp3SampleURL]];
     
-    if (audio == TJMAudioStatusCurrentPlaying)
-    {  
+    if (audio == TJMAudioStatusCurrentPlaying) {
         [self.webView stringByEvaluatingJavaScriptFromString:@"showPauseButton();"];
-    }
-    else if (audio == TJMAudioStatusCurrentPaused)
-    { 
+    } else if (audio == TJMAudioStatusCurrentPaused) {
         [self.webView stringByEvaluatingJavaScriptFromString:@"showPlayButton();"];
     }
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
   if ([TJMAudioCenter sharedInstance].delegate == self) 
     [TJMAudioCenter sharedInstance].delegate = nil;
 }
 
 #pragma mark TJM AudioCenterDelegate 
--(void)URLDidFinish:(NSURL *)url
-{
+- (void)URLDidFinish:(NSURL *)url {
   if ([[NSURL URLWithString:self.item.mp3SampleURL] isEqual:url])
     [self.webView stringByEvaluatingJavaScriptFromString:@"showPlayButton();"];
 }
 
--(void)URLIsPlaying:(NSURL *)url
-{
+- (void)URLIsPlaying:(NSURL *)url {
   if ([[NSURL URLWithString:self.item.mp3SampleURL] isEqual:url])
     [self.webView stringByEvaluatingJavaScriptFromString:@"showPauseButton();"];
   
 }
--(void)URLIsPaused:(NSURL *)url
-{
+
+- (void)URLIsPaused:(NSURL *)url {
   if ([[NSURL URLWithString:self.item.mp3SampleURL] isEqual:url])
     [self.webView stringByEvaluatingJavaScriptFromString:@"showPlayButton();"];
 }
 
--(void)URLDidFail:(NSURL *)url
-{
+- (void)URLDidFail:(NSURL *)url {
   UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Audio stream failed." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 	[alert show];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
   // Return YES for supported orientations
   return (interfaceOrientation == UIInterfaceOrientationPortrait) || (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad);
 }
-
 
 @end

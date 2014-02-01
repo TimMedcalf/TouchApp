@@ -8,4 +8,4 @@
 
 #import "TouchConstants.h"
 
-NSString * const TouchAppAllShookUp = @"TouchAppAllShookUp";
+NSString *const TouchAppAllShookUp = @"TouchAppAllShookUp";

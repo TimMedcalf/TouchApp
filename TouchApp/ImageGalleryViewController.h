@@ -11,6 +11,7 @@
 #import "TJMAudioTableViewController.h"
 #import "PhotoViewController.h"
 
+
 @interface ImageGalleryViewController : TJMAudioTableViewController <FeedListConsumerDelegate, PhotoViewDelegate>
 
 @end

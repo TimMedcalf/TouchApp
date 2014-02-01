@@ -15,9 +15,7 @@
 @implementation RecipeCategoryViewController
 
 #pragma mark - Table view data source
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   TouchTableCell *cell = [tableView dequeueReusableCellWithIdentifier:TouchTableCellDefaultReuseID];
   if (!cell) {
     cell = [[TouchTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TouchTableCellDefaultReuseID];
@@ -27,15 +25,11 @@
   return cell;
 }
 
-
 #pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{  
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   RecipeCategoryItem *currentItem = (RecipeCategoryItem *)self.feedList.items[indexPath.row];
   RecipeBookViewController *controller = [[RecipeBookViewController alloc] initWithSettingsDictionary:self.settings andRecipeCategoryNamed:currentItem.recipeTitle];
   [self.navigationController pushViewController:controller animated:YES];
 }
-
 
 @end

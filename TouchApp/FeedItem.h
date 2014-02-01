@@ -10,6 +10,7 @@
 
 @class FeedItem;
 
+
 @interface FeedItem : NSObject
 @property (strong, nonatomic) NSURL *imageURL;
 
@@ -19,6 +20,5 @@
 - (NSMutableDictionary *)dictionaryRepresentation;
 - (NSComparisonResult)compare:(FeedItem *)item;
 - (NSString *)htmlForWebView;
-
 
 @end

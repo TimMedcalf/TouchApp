@@ -8,6 +8,7 @@
 
 #import "FeedItem.h"
 
+
 @interface ImageItem : FeedItem
 
 @property (strong, nonatomic) NSURL *thumbnailURL;

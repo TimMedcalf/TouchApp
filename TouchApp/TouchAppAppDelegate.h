@@ -10,7 +10,6 @@
 #import "RotatingTabBarController.h"
 
 
-
 @interface TouchAppAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

@@ -17,7 +17,9 @@ NSString *const Key_Feed_Etag = @"etag";
 NSString *const Key_Feed_LastUpdated = @"lastupdated";
 NSString *const Key_Feed_BaseURL = @"baseURL";
 
+
 @interface FeedList ()
+
 //RSS Feed Updating
 @property (strong, nonatomic) NSMutableData *activeDownload;
 @property (strong, nonatomic) NSURLConnection *rssConnection;
@@ -28,26 +30,23 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 @property (assign, nonatomic) long long int totalBytes;
 @property (assign, nonatomic) NSInteger bytesDownloaded;
 
-
 - (void)startDownload;
 - (void)cancelDownload;
 - (void)parseResultWithData:(NSData *)xmlData;
-
 - (void)saveItems;
 - (void)loadItems;
 - (NSDictionary *)saveItemsToDictionary;
 - (void)loadItemsFromDictionary:(NSDictionary *)dict;
+
 @end
+
 
 @implementation FeedList
 
-
 #pragma mark lifecycle
-- (id)init
-{
+- (id)init {
   self = [self initWithoutLoading];
-  if (self)
-  {
+  if (self) {
     self.feed = [self feedURL];
     self.cacheFile = [[AppManager sharedInstance].cacheFolder stringByAppendingPathComponent:[[self cacheFilename] stringByAppendingPathExtension:@"plist"]];
     [self loadItems];
@@ -55,119 +54,99 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
   return self;
 }
 
-- (id)initWithoutLoading
-{
-  if ((self = [super init]))
-  {
+- (id)initWithoutLoading {
+  if ((self = [super init])) {
     self.lastRefresh = [NSDate distantPast];
     self.items = [NSMutableArray array];
   }
   return self;
 }
 
-- (void)continueLoading
-{
+- (void)continueLoading {
   self.feed = [self feedURL];
   self.cacheFile = [[AppManager sharedInstance].cacheFolder stringByAppendingPathComponent:[[self cacheFilename] stringByAppendingPathExtension:@"plist"]];
   [self loadItems];
 }
 
-
--(void) dealloc
-{
+- (void)dealloc {
   //NSLog(@"list dealloc");
   if (self.activeDownload) [self cancelDownload];
 }
 
 #pragma mark load/save
-- (void)saveItems
-{
+- (void)saveItems {
   [[self saveItemsToDictionary] writeToFile:self.cacheFile atomically:YES];
 }
 
-- (void)loadItems;
-{
-  if ([[NSFileManager defaultManager] fileExistsAtPath:self.cacheFile])
-  {
+- (void)loadItems {
+  if ([[NSFileManager defaultManager] fileExistsAtPath:self.cacheFile]) {
     [self loadItemsFromDictionary:[[NSDictionary alloc]  initWithContentsOfFile:self.cacheFile]];
   }
 }
 
-- (NSDictionary *)saveItemsToDictionary
-{
+- (NSDictionary *)saveItemsToDictionary {
   NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:2];
   dict[Key_LastRefresh] = self.lastRefresh;
   if (self.etag) dict[Key_Feed_Etag] = self.etag;
   if (self.lastUpdated) dict[Key_Feed_LastUpdated] = self.lastUpdated;
   if (self.baseURL) dict[Key_Feed_BaseURL] = [self.baseURL absoluteString];
   NSMutableArray *itemsDicts = [NSMutableArray arrayWithCapacity:[self.items count]];
-  for (FeedItem *item in self.items)
-  {
+  for (FeedItem *item in self.items) {
     [itemsDicts addObject:[item dictionaryRepresentation]];
   }
   dict[Key_FeedItems] = itemsDicts;
   return dict;
 }
 
-- (void)loadItemsFromDictionary:(NSDictionary *)dict
-{
+- (void)loadItemsFromDictionary:(NSDictionary *)dict {
   [self.items removeAllObjects];
   self.lastRefresh = dict[Key_LastRefresh];
   self.etag = dict[Key_Feed_Etag];
   self.lastUpdated = dict[Key_Feed_LastUpdated];
   NSString *tmpURLString = dict[Key_Feed_BaseURL];
-  if (tmpURLString)
-  {
+  if (tmpURLString) {
     NSURL *tmpURL = [[NSURL alloc] initWithString:tmpURLString];
     self.baseURL = tmpURL;
   }
   NSArray *itemsArray = dict[Key_FeedItems];
-  for (NSDictionary *itemDict in itemsArray)
-  {
+  for (NSDictionary *itemDict in itemsArray) {
     [self.items addObject:[self newItemWithDictionary:itemDict]];
   }
   [self dataUpdated];
   if (self.delegate) [self.delegate updateSource];
 }
 
-
 #pragma mark RSS Feed
-- (void)refreshFeed
-{
+- (void)refreshFeed {
   [self refreshFeedForced:NO];
 }
 
-- (void)refreshFeedForced:(BOOL)forced;
-{
-  if (!self.activeDownload)
-  {
-    if (([self.items count] == 0) || ([[NSDate date] timeIntervalSinceDate:self.lastRefresh] > [self refreshTimerCount]) || forced)
-    {
+- (void)refreshFeedForced:(BOOL)forced {
+  if (!self.activeDownload) {
+    if (([self.items count] == 0) ||
+        ([[NSDate date] timeIntervalSinceDate:self.lastRefresh] > [self refreshTimerCount]) ||
+        forced) {
       [self startDownload];
     }
   }
 }
 
-- (void)cancelRefresh
-{
+- (void)cancelRefresh {
   if (self.activeDownload) [self cancelDownload];
 }
 
-- (void)startDownload
-{
+- (void)startDownload {
   [[UIApplication sharedApplication] tjm_pushNetworkActivity];
   self.activeDownload = [NSMutableData data];
   // alloc+init and start an NSURLConnection; release on completion/failure
   //NSLog(@"%@", self.feed);
   //NSMutableURLRequest *tmpRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:self.feed] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60];
   NSMutableURLRequest *tmpRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:self.feed] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:60];
-  if (self.etag) 
-  {
+  if (self.etag) {
     //NSLog(@"Adding If-None-Match Header");
     [tmpRequest addValue:self.etag forHTTPHeaderField:@"If-None-Match"];
   }
-  if (self.lastUpdated) 
-  {
+  if (self.lastUpdated) {
     //NSLog(@"Adding If-Modified-Since Header");
     [tmpRequest addValue:self.lastUpdated forHTTPHeaderField:@"If-Modified-Since"];
   }
@@ -177,8 +156,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
   self.rssConnection = conn;
 }
 
-- (void)cancelDownload
-{
+- (void)cancelDownload {
   [self.rssConnection cancel];
   self.rssConnection = nil;
   self.activeDownload = nil;
@@ -188,20 +166,17 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 }
 
 #pragma mark Download support (NSURLConnectionDelegate)
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
-{
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
   self.bytesDownloaded += [data length];
   [self.activeDownload appendData:data];
   //NSLog(@"Downloaded %d", [data length]);
-  if ([self.delegate respondsToSelector:@selector(updateProgressWithPercent:)])
-  {
+  if ([self.delegate respondsToSelector:@selector(updateProgressWithPercent:)]) {
     //NSLog(@"Updating progress");
     [self.delegate updateProgressWithPercent:(CGFloat)self.bytesDownloaded / self.totalBytes];
   }
 }
 
--(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
-{
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
   //NSLog(@"%@",[(NSHTTPURLResponse *)response allHeaderFields]);
   
   //store the etag
@@ -218,8 +193,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 
 }
 
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
-{
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
   // Clear the activeDownload property to allow later attempts
   self.activeDownload = nil;
   // Release the connection now that it's finished
@@ -228,10 +202,8 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
   if (self.delegate) [self.delegate updateFailed];
 }
 
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection
-{  
-  if (self.activeDownload)
-  {
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+  if (self.activeDownload) {
     //download size check
     //NSLog(@"Download: %@, %i", self.feedURL, [self.activeDownload length]);
     
@@ -258,21 +230,18 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
   // can override in subclasses if required...
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
-{
+- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
   NSLog(@"Challenge!");
   //[[challenge sender] useCredential:[NSURLCredential credentialWithUser:@"creode" password:@"creode" persistence:NSURLCredentialPersistenceForSession] forAuthenticationChallenge:challenge];  
 }
 
-- (void)parseResultWithData:(NSData *)xmlData
-{
+- (void)parseResultWithData:(NSData *)xmlData {
   //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
   //NSLog(@"%@",[NSString stringWithUTF8String:[xmlData bytes]]);
   
   // Create a new rssParser object based on the TouchXML "CXMLDocument" class, this is the
   // object that actually grabs and processes the RSS data
-  if ([xmlData length] > 0)
-  {
+  if ([xmlData length] > 0) {
     //NSLog(@"Parsing XML %u bytes from feed %@",[xmlData length], self.feed);
     CXMLDocument *rssParser = [[CXMLDocument alloc] initWithData:self.activeDownload options:0 error:nil];
 
@@ -280,32 +249,30 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
     self.baseURL = nil;
   
     NSString *baseURL = [[[rssParser rootElement] attributeForName:@"xml:base"] stringValue];
-    if (baseURL)
-    {
+    if (baseURL) {
       NSURL *tmpURL = [[NSURL alloc] initWithString:[[[rssParser rootElement] attributeForName:@"xml:base"] stringValue]];
       self.baseURL = tmpURL;
     }
     
     NSString *xpath;
     
-    if (self.xpathOverride)
+    if (self.xpathOverride) {
       xpath = self.xpathOverride;
-    else
+    } else {
       xpath = @"//item";
+    }
     
     NSArray *resultNodes = [rssParser nodesForXPath:xpath error:nil];
 
     // Loop through the resultNodes to access each items' actual data
     NSMutableArray *newFeedItems = [[NSMutableArray alloc] initWithCapacity:[resultNodes count]];
     
-    for (CXMLElement *resultElement in resultNodes)
-    { 
+    for (CXMLElement *resultElement in resultNodes) {
       if (self.rawMode) {
         [newFeedItems addObject:[self newItemWithRawXMLElement:resultElement andBaseURL:self.baseURL]];
       } else {
         NSMutableDictionary *itemDict = [[NSMutableDictionary alloc] init];
-        for(uint counter = 0; counter < [resultElement childCount]; counter++)
-        {
+        for (uint counter = 0; counter < [resultElement childCount]; counter++) {
           itemDict[[[resultElement childAtIndex:counter] name]] = [[resultElement childAtIndex:counter] stringValue];
         }
         FeedItem *newFeedItem = [self newItemWithXMLDictionary:itemDict andBaseURL:self.baseURL];
@@ -325,31 +292,25 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
       return [item1 compare:item2];
     }];
      newFeedItems = nil;
-  }
-  else
-  {
+  } else {
     //NSLog(@"0 updated bytes from %@",self.feed);
   }
 }
 
 //overrides
-- (FeedItem *)newItemWithXMLDictionary:(NSDictionary *)itemDict andBaseURL:(NSURL *)baseURL
-{
+- (FeedItem *)newItemWithXMLDictionary:(NSDictionary *)itemDict andBaseURL:(NSURL *)baseURL {
   return [[FeedItem alloc]initWithXMLDictionary:itemDict andBaseURL:baseURL];
 }
 
-- (FeedItem *)newItemWithRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL
-{
+- (FeedItem *)newItemWithRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
   return [[FeedItem alloc]initWithRawXMLElement:element andBaseURL:baseURL];  
 }
 
-- (FeedItem *)newItemWithDictionary:(NSDictionary *)dictionary
-{
+- (FeedItem *)newItemWithDictionary:(NSDictionary *)dictionary {
   return [[FeedItem alloc] initWithDictionary:dictionary];
 }
 
-- (NSInteger)refreshTimerCount
-{
+- (NSInteger)refreshTimerCount {
   //number of seconds to wait before feed refreshes - override for different time
   //return 25200; // 7 hours - read it in the morning, and see if there's anything new at the end of the day!
   
@@ -357,18 +318,15 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
   return 1800;
 }
 
-- (void)dataUpdated
-{
+- (void)dataUpdated {
   //do nothing...
 }
 
-- (NSString *)feedURL
-{
+- (NSString *)feedURL {
   return nil;
 }
 
-- (NSString *)cacheFilename
-{
+- (NSString *)cacheFilename {
   return nil;
 }
 

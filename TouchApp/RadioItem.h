@@ -8,6 +8,7 @@
 
 #import "FeedItem.h"
 
+
 @interface RadioItem : FeedItem
 
 @property (strong, nonatomic) NSString *author;

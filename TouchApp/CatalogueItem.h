@@ -8,6 +8,7 @@
 
 #import "FeedItem.h"
 
+
 @interface CatalogueItem : FeedItem
 
 @property (strong, nonatomic) NSString *title;

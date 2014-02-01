@@ -10,14 +10,17 @@
 #import "TJMImageResource.h"
 #import "TJMImageResourceManager.h"
 
+
 @interface TJMImageResourceView ()
+
 - (void)updateImage;
+
 @end
+
 
 @implementation TJMImageResourceView
 
-- (id)initWithFrame:(CGRect)frame
-{
+- (id)initWithFrame:(CGRect)frame {
   self = [super initWithFrame:frame];
   if (self) {
     self.opaque = YES;
@@ -28,16 +31,14 @@
   return self;
 }
 
-- (id)initWithImageItem:(ImageItem *)item
-{
-  self = [self initWithFrame:CGRectMake(0,0,item.imageWidth,item.imageHeight)];
+- (id)initWithImageItem:(ImageItem *)item {
+  self = [self initWithFrame:CGRectMake(0, 0, item.imageWidth, item.imageHeight)];
   if (self) {
     self.contentMode = UIViewContentModeScaleAspectFit;
     self.url = item.imageURL;
     TJMImageResource *tmpImageResource = [[TJMImageResourceManager sharedInstance] resourceForURL:self.url];
     UIImage *image = [tmpImageResource getImage];
-    if (!tmpImageResource.imageIsDownloaded)
-    {
+    if (!tmpImageResource.imageIsDownloaded) {
       //NSLog(@"WIDTH = %f", self.frame.size.width);
       UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
       spinner.center = self.center;
@@ -55,29 +56,23 @@
   return self;
 }
 
-
-- (void)setURL:(NSURL *)url;
-{
+- (void)setURL:(NSURL *)url {
   self.url = url;
   TJMImageResource *tmpImageResource = [[TJMImageResourceManager sharedInstance] resourceForURL:self.url];
   self.image =  [tmpImageResource getImage];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateImage) name:TJMImageResourceImageNeedsUpdating object:tmpImageResource];
 }
 
-
-- (void)dealloc
-{
+- (void)dealloc {
   [[NSNotificationCenter defaultCenter] removeObserver:self name:TJMImageResourceImageNeedsUpdating object:nil];
 }
 
 //update the image on screen when it gets updated...
-- (void)updateImage
-{
+- (void)updateImage {
   //NSLog(@"Updating image");
   TJMImageResource *tmpImageResource = [[TJMImageResourceManager sharedInstance] resourceForURL:self.url];
   self.image = [tmpImageResource getImage];
   if (self.spinner) [self.spinner stopAnimating];
 }
                                     
-
 @end

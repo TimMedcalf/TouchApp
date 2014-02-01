@@ -1,6 +1,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface WebsiteViewController : UIViewController <UIWebViewDelegate, UIGestureRecognizerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIWebView *webView;

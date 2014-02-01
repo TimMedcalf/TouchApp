@@ -8,11 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-
 @interface UIApplication (UIApplication_TJMNetworkActivity)
 
--(void) tjm_pushNetworkActivity;
--(void) tjm_popNetworkActivity;
--(void) tjm_resetNetworkActivity;
+- (void)tjm_pushNetworkActivity;
+- (void)tjm_popNetworkActivity;
+- (void)tjm_resetNetworkActivity;
 
 @end

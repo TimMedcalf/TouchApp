@@ -20,25 +20,18 @@ NSString *const XML_Link = @"link";
 NSString *const XML_Description = @"description";
 NSString *const XML_PubDate = @"pubDate";
 
+
 @implementation NewsItem
 
-
-
-#pragma mark lifecycle
-
-
-
 #pragma mark overrides
-- (void)procesSavedDictionary:(NSDictionary *)dict
-{
+- (void)procesSavedDictionary:(NSDictionary *)dict {
   self.pubDate = dict[PubDateKey];
   self.link = dict[LinkKey];
   self.title = dict[TitleKey];
   self.description = dict[DescriptionKey];
 }
 
-- (void)processXMLDictionary:(NSDictionary *)dict andBaseURL:(NSURL *)baseURL
-{
+- (void)processXMLDictionary:(NSDictionary *)dict andBaseURL:(NSURL *)baseURL {
   //NSLog(@"News Dict: %@", dict);
   self.pubDate = dict[XML_PubDate];
   self.link = dict[XML_Link];
@@ -46,16 +39,14 @@ NSString *const XML_PubDate = @"pubDate";
   self.description = dict[XML_Description];
 }
 
-- (void)populateDictionary:(NSMutableDictionary *)dict
-{
+- (void)populateDictionary:(NSMutableDictionary *)dict {
   if (self.pubDate) dict[PubDateKey] = self.pubDate;
   if (self.link) dict[LinkKey] = self.link;
   if (self.title) dict[TitleKey] = self.title;
   if (self.description) dict[DescriptionKey] = self.description;
 }
 
-- (NSString *)htmlForWebView
-{
+- (NSString *)htmlForWebView {
   //inject some CSS
   //note that strings can be run across multiple lines without having to reassign or append - just make sure quotes are at the start and end of each line
   return [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width\" />"
@@ -65,4 +56,5 @@ NSString *const XML_PubDate = @"pubDate";
 	"<body><div id='headerwrapper'><div id='headercell'><div id='title'><strong>%@</strong><br /><span id='pubdate'>%@</span></div></div></div>"
     "<div id=\"bodycopycontainer\"><p class='bodycopy'>%@</p></div></body></html>", self.title,self.pubDate,self.description];
 }
+
 @end

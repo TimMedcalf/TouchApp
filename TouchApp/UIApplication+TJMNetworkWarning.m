@@ -10,6 +10,7 @@
 
 static NSTimeInterval tjm_lastNetworkWarning = 0;
 
+
 @implementation UIApplication (TJMNetworkWarning)
 
 - (void)showNetworkWarning {

@@ -11,6 +11,7 @@
 #import "UIApplication+TJMNetworkWarning.h"
 #import "TKProgressBarView.h"
 
+
 @interface TJMAudioTableViewController ()
 
 - (void)configureAudioControl;
@@ -21,22 +22,21 @@
 
 @implementation TJMAudioTableViewController
 
--(void)viewDidLoad
-{
+- (void)viewDidLoad {
   [super viewDidLoad];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(configureAudioControl) name:TJMAudioCenterStatusChange object:[TJMAudioCenter sharedInstance]];
   
   //create a progress bar that we can show in subclasses...
   TKProgressBarView *tmpProgress = [[TKProgressBarView alloc] initWithStyle:TKProgressBarViewStyleLong];
   self.touchLogo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"TouchLogo"]];
-  self.touchLogo.center = CGPointMake(CGRectGetMidX(self.view.bounds),CGRectGetMidY(self.view.bounds));
+  self.touchLogo.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds));
   self.touchLogo.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
   self.touchLogo.alpha = 0.f;
   self.touchLogo.userInteractionEnabled = YES;
   [self.touchLogo addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchTapped:)]];
   
   [self.view addSubview:self.touchLogo];
-  tmpProgress.center = CGPointMake(CGRectGetMidX(self.view.bounds),CGRectGetMidY(self.view.bounds));
+  tmpProgress.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds));
   tmpProgress.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin; 
   tmpProgress.progress = 0;
   tmpProgress.hidden = YES;
@@ -44,40 +44,33 @@
   [self.view addSubview:self.progressView];
 }
 
-- (void)configureAudioControl
-{
+- (void)configureAudioControl {
   //clear out the old button if there is one
   self.navigationItem.rightBarButtonItem = nil;
   
   //check status of audio center...
   TJMAudioStatus audio = [[TJMAudioCenter sharedInstance] statusCheck];
-  if (audio == TJMAudioStatusCurrentPlaying)
-  {  
+  if (audio == TJMAudioStatusCurrentPlaying) {
     UIBarButtonItem *playToggleButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPause target:self action:@selector(togglePlay)];
     self.navigationItem.rightBarButtonItem = playToggleButton;
-  }
-  else if (audio == TJMAudioStatusCurrentPaused)
-  {  
+  } else if (audio == TJMAudioStatusCurrentPaused) {
     UIBarButtonItem *playToggleButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(togglePlay)];
     self.navigationItem.rightBarButtonItem = playToggleButton;
   }
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   [self configureAudioControl];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleShake) name:TouchAppAllShookUp object:nil];
 }
 
--(void)viewWillDisappear:(BOOL)animated
-{
+- (void)viewWillDisappear:(BOOL)animated {
   [super viewWillDisappear:animated];
   [[NSNotificationCenter defaultCenter] removeObserver:self name:TouchAppAllShookUp object:nil];  
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
   [[NSNotificationCenter defaultCenter] removeObserver:self name:TJMAudioCenterStatusChange object:[TJMAudioCenter sharedInstance]];
   [[NSNotificationCenter defaultCenter] removeObserver:self name:TouchAppAllShookUp object:nil];
 }
@@ -86,12 +79,11 @@
   [super viewWillLayoutSubviews];
   CGFloat y = self.tableView.frame.size.height - self.tableView.tableHeaderView.bounds.size.height;
   CGFloat midPoint = floorf(y/2);
-  self.touchLogo.center = CGPointMake(self.view.center.x,self.tableView.tableHeaderView.bounds.size.height + midPoint);
+  self.touchLogo.center = CGPointMake(self.view.center.x, self.tableView.tableHeaderView.bounds.size.height + midPoint);
   self.progressView.center = self.touchLogo.center;
 }
 
-- (void)togglePlay
-{
+- (void)togglePlay {
   [[TJMAudioCenter sharedInstance] togglePlayPause];
 }
    
@@ -101,14 +93,12 @@
   [self handleShake];
 }
 
-- (void)handleShake
-{
+- (void)handleShake {
   NSLog(@"View Shake!");
 }
 
 #pragma mark FeedListConsumer Delegates
-- (void)updateProgressWithPercent:(CGFloat)percentComplete;
-{
+- (void)updateProgressWithPercent:(CGFloat)percentComplete {
   //NSLog(@"Progress Update %f",percentComplete);
   [self.progressView setProgress:percentComplete];
 }

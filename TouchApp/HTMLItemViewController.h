@@ -9,6 +9,4 @@
 //load from a string
 @property (strong, nonatomic) NSString *HTMLString;
 
-
-
 @end

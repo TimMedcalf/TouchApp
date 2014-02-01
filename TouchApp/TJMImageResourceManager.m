@@ -14,15 +14,18 @@ NSString *const ResourceManifestFile = @"TJMImageResourceManifest.plist";
 
 NSInteger TwoMonths = -5184000;
 
+
 @interface TJMImageResourceManager ()
+
 - (void)loadFromFile;
 - (void)saveToFile;
+
 @end
+
 
 @implementation TJMImageResourceManager
 
-- (id)init
-{
+- (id)init {
     self = [super init];
     if (self) {
         // Initialization code here.
@@ -31,67 +34,55 @@ NSInteger TwoMonths = -5184000;
     return self;
 }
 
-+ (id)sharedInstance
-{
++ (id)sharedInstance {
   DEFINE_SHARED_INSTANCE_USING_BLOCK(^{
     return [[self alloc] init];
   });
 }
 
-
-- (void)loadFromFile
-{
+- (void)loadFromFile {
   self.imageResourceDict = nil;
   NSArray *tmpArray = [[NSArray alloc] initWithContentsOfFile:[[AppManager sharedInstance].cacheFolder stringByAppendingPathComponent:ResourceManifestFile]];
-  if (tmpArray)
-  {
+  if (tmpArray) {
     NSMutableDictionary *tmpDict = [[NSMutableDictionary alloc] initWithCapacity:[tmpArray count]];
-    for (NSDictionary  *itemDict in tmpArray)
-    {
+    for (NSDictionary  *itemDict in tmpArray) {
       TJMImageResource *tmpImage = [[TJMImageResource alloc] initWithDictionary:itemDict];
       tmpDict[[tmpImage.imageURL absoluteString]] = tmpImage;
     }
     self.imageResourceDict = tmpDict;
-  }
-  else
-  {
+  } else {
     self.imageResourceDict = [NSMutableDictionary dictionaryWithCapacity:10];
   }
 }
 
-- (void)save
-{
+- (void)save {
   [self saveToFile];
 }
 
-- (void)saveToFile
-{
+- (void)saveToFile {
   NSMutableArray *saveArray = [[NSMutableArray alloc] initWithCapacity:[self.imageResourceDict count]];
   
-  for (NSString *imageKey in self.imageResourceDict)
-  {
+  for (NSString *imageKey in self.imageResourceDict) {
     //NSLog(@"Save %@",imageKey);
     TJMImageResource *tmpRes = (self.imageResourceDict)[imageKey];
-    if ([tmpRes.lastAccessed timeIntervalSinceNow] > TwoMonths)
+    if ([tmpRes.lastAccessed timeIntervalSinceNow] > TwoMonths) {
       //if the interval is greater than negative 2 months then they've used it in the last two months - add it to the save list
       [saveArray addObject:[tmpRes dictionaryRepresentation]];
-    else
+    } else {
       [tmpRes clearCachedFiles];
+    }
   }
   [saveArray writeToFile:[[AppManager sharedInstance].cacheFolder stringByAppendingPathComponent:ResourceManifestFile] atomically:YES];
 }
 
-- (TJMImageResource *)resourceForURL:(NSURL *)imageURL
-{
+- (TJMImageResource *)resourceForURL:(NSURL *)imageURL {
   //find the resource from the URL
   //NSLog(@"Number of image resources %i", [self.imageResourceDict count]);
   TJMImageResource *resource = nil;
-  if (imageURL)
-  {
+  if (imageURL) {
     resource = (self.imageResourceDict)[[imageURL absoluteString]];
     //did we get one?
-    if (!resource)
-    {
+    if (!resource) {
       resource = [[TJMImageResource alloc] initWithURL:imageURL];
       (self.imageResourceDict)[[resource.imageURL absoluteString]] = resource;
       //[self saveToFile];

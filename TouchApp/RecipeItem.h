@@ -8,6 +8,7 @@
 
 #import "FeedItem.h"
 
+
 @interface RecipeItem : FeedItem
 
 @property (strong, nonatomic) NSString *recipeTitle;

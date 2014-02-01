@@ -10,34 +10,29 @@
 #import "NewsItem.h"
 
 
-
 @implementation NewsList
 
-
 //overrides
-- (FeedItem *)newItemWithXMLDictionary:itemDict andBaseURL:baseURL
-{
-  return [[NewsItem alloc]initWithXMLDictionary:itemDict andBaseURL:baseURL];
-}
-
-- (FeedItem *)newItemWithDictionary:dictionary
-{
-  return [[NewsItem alloc]initWithDictionary:dictionary];
-}
-
-- (NSString *)feedURL
-{
-  return @"http://www.touchmusic.org.uk/iphone.xml";
-}
-
-- (NSString *)cacheFilename
-{
-  return @"touchNews";
-}
 
 //- (NSInteger)refreshTimerCount
 //{
 //  return 3600;
 //}
+
+- (FeedItem *)newItemWithXMLDictionary:itemDict andBaseURL:baseURL {
+  return [[NewsItem alloc]initWithXMLDictionary:itemDict andBaseURL:baseURL];
+}
+
+- (FeedItem *)newItemWithDictionary:dictionary {
+  return [[NewsItem alloc]initWithDictionary:dictionary];
+}
+
+- (NSString *)feedURL {
+  return @"http://www.touchmusic.org.uk/iphone.xml";
+}
+
+- (NSString *)cacheFilename {
+  return @"touchNews";
+}
 
 @end

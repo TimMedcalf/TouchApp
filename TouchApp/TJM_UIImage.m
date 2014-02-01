@@ -7,16 +7,14 @@
 
 #import "TJM_UIImage.h"
 
+
 @implementation UIImage (TJM_UIImage)
 
-
-+(UIImage *)imageThumbnailWithFile:(NSString *)imageFile ofSize:(CGSize)size
-{
++ (UIImage *)imageThumbnailWithFile:(NSString *)imageFile ofSize:(CGSize)size {
   return [UIImage imageThumbnailWithImage:[UIImage imageWithContentsOfFile:imageFile] ofSize:size];
 }
 
-+(UIImage *)imageThumbnailWithImage:(UIImage *)image ofSize:(CGSize)size
-{
++ (UIImage *)imageThumbnailWithImage:(UIImage *)image ofSize:(CGSize)size {
   //first lets work out the aspect ratio of the image required
   CGFloat desiredRatio = size.width / size.height;
   
@@ -26,13 +24,10 @@
   //if original ratio is bigger than the desired ratio then the height will be the value thats maxed.
   CGFloat initialHeight = image.size.height;
   CGFloat initialWidth = image.size.width;
-  if (originalRatio > desiredRatio)
-  {
+  if (originalRatio > desiredRatio) {
     initialHeight = image.size.height;
     initialWidth = image.size.height * desiredRatio;
-  }
-  else if (originalRatio < desiredRatio)
-  {
+  } else if (originalRatio < desiredRatio) {
     initialWidth = image.size.width;
     initialHeight = image.size.width / desiredRatio;
   }
@@ -52,7 +47,7 @@
   CGImageRelease(thumbImage);
   
   // begin an image context that will essentially "hold" our new image
-  UIGraphicsBeginImageContextWithOptions(CGSizeMake(size.width,size.height),YES,0.0);
+  UIGraphicsBeginImageContextWithOptions(CGSizeMake(size.width, size.height), YES, 0.0);
   // now redraw our image in a smaller rectangle.
   [tmpImage drawInRect:CGRectMake(0.0, 0.0, size.width, size.height)];
   //[tmpImage release];
@@ -62,14 +57,12 @@
   return newImage;
 }
 
-
-+(UIImage *)imageWithCircularMask:(UIImage*)image
-{
++ (UIImage *)imageWithCircularMask:(UIImage *)image {
   CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
   
   UIGraphicsBeginImageContext(image.size);
-  UIBezierPath * path;
-  path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(0,0,image.size.width, image.size.height)];
+  UIBezierPath *path;
+  path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(0, 0, image.size.width, image.size.height)];
   
   [path setLineWidth:0];
   
@@ -91,7 +84,7 @@
   
   ratio = maskImage.size.width/ image.size.width;
   
-  if(ratio * image.size.height < maskImage.size.height) {
+  if (ratio * image.size.height < maskImage.size.height) {
     ratio = maskImage.size.height/ image.size.height;
   } 
   
@@ -116,24 +109,19 @@
   return theImage;
 }
 
-+(UIImage *)imageWithCircularMask:(UIImage *)image ofDiameter:(NSInteger)diameter
-{
-  return [UIImage imageWithCircularMask:[UIImage imageThumbnailWithImage:image ofSize:CGSizeMake(diameter,diameter)]];
++ (UIImage *)imageWithCircularMask:(UIImage *)image ofDiameter:(NSInteger)diameter {
+  return [UIImage imageWithCircularMask:[UIImage imageThumbnailWithImage:image ofSize:CGSizeMake(diameter, diameter)]];
 }
 
--(CGFloat) imageHeightForWidth:(CGFloat)width
-{
+- (CGFloat)imageHeightForWidth:(CGFloat)width {
   //CGFloat aspect = self.size.width / self.size.height;
   return width / (self.size.width / self.size.height);
 }
 
-+(UIImage *)imageNamed:(NSString *)name withDefault:(NSString *)defaultName
-{
++ (UIImage *)imageNamed:(NSString *)name withDefault:(NSString *)defaultName {
   UIImage *image = [UIImage imageNamed:name];
-  if (!image)
-    return [UIImage imageNamed:defaultName];
-  else
-    return image;
+  
+  return image ?: [UIImage imageNamed:defaultName];
   
 //  if ([name length] == 0) return [UIImage imageNamed:defaultName];
 //  //first check if the image is in the cachefolder
@@ -151,7 +139,5 @@
 //  }
 //  return [UIImage imageNamed:defaultName];
 }
-
-
 
 @end

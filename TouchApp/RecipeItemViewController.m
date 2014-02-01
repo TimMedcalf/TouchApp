@@ -5,18 +5,15 @@
 
 @implementation RecipeItemViewController
 
-- (id)init
-{
+- (id)init {
   self = [super init];
-  if (self) 
-  {
+  if (self)  {
     self.disableAudioToggle = YES;
   }
   return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
   [super viewDidLoad];
   if (([MFMailComposeViewController canSendMail]) && (self.recipeItem)) {
     UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"Email" style:UIBarButtonItemStylePlain target:self action:@selector(sendRecipe)];
@@ -26,8 +23,7 @@
   }
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
   [super webViewDidFinishLoad:webView];
   if (self.navigationItem.rightBarButtonItem)
     self.navigationItem.rightBarButtonItem.enabled = YES;
@@ -58,9 +54,8 @@
 	
 }
 
-- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
-  if (result == MFMailComposeResultSent)
-  {
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+  if (result == MFMailComposeResultSent) {
     [Flurry logEvent:@"Recipes" withParameters:@{@"Emailed": self.recipeItem.recipeExcerpt}];
   }
 	[self becomeFirstResponder];
@@ -69,12 +64,9 @@
 
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
   // Return YES for supported orientations
   return (interfaceOrientation == UIInterfaceOrientationPortrait) || (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad);
 }
-
-
 
 @end

@@ -8,13 +8,17 @@
 
 #import "WebsiteViewController.h"
 
+
 @interface WebsiteViewController ()
+
 @property (strong, nonatomic) NSTimer *barTimer;
 @property (strong, nonatomic) NSTimer *barTapTimer;
 - (void)singleTapGesture:(UITapGestureRecognizer *)tapGesture;
 - (void)navBackButtonTouched:(id)sender;
 - (void)navForwarButtonTouched:(id)sender;
+
 @end
+
 
 @implementation WebsiteViewController
 
@@ -26,11 +30,9 @@
   self.webView.backgroundColor = [UIColor whiteColor];
 
   //remove shadow when scrolling the background of the webview
-  for (UIView* subView in [self.webView subviews])
-  {
+  for (UIView *subView in [self.webView subviews]) {
     if ([subView isKindOfClass:[UIScrollView class]]) {
-      for (UIView* shadowView in [subView subviews])
-      {
+      for (UIView *shadowView in [subView subviews]) {
         if ([shadowView isKindOfClass:[UIImageView class]]) {
           [shadowView setHidden:YES];
         }
@@ -57,8 +59,7 @@
   
   self.navigationItem.backBarButtonItem = backButton;   // Affect child view controller’s back button.
   
-  if (!self.openLinksInNewView)
-  {
+  if (!self.openLinksInNewView) {
     UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:
                                             @[[UIImage imageNamed:@"Arrow-Left.png"],
                                              [UIImage imageNamed:@"Arrow-Right.png"]]];
@@ -78,63 +79,51 @@
   }
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   
   //self.navigationController.toolbarHidden = NO;
   [self.navigationController setToolbarHidden:YES animated:YES];
   self.webView.delegate = self;
-  if (self.HTMLString){
+  if (self.HTMLString) {
     //set the baeURL to be local the for CSS loading...
     NSString *path = [[NSBundle mainBundle] bundlePath];
     NSURL *baseURL = [NSURL fileURLWithPath:path];
     self.segmentControl.hidden = YES;
     [self.webView loadHTMLString:self.HTMLString baseURL:baseURL];
-  }
-  else
-  {
+  } else {
    // NSLog(@"Loading URL");
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.initialURL]]];
   }
 }
 
-- (void)segmentAction:(id)sender
-{
-  if ([sender selectedSegmentIndex] == 0)
-  {
+- (void)segmentAction:(id)sender {
+  if ([sender selectedSegmentIndex] == 0) {
     [self.webView goBack];
     return;
   }
-  if ([sender selectedSegmentIndex] == 1)
-  {
+  if ([sender selectedSegmentIndex] == 1) {
     [self.webView goForward];
     return;
   }
   
 }
 
--(void) timerBarHideMethod:(NSTimer *)theTimer
-{
-  if (!self.dontHideNavigationBar)
-  {
+- (void)timerBarHideMethod:(NSTimer *)theTimer {
+  if (!self.dontHideNavigationBar) {
     [self.navigationController setNavigationBarHidden:YES animated:YES];
   }
 }
 
--(void) timerBarToggleMethod:(NSTimer *)theTimer
-{
-  if (!self.dontHideNavigationBar)
-  {
+- (void)timerBarToggleMethod:(NSTimer *)theTimer {
+  if (!self.dontHideNavigationBar) {
     [self.barTimer invalidate];
     [self.navigationController setNavigationBarHidden:!self.navigationController.navigationBarHidden animated:YES];
-    if (!self.navigationController.navigationBarHidden)
-    {
-      self.barTimer = [NSTimer scheduledTimerWithTimeInterval:5.00 target:self selector:@selector(timerBarHideMethod:) userInfo:nil repeats: NO];
+    if (!self.navigationController.navigationBarHidden) {
+      self.barTimer = [NSTimer scheduledTimerWithTimeInterval:5.00 target:self selector:@selector(timerBarHideMethod:) userInfo:nil repeats:NO];
     }
   }
 }
-
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
   // Overriden to allow any orientation.
@@ -142,36 +131,29 @@
 }
 
 #pragma mark button events
-- (void)navBackButtonTouched:(id)sender
-{
+- (void)navBackButtonTouched:(id)sender {
   [self.webView goBack];
 }
-- (void)navForwarButtonTouched:(id)sender
-{
+
+- (void)navForwarButtonTouched:(id)sender {
   [self.webView goForward];
 }
   
 #pragma mark Gestures
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
-{
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
   //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
   return YES;
 }
 
-- (void)singleTapGesture:(UITapGestureRecognizer *)tapGesture
-{
-  self.barTapTimer = [NSTimer scheduledTimerWithTimeInterval:0.30 target:self selector:@selector(timerBarToggleMethod:) userInfo:nil repeats: NO];
+- (void)singleTapGesture:(UITapGestureRecognizer *)tapGesture {
+  self.barTapTimer = [NSTimer scheduledTimerWithTimeInterval:0.30 target:self selector:@selector(timerBarToggleMethod:) userInfo:nil repeats:NO];
 }
 
-
 #pragma mark UIWebView Delegate
-
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
-{
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
   //NSLog(@"Should Load");
   [self.barTapTimer invalidate];
-  if ((navigationType == UIWebViewNavigationTypeLinkClicked ) & self.openLinksInNewView) 
-  {
+  if ((navigationType == UIWebViewNavigationTypeLinkClicked ) & self.openLinksInNewView) {
     WebsiteViewController *newWeb = [[WebsiteViewController alloc] initWithNibName:@"WebsiteViewController" bundle:nil];
     newWeb.initialURL = [request.URL absoluteString];
     newWeb.dontHideNavigationBar = YES;
@@ -181,54 +163,42 @@
   return YES;
 }
 
-
-- (void)webViewDidStartLoad:(UIWebView *)webView
-{
+- (void)webViewDidStartLoad:(UIWebView *)webView {
   // starting the load, show the activity indicator in the status bar
   [[UIApplication sharedApplication] tjm_pushNetworkActivity];
-  if (!self.openLinksInNewView)
-  {
+  if (!self.openLinksInNewView) {
     self.navigationItem.rightBarButtonItem.enabled = self.webView.canGoBack;
     [self.segmentControl setEnabled:self.webView.canGoBack forSegmentAtIndex:0];
     [self.segmentControl setEnabled:self.webView.canGoForward forSegmentAtIndex:1];
   }
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
   // finished loading, hide the activity indicator in the status bar
   [[UIApplication sharedApplication] tjm_popNetworkActivity];
-  if (!self.dontHideNavigationBar)
-  {
-    self.barTimer = [NSTimer scheduledTimerWithTimeInterval:5.00 target:self selector:@selector(timerBarHideMethod:) userInfo:nil repeats: NO];
+  if (!self.dontHideNavigationBar) {
+    self.barTimer = [NSTimer scheduledTimerWithTimeInterval:5.00 target:self selector:@selector(timerBarHideMethod:) userInfo:nil repeats:NO];
   }
   
-  if (!self.openLinksInNewView)
-  {
+  if (!self.openLinksInNewView) {
     [self.segmentControl setEnabled:self.webView.canGoBack forSegmentAtIndex:0];
     [self.segmentControl setEnabled:self.webView.canGoForward forSegmentAtIndex:1];
   }
 }
 
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
-{
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
   [[UIApplication sharedApplication] tjm_popNetworkActivity];
-  if ([error code] != -999)
-  {
+  if ([error code] != -999) {
     // load error, hide the activity indicator in the status bar
-    if ([[error domain] isEqualToString:@"NSURLErrorDomain"])
-    {
+    if ([[error domain] isEqualToString:@"NSURLErrorDomain"]) {
       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error - website not found." message:@"Please check that you are connected to the internet." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
       [alert show];
       return;
     }
   }
-
 }
 
-
-- (void)viewWillDisappear:(BOOL)animated
-{
+- (void)viewWillDisappear:(BOOL)animated {
   [super viewWillDisappear:animated];
   
   if ( self.webView.loading ) {
@@ -238,7 +208,5 @@
   self.webView.delegate = nil;    // disconnect the delegate as the webview is hidden
   [self.barTimer invalidate];
 }
-
-
 
 @end

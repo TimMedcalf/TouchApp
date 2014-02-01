@@ -9,33 +9,30 @@
 #import "RadioList.h"
 #import "RadioItem.h"
 
+
 @implementation RadioList
 
 //overrides
-- (FeedItem *)newItemWithXMLDictionary:itemDict andBaseURL:baseURL
-{
-  return [[RadioItem alloc]initWithXMLDictionary:itemDict andBaseURL:baseURL];
-}
-
-- (FeedItem *)newItemWithDictionary:dictionary
-{
-  return [[RadioItem alloc]initWithDictionary:dictionary];
-}
-
-- (NSString *)feedURL
-{
-  return @"http://www.touchshop.org/touchradio/podcast.xml";
-}
-
-- (NSString *)cacheFilename
-{
-  return @"touchRadio";
-}
 
 //- (NSInteger)refreshTimerCount
 //{
 //  return 3600;
 //}
 
+- (FeedItem *)newItemWithXMLDictionary:itemDict andBaseURL:baseURL {
+  return [[RadioItem alloc]initWithXMLDictionary:itemDict andBaseURL:baseURL];
+}
+
+- (FeedItem *)newItemWithDictionary:dictionary {
+  return [[RadioItem alloc]initWithDictionary:dictionary];
+}
+
+- (NSString *)feedURL {
+  return @"http://www.touchshop.org/touchradio/podcast.xml";
+}
+
+- (NSString *)cacheFilename {
+  return @"touchRadio";
+}
 
 @end

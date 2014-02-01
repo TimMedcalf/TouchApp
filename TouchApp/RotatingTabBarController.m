@@ -8,18 +8,14 @@
 
 #import "RotatingTabBarController.h"
 
+
 @implementation RotatingTabBarController
 
-- (NSUInteger)supportedInterfaceOrientations
-{
-  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-    return UIInterfaceOrientationMaskAll;
-  else
-    return UIInterfaceOrientationMaskPortrait;
+- (NSUInteger)supportedInterfaceOrientations {
+  return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? UIInterfaceOrientationMaskAll : UIInterfaceOrientationMaskPortrait;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
   // Return YES for supported orientations
   return (interfaceOrientation == UIInterfaceOrientationPortrait) || (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad);
 }

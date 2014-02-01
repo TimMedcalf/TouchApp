@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString * const TJMImageResourceImageNeedsUpdating;
+extern NSString *const TJMImageResourceImageNeedsUpdating;
 
 
 @interface TJMImageResource : NSObject

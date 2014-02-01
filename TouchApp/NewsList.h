@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "FeedList.h"
 
+
 @interface NewsList : FeedList
 
 @end

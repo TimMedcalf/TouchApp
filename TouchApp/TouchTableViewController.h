@@ -9,6 +9,7 @@
 #import "TJMAudioTableViewController.h"
 #import "FeedList.h"
 
+
 @interface TouchTableViewController : TJMAudioTableViewController <FeedListConsumerDelegate>
 
 @property (nonatomic, strong, readonly) NSDictionary *settings;

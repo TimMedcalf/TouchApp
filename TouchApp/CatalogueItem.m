@@ -20,17 +20,15 @@ NSString *const Key_Cat_ReleaseDuration = @"release_duration";
 NSString *const Key_Cat_TrackListing = @"track_listing";
 NSString *const Key_Cat_Publisher = @"publisher";
 
-
 #import "CatalogueItem.h"
+
 
 @implementation CatalogueItem
 
 #pragma mark lifecycle
 
-
 #pragma mark overrides from FeedItem
-- (void)procesSavedDictionary:(NSDictionary *)dict
-{
+- (void)procesSavedDictionary:(NSDictionary *)dict {
   self.title = dict[Key_Cat_Title];
   self.artist = dict[Key_Cat_Artist];
   self.catalogueNumber = dict[Key_Cat_CatalogueNumber];
@@ -44,12 +42,11 @@ NSString *const Key_Cat_Publisher = @"publisher";
   self.publisher = dict[Key_Cat_Publisher];
 }
 
-- (void)processXMLDictionary:(NSDictionary *)dict andBaseURL:(NSURL *)baseURL
-{ 
+- (void)processXMLDictionary:(NSDictionary *)dict andBaseURL:(NSURL *)baseURL {
   //lets get the parent fields out the way first
   NSString *tmpImage = dict[Key_Cat_CoverArt];
-  if (tmpImage)
-  {
+  
+  if (tmpImage) {
     NSURL *tmpURL = [[NSURL alloc] initWithString:tmpImage relativeToURL:baseURL];
     self.imageURL = tmpURL;
   }
@@ -73,8 +70,7 @@ NSString *const Key_Cat_Publisher = @"publisher";
   //NSLog(@"%@ - %@ - %@", self.catalogueNumber, self.artist, self.title);
 }
 
-- (void)populateDictionary:(NSMutableDictionary *)dict
-{
+- (void)populateDictionary:(NSMutableDictionary *)dict {
   dict[Key_Cat_Title] = self.title;
   dict[Key_Cat_Artist] = self.artist;
   dict[Key_Cat_CatalogueNumber] = self.catalogueNumber;
@@ -88,15 +84,15 @@ NSString *const Key_Cat_Publisher = @"publisher";
   dict[Key_Cat_Publisher] = self.publisher;
 }
 
-- (NSString *)htmlForWebView
-{
+- (NSString *)htmlForWebView {
   NSString *streamLink = @"";
-  if ((self.mp3SampleURL) && ([self.mp3SampleURL length] > 0))
-  {
+  
+  if ((self.mp3SampleURL) && ([self.mp3SampleURL length] > 0)) {
     streamLink = @"<div id='playerwrapper'><div><strong>Play</strong><br /><span class='subtitle'>Tap here to stream audio</span></div></div>";
   }
   
   NSString *catalogueNumberReleaseDateDiv = @"";
+  
   if ((self.releaseDateString) && ([self.releaseDateString length] > 0)) {
       NSDateFormatter *dateFormatSource = [[NSDateFormatter alloc] init];
       [dateFormatSource setDateFormat:@"yyyy-MM-d"];
@@ -109,27 +105,26 @@ NSString *const Key_Cat_Publisher = @"publisher";
       NSString *releaseDateStringReformatted = [dateFormatDestination stringFromDate:formattedDate]; 
       
     
-      catalogueNumberReleaseDateDiv = [NSString stringWithFormat:@"<span id='release_date'>Released: %@</span>",releaseDateStringReformatted];
+      catalogueNumberReleaseDateDiv = [NSString stringWithFormat:@"<span id='release_date'>Released: %@</span>", releaseDateStringReformatted];
   }
   
   if (((self.releaseDateString) && ([self.releaseDateString length] > 0)) && ((self.catalogueNumber) && ([self.catalogueNumber length] > 0))) {
-      catalogueNumberReleaseDateDiv = [NSString stringWithFormat:@"%@&nbsp;&nbsp;|&nbsp;&nbsp;",catalogueNumberReleaseDateDiv];
+      catalogueNumberReleaseDateDiv = [NSString stringWithFormat:@"%@&nbsp;&nbsp;|&nbsp;&nbsp;", catalogueNumberReleaseDateDiv];
   }
     
   if ((self.catalogueNumber) && ([self.catalogueNumber length] > 0)) {
-    catalogueNumberReleaseDateDiv = [NSString stringWithFormat:@"%@<span id='catalogue_number'>Catalogue #: %@</span>",catalogueNumberReleaseDateDiv,self.catalogueNumber];
+    catalogueNumberReleaseDateDiv = [NSString stringWithFormat:@"%@<span id='catalogue_number'>Catalogue #: %@</span>", catalogueNumberReleaseDateDiv,self.catalogueNumber];
   }
     
   NSString *trackListingDiv = @"";
-  if ((self.trackListing) && ([self.trackListing length] > 0))
-  {
-      trackListingDiv = [NSString stringWithFormat:@"<div id=\"tracklistingcontainer\"><p id=\"tracklisting\"><p>Track listing:</p><p>%@</p></div>",self.trackListing];
+  
+  if ((self.trackListing) && ([self.trackListing length] > 0)) {
+      trackListingDiv = [NSString stringWithFormat:@"<div id=\"tracklistingcontainer\"><p id=\"tracklisting\"><p>Track listing:</p><p>%@</p></div>", self.trackListing];
   }
 
   NSString *buyLink = @"";
   
-  if ((self.itunesURL) && ([self.itunesURL length] > 0))
-  {
+  if ((self.itunesURL) && ([self.itunesURL length] > 0)) {
     buyLink = @"<div id='buywrapper'><div><strong>Buy</strong><br /><span class='subtitle'>Tap here to visit the iTunes Store page for this release</span></div></div>";
   }
   //inject some CSS
@@ -157,12 +152,7 @@ NSString *const Key_Cat_Publisher = @"publisher";
           "%@"
           "</div>"
           "</body></html>", 
-          self.title,self.artist,catalogueNumberReleaseDateDiv,self.imageURL,trackListingDiv,self.description, streamLink, buyLink];
+          self.title, self.artist, catalogueNumberReleaseDateDiv,self.imageURL,trackListingDiv,self.description, streamLink, buyLink];
 }
-
-
-
-
-
 
 @end

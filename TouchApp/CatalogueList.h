@@ -8,6 +8,7 @@
 
 #import "FeedList.h"
 
+
 @interface CatalogueList : FeedList
 
 @end

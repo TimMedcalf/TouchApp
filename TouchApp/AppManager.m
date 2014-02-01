@@ -16,113 +16,106 @@
 
 NSString *const LMSUCache = @"TouchCache";
 
+
 @interface AppManager ()
+
 @property (strong, nonatomic) NewsList *internalNewsList;
 @property (strong, nonatomic) ImageList *internalImageList;
 @property (strong, nonatomic) CatalogueList *internalCatalogueList;
 @property (strong, nonatomic) RadioList *internalRadioList;
 @property (strong, nonatomic) RecipeCategoryList *internalRecipeList;
+
 @end
+
 
 @implementation AppManager
 
-- (id)init
-{
-  if ((self = [super init]))
-  {    
+- (id)init {
+  if ((self = [super init])) {
     NSError *error;
     self.cacheFolder = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:LMSUCache];
-    if (![[NSFileManager defaultManager] createDirectoryAtPath:self.cacheFolder withIntermediateDirectories:YES attributes:nil error:&error])
-    {
-      NSLog(@"Error creating caches subfolder : %@",error);
+    
+    if (![[NSFileManager defaultManager] createDirectoryAtPath:self.cacheFolder withIntermediateDirectories:YES attributes:nil error:&error]) {
+      NSLog(@"Error creating caches subfolder : %@", error);
     }
   }
+  
   return self;
 }
 
-+ (AppManager *)sharedInstance
-{
++ (AppManager *)sharedInstance {
   DEFINE_SHARED_INSTANCE_USING_BLOCK(^{
     return [[self alloc] init];
   });
 }
 
-- (NewsList *)newsList
-{
-  if (!self.internalNewsList)
-  {
+- (NewsList *)newsList {
+  if (!self.internalNewsList) {
     NewsList *tmpNewsList = [[NewsList alloc] init];
     self.internalNewsList = tmpNewsList;
   }
+
   return self.internalNewsList;
 }
 
-- (ImageList *)imageList
-{
-  if (!self.internalImageList)
-  {
+- (ImageList *)imageList {
+  if (!self.internalImageList) {
     ImageList *tmpImageList = [[ImageList alloc] init];
     self.internalImageList = tmpImageList;
     tmpImageList.xpathOverride = @"//photo";
     tmpImageList.rawMode = YES;
 
   }
+  
   return self.internalImageList;
 }
 
-- (CatalogueList *)catalogueList
-{
-  if (!self.internalCatalogueList)
-  {
+- (CatalogueList *)catalogueList {
+  if (!self.internalCatalogueList) {
     CatalogueList *tmpList = [[CatalogueList alloc] init];
     tmpList.xpathOverride = @"//release";
     self.internalCatalogueList = tmpList;
   }
+  
   return self.internalCatalogueList;
 }
 
-- (RadioList *)radioList
-{
-  if (!self.internalRadioList)
-  {
+- (RadioList *)radioList {
+  if (!self.internalRadioList) {
     RadioList *tmpList = [[RadioList alloc] init];
     self.internalRadioList = tmpList;
   }
+  
   return self.internalRadioList;
 }
 
-- (RecipeCategoryList *)recipeList
-{
-  if (!self.internalRecipeList)
-  {
+- (RecipeCategoryList *)recipeList {
+  if (!self.internalRecipeList) {
     RecipeCategoryList *tmpList = [[RecipeCategoryList alloc] init];
     tmpList.xpathOverride = @"//category";
     self.internalRecipeList = tmpList;
   }
+  
   return self.internalRecipeList;
 }
 
-- (void)cancelUpdates
-{
+- (void)cancelUpdates {
   [self.internalCatalogueList cancelRefresh];
   [self.internalRadioList cancelRefresh];
   [self.internalNewsList cancelRefresh];
   [self.internalImageList cancelRefresh];
   [self.internalRecipeList cancelRefresh];
 }
-- (void)refreshAllFeeds
-{
+
+- (void)refreshAllFeeds {
   // if nothing has been loaded before (so there'd be no items in news)
   // then just refresh the news and super expensive catalogue
   // the others can wait till the user taps on them
   // but if it's been loaded before, just refresh them all...
-  if ([[self newsList].items count] == 0)
-  {
+  if ([[self newsList].items count] == 0) {
     [[self newsList] refreshFeed];
     [[self catalogueList] refreshFeed];
-  }
-  else
-  {
+  } else {
     [[self newsList] refreshFeed];
     [[self catalogueList] refreshFeed];
     [[self radioList] refreshFeed];

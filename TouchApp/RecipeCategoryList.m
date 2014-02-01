@@ -9,39 +9,33 @@
 #import "RecipeCategoryList.h"
 #import "RecipeCategoryItem.h"
 
+
 @implementation RecipeCategoryList
 
 //overrides
-- (FeedItem *)newItemWithXMLDictionary:itemDict andBaseURL:baseURL
-{
+- (FeedItem *)newItemWithXMLDictionary:itemDict andBaseURL:baseURL {
   return [[RecipeCategoryItem alloc]initWithXMLDictionary:itemDict andBaseURL:baseURL];
 }
 
-- (FeedItem *)newItemWithDictionary:dictionary
-{
+- (FeedItem *)newItemWithDictionary:dictionary {
   return [[RecipeCategoryItem alloc]initWithDictionary:dictionary];
 }
 
-- (NSString *)feedURL
-{
+- (NSString *)feedURL {
   return @"http://www.touchmusic.org.uk/recipebook/categories.xml";
 }
 
-- (NSString *)cacheFilename
-{
+- (NSString *)cacheFilename {
   return @"touchRecipeCategories";
 }
 
-- (void)dataUpdated
-{
+- (void)dataUpdated {
   NSMutableArray *delete = [NSMutableArray array];
-  for (RecipeCategoryItem *item in self.items)
-  {
+  for (RecipeCategoryItem *item in self.items) {
     if (([item.recipeTitle isEqualToString:@"left"]) || ([item.recipeTitle isEqualToString:@"right"]))
       [delete addObject:item];
   }
   [self.items removeObjectsInArray:delete];
 }
-
 
 @end

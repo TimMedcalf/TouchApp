@@ -12,14 +12,17 @@
 #import "TouchTableCell.h"
 #import "RecipeBookList.h"
 
+
 @interface RecipeBookViewController ()
+
 @property (nonatomic, strong) NSString *recipeCategory;
+
 @end
+
 
 @implementation RecipeBookViewController
 
 #pragma mark - View lifecycle
-
 // this should be put into a subclass!
 - (id)initWithSettingsDictionary:(NSDictionary *)settings andRecipeCategoryNamed:(NSString *)category {
   self = [super initWithSettingsDictionary:settings];
@@ -36,16 +39,13 @@
   return tmpList;
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
+- (void)viewWillDisappear:(BOOL)animated {
   [self.feedList cancelRefresh];
   [super viewWillDisappear:animated];
 }
 
 #pragma mark - Table view data source
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   TouchTableCell *cell = [tableView dequeueReusableCellWithIdentifier:TouchTableCellSubtitleReuseID];
   if (!cell) {
     cell = [[TouchTableCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:TouchTableCellSubtitleReuseID];
@@ -56,17 +56,13 @@
   return cell;
 }
 
-
 #pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{  
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   RecipeItem *curItem = (RecipeItem *)self.feedList.items[indexPath.row];
   RecipeItemViewController *controller = [[RecipeItemViewController alloc] init];
   controller.HTMLString = curItem.htmlForWebView;
   controller.recipeItem = curItem;
   [self.navigationController pushViewController:controller animated:YES];
 }
-
 
 @end

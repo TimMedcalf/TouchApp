@@ -20,11 +20,11 @@ NSString *const Key_ImageOverride = @"imageURL";
 
 #import "RadioItem.h"
 
+
 @implementation RadioItem
 
 #pragma mark overrides from FeedItem
-- (void)procesSavedDictionary:(NSDictionary *)dict
-{
+- (void)procesSavedDictionary:(NSDictionary *)dict {
   self.title = dict[Key_Radio_Title];
   self.titleLabel = dict[Key_Radio_TitleLabel];
   self.author = dict[Key_Radio_Author];
@@ -35,8 +35,7 @@ NSString *const Key_ImageOverride = @"imageURL";
   self.episode_duration = dict[Key_Radio_Duration];
 }
 
-- (void)processXMLDictionary:(NSDictionary *)dict andBaseURL:(NSURL *)baseURL
-{ 
+- (void)processXMLDictionary:(NSDictionary *)dict andBaseURL:(NSURL *)baseURL {
   self.title = dict[Key_Radio_Title];
   self.titleLabel = dict[Key_Radio_TitleLabel];
   self.author = dict[Key_Radio_Author];
@@ -56,22 +55,19 @@ NSString *const Key_ImageOverride = @"imageURL";
   self.episode_duration = dict[Key_Radio_Duration];
     
  
-  NSURL * tmpURL;
+  NSURL *tmpURL;
   
   //first check if there is an image override location
-  if (dict[Key_ImageOverride])
-  {
+  if (dict[Key_ImageOverride]) {
     NSString *tmpStr = dict[Key_ImageOverride];
-    if ([tmpStr length] > 0)
-    {
+    if ([tmpStr length] > 0) {
       tmpURL = [[NSURL alloc] initWithString:tmpStr];
       self.imageURL = tmpURL;
     }
   }
    
   //if not, generate an image url as per normal...
-  if (!self.imageURL)
-  {
+  if (!self.imageURL) {
     tmpURL = [[NSURL alloc] initWithString:[[dict[Key_Radio_Link] 
                                              stringByReplacingOccurrencesOfString:@".mp3" 
                                              withString:@".jpg"]
@@ -84,8 +80,7 @@ NSString *const Key_ImageOverride = @"imageURL";
   //NSLog(@"%@ - %@ - %@", self.catalogueNumber, self.artist, self.title);
 }
 
-- (void)populateDictionary:(NSMutableDictionary *)dict
-{
+- (void)populateDictionary:(NSMutableDictionary *)dict {
   if (self.title) dict[Key_Radio_Title] = self.title;
   if (self.titleLabel) dict[Key_Radio_TitleLabel] = self.titleLabel;
   if (self.author) dict[Key_Radio_Author] = self.author;
@@ -96,18 +91,15 @@ NSString *const Key_ImageOverride = @"imageURL";
   if (self.episode_duration) dict[Key_Radio_Duration] = self.episode_duration;    
 }
 
-- (NSComparisonResult)compare:(FeedItem *)item
-{
+- (NSComparisonResult)compare:(FeedItem *)item {
   //compare in reverse so that we get the newest at the top.
 
   return [((RadioItem *)item).pubDate compare:self.pubDate];
 }
 
-- (NSString *)htmlForWebView
-{
+- (NSString *)htmlForWebView {
   NSString *playerLink = @"";
-  if ([self.link length] > 0)
-  {
+  if ([self.link length] > 0) {
     playerLink = @"<div id='playerwrapper'><div><strong>Play</strong><br /><span class='subtitle'>Tap here to stream audio</span></div></div>";
   }
   //inject some CSS
@@ -123,13 +115,7 @@ NSString *const Key_ImageOverride = @"imageURL";
           "<div id=\"buttoncontainer\">"
           "%@"
           "</div>"
-          "</body></html>", 
-          self.titleLabel,self.title,self.imageURL,self.summary,playerLink];
+          "</body></html>", self.titleLabel, self.title, self.imageURL, self.summary, playerLink];
 }
-
-
-
-
-
 
 @end

@@ -8,7 +8,7 @@
 #import "TJMImageResource.h"
 #import "AppManager.h"
 
-NSString * const TJMImageResourceImageNeedsUpdating = @"TJMImageResourceImageNeedsUpdating";
+NSString *const TJMImageResourceImageNeedsUpdating = @"TJMImageResourceImageNeedsUpdating";
 
 //dictionary keys
 NSString *const Key_TJMImageResource_imageString = @"imageString";
@@ -21,35 +21,31 @@ NSString *const Key_TJMImageResource_lastChecked = @"lastChecked";
 NSString *const Key_TJMImageResource_lastAccessed = @"lastAccessed";
 NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
 
+
 @interface TJMImageResource ()
+
 @property (strong, nonatomic) NSString *lastModified;
 @property (strong, nonatomic) NSString *etag;
 @property (strong, nonatomic) NSString *localFileName;
 @property (strong, nonatomic) NSString *localFileExtension;
 @property (strong, nonatomic) NSDate   *lastChecked;
 @property (strong, nonatomic) NSString *thumbnailPath;
-
-
 @property (strong, nonatomic) NSMutableData *activeDownload;
 @property (strong, nonatomic) NSURLConnection *activeConnection;
 
-
 - (void)startDownload;
 - (void)cancelDownload;
-
-
 - (NSString *)fullPathForLocalBaseImage;
+
 @end
+
 
 @implementation TJMImageResource
 
 #pragma mark lifecycle
-
-- (id)initWithURL:(NSURL *)imageURL;
-{
+- (id)initWithURL:(NSURL *)imageURL {
   self = [super init];
-  if (self)
-  {
+  if (self) {
     self.imageURL = imageURL;
     //this is a new file...we need to come up with a filename;
     self.localFileExtension = [[[self.imageURL absoluteString] lastPathComponent] pathExtension];
@@ -65,14 +61,11 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
   return self;
 }
 
-- (id)initWithDictionary:(NSDictionary *)dict
-{
+- (id)initWithDictionary:(NSDictionary *)dict {
   self = [super init];
-  if (self)
-  {
+  if (self) {
     NSString *tmpURLString = dict[Key_TJMImageResource_imageURL];
-    if (tmpURLString)
-    {
+    if (tmpURLString) {
       NSURL *tmpURL = [[NSURL alloc] initWithString:tmpURLString];
       self.imageURL = tmpURL;
     }
@@ -90,8 +83,7 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
   return self;
 }
 
-- (NSDictionary *)dictionaryRepresentation
-{
+- (NSDictionary *)dictionaryRepresentation {
   NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:7];
   if (self.imageURL) dict[Key_TJMImageResource_imageURL] = [self.imageURL absoluteString];
   if (self.lastModified) dict[Key_TJMImageResource_lastModified] = self.lastModified;
@@ -104,50 +96,30 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
   return dict;
 }
 
-
 #pragma mark image resourcing
-
-- (UIImage *)getImage
-{
+- (UIImage *)getImage {
   //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
-  if ([self imageIsDownloaded])
-  {
+  if ([self imageIsDownloaded]) {
     self.lastAccessed = nil;
     self.lastAccessed = [NSDate date];
     UIImage *tmpImage = [UIImage imageWithContentsOfFile:[self fullPathForLocalBaseImage]];
-    if (tmpImage)
-      return tmpImage;
-    else
-      return [UIImage imageNamed:@"placeholder.png"];
-  }
-  else
-  {
+    return tmpImage ?: [UIImage imageNamed:@"placeholder.png"];
+  } else {
     [self cacheImage];
     return [UIImage imageNamed:@"placeholder.png"];
   }
 }
 
-
-- (UIImage *)getImageWithPreferredPlaceholder:(TJMImageResource *)placeholder
-{
+- (UIImage *)getImageWithPreferredPlaceholder:(TJMImageResource *)placeholder {
   //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
-  if ([self imageIsDownloaded])
-  {
+  if ([self imageIsDownloaded]) {
     self.lastAccessed = nil;
     self.lastAccessed = [NSDate date];
     UIImage *tmpImage = [UIImage imageWithContentsOfFile:[self fullPathForLocalBaseImage]];
-    if (tmpImage)
-      return tmpImage;
-    else
-      return [UIImage imageNamed:@"placeholder.png"];
-  }
-  else
-  {
+    return tmpImage ?: [UIImage imageNamed:@"placeholder.png"];
+  } else {
     [self cacheImage];
-    if ([placeholder imageIsDownloaded])
-      return placeholder.getImage;
-    else
-      return [UIImage imageNamed:@"placeholder.png"];
+    return ([placeholder imageIsDownloaded]) ? placeholder.getImage : [UIImage imageNamed:@"placeholder.png"];
   }
 }
 
@@ -186,51 +158,41 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
 //    return [UIImage imageThumbnailWithImage:[UIImage imageNamed:@"placeholder.png"] ofSize:size];
 //  }
 //}
-
-- (void)clearCachedFiles
-{
+- (void)clearCachedFiles {
   if (self.thumbnailPath) [[NSFileManager defaultManager] removeItemAtPath:self.thumbnailPath error:nil];
   [[NSFileManager defaultManager] removeItemAtPath:[self fullPathForLocalBaseImage] error:nil];
 }
 
-
 #pragma mark helpers
-- (NSString *)fullPathForLocalBaseImage
-{
+- (NSString *)fullPathForLocalBaseImage {
   NSString *filename = [self.localFileName stringByAppendingPathExtension:self.localFileExtension];
   return [[AppManager  sharedInstance].cacheFolder stringByAppendingPathComponent:filename];
 }
 
-- (BOOL)imageIsDownloaded
-{
-  return (
-          ([[NSFileManager defaultManager] fileExistsAtPath:[self fullPathForLocalBaseImage]]) && 
-          ([self.lastChecked timeIntervalSinceNow] > -(3600 * 24 * 30)) &&
+- (BOOL)imageIsDownloaded {
+  return (([[NSFileManager defaultManager] fileExistsAtPath:[self fullPathForLocalBaseImage]]) &&
+          ([self.lastChecked timeIntervalSinceNow] > -(3600 *24 *30)) &&
           (!self.activeDownload));
 }
 
-
 #pragma mark downloads
-- (void)cacheImage
-{
+- (void)cacheImage {
   if ((![self imageIsDownloaded]) && (!self.activeDownload)) 
     [self startDownload];
 }
 
-- (void)startDownload
-{
+- (void)startDownload {
   //kick off the download process
   [[UIApplication sharedApplication] tjm_pushNetworkActivity];
   self.activeDownload = [NSMutableData data];
   NSMutableURLRequest *tmpRequest = [[NSMutableURLRequest alloc] initWithURL:self.imageURL];
   if (self.lastModified) [tmpRequest addValue:self.lastModified forHTTPHeaderField:@"If-Modified-Since"];
   if (self.etag) [tmpRequest addValue:self.etag forHTTPHeaderField:@"If-None-Match"];
-    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:tmpRequest delegate:self];
+  NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:tmpRequest delegate:self];
   self.activeConnection = conn;
 }
 
-- (void)cancelDownload
-{
+- (void)cancelDownload {
   [self.activeConnection cancel];
   self.activeConnection = nil;
   self.activeDownload = nil;
@@ -238,21 +200,18 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
 }
 
 #pragma mark Download support (NSURLConnectionDelegate)
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
-{
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
   [self.activeDownload appendData:data];
 }
 
--(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
-{
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
   //store the etag and lastModified strings if they're present
   //NSLog(@"%@",[(NSHTTPURLResponse *)response allHeaderFields]);
   self.etag = [(NSHTTPURLResponse *)response allHeaderFields][@"Etag"];
   self.lastModified = [(NSHTTPURLResponse *)response allHeaderFields][@"Last-Modified"];
 }
 
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
-{
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
   // Clear the activeDownload property to allow later attempts
   self.activeDownload = nil;
   // Release the connection now that it's finished
@@ -260,13 +219,10 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
   [[UIApplication sharedApplication] tjm_popNetworkActivity];
 }
 
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection
-{
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
   //NSLog(@"[%@ %@] size of download %ul", [self class], NSStringFromSelector(_cmd), [self.activeDownload length]);
-  if ((self.activeDownload) && ([self.activeDownload length] > 0))
-  {
-    if (![self.activeDownload writeToFile:[self fullPathForLocalBaseImage] atomically:YES])
-    {
+  if ((self.activeDownload) && ([self.activeDownload length] > 0)) {
+    if (![self.activeDownload writeToFile:[self fullPathForLocalBaseImage] atomically:YES]) {
       NSLog(@"Error: Couldn't write file '%@' to cache.", [self fullPathForLocalBaseImage]);
     }
   }
@@ -280,6 +236,5 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
   // call our delegate and tell it that our icon is ready for display
   [[NSNotificationCenter defaultCenter] postNotificationName:TJMImageResourceImageNeedsUpdating object:self];
 }
-
 
 @end

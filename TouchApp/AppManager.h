@@ -11,6 +11,7 @@
 
 @class NewsList, ImageList, CatalogueList, RadioList,RecipeCategoryList;
 
+
 @interface AppManager : NSObject
 
 @property (strong, nonatomic) NSString *cacheFolder;

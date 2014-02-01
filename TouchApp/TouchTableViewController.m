@@ -28,11 +28,13 @@ NSString *const Key_IconTintB = @"iconTintB";
 
 
 @interface TouchTableViewController ()
+
 @property (nonatomic, strong) NSDictionary *settings;
 @property (nonatomic, strong) FeedList *feedList;
-
 - (void)configureTableHeader;
+
 @end
+
 
 @implementation TouchTableViewController
 
@@ -52,14 +54,13 @@ NSString *const Key_IconTintB = @"iconTintB";
   return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
   [super viewDidLoad];
   [Flurry logAllPageViews:self.navigationController];
   
   self.tableView.rowHeight = [TouchTableCell rowHeight];
   
-  self.navigationItem.title= @"";
+  self.navigationItem.title = @"";
   
   UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
   self.navigationItem.backBarButtonItem = backButton;
@@ -70,8 +71,7 @@ NSString *const Key_IconTintB = @"iconTintB";
   
   self.feedList.delegate = self;
     
-  if ([self.feedList.items count] == 0)
-  {
+  if ([self.feedList.items count] == 0) {
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.progressView.progress = 0;
     [self.progressView setHidden:NO];
@@ -84,8 +84,7 @@ NSString *const Key_IconTintB = @"iconTintB";
   return nil;
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
   self.feedList.delegate = nil;
 }
 
@@ -94,26 +93,23 @@ NSString *const Key_IconTintB = @"iconTintB";
   if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
     header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:self.settings[Key_TableHeader] ofType:@"jpg"]];
   } else {
-    header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@_landscape",self.settings[Key_TableHeader]] ofType:@"jpg"]];
+    header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@_landscape", self.settings[Key_TableHeader]] ofType:@"jpg"]];
   }
   UIImageView *headerView = [[UIImageView alloc]initWithImage:header];
   self.tableView.tableHeaderView = headerView;
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
+- (void)viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];
   [self.feedList refreshFeed];
 }
 
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)orientation duration:(NSTimeInterval)duration
-{
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)orientation duration:(NSTimeInterval)duration {
   [super willRotateToInterfaceOrientation:orientation duration:duration];
   [self performSelector:@selector(configureTableHeader) withObject:nil afterDelay:duration / 2];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   
 	UINavigationBar *nb = self.navigationController.navigationBar;
@@ -121,19 +117,20 @@ NSString *const Key_IconTintB = @"iconTintB";
   nb.translucent = NO;
   
   UIColor *barColor = nil;
-  if (self.settings[Key_BarTintW])
+  if (self.settings[Key_BarTintW]) {
     barColor = [UIColor colorWithWhite:((NSNumber *)self.settings[Key_BarTintW]).floatValue alpha:1.];
-  else
+  } else {
     barColor = [UIColor colorWithRed:((NSNumber *)self.settings[Key_BarTintR]).floatValue
                                green:((NSNumber *)self.settings[Key_BarTintG]).floatValue
                                 blue:((NSNumber *)self.settings[Key_BarTintB]).floatValue
                                alpha:1.];
+  }
 	nb.tintColor = barColor;
   [nb setBackgroundImage:[UIImage imageNamed:self.settings[Key_Shim]] forBarMetrics:UIBarMetricsDefault];
   UIColor *iconColor = nil;
-  if (self.settings[Key_IconTintW])
+  if (self.settings[Key_IconTintW]) {
     iconColor = [UIColor colorWithWhite:((NSNumber *)self.settings[Key_IconTintW]).floatValue alpha:1.];
-  else if (self.settings[Key_IconTintR]) {
+  } else if (self.settings[Key_IconTintR]) {
     iconColor = [UIColor colorWithRed:((NSNumber *)self.settings[Key_IconTintR]).floatValue
                                green:((NSNumber *)self.settings[Key_IconTintG]).floatValue
                                 blue:((NSNumber *)self.settings[Key_IconTintB]).floatValue
@@ -145,58 +142,45 @@ NSString *const Key_IconTintB = @"iconTintB";
   [self configureTableHeader];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
   // Return YES for supported orientations
   return (interfaceOrientation == UIInterfaceOrientationPortrait) || (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad);
 }
 
-- (NSUInteger)supportedInterfaceOrientations
-{
-  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-    return UIInterfaceOrientationMaskAll;
-  else
-    return UIInterfaceOrientationMaskPortrait;
+- (NSUInteger)supportedInterfaceOrientations {
+  return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)? UIInterfaceOrientationMaskAll : UIInterfaceOrientationMaskPortrait;
 }
 
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
   // Return the number of sections.
   return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
   // Return the number of rows in the section.
   return [self.feedList.items count];
 }
 
 #pragma mark FeedListConsumerDelegates
-- (void)updateSource
-{
+- (void)updateSource {
   [self.progressView setHidden:YES];
   [self hideTouch];
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
   [self.tableView reloadData];
 }
 
-- (void)updateFailed
-{
+- (void)updateFailed {
   [self.progressView setHidden:YES];
   if ([self.feedList.items count] == 0) [self showTouch];
   [[UIApplication sharedApplication] showNetworkWarning];
 }
 
-- (void)handleShake
-{
+- (void)handleShake {
   [self.feedList refreshFeedForced:YES];
 }
 
-- (UIStatusBarStyle)preferredStatusBarStyle
-{
+- (UIStatusBarStyle)preferredStatusBarStyle {
   return UIStatusBarStyleLightContent;
 }
-
 
 @end

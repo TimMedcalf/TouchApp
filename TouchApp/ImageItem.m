@@ -16,6 +16,7 @@ NSString *const Key_ImageItem_ThumbnailWidth = @"thumbnailWidth";
 NSString *const Key_ImageItem_ThumbnailHeight = @"thumbnailHeight";
 NSString *const Key_ImageItem_PhotoId = @"photoId";
 
+
 @implementation ImageItem
 
 // return the right flickr image size suffix for the thumbnail on this device (url_s etc)
@@ -30,50 +31,39 @@ NSString *const Key_ImageItem_PhotoId = @"photoId";
   return @"z";
 }
 
-
 #pragma mark overrides from FeedItem
-- (void)procesSavedDictionary:(NSDictionary *)dict
-{
-  if (dict[Key_Image_Saved])
-  {
+- (void)procesSavedDictionary:(NSDictionary *)dict {
+  if (dict[Key_Image_Saved]) {
     NSURL *tmpURL = [[NSURL alloc] initWithString:dict[Key_Image_Saved]];
     self.imageURL = tmpURL;
   }
-  if (dict[Key_Thumbnail_Saved])
-  {
+  if (dict[Key_Thumbnail_Saved]) {
     NSURL *tmpURL = [[NSURL alloc] initWithString:dict[Key_Thumbnail_Saved]];
     self.thumbnailURL = tmpURL;
   }
   NSNumber *tmpNum;
-  if (dict[Key_ImageItem_ImageWidth])
-  {
+  if (dict[Key_ImageItem_ImageWidth]) {
     tmpNum = dict[Key_ImageItem_ImageWidth];
     self.imageWidth = [tmpNum integerValue];
   }
-  if (dict[Key_ImageItem_ImageHeight])
-  {
+  if (dict[Key_ImageItem_ImageHeight]) {
     tmpNum = dict[Key_ImageItem_ImageHeight];
     self.imageHeight = [tmpNum integerValue];
   }
-  if (dict[Key_ImageItem_ThumbnailWidth])
-  {
+  if (dict[Key_ImageItem_ThumbnailWidth]) {
     tmpNum = dict[Key_ImageItem_ThumbnailWidth];
     self.thumbnailWidth = [tmpNum integerValue];
   }
-  if (dict[Key_ImageItem_ThumbnailHeight])
-  {
+  if (dict[Key_ImageItem_ThumbnailHeight]) {
     tmpNum = dict[Key_ImageItem_ThumbnailHeight];
     self.thumbnailHeight = [tmpNum integerValue];
   }
   if (dict[Key_ImageItem_PhotoId]) {
     self.photoId = dict[Key_ImageItem_PhotoId];
   }
-
 }
 
-
-- (void)processRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL
-{
+- (void)processRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseUR {
     //some size logging...
 //  NSLog(@" ");
 //  NSLog(@">>New Image");
@@ -111,29 +101,28 @@ NSString *const Key_ImageItem_PhotoId = @"photoId";
   NSString *tmpPath = nil;
   NSURL *tmpURL = nil;
   
-  tmpPath = [[element attributeForName:[NSString stringWithFormat:@"url_%@",thumbnailSuffix]] stringValue];
+  tmpPath = [[element attributeForName:[NSString stringWithFormat:@"url_%@", thumbnailSuffix]] stringValue];
   if (tmpPath) {
     tmpURL = [[NSURL alloc] initWithString:tmpPath];
     self.thumbnailURL = tmpURL;
   }
 
   
-  self.thumbnailWidth = [[[element attributeForName:[NSString stringWithFormat:@"width_%@",thumbnailSuffix]] stringValue] integerValue];
-  self.thumbnailHeight = [[[element attributeForName:[NSString stringWithFormat:@"height_%@",thumbnailSuffix]] stringValue] integerValue];
+  self.thumbnailWidth = [[[element attributeForName:[NSString stringWithFormat:@"width_%@", thumbnailSuffix]] stringValue] integerValue];
+  self.thumbnailHeight = [[[element attributeForName:[NSString stringWithFormat:@"height_%@", thumbnailSuffix]] stringValue] integerValue];
   
-  tmpPath = [[element attributeForName:[NSString stringWithFormat:@"url_%@",imageSuffix]] stringValue];
+  tmpPath = [[element attributeForName:[NSString stringWithFormat:@"url_%@", imageSuffix]] stringValue];
   if (tmpPath) {
     tmpURL = [[NSURL alloc] initWithString:tmpPath];
     self.imageURL = tmpURL;
   }
-  self.imageWidth = [[[element attributeForName:[NSString stringWithFormat:@"width_%@",imageSuffix]] stringValue] integerValue];
-  self.imageHeight = [[[element attributeForName:[NSString stringWithFormat:@"height_%@",imageSuffix]] stringValue] integerValue];
+  self.imageWidth = [[[element attributeForName:[NSString stringWithFormat:@"width_%@", imageSuffix]] stringValue] integerValue];
+  self.imageHeight = [[[element attributeForName:[NSString stringWithFormat:@"height_%@", imageSuffix]] stringValue] integerValue];
   //NSLog(@"Image %d x %d", self.imageWidth, self.imageHeight);
   self.photoId = [[element attributeForName:@"id"] stringValue];
 }
 
-- (void)populateDictionary:(NSMutableDictionary *)dict
-{
+- (void)populateDictionary:(NSMutableDictionary *)dict {
   if (self.imageURL) dict[Key_Image_Saved] = [self.imageURL absoluteString];
   if (self.thumbnailURL) dict[Key_Thumbnail_Saved] = [self.thumbnailURL absoluteString];
   dict[Key_ImageItem_ImageWidth] = @(self.imageWidth);
@@ -143,14 +132,13 @@ NSString *const Key_ImageItem_PhotoId = @"photoId";
   if (self.photoId) dict[Key_ImageItem_PhotoId] = self.photoId;
 }
 
-
-- (NSComparisonResult)compare:(FeedItem *)item
-{
+- (NSComparisonResult)compare:(FeedItem *)item {
   //compare in reverse so that we get the newest at the top.
-  if ((((ImageItem *)item).photoId) && (self.photoId))
+  if ((((ImageItem *)item).photoId) && (self.photoId)) {
     return [((ImageItem *)item).photoId compare:self.photoId options:NSNumericSearch];
-  else
+  } else {
     return NSOrderedSame;
+  }
 }
 
 @end

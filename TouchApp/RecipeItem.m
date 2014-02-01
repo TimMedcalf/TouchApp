@@ -13,19 +13,18 @@ NSString *const Key_Recipe_Excerpt = @"excerpt";
 NSString *const Key_Recipe_Description = @"description";
 NSString *const Key_Recipe_PubDate = @"pubDate";
 
+
 @implementation RecipeItem
 
 #pragma mark overrides from FeedItem
-- (void)procesSavedDictionary:(NSDictionary *)dict
-{
+- (void)procesSavedDictionary:(NSDictionary *)dict {
   self.recipeTitle = dict[Key_Recipe_Title];
   self.recipeExcerpt = dict[Key_Recipe_Excerpt];
   self.recipeDescription = dict[Key_Recipe_Description];
   self.recipePubDate = dict[Key_Recipe_PubDate];
 }
 
-- (void)processXMLDictionary:(NSDictionary *)dict andBaseURL:(NSURL *)baseURL
-{ 
+- (void)processXMLDictionary:(NSDictionary *)dict andBaseURL:(NSURL *)baseURL {
   self.recipeTitle = dict[Key_Recipe_Title];
   self.recipeExcerpt = dict[Key_Recipe_Excerpt];
   self.recipeDescription = dict[Key_Recipe_Description];
@@ -36,22 +35,19 @@ NSString *const Key_Recipe_PubDate = @"pubDate";
   self.recipePubDate = [inputFormatter dateFromString:dateStr];
 }
 
-- (void)populateDictionary:(NSMutableDictionary *)dict
-{
+- (void)populateDictionary:(NSMutableDictionary *)dict {
   if (self.recipeTitle) dict[Key_Recipe_Title] = self.recipeTitle;
   if (self.recipeExcerpt) dict[Key_Recipe_Excerpt] = self.recipeExcerpt;
   if (self.recipeDescription) dict[Key_Recipe_Description] = self.recipeDescription;
   if (self.recipePubDate) dict[Key_Recipe_PubDate] = self.recipePubDate;
 }
 
-- (NSComparisonResult)compare:(FeedItem *)item
-{
+- (NSComparisonResult)compare:(FeedItem *)item {
   //compare in reverse so that we get the newest at the top.
   return [((RecipeItem *)item).recipePubDate compare:self.recipePubDate];
 }
 
-- (NSString *)htmlForWebView
-{
+- (NSString *)htmlForWebView {
   //inject some CSS
   //note that strings can be run across multiple lines without having to reassign or append - just make sure quotes are at the start and end of each line
   return [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width\" />"
@@ -61,7 +57,5 @@ NSString *const Key_Recipe_PubDate = @"pubDate";
           "<body><div id='headerwrapper'><div id='headercell'><div id='title'><strong>%@</strong><br /><span id='byline'>by %@</span></div></div></div>"
           "<div id=\"bodycopycontainer\"><p class='bodycopy'>%@</p></div></body></html>", self.recipeExcerpt,self.recipeTitle,self.recipeDescription];
 }
-
-
 
 @end

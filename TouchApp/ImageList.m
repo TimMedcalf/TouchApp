@@ -10,21 +10,19 @@
 #import "ImageItem.h"
 #import "GTMNSDictionary+URLArguments.h"
 
+
 @implementation ImageList
 
 //overrides
-- (FeedItem *)newItemWithRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL; 
-{
+- (FeedItem *)newItemWithRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
   return [[ImageItem alloc]initWithRawXMLElement:element andBaseURL:baseURL];  
 }
 
-- (FeedItem *)newItemWithDictionary:dictionary
-{
+- (FeedItem *)newItemWithDictionary:dictionary {
   return [[ImageItem alloc]initWithDictionary:dictionary];
 }
 
-- (NSString *)feedURL
-{
+- (NSString *)feedURL {
   //note, this gives this url:
   //http://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&photoset_id=72157627750718372&extras=url_t%2C%20url_z&format=rest&api_key=dcb74491ec5cbe64deb98b18df1125a9
 	NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -35,23 +33,17 @@
                                      nil];
   
   //set the extra key to request the right image sizes for the device
-  parameters[@"extras"] = [NSString stringWithFormat:@"url_%@, url_%@",[ImageItem thumbnailFlickrSuffix], [ImageItem imageFlickrSuffix]];
+  parameters[@"extras"] = [NSString stringWithFormat:@"url_%@, url_%@", [ImageItem thumbnailFlickrSuffix], [ImageItem imageFlickrSuffix]];
   
   return [NSString stringWithFormat:@"http://api.flickr.com/services/rest/?%@", [parameters gtm_httpArgumentsString]];
 }
 
-- (NSString *)cacheFilename
-{
+- (NSString *)cacheFilename {
   return @"touchImageGallery";
 }
 
-- (NSInteger)refreshTimerCount
-{
+- (NSInteger)refreshTimerCount {
   return 25200; //7 hours
 }
-
-
-
-
 
 @end

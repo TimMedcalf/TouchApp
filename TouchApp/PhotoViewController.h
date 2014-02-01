@@ -53,13 +53,15 @@
 @class PhotoViewController;
 
 @protocol PhotoViewDelegate
+
 - (void)dismissPhotoView:(PhotoViewController *)photoViewController;
 - (void)updateGalleryRotation;
+
 @end
 
-@interface PhotoViewController : UIViewController <UIScrollViewDelegate, UIActionSheetDelegate> {
 
-    
+@interface PhotoViewController : UIViewController <UIScrollViewDelegate, UIActionSheetDelegate>
+{
     NSMutableSet *recycledPages;
     NSMutableSet *visiblePages;
 

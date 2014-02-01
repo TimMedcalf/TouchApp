@@ -7,16 +7,15 @@
 
 #import <Foundation/Foundation.h>
 
-
 @interface UIImage (TJM_UIImage)
 
-+(UIImage *)imageThumbnailWithFile:(NSString *)imageFile ofSize:(CGSize)size;
-+(UIImage *)imageThumbnailWithImage:(UIImage *)image ofSize:(CGSize)size;
-+(UIImage *)imageWithCircularMask:(UIImage *)image;
-+(UIImage *)imageWithCircularMask:(UIImage *)image ofDiameter:(NSInteger)diameter;
++ (UIImage *)imageThumbnailWithFile:(NSString *)imageFile ofSize:(CGSize)size;
++ (UIImage *)imageThumbnailWithImage:(UIImage *)image ofSize:(CGSize)size;
++ (UIImage *)imageWithCircularMask:(UIImage *)image;
++ (UIImage *)imageWithCircularMask:(UIImage *)image ofDiameter:(NSInteger)diameter;
 
--(CGFloat) imageHeightForWidth:(CGFloat)width;
+- (CGFloat)imageHeightForWidth:(CGFloat)width;
 
-+(UIImage *)imageNamed:(NSString *)name withDefault:(NSString *)defaultName;
++ (UIImage *)imageNamed:(NSString *)name withDefault:(NSString *)defaultName;
 
 @end

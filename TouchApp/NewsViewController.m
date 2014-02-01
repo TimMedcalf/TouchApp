@@ -16,11 +16,8 @@
 
 @implementation NewsViewController
 
-
 #pragma mark - Table view data source
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   TouchTableCell *cell = [tableView dequeueReusableCellWithIdentifier:TouchTableCellSubtitleReuseID];
   if (!cell) {
     cell = [[TouchTableCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:TouchTableCellSubtitleReuseID];
@@ -32,15 +29,11 @@
 }
 
 #pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   NewsItem *curItem = (NewsItem *)self.feedList.items[indexPath.row];
   NewsItemViewController *controller = [[NewsItemViewController alloc] init];
   controller.HTMLString = curItem.htmlForWebView;
   [self.navigationController pushViewController:controller animated:YES];
 }
-
-
 
 @end
