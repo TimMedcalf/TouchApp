@@ -72,8 +72,7 @@ NSString *const FeedItem_ImageURLKey = @"imageURL";
   NSLog(@"Processing XML Raw Element! This should be overridden!");
 }
 
-- (void)populateDictionary:(NSMutableDictionary *)dict;
-{
+- (void)populateDictionary:(NSMutableDictionary *)dict {
   //override in subclass
   NSLog(@"Populating dictionary! This should be overridden!");
 }

@@ -39,7 +39,7 @@
 
 @implementation CXMLNode (CXMLNode_CreationExtensions)
 
-+ (id)document;
++ (id)document
 {
 xmlDocPtr theDocumentNode = xmlNewDoc((const xmlChar *)"1.0");
 NSAssert(theDocumentNode != NULL, @"xmlNewDoc failed");
@@ -47,7 +47,7 @@ CXMLDocument *theDocument = [[CXMLDocument alloc] initWithLibXMLNode:(xmlNodePtr
 return(theDocument);
 }
 
-+ (id)documentWithRootElement:(CXMLElement *)element;
++ (id)documentWithRootElement:(CXMLElement *)element
 {
 xmlDocPtr theDocumentNode = xmlNewDoc((const xmlChar *)"1.0");
 NSAssert(theDocumentNode != NULL, @"xmlNewDoc failed");
@@ -87,7 +87,7 @@ return(theElement);
 	return [[CXMLNamespaceNode alloc] initWithPrefix:name URI:stringValue parentElement:nil];
 }
 
-+ (id)processingInstructionWithName:(NSString *)name stringValue:(NSString *)stringValue;
++ (id)processingInstructionWithName:(NSString *)name stringValue:(NSString *)stringValue
 {
 xmlNodePtr theNode = xmlNewPI((const xmlChar *)[name UTF8String], (const xmlChar *)[stringValue UTF8String]);
 NSAssert(theNode != NULL, @"xmlNewPI failed");

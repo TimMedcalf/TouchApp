@@ -39,7 +39,7 @@
 
 @implementation CXMLNode (CXMLNode_NamespaceExtensions)
 
-- (NSArray *)nodesForXPath:(NSString *)xpath namespaceMappings:(NSDictionary *)inNamespaceMappings error:(NSError **)error;
+- (NSArray *)nodesForXPath:(NSString *)xpath namespaceMappings:(NSDictionary *)inNamespaceMappings error:(NSError **)error
 {
 #pragma unused (error)
 

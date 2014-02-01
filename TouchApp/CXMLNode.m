@@ -51,7 +51,7 @@ static int MyXmlOutputCloseCallback(void * context);
 [self invalidate];
 }
 
-- (id)copyWithZone:(NSZone *)zone;
+- (id)copyWithZone:(NSZone *)zone
 {
 #pragma unused (zone)
 xmlNodePtr theNewNode = xmlCopyNode(_node, 1);

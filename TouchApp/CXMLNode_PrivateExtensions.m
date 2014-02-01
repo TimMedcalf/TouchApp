@@ -100,7 +100,7 @@ return(theNode);
 return(_node);
 }
 
-- (void)invalidate;
+- (void)invalidate
     {
     if (_node)
         {

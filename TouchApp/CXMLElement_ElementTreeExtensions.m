@@ -36,7 +36,7 @@
 
 @implementation CXMLElement (CXMLElement_ElementTreeExtensions)
 
-- (CXMLElement *)subelement:(NSString *)inName;
+- (CXMLElement *)subelement:(NSString *)inName
 {
 CXMLElement *theSubelement = [CXMLNode elementWithName:inName];
 [self addChild:theSubelement];
