@@ -34,7 +34,7 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
 
 - (id)init {
   if ((self = [super init])) {
-    [self observeNotifications];
+    //[self observeNotifications];
   }
   return self;
 }
@@ -50,16 +50,16 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
   [self.player removeObserver:self forKeyPath:@"rate"];
   [self.player.currentItem removeObserver:self forKeyPath:@"status"];
   [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:self.player.currentItem];
-  [self unobserveNotifications];
+  //[self unobserveNotifications];
 }
 
-- (void)observeNotifications {
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(beginInterruption:) name:AVAudioSessionInterruptionNotification object:nil];
-}
+//- (void)observeNotifications {
+//  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(beginInterruption:) name:AVAudioSessionInterruptionNotification object:nil];
+//}
 
-- (void)unobserveNotifications {
-  [[NSNotificationCenter defaultCenter] removeObserver:self name:AVAudioSessionInterruptionNotification object:nil];
-}
+//- (void)unobserveNotifications {
+//  [[NSNotificationCenter defaultCenter] removeObserver:self name:AVAudioSessionInterruptionNotification object:nil];
+//}
 
 - (void)playURL:(NSURL *)url {
   [self playURL:url withTitle:nil];
@@ -220,7 +220,7 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
 #pragma mark AVAudioSessionInterruptionNotification
 - (void)audioSessionInterruptionNotification:(NSNotification *)notification {
   //get the interruption type string
-  AVAudioSessionInterruptionType interruptionType = [notification.userInfo[AVAudioSessionInterruptionTypeKey] unsignedIntegerValue];
+  AVAudioSessionInterruptionType interruptionType = (AVAudioSessionInterruptionType)[notification.userInfo[AVAudioSessionInterruptionTypeKey] unsignedIntegerValue];
   //find out whether the interruption has started or ended
   switch (interruptionType) {
     case AVAudioSessionInterruptionTypeBegan: {
@@ -230,7 +230,7 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
     }
     case AVAudioSessionInterruptionTypeEnded: {
       NSLog(@"AVAudioSessionInterruptionTypeEnded");
-      AVAudioSessionInterruptionOptions options = [notification.userInfo[AVAudioSessionInterruptionOptionKey] unsignedIntegerValue];
+      AVAudioSessionInterruptionOptions options = (AVAudioSessionInterruptionOptions)[notification.userInfo[AVAudioSessionInterruptionOptionKey] unsignedIntegerValue];
       if (options & AVAudioSessionInterruptionOptionShouldResume) {
         NSError *endInterruptionError = nil;
         if ([[AVAudioSession sharedInstance] setActive: YES error: &endInterruptionError]) {
