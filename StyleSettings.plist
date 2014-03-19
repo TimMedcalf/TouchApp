@@ -65,7 +65,7 @@
 	<key>kNumberOfEmptyLinesAboveCategory</key>
 	<integer>1</integer>
 	<key>kStaticVariableAsteriskSpacingRule</key>
-	<integer>1</integer>
+	<integer>2</integer>
 	<key>kNumberOfEmptyLinesBeforePragma</key>
 	<integer>1</integer>
 	<key>kNumberOfEmptyLinesAfterPragma</key>

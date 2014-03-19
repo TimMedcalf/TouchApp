@@ -24,8 +24,8 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
 @property (nonatomic, strong) NSDictionary *nowPlaying;
 - (void)setupAudioSession;
 - (void)populateNowPlayingInfo;
-- (void)observeNotifications;
-- (void)unobserveNotifications;
+//- (void)observeNotifications;
+//- (void)unobserveNotifications;
 
 @end
 
@@ -52,11 +52,11 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
   [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:self.player.currentItem];
   //[self unobserveNotifications];
 }
-
+//
 //- (void)observeNotifications {
 //  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(beginInterruption:) name:AVAudioSessionInterruptionNotification object:nil];
 //}
-
+//
 //- (void)unobserveNotifications {
 //  [[NSNotificationCenter defaultCenter] removeObserver:self name:AVAudioSessionInterruptionNotification object:nil];
 //}
