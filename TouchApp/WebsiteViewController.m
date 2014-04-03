@@ -205,7 +205,7 @@
     [self.webView stopLoading];
     [[UIApplication sharedApplication] tjm_popNetworkActivity];
   }
-  self.webView.delegate = nil;    // disconnect the delegate as the webview is hidden
+  self.webView.delegate = nil;    // disconnect the delegate as the webView is hidden
   [self.barTimer invalidate];
 }
 

@@ -122,22 +122,7 @@
   UIImage *image = [UIImage imageNamed:name];
   
   return image ?: [UIImage imageNamed:defaultName];
-  
-//  if ([name length] == 0) return [UIImage imageNamed:defaultName];
-//  //first check if the image is in the cachefolder
-//  NSString *filePath = [[AppManager instance].cacheFolder stringByAppendingPathComponent:name];
-//  if ([[NSFileManager defaultManager] fileExistsAtPath:filePath])
-//  {
-//    return [UIImage imageWithContentsOfFile:filePath];
-//  }
-//  //if its not there, check the bundle
-//  NSString* file = [name stringByDeletingPathExtension];
-//  NSString* extension = [name pathExtension];
-//  if ([[NSFileManager defaultManager] fileExistsAtPath:[[NSBundle mainBundle] pathForResource:file ofType:extension]])
-//  {
-//    return [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:file ofType:extension]];
-//  }
-//  return [UIImage imageNamed:defaultName];
+
 }
 
 @end
