@@ -15,3 +15,11 @@ Documentation/Generated
 doxygenWarnings.txt
 *.xcodeproj/xcuserdata/*.xcuserdatad
 *.xcodeproj/project.xcworkspace/xcuserdata/*.xcuserdatad
+Pods/Pods.xcodeproj/xcuserdata/timmedcalf.xcuserdatad/xcschemes/Pods-AFNetworking.xcscheme
+Pods/Pods.xcodeproj/xcuserdata/timmedcalf.xcuserdatad/xcschemes/Pods-FlurrySDK.xcscheme
+Pods/Pods.xcodeproj/xcuserdata/timmedcalf.xcuserdatad/xcschemes/Pods-Reachability.xcscheme
+Pods/Pods.xcodeproj/xcuserdata/timmedcalf.xcuserdatad/xcschemes/Pods.xcscheme
+Pods/Pods.xcodeproj/xcuserdata/timmedcalf.xcuserdatad/xcschemes/xcschememanagement.plist
+TouchApp.xcworkspace/xcuserdata/tim.xcuserdatad/WorkspaceSettings.xcsettings
+TouchApp.xcworkspace/xcuserdata/tim.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
+TouchApp.xcworkspace/xcuserdata/timmedcalf.xcuserdatad/WorkspaceSettings.xcsettings
