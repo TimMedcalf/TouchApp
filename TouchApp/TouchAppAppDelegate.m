@@ -19,8 +19,7 @@
 #import "RecipeCategoryList.h"
 #import "RadioList.h"
 
-//#define DEVMODE
-#ifndef DEVMODE
+#ifndef DEBUG
 #import "Flurry.h"
 #endif
 

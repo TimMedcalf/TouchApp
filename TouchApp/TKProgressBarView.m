@@ -49,7 +49,7 @@
 	return self;
 }
 
-- (void) setProgress:(float)p{
+- (void) setProgress:(CGFloat)p{
 	p = MIN(MAX(0,p),1);
 	
 	if(style == TKProgressBarViewStyleLong && p > 0 && p < 0.08) p = 0.08;

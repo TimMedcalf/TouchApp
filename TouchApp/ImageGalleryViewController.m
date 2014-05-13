@@ -173,7 +173,7 @@ static NSInteger iPadThumbnailRowCount = 8;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
   // Return the number of rows in the section.
-  div_t res = div([self.imageList itemCount], self.thumbnailRowCount);
+  lldiv_t res = lldiv([self.imageList itemCount], self.thumbnailRowCount);
   return (res.rem > 0) ? res.quot+1 : res.quot;
 }
 

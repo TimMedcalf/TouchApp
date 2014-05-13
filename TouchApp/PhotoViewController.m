@@ -135,7 +135,7 @@
 
 - (void)setViewState {
   if ([self.imageList itemCount] > 1) {
-    self.customNavigationItem.title = [NSString stringWithFormat:@"%i of %i", [self centerPhotoIndex]+1, [self.imageList itemCount]];
+    self.customNavigationItem.title = [NSString stringWithFormat:@"%li of %lu", [self centerPhotoIndex]+1, (unsigned long)[self.imageList itemCount]];
   } else {
     self.title = @"";
   }
