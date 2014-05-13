@@ -17,7 +17,7 @@ NSString *const Key_Recipe_PubDate = @"pubDate";
 @implementation RecipeItem
 
 #pragma mark overrides from FeedItem
-- (void)procesSavedDictionary:(NSDictionary *)dict {
+- (void)processSavedDictionary:(NSDictionary *)dict {
   self.recipeTitle = dict[Key_Recipe_Title];
   self.recipeExcerpt = dict[Key_Recipe_Excerpt];
   self.recipeDescription = dict[Key_Recipe_Description];

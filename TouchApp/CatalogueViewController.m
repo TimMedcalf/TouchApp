@@ -20,7 +20,7 @@
   if (!cell) {
     cell = [[TouchTableCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:TouchTableCellSubtitleReuseID];
   }
-  CatalogueItem *currentItem = (CatalogueItem *)self.feedList.items[indexPath.row];
+  CatalogueItem *currentItem = (CatalogueItem *) [self.feedList itemAtIndex:(NSUInteger)indexPath.row];
   cell.titleLabel.text = currentItem.artist;
   cell.subtitleLabel.text = currentItem.title;//[NSDateFormatter localizedStringFromDate:currentItem.pubDate dateStyle:NSDateFormatterMediumStyle timeStyle:kCFDateFormatterShortStyle];
   return cell;
@@ -29,7 +29,7 @@
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
-  CatalogueItem *curItem = (CatalogueItem *)self.feedList.items[indexPath.row];
+  CatalogueItem *curItem = (CatalogueItem *) [self.feedList itemAtIndex:(NSUInteger)indexPath.row];
   
   NewCatalogueItemViewController *controller = [[NewCatalogueItemViewController alloc] init]; //]WithNibName:@"HTMLItemViewController.xib" bundle:nil];
   controller.item = curItem;

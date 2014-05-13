@@ -47,8 +47,6 @@
 
 #import "PhotoViewController.h"
 #import "ImageScrollView.h"
-#import "ImageList.h"
-#import "ImageItem.h"
 #import "TJMImageResourceManager.h"
 #import "TJMImageResource.h"
 
@@ -136,8 +134,8 @@
 }
 
 - (void)setViewState {
-  if ([self.imageList.items count] > 1) {
-    self.customNavigationItem.title = [NSString stringWithFormat:@"%i of %i", [self centerPhotoIndex]+1, [self.imageList.items count]];
+  if ([self.imageList itemCount] > 1) {
+    self.customNavigationItem.title = [NSString stringWithFormat:@"%i of %i", [self centerPhotoIndex]+1, [self.imageList itemCount]];
   } else {
     self.title = @"";
   }
@@ -163,7 +161,7 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
 	if (buttonIndex != [actionSheet cancelButtonIndex]) {
-    ImageItem *img = (self.imageList.items)[[self centerPhotoIndex]];
+    ImageItem *img = [self.imageList itemAtIndex:(NSUInteger)[self centerPhotoIndex]];
     TJMImageResource *tmpRes = [[TJMImageResourceManager sharedInstance] resourceForURL:img.imageURL];
     UIImage *image = [tmpRes getImage];
     UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil); 
@@ -192,8 +190,8 @@
 - (void)tilePages  {
   // Calculate which pages are visible
   CGRect visibleBounds = self.pagingScrollView.bounds;
-  int firstNeededPageIndex = (int)floorf(CGRectGetMinX(visibleBounds) / CGRectGetWidth(visibleBounds));
-  int lastNeededPageIndex  = (int)floorf((CGRectGetMaxX(visibleBounds)-1) / CGRectGetWidth(visibleBounds));
+  NSUInteger firstNeededPageIndex = (NSUInteger)floorf(CGRectGetMinX(visibleBounds) / CGRectGetWidth(visibleBounds));
+  NSUInteger lastNeededPageIndex  = (NSUInteger)floorf((CGRectGetMaxX(visibleBounds)-1) / CGRectGetWidth(visibleBounds));
   firstNeededPageIndex = MAX(firstNeededPageIndex, 0);
   lastNeededPageIndex  = MIN(lastNeededPageIndex, [self imageCount] - 1);
   
@@ -207,7 +205,7 @@
   [visiblePages minusSet:recycledPages];
   
   // add missing pages
-  for (int index = firstNeededPageIndex; index <= lastNeededPageIndex; index++) {
+  for (NSUInteger index = firstNeededPageIndex; index <= lastNeededPageIndex; index++) {
     if (![self isDisplayingPageForIndex:index]) {
       ImageScrollView *page = [self dequeueRecycledPage];
       if (page == nil) {
@@ -274,7 +272,7 @@
   CGFloat pageWidth = self.pagingScrollView.bounds.size.width;
   
   if (offset >= 0) {
-    firstVisiblePageIndexBeforeRotation = floorf(offset / pageWidth);
+    firstVisiblePageIndexBeforeRotation = (int)floorf(offset / pageWidth);
     percentScrolledIntoFirstVisiblePage = (offset - (firstVisiblePageIndexBeforeRotation * pageWidth)) / pageWidth;
   } else {
     firstVisiblePageIndexBeforeRotation = 0;
@@ -358,25 +356,25 @@
 - (ImageItem *)imageAtIndex:(NSUInteger)index {
 
   //try to ensure the thumbnails we need are going to be there
-  ImageItem *item = (self.imageList.items)[index];
+  ImageItem *item = [self.imageList itemAtIndex:index];
   [[[TJMImageResourceManager sharedInstance] resourceForURL:item.thumbnailURL]cacheImage];
   
   //try to ensure the thumbnails we need are going to be there
   if (index < self.imageCount -1) {
-    item = (self.imageList.items)[index+1];
+    item = [self.imageList itemAtIndex:index+1];
     [[[TJMImageResourceManager sharedInstance] resourceForURL:item.thumbnailURL]cacheImage];
   }
   
   //try to ensure the thumbnails we need are going to be there
   if (index > 0) {
-    item = (self.imageList.items)[index-1];
+    item = [self.imageList itemAtIndex:index-1];
     [[[TJMImageResourceManager sharedInstance] resourceForURL:item.thumbnailURL]cacheImage];
   }
-  return (self.imageList.items)[index];
+  return [self.imageList itemAtIndex:index];
 }
 
 - (NSUInteger)imageCount {
-  return [self.imageList.items count];
+  return [self.imageList itemCount];
 }
 
 - (NSInteger)centerPhotoIndex {

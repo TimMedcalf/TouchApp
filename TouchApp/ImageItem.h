@@ -13,11 +13,12 @@
 
 @property (strong, nonatomic) NSURL *thumbnailURL;
 @property (strong, nonatomic) NSURL *imageURL;
-@property (nonatomic, assign) NSInteger imageWidth;
-@property (nonatomic, assign) NSInteger imageHeight;
-@property (nonatomic, assign) NSInteger thumbnailWidth;
-@property (nonatomic, assign) NSInteger thumbnailHeight;
-@property (nonatomic, assign) NSString *photoId;
+@property (copy, nonatomic) NSString *photoId;
+@property (assign, nonatomic) NSInteger imageWidth;
+@property (assign, nonatomic) NSInteger imageHeight;
+@property (assign, nonatomic) NSInteger thumbnailWidth;
+@property (assign, nonatomic) NSInteger thumbnailHeight;
+
 
 + (NSString *)thumbnailFlickrSuffix;
 + (NSString *)imageFlickrSuffix;

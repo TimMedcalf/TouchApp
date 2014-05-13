@@ -9,12 +9,9 @@
 #import "AppManager.h"
 
 NSString *const TJMImageResourceImageNeedsUpdating = @"TJMImageResourceImageNeedsUpdating";
-
-//dictionary keys
-NSString *const Key_TJMImageResource_imageString = @"imageString";
 NSString *const Key_TJMImageResource_imageURL = @"imageURL";
 NSString *const Key_TJMImageResource_lastModified = @"lastModified";
-NSString *const Key_TJMImageResource_etag = @"etag";
+NSString *const Key_TJMImageResource_eTag = @"etag";
 NSString *const Key_TJMImageResource_localFileName = @"localFileName";
 NSString *const Key_TJMImageResource_localFileExtension = @"localFileExtension";
 NSString *const Key_TJMImageResource_lastChecked = @"lastChecked";
@@ -22,7 +19,7 @@ NSString *const Key_TJMImageResource_lastAccessed = @"lastAccessed";
 NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
 
 
-@interface TJMImageResource ()
+@interface TJMImageResource () <NSURLConnectionDataDelegate>
 
 @property (strong, nonatomic) NSString *lastModified;
 @property (strong, nonatomic) NSString *etag;
@@ -71,7 +68,7 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
     }
     self.lastModified = dict[Key_TJMImageResource_lastModified];
     //NSLog(@"LM! = %@",self.lastModified);
-    self.etag = dict[Key_TJMImageResource_etag];
+    self.etag = dict[Key_TJMImageResource_eTag];
     //NSLog(@"Etag! = %@",self.etag);
     self.localFileName = dict[Key_TJMImageResource_localFileName];
     self.localFileExtension = dict[Key_TJMImageResource_localFileExtension];
@@ -87,7 +84,7 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
   NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:7];
   if (self.imageURL) dict[Key_TJMImageResource_imageURL] = [self.imageURL absoluteString];
   if (self.lastModified) dict[Key_TJMImageResource_lastModified] = self.lastModified;
-  if (self.etag) dict[Key_TJMImageResource_etag] = self.etag;
+  if (self.etag) dict[Key_TJMImageResource_eTag] = self.etag;
   if (self.localFileName) dict[Key_TJMImageResource_localFileName] = self.localFileName;
   if (self.localFileExtension) dict[Key_TJMImageResource_localFileExtension] = self.localFileExtension;
   if (self.lastChecked) dict[Key_TJMImageResource_lastChecked] = self.lastChecked;

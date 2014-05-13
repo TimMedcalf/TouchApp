@@ -13,7 +13,7 @@
 @interface TJMImageResourceView : UIImageView
 
 //value to store any useful info - like an array index - not used internally.
-@property (nonatomic, assign) NSInteger index;
+@property (nonatomic, assign) NSUInteger index;
 @property (strong, nonatomic) NSURL *url;
 @property (strong, nonatomic) UIActivityIndicatorView *spinner;
 

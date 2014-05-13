@@ -28,7 +28,7 @@ NSString *const Key_Cat_Publisher = @"publisher";
 #pragma mark lifecycle
 
 #pragma mark overrides from FeedItem
-- (void)procesSavedDictionary:(NSDictionary *)dict {
+- (void)processSavedDictionary:(NSDictionary *)dict {
   self.title = dict[Key_Cat_Title];
   self.artist = dict[Key_Cat_Artist];
   self.catalogueNumber = dict[Key_Cat_CatalogueNumber];

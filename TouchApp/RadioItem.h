@@ -11,13 +11,13 @@
 
 @interface RadioItem : FeedItem
 
-@property (strong, nonatomic) NSString *author;
-@property (strong, nonatomic) NSString *title;
-@property (strong, nonatomic) NSString *titleLabel;
-@property (strong, nonatomic) NSString *summary;
-@property (strong, nonatomic) NSString *subtitle;
-@property (strong, nonatomic) NSDate   *pubDate;
-@property (strong, nonatomic) NSString *link;
-@property (strong, nonatomic) NSString *episode_duration;
+@property (copy, nonatomic) NSString *author;
+@property (copy, nonatomic) NSString *title;
+@property (copy, nonatomic) NSString *titleLabel;
+@property (copy, nonatomic) NSString *summary;
+@property (copy, nonatomic) NSString *subtitle;
+@property (copy, nonatomic) NSString *link;
+@property (copy, nonatomic) NSString *episode_duration;
+@property (strong, nonatomic) NSDate *pubDate;
 
 @end

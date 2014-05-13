@@ -7,10 +7,6 @@
 #import "NewsViewController.h"
 #import "NewsItem.h"
 #import "NewsItemViewController.h"
-#import "TJMAudioCenter.h"
-#import "AppManager.h"
-#import "Flurry.h"
-#import "UIApplication+TJMNetworkWarning.h"
 #import "TouchTableCell.h"
 
 
@@ -22,7 +18,8 @@
   if (!cell) {
     cell = [[TouchTableCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:TouchTableCellSubtitleReuseID];
   }
-  NewsItem *currentItem = (NewsItem *)self.feedList.items[indexPath.row];
+  //NewsItem *currentItem = (NewsItem *)self.feedList.items[(NSUInteger)indexPath.row];
+  NewsItem *currentItem = (NewsItem *) [self.feedList itemAtIndex:(NSUInteger)indexPath.row];
   cell.titleLabel.text = currentItem.title;
   cell.subtitleLabel.text = currentItem.pubDate;//[NSDateFormatter localizedStringFromDate:currentItem.pubDate dateStyle:NSDateFormatterMediumStyle timeStyle:kCFDateFormatterShortStyle];
   return cell;
@@ -30,7 +27,8 @@
 
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  NewsItem *curItem = (NewsItem *)self.feedList.items[indexPath.row];
+  //NewsItem *curItem = (NewsItem *)self.feedList.items[(NSUInteger)indexPath.row];
+  NewsItem *curItem = (NewsItem *) [self.feedList itemAtIndex:(NSUInteger)indexPath.row];
   NewsItemViewController *controller = [[NewsItemViewController alloc] init];
   controller.HTMLString = curItem.htmlForWebView;
   [self.navigationController pushViewController:controller animated:YES];

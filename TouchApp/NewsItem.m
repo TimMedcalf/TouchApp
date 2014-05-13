@@ -24,7 +24,7 @@ NSString *const XML_PubDate = @"pubDate";
 @implementation NewsItem
 
 #pragma mark overrides
-- (void)procesSavedDictionary:(NSDictionary *)dict {
+- (void)processSavedDictionary:(NSDictionary *)dict {
   self.pubDate = dict[PubDateKey];
   self.link = dict[LinkKey];
   self.title = dict[TitleKey];

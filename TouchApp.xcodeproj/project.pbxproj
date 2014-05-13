@@ -802,6 +802,7 @@
 		222951B913EC496F001D174D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = TCH;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "ErgoThis Ltd";
 			};

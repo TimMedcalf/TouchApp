@@ -50,7 +50,7 @@
   if (!cell) {
     cell = [[TouchTableCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:TouchTableCellSubtitleReuseID];
   }
-  RecipeItem *currentItem = (RecipeItem *)self.feedList.items[indexPath.row];
+  RecipeItem *currentItem = (RecipeItem *)[self.feedList itemAtIndex:(NSUInteger)indexPath.row];
   cell.titleLabel.text = currentItem.recipeTitle;
   cell.subtitleLabel.text = currentItem.recipeExcerpt;//[NSDateFormatter localizedStringFromDate:currentItem.pubDate dateStyle:NSDateFormatterMediumStyle timeStyle:kCFDateFormatterShortStyle];
   return cell;
@@ -58,7 +58,7 @@
 
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  RecipeItem *curItem = (RecipeItem *)self.feedList.items[indexPath.row];
+  RecipeItem *curItem = (RecipeItem *) [self.feedList itemAtIndex:(NSUInteger)indexPath.row];
   RecipeItemViewController *controller = [[RecipeItemViewController alloc] init];
   controller.HTMLString = curItem.htmlForWebView;
   controller.recipeItem = curItem;

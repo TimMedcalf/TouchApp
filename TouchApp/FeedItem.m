@@ -14,7 +14,7 @@ NSString *const FeedItem_ImageURLKey = @"imageURL";
 @interface FeedItem ()
 
 //things to override
-- (void)procesSavedDictionary:(NSDictionary *)dict;
+- (void)processSavedDictionary:(NSDictionary *)dict;
 - (void)processXMLDictionary:(NSDictionary *)dict andBaseURL:(NSURL *)baseURL;
 - (void)processRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL; 
 - (void)populateDictionary:(NSMutableDictionary *)dict;
@@ -28,7 +28,7 @@ NSString *const FeedItem_ImageURLKey = @"imageURL";
   self = [super init];
   if (self) {
     self.imageURL = [NSURL URLWithString:dict[FeedItem_ImageURLKey]];
-    [self procesSavedDictionary:dict];
+      [self processSavedDictionary:dict];
   }
   return self;
 }
@@ -57,7 +57,7 @@ NSString *const FeedItem_ImageURLKey = @"imageURL";
 }
 
 #pragma mark sublclass overrides
-- (void)procesSavedDictionary:(NSDictionary *)dict {
+- (void)processSavedDictionary:(NSDictionary *)dict {
   //override in subclass
   NSLog(@"Processing Saved Dictionary! This should be overridden!");
 }

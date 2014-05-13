@@ -24,9 +24,8 @@
 
 @property (weak, nonatomic) id<FeedListConsumerDelegate, NSObject> delegate;
 @property (strong, nonatomic) NSURL *baseURL;
-@property (strong, nonatomic) NSMutableArray *items;
 @property (strong, nonatomic) NSDate *lastRefresh;
-@property (strong, nonatomic) NSString *xpathOverride;
+@property (copy, nonatomic) NSString *xpathOverride;
 @property (assign, nonatomic) BOOL rawMode;
 
 //dirty hack to deal with the way we load touch recipe books...probably a better way of coping with this...
@@ -37,6 +36,11 @@
 - (void)refreshFeed;
 - (void)cancelRefresh;
 
+- (NSUInteger)itemCount;
+- (id)itemAtIndex:(NSUInteger)index;
+- (void)removeItemsInArray:(NSArray *)itemsArray;
+- (NSArray *)itemArray;
+
 //overrides
 - (NSInteger)refreshTimerCount;
 - (FeedItem *)newItemWithXMLDictionary:(NSDictionary *)itemDict andBaseURL:(NSURL *)baseURL;
@@ -46,7 +50,6 @@
 - (NSString *)feedURL;
 - (NSString *)cacheFilename;
 
-- (void)sortItems;
 - (void)dataUpdated;
 
 @end

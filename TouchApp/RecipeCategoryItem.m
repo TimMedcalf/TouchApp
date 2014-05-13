@@ -21,7 +21,7 @@ NSString *const Key_RCat_Title = @"title";
 //  return 3600;
 //}
 
-- (void)procesSavedDictionary:(NSDictionary *)dict {
+- (void)processSavedDictionary:(NSDictionary *)dict {
   self.recipeId = dict[Key_RCat_Id];
   self.recipeTitle = dict[Key_RCat_Title];
 }

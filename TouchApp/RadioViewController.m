@@ -19,7 +19,7 @@
   if (!cell) {
     cell = [[TouchTableCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:TouchTableCellSubtitleReuseID];
   }
-  RadioItem *currentItem = (RadioItem *)self.feedList.items[indexPath.row];
+  RadioItem *currentItem = (RadioItem *) [self.feedList itemAtIndex:(NSUInteger)indexPath.row];
   cell.titleLabel.text = currentItem.titleLabel;
   cell.subtitleLabel.text = currentItem.title;
   return cell;
@@ -28,7 +28,7 @@
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   
-  RadioItem *curItem = (RadioItem *)self.feedList.items[indexPath.row];
+  RadioItem *curItem = (RadioItem *) [self.feedList itemAtIndex:(NSUInteger)indexPath.row];
   
   NewRadioItemViewController *controller = [[NewRadioItemViewController alloc] init];
   controller.item = curItem;

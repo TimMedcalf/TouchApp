@@ -11,9 +11,9 @@
 
 @interface RecipeItem : FeedItem
 
-@property (strong, nonatomic) NSString *recipeTitle;
-@property (strong, nonatomic) NSString *recipeExcerpt;
-@property (strong, nonatomic) NSString *recipeDescription;
+@property (copy, nonatomic) NSString *recipeTitle;
+@property (copy, nonatomic) NSString *recipeExcerpt;
+@property (copy, nonatomic) NSString *recipeDescription;
 @property (strong, nonatomic) NSDate *recipePubDate;
 
 @end

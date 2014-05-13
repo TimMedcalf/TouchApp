@@ -32,7 +32,7 @@ NSString *const Key_ImageItem_PhotoId = @"photoId";
 }
 
 #pragma mark overrides from FeedItem
-- (void)procesSavedDictionary:(NSDictionary *)dict {
+- (void)processSavedDictionary:(NSDictionary *)dict {
   if (dict[Key_Image_Saved]) {
     NSURL *tmpURL = [[NSURL alloc] initWithString:dict[Key_Image_Saved]];
     self.imageURL = tmpURL;

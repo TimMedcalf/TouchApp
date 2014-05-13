@@ -13,12 +13,12 @@
 
 NSString *const Key_FeedItems = @"FeedItems";
 NSString *const Key_LastRefresh = @"lastRefresh";
-NSString *const Key_Feed_Etag = @"etag";
+NSString *const Key_Feed_ETag = @"etag";
 NSString *const Key_Feed_LastUpdated = @"lastupdated";
 NSString *const Key_Feed_BaseURL = @"baseURL";
 
 
-@interface FeedList ()
+@interface FeedList () <NSURLConnectionDataDelegate>
 
 //RSS Feed Updating
 @property (strong, nonatomic) NSMutableData *activeDownload;
@@ -29,6 +29,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 @property (strong, nonatomic) NSString *lastUpdated;
 @property (assign, nonatomic) long long int totalBytes;
 @property (assign, nonatomic) NSInteger bytesDownloaded;
+@property (strong, nonatomic) NSMutableArray *items;
 
 - (void)startDownload;
 - (void)cancelDownload;
@@ -87,7 +88,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 - (NSDictionary *)saveItemsToDictionary {
   NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:2];
   dict[Key_LastRefresh] = self.lastRefresh;
-  if (self.etag) dict[Key_Feed_Etag] = self.etag;
+  if (self.etag) dict[Key_Feed_ETag] = self.etag;
   if (self.lastUpdated) dict[Key_Feed_LastUpdated] = self.lastUpdated;
   if (self.baseURL) dict[Key_Feed_BaseURL] = [self.baseURL absoluteString];
   NSMutableArray *itemsDicts = [NSMutableArray arrayWithCapacity:[self.items count]];
@@ -101,7 +102,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 - (void)loadItemsFromDictionary:(NSDictionary *)dict {
   [self.items removeAllObjects];
   self.lastRefresh = dict[Key_LastRefresh];
-  self.etag = dict[Key_Feed_Etag];
+  self.etag = dict[Key_Feed_ETag];
   self.lastUpdated = dict[Key_Feed_LastUpdated];
   NSString *tmpURLString = dict[Key_Feed_BaseURL];
   if (tmpURLString) {
@@ -226,10 +227,6 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
   //[delegate appImageDidLoad:self.indexPathInTableView];
 }
 
-- (void)sortItems {
-  // can override in subclasses if required...
-}
-
 - (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
   NSLog(@"Challenge!");
   //[[challenge sender] useCredential:[NSURLCredential credentialWithUser:@"creode" password:@"creode" persistence:NSURLCredentialPersistenceForSession] forAuthenticationChallenge:challenge];  
@@ -277,11 +274,11 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
         }
         FeedItem *newFeedItem = [self newItemWithXMLDictionary:itemDict andBaseURL:self.baseURL];
         [newFeedItems addObject:newFeedItem];
-        itemDict = nil;
-        newFeedItem = nil;
+        //itemDict = nil;
+        //newFeedItem = nil;
       }
     }
-     rssParser = nil;
+    //rssParser = nil;
     [self.items removeAllObjects];
     [self.items addObjectsFromArray:newFeedItems];
     //nearly done, just need to make sure the items are sorted correctly
@@ -291,10 +288,26 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
       FeedItem *item2 = (FeedItem *)obj2;
       return [item1 compare:item2];
     }];
-     newFeedItems = nil;
+    //newFeedItems = nil;
   } else {
     //NSLog(@"0 updated bytes from %@",self.feed);
   }
+}
+
+- (NSUInteger)itemCount {
+    return [self.items count];
+}
+
+- (id)itemAtIndex:(NSUInteger)index {
+    return (index < [self.items count]) ? self.items[index] : nil;
+}
+
+- (void)removeItemsInArray:(NSArray *)itemsArray {
+    [self.items removeObjectsInArray:itemsArray];
+}
+
+- (NSArray *)itemArray {
+    return [NSArray arrayWithArray:self.items];
 }
 
 //overrides

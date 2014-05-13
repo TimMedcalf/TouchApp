@@ -72,7 +72,7 @@
 
 @property (weak, nonatomic) id<PhotoViewDelegate,NSObject> delegate;
 @property (strong, nonatomic) ImageList *imageList;
-@property (assign, nonatomic) NSInteger initialIndex;
+@property (assign, nonatomic) NSUInteger initialIndex;
 @property (strong, nonatomic) IBOutlet UINavigationBar *customNavigationBar;
 @property (strong, nonatomic) IBOutlet UINavigationItem *customNavigationItem;
 @property (strong, nonatomic) IBOutlet UIScrollView *pagingScrollView;

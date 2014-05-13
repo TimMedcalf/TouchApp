@@ -59,52 +59,55 @@
 
 + (UIImage *)imageWithCircularMask:(UIImage *)image {
   CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-  
+
   UIGraphicsBeginImageContext(image.size);
   UIBezierPath *path;
   path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(0, 0, image.size.width, image.size.height)];
-  
+
   [path setLineWidth:0];
-  
+
   [[UIColor blackColor] set];
   [path fill];
   UIImage *maskImage = UIGraphicsGetImageFromCurrentImageContext();
   UIGraphicsEndImageContext();
   CGImageRef maskImageRef = [maskImage CGImage];
-  
+
   // create a bitmap graphics context the size of the image
-  CGContextRef mainViewContentContext = CGBitmapContextCreate (NULL, maskImage.size.width, maskImage.size.height, 8, 0, colorSpace, kCGImageAlphaPremultipliedLast);
+  //this line was changed in response to appcode inspection...wrong  value used...not sure if this will work
+  //CGContextRef mainViewContentContext = CGBitmapContextCreate (NULL, maskImage.size.width, maskImage.size.height, 8, 0, colorSpace, kCGImageAlphaPremultipliedLast);
+  CGContextRef mainViewContentContext = CGBitmapContextCreate (NULL, (size_t)maskImage.size.width, (size_t)maskImage.size.height, 8, 0, colorSpace, kCGBitmapAlphaInfoMask);
+
   CGColorSpaceRelease(colorSpace);
-  
-  
+
+
   if (mainViewContentContext==NULL)
     return NULL;
-  
+
   CGFloat ratio = 0;
-  
+
   ratio = maskImage.size.width/ image.size.width;
-  
+
   if (ratio * image.size.height < maskImage.size.height) {
     ratio = maskImage.size.height/ image.size.height;
-  } 
-  
+  }
+
   CGRect rect1  = {{0, 0}, {maskImage.size.width, maskImage.size.height}};
   CGRect rect2  = {{-((image.size.width*ratio)-maskImage.size.width)/2 , -((image.size.height*ratio)-maskImage.size.height)/2}, {image.size.width*ratio, image.size.height*ratio}};
-  
-  
+
+
   CGContextClipToMask(mainViewContentContext, rect1, maskImageRef);
   CGContextDrawImage(mainViewContentContext, rect2, image.CGImage);
-  
-  
+
+
   // Create CGImageRef of the main view bitmap content, and then
   // release that bitmap context
   CGImageRef newImage = CGBitmapContextCreateImage(mainViewContentContext);
   CGContextRelease(mainViewContentContext);
-  
+
   UIImage *theImage = [UIImage imageWithCGImage:newImage];
-  
+
   CGImageRelease(newImage);
-  
+
   // return the image
   return theImage;
 }
@@ -120,7 +123,7 @@
 
 + (UIImage *)imageNamed:(NSString *)name withDefault:(NSString *)defaultName {
   UIImage *image = [UIImage imageNamed:name];
-  
+
   return image ?: [UIImage imageNamed:defaultName];
 
 }

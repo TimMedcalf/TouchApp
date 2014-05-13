@@ -13,9 +13,7 @@
 + (UIImage *)imageThumbnailWithImage:(UIImage *)image ofSize:(CGSize)size;
 + (UIImage *)imageWithCircularMask:(UIImage *)image;
 + (UIImage *)imageWithCircularMask:(UIImage *)image ofDiameter:(NSInteger)diameter;
-
 - (CGFloat)imageHeightForWidth:(CGFloat)width;
-
 + (UIImage *)imageNamed:(NSString *)name withDefault:(NSString *)defaultName;
 
 @end

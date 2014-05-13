@@ -111,7 +111,7 @@ NSString *const LMSUCache = @"TouchCache";
   // then just refresh the news and super expensive catalogue
   // the others can wait till the user taps on them
   // but if it's been loaded before, just refresh them all...
-  if ([[self newsList].items count] == 0) {
+  if ([self.newsList itemCount] == 0) {
     [[self newsList] refreshFeed];
     [[self catalogueList] refreshFeed];
   } else {

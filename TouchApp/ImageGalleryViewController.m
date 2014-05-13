@@ -74,7 +74,7 @@ static NSInteger iPadThumbnailRowCount = 8;
   self.imageList.rawMode = YES;
   self.imageList.delegate = self;
   
-  if ([self.imageList.items count] == 0) {
+  if ([self.imageList itemCount] == 0) {
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.progressView.progress = 0;
     self.progressView.hidden = NO;
@@ -173,7 +173,7 @@ static NSInteger iPadThumbnailRowCount = 8;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
   // Return the number of rows in the section.
-  div_t res = div([self.imageList.items count], self.thumbnailRowCount);
+  div_t res = div([self.imageList itemCount], self.thumbnailRowCount);
   return (res.rem > 0) ? res.quot+1 : res.quot;
 }
 
@@ -202,9 +202,9 @@ static NSInteger iPadThumbnailRowCount = 8;
   }
   
   for (int i = 0; i < self.thumbnailRowCount; i++) {
-    NSInteger tmpIndex = (indexPath.row * self.thumbnailRowCount) + i;
-    if (tmpIndex < [self.imageList.items count]) {
-      ImageItem *currentItem = (self.imageList.items)[tmpIndex];
+    NSUInteger tmpIndex = (indexPath.row * self.thumbnailRowCount) + i;
+    if (tmpIndex < [self.imageList itemCount]) {
+      ImageItem *currentItem = ([self.imageList itemAtIndex:(NSUInteger)tmpIndex]);
       //assign the image
       TJMImageResourceView *res = (TJMImageResourceView *)[cell viewWithTag:(CellImageTag + i)];
       res.index = tmpIndex;
@@ -212,7 +212,7 @@ static NSInteger iPadThumbnailRowCount = 8;
     } else {
       //if this cell is past the actual range of images we need to remove the preview...
       TJMImageResourceView *res = (TJMImageResourceView *)[cell viewWithTag:(CellImageTag + i)];
-      res.index = -1;
+      res.index = NSIntegerMax;
       [res setURL:nil];
     }
   }
@@ -224,7 +224,7 @@ static NSInteger iPadThumbnailRowCount = 8;
   CGPoint touchCoords = [sender locationInView:sender.view];
   NSInteger cellIndex = (int)(touchCoords.x / self.thumbnailWidth);
   TJMImageResourceView *res = (TJMImageResourceView *)[sender.view viewWithTag:(CellImageTag + cellIndex)];
-  if (res.index >= 0) {
+  if (res.index != NSIntegerMax) {
     PhotoViewController *photo = [[PhotoViewController alloc] init];
     photo.imageList = self.imageList;
     photo.initialIndex = res.index;
@@ -251,7 +251,7 @@ static NSInteger iPadThumbnailRowCount = 8;
 
 - (void)updateFailed {
   [self.progressView setHidden:YES];
-  if ([self.imageList.items count] == 0) [self showTouch];
+  if ([self.imageList itemCount] == 0) [self showTouch];
   [[UIApplication sharedApplication] showNetworkWarning];
 }
 

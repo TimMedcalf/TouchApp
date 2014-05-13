@@ -11,6 +11,6 @@
 
 @interface RecipeBookList : FeedList
 
-@property (strong, nonatomic) NSString *recipeCategory;
+@property (copy, nonatomic) NSString *recipeCategory;
 
 @end

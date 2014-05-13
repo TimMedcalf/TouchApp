@@ -12,6 +12,6 @@
 @interface RecipeCategoryItem : FeedItem
 
 @property (strong, nonatomic) NSNumber *recipeId;
-@property (strong, nonatomic) NSString *recipeTitle;
+@property (copy, nonatomic) NSString *recipeTitle;
 
 @end

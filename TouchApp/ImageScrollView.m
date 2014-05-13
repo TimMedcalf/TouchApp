@@ -116,7 +116,7 @@
   CGSize boundsSize = self.bounds.size;
   CGSize imageSize = imageView.bounds.size;
     
-    // calculate min/max zoomscale
+    // calculate min/max zoom scale
   CGFloat xScale = boundsSize.width / imageSize.width;    // the scale needed to perfectly fit the image width-wise
   CGFloat yScale = boundsSize.height / imageSize.height;  // the scale needed to perfectly fit the image height-wise
   CGFloat minScale = MIN(xScale, yScale);                 // use minimum of these to allow the image to become fully visible
@@ -165,7 +165,7 @@
     return CGPointZero;
 }
 
-// Adjusts content offset and scale to try to preserve the old zoomscale and center.
+// Adjusts content offset and scale to try to preserve the old zoom scale and center.
 - (void)restoreCenterPoint:(CGPoint)oldCenter scale:(CGFloat)oldScale {
     // Step 1: restore zoom scale, first making sure it is within the allowable range.
     self.zoomScale = MIN(self.maximumZoomScale, MAX(self.minimumZoomScale, oldScale));

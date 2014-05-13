@@ -24,7 +24,7 @@ NSString *const Key_ImageOverride = @"imageURL";
 @implementation RadioItem
 
 #pragma mark overrides from FeedItem
-- (void)procesSavedDictionary:(NSDictionary *)dict {
+- (void)processSavedDictionary:(NSDictionary *)dict {
   self.title = dict[Key_Radio_Title];
   self.titleLabel = dict[Key_Radio_TitleLabel];
   self.author = dict[Key_Radio_Author];
