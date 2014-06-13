@@ -95,7 +95,7 @@ NSString *const TouchTableCellSubtitleReuseID = @"TouchTableCellSubtitleReuseID"
 }
 
 #pragma mark class methods
-+ (CGFloat)rowHeight {
++ (CGFloat)estimatedRowHeight {
   return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 81 : 58;
 }
 

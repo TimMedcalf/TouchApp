@@ -34,4 +34,13 @@
   [self.navigationController pushViewController:controller animated:YES];
 }
 
+#pragma mark overrides
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+  return [TouchTableCell estimatedHeight];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+  return 100;
+}
+
 @end
