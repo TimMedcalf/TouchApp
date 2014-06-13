@@ -1,9 +1,9 @@
 
-#import "NewRadioItemViewController.h"
+#import "RadioItemViewController.h"
 #import "Flurry.h"
 
 
-@implementation NewRadioItemViewController
+@implementation RadioItemViewController
 
 - (void)viewDidLoad {
   [super viewDidLoad];

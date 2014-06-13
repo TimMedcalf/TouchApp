@@ -4,7 +4,7 @@
 #import "CatalogueItem.h"
 
 
-@interface NewCatalogueItemViewController : HTMLItemViewController <TJMAudioCenterDelegate>
+@interface CatalogueItemViewController : HTMLItemViewController <TJMAudioCenterDelegate>
 
 @property (strong, nonatomic) CatalogueItem *item;
 

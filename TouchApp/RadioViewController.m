@@ -7,7 +7,7 @@
 //
 
 #import "RadioViewController.h"
-#import "NewRadioItemViewController.h"
+#import "RadioItemViewController.h"
 #import "TouchTableCell.h"
 
 
@@ -30,7 +30,7 @@
   
   RadioItem *curItem = (RadioItem *) [self.feedList itemAtIndex:(NSUInteger)indexPath.row];
   
-  NewRadioItemViewController *controller = [[NewRadioItemViewController alloc] init];
+  RadioItemViewController *controller = [[RadioItemViewController alloc] init];
   controller.item = curItem;
   controller.HTMLString = curItem.htmlForWebView;
   controller.item = curItem;

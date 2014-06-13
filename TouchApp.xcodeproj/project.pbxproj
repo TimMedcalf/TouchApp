@@ -60,8 +60,8 @@
 		224FBC8E1409977B00749E42 /* GTMNSString+URLArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC8B1409977B00749E42 /* GTMNSString+URLArguments.m */; };
 		224FBC8F1409977B00749E42 /* GTMNSDictionary+URLArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC8D1409977B00749E42 /* GTMNSDictionary+URLArguments.m */; };
 		224FBC931409988200749E42 /* ImageGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC911409987F00749E42 /* ImageGalleryViewController.m */; };
-		2252536D141E289200157205 /* NewCatalogueItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2252536B141E289200157205 /* NewCatalogueItemViewController.m */; };
-		22525373141E2CA500157205 /* NewRadioItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22525371141E2CA500157205 /* NewRadioItemViewController.m */; };
+		2252536D141E289200157205 /* CatalogueItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2252536B141E289200157205 /* CatalogueItemViewController.m */; };
+		22525373141E2CA500157205 /* RadioItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22525371141E2CA500157205 /* RadioItemViewController.m */; };
 		225C5BA716FC695400346816 /* viewConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 225C5BA616FC695300346816 /* viewConfig.plist */; };
 		225C5BAA16FC88B900346816 /* TouchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 225C5BA916FC88B900346816 /* TouchTableViewController.m */; };
 		225C5BAB16FCA5EA00346816 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22DEDC9D1661FD6400CAC08E /* SystemConfiguration.framework */; };
@@ -197,10 +197,10 @@
 		224FBC8D1409977B00749E42 /* GTMNSDictionary+URLArguments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSDictionary+URLArguments.m"; sourceTree = "<group>"; };
 		224FBC901409987E00749E42 /* ImageGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageGalleryViewController.h; sourceTree = "<group>"; };
 		224FBC911409987F00749E42 /* ImageGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageGalleryViewController.m; sourceTree = "<group>"; };
-		2252536A141E289200157205 /* NewCatalogueItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewCatalogueItemViewController.h; sourceTree = "<group>"; };
-		2252536B141E289200157205 /* NewCatalogueItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewCatalogueItemViewController.m; sourceTree = "<group>"; };
-		22525370141E2CA500157205 /* NewRadioItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewRadioItemViewController.h; sourceTree = "<group>"; };
-		22525371141E2CA500157205 /* NewRadioItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewRadioItemViewController.m; sourceTree = "<group>"; };
+		2252536A141E289200157205 /* CatalogueItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatalogueItemViewController.h; sourceTree = "<group>"; };
+		2252536B141E289200157205 /* CatalogueItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatalogueItemViewController.m; sourceTree = "<group>"; };
+		22525370141E2CA500157205 /* RadioItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioItemViewController.h; sourceTree = "<group>"; };
+		22525371141E2CA500157205 /* RadioItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioItemViewController.m; sourceTree = "<group>"; };
 		225C5BA616FC695300346816 /* viewConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = viewConfig.plist; sourceTree = "<group>"; };
 		225C5BA816FC88B800346816 /* TouchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchTableViewController.h; sourceTree = "<group>"; };
 		225C5BA916FC88B900346816 /* TouchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchTableViewController.m; sourceTree = "<group>"; };
@@ -724,8 +724,8 @@
 		22CB4C4A13EFE847008968D6 /* Catalogue */ = {
 			isa = PBXGroup;
 			children = (
-				2252536A141E289200157205 /* NewCatalogueItemViewController.h */,
-				2252536B141E289200157205 /* NewCatalogueItemViewController.m */,
+				2252536A141E289200157205 /* CatalogueItemViewController.h */,
+				2252536B141E289200157205 /* CatalogueItemViewController.m */,
 				222951F213EC4B5D001D174D /* CatalogueViewController.h */,
 				222951F313EC4B5D001D174D /* CatalogueViewController.m */,
 			);
@@ -757,8 +757,8 @@
 		22CB4CBA13F12BA4008968D6 /* Radio */ = {
 			isa = PBXGroup;
 			children = (
-				22525370141E2CA500157205 /* NewRadioItemViewController.h */,
-				22525371141E2CA500157205 /* NewRadioItemViewController.m */,
+				22525370141E2CA500157205 /* RadioItemViewController.h */,
+				22525371141E2CA500157205 /* RadioItemViewController.m */,
 				22CB4CBB13F12BDA008968D6 /* RadioViewController.h */,
 				22CB4CBC13F12BDA008968D6 /* RadioViewController.m */,
 			);
@@ -973,8 +973,8 @@
 				227C569014163D9200169F38 /* TouchApplication.m in Sources */,
 				2263104914176F88001B7841 /* TJMAudioTableViewController.m in Sources */,
 				226310511417E923001B7841 /* TJMAudioToggleViewController.m in Sources */,
-				2252536D141E289200157205 /* NewCatalogueItemViewController.m in Sources */,
-				22525373141E2CA500157205 /* NewRadioItemViewController.m in Sources */,
+				2252536D141E289200157205 /* CatalogueItemViewController.m in Sources */,
+				22525373141E2CA500157205 /* RadioItemViewController.m in Sources */,
 				229890271427556400345AD3 /* HTMLItemViewController.m in Sources */,
 				2286E6D814357C5D00C4B275 /* TKProgressBarView.m in Sources */,
 				22F7C4DF162F5D1D002E2CB6 /* NewsItemViewController.m in Sources */,

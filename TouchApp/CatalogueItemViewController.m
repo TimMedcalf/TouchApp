@@ -1,9 +1,9 @@
 
-#import "NewCatalogueItemViewController.h"
+#import "CatalogueItemViewController.h"
 #import "Flurry.h"
 
 
-@implementation NewCatalogueItemViewController
+@implementation CatalogueItemViewController
 
 - (void)viewDidLoad {
   [super viewDidLoad];

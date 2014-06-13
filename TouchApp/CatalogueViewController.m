@@ -8,7 +8,7 @@
 
 #import "CatalogueViewController.h"
 #import "CatalogueItem.h"
-#import "NewCatalogueItemViewController.h"
+#import "CatalogueItemViewController.h"
 #import "TouchTableCell.h"
 
 
@@ -31,7 +31,7 @@
 
   CatalogueItem *curItem = (CatalogueItem *) [self.feedList itemAtIndex:(NSUInteger)indexPath.row];
   
-  NewCatalogueItemViewController *controller = [[NewCatalogueItemViewController alloc] init]; //]WithNibName:@"HTMLItemViewController.xib" bundle:nil];
+  CatalogueItemViewController *controller = [[CatalogueItemViewController alloc] init]; //]WithNibName:@"HTMLItemViewController.xib" bundle:nil];
   controller.item = curItem;
   controller.HTMLString = curItem.htmlForWebView;
 

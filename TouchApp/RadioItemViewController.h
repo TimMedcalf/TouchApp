@@ -4,7 +4,7 @@
 #import "RadioItem.h"
 
 
-@interface NewRadioItemViewController : HTMLItemViewController <TJMAudioCenterDelegate>
+@interface RadioItemViewController : HTMLItemViewController <TJMAudioCenterDelegate>
 
 @property (strong, nonatomic) RadioItem *item;
 
