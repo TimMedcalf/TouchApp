@@ -4,11 +4,6 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-AFNetworking.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-FlurrySDK.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,22 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1D3443D6E8FF4740AFB2FE8A</key>
+		<key>04D309855B4249DEA3E77948</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AA009778E9E642979FF4D8AE</key>
+		<key>17ABD59AE5FF4C6898D42670</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F24FD1D1C21F47D5A279ED02</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F5427C7CE63B47899C9168D9</key>
+		<key>3BD5CF3B6C2143F584535944</key>
 		<dict>
 			<key>primary</key>
 			<true/>
