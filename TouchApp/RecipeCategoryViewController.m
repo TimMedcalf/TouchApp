@@ -21,7 +21,7 @@
     cell = [[TouchTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TouchTableCellDefaultReuseID];
   }
   RecipeCategoryItem *currentItem = (RecipeCategoryItem *) [self.feedList itemAtIndex:(NSUInteger)indexPath.row];
-  cell.titleLabel.text = currentItem.recipeTitle;
+  cell.titleString = currentItem.recipeTitle;
   return cell;
 }
 

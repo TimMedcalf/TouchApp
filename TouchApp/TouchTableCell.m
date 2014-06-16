@@ -59,14 +59,14 @@ NSString *const TouchTableCellSubtitleReuseID = @"TouchTableCellSubtitleReuseID"
       if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         //iPad
         self.titleLabel.frame = CGRectMake(50, 17, self.frame.size.width-195, 25);
-        self.subtitleLabel.frame = CGRectMake(50, 42, self.frame.size.width-195, 22);
+        self.subtitleLabel.frame = CGRectMake(50, CGRectGetMaxY(self.titleLabel.frame), self.frame.size.width-195, 22);
         self.subtitleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
         self.disclosure.frame = CGRectMake(self.frame.size.width-95, 16, 45, 45);
       } else {
         //iPhone
         self.titleLabel.frame = CGRectMake(17, 16, self.frame.size.width-81, 15);
         self.subtitleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-        self.subtitleLabel.frame = CGRectMake(17, 31, self.frame.size.width-81, 15);
+        self.subtitleLabel.frame = CGRectMake(17, CGRectGetMaxY(self.titleLabel.frame), self.frame.size.width-81, 15);
         self.subtitleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:10];
         self.disclosure.frame = CGRectMake(self.frame.size.width-47, 14, 30, 30);
       }
@@ -98,5 +98,17 @@ NSString *const TouchTableCellSubtitleReuseID = @"TouchTableCellSubtitleReuseID"
 + (CGFloat)estimatedRowHeight {
   return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 81 : 58;
 }
+
+- (void)setTitleString:(NSString *)titleString {
+  _titleString = titleString;
+  self.titleLabel.text = self.titleString;
+}
+
+- (void)setSubtitleString:(NSString *)subtitleString {
+  _subtitleString = subtitleString;
+  self.subtitleLabel.text = self.subtitleString;
+}
+
+
 
 @end

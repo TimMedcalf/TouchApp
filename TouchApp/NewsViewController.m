@@ -20,8 +20,8 @@
   }
   //NewsItem *currentItem = (NewsItem *)self.feedList.items[(NSUInteger)indexPath.row];
   NewsItem *currentItem = (NewsItem *) [self.feedList itemAtIndex:(NSUInteger)indexPath.row];
-  cell.titleLabel.text = currentItem.title;
-  cell.subtitleLabel.text = currentItem.pubDate;//[NSDateFormatter localizedStringFromDate:currentItem.pubDate dateStyle:NSDateFormatterMediumStyle timeStyle:kCFDateFormatterShortStyle];
+  cell.titleString = currentItem.title;
+  cell.subtitleString = currentItem.pubDate;//[NSDateFormatter localizedStringFromDate:currentItem.pubDate dateStyle:NSDateFormatterMediumStyle timeStyle:kCFDateFormatterShortStyle];
   return cell;
 }
 
