@@ -21,8 +21,7 @@
     cell = [[TouchTableCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:TouchTableCellSubtitleReuseID];
   }
   CatalogueItem *currentItem = (CatalogueItem *) [self.feedList itemAtIndex:(NSUInteger)indexPath.row];
-  cell.titleString = currentItem.artist;
-  cell.subtitleString = currentItem.title;//[NSDateFormatter localizedStringFromDate:currentItem.pubDate dateStyle:NSDateFormatterMediumStyle timeStyle:kCFDateFormatterShortStyle];
+  [cell configureWithTitle:currentItem.artist subtitle:currentItem.title];
   return cell;
 }
 

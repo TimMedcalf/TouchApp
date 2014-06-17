@@ -20,8 +20,7 @@
     cell = [[TouchTableCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:TouchTableCellSubtitleReuseID];
   }
   RadioItem *currentItem = (RadioItem *) [self.feedList itemAtIndex:(NSUInteger)indexPath.row];
-  cell.titleString = currentItem.titleLabel;
-  cell.subtitleString = currentItem.title;
+  [cell configureWithTitle:currentItem.titleLabel subtitle:currentItem.title];
   return cell;
 }
 

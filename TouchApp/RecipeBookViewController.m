@@ -51,8 +51,7 @@
     cell = [[TouchTableCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:TouchTableCellSubtitleReuseID];
   }
   RecipeItem *currentItem = (RecipeItem *)[self.feedList itemAtIndex:(NSUInteger)indexPath.row];
-  cell.titleString = currentItem.recipeTitle;
-  cell.subtitleString = currentItem.recipeExcerpt;//[NSDateFormatter localizedStringFromDate:currentItem.pubDate dateStyle:NSDateFormatterMediumStyle timeStyle:kCFDateFormatterShortStyle];
+  [cell configureWithTitle:currentItem.recipeTitle subtitle:currentItem.recipeExcerpt];
   return cell;
 }
 

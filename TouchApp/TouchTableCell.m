@@ -15,6 +15,9 @@ NSString *const TouchTableCellSubtitleReuseID = @"TouchTableCellSubtitleReuseID"
 
 @interface TouchTableCell ()
 
+@property (nonatomic, strong) NSString *titleString;
+@property (nonatomic, strong) NSString *subtitleString;
+
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *subtitleLabel;
 @property (nonatomic, strong) UIImageView *disclosure;
@@ -107,6 +110,20 @@ NSString *const TouchTableCellSubtitleReuseID = @"TouchTableCellSubtitleReuseID"
 - (void)setSubtitleString:(NSString *)subtitleString {
   _subtitleString = subtitleString;
   self.subtitleLabel.text = self.subtitleString;
+}
+
+- (void)configureWithTitle:(NSString *)titleString subtitle:(NSString *)subtitleString {
+  self.titleString = titleString;
+  self.subtitleString = subtitleString;
+}
+
+- (void)configureWithTitle:(NSString *)titleString {
+  [self configureWithTitle:titleString subtitle:nil];
+}
+
+
+- (void)prepareForReuse {
+  [self configureWithTitle:nil];
 }
 
 

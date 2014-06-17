@@ -18,10 +18,8 @@
   if (!cell) {
     cell = [[TouchTableCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:TouchTableCellSubtitleReuseID];
   }
-  //NewsItem *currentItem = (NewsItem *)self.feedList.items[(NSUInteger)indexPath.row];
   NewsItem *currentItem = (NewsItem *) [self.feedList itemAtIndex:(NSUInteger)indexPath.row];
-  cell.titleString = currentItem.title;
-  cell.subtitleString = currentItem.pubDate;//[NSDateFormatter localizedStringFromDate:currentItem.pubDate dateStyle:NSDateFormatterMediumStyle timeStyle:kCFDateFormatterShortStyle];
+  [cell configureWithTitle:currentItem.title subtitle:currentItem.pubDate];
   return cell;
 }
 
