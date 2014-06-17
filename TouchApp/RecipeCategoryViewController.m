@@ -16,9 +16,9 @@
 
 #pragma mark - Table view data source
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  TouchTableCell *cell = [tableView dequeueReusableCellWithIdentifier:TouchTableCellDefaultReuseID];
+  TouchTableCell *cell = [tableView dequeueReusableCellWithIdentifier:TouchTableCellReuseID];
   if (!cell) {
-    cell = [[TouchTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TouchTableCellDefaultReuseID];
+    cell = [[TouchTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TouchTableCellReuseID];
   }
   RecipeCategoryItem *currentItem = (RecipeCategoryItem *) [self.feedList itemAtIndex:(NSUInteger)indexPath.row];
   [cell configureWithTitle:currentItem.recipeTitle];
