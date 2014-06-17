@@ -34,8 +34,11 @@
 
 #pragma mark overrides
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//  return 100;
-//}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+  //first up get the item
+  NewsItem *currentItem = (NewsItem *) [self.feedList itemAtIndex:(NSUInteger)indexPath.row];
+  //[cell configureWithTitle:currentItem.title subtitle:currentItem.pubDate];
+  return [TouchTableCell actualRowHeightwithTitle:currentItem.title subtitle:currentItem.pubDate forTableWidth:tableView.bounds.size.width];
+}
 
 @end

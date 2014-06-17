@@ -8,9 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-//#define TouchTableCellTitleTag 6712
-//#define TouchTableCellSubtitleTag 6713
-
 FOUNDATION_EXPORT NSString *const TouchTableCellReuseID;
 
 @interface TouchTableCell : UITableViewCell
@@ -19,5 +16,6 @@ FOUNDATION_EXPORT NSString *const TouchTableCellReuseID;
 - (void)configureWithTitle:(NSString *)titleString subtitle:(NSString *)subtitleString;
 
 + (CGFloat)estimatedRowHeight;
++ (CGFloat)actualRowHeightwithTitle:(NSString *)title subtitle:(NSString *)subtitle forTableWidth:(CGFloat)tableWidth;
 
 @end
