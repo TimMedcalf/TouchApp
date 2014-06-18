@@ -15,7 +15,7 @@
 		<key>tableHeader</key>
 		<string>news_header</string>
 		<key>iconTintW</key>
-		<real>0.67</real>
+		<integer>0</integer>
 		<key>barTintW</key>
 		<integer>0</integer>
 	</dict>
