@@ -84,7 +84,8 @@
   CGRect pagingScrollViewFrame = [self frameForPagingScrollView];
   _pagingScrollView = [[UIScrollView alloc] initWithFrame:pagingScrollViewFrame];
   self.pagingScrollView.pagingEnabled = YES;
-  self.pagingScrollView.backgroundColor = [UIColor blackColor];
+  //self.pagingScrollView.backgroundColor = [UIColor blackColor];
+  self.pagingScrollView.backgroundColor = [UIColor whiteColor];
   self.pagingScrollView.contentSize = [self contentSizeForPagingScrollView];
   self.pagingScrollView.delegate = self;
   self.pagingScrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
@@ -115,10 +116,12 @@
   
   [self.view addSubview:self.customNavigationBar];
   self.customNavigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(savePhoto)];
-  self.customNavigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(goBack)];
-  self.customNavigationBar.tintColor = nil;
+  self.customNavigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"<" style:UIBarButtonItemStylePlain target:self action:@selector(goBack)];
+  self.customNavigationBar.tintColor = [UIColor whiteColor];
   self.customNavigationBar.barStyle = UIBarStyleBlack;
   self.customNavigationBar.translucent = YES;
+  
+  //self.customNavigationBar.tintColor = [UIColor whiteColor];
   
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleBarsNotification:) name:@"TJMPhotoViewToggleBars" object:nil];
 }
@@ -135,7 +138,7 @@
 
 - (void)setViewState {
   if ([self.imageList itemCount] > 1) {
-    self.customNavigationItem.title = [NSString stringWithFormat:@"%li of %lu", [self centerPhotoIndex]+1, (unsigned long)[self.imageList itemCount]];
+    self.customNavigationItem.title = [NSString stringWithFormat:@"%i of %lu", [self centerPhotoIndex]+1, (unsigned long)[self.imageList itemCount]];
   } else {
     self.title = @"";
   }
