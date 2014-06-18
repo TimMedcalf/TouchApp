@@ -12,19 +12,19 @@
 #import "UIApplication+TJMNetworkWarning.h"
 #import "TKProgressBarView.h"
 
-NSString *const Key_Title = @"title";
-NSString *const Key_TabBarImage = @"tabBarImage";
-NSString *const Key_Shim = @"shim";
-NSString *const Key_HeaderText = @"headerText";
-NSString *const Key_TableHeader = @"tableHeader";
-NSString *const Key_BarTintW = @"barTintW";
-NSString *const Key_BarTintR = @"barTintR";
-NSString *const Key_BarTintG = @"barTintG";
-NSString *const Key_BarTintB = @"barTintB";
-NSString *const Key_IconTintW = @"iconTintW";
-NSString *const Key_IconTintR = @"iconTintR";
-NSString *const Key_IconTintG = @"iconTintG";
-NSString *const Key_IconTintB = @"iconTintB";
+NSString static *const Key_Title = @"title";
+NSString static *const Key_TabBarImage = @"tabBarImage";
+NSString static *const Key_Shim = @"shim";
+NSString static *const Key_HeaderText = @"headerText";
+NSString static *const Key_TableHeader = @"tableHeader";
+NSString static *const Key_BarTintW = @"barTintW";
+NSString static *const Key_BarTintR = @"barTintR";
+NSString static *const Key_BarTintG = @"barTintG";
+NSString static *const Key_BarTintB = @"barTintB";
+NSString static *const Key_IconTintW = @"iconTintW";
+NSString static *const Key_IconTintR = @"iconTintR";
+NSString static *const Key_IconTintG = @"iconTintG";
+NSString static *const Key_IconTintB = @"iconTintB";
 
 
 @interface TouchTableViewController ()
