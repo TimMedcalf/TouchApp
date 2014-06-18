@@ -58,8 +58,6 @@ NSString *const Key_IconTintB = @"iconTintB";
   [super viewDidLoad];
   [Flurry logAllPageViews:self.navigationController];
   
-#warning setting the actual row heigjt to be the estimate for now...
-  self.tableView.rowHeight = [TouchTableCell estimatedRowHeight];
   self.tableView.estimatedRowHeight = [TouchTableCell estimatedRowHeight];
   
   self.navigationItem.title = @"";

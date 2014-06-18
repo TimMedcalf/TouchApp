@@ -64,4 +64,11 @@
   [self.navigationController pushViewController:controller animated:YES];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+  //first up get the item
+  RecipeItem *currentItem = (RecipeItem *)[self.feedList itemAtIndex:(NSUInteger)indexPath.row];
+  //[cell configureWithTitle:currentItem.title subtitle:currentItem.pubDate];
+  return [TouchTableCell actualRowHeightwithTitle:currentItem.recipeTitle subtitle:currentItem.recipeExcerpt forTableWidth:tableView.bounds.size.width];
+}
+
 @end

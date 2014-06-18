@@ -36,4 +36,11 @@
   [self.navigationController pushViewController:controller animated:YES];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+  //first up get the item
+  RadioItem *currentItem = (RadioItem *) [self.feedList itemAtIndex:(NSUInteger)indexPath.row];
+  //[cell configureWithTitle:currentItem.title subtitle:currentItem.pubDate];
+  return [TouchTableCell actualRowHeightwithTitle:currentItem.titleLabel subtitle:currentItem.title forTableWidth:tableView.bounds.size.width];
+}
+
 @end

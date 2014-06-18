@@ -14,6 +14,12 @@
 
 @implementation RecipeCategoryViewController
 
+- (void)viewDidLoad {
+  [super viewDidLoad];
+  self.tableView.estimatedRowHeight = 45;
+}
+
+
 #pragma mark - Table view data source
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   TouchTableCell *cell = [tableView dequeueReusableCellWithIdentifier:TouchTableCellReuseID];
@@ -30,6 +36,14 @@
   RecipeCategoryItem *currentItem = (RecipeCategoryItem *) [self.feedList itemAtIndex:(NSUInteger)indexPath.row];
   RecipeBookViewController *controller = [[RecipeBookViewController alloc] initWithSettingsDictionary:self.settings andRecipeCategoryNamed:currentItem.recipeTitle];
   [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+  //first up get the item
+  RecipeCategoryItem *currentItem = (RecipeCategoryItem *) [self.feedList itemAtIndex:(NSUInteger)indexPath.row];
+  //[cell configureWithTitle:currentItem.title subtitle:currentItem.pubDate];
+  //NSLog(@"Estimated %f", tableView.estimatedRowHeight);
+  return [TouchTableCell actualRowHeightwithTitle:currentItem.recipeTitle subtitle:nil forTableWidth:tableView.bounds.size.width];
 }
 
 @end

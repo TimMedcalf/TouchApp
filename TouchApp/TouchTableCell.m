@@ -105,6 +105,7 @@ static const CGFloat kAccessoryInset = 15.;
   //next up, add the top and bottom vertical padding
   rollingHeight += [TouchTableCell verticalPadding] * 2;
   //and that should be it!
+  //NSLog(@"ActualHeight %f",ceil(rollingHeight));
   return ceil(rollingHeight);
 }
 
@@ -208,8 +209,6 @@ static const CGFloat kAccessoryInset = 15.;
       self.titleLabel.frame = CGRectMake(titleInsetXVal, [TouchTableCell verticalPadding], self.contentView.frame.size.width - (titleInsetXVal * 2),  titleSize.height);
     }
   }
-  NSLog(@"Content)View = %@", NSStringFromCGRect(self.contentView.frame));
-  NSLog(@"AccessoryView = %@", NSStringFromCGRect(self.accessoryView.frame));
 }
 
 
