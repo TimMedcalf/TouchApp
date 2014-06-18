@@ -52,7 +52,7 @@ static NSInteger iPadThumbnailRowCount = 8;
  
 - (void)viewDidLoad {
   [super viewDidLoad];
-  [Flurry logAllPageViews:self.navigationController];
+  [Flurry logAllPageViewsForTarget:self.navigationController];
   
   [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
   

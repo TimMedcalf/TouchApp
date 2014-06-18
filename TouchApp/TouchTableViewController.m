@@ -56,7 +56,7 @@ NSString *const Key_IconTintB = @"iconTintB";
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  [Flurry logAllPageViews:self.navigationController];
+  [Flurry logAllPageViewsForTarget:self.navigationController];
   
   self.tableView.estimatedRowHeight = [TouchTableCell estimatedRowHeight];
   
