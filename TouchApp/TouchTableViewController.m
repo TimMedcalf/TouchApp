@@ -62,8 +62,11 @@ NSString static *const Key_IconTintB = @"iconTintB";
   
   self.navigationItem.title = @"";
   
-  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
-  self.navigationItem.backBarButtonItem = backButton;
+//  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
+//  self.navigationItem.backBarButtonItem = backButton;
+  UIBarButtonItem *bbItem = [[UIBarButtonItem alloc] initWithTitle:@"<" style:UIBarButtonItemStylePlain target:nil action:nil];
+  bbItem.tintColor = [UIColor whiteColor];
+  self.navigationItem.backBarButtonItem = bbItem;
   
   self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:self.settings[Key_HeaderText]]];
   
@@ -125,7 +128,8 @@ NSString static *const Key_IconTintB = @"iconTintB";
                                 blue:((NSNumber *)self.settings[Key_BarTintB]).floatValue
                                alpha:1.];
   }
-	nb.tintColor = barColor;
+  //tint color needs to be white so we can see the back button!
+	nb.tintColor = [UIColor whiteColor];
   [nb setBackgroundImage:[UIImage imageNamed:self.settings[Key_Shim]] forBarMetrics:UIBarMetricsDefault];
   UIColor *iconColor = nil;
   if (self.settings[Key_IconTintW]) {
