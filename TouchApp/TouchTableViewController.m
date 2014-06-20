@@ -50,6 +50,9 @@ NSString static *const Key_IconTintB = @"iconTintB";
     self.feedList = feedList;
     self.title = self.settings[Key_Title];
     self.tabBarItem.image = [UIImage imageNamed:self.settings[Key_TabBarImage]];
+    
+    [self.navigationController.navigationBar setBackIndicatorImage:[UIImage imageNamed:@"765-arrow-left-toolbar"]];
+    [self.navigationController.navigationBar setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"765-arrow-left-toolbar"]];
   }
   return self;
 }
@@ -62,12 +65,12 @@ NSString static *const Key_IconTintB = @"iconTintB";
   
   self.navigationItem.title = @"";
   
-  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStyleBordered target:nil action:nil];
-  backButton.tintColor = [UIColor whiteColor];
-  self.navigationItem.backBarButtonItem = backButton;
+//  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStyleBordered target:nil action:nil];
+//  backButton.tintColor = [UIColor whiteColor];
+//  self.navigationItem.backBarButtonItem = backButton;
 //  UIBarButtonItem *bbItem = [[UIBarButtonItem alloc] initWithTitle:@"<" style:UIBarButtonItemStylePlain target:nil action:nil];
 //  bbItem.tintColor = [UIColor whiteColor];
-//  self.navigationItem.backBarButtonItem = bbItem;
+  self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
   
   self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:self.settings[Key_HeaderText]]];
   
@@ -81,6 +84,8 @@ NSString static *const Key_IconTintB = @"iconTintB";
     [self.progressView setHidden:NO];
   }
   [self.feedList refreshFeed];
+  [self.navigationController.navigationBar setBackIndicatorImage:[UIImage imageNamed:@"765-arrow-left-toolbar"]];
+  [self.navigationController.navigationBar setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"765-arrow-left-toolbar"]];
 }
 
 - (FeedList *)feedSetup {

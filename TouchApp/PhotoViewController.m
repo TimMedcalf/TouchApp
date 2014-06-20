@@ -128,9 +128,8 @@
   [self.customNavigationBar setItems:@[self.customNavigationItem]];
   
   [self.view addSubview:self.customNavigationBar];
-  //self.customNavigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(savePhoto)];
-  self.customNavigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(savePhoto)];
-  self.customNavigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"<" style:UIBarButtonItemStylePlain target:self action:@selector(goBack)];
+  self.customNavigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"702-share-toolbar"] style:UIBarButtonItemStylePlain target:self action:@selector(savePhoto)];
+  self.customNavigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"765-arrow-left-toolbar"] style:UIBarButtonItemStylePlain target:self action:@selector(goBack)];
   self.customNavigationBar.tintColor = [UIColor whiteColor];
   self.customNavigationBar.barStyle = UIBarStyleBlackTranslucent;
   self.customNavigationBar.translucent = YES;
@@ -156,7 +155,7 @@
 
 - (void)setViewState {
   if ([self.imageList itemCount] > 1) {
-    self.customNavigationItem.title = [NSString stringWithFormat:@"%li of %lu", [self centerPhotoIndex]+1, (unsigned long)[self.imageList itemCount]];
+    self.customNavigationItem.title = [NSString stringWithFormat:@"%i of %lu", (int)[self centerPhotoIndex]+1, (unsigned long)[self.imageList itemCount]];
   } else {
     self.title = @"";
   }
