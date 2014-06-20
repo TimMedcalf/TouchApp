@@ -194,7 +194,6 @@ static NSInteger iPadThumbnailRowCount = 8;
       tmpRes = [[TJMImageResourceView alloc]initWithFrame:CGRectMake(offset, 0, self.thumbnailWidth, self.thumbnailWidth)];
       tmpRes.tag = CellImageTag + i;
       [cell.contentView addSubview:tmpRes];
-      tmpRes = nil;
       offset += self.thumbnailWidth;
     }
     UITapGestureRecognizer *tapper = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(thumbnailTapped:)];
@@ -202,7 +201,7 @@ static NSInteger iPadThumbnailRowCount = 8;
   }
   
   for (int i = 0; i < self.thumbnailRowCount; i++) {
-    NSUInteger tmpIndex = (indexPath.row * self.thumbnailRowCount) + i;
+    NSUInteger tmpIndex = (NSUInteger) ((indexPath.row * self.thumbnailRowCount) + i);
     if (tmpIndex < [self.imageList itemCount]) {
       ImageItem *currentItem = ([self.imageList itemAtIndex:(NSUInteger)tmpIndex]);
       //assign the image

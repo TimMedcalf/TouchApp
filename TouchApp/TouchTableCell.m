@@ -27,7 +27,6 @@ static const CGFloat kAccessoryInset = 15.;
 
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *subtitleLabel;
-@property (nonatomic, strong) UIImageView *disclosure;
 
 @end
 

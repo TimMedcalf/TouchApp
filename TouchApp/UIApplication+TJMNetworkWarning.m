@@ -20,7 +20,6 @@ static NSTimeInterval tjm_lastNetworkWarning = 0;
     tjm_lastNetworkWarning = timeSince;
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No connection" message:@"Please check you are connected to the internet." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
     [alert show];
-    alert = nil;
   }
 }
 

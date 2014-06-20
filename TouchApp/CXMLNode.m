@@ -355,7 +355,7 @@ return(theResult);
 static int MyXmlOutputWriteCallback(void * context, const char * buffer, int len)
 {
 NSMutableData *theData = (__bridge NSMutableData *)context;
-[theData appendBytes:buffer length:len];
+    [theData appendBytes:buffer length:(NSUInteger) len];
 return(len);
 }
 
