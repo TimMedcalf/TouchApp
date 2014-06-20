@@ -62,11 +62,12 @@ NSString static *const Key_IconTintB = @"iconTintB";
   
   self.navigationItem.title = @"";
   
-//  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
-//  self.navigationItem.backBarButtonItem = backButton;
-  UIBarButtonItem *bbItem = [[UIBarButtonItem alloc] initWithTitle:@"<" style:UIBarButtonItemStylePlain target:nil action:nil];
-  bbItem.tintColor = [UIColor whiteColor];
-  self.navigationItem.backBarButtonItem = bbItem;
+  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStyleBordered target:nil action:nil];
+  backButton.tintColor = [UIColor whiteColor];
+  self.navigationItem.backBarButtonItem = backButton;
+//  UIBarButtonItem *bbItem = [[UIBarButtonItem alloc] initWithTitle:@"<" style:UIBarButtonItemStylePlain target:nil action:nil];
+//  bbItem.tintColor = [UIColor whiteColor];
+//  self.navigationItem.backBarButtonItem = bbItem;
   
   self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:self.settings[Key_HeaderText]]];
   

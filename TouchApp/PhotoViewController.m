@@ -128,15 +128,20 @@
   [self.customNavigationBar setItems:@[self.customNavigationItem]];
   
   [self.view addSubview:self.customNavigationBar];
-  self.customNavigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(savePhoto)];
+  //self.customNavigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(savePhoto)];
+  self.customNavigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(savePhoto)];
   self.customNavigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"<" style:UIBarButtonItemStylePlain target:self action:@selector(goBack)];
   self.customNavigationBar.tintColor = [UIColor whiteColor];
-  self.customNavigationBar.barStyle = UIBarStyleBlack;
+  self.customNavigationBar.barStyle = UIBarStyleBlackTranslucent;
   self.customNavigationBar.translucent = YES;
   
   //self.customNavigationBar.tintColor = [UIColor whiteColor];
   
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleBarsNotification:) name:@"TJMPhotoViewToggleBars" object:nil];
+}
+
+- (BOOL)prefersStatusBarHidden {
+  return YES;
 }
 
 - (void)savePhoto {
@@ -151,24 +156,28 @@
 
 - (void)setViewState {
   if ([self.imageList itemCount] > 1) {
-    self.customNavigationItem.title = [NSString stringWithFormat:@"%i of %lu", [self centerPhotoIndex]+1, (unsigned long)[self.imageList itemCount]];
+    self.customNavigationItem.title = [NSString stringWithFormat:@"%li of %lu", [self centerPhotoIndex]+1, (unsigned long)[self.imageList itemCount]];
   } else {
     self.title = @"";
   }
   if ([self.pagingScrollView isTracking]) {
     self.customNavigationBar.hidden = YES;
+    self.pagingScrollView.backgroundColor = [UIColor blackColor];
+    
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
   }
 }
 
 - (void)toggleBarsNotification:(NSNotification *)notification {
   self.customNavigationBar.hidden = !self.customNavigationBar.hidden;
+  self.pagingScrollView.backgroundColor = (self.customNavigationBar.hidden) ? [UIColor blackColor] : [UIColor whiteColor];
 }
 
 - (void)goBack {
   if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
     self.customNavigationBar.hidden = YES;
+    self.pagingScrollView.backgroundColor = [UIColor blackColor];
     [self.navigationController popViewControllerAnimated:YES];
   } else {
     [self.delegate dismissPhotoView:self];
@@ -346,9 +355,6 @@
 }
 
 - (CGRect)frameForPageAtIndex:(NSUInteger)index {
-  //original example code
-  //CGRect bounds = self.pagingScrollView.bounds;
-  //CGRect bounds = self.pagingScrollView.frame;
   CGRect bounds = self.view.bounds;
   //NSLog(@"frameForPageAtIndex = %@",NSStringFromCGRect(bounds));
   CGRect pageFrame = bounds;
@@ -359,9 +365,7 @@
 }
 
 - (CGSize)contentSizeForPagingScrollView {
-  //orginal
-  //CGRect bounds = self.pagingScrollView.bounds;
-  //CGRect bounds = self.pagingScrollView.frame;
+
   CGRect bounds = self.view.bounds;
   
   //NSLog(@"contentSizeForPagingScrollView = %@",NSStringFromCGRect(bounds));
