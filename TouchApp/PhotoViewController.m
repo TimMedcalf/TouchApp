@@ -66,6 +66,9 @@
   CGFloat       percentScrolledIntoFirstVisiblePage;
 }
 
+@property (nonatomic, strong) UIPopoverController *activityPopover;
+@property (nonatomic, strong) UIBarButtonItem *shareItem;
+
 - (NSInteger)centerPhotoIndex;
 - (void)setViewState;
 - (void)skipToPage:(NSUInteger)page;
@@ -129,6 +132,7 @@
   
   [self.view addSubview:self.customNavigationBar];
   self.customNavigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"702-share-toolbar"] style:UIBarButtonItemStylePlain target:self action:@selector(savePhoto)];
+  self.shareItem = self.customNavigationItem.rightBarButtonItem;
   self.customNavigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"765-arrow-left-toolbar"] style:UIBarButtonItemStylePlain target:self action:@selector(goBack)];
   self.customNavigationBar.tintColor = [UIColor whiteColor];
   self.customNavigationBar.barStyle = UIBarStyleBlackTranslucent;
@@ -142,13 +146,42 @@
 }
 
 - (void)savePhoto {
-	UIActionSheet *actionSheet = [[UIActionSheet alloc] 
-                                initWithTitle:nil
-                                delegate:self 
-                                cancelButtonTitle:@"Cancel" 
-                                destructiveButtonTitle:@"Save to Camera Roll" 
-                                otherButtonTitles:nil]; 
-  [actionSheet showInView:self.view];
+//	UIActionSheet *actionSheet = [[UIActionSheet alloc] 
+//                                initWithTitle:nil
+//                                delegate:self 
+//                                cancelButtonTitle:@"Cancel" 
+//                                destructiveButtonTitle:@"Save to Camera Roll" 
+//                                otherButtonTitles:nil]; 
+//  [actionSheet showInView:self.view];
+  //Create an activity view controller with the profile as its activity item. APLProfile conforms to the UIActivityItemSource protocol.
+  
+  //first up, go the direct route - will be better to do it with a profile i think...but for now...
+  ImageItem *img = [self.imageList itemAtIndex:(NSUInteger)[self centerPhotoIndex]];
+  TJMImageResource *tmpRes = [[TJMImageResourceManager sharedInstance] resourceForURL:img.imageURL];
+  UIImage *image = [tmpRes getImage];
+  
+  
+  UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[image] applicationActivities:nil];
+  activityViewController.excludedActivityTypes = @[UIActivityTypeCopyToPasteboard,UIActivityTypePrint];
+  
+  
+  if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+    //iPhone, present activity view controller as is.
+    [self presentViewController:activityViewController animated:YES completion:nil];
+  }
+  else
+  {
+    //iPad, present the view controller inside a popover.
+    if (![self.activityPopover isPopoverVisible]) {
+      self.activityPopover = [[UIPopoverController alloc] initWithContentViewController:activityViewController];
+      [self.activityPopover presentPopoverFromBarButtonItem:self.shareItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    }
+    else
+    {
+      //Dismiss if the button is tapped while popover is visible.
+      [self.activityPopover dismissPopoverAnimated:YES];
+    }
+  }
 }
 
 - (void)setViewState {
