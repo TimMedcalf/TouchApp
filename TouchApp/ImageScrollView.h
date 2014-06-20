@@ -45,6 +45,13 @@
  
  */
 
+/*
+ 
+ NOTE: MODIFIED BY TIM MEDCALF, tim@kadixi.com
+ 
+ */
+
+
 #import <UIKit/UIKit.h>
 #import "ImageItem.h"
 #import "TJMImageResourceView.h"

@@ -45,6 +45,12 @@
  
  */
 
+/*
+  
+ NOTE: MODIFIED BY TIM MEDCALF, tim@kadixi.com
+  
+ */
+
 #import "PhotoViewController.h"
 #import "ImageScrollView.h"
 #import "TJMImageResourceManager.h"
