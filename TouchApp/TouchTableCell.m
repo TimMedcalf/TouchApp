@@ -191,11 +191,11 @@ static const CGFloat kAccessoryInset = 15.;
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
       //iPad
       self.titleLabel.frame = CGRectMake(titleInsetXVal, [TouchTableCell verticalPadding], self.contentView.frame.size.width - (titleInsetXVal * 2), titleSize.height);
-      self.subtitleLabel.frame = CGRectMake(titleInsetXVal, CGRectGetMaxY(self.titleLabel.frame) + 1, self.frame.size.width - (titleInsetXVal * 2), subtitleSize.height);
+      self.subtitleLabel.frame = CGRectMake(titleInsetXVal, CGRectGetMaxY(self.titleLabel.frame) + 1, self.contentView.frame.size.width - (titleInsetXVal * 2), subtitleSize.height);
     } else {
       //iPhone
       self.titleLabel.frame = CGRectMake(titleInsetXVal, [TouchTableCell verticalPadding], self.contentView.frame.size.width - (titleInsetXVal * 2), titleSize.height);
-      self.subtitleLabel.frame = CGRectMake(titleInsetXVal, CGRectGetMaxY(self.titleLabel.frame) + 1, self.frame.size.width - (titleInsetXVal * 2), subtitleSize.height);
+      self.subtitleLabel.frame = CGRectMake(titleInsetXVal, CGRectGetMaxY(self.titleLabel.frame) + 1, self.contentView.frame.size.width - (titleInsetXVal * 2), subtitleSize.height);
     }
   } else {
     [self.subtitleLabel setHidden:true];
