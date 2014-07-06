@@ -63,7 +63,7 @@ NSString *const Key_ImageItem_PhotoId = @"photoId";
   }
 }
 
-- (void)processRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseUR {
+- (void)processRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
     //some size logging...
 //  NSLog(@" ");
 //  NSLog(@">>New Image");

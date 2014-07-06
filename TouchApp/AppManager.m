@@ -51,9 +51,9 @@ NSString *const LMSUCache = @"TouchCache";
 - (NewsList *)newsList {
   if (!self.internalNewsList) {
     NewsList *tmpNewsList = [[NewsList alloc] init];
+    tmpNewsList.rawMode = YES;
     self.internalNewsList = tmpNewsList;
   }
-
   return self.internalNewsList;
 }
 

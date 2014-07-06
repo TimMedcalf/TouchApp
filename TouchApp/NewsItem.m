@@ -31,12 +31,11 @@ NSString *const XML_PubDate = @"pubDate";
   self.description = dict[DescriptionKey];
 }
 
-- (void)processXMLDictionary:(NSDictionary *)dict andBaseURL:(NSURL *)baseURL {
-  //NSLog(@"News Dict: %@", dict);
-  self.pubDate = dict[XML_PubDate];
-  self.link = dict[XML_Link];
-  self.title = dict[XML_Title];
-  self.description = dict[XML_Description];
+- (void)processRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
+  self.pubDate = [[element nodeForXPath:XML_PubDate error:nil] stringValue];
+  self.link = [[element nodeForXPath:XML_Link error:nil] stringValue];
+  self.title = [[element nodeForXPath:XML_Title error:nil] stringValue];
+  self.description = [[element nodeForXPath:XML_Description error:nil] stringValue];
 }
 
 - (void)populateDictionary:(NSMutableDictionary *)dict {

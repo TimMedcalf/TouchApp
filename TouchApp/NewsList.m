@@ -13,14 +13,8 @@
 @implementation NewsList
 
 //overrides
-
-//- (NSInteger)refreshTimerCount
-//{
-//  return 3600;
-//}
-
-- (FeedItem *)newItemWithXMLDictionary:itemDict andBaseURL:baseURL {
-  return [[NewsItem alloc]initWithXMLDictionary:itemDict andBaseURL:baseURL];
+- (FeedItem *)newItemWithRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
+  return [[NewsItem alloc]initWithRawXMLElement:element andBaseURL:baseURL];
 }
 
 - (FeedItem *)newItemWithDictionary:dictionary {
