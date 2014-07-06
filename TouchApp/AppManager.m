@@ -73,6 +73,7 @@ NSString *const LMSUCache = @"TouchCache";
   if (!self.internalCatalogueList) {
     CatalogueList *tmpList = [[CatalogueList alloc] init];
     tmpList.xpathOverride = @"//release";
+    tmpList.rawMode = YES;
     self.internalCatalogueList = tmpList;
   }
   

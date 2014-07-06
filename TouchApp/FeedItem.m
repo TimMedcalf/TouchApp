@@ -49,6 +49,7 @@ NSString *const FeedItem_ImageURLKey = @"imageURL";
   return self;
 }
 
+
 - (NSMutableDictionary *)dictionaryRepresentation {
   NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:6];
   if (self.imageURL) dict[FeedItem_ImageURLKey] = [self.imageURL absoluteString];
