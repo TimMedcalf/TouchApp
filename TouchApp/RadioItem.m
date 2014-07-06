@@ -13,7 +13,7 @@ NSString *const Key_Radio_SubTitle = @"itunes:subtitle";
 NSString *const Key_Radio_PubDate = @"pubDate";
 NSString *const Key_Radio_Link = @"guid";
 NSString *const Key_Radio_Duration = @"itunes:duration";
-NSString *const Key_Radio_TitleLabel = @"itunes:subtitle"; 
+NSString *const Key_Radio_TitleLabel = @"itunes:subtitle";
 
 NSString *const Key_ImageOverride = @"imageURL";
 
@@ -35,46 +35,48 @@ NSString *const Key_ImageOverride = @"imageURL";
   self.episode_duration = dict[Key_Radio_Duration];
 }
 
-- (void)processXMLDictionary:(NSDictionary *)dict andBaseURL:(NSURL *)baseURL {
-  self.title = dict[Key_Radio_Title];
-  self.titleLabel = dict[Key_Radio_TitleLabel];
-  self.author = dict[Key_Radio_Author];
+- (void)processRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
+  // cannot ge the itunes namespace to work with TouchXML - reverting to brute force
+  // of putting all children in a dictionary.
+  NSMutableDictionary *itemDict = [[NSMutableDictionary alloc] init];
+  for (uint counter = 0; counter < [element childCount]; counter++) {
+    itemDict[[[element childAtIndex:counter] name]] = [[element childAtIndex:counter] stringValue];
+  }
   
-  self.summary = [dict[Key_Radio_Summary]
-                  stringByReplacingOccurrencesOfString:@"\n\n" withString:@"</p><p>"];  
-    
-  self.subtitle = dict[Key_Radio_SubTitle];
+  self.title = itemDict[Key_Radio_Title];
+  self.titleLabel = itemDict[Key_Radio_TitleLabel];
+  self.author = itemDict[Key_Radio_Author];
+  
+  self.summary = itemDict[Key_Radio_Summary];
+  self.summary = [self.summary stringByReplacingOccurrencesOfString:@"\n\n" withString:@"</p><p>"];
+  
+  self.subtitle = itemDict[Key_Radio_SubTitle];
+  
   NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
   [inputFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
   [inputFormatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss z"];
-  NSString *dateStr = dict[Key_Radio_PubDate];
+  NSString *dateStr = itemDict[Key_Radio_PubDate];
   self.pubDate = [inputFormatter dateFromString:dateStr];
-  self.link = [[dict[Key_Radio_Link] 
-               stringByReplacingOccurrencesOfString:@"touchradio" 
-                withString:@"touchiphoneradio"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-  self.episode_duration = dict[Key_Radio_Duration];
-    
- 
-  NSURL *tmpURL;
   
+  self.link = itemDict[Key_Radio_Link];
+  self.link = [self.link stringByReplacingOccurrencesOfString:@"touchradio" withString:@"touchiphoneradio"];
+  self.link = [self.link stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+  
+  self.episode_duration = itemDict[Key_Radio_Duration];
+  
+  self.imageURL = nil;
+  NSString *imageOverride = itemDict[Key_ImageOverride];
   //first check if there is an image override location
-  if (dict[Key_ImageOverride]) {
-    NSString *tmpStr = dict[Key_ImageOverride];
-    if ([tmpStr length] > 0) {
-      tmpURL = [[NSURL alloc] initWithString:tmpStr];
-      self.imageURL = tmpURL;
-    }
+  if (imageOverride && ([imageOverride length] > 0)) {
+    self.imageURL = [[NSURL alloc] initWithString:imageOverride];
   }
-   
   //if not, generate an image url as per normal...
   if (!self.imageURL) {
-    tmpURL = [[NSURL alloc] initWithString:[[dict[Key_Radio_Link] 
-                                             stringByReplacingOccurrencesOfString:@".mp3" 
-                                             withString:@".jpg"]
-                                            stringByReplacingOccurrencesOfString:@"touchradio/" 
-                                            withString:@"touchradio/images/"]
-                             relativeToURL:baseURL];
-    self.imageURL = tmpURL;
+    NSString *urlString = itemDict[Key_Radio_Link];
+    urlString = [urlString stringByReplacingOccurrencesOfString:@".mp3" withString:@".jpg"];
+    urlString = [urlString stringByReplacingOccurrencesOfString:@"touchradio/" withString:@"touchradio/images/"];
+  
+    self.imageURL = [[NSURL alloc] initWithString:urlString relativeToURL:baseURL];
     //NSLog(@"Radio URL = %@", self.imageURL);
   }
   //NSLog(@"%@ - %@ - %@", self.catalogueNumber, self.artist, self.title);

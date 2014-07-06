@@ -83,9 +83,9 @@ NSString *const LMSUCache = @"TouchCache";
 - (RadioList *)radioList {
   if (!self.internalRadioList) {
     RadioList *tmpList = [[RadioList alloc] init];
+    tmpList.rawMode = YES;
     self.internalRadioList = tmpList;
   }
-  
   return self.internalRadioList;
 }
 
