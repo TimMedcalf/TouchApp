@@ -13,8 +13,8 @@
 @implementation RecipeCategoryList
 
 //overrides
-- (FeedItem *)newItemWithXMLDictionary:itemDict andBaseURL:baseURL {
-  return [[RecipeCategoryItem alloc]initWithXMLDictionary:itemDict andBaseURL:baseURL];
+- (FeedItem *)newItemWithRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
+  return [[RecipeCategoryItem alloc] initWithRawXMLElement:element andBaseURL:baseURL];
 }
 
 - (FeedItem *)newItemWithDictionary:dictionary {
@@ -31,13 +31,13 @@
 
 // what is this for?
 - (void)dataUpdated {
-    [super dataUpdated];
-    NSMutableArray *delete = [NSMutableArray array];
-    for (RecipeCategoryItem *item in self.itemArray) {
-        if (([item.recipeTitle isEqualToString:@"left"]) || ([item.recipeTitle isEqualToString:@"right"]))
-            [delete addObject:item];
-    }
-    [self removeItemsInArray:delete];
+  [super dataUpdated];
+  NSMutableArray *delete = [NSMutableArray array];
+  for (RecipeCategoryItem *item in self.itemArray) {
+      if (([item.recipeTitle isEqualToString:@"left"]) || ([item.recipeTitle isEqualToString:@"right"]))
+          [delete addObject:item];
+  }
+  [self removeItemsInArray:delete];
 }
 
 @end

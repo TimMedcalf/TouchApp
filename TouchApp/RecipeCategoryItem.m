@@ -26,9 +26,12 @@ NSString *const Key_RCat_Title = @"title";
   self.recipeTitle = dict[Key_RCat_Title];
 }
 
-- (void)processXMLDictionary:(NSDictionary *)dict andBaseURL:(NSURL *)baseURL {
-  self.recipeId = dict[Key_RCat_Id];
-  self.recipeTitle = dict[Key_RCat_Title];
+- (void)processRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
+  NSString *numString = [[element nodeForXPath:Key_RCat_Id error:nil] stringValue];
+  NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+  [f setNumberStyle:NSNumberFormatterDecimalStyle];
+  self.recipeId = [f numberFromString:numString];
+  self.recipeTitle = [[element nodeForXPath:Key_RCat_Title error:nil] stringValue];
 }
 
 - (void)populateDictionary:(NSMutableDictionary *)dict {

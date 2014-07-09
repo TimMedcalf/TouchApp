@@ -19,8 +19,8 @@
 //  return 3600;
 //}
 
-- (FeedItem *)newItemWithXMLDictionary:itemDict andBaseURL:baseURL {
-  return [[RecipeItem alloc]initWithXMLDictionary:itemDict andBaseURL:baseURL];
+- (FeedItem *)newItemWithRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
+  return [[RecipeItem alloc] initWithRawXMLElement:element andBaseURL:baseURL];
 }
 
 - (FeedItem *)newItemWithDictionary:dictionary {

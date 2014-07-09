@@ -92,6 +92,7 @@ NSString *const LMSUCache = @"TouchCache";
 - (RecipeCategoryList *)recipeList {
   if (!self.internalRecipeList) {
     RecipeCategoryList *tmpList = [[RecipeCategoryList alloc] init];
+    tmpList.rawMode = YES;
     tmpList.xpathOverride = @"//category";
     self.internalRecipeList = tmpList;
   }

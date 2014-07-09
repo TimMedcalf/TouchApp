@@ -24,16 +24,18 @@ NSString *const Key_Recipe_PubDate = @"pubDate";
   self.recipePubDate = dict[Key_Recipe_PubDate];
 }
 
-- (void)processXMLDictionary:(NSDictionary *)dict andBaseURL:(NSURL *)baseURL {
-  self.recipeTitle = dict[Key_Recipe_Title];
-  self.recipeExcerpt = dict[Key_Recipe_Excerpt];
-  self.recipeDescription = dict[Key_Recipe_Description];
+
+- (void)processRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
+  self.recipeTitle = [[element nodeForXPath:Key_Recipe_Title error:nil] stringValue];
+  self.recipeExcerpt = [[element nodeForXPath:Key_Recipe_Excerpt error:nil] stringValue];
+  self.recipeDescription = [[element nodeForXPath:Key_Recipe_Description error:nil] stringValue];
   NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
   [inputFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
   [inputFormatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss z"];
-  NSString *dateStr = dict[Key_Recipe_PubDate];
+  NSString *dateStr = [[element nodeForXPath:Key_Recipe_PubDate error:nil] stringValue];
   self.recipePubDate = [inputFormatter dateFromString:dateStr];
 }
+
 
 - (void)populateDictionary:(NSMutableDictionary *)dict {
   if (self.recipeTitle) dict[Key_Recipe_Title] = self.recipeTitle;

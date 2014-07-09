@@ -36,7 +36,7 @@ NSString *const Key_ImageOverride = @"imageURL";
 }
 
 - (void)processRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
-  // cannot ge the itunes namespace to work with TouchXML - reverting to brute force
+  // cannot get the itunes namespace to work with TouchXML - reverting to brute force
   // of putting all children in a dictionary.
   NSMutableDictionary *itemDict = [[NSMutableDictionary alloc] init];
   for (uint counter = 0; counter < [element childCount]; counter++) {
