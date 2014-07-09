@@ -32,7 +32,6 @@
   [Flurry setCrashReportingEnabled:YES];
   [Flurry startSession:@"EG1Y8QTDSQI2YWEFXFDJ"];
   [Flurry logEvent:@"DeviceInfo" withParameters:@{@"Firmware": [[UIDevice currentDevice] systemVersion]}];
-  [Flurry logAllPageViews:_tabBarController];
 #endif
   //clear the cache out whenever it's a new version - allows us to change data formats without worrying
   //about whatever is stored already on the device
@@ -87,6 +86,14 @@
   
   self.tabBarController = [[RotatingTabBarController alloc] init];
   self.tabBarController.viewControllers = @[newsNav, photoNav, catNav, radioNav, recipeNav];
+#ifndef DEBUG
+  [Flurry logAllPageViewsForTarget:self.tabBarController];
+  [Flurry logAllPageViewsForTarget:newsNav];
+  [Flurry logAllPageViewsForTarget:photoNav];
+  [Flurry logAllPageViewsForTarget:catNav];
+  [Flurry logAllPageViewsForTarget:radioNav];
+  [Flurry logAllPageViewsForTarget:recipeNav];
+#endif
   self.window.rootViewController = self.tabBarController;
   [self.window makeKeyAndVisible];
   return YES;

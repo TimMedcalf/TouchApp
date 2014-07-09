@@ -1,7 +1,7 @@
 PODS:
-  - FlurrySDK (5.0.0):
+  - FlurrySDK (5.2.0):
     - FlurrySDK/FlurrySDK
-  - FlurrySDK/FlurrySDK (5.0.0)
+  - FlurrySDK/FlurrySDK (5.2.0)
   - Reachability (3.1.1)
 
 DEPENDENCIES:
@@ -9,7 +9,7 @@ DEPENDENCIES:
   - Reachability
 
 SPEC CHECKSUMS:
-  FlurrySDK: 1fa28436e86e533e51ab1164c43d8f3b5f8ff99f
+  FlurrySDK: 5322b9eb0d0b538f1a1983a6717f3a2e2ba03047
   Reachability: 8e9635e3cb4f98e7f825e51147f677ecc694d0e7
 
 COCOAPODS: 0.33.1
