@@ -34,7 +34,6 @@
 
 - (FeedList *)feedSetup {
   RecipeBookList *tmpList = [[RecipeBookList alloc] initWithoutLoading];
-  tmpList.rawMode = YES;
   tmpList.recipeCategory = self.recipeCategory;
   [tmpList continueLoading];
   return tmpList;

@@ -14,4 +14,6 @@
 
 @interface ImageGalleryViewController : TJMAudioTableViewController <FeedListConsumerDelegate, PhotoViewDelegate>
 
+- (instancetype) initWithImagelist:(ImageList *)imageList;
+
 @end

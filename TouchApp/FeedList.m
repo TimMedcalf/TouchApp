@@ -265,18 +265,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
     NSMutableArray *newFeedItems = [[NSMutableArray alloc] initWithCapacity:[resultNodes count]];
     
     for (CXMLElement *resultElement in resultNodes) {
-      if (self.rawMode) {
-        [newFeedItems addObject:[self newItemWithRawXMLElement:resultElement andBaseURL:self.baseURL]];
-      } else {
-        NSMutableDictionary *itemDict = [[NSMutableDictionary alloc] init];
-        for (uint counter = 0; counter < [resultElement childCount]; counter++) {
-          itemDict[[[resultElement childAtIndex:counter] name]] = [[resultElement childAtIndex:counter] stringValue];
-        }
-        FeedItem *newFeedItem = [self newItemWithXMLDictionary:itemDict andBaseURL:self.baseURL];
-        [newFeedItems addObject:newFeedItem];
-        //itemDict = nil;
-        //newFeedItem = nil;
-      }
+      [newFeedItems addObject:[self newItemWithRawXMLElement:resultElement andBaseURL:self.baseURL]];
     }
     //rssParser = nil;
     [self.items removeAllObjects];

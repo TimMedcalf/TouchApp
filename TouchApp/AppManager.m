@@ -51,7 +51,6 @@ NSString *const LMSUCache = @"TouchCache";
 - (NewsList *)newsList {
   if (!self.internalNewsList) {
     NewsList *tmpNewsList = [[NewsList alloc] init];
-    tmpNewsList.rawMode = YES;
     self.internalNewsList = tmpNewsList;
   }
   return self.internalNewsList;
@@ -62,8 +61,6 @@ NSString *const LMSUCache = @"TouchCache";
     ImageList *tmpImageList = [[ImageList alloc] init];
     self.internalImageList = tmpImageList;
     tmpImageList.xpathOverride = @"//photo";
-    tmpImageList.rawMode = YES;
-
   }
   
   return self.internalImageList;
@@ -73,7 +70,6 @@ NSString *const LMSUCache = @"TouchCache";
   if (!self.internalCatalogueList) {
     CatalogueList *tmpList = [[CatalogueList alloc] init];
     tmpList.xpathOverride = @"//release";
-    tmpList.rawMode = YES;
     self.internalCatalogueList = tmpList;
   }
   
@@ -83,7 +79,6 @@ NSString *const LMSUCache = @"TouchCache";
 - (RadioList *)radioList {
   if (!self.internalRadioList) {
     RadioList *tmpList = [[RadioList alloc] init];
-    tmpList.rawMode = YES;
     self.internalRadioList = tmpList;
   }
   return self.internalRadioList;
@@ -92,7 +87,6 @@ NSString *const LMSUCache = @"TouchCache";
 - (RecipeCategoryList *)recipeList {
   if (!self.internalRecipeList) {
     RecipeCategoryList *tmpList = [[RecipeCategoryList alloc] init];
-    tmpList.rawMode = YES;
     tmpList.xpathOverride = @"//category";
     self.internalRecipeList = tmpList;
   }

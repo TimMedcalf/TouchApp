@@ -26,7 +26,6 @@
 @property (strong, nonatomic) NSURL *baseURL;
 @property (strong, nonatomic) NSDate *lastRefresh;
 @property (copy, nonatomic) NSString *xpathOverride;
-@property (assign, nonatomic) BOOL rawMode;
 
 //dirty hack to deal with the way we load touch recipe books...probably a better way of coping with this...
 - (id)initWithoutLoading;

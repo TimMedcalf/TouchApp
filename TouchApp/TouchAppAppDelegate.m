@@ -69,7 +69,7 @@
   UINavigationController *newsNav = [[UINavigationController alloc] initWithRootViewController:newsVC];
   
   //Photos Views
-  ImageGalleryViewController *photoVC = [[ImageGalleryViewController alloc] initWithStyle:UITableViewStylePlain];
+  ImageGalleryViewController *photoVC = [[ImageGalleryViewController alloc] initWithImagelist:[AppManager sharedInstance].imageList];
   UINavigationController *photoNav = [[UINavigationController alloc] initWithRootViewController:photoVC];
   
   //Catalogue

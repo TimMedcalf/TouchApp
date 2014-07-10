@@ -36,17 +36,23 @@ static NSInteger iPadThumbnailRowCount = 8;
 @implementation ImageGalleryViewController
 
 #pragma mark - View lifecycle
-- (id)initWithStyle:(UITableViewStyle)style {
-  self = [super initWithStyle:style];
+
+- (instancetype) initWithImagelist:(ImageList *)imageList {
+  self = [super initWithStyle:UITableViewStylePlain];
   if (self) {
+    self.imageList = imageList;
     self.title = @"Photos";
     self.tabBarItem.image = [UIImage imageNamed:@"images"];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.thumbnailRowCount = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? iPadThumbnailRowCount : iPhoneThumbnailRowCount;
-
     //set default thumbnail width - will get overwritten in the viewdidload if on ipad
     self.thumbnailWidth = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ?  iPadThumbnailWidthPortrait : iPhoneThumbnailWidth;
   }
+  return self;
+}
+
+- (id)initWithStyle:(UITableViewStyle)style {
+  self = [self initWithImagelist:nil];
   return self;
 }
  
@@ -69,11 +75,11 @@ static NSInteger iPadThumbnailRowCount = 8;
   
   self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"headerText_photos"]];
   
-  ImageList *tmpList = [[ImageList alloc] init];
-  self.imageList = tmpList;
-  self.imageList.xpathOverride = @"//photo";
-  self.imageList.rawMode = YES;
-  self.imageList.delegate = self;
+//  ImageList *tmpList = [[ImageList alloc] init];
+//  self.imageList = tmpList;
+//  self.imageList.xpathOverride = @"//photo";
+//  self.imageList.rawMode = YES;
+//  self.imageList.delegate = self;
   
   if ([self.imageList itemCount] == 0) {
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
