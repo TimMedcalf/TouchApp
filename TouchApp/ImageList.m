@@ -24,7 +24,7 @@
 
 - (NSString *)feedURL {
   //note, this gives this url:
-  //http://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&photoset_id=72157627750718372&extras=url_t%2C%20url_z&format=rest&api_key=dcb74491ec5cbe64deb98b18df1125a9
+  //https://api.flickr.com/services/rest/?extras=url_s%2C%20url_l&photoset_id=72157627750718372&method=flickr.photosets.getPhotos&api_key=dcb74491ec5cbe64deb98b18df1125a9&format=rest
 	NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                               @"flickr.photosets.getPhotos", @"method",
                               @"72157627750718372", @"photoset_id",
@@ -34,8 +34,9 @@
   
   //set the extra key to request the right image sizes for the device
   parameters[@"extras"] = [NSString stringWithFormat:@"url_%@, url_%@", [ImageItem thumbnailFlickrSuffix], [ImageItem imageFlickrSuffix]];
-  
-  return [NSString stringWithFormat:@"http://api.flickr.com/services/rest/?%@", [parameters gtm_httpArgumentsString]];
+  NSString *returnString = [NSString stringWithFormat:@"https://api.flickr.com/services/rest/?%@", [parameters gtm_httpArgumentsString]];
+  //NSLog(@"FLICKR CALL: %@",returnString);
+  return returnString;
 }
 
 - (NSString *)cacheFilename {
