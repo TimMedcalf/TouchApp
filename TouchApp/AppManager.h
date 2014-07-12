@@ -9,18 +9,18 @@
 #import <Foundation/Foundation.h>
 #import "GCDSingleton.h"
 
-@class NewsList, ImageList, CatalogueList, RadioList,RecipeCategoryList;
+@class TCHNewsFeedList, TCHImageFeedList, TCHCatalogueFeedList, TCHRadioFeedList, TCHRecipeCategoryFeedList;
 
 
 @interface AppManager : NSObject
 
 @property (strong, nonatomic) NSString *cacheFolder;
 
-- (NewsList *)newsList;
-- (ImageList *)imageList;
-- (CatalogueList *)catalogueList;
-- (RadioList *)radioList;
-- (RecipeCategoryList *)recipeList;
+- (TCHNewsFeedList *)newsList;
+- (TCHImageFeedList *)imageList;
+- (TCHCatalogueFeedList *)catalogueList;
+- (TCHRadioFeedList *)radioList;
+- (TCHRecipeCategoryFeedList *)recipeList;
 
 - (void)cancelUpdates;
 - (void)refreshAllFeeds;

@@ -7,10 +7,10 @@
 //
 
 #import "RecipeBookViewController.h"
-#import "RecipeItem.h"
+#import "TCHRecipeFeedItem.h"
 #import "RecipeItemViewController.h"
 #import "TouchTableCell.h"
-#import "RecipeBookList.h"
+#import "TCHRecipeBookFeedList.h"
 
 
 @interface RecipeBookViewController ()
@@ -32,8 +32,8 @@
   return self;
 }
 
-- (FeedList *)feedSetup {
-  RecipeBookList *tmpList = [[RecipeBookList alloc] initWithoutLoading];
+- (TCHBaseFeedList *)feedSetup {
+  TCHRecipeBookFeedList *tmpList = [[TCHRecipeBookFeedList alloc] initWithoutLoading];
   tmpList.recipeCategory = self.recipeCategory;
   [tmpList continueLoading];
   return tmpList;
@@ -50,14 +50,14 @@
   if (!cell) {
     cell = [[TouchTableCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:TouchTableCellReuseID];
   }
-  RecipeItem *currentItem = (RecipeItem *)[self.feedList itemAtIndex:(NSUInteger)indexPath.row];
+  TCHRecipeFeedItem *currentItem = (TCHRecipeFeedItem *)[self.feedList itemAtIndex:(NSUInteger)indexPath.row];
   [cell configureWithTitle:currentItem.recipeTitle subtitle:currentItem.recipeExcerpt];
   return cell;
 }
 
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  RecipeItem *curItem = (RecipeItem *) [self.feedList itemAtIndex:(NSUInteger)indexPath.row];
+  TCHRecipeFeedItem *curItem = (TCHRecipeFeedItem *) [self.feedList itemAtIndex:(NSUInteger)indexPath.row];
   RecipeItemViewController *controller = [[RecipeItemViewController alloc] init];
   controller.HTMLString = curItem.htmlForWebView;
   controller.recipeItem = curItem;
@@ -66,7 +66,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
   //first up get the item
-  RecipeItem *currentItem = (RecipeItem *)[self.feedList itemAtIndex:(NSUInteger)indexPath.row];
+  TCHRecipeFeedItem *currentItem = (TCHRecipeFeedItem *)[self.feedList itemAtIndex:(NSUInteger)indexPath.row];
   //[cell configureWithTitle:currentItem.title subtitle:currentItem.pubDate];
   return [TouchTableCell actualRowHeightwithTitle:currentItem.recipeTitle subtitle:currentItem.recipeExcerpt forTableWidth:tableView.bounds.size.width];
 }

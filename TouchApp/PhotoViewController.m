@@ -156,7 +156,7 @@
   //Create an activity view controller with the profile as its activity item. APLProfile conforms to the UIActivityItemSource protocol.
   
   //first up, go the direct route - will be better to do it with a profile i think...but for now...
-  ImageItem *img = [self.imageList itemAtIndex:(NSUInteger)[self centerPhotoIndex]];
+  TCHImageFeedItem *img = [self.imageList itemAtIndex:(NSUInteger)[self centerPhotoIndex]];
   TJMImageResource *tmpRes = [[TJMImageResourceManager sharedInstance] resourceForURL:img.imageURL];
   UIImage *image = [tmpRes getImage];
   
@@ -216,7 +216,7 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
 	if (buttonIndex != [actionSheet cancelButtonIndex]) {
-    ImageItem *img = [self.imageList itemAtIndex:(NSUInteger)[self centerPhotoIndex]];
+    TCHImageFeedItem *img = [self.imageList itemAtIndex:(NSUInteger)[self centerPhotoIndex]];
     TJMImageResource *tmpRes = [[TJMImageResourceManager sharedInstance] resourceForURL:img.imageURL];
     UIImage *image = [tmpRes getImage];
     UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil); 
@@ -403,10 +403,10 @@
 }
 
 #pragma mark - Image wrangling
-- (ImageItem *)imageAtIndex:(NSUInteger)index {
+- (TCHImageFeedItem *)imageAtIndex:(NSUInteger)index {
 
   //try to ensure the thumbnails we need are going to be there
-  ImageItem *item = [self.imageList itemAtIndex:index];
+  TCHImageFeedItem *item = [self.imageList itemAtIndex:index];
   [[[TJMImageResourceManager sharedInstance] resourceForURL:item.thumbnailURL]cacheImage];
   
   //try to ensure the thumbnails we need are going to be there

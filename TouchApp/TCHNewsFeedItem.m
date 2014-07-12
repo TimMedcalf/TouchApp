@@ -1,12 +1,12 @@
 //
-//  NewsItem.m
+//  TCHNewsFeedItem.m
 //  LeedsMetStudentUnion
 //
 //  Created by Tim Medcalf on 27/06/2011.
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
 
-#import "NewsItem.h"
+#import "TCHNewsFeedItem.h"
 
 //keys we use in our own dictionary (saving and loading)
 NSString *const PubDateKey = @"pubDate";
@@ -21,7 +21,7 @@ NSString *const XML_Description = @"description";
 NSString *const XML_PubDate = @"pubDate";
 
 
-@implementation NewsItem
+@implementation TCHNewsFeedItem
 
 #pragma mark overrides
 - (void)processSavedDictionary:(NSDictionary *)dict {

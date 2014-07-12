@@ -53,7 +53,7 @@
 
 
 #import <UIKit/UIKit.h>
-#import "ImageItem.h"
+#import "TCHImageFeedItem.h"
 #import "TJMImageResourceView.h"
 
 
@@ -62,7 +62,7 @@
 }
 @property (assign) NSUInteger index;
 
-- (void)displayImage:(ImageItem *)image;
+- (void)displayImage:(TCHImageFeedItem *)image;
 - (void)setMaxMinZoomScalesForCurrentBounds;
 
 - (CGPoint)pointToCenterAfterRotation;

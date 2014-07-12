@@ -1,5 +1,5 @@
 //
-//  NewsItem.h
+//  TCHNewsFeedItem.h
 //  LeedsMetStudentUnion
 //
 //  Created by Tim Medcalf on 27/06/2011.
@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FeedItem.h"
+#import "TCHBaseFeedItem.h"
 
 
-@interface NewsItem : FeedItem
+@interface TCHNewsFeedItem : TCHBaseFeedItem
 
 @property (copy, nonatomic) NSString *pubDate;
 @property (copy, nonatomic) NSString *link;

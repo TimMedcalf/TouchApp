@@ -1,18 +1,18 @@
 //
-//  RecipeCategoryItem.m
+//  TCHRecipeCategoryFeedItem.m
 //  TouchApp
 //
 //  Created by Tim Medcalf on 26/08/2011.
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
 
-#import "RecipeCategoryItem.h"
+#import "TCHRecipeCategoryFeedItem.h"
 
 NSString *const Key_RCat_Id = @"id";
 NSString *const Key_RCat_Title = @"title";
 
 
-@implementation RecipeCategoryItem
+@implementation TCHRecipeCategoryFeedItem
 
 #pragma mark overrides from FeedItem
 
@@ -39,9 +39,9 @@ NSString *const Key_RCat_Title = @"title";
   if (self.recipeTitle) dict[Key_RCat_Title] = self.recipeTitle;
 }
 
-- (NSComparisonResult)compare:(FeedItem *)item {
+- (NSComparisonResult)compare:(TCHBaseFeedItem *)item {
   //compare in reverse so that we get the newest at the top.
-  return [self.recipeTitle compare:((RecipeCategoryItem *)item).recipeTitle];
+  return [self.recipeTitle compare:((TCHRecipeCategoryFeedItem *)item).recipeTitle];
 }
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CatalogueList.h"
+#import "TCHCatalogueFeedList.h"
 #import "TJMAudioTableViewController.h"
 #import "TouchTableViewController.h"
 

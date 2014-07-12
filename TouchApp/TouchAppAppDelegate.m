@@ -15,9 +15,9 @@
 #import "CatalogueViewController.h"
 #import "RadioViewController.h"
 #import "RecipeCategoryViewController.h"
-#import "NewsList.h"
-#import "RecipeCategoryList.h"
-#import "RadioList.h"
+#import "TCHNewsFeedList.h"
+#import "TCHRecipeCategoryFeedList.h"
+#import "TCHRadioFeedList.h"
 
 #ifndef DEBUG
 #import "Flurry.h"

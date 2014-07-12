@@ -1,5 +1,5 @@
 //
-//  FeedItem.h
+//  TCHBaseFeedItem.h
 //  LeedsMetStudentUnion
 //
 //  Created by Tim Medcalf on 25/07/2011.
@@ -8,17 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
-@class FeedItem;
+@class TCHBaseFeedItem;
 
 
-@interface FeedItem : NSObject
+@interface TCHBaseFeedItem : NSObject
 @property (strong, nonatomic) NSURL *imageURL;
 
 - (id)initWithDictionary:(NSDictionary *)dict;
 - (id)initWithXMLDictionary:(NSDictionary *)dict andBaseURL:(NSURL *)baseURL;
 - (id)initWithRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL;
 - (NSMutableDictionary *)dictionaryRepresentation;
-- (NSComparisonResult)compare:(FeedItem *)item;
+- (NSComparisonResult)compare:(TCHBaseFeedItem *)item;
 - (NSString *)htmlForWebView;
 
 @end

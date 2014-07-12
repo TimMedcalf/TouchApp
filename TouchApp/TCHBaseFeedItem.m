@@ -1,17 +1,17 @@
 //
-//  FeedItem.m
+//  TCHBaseFeedItem.m
 //  LeedsMetStudentUnion
 //
 //  Created by Tim Medcalf on 25/07/2011.
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
 
-#import "FeedItem.h"
+#import "TCHBaseFeedItem.h"
 
 NSString *const FeedItem_ImageURLKey = @"imageURL";
 
 
-@interface FeedItem ()
+@interface TCHBaseFeedItem ()
 
 //things to override
 - (void)processSavedDictionary:(NSDictionary *)dict;
@@ -22,7 +22,7 @@ NSString *const FeedItem_ImageURLKey = @"imageURL";
 @end
 
 
-@implementation FeedItem
+@implementation TCHBaseFeedItem
 
 - (id)initWithDictionary:(NSDictionary *)dict {
   self = [super init];
@@ -78,7 +78,7 @@ NSString *const FeedItem_ImageURLKey = @"imageURL";
   NSLog(@"Populating dictionary! This should be overridden!");
 }
 
-- (NSComparisonResult)compare:(FeedItem *)item {
+- (NSComparisonResult)compare:(TCHBaseFeedItem *)item {
   //override in subclass
   return NSOrderedSame;
 }

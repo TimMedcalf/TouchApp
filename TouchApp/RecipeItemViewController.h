@@ -2,12 +2,12 @@
 
 #import <UIKit/UIKit.h>
 #import "HTMLItemViewController.h"
-#import "RecipeItem.h"
+#import "TCHRecipeFeedItem.h"
 
 
 @interface RecipeItemViewController : HTMLItemViewController <MFMailComposeViewControllerDelegate>
 
-@property (strong, nonatomic) RecipeItem *recipeItem;
+@property (strong, nonatomic) TCHRecipeFeedItem *recipeItem;
 
 - (void)sendRecipe;
   

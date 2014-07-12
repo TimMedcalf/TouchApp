@@ -30,7 +30,7 @@ NSString static *const Key_IconTintB = @"iconTintB";
 @interface TouchTableViewController ()
 
 @property (nonatomic, strong) NSDictionary *settings;
-@property (nonatomic, strong) FeedList *feedList;
+@property (nonatomic, strong) TCHBaseFeedList *feedList;
 - (void)configureTableHeader;
 
 @end
@@ -43,7 +43,7 @@ NSString static *const Key_IconTintB = @"iconTintB";
   return self;
 }
 
-- (id)initWithSettingsDictionary:(NSDictionary *)settings andFeedList:(FeedList *)feedList {
+- (id)initWithSettingsDictionary:(NSDictionary *)settings andFeedList:(TCHBaseFeedList *)feedList {
   self = [super initWithStyle:UITableViewStylePlain];
   if (self) {
     self.settings = settings;
@@ -89,7 +89,7 @@ NSString static *const Key_IconTintB = @"iconTintB";
   [self.navigationController.navigationBar setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"765-arrow-left-toolbar"]];
 }
 
-- (FeedList *)feedSetup {
+- (TCHBaseFeedList *)feedSetup {
   //override in subclasses!
   return nil;
 }

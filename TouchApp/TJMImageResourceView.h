@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ImageItem.h"
+#import "TCHImageFeedItem.h"
 
 
 @interface TJMImageResourceView : UIImageView
@@ -19,7 +19,7 @@
 
 
 - (id)initWithFrame:(CGRect)frame;
-- (id)initWithImageItem:(ImageItem *)item;
+- (id)initWithImageItem:(TCHImageFeedItem *)item;
 - (void)setURL:(NSURL *)url;
 
 @end

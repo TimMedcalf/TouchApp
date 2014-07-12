@@ -1,5 +1,5 @@
 //
-//  RadioItem.m
+//  TCHRadioFeedItem.m
 //  TouchApp
 //
 //  Created by Tim Medcalf on 08/08/2011.
@@ -18,10 +18,10 @@ NSString *const Key_Radio_TitleLabel = @"itunes:subtitle";
 NSString *const Key_ImageOverride = @"imageURL";
 
 
-#import "RadioItem.h"
+#import "TCHRadioFeedItem.h"
 
 
-@implementation RadioItem
+@implementation TCHRadioFeedItem
 
 #pragma mark overrides from FeedItem
 - (void)processSavedDictionary:(NSDictionary *)dict {
@@ -93,10 +93,10 @@ NSString *const Key_ImageOverride = @"imageURL";
   if (self.episode_duration) dict[Key_Radio_Duration] = self.episode_duration;    
 }
 
-- (NSComparisonResult)compare:(FeedItem *)item {
+- (NSComparisonResult)compare:(TCHBaseFeedItem *)item {
   //compare in reverse so that we get the newest at the top.
 
-  return [((RadioItem *)item).pubDate compare:self.pubDate];
+  return [((TCHRadioFeedItem *)item).pubDate compare:self.pubDate];
 }
 
 - (NSString *)htmlForWebView {

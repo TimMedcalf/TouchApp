@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ImageList.h"
+#import "TCHImageFeedList.h"
 #import "TJMAudioTableViewController.h"
 #import "PhotoViewController.h"
 
 
 @interface ImageGalleryViewController : TJMAudioTableViewController <FeedListConsumerDelegate, PhotoViewDelegate>
 
-- (instancetype) initWithImagelist:(ImageList *)imageList;
+- (instancetype) initWithImagelist:(TCHImageFeedList *)imageList;
 
 @end

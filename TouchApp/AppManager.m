@@ -7,23 +7,23 @@
 //
 
 #import "AppManager.h"
-#import "FeedList.h"
-#import "NewsList.h"
-#import "ImageList.h"
-#import "CatalogueList.h"
-#import "RadioList.h"
-#import "RecipeCategoryList.h"
+#import "TCHBaseFeedList.h"
+#import "TCHNewsFeedList.h"
+#import "TCHImageFeedList.h"
+#import "TCHCatalogueFeedList.h"
+#import "TCHRadioFeedList.h"
+#import "TCHRecipeCategoryFeedList.h"
 
 NSString *const LMSUCache = @"TouchCache";
 
 
 @interface AppManager ()
 
-@property (strong, nonatomic) NewsList *internalNewsList;
-@property (strong, nonatomic) ImageList *internalImageList;
-@property (strong, nonatomic) CatalogueList *internalCatalogueList;
-@property (strong, nonatomic) RadioList *internalRadioList;
-@property (strong, nonatomic) RecipeCategoryList *internalRecipeList;
+@property (strong, nonatomic) TCHNewsFeedList *internalNewsList;
+@property (strong, nonatomic) TCHImageFeedList *internalImageList;
+@property (strong, nonatomic) TCHCatalogueFeedList *internalCatalogueList;
+@property (strong, nonatomic) TCHRadioFeedList *internalRadioList;
+@property (strong, nonatomic) TCHRecipeCategoryFeedList *internalRecipeList;
 
 @end
 
@@ -48,17 +48,17 @@ NSString *const LMSUCache = @"TouchCache";
   });
 }
 
-- (NewsList *)newsList {
+- (TCHNewsFeedList *)newsList {
   if (!self.internalNewsList) {
-    NewsList *tmpNewsList = [[NewsList alloc] init];
+    TCHNewsFeedList *tmpNewsList = [[TCHNewsFeedList alloc] init];
     self.internalNewsList = tmpNewsList;
   }
   return self.internalNewsList;
 }
 
-- (ImageList *)imageList {
+- (TCHImageFeedList *)imageList {
   if (!self.internalImageList) {
-    ImageList *tmpImageList = [[ImageList alloc] init];
+    TCHImageFeedList *tmpImageList = [[TCHImageFeedList alloc] init];
     self.internalImageList = tmpImageList;
     tmpImageList.xpathOverride = @"//photo";
   }
@@ -66,9 +66,9 @@ NSString *const LMSUCache = @"TouchCache";
   return self.internalImageList;
 }
 
-- (CatalogueList *)catalogueList {
+- (TCHCatalogueFeedList *)catalogueList {
   if (!self.internalCatalogueList) {
-    CatalogueList *tmpList = [[CatalogueList alloc] init];
+    TCHCatalogueFeedList *tmpList = [[TCHCatalogueFeedList alloc] init];
     tmpList.xpathOverride = @"//release";
     self.internalCatalogueList = tmpList;
   }
@@ -76,17 +76,17 @@ NSString *const LMSUCache = @"TouchCache";
   return self.internalCatalogueList;
 }
 
-- (RadioList *)radioList {
+- (TCHRadioFeedList *)radioList {
   if (!self.internalRadioList) {
-    RadioList *tmpList = [[RadioList alloc] init];
+    TCHRadioFeedList *tmpList = [[TCHRadioFeedList alloc] init];
     self.internalRadioList = tmpList;
   }
   return self.internalRadioList;
 }
 
-- (RecipeCategoryList *)recipeList {
+- (TCHRecipeCategoryFeedList *)recipeList {
   if (!self.internalRecipeList) {
-    RecipeCategoryList *tmpList = [[RecipeCategoryList alloc] init];
+    TCHRecipeCategoryFeedList *tmpList = [[TCHRecipeCategoryFeedList alloc] init];
     tmpList.xpathOverride = @"//category";
     self.internalRecipeList = tmpList;
   }

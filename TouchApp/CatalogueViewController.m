@@ -7,7 +7,7 @@
 //
 
 #import "CatalogueViewController.h"
-#import "CatalogueItem.h"
+#import "TCHCatalogueFeedItem.h"
 #import "CatalogueItemViewController.h"
 #import "TouchTableCell.h"
 
@@ -20,7 +20,7 @@
   if (!cell) {
     cell = [[TouchTableCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:TouchTableCellReuseID];
   }
-  CatalogueItem *currentItem = (CatalogueItem *) [self.feedList itemAtIndex:(NSUInteger)indexPath.row];
+  TCHCatalogueFeedItem *currentItem = (TCHCatalogueFeedItem *) [self.feedList itemAtIndex:(NSUInteger)indexPath.row];
   [cell configureWithTitle:currentItem.artist subtitle:currentItem.title];
   return cell;
 }
@@ -28,7 +28,7 @@
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
-  CatalogueItem *curItem = (CatalogueItem *) [self.feedList itemAtIndex:(NSUInteger)indexPath.row];
+  TCHCatalogueFeedItem *curItem = (TCHCatalogueFeedItem *) [self.feedList itemAtIndex:(NSUInteger)indexPath.row];
   
   CatalogueItemViewController *controller = [[CatalogueItemViewController alloc] init]; //]WithNibName:@"HTMLItemViewController.xib" bundle:nil];
   controller.item = curItem;
@@ -39,7 +39,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
   //first up get the item
-  CatalogueItem *currentItem = (CatalogueItem *) [self.feedList itemAtIndex:(NSUInteger)indexPath.row];
+  TCHCatalogueFeedItem *currentItem = (TCHCatalogueFeedItem *) [self.feedList itemAtIndex:(NSUInteger)indexPath.row];
   //[cell configureWithTitle:currentItem.title subtitle:currentItem.pubDate];
   return [TouchTableCell actualRowHeightwithTitle:currentItem.artist subtitle:currentItem.title forTableWidth:tableView.bounds.size.width];
 }

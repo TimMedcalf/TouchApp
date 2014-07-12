@@ -1,12 +1,12 @@
 //
-//  RecipeItem.m
+//  TCHRecipeFeedItem.m
 //  TouchApp
 //
 //  Created by Tim Medcalf on 26/08/2011.
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
 
-#import "RecipeItem.h"
+#import "TCHRecipeFeedItem.h"
 
 NSString *const Key_Recipe_Title = @"title";
 NSString *const Key_Recipe_Excerpt = @"excerpt";
@@ -14,7 +14,7 @@ NSString *const Key_Recipe_Description = @"description";
 NSString *const Key_Recipe_PubDate = @"pubDate";
 
 
-@implementation RecipeItem
+@implementation TCHRecipeFeedItem
 
 #pragma mark overrides from FeedItem
 - (void)processSavedDictionary:(NSDictionary *)dict {
@@ -44,9 +44,9 @@ NSString *const Key_Recipe_PubDate = @"pubDate";
   if (self.recipePubDate) dict[Key_Recipe_PubDate] = self.recipePubDate;
 }
 
-- (NSComparisonResult)compare:(FeedItem *)item {
+- (NSComparisonResult)compare:(TCHBaseFeedItem *)item {
   //compare in reverse so that we get the newest at the top.
-  return [((RecipeItem *)item).recipePubDate compare:self.recipePubDate];
+  return [((TCHRecipeFeedItem *)item).recipePubDate compare:self.recipePubDate];
 }
 
 - (NSString *)htmlForWebView {

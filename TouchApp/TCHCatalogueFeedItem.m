@@ -1,5 +1,5 @@
 //
-//  CatalogueItem.m
+//  TCHCatalogueFeedItem.m
 //  TouchApp
 //
 //  Created by Tim Medcalf on 08/08/2011.
@@ -20,10 +20,10 @@ NSString *const Key_Cat_ReleaseDuration = @"release_duration";
 NSString *const Key_Cat_TrackListing = @"track_listing";
 NSString *const Key_Cat_Publisher = @"publisher";
 
-#import "CatalogueItem.h"
+#import "TCHCatalogueFeedItem.h"
 
 
-@implementation CatalogueItem
+@implementation TCHCatalogueFeedItem
 
 #pragma mark lifecycle
 

@@ -1,12 +1,12 @@
 
 #import <UIKit/UIKit.h>
 #import "HTMLItemViewController.h"
-#import "CatalogueItem.h"
+#import "TCHCatalogueFeedItem.h"
 
 
 @interface CatalogueItemViewController : HTMLItemViewController <TJMAudioCenterDelegate>
 
-@property (strong, nonatomic) CatalogueItem *item;
+@property (strong, nonatomic) TCHCatalogueFeedItem *item;
 
 - (void)pause;
 - (void)play;

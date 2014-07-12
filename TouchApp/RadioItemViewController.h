@@ -1,12 +1,12 @@
 
 #import <UIKit/UIKit.h>
 #import "HTMLItemViewController.h"
-#import "RadioItem.h"
+#import "TCHRadioFeedItem.h"
 
 
 @interface RadioItemViewController : HTMLItemViewController <TJMAudioCenterDelegate>
 
-@property (strong, nonatomic) RadioItem *item;
+@property (strong, nonatomic) TCHRadioFeedItem *item;
 
 - (void)pause;
 - (void)play;

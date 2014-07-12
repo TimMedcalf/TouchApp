@@ -1,25 +1,25 @@
 //
-//  ImageList.m
+//  TCHImageFeedList.m
 //  TouchApp
 //
 //  Created by Tim Medcalf on 27/08/2011.
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
 
-#import "ImageList.h"
-#import "ImageItem.h"
+#import "TCHImageFeedList.h"
+#import "TCHImageFeedItem.h"
 #import "GTMNSDictionary+URLArguments.h"
 
 
-@implementation ImageList
+@implementation TCHImageFeedList
 
 //overrides
-- (FeedItem *)newItemWithRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
-  return [[ImageItem alloc]initWithRawXMLElement:element andBaseURL:baseURL];  
+- (TCHBaseFeedItem *)newItemWithRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
+  return [[TCHImageFeedItem alloc]initWithRawXMLElement:element andBaseURL:baseURL];
 }
 
-- (FeedItem *)newItemWithDictionary:dictionary {
-  return [[ImageItem alloc]initWithDictionary:dictionary];
+- (TCHBaseFeedItem *)newItemWithDictionary:dictionary {
+  return [[TCHImageFeedItem alloc]initWithDictionary:dictionary];
 }
 
 - (NSString *)feedURL {
@@ -33,7 +33,7 @@
                                      nil];
   
   //set the extra key to request the right image sizes for the device
-  parameters[@"extras"] = [NSString stringWithFormat:@"url_%@, url_%@", [ImageItem thumbnailFlickrSuffix], [ImageItem imageFlickrSuffix]];
+  parameters[@"extras"] = [NSString stringWithFormat:@"url_%@, url_%@", [TCHImageFeedItem thumbnailFlickrSuffix], [TCHImageFeedItem imageFlickrSuffix]];
   NSString *returnString = [NSString stringWithFormat:@"https://api.flickr.com/services/rest/?%@", [parameters gtm_httpArgumentsString]];
   //NSLog(@"FLICKR CALL: %@",returnString);
   return returnString;

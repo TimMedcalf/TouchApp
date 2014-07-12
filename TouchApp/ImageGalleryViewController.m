@@ -24,7 +24,7 @@ static NSInteger iPadThumbnailRowCount = 8;
 
 @interface ImageGalleryViewController ()
 
-@property (strong, nonatomic) ImageList *imageList;
+@property (strong, nonatomic) TCHImageFeedList *imageList;
 @property (nonatomic, assign) NSInteger thumbnailWidth;
 @property (nonatomic, assign) NSInteger thumbnailRowCount;
 - (void)thumbnailTapped:(UITapGestureRecognizer *)sender;
@@ -37,7 +37,7 @@ static NSInteger iPadThumbnailRowCount = 8;
 
 #pragma mark - View lifecycle
 
-- (instancetype) initWithImagelist:(ImageList *)imageList {
+- (instancetype) initWithImagelist:(TCHImageFeedList *)imageList {
   self = [super initWithStyle:UITableViewStylePlain];
   if (self) {
     self.imageList = imageList;
@@ -75,7 +75,7 @@ static NSInteger iPadThumbnailRowCount = 8;
   
   self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"headerText_photos"]];
   
-//  ImageList *tmpList = [[ImageList alloc] init];
+//  TCHImageFeedList *tmpList = [[TCHImageFeedList alloc] init];
 //  self.imageList = tmpList;
 //  self.imageList.xpathOverride = @"//photo";
 //  self.imageList.rawMode = YES;
@@ -210,7 +210,7 @@ static NSInteger iPadThumbnailRowCount = 8;
   for (int i = 0; i < self.thumbnailRowCount; i++) {
     NSUInteger tmpIndex = (NSUInteger) ((indexPath.row * self.thumbnailRowCount) + i);
     if (tmpIndex < [self.imageList itemCount]) {
-      ImageItem *currentItem = ([self.imageList itemAtIndex:(NSUInteger)tmpIndex]);
+      TCHImageFeedItem *currentItem = ([self.imageList itemAtIndex:(NSUInteger)tmpIndex]);
       //assign the image
       TJMImageResourceView *res = (TJMImageResourceView *)[cell viewWithTag:(CellImageTag + i)];
       res.index = tmpIndex;

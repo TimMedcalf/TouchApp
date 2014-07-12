@@ -1,5 +1,5 @@
 //
-//  FeedList.h
+//  TCHBaseFeedList.h
 //  LeedsMetStudentUnion
 //
 //  Created by Tim Medcalf on 27/06/2011.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class FeedItem;
+@class TCHBaseFeedItem;
 
 @protocol FeedListConsumerDelegate
 
@@ -20,7 +20,7 @@
 @end
 
 
-@interface FeedList : NSObject
+@interface TCHBaseFeedList : NSObject
 
 @property (weak, nonatomic) id<FeedListConsumerDelegate, NSObject> delegate;
 @property (strong, nonatomic) NSURL *baseURL;
@@ -42,9 +42,9 @@
 
 //overrides
 - (NSInteger)refreshTimerCount;
-- (FeedItem *)newItemWithXMLDictionary:(NSDictionary *)itemDict andBaseURL:(NSURL *)baseURL;
-- (FeedItem *)newItemWithRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL; 
-- (FeedItem *)newItemWithDictionary:(NSDictionary *)dictionary;
+- (TCHBaseFeedItem *)newItemWithXMLDictionary:(NSDictionary *)itemDict andBaseURL:(NSURL *)baseURL;
+- (TCHBaseFeedItem *)newItemWithRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL;
+- (TCHBaseFeedItem *)newItemWithDictionary:(NSDictionary *)dictionary;
 
 - (NSString *)feedURL;
 - (NSString *)cacheFilename;

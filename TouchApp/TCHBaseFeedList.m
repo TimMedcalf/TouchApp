@@ -1,13 +1,13 @@
 //
-//  FeedList.m
+//  TCHBaseFeedList.m
 //  LeedsMetStudentUnion
 //
 //  Created by Tim Medcalf on 27/06/2011.
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
 
-#import "FeedList.h"
-#import "FeedItem.h"
+#import "TCHBaseFeedList.h"
+#import "TCHBaseFeedItem.h"
 #import "AppManager.h"
 
 
@@ -18,7 +18,7 @@ NSString *const Key_Feed_LastUpdated = @"lastupdated";
 NSString *const Key_Feed_BaseURL = @"baseURL";
 
 
-@interface FeedList () <NSURLConnectionDataDelegate>
+@interface TCHBaseFeedList () <NSURLConnectionDataDelegate>
 
 //RSS Feed Updating
 @property (strong, nonatomic) NSMutableData *activeDownload;
@@ -42,7 +42,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 @end
 
 
-@implementation FeedList
+@implementation TCHBaseFeedList
 
 #pragma mark lifecycle
 - (id)init {
@@ -92,7 +92,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
   if (self.lastUpdated) dict[Key_Feed_LastUpdated] = self.lastUpdated;
   if (self.baseURL) dict[Key_Feed_BaseURL] = [self.baseURL absoluteString];
   NSMutableArray *itemsDicts = [NSMutableArray arrayWithCapacity:[self.items count]];
-  for (FeedItem *item in self.items) {
+  for (TCHBaseFeedItem *item in self.items) {
     [itemsDicts addObject:[item dictionaryRepresentation]];
   }
   dict[Key_FeedItems] = itemsDicts;
@@ -273,8 +273,8 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
     //nearly done, just need to make sure the items are sorted correctly
     //descending pubDate order would probably be best
     [self.items sortUsingComparator: ^(id obj1, id obj2) {
-      FeedItem *item1 = (FeedItem *)obj1;
-      FeedItem *item2 = (FeedItem *)obj2;
+      TCHBaseFeedItem *item1 = (TCHBaseFeedItem *)obj1;
+      TCHBaseFeedItem *item2 = (TCHBaseFeedItem *)obj2;
       return [item1 compare:item2];
     }];
     //newFeedItems = nil;
@@ -300,16 +300,16 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 }
 
 //overrides
-- (FeedItem *)newItemWithXMLDictionary:(NSDictionary *)itemDict andBaseURL:(NSURL *)baseURL {
-  return [[FeedItem alloc]initWithXMLDictionary:itemDict andBaseURL:baseURL];
+- (TCHBaseFeedItem *)newItemWithXMLDictionary:(NSDictionary *)itemDict andBaseURL:(NSURL *)baseURL {
+  return [[TCHBaseFeedItem alloc]initWithXMLDictionary:itemDict andBaseURL:baseURL];
 }
 
-- (FeedItem *)newItemWithRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
-  return [[FeedItem alloc]initWithRawXMLElement:element andBaseURL:baseURL];  
+- (TCHBaseFeedItem *)newItemWithRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
+  return [[TCHBaseFeedItem alloc]initWithRawXMLElement:element andBaseURL:baseURL];
 }
 
-- (FeedItem *)newItemWithDictionary:(NSDictionary *)dictionary {
-  return [[FeedItem alloc] initWithDictionary:dictionary];
+- (TCHBaseFeedItem *)newItemWithDictionary:(NSDictionary *)dictionary {
+  return [[TCHBaseFeedItem alloc] initWithDictionary:dictionary];
 }
 
 - (NSInteger)refreshTimerCount {

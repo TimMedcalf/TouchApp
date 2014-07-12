@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FeedList.h"
+#import "TCHBaseFeedList.h"
 
 @class TKProgressBarView;
 

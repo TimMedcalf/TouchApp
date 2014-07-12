@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FeedList.h"
+#import "TCHBaseFeedList.h"
 
 
-@interface NewsList : FeedList
+@interface TCHNewsFeedList : TCHBaseFeedList
 
 @end

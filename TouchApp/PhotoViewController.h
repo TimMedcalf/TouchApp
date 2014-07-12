@@ -52,8 +52,8 @@
  */
 
 #import <UIKit/UIKit.h>
-#import "ImageList.h"
-#import "ImageItem.h"
+#import "TCHImageFeedList.h"
+#import "TCHImageFeedItem.h"
 
 @class ImageScrollView;
 @class PhotoViewController;
@@ -69,7 +69,7 @@
 @interface PhotoViewController : UIViewController <UIScrollViewDelegate, UIActionSheetDelegate>
 
 @property (weak, nonatomic) id<PhotoViewDelegate,NSObject> delegate;
-@property (strong, nonatomic) ImageList *imageList;
+@property (strong, nonatomic) TCHImageFeedList *imageList;
 @property (assign, nonatomic) NSUInteger initialIndex;
 @property (strong, nonatomic) IBOutlet UINavigationBar *customNavigationBar;
 @property (strong, nonatomic) IBOutlet UINavigationItem *customNavigationItem;
@@ -86,7 +86,7 @@
 - (ImageScrollView *)dequeueRecycledPage;
 
 - (NSUInteger)imageCount;
-- (ImageItem *)imageAtIndex:(NSUInteger)index;
+- (TCHImageFeedItem *)imageAtIndex:(NSUInteger)index;
 
 @end
 

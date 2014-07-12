@@ -7,16 +7,16 @@
 //
 
 #import "TJMAudioTableViewController.h"
-#import "FeedList.h"
+#import "TCHBaseFeedList.h"
 
 
 @interface TouchTableViewController : TJMAudioTableViewController <FeedListConsumerDelegate>
 
 @property (nonatomic, strong, readonly) NSDictionary *settings;
-@property (nonatomic, strong, readonly) FeedList *feedList;
+@property (nonatomic, strong, readonly) TCHBaseFeedList *feedList;
 
 - (id)initWithSettingsDictionary:(NSDictionary *)settings;
-- (id)initWithSettingsDictionary:(NSDictionary *)settings andFeedList:(FeedList *)feedList;
-- (FeedList *)feedSetup;
+- (id)initWithSettingsDictionary:(NSDictionary *)settings andFeedList:(TCHBaseFeedList *)feedList;
+- (TCHBaseFeedList *)feedSetup;
 
 @end

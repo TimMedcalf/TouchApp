@@ -99,7 +99,7 @@
 }
 
 #pragma mark - Configure scrollView to display new image (tiled or not)
-- (void)displayImage:(ImageItem *)image {
+- (void)displayImage:(TCHImageFeedItem *)image {
   // clear the previous imageView
   [imageView removeFromSuperview];
   imageView = nil;

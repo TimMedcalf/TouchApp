@@ -1,24 +1,24 @@
 //
-//  RecipeCategoryList.m
+//  TCHRecipeCategoryFeedList.m
 //  TouchApp
 //
 //  Created by Tim Medcalf on 26/08/2011.
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
 
-#import "RecipeCategoryList.h"
-#import "RecipeCategoryItem.h"
+#import "TCHRecipeCategoryFeedList.h"
+#import "TCHRecipeCategoryFeedItem.h"
 
 
-@implementation RecipeCategoryList
+@implementation TCHRecipeCategoryFeedList
 
 //overrides
-- (FeedItem *)newItemWithRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
-  return [[RecipeCategoryItem alloc] initWithRawXMLElement:element andBaseURL:baseURL];
+- (TCHBaseFeedItem *)newItemWithRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
+  return [[TCHRecipeCategoryFeedItem alloc] initWithRawXMLElement:element andBaseURL:baseURL];
 }
 
-- (FeedItem *)newItemWithDictionary:dictionary {
-  return [[RecipeCategoryItem alloc]initWithDictionary:dictionary];
+- (TCHBaseFeedItem *)newItemWithDictionary:dictionary {
+  return [[TCHRecipeCategoryFeedItem alloc]initWithDictionary:dictionary];
 }
 
 - (NSString *)feedURL {
@@ -33,7 +33,7 @@
 - (void)dataUpdated {
   [super dataUpdated];
   NSMutableArray *delete = [NSMutableArray array];
-  for (RecipeCategoryItem *item in self.itemArray) {
+  for (TCHRecipeCategoryFeedItem *item in self.itemArray) {
       if (([item.recipeTitle isEqualToString:@"left"]) || ([item.recipeTitle isEqualToString:@"right"]))
           [delete addObject:item];
   }

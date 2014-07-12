@@ -1,12 +1,12 @@
 //
-//  ImageItem.m
+//  TCHImageFeedItem.m
 //  TouchApp
 //
 //  Created by Tim Medcalf on 27/08/2011.
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
 
-#import "ImageItem.h"
+#import "TCHImageFeedItem.h"
 
 NSString *const Key_Image_Saved = @"image";
 NSString *const Key_Thumbnail_Saved = @"thumbnail";
@@ -17,7 +17,7 @@ NSString *const Key_ImageItem_ThumbnailHeight = @"thumbnailHeight";
 NSString *const Key_ImageItem_PhotoId = @"photoId";
 
 
-@implementation ImageItem
+@implementation TCHImageFeedItem
 
 // return the right flickr image size suffix for the thumbnail on this device (url_s etc)
 + (NSString *)thumbnailFlickrSuffix {
@@ -95,8 +95,8 @@ NSString *const Key_ImageItem_PhotoId = @"photoId";
 //k: (null)x(null) (only populated for new images... 2048 on longest side)
 //o: 2048x1370
   
-  NSString *thumbnailSuffix = [ImageItem thumbnailFlickrSuffix];
-  NSString *imageSuffix = [ImageItem imageFlickrSuffix];
+  NSString *thumbnailSuffix = [TCHImageFeedItem thumbnailFlickrSuffix];
+  NSString *imageSuffix = [TCHImageFeedItem imageFlickrSuffix];
 
   NSString *tmpPath = nil;
   NSURL *tmpURL = nil;
@@ -132,10 +132,10 @@ NSString *const Key_ImageItem_PhotoId = @"photoId";
   if (self.photoId) dict[Key_ImageItem_PhotoId] = self.photoId;
 }
 
-- (NSComparisonResult)compare:(FeedItem *)item {
+- (NSComparisonResult)compare:(TCHBaseFeedItem *)item {
   //compare in reverse so that we get the newest at the top.
-  if ((((ImageItem *)item).photoId) && (self.photoId)) {
-    return [((ImageItem *)item).photoId compare:self.photoId options:NSNumericSearch];
+  if ((((TCHImageFeedItem *)item).photoId) && (self.photoId)) {
+    return [((TCHImageFeedItem *)item).photoId compare:self.photoId options:NSNumericSearch];
   } else {
     return NSOrderedSame;
   }

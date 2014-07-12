@@ -19,7 +19,7 @@
   if (!cell) {
     cell = [[TouchTableCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:TouchTableCellReuseID];
   }
-  RadioItem *currentItem = (RadioItem *) [self.feedList itemAtIndex:(NSUInteger)indexPath.row];
+  TCHRadioFeedItem *currentItem = (TCHRadioFeedItem *) [self.feedList itemAtIndex:(NSUInteger)indexPath.row];
   [cell configureWithTitle:currentItem.titleLabel subtitle:currentItem.title];
   return cell;
 }
@@ -27,7 +27,7 @@
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   
-  RadioItem *curItem = (RadioItem *) [self.feedList itemAtIndex:(NSUInteger)indexPath.row];
+  TCHRadioFeedItem *curItem = (TCHRadioFeedItem *) [self.feedList itemAtIndex:(NSUInteger)indexPath.row];
   
   RadioItemViewController *controller = [[RadioItemViewController alloc] init];
   controller.item = curItem;
@@ -38,7 +38,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
   //first up get the item
-  RadioItem *currentItem = (RadioItem *) [self.feedList itemAtIndex:(NSUInteger)indexPath.row];
+  TCHRadioFeedItem *currentItem = (TCHRadioFeedItem *) [self.feedList itemAtIndex:(NSUInteger)indexPath.row];
   //[cell configureWithTitle:currentItem.title subtitle:currentItem.pubDate];
   return [TouchTableCell actualRowHeightwithTitle:currentItem.titleLabel subtitle:currentItem.title forTableWidth:tableView.bounds.size.width];
 }

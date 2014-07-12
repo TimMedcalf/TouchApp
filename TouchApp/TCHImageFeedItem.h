@@ -1,15 +1,15 @@
 //
-//  ImageItem.h
+//  TCHImageFeedItem.h
 //  TouchApp
 //
 //  Created by Tim Medcalf on 27/08/2011.
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
 
-#import "FeedItem.h"
+#import "TCHBaseFeedItem.h"
 
 
-@interface ImageItem : FeedItem
+@interface TCHImageFeedItem : TCHBaseFeedItem
 
 @property (strong, nonatomic) NSURL *thumbnailURL;
 @property (strong, nonatomic) NSURL *imageURL;

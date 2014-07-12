@@ -31,7 +31,7 @@
   return self;
 }
 
-- (id)initWithImageItem:(ImageItem *)item {
+- (id)initWithImageItem:(TCHImageFeedItem *)item {
   self = [self initWithFrame:CGRectMake(0, 0, item.imageWidth, item.imageHeight)];
   if (self) {
     self.contentMode = UIViewContentModeScaleAspectFit;
