@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TouchXML.h"
 
 @class TCHBaseFeedItem;
 

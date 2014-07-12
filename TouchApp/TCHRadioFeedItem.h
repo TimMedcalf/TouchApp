@@ -8,6 +8,15 @@
 
 #import "TCHBaseFeedItem.h"
 
+extern NSString *const Key_Radio_Author;
+extern NSString *const Key_Radio_Title;
+extern NSString *const Key_Radio_Summary;
+extern NSString *const Key_Radio_SubTitle;
+extern NSString *const Key_Radio_PubDate;
+extern NSString *const Key_Radio_Link;
+extern NSString *const Key_Radio_Duration;
+extern NSString *const Key_Radio_TitleLabel;
+extern NSString *const Key_ImageOverride;
 
 @interface TCHRadioFeedItem : TCHBaseFeedItem
 

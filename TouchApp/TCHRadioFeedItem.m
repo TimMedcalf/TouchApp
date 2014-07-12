@@ -14,7 +14,6 @@ NSString *const Key_Radio_PubDate = @"pubDate";
 NSString *const Key_Radio_Link = @"guid";
 NSString *const Key_Radio_Duration = @"itunes:duration";
 NSString *const Key_Radio_TitleLabel = @"itunes:subtitle";
-
 NSString *const Key_ImageOverride = @"imageURL";
 
 
@@ -22,6 +21,18 @@ NSString *const Key_ImageOverride = @"imageURL";
 
 
 @implementation TCHRadioFeedItem
+
+#pragma mark - setter overrides
+- (void)setSummary:(NSString *)summary {
+  //replace paragraphs with the HTML equivalent
+  _summary = [summary stringByReplacingOccurrencesOfString:@"\n\n" withString:@"</p><p>"];
+}
+
+- (void)setLink:(NSString *)link {
+  //trim whitespace and newlines
+  _link = [link stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+  _link = [_link stringByReplacingOccurrencesOfString:@"touchradio" withString:@"touchiphoneradio"];
+}
 
 #pragma mark overrides from FeedItem
 - (void)processSavedDictionary:(NSDictionary *)dict {
@@ -48,7 +59,6 @@ NSString *const Key_ImageOverride = @"imageURL";
   self.author = itemDict[Key_Radio_Author];
   
   self.summary = itemDict[Key_Radio_Summary];
-  self.summary = [self.summary stringByReplacingOccurrencesOfString:@"\n\n" withString:@"</p><p>"];
   
   self.subtitle = itemDict[Key_Radio_SubTitle];
   
@@ -59,9 +69,6 @@ NSString *const Key_ImageOverride = @"imageURL";
   self.pubDate = [inputFormatter dateFromString:dateStr];
   
   self.link = itemDict[Key_Radio_Link];
-  self.link = [self.link stringByReplacingOccurrencesOfString:@"touchradio" withString:@"touchiphoneradio"];
-  self.link = [self.link stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-  
   self.episode_duration = itemDict[Key_Radio_Duration];
   
   self.imageURL = nil;

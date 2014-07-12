@@ -52,6 +52,7 @@
 		222DF1FC16D0A90F00D749D2 /* recipes_header~ipad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 222DF1E416D0A90F00D749D2 /* recipes_header~ipad.jpg */; };
 		222DF1FD16D0A90F00D749D2 /* recipes_header~iphone.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 222DF1E516D0A90F00D749D2 /* recipes_header~iphone.jpg */; };
 		223595D9140FE2C3004A08C8 /* RecipeItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 223595D7140FE2C3004A08C8 /* RecipeItemViewController.m */; };
+		22402BBA19715003006F0287 /* TCHRadioFeedItem_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22402BB919715003006F0287 /* TCHRadioFeedItem_Tests.m */; };
 		224FBC2D1407F9DB00749E42 /* TCHRecipeCategoryFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC2C1407F9DB00749E42 /* TCHRecipeCategoryFeedItem.m */; };
 		224FBC301407FCF400749E42 /* TCHRecipeCategoryFeedList.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC2F1407FCF400749E42 /* TCHRecipeCategoryFeedList.m */; };
 		224FBC351407FE3700749E42 /* RecipeCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC331407FE3700749E42 /* RecipeCategoryViewController.m */; };
@@ -192,6 +193,7 @@
 		222DF1E516D0A90F00D749D2 /* recipes_header~iphone.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "recipes_header~iphone.jpg"; path = "headers/recipes_header~iphone.jpg"; sourceTree = "<group>"; };
 		223595D6140FE2C3004A08C8 /* RecipeItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeItemViewController.h; sourceTree = "<group>"; };
 		223595D7140FE2C3004A08C8 /* RecipeItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeItemViewController.m; sourceTree = "<group>"; };
+		22402BB919715003006F0287 /* TCHRadioFeedItem_Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHRadioFeedItem_Tests.m; sourceTree = "<group>"; };
 		224FBC2B1407F9DB00749E42 /* TCHRecipeCategoryFeedItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHRecipeCategoryFeedItem.h; sourceTree = "<group>"; };
 		224FBC2C1407F9DB00749E42 /* TCHRecipeCategoryFeedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHRecipeCategoryFeedItem.m; sourceTree = "<group>"; };
 		224FBC2E1407FCF400749E42 /* TCHRecipeCategoryFeedList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHRecipeCategoryFeedList.h; sourceTree = "<group>"; };
@@ -616,6 +618,7 @@
 			isa = PBXGroup;
 			children = (
 				22C2C25C19703E030052BD21 /* TouchApp_Tests.m */,
+				22402BB919715003006F0287 /* TCHRadioFeedItem_Tests.m */,
 				22C2C25719703E020052BD21 /* Supporting Files */,
 			);
 			path = "TouchApp Tests";
@@ -1069,6 +1072,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22402BBA19715003006F0287 /* TCHRadioFeedItem_Tests.m in Sources */,
 				22C2C25D19703E030052BD21 /* TouchApp_Tests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1251,6 +1255,11 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/include/libxml2,
+				);
 				INFOPLIST_FILE = "TouchApp Tests/TouchApp Tests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1288,6 +1297,11 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/include/libxml2,
+				);
 				INFOPLIST_FILE = "TouchApp Tests/TouchApp Tests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1324,6 +1338,7 @@
 				22C2C26219703E030052BD21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
