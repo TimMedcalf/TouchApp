@@ -321,11 +321,11 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 }
 
 - (NSString *)feedURL {
-  return nil;
+    return nil;
 }
 
 - (NSString *)cacheFilename {
-  return nil;
+    return nil;
 }
 
 @end

@@ -38,7 +38,6 @@ NSString *const FeedItem_ImageURLKey = @"imageURL";
   return self;
 }
 
-
 - (NSDictionary *)dictionaryRepresentation {
   NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:6];
   [self populateDictionary:dict];
@@ -48,12 +47,10 @@ NSString *const FeedItem_ImageURLKey = @"imageURL";
 #pragma mark subclass overrides
 - (void)processSavedDictionary:(NSDictionary *)dict {
   //override in subclass
-  NSLog(@"Processing Saved Dictionary! This should be overridden!");
 }
 
 - (void)processXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
   //override in subclass
-  NSLog(@"Processing XML Raw Element! This should be overridden!");
 }
 
 - (void)populateDictionary:(NSMutableDictionary *)dict {
@@ -62,13 +59,13 @@ NSString *const FeedItem_ImageURLKey = @"imageURL";
 }
 
 - (NSComparisonResult)compare:(TCHBaseFeedItem *)item {
-  //override in subclass
-  return NSOrderedSame;
+    //override in subclass
+    return NSOrderedSame;
 }
 
 - (NSString *)htmlForWebView {
-  NSLog(@"should override htmlForWebView!");
-  return @"should override htmlForWebView!";
+    //override in subclass
+    return nil;
 }
 
 @end
