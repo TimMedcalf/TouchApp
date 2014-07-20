@@ -35,58 +35,66 @@ NSString *const Key_ImageOverride = @"imageURL";
 }
 
 #pragma mark overrides from FeedItem
-- (void)processSavedDictionary:(NSDictionary *)dict {
-  self.title = dict[Key_Radio_Title];
-  self.titleLabel = dict[Key_Radio_TitleLabel];
-  self.author = dict[Key_Radio_Author];
-  self.summary = dict[Key_Radio_Summary];
-  self.subtitle = dict[Key_Radio_SubTitle];
-  self.pubDate = dict[Key_Radio_PubDate];
-  self.link = dict[Key_Radio_Link];
-  self.episode_duration = dict[Key_Radio_Duration];
+- (instancetype)initWithDictionary:(NSDictionary *)dict {
+    self = [super initWithDictionary:dict];
+    if (self) {
+        self.title = dict[Key_Radio_Title];
+        self.titleLabel = dict[Key_Radio_TitleLabel];
+        self.author = dict[Key_Radio_Author];
+        self.summary = dict[Key_Radio_Summary];
+        self.subtitle = dict[Key_Radio_SubTitle];
+        self.pubDate = dict[Key_Radio_PubDate];
+        self.link = dict[Key_Radio_Link];
+        self.episode_duration = dict[Key_Radio_Duration];;
+    }
+    return self;
 }
 
-- (void)processXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
-  // cannot get the itunes namespace to work with TouchXML - reverting to brute force
-  // of putting all children in a dictionary.
-  NSMutableDictionary *itemDict = [[NSMutableDictionary alloc] init];
-  for (uint counter = 0; counter < [element childCount]; counter++) {
-    itemDict[[[element childAtIndex:counter] name]] = [[element childAtIndex:counter] stringValue];
-  }
-  
-  self.title = itemDict[Key_Radio_Title];
-  self.titleLabel = itemDict[Key_Radio_TitleLabel];
-  self.author = itemDict[Key_Radio_Author];
-  
-  self.summary = itemDict[Key_Radio_Summary];
-  
-  self.subtitle = itemDict[Key_Radio_SubTitle];
-  
-  NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
-  [inputFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
-  [inputFormatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss z"];
-  NSString *dateStr = itemDict[Key_Radio_PubDate];
-  self.pubDate = [inputFormatter dateFromString:dateStr];
-  
-  self.link = itemDict[Key_Radio_Link];
-  self.episode_duration = itemDict[Key_Radio_Duration];
-  
-  self.imageURL = nil;
-  NSString *imageOverride = itemDict[Key_ImageOverride];
-  //first check if there is an image override location
-  if (imageOverride && ([imageOverride length] > 0)) {
-    self.imageURL = [[NSURL alloc] initWithString:imageOverride];
-  }
-  //if not, generate an image url as per normal...
-  if (!self.imageURL) {
-    NSString *urlString = itemDict[Key_Radio_Link];
-    urlString = [urlString stringByReplacingOccurrencesOfString:@".mp3" withString:@".jpg"];
-    urlString = [urlString stringByReplacingOccurrencesOfString:@"touchradio/" withString:@"touchradio/images/"];
-  
-    self.imageURL = [[NSURL alloc] initWithString:urlString relativeToURL:baseURL];
-    //NSLog(@"Radio URL = %@", self.imageURL);
-  }
-  //NSLog(@"%@ - %@ - %@", self.catalogueNumber, self.artist, self.title);
+- (instancetype)initWithXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
+    self = [super initWithXMLElement:element andBaseURL:baseURL];
+    if (self) {
+        // cannot get the itunes namespace to work with TouchXML - reverting to brute force
+        // of putting all children in a dictionary.
+        NSMutableDictionary *itemDict = [[NSMutableDictionary alloc] init];
+        for (uint counter = 0; counter < [element childCount]; counter++) {
+            itemDict[[[element childAtIndex:counter] name]] = [[element childAtIndex:counter] stringValue];
+        }
+
+        self.title = itemDict[Key_Radio_Title];
+        self.titleLabel = itemDict[Key_Radio_TitleLabel];
+        self.author = itemDict[Key_Radio_Author];
+
+        self.summary = itemDict[Key_Radio_Summary];
+
+        self.subtitle = itemDict[Key_Radio_SubTitle];
+
+        NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
+        [inputFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
+        [inputFormatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss z"];
+        NSString *dateStr = itemDict[Key_Radio_PubDate];
+        self.pubDate = [inputFormatter dateFromString:dateStr];
+
+        self.link = itemDict[Key_Radio_Link];
+        self.episode_duration = itemDict[Key_Radio_Duration];
+
+        self.imageURL = nil;
+        NSString *imageOverride = itemDict[Key_ImageOverride];
+        //first check if there is an image override location
+        if (imageOverride && ([imageOverride length] > 0)) {
+            self.imageURL = [[NSURL alloc] initWithString:imageOverride];
+        }
+        //if not, generate an image url as per normal...
+        if (!self.imageURL) {
+            NSString *urlString = itemDict[Key_Radio_Link];
+            urlString = [urlString stringByReplacingOccurrencesOfString:@".mp3" withString:@".jpg"];
+            urlString = [urlString stringByReplacingOccurrencesOfString:@"touchradio/" withString:@"touchradio/images/"];
+
+            self.imageURL = [[NSURL alloc] initWithString:urlString relativeToURL:baseURL];
+            //NSLog(@"Radio URL = %@", self.imageURL);
+        }
+        //NSLog(@"%@ - %@ - %@", self.catalogueNumber, self.artist, self.title);
+    }
+    return self;
 }
 
 - (NSDictionary *)dictionaryRepresentation {

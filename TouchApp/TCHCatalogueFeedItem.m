@@ -28,56 +28,63 @@ NSString *const Key_Cat_Publisher = @"publisher";
 #pragma mark lifecycle
 
 #pragma mark overrides from FeedItem
-- (void)processSavedDictionary:(NSDictionary *)dict {
-  self.title = dict[Key_Cat_Title];
-  self.artist = dict[Key_Cat_Artist];
-  self.catalogueNumber = dict[Key_Cat_CatalogueNumber];
-  self.description = dict[Key_Cat_Description];
-  self.mp3SampleURL = dict[Key_Cat_MP3SampleURL];
-  self.releaseURL = dict[Key_Cat_ReleaseURL];
-  self.itunesURL = dict[Key_Cat_Itunes_URL];
-  self.releaseDateString = dict[Key_Cat_ReleaseDate];
-  self.releaseDuration = dict[Key_Cat_ReleaseDuration];
-  self.trackListing = dict[Key_Cat_TrackListing];
-  self.publisher = dict[Key_Cat_Publisher];
+- (instancetype)initWithDictionary:(NSDictionary *)dict {
+    self = [super initWithDictionary:dict];
+    if (self) {
+        self.title = dict[Key_Cat_Title];
+        self.artist = dict[Key_Cat_Artist];
+        self.catalogueNumber = dict[Key_Cat_CatalogueNumber];
+        self.description = dict[Key_Cat_Description];
+        self.mp3SampleURL = dict[Key_Cat_MP3SampleURL];
+        self.releaseURL = dict[Key_Cat_ReleaseURL];
+        self.itunesURL = dict[Key_Cat_Itunes_URL];
+        self.releaseDateString = dict[Key_Cat_ReleaseDate];
+        self.releaseDuration = dict[Key_Cat_ReleaseDuration];
+        self.trackListing = dict[Key_Cat_TrackListing];
+        self.publisher = dict[Key_Cat_Publisher];
+    }
+    return self;
 }
 
-- (void)processXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
-  //lets get the parent fields out the way first
-  NSString *tmpImage = [[element nodeForXPath:Key_Cat_CoverArt error:nil] stringValue];
-  if (tmpImage) {
-    NSURL *tmpURL = [[NSURL alloc] initWithString:tmpImage relativeToURL:baseURL];
-    self.imageURL = tmpURL;
-  }
-  //okay, now the stuff that's unique to us...
-  self.title = [[element nodeForXPath:Key_Cat_Title error:nil] stringValue];
-  self.artist = [[element nodeForXPath:Key_Cat_Artist error:nil] stringValue];
-  self.catalogueNumber = [[element nodeForXPath:Key_Cat_CatalogueNumber error:nil] stringValue];
-  
-  //tweak description for HTML display
-  self.description = [[element nodeForXPath:Key_Cat_Description error:nil] stringValue];
-  self.description = [self.description stringByReplacingOccurrencesOfString:@"\n\n" withString:@"</p><p>"];
-  self.description = [self.description stringByReplacingOccurrencesOfString:@"\r\n" withString:@"</p><p>"];
-  
-  
-  self.mp3SampleURL = [[element nodeForXPath:Key_Cat_MP3SampleURL error:nil] stringValue];
-  self.mp3SampleURL = [self.mp3SampleURL stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-  
-  self.releaseURL = [[element nodeForXPath:Key_Cat_ReleaseURL error:nil] stringValue];
-  self.releaseURL = [self.releaseURL stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-  
-  self.itunesURL = [[element nodeForXPath:Key_Cat_Itunes_URL error:nil] stringValue];
-  self.itunesURL = [self.itunesURL stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-  
-  self.releaseDateString = [[element nodeForXPath:Key_Cat_ReleaseDate error:nil] stringValue];
-  self.releaseDuration = [[element nodeForXPath:Key_Cat_ReleaseDuration error:nil] stringValue];
-  
-  self.trackListing = [[element nodeForXPath:Key_Cat_TrackListing error:nil] stringValue];
-  self.trackListing = [self.trackListing stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
-  
-  self.publisher = [[element nodeForXPath:Key_Cat_Publisher error:nil] stringValue];
-  //NSLog(@"%@ - %@ - %@", self.catalogueNumber, self.artist, self.title);
-};
+- (instancetype)initWithXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
+    self = [super initWithXMLElement:element andBaseURL:baseURL];
+    if (self) {
+        NSString *tmpImage = [[element nodeForXPath:Key_Cat_CoverArt error:nil] stringValue];
+        if (tmpImage) {
+            NSURL *tmpURL = [[NSURL alloc] initWithString:tmpImage relativeToURL:baseURL];
+            self.imageURL = tmpURL;
+        }
+        //okay, now the stuff that's unique to us...
+        self.title = [[element nodeForXPath:Key_Cat_Title error:nil] stringValue];
+        self.artist = [[element nodeForXPath:Key_Cat_Artist error:nil] stringValue];
+        self.catalogueNumber = [[element nodeForXPath:Key_Cat_CatalogueNumber error:nil] stringValue];
+
+        //tweak description for HTML display
+        self.description = [[element nodeForXPath:Key_Cat_Description error:nil] stringValue];
+        self.description = [self.description stringByReplacingOccurrencesOfString:@"\n\n" withString:@"</p><p>"];
+        self.description = [self.description stringByReplacingOccurrencesOfString:@"\r\n" withString:@"</p><p>"];
+
+
+        self.mp3SampleURL = [[element nodeForXPath:Key_Cat_MP3SampleURL error:nil] stringValue];
+        self.mp3SampleURL = [self.mp3SampleURL stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+
+        self.releaseURL = [[element nodeForXPath:Key_Cat_ReleaseURL error:nil] stringValue];
+        self.releaseURL = [self.releaseURL stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+
+        self.itunesURL = [[element nodeForXPath:Key_Cat_Itunes_URL error:nil] stringValue];
+        self.itunesURL = [self.itunesURL stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+
+        self.releaseDateString = [[element nodeForXPath:Key_Cat_ReleaseDate error:nil] stringValue];
+        self.releaseDuration = [[element nodeForXPath:Key_Cat_ReleaseDuration error:nil] stringValue];
+
+        self.trackListing = [[element nodeForXPath:Key_Cat_TrackListing error:nil] stringValue];
+        self.trackListing = [self.trackListing stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
+
+        self.publisher = [[element nodeForXPath:Key_Cat_Publisher error:nil] stringValue];
+        //NSLog(@"%@ - %@ - %@", self.catalogueNumber, self.artist, self.title);
+    }
+    return self;
+}
 
 - (NSDictionary *)dictionaryRepresentation {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[super dictionaryRepresentation]];

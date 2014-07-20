@@ -13,8 +13,8 @@
 @interface TCHBaseFeedItem : NSObject
 @property (strong, nonatomic) NSURL *imageURL;
 
-- (id)initWithDictionary:(NSDictionary *)dict;
-- (id)initWithXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL;
+- (instancetype)initWithDictionary:(NSDictionary *)dict;
+- (instancetype)initWithXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL;
 - (NSDictionary *)dictionaryRepresentation;
 - (NSComparisonResult)compare:(TCHBaseFeedItem *)item;
 - (NSString *)htmlForWebView;

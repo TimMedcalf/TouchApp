@@ -17,56 +17,6 @@ NSString *const Key_ImageItem_ThumbnailHeight = @"thumbnailHeight";
 NSString *const Key_ImageItem_PhotoId = @"photoId";
 
 
-@implementation TCHImageFeedItem
-
-// return the right flickr image size suffix for the thumbnail on this device (url_s etc)
-+ (NSString *)thumbnailFlickrSuffix {
-  if ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) || ([[UIScreen mainScreen] scale] > 1)) return @"s";
-  return @"t";
-}
-
-// return the right flickr image size suffix for the image on this device (url_l etc)
-+ (NSString *)imageFlickrSuffix {
-  if ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) || ([[UIScreen mainScreen] scale] > 1)) return @"l";
-  return @"z";
-}
-
-#pragma mark overrides from FeedItem
-- (void)processSavedDictionary:(NSDictionary *)dict {
-  if (dict[Key_Image_Saved]) {
-    NSURL *tmpURL = [[NSURL alloc] initWithString:dict[Key_Image_Saved]];
-    self.imageURL = tmpURL;
-  }
-  if (dict[Key_Thumbnail_Saved]) {
-    NSURL *tmpURL = [[NSURL alloc] initWithString:dict[Key_Thumbnail_Saved]];
-    self.thumbnailURL = tmpURL;
-  }
-  NSNumber *tmpNum;
-  if (dict[Key_ImageItem_ImageWidth]) {
-    tmpNum = dict[Key_ImageItem_ImageWidth];
-    self.imageWidth = [tmpNum integerValue];
-  }
-  if (dict[Key_ImageItem_ImageHeight]) {
-    tmpNum = dict[Key_ImageItem_ImageHeight];
-    self.imageHeight = [tmpNum integerValue];
-  }
-  if (dict[Key_ImageItem_ThumbnailWidth]) {
-    tmpNum = dict[Key_ImageItem_ThumbnailWidth];
-    self.thumbnailWidth = [tmpNum integerValue];
-  }
-  if (dict[Key_ImageItem_ThumbnailHeight]) {
-    tmpNum = dict[Key_ImageItem_ThumbnailHeight];
-    self.thumbnailHeight = [tmpNum integerValue];
-  }
-  if (dict[Key_ImageItem_PhotoId]) {
-    self.photoId = dict[Key_ImageItem_PhotoId];
-  }
-}
-
-- (void)processXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
-    //some size logging...
-//  NSLog(@" ");
-//  NSLog(@">>New Image");
 //url_sq, url_t, url_s, url_q, url_m, url_n, url_z, url_c, url_l, url_o
 //  NSLog(@"sq: %@x%@ %@",[[element attributeForName:@"width_sq"] stringValue], [[element attributeForName:@"height_sq"] stringValue],[[element attributeForName:@"url_sq"] stringValue]);
 //  NSLog(@"t: %@x%@ %@",[[element attributeForName:@"width_t"] stringValue], [[element attributeForName:@"height_t"] stringValue],[[element attributeForName:@"url_t"] stringValue]);
@@ -94,32 +44,70 @@ NSString *const Key_ImageItem_PhotoId = @"photoId";
 //h: (null)x(null) (only populated for new images... 1600 on longest side)
 //k: (null)x(null) (only populated for new images... 2048 on longest side)
 //o: 2048x1370
-  
-  NSString *thumbnailSuffix = [TCHImageFeedItem thumbnailFlickrSuffix];
-  NSString *imageSuffix = [TCHImageFeedItem imageFlickrSuffix];
 
-  NSString *tmpPath = nil;
-  NSURL *tmpURL = nil;
-  
-  tmpPath = [[element attributeForName:[NSString stringWithFormat:@"url_%@", thumbnailSuffix]] stringValue];
-  if (tmpPath) {
-    tmpURL = [[NSURL alloc] initWithString:tmpPath];
-    self.thumbnailURL = tmpURL;
-  }
 
-  
-  self.thumbnailWidth = [[[element attributeForName:[NSString stringWithFormat:@"width_%@", thumbnailSuffix]] stringValue] integerValue];
-  self.thumbnailHeight = [[[element attributeForName:[NSString stringWithFormat:@"height_%@", thumbnailSuffix]] stringValue] integerValue];
-  
-  tmpPath = [[element attributeForName:[NSString stringWithFormat:@"url_%@", imageSuffix]] stringValue];
-  if (tmpPath) {
-    tmpURL = [[NSURL alloc] initWithString:tmpPath];
-    self.imageURL = tmpURL;
-  }
-  self.imageWidth = [[[element attributeForName:[NSString stringWithFormat:@"width_%@", imageSuffix]] stringValue] integerValue];
-  self.imageHeight = [[[element attributeForName:[NSString stringWithFormat:@"height_%@", imageSuffix]] stringValue] integerValue];
-  //NSLog(@"Image %d x %d", self.imageWidth, self.imageHeight);
-  self.photoId = [[element attributeForName:@"id"] stringValue];
+@implementation TCHImageFeedItem
+
+// return the right flickr image size suffix for the thumbnail on this device (url_s etc)
++ (NSString *)thumbnailFlickrSuffix {
+  if ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) || ([[UIScreen mainScreen] scale] > 1)) return @"s";
+  return @"t";
+}
+
+// return the right flickr image size suffix for the image on this device (url_l etc)
++ (NSString *)imageFlickrSuffix {
+  if ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) || ([[UIScreen mainScreen] scale] > 1)) return @"l";
+  return @"z";
+}
+
+- (instancetype)initWithDictionary:(NSDictionary *)dict {
+    self = [super initWithDictionary:dict];
+    if (self) {
+        self.imageURL = dict[Key_Image_Saved] ? [[NSURL alloc] initWithString:dict[Key_Image_Saved]] : nil;
+        self.thumbnailURL = dict[Key_Thumbnail_Saved] ? [[NSURL alloc] initWithString:dict[Key_Thumbnail_Saved]] : nil;
+
+        self.imageWidth = dict[Key_ImageItem_ImageWidth] ? [dict[Key_ImageItem_ImageWidth] integerValue] : 0;
+        self.imageHeight = dict[Key_ImageItem_ImageHeight] ? [dict[Key_ImageItem_ImageHeight] integerValue] : 0;
+
+        self.thumbnailWidth = dict[Key_ImageItem_ThumbnailWidth] ? [dict[Key_ImageItem_ThumbnailWidth] integerValue] : 0;
+        self.thumbnailHeight = dict[Key_ImageItem_ThumbnailHeight] ? [dict[Key_ImageItem_ThumbnailHeight] integerValue] : 0;
+
+        self.photoId = dict[Key_ImageItem_PhotoId];
+    }
+    return self;
+}
+
+
+#pragma mark overrides from FeedItem
+
+- (instancetype)initWithXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
+    self = [super initWithXMLElement:element andBaseURL:baseURL];
+    if (self) {
+        NSString *thumbnailSuffix = [TCHImageFeedItem thumbnailFlickrSuffix];
+        NSString *imageSuffix = [TCHImageFeedItem imageFlickrSuffix];
+
+        NSString *tmpPath = nil;
+        NSURL *tmpURL = nil;
+
+        tmpPath = [[element attributeForName:[NSString stringWithFormat:@"url_%@", thumbnailSuffix]] stringValue];
+        if (tmpPath) {
+            tmpURL = [[NSURL alloc] initWithString:tmpPath];
+            self.thumbnailURL = tmpURL;
+        }
+        self.thumbnailWidth = [[[element attributeForName:[NSString stringWithFormat:@"width_%@", thumbnailSuffix]] stringValue] integerValue];
+        self.thumbnailHeight = [[[element attributeForName:[NSString stringWithFormat:@"height_%@", thumbnailSuffix]] stringValue] integerValue];
+
+        tmpPath = [[element attributeForName:[NSString stringWithFormat:@"url_%@", imageSuffix]] stringValue];
+        if (tmpPath) {
+            tmpURL = [[NSURL alloc] initWithString:tmpPath];
+            self.imageURL = tmpURL;
+        }
+        self.imageWidth = [[[element attributeForName:[NSString stringWithFormat:@"width_%@", imageSuffix]] stringValue] integerValue];
+        self.imageHeight = [[[element attributeForName:[NSString stringWithFormat:@"height_%@", imageSuffix]] stringValue] integerValue];
+        //NSLog(@"Image %d x %d", self.imageWidth, self.imageHeight);
+        self.photoId = [[element attributeForName:@"id"] stringValue];
+    }
+    return self;
 }
 
 - (NSDictionary *)dictionaryRepresentation {

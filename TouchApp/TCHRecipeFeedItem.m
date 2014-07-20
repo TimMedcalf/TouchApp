@@ -17,24 +17,33 @@ NSString *const Key_Recipe_PubDate = @"pubDate";
 @implementation TCHRecipeFeedItem
 
 #pragma mark overrides from FeedItem
-- (void)processSavedDictionary:(NSDictionary *)dict {
-  self.recipeTitle = dict[Key_Recipe_Title];
-  self.recipeExcerpt = dict[Key_Recipe_Excerpt];
-  self.recipeDescription = dict[Key_Recipe_Description];
-  self.recipePubDate = dict[Key_Recipe_PubDate];
+- (instancetype)initWithDictionary:(NSDictionary *)dict {
+    self = [super initWithDictionary:dict];
+    if (self) {
+        self.recipeTitle = dict[Key_Recipe_Title];
+        self.recipeExcerpt = dict[Key_Recipe_Excerpt];
+        self.recipeDescription = dict[Key_Recipe_Description];
+        self.recipePubDate = dict[Key_Recipe_PubDate];
+    }
+    return self;
 }
 
 
-- (void)processXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
-  self.recipeTitle = [[element nodeForXPath:Key_Recipe_Title error:nil] stringValue];
-  self.recipeExcerpt = [[element nodeForXPath:Key_Recipe_Excerpt error:nil] stringValue];
-  self.recipeDescription = [[element nodeForXPath:Key_Recipe_Description error:nil] stringValue];
-  NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
-  [inputFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
-  [inputFormatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss z"];
-  NSString *dateStr = [[element nodeForXPath:Key_Recipe_PubDate error:nil] stringValue];
-  self.recipePubDate = [inputFormatter dateFromString:dateStr];
+- (instancetype)initWithXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
+    self = [super initWithXMLElement:element andBaseURL:baseURL];
+    if (self) {
+        self.recipeTitle = [[element nodeForXPath:Key_Recipe_Title error:nil] stringValue];
+        self.recipeExcerpt = [[element nodeForXPath:Key_Recipe_Excerpt error:nil] stringValue];
+        self.recipeDescription = [[element nodeForXPath:Key_Recipe_Description error:nil] stringValue];
+        NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
+        [inputFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
+        [inputFormatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss z"];
+        NSString *dateStr = [[element nodeForXPath:Key_Recipe_PubDate error:nil] stringValue];
+        self.recipePubDate = [inputFormatter dateFromString:dateStr];
+    }
+    return self;
 }
+
 
 - (NSDictionary *)dictionaryRepresentation {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[super dictionaryRepresentation]];

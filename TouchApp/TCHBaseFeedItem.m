@@ -11,30 +11,18 @@
 NSString *const FeedItem_ImageURLKey = @"imageURL";
 
 
-@interface TCHBaseFeedItem ()
-
-//things to override
-- (void)processSavedDictionary:(NSDictionary *)dict;
-- (void)processXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL;
-@end
-
-
 @implementation TCHBaseFeedItem
 
-- (id)initWithDictionary:(NSDictionary *)dict {
+- (instancetype)initWithDictionary:(NSDictionary *)dict {
   self = [super init];
   if (self) {
     self.imageURL = [NSURL URLWithString:dict[FeedItem_ImageURLKey]];
-      [self processSavedDictionary:dict];
   }
   return self;
 }
 
-- (id)initWithXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
+- (instancetype)initWithXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
   self = [super init];
-  if (self) {
-      [self processXMLElement:element andBaseURL:baseURL];
-  }
   return self;
 }
 
@@ -46,16 +34,6 @@ NSString *const FeedItem_ImageURLKey = @"imageURL";
 
     return [NSDictionary dictionaryWithDictionary:dict];
 }
-
-#pragma mark subclass overrides
-- (void)processSavedDictionary:(NSDictionary *)dict {
-  //override in subclass
-}
-
-- (void)processXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
-  //override in subclass
-}
-
 
 - (NSComparisonResult)compare:(TCHBaseFeedItem *)item {
     //override in subclass

@@ -24,18 +24,27 @@ NSString *const XML_PubDate = @"pubDate";
 @implementation TCHNewsFeedItem
 
 #pragma mark overrides
-- (void)processSavedDictionary:(NSDictionary *)dict {
-  self.pubDate = dict[PubDateKey];
-  self.link = dict[LinkKey];
-  self.title = dict[TitleKey];
-  self.description = dict[DescriptionKey];
+
+- (instancetype)initWithDictionary:(NSDictionary *)dict {
+    self = [super initWithDictionary:dict];
+    if (self) {
+        self.pubDate = dict[PubDateKey];
+        self.link = dict[LinkKey];
+        self.title = dict[TitleKey];
+        self.description = dict[DescriptionKey];
+    }
+    return self;
 }
 
-- (void)processXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
-  self.pubDate = [[element nodeForXPath:XML_PubDate error:nil] stringValue];
-  self.link = [[element nodeForXPath:XML_Link error:nil] stringValue];
-  self.title = [[element nodeForXPath:XML_Title error:nil] stringValue];
-  self.description = [[element nodeForXPath:XML_Description error:nil] stringValue];
+- (instancetype)initWithXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
+    self = [super initWithXMLElement:element andBaseURL:baseURL];
+    if (self) {
+        self.pubDate = [[element nodeForXPath:XML_PubDate error:nil] stringValue];
+        self.link = [[element nodeForXPath:XML_Link error:nil] stringValue];
+        self.title = [[element nodeForXPath:XML_Title error:nil] stringValue];
+        self.description = [[element nodeForXPath:XML_Description error:nil] stringValue];
+    }
+    return self;
 }
 
 - (NSDictionary *)dictionaryRepresentation {
