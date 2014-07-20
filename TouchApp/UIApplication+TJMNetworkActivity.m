@@ -35,9 +35,9 @@ static NSUInteger tjm_networkActivityCount = 0;
   }
 }
 
-- (void)tjm_resetNetworkActivity {
-  tjm_networkActivityCount = 0;
-  [self tjm_refreshNetworkActivityIndicator];
-}
+//- (void)tjm_resetNetworkActivity {
+//  tjm_networkActivityCount = 0;
+//  [self tjm_refreshNetworkActivityIndicator];
+//}
 
 @end

@@ -9,18 +9,13 @@
 #import "TCHNewsFeedItem.h"
 #import "TouchXML.h"
 
-//keys we use in our own dictionary (saving and loading)
-NSString *const PubDateKey = @"pubDate";
-NSString *const LinkKey = @"link";
-NSString *const TitleKey = @"title";
-NSString *const DescriptionKey = @"description";
-
-//keys when we're parsing an xml node
-NSString *const XML_Title = @"title";
-NSString *const XML_Link = @"link";
-NSString *const XML_Description = @"description";
-NSString *const XML_PubDate = @"pubDate";
-
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
+NSString *const kTCHNewsFeedItemKey_Title = @"title";
+NSString *const kTCHNewsFeedItemKey_Link = @"link";
+NSString *const kTCHNewsFeedItemKey_Description = @"description";
+NSString *const kTCHNewsFeedItemKey_PubDate = @"pubDate";
+#pragma clang diagnostic pop
 
 @implementation TCHNewsFeedItem
 
@@ -29,10 +24,10 @@ NSString *const XML_PubDate = @"pubDate";
 - (instancetype)initWithDictionary:(NSDictionary *)dict {
     self = [super initWithDictionary:dict];
     if (self) {
-        self.pubDate = dict[PubDateKey];
-        self.link = dict[LinkKey];
-        self.title = dict[TitleKey];
-        self.description = dict[DescriptionKey];
+        self.pubDate = dict[kTCHNewsFeedItemKey_PubDate];
+        self.link = dict[kTCHNewsFeedItemKey_Link];
+        self.title = dict[kTCHNewsFeedItemKey_Title];
+        self.description = dict[kTCHNewsFeedItemKey_Description];
     }
     return self;
 }
@@ -40,20 +35,20 @@ NSString *const XML_PubDate = @"pubDate";
 - (instancetype)initWithXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
     self = [super initWithXMLElement:element andBaseURL:baseURL];
     if (self) {
-        self.pubDate = [[element nodeForXPath:XML_PubDate error:nil] stringValue];
-        self.link = [[element nodeForXPath:XML_Link error:nil] stringValue];
-        self.title = [[element nodeForXPath:XML_Title error:nil] stringValue];
-        self.description = [[element nodeForXPath:XML_Description error:nil] stringValue];
+        self.pubDate = [[element nodeForXPath:kTCHNewsFeedItemKey_PubDate error:nil] stringValue];
+        self.link = [[element nodeForXPath:kTCHNewsFeedItemKey_Link error:nil] stringValue];
+        self.title = [[element nodeForXPath:kTCHNewsFeedItemKey_Title error:nil] stringValue];
+        self.description = [[element nodeForXPath:kTCHNewsFeedItemKey_Description error:nil] stringValue];
     }
     return self;
 }
 
 - (NSDictionary *)dictionaryRepresentation {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[super dictionaryRepresentation]];
-    if (self.pubDate) dict[PubDateKey] = self.pubDate;
-    if (self.link) dict[LinkKey] = self.link;
-    if (self.title) dict[TitleKey] = self.title;
-    if (self.description) dict[DescriptionKey] = self.description;
+    if (self.pubDate) dict[kTCHNewsFeedItemKey_PubDate] = self.pubDate;
+    if (self.link) dict[kTCHNewsFeedItemKey_Link] = self.link;
+    if (self.title) dict[kTCHNewsFeedItemKey_Title] = self.title;
+    if (self.description) dict[kTCHNewsFeedItemKey_Description] = self.description;
     return [NSDictionary dictionaryWithDictionary:dict];
 }
 

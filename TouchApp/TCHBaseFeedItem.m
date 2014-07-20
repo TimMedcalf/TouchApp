@@ -8,7 +8,10 @@
 
 #import "TCHBaseFeedItem.h"
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
 NSString *const FeedItem_ImageURLKey = @"imageURL";
+#pragma clang diagnostic pop
 
 
 @implementation TCHBaseFeedItem

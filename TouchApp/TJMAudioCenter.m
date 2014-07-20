@@ -11,10 +11,11 @@
 #import "GCDSingleton.h"
 
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
 NSString *const TJMAudioCenterStatusChange = @"TJMAudioCenterStatusChange";
-
 NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
-
+#pragma clang diagnostic pop
 
 @interface TJMAudioCenter ()
 

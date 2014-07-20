@@ -1,7 +1,6 @@
 
 #import "CatalogueItemViewController.h"
 #import "Flurry.h"
-#import "TJMAudioCenter.h"
 
 @implementation CatalogueItemViewController
 

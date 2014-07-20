@@ -12,13 +12,14 @@
 #import "UIApplication+TJMNetworkActivity.h"
 #import "TouchXML.h"
 
-
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
 NSString *const Key_FeedItems = @"FeedItems";
 NSString *const Key_LastRefresh = @"lastRefresh";
 NSString *const Key_Feed_ETag = @"etag";
 NSString *const Key_Feed_LastUpdated = @"lastupdated";
 NSString *const Key_Feed_BaseURL = @"baseURL";
-
+#pragma clang diagnostic pop
 
 @interface TCHBaseFeedList () <NSURLConnectionDataDelegate>
 

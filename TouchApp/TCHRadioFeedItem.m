@@ -6,6 +6,8 @@
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
 NSString *const Key_Radio_Author = @"itunes:author";
 NSString *const Key_Radio_Title = @"title";
 NSString *const Key_Radio_Summary = @"itunes:summary";
@@ -15,6 +17,7 @@ NSString *const Key_Radio_Link = @"guid";
 NSString *const Key_Radio_Duration = @"itunes:duration";
 NSString *const Key_Radio_TitleLabel = @"itunes:subtitle";
 NSString *const Key_ImageOverride = @"imageURL";
+#pragma clang diagnostic pop
 
 
 #import "TCHRadioFeedItem.h"

@@ -6,6 +6,8 @@
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
 //keys for XML and Dictionaries
 NSString *const Key_Cat_Title = @"title";
 NSString *const Key_Cat_Artist = @"artist";
@@ -19,6 +21,7 @@ NSString *const Key_Cat_ReleaseDate = @"release_date";
 NSString *const Key_Cat_ReleaseDuration = @"release_duration";
 NSString *const Key_Cat_TrackListing = @"track_listing";
 NSString *const Key_Cat_Publisher = @"publisher";
+#pragma clang diagnostic pop
 
 #import "TCHCatalogueFeedItem.h"
 #import "TouchXML.h"

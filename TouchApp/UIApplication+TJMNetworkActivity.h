@@ -12,6 +12,6 @@
 
 - (void)tjm_pushNetworkActivity;
 - (void)tjm_popNetworkActivity;
-- (void)tjm_resetNetworkActivity;
+//- (void)tjm_resetNetworkActivity;
 
 @end

@@ -14,7 +14,10 @@
 #import "TCHRadioFeedList.h"
 #import "TCHRecipeCategoryFeedList.h"
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
 NSString *const LMSUCache = @"TouchCache";
+#pragma clang diagnostic pop
 
 
 @interface AppManager ()

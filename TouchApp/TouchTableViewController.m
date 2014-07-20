@@ -8,10 +8,12 @@
 
 #import "TouchTableViewController.h"
 #import "TouchTableCell.h"
-#import "Flurry.h"
 #import "UIApplication+TJMNetworkWarning.h"
 #import "TKProgressBarView.h"
 
+
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
 NSString static *const Key_Title = @"title";
 NSString static *const Key_TabBarImage = @"tabBarImage";
 NSString static *const Key_Shim = @"shim";
@@ -25,6 +27,7 @@ NSString static *const Key_IconTintW = @"iconTintW";
 NSString static *const Key_IconTintR = @"iconTintR";
 NSString static *const Key_IconTintG = @"iconTintG";
 NSString static *const Key_IconTintB = @"iconTintB";
+#pragma clang diagnostic pop
 
 
 @interface TouchTableViewController ()

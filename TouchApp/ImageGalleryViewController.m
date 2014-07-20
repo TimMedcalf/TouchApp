@@ -8,7 +8,6 @@
 
 #import "ImageGalleryViewController.h"
 #import "TJMImageResourceView.h"
-#import "Flurry.h"
 #import "UIApplication+TJMNetworkWarning.h"
 #import "TKProgressBarView.h"
 

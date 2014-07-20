@@ -7,7 +7,10 @@
 //
 
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
 NSString *const TouchTableCellReuseID = @"TouchTableCellReuseID";
+#pragma clang diagnostic pop
 
 #import "TouchTableCell.h"
 

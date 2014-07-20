@@ -10,7 +10,10 @@
 #import "AppManager.h"
 #import "TJMImageResource.h"
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
 NSString *const ResourceManifestFile = @"TJMImageResourceManifest.plist";
+#pragma clang diagnostic pop
 
 NSInteger TwoMonths = -5184000;
 

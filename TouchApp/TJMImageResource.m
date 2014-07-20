@@ -9,6 +9,8 @@
 #import "AppManager.h"
 #import "UIApplication+TJMNetworkActivity.h"
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
 NSString *const TJMImageResourceImageNeedsUpdating = @"TJMImageResourceImageNeedsUpdating";
 NSString *const Key_TJMImageResource_imageURL = @"imageURL";
 NSString *const Key_TJMImageResource_lastModified = @"lastModified";
@@ -18,6 +20,7 @@ NSString *const Key_TJMImageResource_localFileExtension = @"localFileExtension";
 NSString *const Key_TJMImageResource_lastChecked = @"lastChecked";
 NSString *const Key_TJMImageResource_lastAccessed = @"lastAccessed";
 NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
+#pragma clang diagnostic pop
 
 
 @interface TJMImageResource () <NSURLConnectionDataDelegate>

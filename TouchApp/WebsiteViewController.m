@@ -15,8 +15,6 @@
 @property (strong, nonatomic) NSTimer *barTimer;
 @property (strong, nonatomic) NSTimer *barTapTimer;
 - (void)singleTapGesture:(UITapGestureRecognizer *)tapGesture;
-- (void)navBackButtonTouched:(id)sender;
-- (void)navForwarButtonTouched:(id)sender;
 
 @end
 
@@ -131,15 +129,6 @@
   return (!self.HTMLString);
 }
 
-#pragma mark button events
-- (void)navBackButtonTouched:(id)sender {
-  [self.webView goBack];
-}
-
-- (void)navForwarButtonTouched:(id)sender {
-  [self.webView goForward];
-}
-  
 #pragma mark Gestures
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
   //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));

@@ -9,6 +9,8 @@
 #import "TCHImageFeedItem.h"
 #import "TouchXML.h"
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
 NSString *const Key_Image_Saved = @"image";
 NSString *const Key_Thumbnail_Saved = @"thumbnail";
 NSString *const Key_ImageItem_ImageWidth = @"imageWidth";
@@ -16,6 +18,7 @@ NSString *const Key_ImageItem_ImageHeight = @"imageHeight";
 NSString *const Key_ImageItem_ThumbnailWidth = @"thumbnailWidth";
 NSString *const Key_ImageItem_ThumbnailHeight = @"thumbnailHeight";
 NSString *const Key_ImageItem_PhotoId = @"photoId";
+#pragma clang diagnostic pop
 
 
 //url_sq, url_t, url_s, url_q, url_m, url_n, url_z, url_c, url_l, url_o

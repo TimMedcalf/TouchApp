@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "GCDSingleton.h"
 
 extern NSString *const TJMAudioCenterStatusChange;
 

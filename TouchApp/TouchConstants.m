@@ -8,4 +8,7 @@
 
 #import "TouchConstants.h"
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
 NSString *const TouchAppAllShookUp = @"TouchAppAllShookUp";
+#pragma clang diagnostic pop

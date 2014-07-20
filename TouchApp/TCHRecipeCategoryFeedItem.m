@@ -9,8 +9,11 @@
 #import "TCHRecipeCategoryFeedItem.h"
 #import "TouchXML.h"
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
 NSString *const Key_RCat_Id = @"id";
 NSString *const Key_RCat_Title = @"title";
+#pragma clang diagnostic pop
 
 
 @implementation TCHRecipeCategoryFeedItem
