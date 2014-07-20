@@ -40,6 +40,7 @@ static NSInteger iPadThumbnailRowCount = 8;
   self = [super initWithStyle:UITableViewStylePlain];
   if (self) {
     self.imageList = imageList;
+    self.imageList.delegate = self;
     self.title = @"Photos";
     self.tabBarItem.image = [UIImage imageNamed:@"images"];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -57,8 +58,6 @@ static NSInteger iPadThumbnailRowCount = 8;
  
 - (void)viewDidLoad {
   [super viewDidLoad];
-//  [Flurry logAllPageViews:self.navigationController];
-//  [Flurry logAllPageViewsForTarget:self.navigationController];
   
   [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
   
