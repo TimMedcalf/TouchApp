@@ -38,12 +38,13 @@ NSString *const XML_PubDate = @"pubDate";
   self.description = [[element nodeForXPath:XML_Description error:nil] stringValue];
 }
 
-- (void)populateDictionary:(NSMutableDictionary *)dict {
-    [super populateDictionary:dict];
+- (NSDictionary *)dictionaryRepresentation {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[super dictionaryRepresentation]];
     if (self.pubDate) dict[PubDateKey] = self.pubDate;
     if (self.link) dict[LinkKey] = self.link;
     if (self.title) dict[TitleKey] = self.title;
     if (self.description) dict[DescriptionKey] = self.description;
+    return [NSDictionary dictionaryWithDictionary:dict];
 }
 
 - (NSString *)htmlForWebView {

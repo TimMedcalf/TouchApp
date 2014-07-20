@@ -20,6 +20,4 @@
 - (NSString *)htmlForWebView;
 
 
-- (void)populateDictionary:(NSMutableDictionary *)dict;
-
 @end

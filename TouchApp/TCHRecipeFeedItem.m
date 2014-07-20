@@ -36,14 +36,15 @@ NSString *const Key_Recipe_PubDate = @"pubDate";
   self.recipePubDate = [inputFormatter dateFromString:dateStr];
 }
 
-
-- (void)populateDictionary:(NSMutableDictionary *)dict {
-    [super populateDictionary:dict];
+- (NSDictionary *)dictionaryRepresentation {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[super dictionaryRepresentation]];
     if (self.recipeTitle) dict[Key_Recipe_Title] = self.recipeTitle;
     if (self.recipeExcerpt) dict[Key_Recipe_Excerpt] = self.recipeExcerpt;
     if (self.recipeDescription) dict[Key_Recipe_Description] = self.recipeDescription;
     if (self.recipePubDate) dict[Key_Recipe_PubDate] = self.recipePubDate;
+    return [NSDictionary dictionaryWithDictionary:dict];
 }
+
 
 - (NSComparisonResult)compare:(TCHBaseFeedItem *)item {
   //compare in reverse so that we get the newest at the top.

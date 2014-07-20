@@ -79,9 +79,8 @@ NSString *const Key_Cat_Publisher = @"publisher";
   //NSLog(@"%@ - %@ - %@", self.catalogueNumber, self.artist, self.title);
 };
 
-
-- (void)populateDictionary:(NSMutableDictionary *)dict {
-    [super populateDictionary:dict];
+- (NSDictionary *)dictionaryRepresentation {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[super dictionaryRepresentation]];
     dict[Key_Cat_Title] = self.title;
     dict[Key_Cat_Artist] = self.artist;
     dict[Key_Cat_CatalogueNumber] = self.catalogueNumber;
@@ -93,7 +92,9 @@ NSString *const Key_Cat_Publisher = @"publisher";
     dict[Key_Cat_ReleaseDuration] = self.releaseDuration;
     dict[Key_Cat_TrackListing] = self.trackListing;
     dict[Key_Cat_Publisher] = self.publisher;
+    return [NSDictionary dictionaryWithDictionary:dict];
 }
+
 
 - (NSString *)htmlForWebView {
   NSString *streamLink = @"";

@@ -122,8 +122,8 @@ NSString *const Key_ImageItem_PhotoId = @"photoId";
   self.photoId = [[element attributeForName:@"id"] stringValue];
 }
 
-- (void)populateDictionary:(NSMutableDictionary *)dict {
-    [super populateDictionary:dict];
+- (NSDictionary *)dictionaryRepresentation {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[super dictionaryRepresentation]];
     if (self.imageURL) dict[Key_Image_Saved] = [self.imageURL absoluteString];
     if (self.thumbnailURL) dict[Key_Thumbnail_Saved] = [self.thumbnailURL absoluteString];
     dict[Key_ImageItem_ImageWidth] = @(self.imageWidth);
@@ -131,6 +131,7 @@ NSString *const Key_ImageItem_PhotoId = @"photoId";
     dict[Key_ImageItem_ThumbnailWidth] = @(self.thumbnailWidth);
     dict[Key_ImageItem_ThumbnailHeight] = @(self.thumbnailHeight);
     if (self.photoId) dict[Key_ImageItem_PhotoId] = self.photoId;
+    return [NSDictionary dictionaryWithDictionary:dict];
 }
 
 - (NSComparisonResult)compare:(TCHBaseFeedItem *)item {

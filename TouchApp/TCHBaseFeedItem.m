@@ -39,9 +39,12 @@ NSString *const FeedItem_ImageURLKey = @"imageURL";
 }
 
 - (NSDictionary *)dictionaryRepresentation {
-  NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:6];
-  [self populateDictionary:dict];
-  return [NSDictionary dictionaryWithDictionary:dict];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+
+    //TODO - what is this for?
+    if (self.imageURL) dict[FeedItem_ImageURLKey] = [self.imageURL absoluteString];
+
+    return [NSDictionary dictionaryWithDictionary:dict];
 }
 
 #pragma mark subclass overrides
@@ -53,10 +56,6 @@ NSString *const FeedItem_ImageURLKey = @"imageURL";
   //override in subclass
 }
 
-- (void)populateDictionary:(NSMutableDictionary *)dict {
-    //TODO - what is this for?
-    if (self.imageURL) dict[FeedItem_ImageURLKey] = [self.imageURL absoluteString];
-}
 
 - (NSComparisonResult)compare:(TCHBaseFeedItem *)item {
     //override in subclass

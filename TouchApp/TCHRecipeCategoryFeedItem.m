@@ -34,10 +34,11 @@ NSString *const Key_RCat_Title = @"title";
   self.recipeTitle = [[element nodeForXPath:Key_RCat_Title error:nil] stringValue];
 }
 
-- (void)populateDictionary:(NSMutableDictionary *)dict {
-    [super populateDictionary:dict];
+- (NSDictionary *)dictionaryRepresentation {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[super dictionaryRepresentation]];
     if (self.recipeId) dict[Key_RCat_Id] = self.recipeId;
     if (self.recipeTitle) dict[Key_RCat_Title] = self.recipeTitle;
+    return [NSDictionary dictionaryWithDictionary:dict];
 }
 
 - (NSComparisonResult)compare:(TCHBaseFeedItem *)item {

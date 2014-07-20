@@ -89,8 +89,8 @@ NSString *const Key_ImageOverride = @"imageURL";
   //NSLog(@"%@ - %@ - %@", self.catalogueNumber, self.artist, self.title);
 }
 
-- (void)populateDictionary:(NSMutableDictionary *)dict {
-    [super populateDictionary:dict];
+- (NSDictionary *)dictionaryRepresentation {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[super dictionaryRepresentation]];
     if (self.title) dict[Key_Radio_Title] = self.title;
     if (self.titleLabel) dict[Key_Radio_TitleLabel] = self.titleLabel;
     if (self.author) dict[Key_Radio_Author] = self.author;
@@ -99,6 +99,7 @@ NSString *const Key_ImageOverride = @"imageURL";
     if (self.pubDate) dict[Key_Radio_PubDate] = self.pubDate;
     if (self.link) dict[Key_Radio_Link] = self.link;
     if (self.episode_duration) dict[Key_Radio_Duration] = self.episode_duration;
+    return [NSDictionary dictionaryWithDictionary:dict];
 }
 
 - (NSComparisonResult)compare:(TCHBaseFeedItem *)item {
