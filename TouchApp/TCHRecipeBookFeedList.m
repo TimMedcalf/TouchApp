@@ -19,7 +19,7 @@
 //  return 3600;
 //}
 
-- (TCHBaseFeedItem *)newItemWithXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
+- (TCHBaseFeedItem *)newItemWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL {
   return [[TCHRecipeFeedItem alloc] initWithXMLElement:element andBaseURL:baseURL];
 }
 

@@ -24,7 +24,7 @@ NSString *const FeedItem_ImageURLKey = @"imageURL";
   return self;
 }
 
-- (instancetype)initWithXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
+- (instancetype)initWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL {
   self = [super init];
   return self;
 }

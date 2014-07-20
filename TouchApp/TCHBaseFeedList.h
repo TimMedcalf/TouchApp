@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DDXML.h"
 
 @class TCHBaseFeedItem, CXMLElement;
 
@@ -42,7 +43,7 @@
 
 //overrides
 - (NSInteger)refreshTimerCount;
-- (TCHBaseFeedItem *)newItemWithXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL;
+- (TCHBaseFeedItem *)newItemWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL;
 - (TCHBaseFeedItem *)newItemWithDictionary:(NSDictionary *)dictionary;
 
 - (NSString *)feedURL;

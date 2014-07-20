@@ -6,8 +6,9 @@
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
 
+#import <KissXML/DDXMLElementAdditions.h>
 #import "TCHRecipeFeedItem.h"
-#import "TouchXML.h"
+#import "DDXML.h"
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
@@ -33,16 +34,16 @@ NSString *const Key_Recipe_PubDate = @"pubDate";
 }
 
 
-- (instancetype)initWithXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
+- (instancetype)initWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL {
     self = [super initWithXMLElement:element andBaseURL:baseURL];
     if (self) {
-        self.recipeTitle = [[element nodeForXPath:Key_Recipe_Title error:nil] stringValue];
-        self.recipeExcerpt = [[element nodeForXPath:Key_Recipe_Excerpt error:nil] stringValue];
-        self.recipeDescription = [[element nodeForXPath:Key_Recipe_Description error:nil] stringValue];
+        self.recipeTitle = [[element elementForName:Key_Recipe_Title] stringValue];
+        self.recipeExcerpt = [[element elementForName:Key_Recipe_Excerpt] stringValue];
+        self.recipeDescription = [[element elementForName:Key_Recipe_Description] stringValue];
         NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
         [inputFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
         [inputFormatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss z"];
-        NSString *dateStr = [[element nodeForXPath:Key_Recipe_PubDate error:nil] stringValue];
+        NSString *dateStr = [[element elementForName:Key_Recipe_PubDate] stringValue];
         self.recipePubDate = [inputFormatter dateFromString:dateStr];
     }
     return self;

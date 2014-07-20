@@ -9,12 +9,13 @@
 #import "TCHImageFeedList.h"
 #import "TCHImageFeedItem.h"
 #import "GTMNSDictionary+URLArguments.h"
+#import "DDXML.h"
 
 
 @implementation TCHImageFeedList
 
 //overrides
-- (TCHBaseFeedItem *)newItemWithXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
+- (TCHBaseFeedItem *)newItemWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL {
   return [[TCHImageFeedItem alloc] initWithXMLElement:element andBaseURL:baseURL];
 }
 

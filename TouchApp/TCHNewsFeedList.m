@@ -13,7 +13,7 @@
 @implementation TCHNewsFeedList
 
 //overrides
-- (TCHBaseFeedItem *)newItemWithXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
+- (TCHBaseFeedItem *)newItemWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL {
   return [[TCHNewsFeedItem alloc] initWithXMLElement:element andBaseURL:baseURL];
 }
 

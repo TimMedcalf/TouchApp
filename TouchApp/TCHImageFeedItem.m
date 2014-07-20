@@ -7,7 +7,7 @@
 //
 
 #import "TCHImageFeedItem.h"
-#import "TouchXML.h"
+#import "DDXML.h"
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
@@ -84,7 +84,7 @@ NSString *const Key_ImageItem_PhotoId = @"photoId";
 
 #pragma mark overrides from FeedItem
 
-- (instancetype)initWithXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
+- (instancetype)initWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL {
     self = [super initWithXMLElement:element andBaseURL:baseURL];
     if (self) {
         NSString *thumbnailSuffix = [TCHImageFeedItem thumbnailFlickrSuffix];

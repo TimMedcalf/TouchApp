@@ -6,6 +6,7 @@
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
 
+#import <KissXML/DDXMLElement.h>
 #import "TCHCatalogueFeedList.h"
 #import "TCHCatalogueFeedItem.h"
 
@@ -19,7 +20,7 @@
 //  return 3600;
 //}
 
-- (TCHBaseFeedItem *)newItemWithXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
+- (TCHBaseFeedItem *)newItemWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL {
   return [[TCHCatalogueFeedItem alloc] initWithXMLElement:element andBaseURL:baseURL];
 }
 

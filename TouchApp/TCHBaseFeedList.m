@@ -10,7 +10,7 @@
 #import "TCHBaseFeedItem.h"
 #import "AppManager.h"
 #import "UIApplication+TJMNetworkActivity.h"
-#import "TouchXML.h"
+#import "DDXML.h"
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
@@ -239,11 +239,11 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
   //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
   //NSLog(@"%@",[NSString stringWithUTF8String:[xmlData bytes]]);
   
-  // Create a new rssParser object based on the TouchXML "CXMLDocument" class, this is the
-  // object that actually grabs and processes the RSS data
+  // Create a new rssParser object (DDXMLDocument), this is the object that actually grabs and processes the RSS data
   if ([xmlData length] > 0) {
     //NSLog(@"Parsing XML %u bytes from feed %@",[xmlData length], self.feed);
-    CXMLDocument *rssParser = [[CXMLDocument alloc] initWithData:self.activeDownload options:0 error:nil];
+    DDXMLDocument *rssParser = [[DDXMLDocument alloc] initWithData:self.activeDownload options:0 error:nil];
+
 
     // Create a new Array object to be used with the looping of the results from the rssParser
     self.baseURL = nil;
@@ -267,7 +267,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
     // Loop through the resultNodes to access each items' actual data
     NSMutableArray *newFeedItems = [[NSMutableArray alloc] initWithCapacity:[resultNodes count]];
     
-    for (CXMLElement *resultElement in resultNodes) {
+    for (DDXMLElement *resultElement in resultNodes) {
       [newFeedItems addObject:[self newItemWithXMLElement:resultElement andBaseURL:self.baseURL]];
     }
     //rssParser = nil;
@@ -303,7 +303,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 }
 
 //overrides
-- (TCHBaseFeedItem *)newItemWithXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
+- (TCHBaseFeedItem *)newItemWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL {
   return [[TCHBaseFeedItem alloc] initWithXMLElement:element andBaseURL:baseURL];
 }
 

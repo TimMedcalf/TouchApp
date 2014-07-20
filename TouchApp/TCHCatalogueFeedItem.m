@@ -24,7 +24,8 @@ NSString *const Key_Cat_Publisher = @"publisher";
 #pragma clang diagnostic pop
 
 #import "TCHCatalogueFeedItem.h"
-#import "TouchXML.h"
+#import "DDXML.h"
+#import "DDXMLElementAdditions.h"
 
 @implementation TCHCatalogueFeedItem
 
@@ -49,41 +50,41 @@ NSString *const Key_Cat_Publisher = @"publisher";
     return self;
 }
 
-- (instancetype)initWithXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
+- (instancetype)initWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL {
     self = [super initWithXMLElement:element andBaseURL:baseURL];
     if (self) {
-        NSString *tmpImage = [[element nodeForXPath:Key_Cat_CoverArt error:nil] stringValue];
+        NSString *tmpImage = [[element elementForName:Key_Cat_CoverArt] stringValue];
+
         if (tmpImage) {
             NSURL *tmpURL = [[NSURL alloc] initWithString:tmpImage relativeToURL:baseURL];
             self.imageURL = tmpURL;
         }
         //okay, now the stuff that's unique to us...
-        self.title = [[element nodeForXPath:Key_Cat_Title error:nil] stringValue];
-        self.artist = [[element nodeForXPath:Key_Cat_Artist error:nil] stringValue];
-        self.catalogueNumber = [[element nodeForXPath:Key_Cat_CatalogueNumber error:nil] stringValue];
+        self.title = [[element elementForName:Key_Cat_Title] stringValue];
+        self.artist = [[element elementForName:Key_Cat_Artist] stringValue];
+        self.catalogueNumber = [[element elementForName:Key_Cat_CatalogueNumber] stringValue];
 
         //tweak description for HTML display
-        self.description = [[element nodeForXPath:Key_Cat_Description error:nil] stringValue];
+        self.description = [[element elementForName:Key_Cat_Description] stringValue];
         self.description = [self.description stringByReplacingOccurrencesOfString:@"\n\n" withString:@"</p><p>"];
         self.description = [self.description stringByReplacingOccurrencesOfString:@"\r\n" withString:@"</p><p>"];
 
-
-        self.mp3SampleURL = [[element nodeForXPath:Key_Cat_MP3SampleURL error:nil] stringValue];
+        self.mp3SampleURL = [[element elementForName:Key_Cat_MP3SampleURL] stringValue];
         self.mp3SampleURL = [self.mp3SampleURL stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 
-        self.releaseURL = [[element nodeForXPath:Key_Cat_ReleaseURL error:nil] stringValue];
+        self.releaseURL = [[element elementForName:Key_Cat_ReleaseURL] stringValue];
         self.releaseURL = [self.releaseURL stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 
-        self.itunesURL = [[element nodeForXPath:Key_Cat_Itunes_URL error:nil] stringValue];
+        self.itunesURL = [[element elementForName:Key_Cat_Itunes_URL] stringValue];
         self.itunesURL = [self.itunesURL stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 
-        self.releaseDateString = [[element nodeForXPath:Key_Cat_ReleaseDate error:nil] stringValue];
-        self.releaseDuration = [[element nodeForXPath:Key_Cat_ReleaseDuration error:nil] stringValue];
+        self.releaseDateString = [[element elementForName:Key_Cat_ReleaseDate] stringValue];
+        self.releaseDuration = [[element elementForName:Key_Cat_ReleaseDuration] stringValue];
 
-        self.trackListing = [[element nodeForXPath:Key_Cat_TrackListing error:nil] stringValue];
+        self.trackListing = [[element elementForName:Key_Cat_TrackListing] stringValue];
         self.trackListing = [self.trackListing stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
 
-        self.publisher = [[element nodeForXPath:Key_Cat_Publisher error:nil] stringValue];
+        self.publisher = [[element elementForName:Key_Cat_Publisher] stringValue];
         //NSLog(@"%@ - %@ - %@", self.catalogueNumber, self.artist, self.title);
     }
     return self;

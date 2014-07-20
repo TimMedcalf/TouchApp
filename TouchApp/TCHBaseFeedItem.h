@@ -8,13 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@class CXMLElement;
+@class DDXMLElement;
 
 @interface TCHBaseFeedItem : NSObject
 @property (strong, nonatomic) NSURL *imageURL;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
-- (instancetype)initWithXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL;
+- (instancetype)initWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL;
 - (NSDictionary *)dictionaryRepresentation;
 - (NSComparisonResult)compare:(TCHBaseFeedItem *)item;
 - (NSString *)htmlForWebView;

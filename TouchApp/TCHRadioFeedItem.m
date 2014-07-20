@@ -21,7 +21,7 @@ NSString *const Key_ImageOverride = @"imageURL";
 
 
 #import "TCHRadioFeedItem.h"
-#import "TouchXML.h"
+#import "DDXML.h"
 
 @implementation TCHRadioFeedItem
 
@@ -53,11 +53,12 @@ NSString *const Key_ImageOverride = @"imageURL";
     return self;
 }
 
-- (instancetype)initWithXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
+- (instancetype)initWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL {
     self = [super initWithXMLElement:element andBaseURL:baseURL];
     if (self) {
         // cannot get the itunes namespace to work with TouchXML - reverting to brute force
         // of putting all children in a dictionary.
+        //TODO get this unit to work properly with namespaces now we use KISSXML
         NSMutableDictionary *itemDict = [[NSMutableDictionary alloc] init];
         for (uint counter = 0; counter < [element childCount]; counter++) {
             itemDict[[[element childAtIndex:counter] name]] = [[element childAtIndex:counter] stringValue];

@@ -6,8 +6,9 @@
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
 
+#import <KissXML/DDXMLElementAdditions.h>
 #import "TCHNewsFeedItem.h"
-#import "TouchXML.h"
+#import "DDXML.h"
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
@@ -32,13 +33,13 @@ NSString *const kTCHNewsFeedItemKey_PubDate = @"pubDate";
     return self;
 }
 
-- (instancetype)initWithXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
+- (instancetype)initWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL {
     self = [super initWithXMLElement:element andBaseURL:baseURL];
     if (self) {
-        self.pubDate = [[element nodeForXPath:kTCHNewsFeedItemKey_PubDate error:nil] stringValue];
-        self.link = [[element nodeForXPath:kTCHNewsFeedItemKey_Link error:nil] stringValue];
-        self.title = [[element nodeForXPath:kTCHNewsFeedItemKey_Title error:nil] stringValue];
-        self.description = [[element nodeForXPath:kTCHNewsFeedItemKey_Description error:nil] stringValue];
+        self.pubDate = [[element elementForName:kTCHNewsFeedItemKey_PubDate] stringValue];
+        self.link = [[element elementForName:kTCHNewsFeedItemKey_Link] stringValue];
+        self.title = [[element elementForName:kTCHNewsFeedItemKey_Title] stringValue];
+        self.description = [[element elementForName:kTCHNewsFeedItemKey_Description] stringValue];
     }
     return self;
 }

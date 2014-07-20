@@ -6,8 +6,9 @@
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
 
+#import <KissXML/DDXMLElementAdditions.h>
 #import "TCHRecipeCategoryFeedItem.h"
-#import "TouchXML.h"
+#import "DDXML.h"
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
@@ -35,15 +36,14 @@ NSString *const Key_RCat_Title = @"title";
 }
 
 
-
-- (instancetype)initWithXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
+- (instancetype)initWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL {
     self = [super initWithXMLElement:element andBaseURL:baseURL];
     if (self) {
-        NSString *numString = [[element nodeForXPath:Key_RCat_Id error:nil] stringValue];
+        NSString *numString = [[element elementForName:Key_RCat_Id] stringValue];
         NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
         [f setNumberStyle:NSNumberFormatterDecimalStyle];
         self.recipeId = [f numberFromString:numString];
-        self.recipeTitle = [[element nodeForXPath:Key_RCat_Title error:nil] stringValue];
+        self.recipeTitle = [[element elementForName:Key_RCat_Title] stringValue];
     }
     return self;
 }
