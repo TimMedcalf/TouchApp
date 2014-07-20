@@ -15,10 +15,7 @@ NSString *const FeedItem_ImageURLKey = @"imageURL";
 
 //things to override
 - (void)processSavedDictionary:(NSDictionary *)dict;
-- (void)processXMLDictionary:(NSDictionary *)dict andBaseURL:(NSURL *)baseURL;
-- (void)processRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL; 
-- (void)populateDictionary:(NSMutableDictionary *)dict;
-
+- (void)processXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL;
 @end
 
 
@@ -36,38 +33,32 @@ NSString *const FeedItem_ImageURLKey = @"imageURL";
 - (id)initWithXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
   self = [super init];
   if (self) {
-    [self processRawXMLElement:element andBaseURL:baseURL];
+      [self processXMLElement:element andBaseURL:baseURL];
   }
   return self;
 }
 
 
-- (NSMutableDictionary *)dictionaryRepresentation {
+- (NSDictionary *)dictionaryRepresentation {
   NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:6];
-  if (self.imageURL) dict[FeedItem_ImageURLKey] = [self.imageURL absoluteString];
   [self populateDictionary:dict];
-  return dict;
+  return [NSDictionary dictionaryWithDictionary:dict];
 }
 
-#pragma mark sublclass overrides
+#pragma mark subclass overrides
 - (void)processSavedDictionary:(NSDictionary *)dict {
   //override in subclass
   NSLog(@"Processing Saved Dictionary! This should be overridden!");
 }
 
-- (void)processXMLDictionary:(NSDictionary *)dict andBaseURL:(NSURL *)baseURL {
-  //override in subclass
-  NSLog(@"Processing XML Dictionary! This should be overridden!");
-}
-
-- (void)processRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
+- (void)processXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
   //override in subclass
   NSLog(@"Processing XML Raw Element! This should be overridden!");
 }
 
 - (void)populateDictionary:(NSMutableDictionary *)dict {
-  //override in subclass
-  NSLog(@"Populating dictionary! This should be overridden!");
+    //TODO - what is this for?
+    if (self.imageURL) dict[FeedItem_ImageURLKey] = [self.imageURL absoluteString];
 }
 
 - (NSComparisonResult)compare:(TCHBaseFeedItem *)item {

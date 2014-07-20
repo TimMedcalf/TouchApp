@@ -46,7 +46,7 @@ NSString *const Key_ImageOverride = @"imageURL";
   self.episode_duration = dict[Key_Radio_Duration];
 }
 
-- (void)processRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
+- (void)processXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
   // cannot get the itunes namespace to work with TouchXML - reverting to brute force
   // of putting all children in a dictionary.
   NSMutableDictionary *itemDict = [[NSMutableDictionary alloc] init];
@@ -90,14 +90,15 @@ NSString *const Key_ImageOverride = @"imageURL";
 }
 
 - (void)populateDictionary:(NSMutableDictionary *)dict {
-  if (self.title) dict[Key_Radio_Title] = self.title;
-  if (self.titleLabel) dict[Key_Radio_TitleLabel] = self.titleLabel;
-  if (self.author) dict[Key_Radio_Author] = self.author;
-  if (self.summary) dict[Key_Radio_Summary] = self.summary;
-  if (self.subtitle) dict[Key_Radio_SubTitle] = self.subtitle;
-  if (self.pubDate) dict[Key_Radio_PubDate] = self.pubDate;
-  if (self.link) dict[Key_Radio_Link] = self.link;
-  if (self.episode_duration) dict[Key_Radio_Duration] = self.episode_duration;    
+    [super populateDictionary:dict];
+    if (self.title) dict[Key_Radio_Title] = self.title;
+    if (self.titleLabel) dict[Key_Radio_TitleLabel] = self.titleLabel;
+    if (self.author) dict[Key_Radio_Author] = self.author;
+    if (self.summary) dict[Key_Radio_Summary] = self.summary;
+    if (self.subtitle) dict[Key_Radio_SubTitle] = self.subtitle;
+    if (self.pubDate) dict[Key_Radio_PubDate] = self.pubDate;
+    if (self.link) dict[Key_Radio_Link] = self.link;
+    if (self.episode_duration) dict[Key_Radio_Duration] = self.episode_duration;
 }
 
 - (NSComparisonResult)compare:(TCHBaseFeedItem *)item {

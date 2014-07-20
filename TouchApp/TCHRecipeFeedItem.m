@@ -25,7 +25,7 @@ NSString *const Key_Recipe_PubDate = @"pubDate";
 }
 
 
-- (void)processRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
+- (void)processXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
   self.recipeTitle = [[element nodeForXPath:Key_Recipe_Title error:nil] stringValue];
   self.recipeExcerpt = [[element nodeForXPath:Key_Recipe_Excerpt error:nil] stringValue];
   self.recipeDescription = [[element nodeForXPath:Key_Recipe_Description error:nil] stringValue];
@@ -38,10 +38,11 @@ NSString *const Key_Recipe_PubDate = @"pubDate";
 
 
 - (void)populateDictionary:(NSMutableDictionary *)dict {
-  if (self.recipeTitle) dict[Key_Recipe_Title] = self.recipeTitle;
-  if (self.recipeExcerpt) dict[Key_Recipe_Excerpt] = self.recipeExcerpt;
-  if (self.recipeDescription) dict[Key_Recipe_Description] = self.recipeDescription;
-  if (self.recipePubDate) dict[Key_Recipe_PubDate] = self.recipePubDate;
+    [super populateDictionary:dict];
+    if (self.recipeTitle) dict[Key_Recipe_Title] = self.recipeTitle;
+    if (self.recipeExcerpt) dict[Key_Recipe_Excerpt] = self.recipeExcerpt;
+    if (self.recipeDescription) dict[Key_Recipe_Description] = self.recipeDescription;
+    if (self.recipePubDate) dict[Key_Recipe_PubDate] = self.recipePubDate;
 }
 
 - (NSComparisonResult)compare:(TCHBaseFeedItem *)item {

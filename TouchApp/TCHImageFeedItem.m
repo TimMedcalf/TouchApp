@@ -63,7 +63,7 @@ NSString *const Key_ImageItem_PhotoId = @"photoId";
   }
 }
 
-- (void)processRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
+- (void)processXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
     //some size logging...
 //  NSLog(@" ");
 //  NSLog(@">>New Image");
@@ -123,13 +123,14 @@ NSString *const Key_ImageItem_PhotoId = @"photoId";
 }
 
 - (void)populateDictionary:(NSMutableDictionary *)dict {
-  if (self.imageURL) dict[Key_Image_Saved] = [self.imageURL absoluteString];
-  if (self.thumbnailURL) dict[Key_Thumbnail_Saved] = [self.thumbnailURL absoluteString];
-  dict[Key_ImageItem_ImageWidth] = @(self.imageWidth);
-  dict[Key_ImageItem_ImageHeight] = @(self.imageHeight);
-  dict[Key_ImageItem_ThumbnailWidth] = @(self.thumbnailWidth);
-  dict[Key_ImageItem_ThumbnailHeight] = @(self.thumbnailHeight);
-  if (self.photoId) dict[Key_ImageItem_PhotoId] = self.photoId;
+    [super populateDictionary:dict];
+    if (self.imageURL) dict[Key_Image_Saved] = [self.imageURL absoluteString];
+    if (self.thumbnailURL) dict[Key_Thumbnail_Saved] = [self.thumbnailURL absoluteString];
+    dict[Key_ImageItem_ImageWidth] = @(self.imageWidth);
+    dict[Key_ImageItem_ImageHeight] = @(self.imageHeight);
+    dict[Key_ImageItem_ThumbnailWidth] = @(self.thumbnailWidth);
+    dict[Key_ImageItem_ThumbnailHeight] = @(self.thumbnailHeight);
+    if (self.photoId) dict[Key_ImageItem_PhotoId] = self.photoId;
 }
 
 - (NSComparisonResult)compare:(TCHBaseFeedItem *)item {

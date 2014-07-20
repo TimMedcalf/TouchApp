@@ -26,7 +26,7 @@ NSString *const Key_RCat_Title = @"title";
   self.recipeTitle = dict[Key_RCat_Title];
 }
 
-- (void)processRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
+- (void)processXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
   NSString *numString = [[element nodeForXPath:Key_RCat_Id error:nil] stringValue];
   NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
   [f setNumberStyle:NSNumberFormatterDecimalStyle];
@@ -35,8 +35,9 @@ NSString *const Key_RCat_Title = @"title";
 }
 
 - (void)populateDictionary:(NSMutableDictionary *)dict {
-  if (self.recipeId) dict[Key_RCat_Id] = self.recipeId;
-  if (self.recipeTitle) dict[Key_RCat_Title] = self.recipeTitle;
+    [super populateDictionary:dict];
+    if (self.recipeId) dict[Key_RCat_Id] = self.recipeId;
+    if (self.recipeTitle) dict[Key_RCat_Title] = self.recipeTitle;
 }
 
 - (NSComparisonResult)compare:(TCHBaseFeedItem *)item {

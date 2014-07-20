@@ -42,7 +42,7 @@ NSString *const Key_Cat_Publisher = @"publisher";
   self.publisher = dict[Key_Cat_Publisher];
 }
 
-- (void)processRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
+- (void)processXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
   //lets get the parent fields out the way first
   NSString *tmpImage = [[element nodeForXPath:Key_Cat_CoverArt error:nil] stringValue];
   if (tmpImage) {
@@ -81,17 +81,18 @@ NSString *const Key_Cat_Publisher = @"publisher";
 
 
 - (void)populateDictionary:(NSMutableDictionary *)dict {
-  dict[Key_Cat_Title] = self.title;
-  dict[Key_Cat_Artist] = self.artist;
-  dict[Key_Cat_CatalogueNumber] = self.catalogueNumber;
-  dict[Key_Cat_Description] = self.description;
-  dict[Key_Cat_MP3SampleURL] = self.mp3SampleURL;
-  dict[Key_Cat_ReleaseURL] = self.releaseURL;
-  dict[Key_Cat_Itunes_URL] = self.itunesURL;
-  dict[Key_Cat_ReleaseDate] = self.releaseDateString;
-  dict[Key_Cat_ReleaseDuration] = self.releaseDuration;
-  dict[Key_Cat_TrackListing] = self.trackListing;
-  dict[Key_Cat_Publisher] = self.publisher;
+    [super populateDictionary:dict];
+    dict[Key_Cat_Title] = self.title;
+    dict[Key_Cat_Artist] = self.artist;
+    dict[Key_Cat_CatalogueNumber] = self.catalogueNumber;
+    dict[Key_Cat_Description] = self.description;
+    dict[Key_Cat_MP3SampleURL] = self.mp3SampleURL;
+    dict[Key_Cat_ReleaseURL] = self.releaseURL;
+    dict[Key_Cat_Itunes_URL] = self.itunesURL;
+    dict[Key_Cat_ReleaseDate] = self.releaseDateString;
+    dict[Key_Cat_ReleaseDuration] = self.releaseDuration;
+    dict[Key_Cat_TrackListing] = self.trackListing;
+    dict[Key_Cat_Publisher] = self.publisher;
 }
 
 - (NSString *)htmlForWebView {

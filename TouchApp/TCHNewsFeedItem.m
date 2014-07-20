@@ -31,7 +31,7 @@ NSString *const XML_PubDate = @"pubDate";
   self.description = dict[DescriptionKey];
 }
 
-- (void)processRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
+- (void)processXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
   self.pubDate = [[element nodeForXPath:XML_PubDate error:nil] stringValue];
   self.link = [[element nodeForXPath:XML_Link error:nil] stringValue];
   self.title = [[element nodeForXPath:XML_Title error:nil] stringValue];
@@ -39,10 +39,11 @@ NSString *const XML_PubDate = @"pubDate";
 }
 
 - (void)populateDictionary:(NSMutableDictionary *)dict {
-  if (self.pubDate) dict[PubDateKey] = self.pubDate;
-  if (self.link) dict[LinkKey] = self.link;
-  if (self.title) dict[TitleKey] = self.title;
-  if (self.description) dict[DescriptionKey] = self.description;
+    [super populateDictionary:dict];
+    if (self.pubDate) dict[PubDateKey] = self.pubDate;
+    if (self.link) dict[LinkKey] = self.link;
+    if (self.title) dict[TitleKey] = self.title;
+    if (self.description) dict[DescriptionKey] = self.description;
 }
 
 - (NSString *)htmlForWebView {

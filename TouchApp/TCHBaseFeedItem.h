@@ -7,18 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TouchXML.h"
 
-@class TCHBaseFeedItem;
-
+@class CXMLElement;
 
 @interface TCHBaseFeedItem : NSObject
 @property (strong, nonatomic) NSURL *imageURL;
 
 - (id)initWithDictionary:(NSDictionary *)dict;
 - (id)initWithXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL;
-- (NSMutableDictionary *)dictionaryRepresentation;
+- (NSDictionary *)dictionaryRepresentation;
 - (NSComparisonResult)compare:(TCHBaseFeedItem *)item;
 - (NSString *)htmlForWebView;
+
+
+- (void)populateDictionary:(NSMutableDictionary *)dict;
 
 @end
