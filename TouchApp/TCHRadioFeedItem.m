@@ -22,6 +22,7 @@ NSString *const Key_ImageOverride = @"imageURL";
 
 #import "TCHRadioFeedItem.h"
 #import "DDXML.h"
+#import "DDXMLElementAdditions.h"
 
 @implementation TCHRadioFeedItem
 
@@ -56,40 +57,30 @@ NSString *const Key_ImageOverride = @"imageURL";
 - (instancetype)initWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL {
     self = [super initWithXMLElement:element andBaseURL:baseURL];
     if (self) {
-        // cannot get the itunes namespace to work with TouchXML - reverting to brute force
-        // of putting all children in a dictionary.
-        //TODO get this unit to work properly with namespaces now we use KISSXML
-        NSMutableDictionary *itemDict = [[NSMutableDictionary alloc] init];
-        for (uint counter = 0; counter < [element childCount]; counter++) {
-            itemDict[[[element childAtIndex:counter] name]] = [[element childAtIndex:counter] stringValue];
-        }
-
-        self.title = itemDict[Key_Radio_Title];
-        self.titleLabel = itemDict[Key_Radio_TitleLabel];
-        self.author = itemDict[Key_Radio_Author];
-
-        self.summary = itemDict[Key_Radio_Summary];
-
-        self.subtitle = itemDict[Key_Radio_SubTitle];
+        self.title = [[element elementForName:Key_Radio_Title] stringValue];
+        self.titleLabel = [[element elementForName:Key_Radio_TitleLabel] stringValue];
+        self.author = [[element elementForName:Key_Radio_Author] stringValue];
+        self.summary = [[element elementForName:Key_Radio_Summary] stringValue];
+        self.subtitle = [[element elementForName:Key_Radio_SubTitle] stringValue];
 
         NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
         [inputFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
         [inputFormatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss z"];
-        NSString *dateStr = itemDict[Key_Radio_PubDate];
+        NSString *dateStr = [[element elementForName:Key_Radio_PubDate] stringValue];
         self.pubDate = [inputFormatter dateFromString:dateStr];
 
-        self.link = itemDict[Key_Radio_Link];
-        self.episode_duration = itemDict[Key_Radio_Duration];
+        self.link = [[element elementForName:Key_Radio_Link] stringValue];
+        self.episode_duration = [[element elementForName:Key_Radio_Duration] stringValue];
 
         self.imageURL = nil;
-        NSString *imageOverride = itemDict[Key_ImageOverride];
+        NSString *imageOverride = [[element elementForName:Key_ImageOverride] stringValue];
         //first check if there is an image override location
         if (imageOverride && ([imageOverride length] > 0)) {
             self.imageURL = [[NSURL alloc] initWithString:imageOverride];
         }
         //if not, generate an image url as per normal...
         if (!self.imageURL) {
-            NSString *urlString = itemDict[Key_Radio_Link];
+            NSString *urlString = [[element elementForName:Key_Radio_Link] stringValue];
             urlString = [urlString stringByReplacingOccurrencesOfString:@".mp3" withString:@".jpg"];
             urlString = [urlString stringByReplacingOccurrencesOfString:@"touchradio/" withString:@"touchradio/images/"];
 

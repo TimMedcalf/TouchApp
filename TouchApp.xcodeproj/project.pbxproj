@@ -461,6 +461,7 @@
 		222951CC13EC496F001D174D /* TouchApp */ = {
 			isa = PBXGroup;
 			children = (
+				1C098BCB29F396AFE832E12A /* models */,
 				2286E6D414357C4300C4B275 /* tapku */,
 				226751FD140B4AE400726FAE /* photoscroller */,
 				22CB4C0813EE4A30008968D6 /* categories */,
@@ -736,7 +737,6 @@
 			isa = PBXGroup;
 			children = (
 				DEB0004114258A260059E43D /* audiocontrol.js */,
-				1C098BCB29F396AFE832E12A /* models */,
 			);
 			name = javascripts;
 			sourceTree = "<group>";
