@@ -111,18 +111,19 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
   }
 }
 
-- (UIImage *)getImageWithPreferredPlaceholder:(TJMImageResource *)placeholder {
-  //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
-  if ([self imageIsDownloaded]) {
-    self.lastAccessed = nil;
-    self.lastAccessed = [NSDate date];
-    UIImage *tmpImage = [UIImage imageWithContentsOfFile:[self fullPathForLocalBaseImage]];
-    return tmpImage ?: [UIImage imageNamed:@"placeholder.png"];
-  } else {
-    [self cacheImage];
-    return ([placeholder imageIsDownloaded]) ? placeholder.getImage : [UIImage imageNamed:@"placeholder.png"];
-  }
-}
+
+//- (UIImage *)getImageWithPreferredPlaceholder:(TJMImageResource *)placeholder {
+//  //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
+//  if ([self imageIsDownloaded]) {
+//    self.lastAccessed = nil;
+//    self.lastAccessed = [NSDate date];
+//    UIImage *tmpImage = [UIImage imageWithContentsOfFile:[self fullPathForLocalBaseImage]];
+//    return tmpImage ?: [UIImage imageNamed:@"placeholder.png"];
+//  } else {
+//    [self cacheImage];
+//    return ([placeholder imageIsDownloaded]) ? placeholder.getImage : [UIImage imageNamed:@"placeholder.png"];
+//  }
+//}
 
 //- (UIImage *)getImageThumbnailOfSize:(CGSize)size;
 //{

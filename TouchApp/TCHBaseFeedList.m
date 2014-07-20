@@ -10,7 +10,6 @@
 #import "TCHBaseFeedItem.h"
 #import "AppManager.h"
 #import "UIApplication+TJMNetworkActivity.h"
-#import "DDXML.h"
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCNotLocalizedStringInspection"

@@ -8,7 +8,6 @@
 
 #import <KissXML/DDXMLElementAdditions.h>
 #import "TCHRecipeFeedItem.h"
-#import "DDXML.h"
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCNotLocalizedStringInspection"

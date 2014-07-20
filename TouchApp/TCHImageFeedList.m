@@ -9,7 +9,6 @@
 #import "TCHImageFeedList.h"
 #import "TCHImageFeedItem.h"
 #import "GTMNSDictionary+URLArguments.h"
-#import "DDXML.h"
 
 
 @implementation TCHImageFeedList

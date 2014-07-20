@@ -70,11 +70,11 @@ NSString *const Key_ImageItem_PhotoId = @"photoId";
         self.imageURL = dict[Key_Image_Saved] ? [[NSURL alloc] initWithString:dict[Key_Image_Saved]] : nil;
         self.thumbnailURL = dict[Key_Thumbnail_Saved] ? [[NSURL alloc] initWithString:dict[Key_Thumbnail_Saved]] : nil;
 
-        self.imageWidth = dict[Key_ImageItem_ImageWidth] ? [dict[Key_ImageItem_ImageWidth] integerValue] : 0;
-        self.imageHeight = dict[Key_ImageItem_ImageHeight] ? [dict[Key_ImageItem_ImageHeight] integerValue] : 0;
+        self.imageWidth = dict[Key_ImageItem_ImageWidth] ? [(NSNumber*)dict[Key_ImageItem_ImageWidth] integerValue] : 0;
+        self.imageHeight = dict[Key_ImageItem_ImageHeight] ? [(NSNumber*)dict[Key_ImageItem_ImageHeight] integerValue] : 0;
 
-        self.thumbnailWidth = dict[Key_ImageItem_ThumbnailWidth] ? [dict[Key_ImageItem_ThumbnailWidth] integerValue] : 0;
-        self.thumbnailHeight = dict[Key_ImageItem_ThumbnailHeight] ? [dict[Key_ImageItem_ThumbnailHeight] integerValue] : 0;
+        self.thumbnailWidth = dict[Key_ImageItem_ThumbnailWidth] ? [(NSNumber*)dict[Key_ImageItem_ThumbnailWidth] integerValue] : 0;
+        self.thumbnailHeight = dict[Key_ImageItem_ThumbnailHeight] ? [(NSNumber*)dict[Key_ImageItem_ThumbnailHeight] integerValue] : 0;
 
         self.photoId = dict[Key_ImageItem_PhotoId];
     }

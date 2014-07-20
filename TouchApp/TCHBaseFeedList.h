@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "DDXML.h"
 
-@class TCHBaseFeedItem, CXMLElement;
+@class TCHBaseFeedItem;
 
 @protocol FeedListConsumerDelegate
 
