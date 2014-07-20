@@ -7,6 +7,7 @@
 //
 
 #import "TCHRecipeFeedItem.h"
+#import "TouchXML.h"
 
 NSString *const Key_Recipe_Title = @"title";
 NSString *const Key_Recipe_Excerpt = @"excerpt";

@@ -21,7 +21,7 @@ NSString *const Key_Cat_TrackListing = @"track_listing";
 NSString *const Key_Cat_Publisher = @"publisher";
 
 #import "TCHCatalogueFeedItem.h"
-
+#import "TouchXML.h"
 
 @implementation TCHCatalogueFeedItem
 

@@ -7,6 +7,7 @@
 //
 
 #import "TCHImageFeedItem.h"
+#import "TouchXML.h"
 
 NSString *const Key_Image_Saved = @"image";
 NSString *const Key_Thumbnail_Saved = @"thumbnail";

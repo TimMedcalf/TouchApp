@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class TCHBaseFeedItem;
+@class TCHBaseFeedItem, CXMLElement;
 
 @protocol FeedListConsumerDelegate
 

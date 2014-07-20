@@ -2,6 +2,7 @@
 #import <UIKit/UIKit.h>
 #import "HTMLItemViewController.h"
 #import "TCHCatalogueFeedItem.h"
+#import "TJMAudioCenter.h"
 
 
 @interface CatalogueItemViewController : HTMLItemViewController <TJMAudioCenterDelegate>

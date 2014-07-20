@@ -8,6 +8,7 @@
 
 #import "TouchApplication.h"
 #import "UIApplication+TJMShakeNotification.h"
+#import "TJMAudioCenter.h"
 
 
 @implementation TouchApplication

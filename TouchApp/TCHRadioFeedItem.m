@@ -18,7 +18,7 @@ NSString *const Key_ImageOverride = @"imageURL";
 
 
 #import "TCHRadioFeedItem.h"
-
+#import "TouchXML.h"
 
 @implementation TCHRadioFeedItem
 

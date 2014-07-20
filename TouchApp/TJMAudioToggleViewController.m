@@ -7,7 +7,7 @@
 //
 
 #import "TJMAudioToggleViewController.h"
-
+#import "TJMAudioCenter.h"
 
 @interface TJMAudioToggleViewController ()
 

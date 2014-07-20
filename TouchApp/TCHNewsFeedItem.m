@@ -7,6 +7,7 @@
 //
 
 #import "TCHNewsFeedItem.h"
+#import "TouchXML.h"
 
 //keys we use in our own dictionary (saving and loading)
 NSString *const PubDateKey = @"pubDate";

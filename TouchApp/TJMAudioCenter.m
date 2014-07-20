@@ -7,6 +7,9 @@
 //
 
 #import "Flurry.h"
+#import "TJMAudioCenter.h"
+#import "GCDSingleton.h"
+
 
 NSString *const TJMAudioCenterStatusChange = @"TJMAudioCenterStatusChange";
 

@@ -9,6 +9,8 @@
 #import "TCHBaseFeedList.h"
 #import "TCHBaseFeedItem.h"
 #import "AppManager.h"
+#import "UIApplication+TJMNetworkActivity.h"
+#import "TouchXML.h"
 
 
 NSString *const Key_FeedItems = @"FeedItems";

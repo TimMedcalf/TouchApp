@@ -7,6 +7,7 @@
 //
 #import "TJMImageResource.h"
 #import "AppManager.h"
+#import "UIApplication+TJMNetworkActivity.h"
 
 NSString *const TJMImageResourceImageNeedsUpdating = @"TJMImageResourceImageNeedsUpdating";
 NSString *const Key_TJMImageResource_imageURL = @"imageURL";

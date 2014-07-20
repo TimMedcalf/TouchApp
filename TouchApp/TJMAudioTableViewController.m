@@ -10,6 +10,7 @@
 #import "TouchConstants.h"
 #import "UIApplication+TJMNetworkWarning.h"
 #import "TKProgressBarView.h"
+#import "TJMAudioCenter.h"
 
 
 @interface TJMAudioTableViewController ()
