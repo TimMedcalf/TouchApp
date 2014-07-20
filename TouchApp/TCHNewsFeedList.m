@@ -13,8 +13,8 @@
 @implementation TCHNewsFeedList
 
 //overrides
-- (TCHBaseFeedItem *)newItemWithRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
-  return [[TCHNewsFeedItem alloc]initWithRawXMLElement:element andBaseURL:baseURL];
+- (TCHBaseFeedItem *)newItemWithXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
+  return [[TCHNewsFeedItem alloc] initWithXMLElement:element andBaseURL:baseURL];
 }
 
 - (TCHBaseFeedItem *)newItemWithDictionary:dictionary {

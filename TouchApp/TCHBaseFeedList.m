@@ -265,7 +265,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
     NSMutableArray *newFeedItems = [[NSMutableArray alloc] initWithCapacity:[resultNodes count]];
     
     for (CXMLElement *resultElement in resultNodes) {
-      [newFeedItems addObject:[self newItemWithRawXMLElement:resultElement andBaseURL:self.baseURL]];
+      [newFeedItems addObject:[self newItemWithXMLElement:resultElement andBaseURL:self.baseURL]];
     }
     //rssParser = nil;
     [self.items removeAllObjects];
@@ -300,12 +300,8 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 }
 
 //overrides
-- (TCHBaseFeedItem *)newItemWithXMLDictionary:(NSDictionary *)itemDict andBaseURL:(NSURL *)baseURL {
-  return [[TCHBaseFeedItem alloc]initWithXMLDictionary:itemDict andBaseURL:baseURL];
-}
-
-- (TCHBaseFeedItem *)newItemWithRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
-  return [[TCHBaseFeedItem alloc]initWithRawXMLElement:element andBaseURL:baseURL];
+- (TCHBaseFeedItem *)newItemWithXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
+  return [[TCHBaseFeedItem alloc] initWithXMLElement:element andBaseURL:baseURL];
 }
 
 - (TCHBaseFeedItem *)newItemWithDictionary:(NSDictionary *)dictionary {

@@ -14,8 +14,8 @@
 @implementation TCHImageFeedList
 
 //overrides
-- (TCHBaseFeedItem *)newItemWithRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
-  return [[TCHImageFeedItem alloc]initWithRawXMLElement:element andBaseURL:baseURL];
+- (TCHBaseFeedItem *)newItemWithXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
+  return [[TCHImageFeedItem alloc] initWithXMLElement:element andBaseURL:baseURL];
 }
 
 - (TCHBaseFeedItem *)newItemWithDictionary:dictionary {

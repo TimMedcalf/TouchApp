@@ -13,8 +13,8 @@
 @implementation TCHRecipeCategoryFeedList
 
 //overrides
-- (TCHBaseFeedItem *)newItemWithRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
-  return [[TCHRecipeCategoryFeedItem alloc] initWithRawXMLElement:element andBaseURL:baseURL];
+- (TCHBaseFeedItem *)newItemWithXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
+  return [[TCHRecipeCategoryFeedItem alloc] initWithXMLElement:element andBaseURL:baseURL];
 }
 
 - (TCHBaseFeedItem *)newItemWithDictionary:dictionary {

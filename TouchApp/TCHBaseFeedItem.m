@@ -33,15 +33,7 @@ NSString *const FeedItem_ImageURLKey = @"imageURL";
   return self;
 }
 
-- (id)initWithXMLDictionary:(NSDictionary *)dict andBaseURL:(NSURL *)baseURL {
-  self = [super init];
-  if (self) {
-    [self processXMLDictionary:dict andBaseURL:baseURL];
-  }
-  return self;
-}
-
-- (id)initWithRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
+- (id)initWithXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL {
   self = [super init];
   if (self) {
     [self processRawXMLElement:element andBaseURL:baseURL];

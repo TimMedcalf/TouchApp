@@ -16,8 +16,7 @@
 @property (strong, nonatomic) NSURL *imageURL;
 
 - (id)initWithDictionary:(NSDictionary *)dict;
-- (id)initWithXMLDictionary:(NSDictionary *)dict andBaseURL:(NSURL *)baseURL;
-- (id)initWithRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL;
+- (id)initWithXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL;
 - (NSMutableDictionary *)dictionaryRepresentation;
 - (NSComparisonResult)compare:(TCHBaseFeedItem *)item;
 - (NSString *)htmlForWebView;

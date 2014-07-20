@@ -42,8 +42,7 @@
 
 //overrides
 - (NSInteger)refreshTimerCount;
-- (TCHBaseFeedItem *)newItemWithXMLDictionary:(NSDictionary *)itemDict andBaseURL:(NSURL *)baseURL;
-- (TCHBaseFeedItem *)newItemWithRawXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL;
+- (TCHBaseFeedItem *)newItemWithXMLElement:(CXMLElement *)element andBaseURL:(NSURL *)baseURL;
 - (TCHBaseFeedItem *)newItemWithDictionary:(NSDictionary *)dictionary;
 
 - (NSString *)feedURL;
