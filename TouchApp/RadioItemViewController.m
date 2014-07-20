@@ -56,11 +56,11 @@
 }
 
 #pragma mark TJM AudioCenterDelegate 
-- (void)URLDidFinish:(NSURL *)url {
-  //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));  
-  if ([[NSURL URLWithString:self.item.link] isEqual:url])
-    [self.webView stringByEvaluatingJavaScriptFromString:@"showPlayButton();"];
-}
+//- (void)URLDidFinish:(NSURL *)url {
+//  //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
+//  if ([[NSURL URLWithString:self.item.link] isEqual:url])
+//    [self.webView stringByEvaluatingJavaScriptFromString:@"showPlayButton();"];
+//}
 
 - (void)URLIsPlaying:(NSURL *)url {
   //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));  

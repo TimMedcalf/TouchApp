@@ -22,7 +22,7 @@ typedef NS_ENUM(NSInteger, TJMAudioStatus) {
 - (void)URLIsPlaying:(NSURL *)url;
 - (void)URLIsPaused:(NSURL *)url;
 - (void)URLDidFail:(NSURL *)url;
-- (void)URLDidFinish:(NSURL *)url;
+//- (void)URLDidFinish:(NSURL *)url;
 
 @end
 
