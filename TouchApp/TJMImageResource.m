@@ -111,57 +111,8 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
   }
 }
 
-
-//- (UIImage *)getImageWithPreferredPlaceholder:(TJMImageResource *)placeholder {
-//  //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
-//  if ([self imageIsDownloaded]) {
-//    self.lastAccessed = nil;
-//    self.lastAccessed = [NSDate date];
-//    UIImage *tmpImage = [UIImage imageWithContentsOfFile:[self fullPathForLocalBaseImage]];
-//    return tmpImage ?: [UIImage imageNamed:@"placeholder.png"];
-//  } else {
-//    [self cacheImage];
-//    return ([placeholder imageIsDownloaded]) ? placeholder.getImage : [UIImage imageNamed:@"placeholder.png"];
-//  }
-//}
-
-//- (UIImage *)getImageThumbnailOfSize:(CGSize)size;
-//{
-//  //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
-//  if ([self imageIsDownloaded])
-//  {
-//    self.lastAccessed = nil;
-//    self.lastAccessed = [NSDate date];
-//    //lets see if we've already got a thumbnail of this size
-//    NSString *file = [[self fullPathForLocalBaseImage] stringByDeletingPathExtension];
-//    //note, thumbnails will always be saved as PNG
-//    NSString *thumbnailPath = [NSString stringWithFormat:@"%@%f%f.png",file,size.width,size.height];
-//      
-//    //does the thumbnail already exist?
-//    UIImage *tmpImage = [UIImage imageWithContentsOfFile:thumbnailPath];
-//    //if it doesn't exist - clear it
-//    if (!tmpImage)
-//    {
-//      //NSLog(@"Creating thumbnail");
-//      //NSLog(@"Creating thumbnail %@",thumbnailPath);
-//      //nope...create it, then return it
-//      tmpImage = [UIImage imageThumbnailWithFile:[self fullPathForLocalBaseImage] ofSize:size];
-//      //NSLog(@"thumbnail size width=%f height=%f",thumbnailImage.size.width,thumbnailImage.size.height);
-//      if ([UIScreen mainScreen].scale > 1) thumbnailPath = [NSString stringWithFormat:@"%@%f%f@2x.png",file, size.width,size.height];
-//      //NSLog(@"Creating thumbnail %@",thumbnailPath);
-//      [UIImagePNGRepresentation(tmpImage) writeToFile:thumbnailPath atomically:YES];
-//    }
-//    self.thumbnailPath = thumbnailPath;
-//    return tmpImage;
-//  }
-//  else
-//  {
-//    [self cacheImage];
-//    return [UIImage imageThumbnailWithImage:[UIImage imageNamed:@"placeholder.png"] ofSize:size];
-//  }
-//}
 - (void)clearCachedFiles {
-  if (self.thumbnailPath) [[NSFileManager defaultManager] removeItemAtPath:self.thumbnailPath error:nil];
+  [[NSFileManager defaultManager] removeItemAtPath:self.thumbnailPath error:nil];
   [[NSFileManager defaultManager] removeItemAtPath:[self fullPathForLocalBaseImage] error:nil];
 }
 
