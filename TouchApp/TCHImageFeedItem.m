@@ -54,14 +54,20 @@ NSString *const Key_ImageItem_PhotoId = @"photoId";
 
 // return the right flickr image size suffix for the thumbnail on this device (url_s etc)
 + (NSString *)thumbnailFlickrSuffix {
-  if ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) || ([[UIScreen mainScreen] scale] > 1)) return @"s";
-  return @"t";
+  //if ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) || ([[UIScreen mainScreen] scale] > 1)) return @"s";
+  //return @"t";
+  
+  //we don't cover non-retina screens now, always return "s" (240 on longest side)
+  return @"s";
 }
 
 // return the right flickr image size suffix for the image on this device (url_l etc)
 + (NSString *)imageFlickrSuffix {
-  if ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) || ([[UIScreen mainScreen] scale] > 1)) return @"l";
-  return @"z";
+//  if ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) || ([[UIScreen mainScreen] scale] > 1)) return @"l";
+//  return @"z";
+  
+  //we don't cover non-retina screens now, always return "l" (1048 on longest side)
+  return @"l";
 }
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict {
