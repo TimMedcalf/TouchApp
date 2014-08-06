@@ -22,7 +22,7 @@ static NSUInteger tjm_shakeCount = 0;
   if ((timeSince - tjm_lastShake) < 10) {
     tjm_shakeCount += 1;
     if (tjm_shakeCount > 2) {
-      [[NSNotificationCenter defaultCenter] postNotificationName:TouchAppAllShookUp object:self];
+      [[NSNotificationCenter defaultCenter] postNotificationName:TCHAllShookUp object:self];
       tjm_shakeCount = 0;
     }
   } else {

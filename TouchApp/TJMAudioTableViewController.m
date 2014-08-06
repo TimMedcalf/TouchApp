@@ -63,17 +63,17 @@
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   [self configureAudioControl];
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleShake) name:TouchAppAllShookUp object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleShake) name:TCHAllShookUp object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
   [super viewWillDisappear:animated];
-  [[NSNotificationCenter defaultCenter] removeObserver:self name:TouchAppAllShookUp object:nil];  
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:TCHAllShookUp object:nil];
 }
 
 - (void)dealloc {
   [[NSNotificationCenter defaultCenter] removeObserver:self name:TJMAudioCenterStatusChange object:[TJMAudioCenter sharedInstance]];
-  [[NSNotificationCenter defaultCenter] removeObserver:self name:TouchAppAllShookUp object:nil];
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:TCHAllShookUp object:nil];
 }
 
 - (void)viewWillLayoutSubviews {

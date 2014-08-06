@@ -10,5 +10,6 @@
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
-NSString *const TouchAppAllShookUp = @"TouchAppAllShookUp";
+NSString *const TCHAllShookUp = @"TCHAllShookUp";
+NSString *const TCHCacheFolderName = @"touchImages";
 #pragma clang diagnostic pop

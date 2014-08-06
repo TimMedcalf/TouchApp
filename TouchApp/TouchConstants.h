@@ -8,4 +8,5 @@
 
 #import <UIKit/UIKit.h>
 
-extern NSString *const TouchAppAllShookUp;
+extern NSString *const TCHAllShookUp;
+extern NSString *const TCHCacheFolderName;
