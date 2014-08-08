@@ -83,6 +83,7 @@
 		226310511417E923001B7841 /* TJMAudioToggleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 226310501417E923001B7841 /* TJMAudioToggleViewController.m */; };
 		22675204140B4AFB00726FAE /* ImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 226751FF140B4AFB00726FAE /* ImageScrollView.m */; };
 		22675205140B4AFB00726FAE /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22675201140B4AFB00726FAE /* PhotoViewController.m */; };
+		226B3E2A199499DF000CF349 /* TCHActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 226B3E29199499DF000CF349 /* TCHActivityViewController.m */; };
 		2272020A140E4BDD005DD4B7 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22720209140E4BDD005DD4B7 /* MessageUI.framework */; };
 		227C569014163D9200169F38 /* TouchApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 227C568F14163D9200169F38 /* TouchApplication.m */; };
 		22804A881407544B0083CE40 /* TJMImageResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 22804A831407544B0083CE40 /* TJMImageResource.m */; };
@@ -237,6 +238,8 @@
 		226751FF140B4AFB00726FAE /* ImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageScrollView.m; sourceTree = "<group>"; };
 		22675200140B4AFB00726FAE /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		22675201140B4AFB00726FAE /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
+		226B3E28199499DF000CF349 /* TCHActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHActivityViewController.h; sourceTree = "<group>"; };
+		226B3E29199499DF000CF349 /* TCHActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHActivityViewController.m; sourceTree = "<group>"; };
 		22720209140E4BDD005DD4B7 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		227C568E14163D9100169F38 /* TouchApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchApplication.h; sourceTree = "<group>"; };
 		227C568F14163D9200169F38 /* TouchApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchApplication.m; sourceTree = "<group>"; };
@@ -610,6 +613,8 @@
 				226751FF140B4AFB00726FAE /* ImageScrollView.m */,
 				22675200140B4AFB00726FAE /* PhotoViewController.h */,
 				22675201140B4AFB00726FAE /* PhotoViewController.m */,
+				226B3E28199499DF000CF349 /* TCHActivityViewController.h */,
+				226B3E29199499DF000CF349 /* TCHActivityViewController.m */,
 			);
 			name = photoscroller;
 			sourceTree = "<group>";
@@ -917,6 +922,7 @@
 				22CB4B8913EDD641008968D6 /* AppManager.m in Sources */,
 				22CB4C0B13EE4A41008968D6 /* UIApplication+TJMNetworkActivity.m in Sources */,
 				22CB4C1A13EEBC56008968D6 /* WebsiteViewController.m in Sources */,
+				226B3E2A199499DF000CF349 /* TCHActivityViewController.m in Sources */,
 				22CB4C3B13EFE2EB008968D6 /* TJMAudioCenter.m in Sources */,
 				22CB4CBE13F12BDA008968D6 /* RadioViewController.m in Sources */,
 				22804A881407544B0083CE40 /* TJMImageResource.m in Sources */,
