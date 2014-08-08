@@ -114,6 +114,7 @@
     self.pagingScrollView.clipsToBounds = YES;
     self.pagingScrollView.alwaysBounceHorizontal = YES;
     self.pagingScrollView.bounces = YES;
+    self.pagingScrollView.backgroundColor = [UIColor blackColor];
     
     [self.view addSubview:_pagingScrollView];
     
@@ -136,7 +137,8 @@
     self.shareItem = self.customNavigationItem.rightBarButtonItem;
     self.customNavigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"765-arrow-left-toolbar"] style:UIBarButtonItemStylePlain target:self action:@selector(goBack)];
     self.customNavigationBar.tintColor = [UIColor whiteColor];
-    self.customNavigationBar.barStyle = UIBarStyleBlackTranslucent;
+    self.customNavigationBar.barStyle = UIBarStyleBlack;
+    //self.customNavigationBar.barTintColor = [UIColor redColor];
     self.customNavigationBar.translucent = YES;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleBarsNotification:) name:@"TJMPhotoViewToggleBars" object:nil];
@@ -147,15 +149,7 @@
 }
 
 - (void)savePhoto {
-    //	UIActionSheet *actionSheet = [[UIActionSheet alloc]
-    //                                initWithTitle:nil
-    //                                delegate:self
-    //                                cancelButtonTitle:@"Cancel"
-    //                                destructiveButtonTitle:@"Save to Camera Roll"
-    //                                otherButtonTitles:nil];
-    //  [actionSheet showInView:self.view];
     //Create an activity view controller with the profile as its activity item. APLProfile conforms to the UIActivityItemSource protocol.
-    
     //first up, go the direct route - will be better to do it with a profile i think...but for now...
     TCHImageFeedItem *img = [self.imageList itemAtIndex:(NSUInteger)[self centerPhotoIndex]];
     TJMImageResource *tmpRes = [[TJMImageResourceManager sharedInstance] resourceForURL:img.imageURL];
@@ -192,7 +186,7 @@
     }
     if ([self.pagingScrollView isTracking]) {
         self.customNavigationBar.hidden = YES;
-        self.pagingScrollView.backgroundColor = [UIColor blackColor];
+        //self.pagingScrollView.backgroundColor = [UIColor blackColor];
         
         [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
     }
@@ -200,14 +194,14 @@
 
 - (void)toggleBarsNotification:(NSNotification *)notification {
     self.customNavigationBar.hidden = !self.customNavigationBar.hidden;
-    self.pagingScrollView.backgroundColor = (self.customNavigationBar.hidden) ? [UIColor blackColor] : [UIColor whiteColor];
+    //self.pagingScrollView.backgroundColor = (self.customNavigationBar.hidden) ? [UIColor blackColor] : [UIColor whiteColor];
 }
 
 - (void)goBack {
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
         self.customNavigationBar.hidden = YES;
-        self.pagingScrollView.backgroundColor = [UIColor blackColor];
+        //self.pagingScrollView.backgroundColor = [UIColor blackColor];
         [self.navigationController popViewControllerAnimated:YES];
     } else {
         [self.delegate dismissPhotoView:self];
