@@ -145,7 +145,8 @@ NSString static *const Key_IconTintB = @"iconTintB";
     } else {
         iconColor = barColor;
     }
-    self.tabBarController.tabBar.selectedImageTintColor = iconColor;
+    NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
+    //self.tabBarController.tabBar.selectedImageTintColor = iconColor;
     [self configureTableHeader];
 }
 
