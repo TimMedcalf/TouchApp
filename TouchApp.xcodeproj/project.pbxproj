@@ -426,9 +426,9 @@
 				222951C313EC496F001D174D /* Products */,
 				2FE2A47116EA40479BEF9EB7 /* Pods.xcconfig */,
 			);
-			indentWidth = 2;
+			indentWidth = 4;
 			sourceTree = "<group>";
-			tabWidth = 2;
+			tabWidth = 4;
 		};
 		222951C313EC496F001D174D /* Products */ = {
 			isa = PBXGroup;
