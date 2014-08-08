@@ -62,18 +62,11 @@ NSString static *const Key_IconTintB = @"iconTintB";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //  [Flurry logAllPageViews:self.navigationController];
-    //  [Flurry logAllPageViewsForTarget:self.navigationController];
     
     self.tableView.estimatedRowHeight = [TouchTableCell estimatedRowHeight];
     
     self.navigationItem.title = @"";
     
-    //  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStyleBordered target:nil action:nil];
-    //  backButton.tintColor = [UIColor whiteColor];
-    //  self.navigationItem.backBarButtonItem = backButton;
-    //  UIBarButtonItem *bbItem = [[UIBarButtonItem alloc] initWithTitle:@"<" style:UIBarButtonItemStylePlain target:nil action:nil];
-    //  bbItem.tintColor = [UIColor whiteColor];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:self.settings[Key_HeaderText]]];
