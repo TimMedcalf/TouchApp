@@ -6,28 +6,26 @@
 @implementation RecipeItemViewController
 
 - (id)init {
-  self = [super init];
-  if (self)  {
-    self.disableAudioToggle = YES;
-  }
-  return self;
+    self = [super init];
+    if (self)  {
+        self.disableAudioToggle = YES;
+    }
+    return self;
 }
 
 - (void)viewDidLoad {
-  [super viewDidLoad];
-  if (([MFMailComposeViewController canSendMail]) && (self.recipeItem)) {
-    UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"Email" style:UIBarButtonItemStylePlain target:self action:@selector(sendRecipe)];
-    button.enabled = YES;
-    self.navigationItem.rightBarButtonItem = button;
-    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"headerText_recipes"]];
-  }
+    [super viewDidLoad];
+    if (([MFMailComposeViewController canSendMail]) && (self.recipeItem)) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"730-envelope-toolbar"] style:UIBarButtonItemStylePlain target:self action:@selector(sendRecipe)];
+        self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"headerText_recipes"]];
+    }
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-  [super webViewDidFinishLoad:webView];
-  if (self.navigationItem.rightBarButtonItem)
-    self.navigationItem.rightBarButtonItem.enabled = YES;
-
+    [super webViewDidFinishLoad:webView];
+    if (self.navigationItem.rightBarButtonItem)
+        self.navigationItem.rightBarButtonItem.enabled = YES;
+    
 }
 
 - (void)sendRecipe {
@@ -50,23 +48,23 @@
 	[controller setMessageBody:recipeHTML isHTML:YES];
 	
 	//[self presentModalViewController:controller animated:YES]; iOS7Change
-  [self presentViewController:controller animated:YES completion:nil];
+    [self presentViewController:controller animated:YES completion:nil];
 	
 }
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
-  if (result == MFMailComposeResultSent) {
-    [Flurry logEvent:@"Recipes" withParameters:@{@"Emailed": self.recipeItem.recipeExcerpt}];
-  }
+    if (result == MFMailComposeResultSent) {
+        [Flurry logEvent:@"Recipes" withParameters:@{@"Emailed": self.recipeItem.recipeExcerpt}];
+    }
 	[self becomeFirstResponder];
 	//[self dismissModalViewControllerAnimated:YES]; iOS7Change
-  [self dismissViewControllerAnimated:YES completion:nil];
-
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-  // Return YES for supported orientations
-  return (interfaceOrientation == UIInterfaceOrientationPortrait) || (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad);
+    // Return YES for supported orientations
+    return (interfaceOrientation == UIInterfaceOrientationPortrait) || (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad);
 }
 
 @end
