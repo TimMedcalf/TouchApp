@@ -1,6 +1,6 @@
 //
 //  TCHBaseFeedItem.m
-//  LeedsMetStudentUnion
+//  TouchApp
 //
 //  Created by Tim Medcalf on 25/07/2011.
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.

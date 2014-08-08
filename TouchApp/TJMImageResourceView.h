@@ -1,6 +1,6 @@
 //
 //  TJMImageResourceView.h
-//  LeedsMetStudentUnion
+//  TouchApp
 //
 //  Created by Tim Medcalf on 15/08/2011.
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  AppManager.m
-//  LeedsMetStudentUnion
+//  TouchApp
 //
 //  Created by Tim Medcalf on 14/06/2011.
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
