@@ -93,7 +93,7 @@ NSString *const Key_ImageItem_PhotoId = @"photoId";
 - (instancetype)initWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL {
     self = [super initWithXMLElement:element andBaseURL:baseURL];
     if (self) {
-        //NSLog(@"[%@ %@] %@", [self class], NSStringFromSelector(_cmd), element);
+        NSLog(@"[%@ %@] %@", [self class], NSStringFromSelector(_cmd), element);
         NSString *thumbnailSuffix = [TCHImageFeedItem thumbnailFlickrSuffix];
         NSString *imageSuffix = [TCHImageFeedItem imageFlickrSuffix];
 
