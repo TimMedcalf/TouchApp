@@ -1,7 +1,7 @@
 /*
-     File: ImageScrollView.m
+ File: ImageScrollView.m
  Abstract: Centers image within the scroll view and configures image sizing and display.
-  Version: 1.1
+ Version: 1.1
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following
@@ -62,94 +62,94 @@
         self.showsHorizontalScrollIndicator = NO;
         self.bouncesZoom = YES;
         self.decelerationRate = UIScrollViewDecelerationRateFast;
-        self.delegate = self;        
+        self.delegate = self;
     }
     return self;
 }
 
 #pragma mark - Override layoutSubviews to center content
 - (void)layoutSubviews  {
-  [super layoutSubviews];
-  
-  // center the image as it becomes smaller than the size of the screen
-  CGSize boundsSize = self.bounds.size;
-  CGRect frameToCenter = imageView.frame;
-  
-  // center horizontally
-  if (frameToCenter.size.width < boundsSize.width) {
-      frameToCenter.origin.x = (boundsSize.width - frameToCenter.size.width) / 2;
-  } else {
-      frameToCenter.origin.x = 0;
-  }
-  
-  // center vertically
-  if (frameToCenter.size.height < boundsSize.height) {
-      frameToCenter.origin.y = (boundsSize.height - frameToCenter.size.height) / 2;
-  } else {
-      frameToCenter.origin.y = 0;
-  }
-  
-  imageView.frame = frameToCenter;
-  //NSLog(@"[%@ %@] Frame = %f %f", [self class], NSStringFromSelector(_cmd), imageView.frame.size.width, imageView.frame.size.height);
+    [super layoutSubviews];
+    
+    // center the image as it becomes smaller than the size of the screen
+    CGSize boundsSize = self.bounds.size;
+    CGRect frameToCenter = imageView.frame;
+    
+    // center horizontally
+    if (frameToCenter.size.width < boundsSize.width) {
+        frameToCenter.origin.x = (boundsSize.width - frameToCenter.size.width) / 2;
+    } else {
+        frameToCenter.origin.x = 0;
+    }
+    
+    // center vertically
+    if (frameToCenter.size.height < boundsSize.height) {
+        frameToCenter.origin.y = (boundsSize.height - frameToCenter.size.height) / 2;
+    } else {
+        frameToCenter.origin.y = 0;
+    }
+    
+    imageView.frame = frameToCenter;
+    //NSLog(@"[%@ %@] Frame = %f %f", [self class], NSStringFromSelector(_cmd), imageView.frame.size.width, imageView.frame.size.height);
 }
 
 #pragma mark - UIScrollView delegate methods
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
-  return imageView;
+    return imageView;
 }
 
 #pragma mark - Configure scrollView to display new image (tiled or not)
 - (void)displayImage:(TCHImageFeedItem *)image {
-  // clear the previous imageView
-  [imageView removeFromSuperview];
-  imageView = nil;
+    // clear the previous imageView
+    [imageView removeFromSuperview];
+    imageView = nil;
     
-  // reset our zoomScale to 1.0 before doing any further calculations
-  self.zoomScale = 1.0;
+    // reset our zoomScale to 1.0 before doing any further calculations
+    self.zoomScale = 1.0;
     
-  // make a new UIImageView for the new image
-  imageView = [[TJMImageResourceView alloc] initWithImageItem:image];// forSize:self.bounds.size];               
-  [self addSubview:imageView];
-  
-  //TJM Investigate this line,
-  self.contentSize = [imageView.image size];
-  //NSLog(@"Image content size width=%f height=%f", self.contentSize.width, self.contentSize.height);
-  [self setMaxMinZoomScalesForCurrentBounds];
-  self.zoomScale = self.minimumZoomScale;
+    // make a new UIImageView for the new image
+    imageView = [[TJMImageResourceView alloc] initWithImageItem:image];// forSize:self.bounds.size];
+    [self addSubview:imageView];
+    
+    //TJM Investigate this line,
+    self.contentSize = [imageView.image size];
+    //NSLog(@"Image content size width=%f height=%f", self.contentSize.width, self.contentSize.height);
+    [self setMaxMinZoomScalesForCurrentBounds];
+    self.zoomScale = self.minimumZoomScale;
 }
 
 - (void)setMaxMinZoomScalesForCurrentBounds {
-  CGSize boundsSize = self.bounds.size;
-  CGSize imageSize = imageView.bounds.size;
+    CGSize boundsSize = self.bounds.size;
+    CGSize imageSize = imageView.bounds.size;
     
     // calculate min/max zoom scale
-  CGFloat xScale = boundsSize.width / imageSize.width;    // the scale needed to perfectly fit the image width-wise
-  CGFloat yScale = boundsSize.height / imageSize.height;  // the scale needed to perfectly fit the image height-wise
-  CGFloat minScale = MIN(xScale, yScale);                 // use minimum of these to allow the image to become fully visible
+    CGFloat xScale = boundsSize.width / imageSize.width;    // the scale needed to perfectly fit the image width-wise
+    CGFloat yScale = boundsSize.height / imageSize.height;  // the scale needed to perfectly fit the image height-wise
+    CGFloat minScale = MIN(xScale, yScale);                 // use minimum of these to allow the image to become fully visible
     
-  // on high resolution screens we have double the pixel density, so we will be seeing every pixel if we limit the
-  // maximum zoom scale to 0.5.
-  //         TJM was 3
-  //CGFloat maxScale = 1.0 / [[UIScreen mainScreen] scale];
-  CGFloat maxScale = 5 / [[UIScreen mainScreen] scale];
+    // on high resolution screens we have double the pixel density, so we will be seeing every pixel if we limit the
+    // maximum zoom scale to 0.5.
+    //         TJM was 3
+    //CGFloat maxScale = 1.0 / [[UIScreen mainScreen] scale];
+    CGFloat maxScale = 5 / [[UIScreen mainScreen] scale];
     
-  // don't let minScale exceed maxScale. (If the image is smaller than the screen, we don't want to force it to be zoomed.) 
-  if (minScale > maxScale) {
-      minScale = maxScale;
-  }
+    // don't let minScale exceed maxScale. (If the image is smaller than the screen, we don't want to force it to be zoomed.)
+    if (minScale > maxScale) {
+        minScale = maxScale;
+    }
     
-  self.maximumZoomScale = maxScale; 
-  self.minimumZoomScale = minScale;
+    self.maximumZoomScale = maxScale;
+    self.minimumZoomScale = minScale;
 }
 
 #pragma mark - Methods called during rotation to preserve the zoomScale and the visible portion of the image
-// returns the center point, in image coordinate space, to try to restore after rotation. 
+// returns the center point, in image coordinate space, to try to restore after rotation.
 - (CGPoint)pointToCenterAfterRotation {
     CGPoint boundsCenter = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
     return [self convertPoint:boundsCenter toView:imageView];
 }
 
-// returns the zoom scale to attempt to restore after rotation. 
+// returns the zoom scale to attempt to restore after rotation.
 - (CGFloat)scaleToRestoreAfterRotation {
     CGFloat contentScale = self.zoomScale;
     
@@ -182,7 +182,7 @@
     // 2a: convert our desired center point back to our own coordinate space
     CGPoint boundsCenter = [self convertPoint:oldCenter fromView:imageView];
     // 2b: calculate the content offset that would yield that center point
-    CGPoint offset = CGPointMake(boundsCenter.x - self.bounds.size.width / 2.0, 
+    CGPoint offset = CGPointMake(boundsCenter.x - self.bounds.size.width / 2.0,
                                  boundsCenter.y - self.bounds.size.height / 2.0);
     // 2c: restore offset, adjusted to be within the allowable range
     CGPoint maxOffset = [self maximumContentOffset];
@@ -214,9 +214,9 @@
 }
 
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView {
-  //NSLog(@"Scale %f",scrollView.zoomScale);
-  //resize the loading spinner to account for any scaling done on the view
-  imageView.spinner.transform = CGAffineTransformMakeScale(1/scrollView.zoomScale, 1/scrollView.zoomScale);
+    //NSLog(@"Scale %f",scrollView.zoomScale);
+    //resize the loading spinner to account for any scaling done on the view
+    imageView.spinner.transform = CGAffineTransformMakeScale(1/scrollView.zoomScale, 1/scrollView.zoomScale);
 }
 
 @end

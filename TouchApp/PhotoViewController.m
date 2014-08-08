@@ -431,10 +431,10 @@
 }
 
 - (CGPoint)offsetForPageAtIndex:(NSUInteger)index {
-    CGPoint offset;                                                                                                                                        
-    offset.x = (self.pagingScrollView.frame.size.width * index);                                                                                                 
-    offset.y = 0;                                                                                                                                   
-    return offset;                                                                                                                                     
+    CGPoint offset;
+    offset.x = (self.pagingScrollView.frame.size.width * index);
+    offset.y = 0;
+    return offset;
 }
 
 @end
