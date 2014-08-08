@@ -17,34 +17,34 @@ NSString *const FeedItem_ImageURLKey = @"imageURL";
 @implementation TCHBaseFeedItem
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict {
-  self = [super init];
-  if (self) {
-    self.imageURL = [NSURL URLWithString:dict[FeedItem_ImageURLKey]];
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        self.imageURL = [NSURL URLWithString:dict[FeedItem_ImageURLKey]];
+    }
+    return self;
 }
 
 - (instancetype)initWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL {
-  self = [super init];
-  return self;
+    self = [super init];
+    return self;
 }
 
 - (NSDictionary *)dictionaryRepresentation {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-
+    
     //TODO - what is this for?
     if (self.imageURL) dict[FeedItem_ImageURLKey] = [self.imageURL absoluteString];
-
+    
     return [NSDictionary dictionaryWithDictionary:dict];
 }
 
 - (NSComparisonResult)compare:(TCHBaseFeedItem *)item {
-    //override in subclass
+    //override in subclass if possible
     return NSOrderedSame;
 }
 
 - (NSString *)htmlForWebView {
-    //override in subclass
+    //override in subclass if you want HTML content linked to this item
     return nil;
 }
 
