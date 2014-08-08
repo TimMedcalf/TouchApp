@@ -18,6 +18,7 @@ NSString *const Key_ImageItem_ImageHeight = @"imageHeight";
 NSString *const Key_ImageItem_ThumbnailWidth = @"thumbnailWidth";
 NSString *const Key_ImageItem_ThumbnailHeight = @"thumbnailHeight";
 NSString *const Key_ImageItem_PhotoId = @"photoId";
+NSString *const Key_ImageItem_DateTakenString = @"dateTakenString";
 #pragma clang diagnostic pop
 
 
@@ -54,20 +55,20 @@ NSString *const Key_ImageItem_PhotoId = @"photoId";
 
 // return the right flickr image size suffix for the thumbnail on this device (url_s etc)
 + (NSString *)thumbnailFlickrSuffix {
-  //if ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) || ([[UIScreen mainScreen] scale] > 1)) return @"s";
-  //return @"t";
-  
-  //we don't cover non-retina screens now, always return "s" (240 on longest side)
-  return @"s";
+    //if ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) || ([[UIScreen mainScreen] scale] > 1)) return @"s";
+    //return @"t";
+    
+    //we don't cover non-retina screens now, always return "s" (240 on longest side)
+    return @"s";
 }
 
 // return the right flickr image size suffix for the image on this device (url_l etc)
 + (NSString *)imageFlickrSuffix {
-//  if ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) || ([[UIScreen mainScreen] scale] > 1)) return @"l";
-//  return @"z";
-  
-  //we don't cover non-retina screens now, always return "l" (1048 on longest side)
-  return @"l";
+    //  if ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) || ([[UIScreen mainScreen] scale] > 1)) return @"l";
+    //  return @"z";
+    
+    //we don't cover non-retina screens now, always return "l" (1048 on longest side)
+    return @"l";
 }
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict {
@@ -75,14 +76,15 @@ NSString *const Key_ImageItem_PhotoId = @"photoId";
     if (self) {
         self.imageURL = dict[Key_Image_Saved] ? [[NSURL alloc] initWithString:dict[Key_Image_Saved]] : nil;
         self.thumbnailURL = dict[Key_Thumbnail_Saved] ? [[NSURL alloc] initWithString:dict[Key_Thumbnail_Saved]] : nil;
-
+        
         self.imageWidth = dict[Key_ImageItem_ImageWidth] ? [(NSNumber*)dict[Key_ImageItem_ImageWidth] integerValue] : 0;
         self.imageHeight = dict[Key_ImageItem_ImageHeight] ? [(NSNumber*)dict[Key_ImageItem_ImageHeight] integerValue] : 0;
-
+        
         self.thumbnailWidth = dict[Key_ImageItem_ThumbnailWidth] ? [(NSNumber*)dict[Key_ImageItem_ThumbnailWidth] integerValue] : 0;
         self.thumbnailHeight = dict[Key_ImageItem_ThumbnailHeight] ? [(NSNumber*)dict[Key_ImageItem_ThumbnailHeight] integerValue] : 0;
-
+        
         self.photoId = dict[Key_ImageItem_PhotoId];
+        self.dateTakenString = dict[Key_ImageItem_DateTakenString];
     }
     return self;
 }
@@ -93,13 +95,13 @@ NSString *const Key_ImageItem_PhotoId = @"photoId";
 - (instancetype)initWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL {
     self = [super initWithXMLElement:element andBaseURL:baseURL];
     if (self) {
-        NSLog(@"[%@ %@] %@", [self class], NSStringFromSelector(_cmd), element);
+        //NSLog(@"[%@ %@] %@", [self class], NSStringFromSelector(_cmd), element);
         NSString *thumbnailSuffix = [TCHImageFeedItem thumbnailFlickrSuffix];
         NSString *imageSuffix = [TCHImageFeedItem imageFlickrSuffix];
-
+        
         NSString *tmpPath = nil;
         NSURL *tmpURL = nil;
-
+        
         tmpPath = [[element attributeForName:[NSString stringWithFormat:@"url_%@", thumbnailSuffix]] stringValue];
         if (tmpPath) {
             tmpURL = [[NSURL alloc] initWithString:tmpPath];
@@ -107,7 +109,7 @@ NSString *const Key_ImageItem_PhotoId = @"photoId";
         }
         self.thumbnailWidth = [[[element attributeForName:[NSString stringWithFormat:@"width_%@", thumbnailSuffix]] stringValue] integerValue];
         self.thumbnailHeight = [[[element attributeForName:[NSString stringWithFormat:@"height_%@", thumbnailSuffix]] stringValue] integerValue];
-
+        
         tmpPath = [[element attributeForName:[NSString stringWithFormat:@"url_%@", imageSuffix]] stringValue];
         if (tmpPath) {
             tmpURL = [[NSURL alloc] initWithString:tmpPath];
@@ -117,6 +119,8 @@ NSString *const Key_ImageItem_PhotoId = @"photoId";
         self.imageHeight = [[[element attributeForName:[NSString stringWithFormat:@"height_%@", imageSuffix]] stringValue] integerValue];
         //NSLog(@"Image %d x %d", self.imageWidth, self.imageHeight);
         self.photoId = [[element attributeForName:@"id"] stringValue];
+        
+        self.dateTakenString = [[element attributeForName:@"datetaken"] stringValue];
     }
     return self;
 }
@@ -129,17 +133,14 @@ NSString *const Key_ImageItem_PhotoId = @"photoId";
     dict[Key_ImageItem_ImageHeight] = @(self.imageHeight);
     dict[Key_ImageItem_ThumbnailWidth] = @(self.thumbnailWidth);
     dict[Key_ImageItem_ThumbnailHeight] = @(self.thumbnailHeight);
+    if (self.dateTakenString) dict[Key_ImageItem_DateTakenString] = self.dateTakenString;
     if (self.photoId) dict[Key_ImageItem_PhotoId] = self.photoId;
     return [NSDictionary dictionaryWithDictionary:dict];
 }
 
 - (NSComparisonResult)compare:(TCHBaseFeedItem *)item {
-  //compare in reverse so that we get the newest at the top.
-  if ((((TCHImageFeedItem *)item).photoId) && (self.photoId)) {
-    return [((TCHImageFeedItem *)item).photoId compare:self.photoId options:NSNumericSearch];
-  } else {
-    return NSOrderedSame;
-  }
+    //compare in reverse so that we get the newest at the top.
+    return [((TCHImageFeedItem *)item).dateTakenString compare:self.dateTakenString];
 }
 
 @end

@@ -18,6 +18,7 @@
 @property (assign, nonatomic) NSInteger imageHeight;
 @property (assign, nonatomic) NSInteger thumbnailWidth;
 @property (assign, nonatomic) NSInteger thumbnailHeight;
+@property (strong, nonatomic) NSString *dateTakenString;
 
 
 + (NSString *)thumbnailFlickrSuffix;
