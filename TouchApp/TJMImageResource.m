@@ -35,7 +35,7 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
 @property (strong, nonatomic) NSURLConnection *activeConnection;
 
 - (void)startDownload;
-- (void)cancelDownload;
+//- (void)cancelDownload;
 - (NSString *)fullPathForLocalBaseImage;
 
 @end
@@ -145,12 +145,12 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
   self.activeConnection = conn;
 }
 
-- (void)cancelDownload {
-  [self.activeConnection cancel];
-  self.activeConnection = nil;
-  self.activeDownload = nil;
-  [[UIApplication sharedApplication] tjm_popNetworkActivity];
-}
+//- (void)cancelDownload {
+//  [self.activeConnection cancel];
+//  self.activeConnection = nil;
+//  self.activeDownload = nil;
+//  [[UIApplication sharedApplication] tjm_popNetworkActivity];
+//}
 
 #pragma mark Download support (NSURLConnectionDelegate)
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {

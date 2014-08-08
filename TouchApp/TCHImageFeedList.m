@@ -25,12 +25,10 @@
 - (NSString *)feedURL {
   //note, this gives this url:
   //https://api.flickr.com/services/rest/?extras=url_s%2C%20url_l&photoset_id=72157627750718372&method=flickr.photosets.getPhotos&api_key=dcb74491ec5cbe64deb98b18df1125a9&format=rest
-	NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                              @"flickr.photosets.getPhotos", @"method",
-                              @"72157627750718372", @"photoset_id",
-                              @"dcb74491ec5cbe64deb98b18df1125a9", @"api_key",
-                              @"rest", @"format",
-                                     nil];
+	NSMutableDictionary *parameters = [@{@"method" : @"flickr.photosets.getPhotos",
+            @"photoset_id" : @"72157627750718372",
+            @"api_key" : @"dcb74491ec5cbe64deb98b18df1125a9",
+            @"format" : @"rest"} mutableCopy];
   
   //set the extra key to request the right image sizes for the device
   parameters[@"extras"] = [NSString stringWithFormat:@"date_taken, url_%@, url_%@", [TCHImageFeedItem thumbnailFlickrSuffix], [TCHImageFeedItem imageFlickrSuffix]];
