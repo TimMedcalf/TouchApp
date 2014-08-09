@@ -32,7 +32,11 @@ NSString static *const Key_IconTintB = @"iconTintB";
 
 @interface TouchTableViewController ()
 
-@property (nonatomic, strong) NSDictionary *settings;
+//@property (nonatomic, strong) NSDictionary *settings;
+@property (nonatomic, strong) UIColor *barColor;
+@property (nonatomic, strong) UIColor *iconColor;
+@property (nonatomic, strong) NSString *tableHeaderName;
+@property (nonatomic, strong) NSString *barShimName;
 @property (nonatomic, strong) TCHBaseFeedList *feedList;
 - (void)configureTableHeader;
 
@@ -41,23 +45,49 @@ NSString static *const Key_IconTintB = @"iconTintB";
 
 @implementation TouchTableViewController
 
-- (id)initWithSettingsDictionary:(NSDictionary *)settings {
-    self = [self initWithSettingsDictionary:settings andFeedList:nil];
+- (id)initWithViewSettingsDictionary:(NSDictionary *)viewSettings {
+    self = [self initWithViewSettingsDictionary:viewSettings andFeedList:nil];
     return self;
 }
 
-- (id)initWithSettingsDictionary:(NSDictionary *)settings andFeedList:(TCHBaseFeedList *)feedList {
+- (id)initWithViewSettingsDictionary:(NSDictionary *)viewSettings andFeedList:(TCHBaseFeedList *)feedList {
     self = [super initWithStyle:UITableViewStylePlain];
     if (self) {
-        self.settings = settings;
+        [self consumeViewSettings:viewSettings];
+ 
         self.feedList = feedList;
-        self.title = self.settings[Key_Title];
-        self.tabBarItem.image = [UIImage imageNamed:self.settings[Key_TabBarImage]];
-        
         [self.navigationController.navigationBar setBackIndicatorImage:[UIImage imageNamed:@"765-arrow-left-toolbar"]];
         [self.navigationController.navigationBar setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"765-arrow-left-toolbar"]];
     }
     return self;
+}
+
+- (void)consumeViewSettings:(NSDictionary *)viewSettings {
+    self.title = viewSettings[Key_Title];
+    self.tabBarItem.image = [UIImage imageNamed:viewSettings[Key_TabBarImage]];
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:viewSettings[Key_HeaderText]]];
+    self.tableHeaderName = viewSettings[Key_TableHeader];
+    if (viewSettings[Key_BarTintW]) {
+        self.barColor = [UIColor colorWithWhite:((NSNumber *)viewSettings[Key_BarTintW]).floatValue alpha:1.];
+    } else {
+       self.barColor = [UIColor colorWithRed:((NSNumber *)viewSettings[Key_BarTintR]).floatValue
+                                   green:((NSNumber *)viewSettings[Key_BarTintG]).floatValue
+                                    blue:((NSNumber *)viewSettings[Key_BarTintB]).floatValue
+                                   alpha:1.];
+    }
+
+    if (viewSettings[Key_IconTintW]) {
+        self.iconColor = [UIColor colorWithWhite:((NSNumber *)viewSettings[Key_IconTintW]).floatValue alpha:1.];
+    } else if (viewSettings[Key_IconTintR]) {
+        self.iconColor = [UIColor colorWithRed:((NSNumber *)viewSettings[Key_IconTintR]).floatValue
+                                    green:((NSNumber *)viewSettings[Key_IconTintG]).floatValue
+                                     blue:((NSNumber *)viewSettings[Key_IconTintB]).floatValue
+                                    alpha:1.];
+    } else {
+        self.iconColor = self.barColor;
+    }
+    self.barShimName = viewSettings[Key_Shim];
+
 }
 
 - (void)viewDidLoad {
@@ -69,8 +99,6 @@ NSString static *const Key_IconTintB = @"iconTintB";
     
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     
-    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:self.settings[Key_HeaderText]]];
-    
     if (!self.feedList) self.feedList = [self feedSetup];
     
     self.feedList.delegate = self;
@@ -81,8 +109,19 @@ NSString static *const Key_IconTintB = @"iconTintB";
         [self.progressView setHidden:NO];
     }
     [self.feedList refreshFeed];
-    [self.navigationController.navigationBar setBackIndicatorImage:[UIImage imageNamed:@"765-arrow-left-toolbar"]];
-    [self.navigationController.navigationBar setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"765-arrow-left-toolbar"]];
+    
+    UINavigationBar *nb = self.navigationController.navigationBar;
+    nb.barStyle  = UIBarStyleBlack;
+    nb.translucent = NO;
+    
+    //tint color needs to be white so we can see the back button!
+	nb.tintColor = [UIColor whiteColor];
+    [nb setBackgroundImage:[UIImage imageNamed:self.barShimName] forBarMetrics:UIBarMetricsDefault];
+    
+    [nb setBackIndicatorImage:[UIImage imageNamed:@"765-arrow-left-toolbar"]];
+    [nb setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"765-arrow-left-toolbar"]];
+    
+
 }
 
 - (TCHBaseFeedList *)feedSetup {
@@ -97,9 +136,9 @@ NSString static *const Key_IconTintB = @"iconTintB";
 - (void)configureTableHeader {
     UIImage *header = nil;
     if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
-        header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:self.settings[Key_TableHeader] ofType:@"jpg"]];
+        header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:self.tableHeaderName ofType:@"jpg"]];
     } else {
-        header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@_landscape", self.settings[Key_TableHeader]] ofType:@"jpg"]];
+        header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@_landscape", self.tableHeaderName] ofType:@"jpg"]];
     }
     UIImageView *headerView = [[UIImageView alloc]initWithImage:header];
     self.tableView.tableHeaderView = headerView;
@@ -117,36 +156,8 @@ NSString static *const Key_IconTintB = @"iconTintB";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-	UINavigationBar *nb = self.navigationController.navigationBar;
-    nb.barStyle  = UIBarStyleBlack;
-    nb.translucent = NO;
-    
-    UIColor *barColor = nil;
-    if (self.settings[Key_BarTintW]) {
-        barColor = [UIColor colorWithWhite:((NSNumber *)self.settings[Key_BarTintW]).floatValue alpha:1.];
-    } else {
-        barColor = [UIColor colorWithRed:((NSNumber *)self.settings[Key_BarTintR]).floatValue
-                                   green:((NSNumber *)self.settings[Key_BarTintG]).floatValue
-                                    blue:((NSNumber *)self.settings[Key_BarTintB]).floatValue
-                                   alpha:1.];
-    }
-    //tint color needs to be white so we can see the back button!
-	nb.tintColor = [UIColor whiteColor];
-    [nb setBackgroundImage:[UIImage imageNamed:self.settings[Key_Shim]] forBarMetrics:UIBarMetricsDefault];
-    UIColor *iconColor = nil;
-    if (self.settings[Key_IconTintW]) {
-        iconColor = [UIColor colorWithWhite:((NSNumber *)self.settings[Key_IconTintW]).floatValue alpha:1.];
-    } else if (self.settings[Key_IconTintR]) {
-        iconColor = [UIColor colorWithRed:((NSNumber *)self.settings[Key_IconTintR]).floatValue
-                                    green:((NSNumber *)self.settings[Key_IconTintG]).floatValue
-                                     blue:((NSNumber *)self.settings[Key_IconTintB]).floatValue
-                                    alpha:1.];
-    } else {
-        iconColor = barColor;
-    }
-    NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
-    //self.tabBarController.tabBar.selectedImageTintColor = iconColor;
+    //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
+    self.tabBarController.tabBar.selectedImageTintColor = self.iconColor;
     [self configureTableHeader];
 }
 

@@ -65,7 +65,7 @@
   
   //News Views
   //NewsViewController *newsVC = [[NewsViewController alloc] initWithStyle:UITableViewStylePlain];
-  NewsViewController *newsVC = [[NewsViewController alloc] initWithSettingsDictionary:masterSettings[@"news"] andFeedList:[AppManager sharedInstance].newsList];
+  NewsViewController *newsVC = [[NewsViewController alloc] initWithViewSettingsDictionary:masterSettings[@"news"] andFeedList:[AppManager sharedInstance].newsList];
   UINavigationController *newsNav = [[UINavigationController alloc] initWithRootViewController:newsVC];
   
   //Photos Views
@@ -73,15 +73,15 @@
   UINavigationController *photoNav = [[UINavigationController alloc] initWithRootViewController:photoVC];
   
   //Catalogue
-  CatalogueViewController *catVC = [[CatalogueViewController alloc] initWithSettingsDictionary:masterSettings[@"catalogue"] andFeedList:[AppManager sharedInstance].catalogueList];
+  CatalogueViewController *catVC = [[CatalogueViewController alloc] initWithViewSettingsDictionary:masterSettings[@"catalogue"] andFeedList:[AppManager sharedInstance].catalogueList];
   UINavigationController *catNav = [[UINavigationController alloc] initWithRootViewController:catVC];
   
   //Radio
-  RadioViewController *radioVC = [[RadioViewController alloc] initWithSettingsDictionary:masterSettings[@"radio"] andFeedList:[AppManager sharedInstance].radioList];
+  RadioViewController *radioVC = [[RadioViewController alloc] initWithViewSettingsDictionary:masterSettings[@"radio"] andFeedList:[AppManager sharedInstance].radioList];
   UINavigationController *radioNav = [[UINavigationController alloc] initWithRootViewController:radioVC];
   
   //Recipes
-  RecipeCategoryViewController *recipeVC = [[RecipeCategoryViewController alloc] initWithSettingsDictionary:masterSettings[@"recipes"] andFeedList:[AppManager sharedInstance].recipeList];
+  RecipeCategoryViewController *recipeVC = [[RecipeCategoryViewController alloc] initWithViewSettingsDictionary:masterSettings[@"recipes"] andFeedList:[AppManager sharedInstance].recipeList];
   UINavigationController *recipeNav = [[UINavigationController alloc] initWithRootViewController:recipeVC];
   
   self.tabBarController = [[RotatingTabBarController alloc] init];

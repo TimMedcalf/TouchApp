@@ -24,8 +24,8 @@
 
 #pragma mark - View lifecycle
 // this should be put into a subclass!
-- (id)initWithSettingsDictionary:(NSDictionary *)settings andRecipeCategoryNamed:(NSString *)category {
-  self = [super initWithSettingsDictionary:settings];
+- (id)initWithSettingsDictionary:(NSDictionary *)viewSettings andRecipeCategoryNamed:(NSString *)category {
+  self = [super initWithViewSettingsDictionary:viewSettings];
   if (self) {
     self.recipeCategory = category;
   }

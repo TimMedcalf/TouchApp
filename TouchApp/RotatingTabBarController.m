@@ -8,7 +8,7 @@
 
 #import "RotatingTabBarController.h"
 
-@interface RotatingTabBarController () <UITabBarControllerDelegate>
+@interface RotatingTabBarController () //<UITabBarControllerDelegate>
 
 @end
 
@@ -17,7 +17,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.delegate = self;
+//        self.delegate = self;
     }
     return self;
 }
@@ -36,20 +36,13 @@
 }
 
 #pragma mark - UITabBarControllerDelegate
-//- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
-//    NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
-//    int r = arc4random() % 255;
-//    int g = arc4random() % 255;
-//    int b = arc4random() % 255;
-//    tabBar.selectedImageTintColor = [UIColor colorWithRed:r green:g blue:b alpha:1];
-//}
 
-- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
-    NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
-    CGFloat r = (arc4random() % 255) / 255.;
-    CGFloat g = (arc4random() % 255) / 255.;
-    CGFloat b = (arc4random() % 255) / 255.;
-    tabBarController.tabBar.selectedImageTintColor = [UIColor colorWithRed:r green:g blue:b alpha:1];
-}
+//- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
+//    NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
+//    CGFloat r = (arc4random() % 255) / 255.;
+//    CGFloat g = (arc4random() % 255) / 255.;
+//    CGFloat b = (arc4random() % 255) / 255.;
+//    tabBarController.tabBar.selectedImageTintColor = [UIColor colorWithRed:r green:g blue:b alpha:1];
+//}
 
 @end
