@@ -375,7 +375,6 @@
 			isa = PBXGroup;
 			children = (
 				222951CC13EC496F001D174D /* TouchApp */,
-				22CB4BFC13EE47FC008968D6 /* libs */,
 				22C2C25619703E020052BD21 /* TouchApp Tests */,
 				222951C513EC496F001D174D /* Frameworks */,
 				222951C313EC496F001D174D /* Products */,
@@ -590,15 +589,6 @@
 			name = globals;
 			sourceTree = "<group>";
 		};
-		22CB4BFC13EE47FC008968D6 /* libs */ = {
-			isa = PBXGroup;
-			children = (
-				DEB0003D142582870059E43D /* jquery-1.6.4.min.js */,
-			);
-			name = libs;
-			path = TouchApp;
-			sourceTree = "<group>";
-		};
 		22CB4C0813EE4A30008968D6 /* categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -653,6 +643,7 @@
 		DEB00040142589960059E43D /* javascripts */ = {
 			isa = PBXGroup;
 			children = (
+				DEB0003D142582870059E43D /* jquery-1.6.4.min.js */,
 				DEB0004114258A260059E43D /* audiocontrol.js */,
 			);
 			name = javascripts;
