@@ -14,7 +14,7 @@
 @property (copy, nonatomic) NSString *title;
 @property (copy, nonatomic) NSString *artist;
 @property (copy, nonatomic) NSString *catalogueNumber;
-@property (copy, nonatomic) NSString *description;
+@property (copy, nonatomic) NSString *text;
 @property (copy, nonatomic) NSString *mp3SampleURL;
 @property (copy, nonatomic) NSString *releaseURL;
 @property (copy, nonatomic) NSString *itunesURL;

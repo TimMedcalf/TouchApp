@@ -15,6 +15,6 @@
 @property (copy, nonatomic) NSString *pubDate;
 @property (copy, nonatomic) NSString *link;
 @property (copy, nonatomic) NSString *title;
-@property (copy, nonatomic) NSString *description;
+@property (copy, nonatomic) NSString *text;
 
 @end

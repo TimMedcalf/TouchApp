@@ -13,7 +13,7 @@
 #pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
 NSString *const kTCHNewsFeedItemKey_Title = @"title";
 NSString *const kTCHNewsFeedItemKey_Link = @"link";
-NSString *const kTCHNewsFeedItemKey_Description = @"description";
+NSString *const kTCHNewsFeedItemKey_Text = @"description";
 NSString *const kTCHNewsFeedItemKey_PubDate = @"pubDate";
 #pragma clang diagnostic pop
 
@@ -27,7 +27,7 @@ NSString *const kTCHNewsFeedItemKey_PubDate = @"pubDate";
         self.pubDate = dict[kTCHNewsFeedItemKey_PubDate];
         self.link = dict[kTCHNewsFeedItemKey_Link];
         self.title = dict[kTCHNewsFeedItemKey_Title];
-        self.description = dict[kTCHNewsFeedItemKey_Description];
+        self.text = dict[kTCHNewsFeedItemKey_Text];
     }
     return self;
 }
@@ -38,7 +38,7 @@ NSString *const kTCHNewsFeedItemKey_PubDate = @"pubDate";
         self.pubDate = [[element elementForName:kTCHNewsFeedItemKey_PubDate] stringValue];
         self.link = [[element elementForName:kTCHNewsFeedItemKey_Link] stringValue];
         self.title = [[element elementForName:kTCHNewsFeedItemKey_Title] stringValue];
-        self.description = [[element elementForName:kTCHNewsFeedItemKey_Description] stringValue];
+        self.text = [[element elementForName:kTCHNewsFeedItemKey_Text] stringValue];
     }
     return self;
 }
@@ -48,7 +48,7 @@ NSString *const kTCHNewsFeedItemKey_PubDate = @"pubDate";
     if (self.pubDate) dict[kTCHNewsFeedItemKey_PubDate] = self.pubDate;
     if (self.link) dict[kTCHNewsFeedItemKey_Link] = self.link;
     if (self.title) dict[kTCHNewsFeedItemKey_Title] = self.title;
-    if (self.description) dict[kTCHNewsFeedItemKey_Description] = self.description;
+    if (self.text) dict[kTCHNewsFeedItemKey_Text] = self.text;
     return [NSDictionary dictionaryWithDictionary:dict];
 }
 
@@ -60,7 +60,7 @@ NSString *const kTCHNewsFeedItemKey_PubDate = @"pubDate";
 	"<link rel=\"stylesheet\" media=\"only screen and (min-device-width: 481px) and (max-device-width: 768px)\" href=\"ipad.css\" />"
 	"<link rel=\"stylesheet\" media=\"only screen and (min-device-width: 481px) and (orientation:landscape)\" href=\"ipad_landscape.css\" /></head>"
 	"<body><div id='headerwrapper'><div id='headercell'><div id='title'><strong>%@</strong><br /><span id='pubdate'>%@</span></div></div></div>"
-    "<div id=\"bodycopycontainer\"><p class='bodycopy'>%@</p></div></body></html>", self.title,self.pubDate,self.description];
+    "<div id=\"bodycopycontainer\"><p class='bodycopy'>%@</p></div></body></html>", self.title,self.pubDate,self.text];
 }
 
 @end

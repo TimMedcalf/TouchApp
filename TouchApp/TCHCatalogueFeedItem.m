@@ -12,7 +12,7 @@
 NSString *const Key_Cat_Title = @"title";
 NSString *const Key_Cat_Artist = @"artist";
 NSString *const Key_Cat_CatalogueNumber = @"catalogue_number";
-NSString *const Key_Cat_Description = @"description";
+NSString *const Key_Cat_Text = @"description";
 NSString *const Key_Cat_MP3SampleURL = @"mp3_sample_url";
 NSString *const Key_Cat_CoverArt = @"cover_art_url";
 NSString *const Key_Cat_ReleaseURL = @"release_url";
@@ -38,7 +38,7 @@ NSString *const Key_Cat_Publisher = @"publisher";
         self.title = dict[Key_Cat_Title];
         self.artist = dict[Key_Cat_Artist];
         self.catalogueNumber = dict[Key_Cat_CatalogueNumber];
-        self.description = dict[Key_Cat_Description];
+        self.text = dict[Key_Cat_Text];
         self.mp3SampleURL = dict[Key_Cat_MP3SampleURL];
         self.releaseURL = dict[Key_Cat_ReleaseURL];
         self.itunesURL = dict[Key_Cat_Itunes_URL];
@@ -64,10 +64,10 @@ NSString *const Key_Cat_Publisher = @"publisher";
         self.artist = [[element elementForName:Key_Cat_Artist] stringValue];
         self.catalogueNumber = [[element elementForName:Key_Cat_CatalogueNumber] stringValue];
 
-        //tweak description for HTML display
-        self.description = [[element elementForName:Key_Cat_Description] stringValue];
-        self.description = [self.description stringByReplacingOccurrencesOfString:@"\n\n" withString:@"</p><p>"];
-        self.description = [self.description stringByReplacingOccurrencesOfString:@"\r\n" withString:@"</p><p>"];
+        //tweak text for HTML display
+        self.text = [[element elementForName:Key_Cat_Text] stringValue];
+        self.text = [self.text stringByReplacingOccurrencesOfString:@"\n\n" withString:@"</p><p>"];
+        self.text = [self.text stringByReplacingOccurrencesOfString:@"\r\n" withString:@"</p><p>"];
 
         self.mp3SampleURL = [[element elementForName:Key_Cat_MP3SampleURL] stringValue];
         self.mp3SampleURL = [self.mp3SampleURL stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
@@ -95,7 +95,7 @@ NSString *const Key_Cat_Publisher = @"publisher";
     dict[Key_Cat_Title] = self.title;
     dict[Key_Cat_Artist] = self.artist;
     dict[Key_Cat_CatalogueNumber] = self.catalogueNumber;
-    dict[Key_Cat_Description] = self.description;
+    dict[Key_Cat_Text] = self.text;
     dict[Key_Cat_MP3SampleURL] = self.mp3SampleURL;
     dict[Key_Cat_ReleaseURL] = self.releaseURL;
     dict[Key_Cat_Itunes_URL] = self.itunesURL;
@@ -175,7 +175,7 @@ NSString *const Key_Cat_Publisher = @"publisher";
           "%@"
           "</div>"
           "</body></html>", 
-          self.title, self.artist, catalogueNumberReleaseDateDiv,self.imageURL,trackListingDiv,self.description, streamLink, buyLink];
+          self.title, self.artist, catalogueNumberReleaseDateDiv,self.imageURL,trackListingDiv,self.text, streamLink, buyLink];
 }
 
 @end
