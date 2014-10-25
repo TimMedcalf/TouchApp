@@ -120,6 +120,8 @@ static const CGFloat kAccessoryInset = 15.;
     //background colors
     self.selectionStyle = UITableViewCellSelectionStyleGray;
     self.contentView.backgroundColor = [UIColor whiteColor];
+      
+      
     UIView *selView = [[UIView alloc] initWithFrame:self.bounds];
     //selected state
     selView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
