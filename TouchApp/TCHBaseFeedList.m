@@ -174,32 +174,32 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 }
 
 
-- (void)tjmstartDownload {
-    [[UIApplication sharedApplication] tjm_pushNetworkActivity];
-    self.activeDownload = [NSMutableData data];
-
-    NSURL *url = [NSURL URLWithString:self.feed];
-
-    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
-    NSMutableURLRequest *tmpRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:self.feed]];
-    if (self.etag) {
-        //NSLog(@"Adding If-None-Match Header");
-        [tmpRequest addValue:self.etag forHTTPHeaderField:@"If-None-Match"];
-    }
-    if (self.lastUpdated) {
-        //NSLog(@"Adding If-Modified-Since Header");
-        [tmpRequest addValue:self.lastUpdated forHTTPHeaderField:@"If-Modified-Since"];
-    }
-
-    NSURLSessionDataTask *sessionTask = [session dataTaskWithRequest:tmpRequest];
-    [sessionTask resume];
-
-    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:
-            tmpRequest delegate:self];
-
-    self.rssConnection = conn;
-}
+//- (void)tjmstartDownload {
+//    [[UIApplication sharedApplication] tjm_pushNetworkActivity];
+//    self.activeDownload = [NSMutableData data];
+//
+//    NSURL *url = [NSURL URLWithString:self.feed];
+//
+//    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+//    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
+//    NSMutableURLRequest *tmpRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:self.feed]];
+//    if (self.etag) {
+//        //NSLog(@"Adding If-None-Match Header");
+//        [tmpRequest addValue:self.etag forHTTPHeaderField:@"If-None-Match"];
+//    }
+//    if (self.lastUpdated) {
+//        //NSLog(@"Adding If-Modified-Since Header");
+//        [tmpRequest addValue:self.lastUpdated forHTTPHeaderField:@"If-Modified-Since"];
+//    }
+//
+//    NSURLSessionDataTask *sessionTask = [session dataTaskWithRequest:tmpRequest];
+//    [sessionTask resume];
+//
+//    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:
+//            tmpRequest delegate:self];
+//
+//    self.rssConnection = conn;
+//}
 
 
 - (void)cancelDownload {

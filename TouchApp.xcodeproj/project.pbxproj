@@ -229,8 +229,9 @@
 		22F7C4DD162F5D1D002E2CB6 /* NewsItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsItemViewController.h; sourceTree = "<group>"; };
 		22F7C4DE162F5D1D002E2CB6 /* NewsItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsItemViewController.m; sourceTree = "<group>"; };
 		2846741C095B429E9F68A96B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		2FE2A47116EA40479BEF9EB7 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		495551EF1877DE6F00F8330D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		AC2C8A480DAD5F4DBDB71478 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		D978057030F0A6C882432C16 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		DEB0003D142582870059E43D /* jquery-1.6.4.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "jquery-1.6.4.min.js"; sourceTree = "<group>"; };
 		DEB0004114258A260059E43D /* audiocontrol.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = audiocontrol.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -378,7 +379,7 @@
 				22C2C25619703E020052BD21 /* TouchApp Tests */,
 				222951C513EC496F001D174D /* Frameworks */,
 				222951C313EC496F001D174D /* Products */,
-				2FE2A47116EA40479BEF9EB7 /* Pods.xcconfig */,
+				9E8C222029D63D8D482DC554 /* Pods */,
 			);
 			indentWidth = 4;
 			sourceTree = "<group>";
@@ -640,6 +641,15 @@
 			name = Radio;
 			sourceTree = "<group>";
 		};
+		9E8C222029D63D8D482DC554 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AC2C8A480DAD5F4DBDB71478 /* Pods.debug.xcconfig */,
+				D978057030F0A6C882432C16 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		DEB00040142589960059E43D /* javascripts */ = {
 			isa = PBXGroup;
 			children = (
@@ -696,7 +706,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = TCH;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "ErgoThis Ltd";
 				TargetAttributes = {
 					222951C113EC496F001D174D = {
@@ -784,7 +794,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -891,6 +901,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -933,7 +944,7 @@
 		};
 		222951EA13EC496F001D174D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2FE2A47116EA40479BEF9EB7 /* Pods.xcconfig */;
+			baseConfigurationReference = AC2C8A480DAD5F4DBDB71478 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -960,6 +971,7 @@
 					"$(inherited)",
 					"-lxml2",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = uk.org.touchmusic.touch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "4B073B3D-D7AC-4E0E-944E-4A49EE010CCD";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -970,7 +982,7 @@
 		};
 		222951EB13EC496F001D174D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2FE2A47116EA40479BEF9EB7 /* Pods.xcconfig */;
+			baseConfigurationReference = D978057030F0A6C882432C16 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -996,6 +1008,7 @@
 					"$(inherited)",
 					"-lxml2",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = uk.org.touchmusic.touch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "DA82CB5D-8F6E-4A87-A223-C9B1B61E5E2B";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1043,6 +1056,7 @@
 				);
 				INFOPLIST_FILE = "TouchApp Tests/TouchApp Tests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.capgemini.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -1085,6 +1099,7 @@
 				);
 				INFOPLIST_FILE = "TouchApp Tests/TouchApp Tests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.capgemini.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;

@@ -12,7 +12,7 @@
 @interface TCHImageFeedItem : TCHBaseFeedItem
 
 @property (strong, nonatomic) NSURL *thumbnailURL;
-@property (strong, nonatomic) NSURL *imageURL;
+//@property (strong, nonatomic) NSURL *imageURL;
 @property (copy, nonatomic) NSString *photoId;
 @property (assign, nonatomic) NSInteger imageWidth;
 @property (assign, nonatomic) NSInteger imageHeight;
