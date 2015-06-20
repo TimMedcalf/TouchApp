@@ -36,18 +36,18 @@
 - (void)refreshFeed;
 - (void)cancelRefresh;
 
-- (NSUInteger)itemCount;
+@property (NS_NONATOMIC_IOSONLY, readonly) NSUInteger itemCount;
 - (id)itemAtIndex:(NSUInteger)index;
 - (void)removeItemsInArray:(NSArray *)itemsArray;
-- (NSArray *)itemArray;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSArray *itemArray;
 
 //overrides
-- (NSInteger)refreshTimerCount;
+@property (NS_NONATOMIC_IOSONLY, readonly) NSInteger refreshTimerCount;
 - (TCHBaseFeedItem *)newItemWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL;
 - (TCHBaseFeedItem *)newItemWithDictionary:(NSDictionary *)dictionary;
 
-- (NSString *)feedURL;
-- (NSString *)cacheFilename;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSString *feedURL;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSString *cacheFilename;
 
 - (void)dataUpdated;
 

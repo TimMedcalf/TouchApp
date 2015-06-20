@@ -17,6 +17,6 @@
 
 - (instancetype)initWithViewSettingsDictionary:(NSDictionary *)viewSettings;
 - (instancetype)initWithViewSettingsDictionary:(NSDictionary *)viewSettings andFeedList:(TCHBaseFeedList *)feedList;
-- (TCHBaseFeedList *)feedSetup;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) TCHBaseFeedList *feedSetup;
 
 @end

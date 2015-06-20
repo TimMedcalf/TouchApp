@@ -37,7 +37,7 @@ typedef NS_ENUM(NSInteger, TJMAudioStatus) {
 - (void)togglePlayPause;
 
 - (TJMAudioStatus)statusCheckForURL:(NSURL *)url;
-- (TJMAudioStatus)statusCheck;
+@property (NS_NONATOMIC_IOSONLY, readonly) TJMAudioStatus statusCheck;
 
 - (void)setCurrentPlayingWithInfoForArtist:(NSString *)artist album:(NSString *)album andTitle:(NSString *)title;
 

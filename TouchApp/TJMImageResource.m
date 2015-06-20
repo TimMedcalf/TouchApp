@@ -36,7 +36,7 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
 
 - (void)startDownload;
 //- (void)cancelDownload;
-- (NSString *)fullPathForLocalBaseImage;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSString *fullPathForLocalBaseImage;
 
 @end
 

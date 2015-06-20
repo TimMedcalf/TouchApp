@@ -25,6 +25,6 @@
 /// key1=value1&key2&value2&...&keyN=valueN, suitable for use as either
 /// URL arguments (after a '?') or POST body. Keys and values will be escaped
 /// automatically, so should be unescaped in the dictionary.
-- (NSString *)gtm_httpArgumentsString;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSString *gtm_httpArgumentsString;
 
 @end

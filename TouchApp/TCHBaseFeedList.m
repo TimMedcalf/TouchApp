@@ -38,7 +38,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 - (void)parseResultWithData:(NSData *)xmlData;
 - (void)saveItems;
 - (void)loadItems;
-- (NSDictionary *)saveItemsToDictionary;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSDictionary *saveItemsToDictionary;
 - (void)loadItemsFromDictionary:(NSDictionary *)dict;
 
 @end

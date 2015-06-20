@@ -30,12 +30,12 @@
 ///
 /// This will also escape '%', so this should not be used on a string that has
 /// already been escaped unless double-escaping is the desired result.
-- (NSString*)gtm_stringByEscapingForURLArgument;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSString *gtm_stringByEscapingForURLArgument;
 
 /// Returns the unescaped version of a URL argument
 //
 /// This has the same behavior as stringByReplacingPercentEscapesUsingEncoding:,
 /// except that it will also convert '+' to space.
-- (NSString*)gtm_stringByUnescapingFromURLArgument;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSString *gtm_stringByUnescapingFromURLArgument;
 
 @end

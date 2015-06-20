@@ -22,9 +22,9 @@ extern NSString *const TJMImageResourceImageNeedsUpdating;
 
 - (void)clearCachedFiles;
 
-- (BOOL)imageIsDownloaded;
+@property (NS_NONATOMIC_IOSONLY, readonly) BOOL imageIsDownloaded;
 - (void)cacheImage;
-- (UIImage *)getImage;
+@property (NS_NONATOMIC_IOSONLY, getter=getImage, readonly, strong) UIImage *image;
 //- (UIImage *)getImageWithPreferredPlaceholder:(TJMImageResource *)placeholder;
 //- (UIImage *)getImageThumbnailOfSize:(CGSize)size;
 

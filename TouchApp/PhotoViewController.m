@@ -70,11 +70,11 @@
 @property (nonatomic, strong) UIPopoverController *activityPopover;
 @property (nonatomic, strong) UIBarButtonItem *shareItem;
 
-- (NSInteger)centerPhotoIndex;
+@property (NS_NONATOMIC_IOSONLY, readonly) NSInteger centerPhotoIndex;
 - (void)setViewState;
 - (void)skipToPage:(NSUInteger)page;
 - (CGPoint)offsetForPageAtIndex:(NSUInteger)index;
-- (CGRect)frameForPagingScrollView;
+@property (NS_NONATOMIC_IOSONLY, readonly) CGRect frameForPagingScrollView;
 
 @end
 

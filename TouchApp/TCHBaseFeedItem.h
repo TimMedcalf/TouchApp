@@ -17,7 +17,7 @@
 - (instancetype)initWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL;
 - (NSDictionary *)dictionaryRepresentation;
 - (NSComparisonResult)compare:(TCHBaseFeedItem *)item;
-- (NSString *)htmlForWebView;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSString *htmlForWebView;
 
 
 @end

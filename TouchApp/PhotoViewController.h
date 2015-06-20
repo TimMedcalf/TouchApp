@@ -80,12 +80,12 @@
 
 //- (CGRect)frameForPagingScrollView;
 - (CGRect)frameForPageAtIndex:(NSUInteger)index;
-- (CGSize)contentSizeForPagingScrollView;
+@property (NS_NONATOMIC_IOSONLY, readonly) CGSize contentSizeForPagingScrollView;
 
 - (void)tilePages;
-- (ImageScrollView *)dequeueRecycledPage;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) ImageScrollView *dequeueRecycledPage;
 
-- (NSUInteger)imageCount;
+@property (NS_NONATOMIC_IOSONLY, readonly) NSUInteger imageCount;
 - (TCHImageFeedItem *)imageAtIndex:(NSUInteger)index;
 
 @end

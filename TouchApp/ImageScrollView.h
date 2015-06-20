@@ -65,8 +65,8 @@
 - (void)displayImage:(TCHImageFeedItem *)image;
 - (void)setMaxMinZoomScalesForCurrentBounds;
 
-- (CGPoint)pointToCenterAfterRotation;
-- (CGFloat)scaleToRestoreAfterRotation;
+@property (NS_NONATOMIC_IOSONLY, readonly) CGPoint pointToCenterAfterRotation;
+@property (NS_NONATOMIC_IOSONLY, readonly) CGFloat scaleToRestoreAfterRotation;
 - (void)restoreCenterPoint:(CGPoint)oldCenter scale:(CGFloat)oldScale;
 
 @end
