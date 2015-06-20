@@ -14,6 +14,6 @@
 
 //@property (strong, nonatomic) NSString *categoryName;
 
-- (id)initWithSettingsDictionary:(NSDictionary *)settings andRecipeCategoryNamed:(NSString *)category;
+- (instancetype)initWithSettingsDictionary:(NSDictionary *)settings andRecipeCategoryNamed:(NSString *)category;
 
 @end

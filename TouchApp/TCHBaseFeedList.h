@@ -29,7 +29,7 @@
 @property (copy, nonatomic) NSString *xpathOverride;
 
 //dirty hack to deal with the way we load touch recipe books...probably a better way of coping with this...
-- (id)initWithoutLoading;
+- (instancetype)initWithoutLoading;
 - (void)continueLoading;
 
 - (void)refreshFeedForced:(BOOL)forced;

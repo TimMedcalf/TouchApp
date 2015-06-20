@@ -18,8 +18,8 @@
 @property (strong, nonatomic) UIActivityIndicatorView *spinner;
 
 
-- (id)initWithFrame:(CGRect)frame;
-- (id)initWithImageItem:(TCHImageFeedItem *)item;
+- (instancetype)initWithFrame:(CGRect)frame;
+- (instancetype)initWithImageItem:(TCHImageFeedItem *)item;
 - (void)setURL:(NSURL *)url;
 
 @end

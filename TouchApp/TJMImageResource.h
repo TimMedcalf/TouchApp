@@ -16,8 +16,8 @@ extern NSString *const TJMImageResourceImageNeedsUpdating;
 @property (strong, nonatomic) NSURL *imageURL;
 @property (strong, nonatomic) NSDate *lastAccessed;
 
-- (id)initWithURL:(NSURL *)imageURL;
-- (id)initWithDictionary:(NSDictionary *)dict;
+- (instancetype)initWithURL:(NSURL *)imageURL;
+- (instancetype)initWithDictionary:(NSDictionary *)dict;
 - (NSDictionary *)dictionaryRepresentation;
 
 - (void)clearCachedFiles;

@@ -15,8 +15,8 @@
 @property (nonatomic, strong, readonly) NSDictionary *settings;
 @property (nonatomic, strong, readonly) TCHBaseFeedList *feedList;
 
-- (id)initWithViewSettingsDictionary:(NSDictionary *)viewSettings;
-- (id)initWithViewSettingsDictionary:(NSDictionary *)viewSettings andFeedList:(TCHBaseFeedList *)feedList;
+- (instancetype)initWithViewSettingsDictionary:(NSDictionary *)viewSettings;
+- (instancetype)initWithViewSettingsDictionary:(NSDictionary *)viewSettings andFeedList:(TCHBaseFeedList *)feedList;
 - (TCHBaseFeedList *)feedSetup;
 
 @end

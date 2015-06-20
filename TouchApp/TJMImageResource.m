@@ -44,7 +44,7 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
 @implementation TJMImageResource
 
 #pragma mark lifecycle
-- (id)initWithURL:(NSURL *)imageURL {
+- (instancetype)initWithURL:(NSURL *)imageURL {
     self = [super init];
     if (self) {
         self.imageURL = imageURL;
@@ -62,7 +62,7 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
     return self;
 }
 
-- (id)initWithDictionary:(NSDictionary *)dict {
+- (instancetype)initWithDictionary:(NSDictionary *)dict {
     self = [super init];
     if (self) {
         NSString *tmpURLString = dict[Key_TJMImageResource_imageURL];

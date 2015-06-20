@@ -113,7 +113,7 @@ static const CGFloat kAccessoryInset = 15.;
 
 
 #pragma mark - lifecycle
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
   //touch cells can only handle the default and subtitle styles
   self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
   if (self) {

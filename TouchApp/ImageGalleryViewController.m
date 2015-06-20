@@ -51,7 +51,7 @@ static NSInteger iPadThumbnailRowCount = 8;
     return self;
 }
 
-- (id)initWithStyle:(UITableViewStyle)style {
+- (instancetype)initWithStyle:(UITableViewStyle)style {
     self = [self initWithImagelist:nil];
     return self;
 }

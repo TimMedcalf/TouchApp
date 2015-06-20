@@ -47,7 +47,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 @implementation TCHBaseFeedList
 
 #pragma mark lifecycle
-- (id)init {
+- (instancetype)init {
     self = [self initWithoutLoading];
     if (self) {
         self.feed = [self feedURL];
@@ -57,7 +57,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
     return self;
 }
 
-- (id)initWithoutLoading {
+- (instancetype)initWithoutLoading {
     if ((self = [super init])) {
         self.lastRefresh = [NSDate distantPast];
         self.items = [NSMutableArray array];

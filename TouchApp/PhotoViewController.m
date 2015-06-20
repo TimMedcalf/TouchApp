@@ -83,7 +83,7 @@
 
 #pragma - mark View loading and unloading
 
-- (id)init {
+- (instancetype)init {
     self = [super init];
     if (self) {
         self.initialIndex = 0;

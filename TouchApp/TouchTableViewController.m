@@ -45,12 +45,12 @@ NSString static *const Key_IconTintB = @"iconTintB";
 
 @implementation TouchTableViewController
 
-- (id)initWithViewSettingsDictionary:(NSDictionary *)viewSettings {
+- (instancetype)initWithViewSettingsDictionary:(NSDictionary *)viewSettings {
     self = [self initWithViewSettingsDictionary:viewSettings andFeedList:nil];
     return self;
 }
 
-- (id)initWithViewSettingsDictionary:(NSDictionary *)viewSettings andFeedList:(TCHBaseFeedList *)feedList {
+- (instancetype)initWithViewSettingsDictionary:(NSDictionary *)viewSettings andFeedList:(TCHBaseFeedList *)feedList {
     self = [super initWithStyle:UITableViewStylePlain];
     if (self) {
         [self consumeViewSettings:viewSettings];

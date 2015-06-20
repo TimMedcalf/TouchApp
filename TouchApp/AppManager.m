@@ -33,7 +33,7 @@ NSString *const LMSUCache = @"TouchCache";
 
 @implementation AppManager
 
-- (id)init {
+- (instancetype)init {
   if ((self = [super init])) {
     NSError *error;
     self.cacheFolder = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:LMSUCache];    

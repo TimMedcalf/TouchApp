@@ -20,7 +20,7 @@
 
 @implementation TJMImageResourceView
 
-- (id)initWithFrame:(CGRect)frame {
+- (instancetype)initWithFrame:(CGRect)frame {
   self = [super initWithFrame:frame];
   if (self) {
     self.opaque = YES;
@@ -31,7 +31,7 @@
   return self;
 }
 
-- (id)initWithImageItem:(TCHImageFeedItem *)item {
+- (instancetype)initWithImageItem:(TCHImageFeedItem *)item {
   self = [self initWithFrame:CGRectMake(0, 0, item.imageWidth, item.imageHeight)];
   if (self) {
     self.contentMode = UIViewContentModeScaleAspectFit;

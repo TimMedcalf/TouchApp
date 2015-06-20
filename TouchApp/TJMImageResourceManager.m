@@ -28,7 +28,7 @@ NSInteger TwoMonths = -5184000;
 
 @implementation TJMImageResourceManager
 
-- (id)init {
+- (instancetype)init {
     self = [super init];
     if (self) {
         // Initialization code here.
