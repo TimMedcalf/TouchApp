@@ -33,7 +33,7 @@ NSString *const FeedItem_ImageURLKey = @"imageURL";
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     
     //TODO - what is this for?
-    if (self.imageURL) dict[FeedItem_ImageURLKey] = [self.imageURL absoluteString];
+    if (self.imageURL) dict[FeedItem_ImageURLKey] = (self.imageURL).absoluteString;
     
     return [NSDictionary dictionaryWithDictionary:dict];
 }

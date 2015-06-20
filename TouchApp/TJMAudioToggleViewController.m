@@ -31,7 +31,7 @@
     self.navigationItem.rightBarButtonItem = nil;
       
     //check status of audio center...
-    TJMAudioStatus audio = [[TJMAudioCenter sharedInstance] statusCheck];
+    TJMAudioStatus audio = [TJMAudioCenter sharedInstance].statusCheck;
     if (audio == TJMAudioStatusCurrentPlaying) {
       UIBarButtonItem *playToggleButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPause target:self action:@selector(togglePlay)];
       self.navigationItem.rightBarButtonItem = playToggleButton;

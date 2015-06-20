@@ -47,10 +47,10 @@ NSInteger TwoMonths = -5184000;
   self.imageResourceDict = nil;
   NSArray *tmpArray = [[NSArray alloc] initWithContentsOfFile:[[AppManager sharedInstance].cacheFolder stringByAppendingPathComponent:ResourceManifestFile]];
   if (tmpArray) {
-    NSMutableDictionary *tmpDict = [[NSMutableDictionary alloc] initWithCapacity:[tmpArray count]];
+    NSMutableDictionary *tmpDict = [[NSMutableDictionary alloc] initWithCapacity:tmpArray.count];
     for (NSDictionary  *itemDict in tmpArray) {
       TJMImageResource *tmpImage = [[TJMImageResource alloc] initWithDictionary:itemDict];
-      tmpDict[[tmpImage.imageURL absoluteString]] = tmpImage;
+      tmpDict[(tmpImage.imageURL).absoluteString] = tmpImage;
     }
     self.imageResourceDict = tmpDict;
   } else {
@@ -63,12 +63,12 @@ NSInteger TwoMonths = -5184000;
 }
 
 - (void)saveToFile {
-  NSMutableArray *saveArray = [[NSMutableArray alloc] initWithCapacity:[self.imageResourceDict count]];
+  NSMutableArray *saveArray = [[NSMutableArray alloc] initWithCapacity:(self.imageResourceDict).count];
   
   for (NSString *imageKey in self.imageResourceDict) {
     //NSLog(@"Save %@",imageKey);
     TJMImageResource *tmpRes = (self.imageResourceDict)[imageKey];
-    if ([tmpRes.lastAccessed timeIntervalSinceNow] > TwoMonths) {
+    if ((tmpRes.lastAccessed).timeIntervalSinceNow > TwoMonths) {
       //if the interval is greater than negative 2 months then they've used it in the last two months - add it to the save list
       [saveArray addObject:[tmpRes dictionaryRepresentation]];
     } else {
@@ -83,11 +83,11 @@ NSInteger TwoMonths = -5184000;
   //NSLog(@"Number of image resources %i", [self.imageResourceDict count]);
   TJMImageResource *resource = nil;
   if (imageURL) {
-    resource = (self.imageResourceDict)[[imageURL absoluteString]];
+    resource = (self.imageResourceDict)[imageURL.absoluteString];
     //did we get one?
     if (!resource) {
       resource = [[TJMImageResource alloc] initWithURL:imageURL];
-      (self.imageResourceDict)[[resource.imageURL absoluteString]] = resource;
+      (self.imageResourceDict)[(resource.imageURL).absoluteString] = resource;
       //[self saveToFile];
     }
   }

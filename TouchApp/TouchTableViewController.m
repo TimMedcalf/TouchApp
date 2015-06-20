@@ -56,8 +56,8 @@ NSString static *const Key_IconTintB = @"iconTintB";
         [self consumeViewSettings:viewSettings];
  
         self.feedList = feedList;
-        [self.navigationController.navigationBar setBackIndicatorImage:[UIImage imageNamed:@"765-arrow-left-toolbar"]];
-        [self.navigationController.navigationBar setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"765-arrow-left-toolbar"]];
+        (self.navigationController.navigationBar).backIndicatorImage = [UIImage imageNamed:@"765-arrow-left-toolbar"];
+        (self.navigationController.navigationBar).backIndicatorTransitionMaskImage = [UIImage imageNamed:@"765-arrow-left-toolbar"];
     }
     return self;
 }
@@ -99,11 +99,11 @@ NSString static *const Key_IconTintB = @"iconTintB";
     
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     
-    if (!self.feedList) self.feedList = [self feedSetup];
+    if (!self.feedList) self.feedList = self.feedSetup;
     
     self.feedList.delegate = self;
     
-    if ([self.feedList itemCount] == 0) {
+    if ((self.feedList).itemCount == 0) {
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.progressView.progress = 0;
         [self.progressView setHidden:NO];
@@ -118,8 +118,8 @@ NSString static *const Key_IconTintB = @"iconTintB";
 	nb.tintColor = [UIColor whiteColor];
     [nb setBackgroundImage:[UIImage imageNamed:self.barShimName] forBarMetrics:UIBarMetricsDefault];
     
-    [nb setBackIndicatorImage:[UIImage imageNamed:@"765-arrow-left-toolbar"]];
-    [nb setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"765-arrow-left-toolbar"]];
+    nb.backIndicatorImage = [UIImage imageNamed:@"765-arrow-left-toolbar"];
+    nb.backIndicatorTransitionMaskImage = [UIImage imageNamed:@"765-arrow-left-toolbar"];
     
 
 }
@@ -177,7 +177,7 @@ NSString static *const Key_IconTintB = @"iconTintB";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return [self.feedList itemCount];
+    return (self.feedList).itemCount;
 }
 
 #pragma mark FeedListConsumerDelegates
@@ -190,7 +190,7 @@ NSString static *const Key_IconTintB = @"iconTintB";
 
 - (void)updateFailed {
     [self.progressView setHidden:YES];
-    if ([self.feedList itemCount] == 0) [self showTouch];
+    if ((self.feedList).itemCount == 0) [self showTouch];
     [[UIApplication sharedApplication] showNetworkWarning];
 }
 

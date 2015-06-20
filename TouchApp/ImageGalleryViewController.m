@@ -79,7 +79,7 @@ static NSInteger iPadThumbnailRowCount = 8;
     //  self.imageList.rawMode = YES;
     //  self.imageList.delegate = self;
     
-    if ([self.imageList itemCount] == 0) {
+    if ((self.imageList).itemCount == 0) {
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.progressView.progress = 0;
         self.progressView.hidden = NO;
@@ -100,7 +100,7 @@ static NSInteger iPadThumbnailRowCount = 8;
     //  } else {
     //    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
     //  }
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
 	UINavigationBar *nb = self.navigationController.navigationBar;
     nb.barStyle  = UIBarStyleBlack;
@@ -126,7 +126,7 @@ static NSInteger iPadThumbnailRowCount = 8;
     //  } else {
     //    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
     //  }
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
 	UINavigationBar *nb = self.navigationController.navigationBar;
     nb.barStyle  = UIBarStyleBlack;
@@ -178,7 +178,7 @@ static NSInteger iPadThumbnailRowCount = 8;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    lldiv_t res = lldiv([self.imageList itemCount], self.thumbnailRowCount);
+    lldiv_t res = lldiv((self.imageList).itemCount, self.thumbnailRowCount);
     return (res.rem > 0) ? res.quot+1 : res.quot;
 }
 
@@ -207,7 +207,7 @@ static NSInteger iPadThumbnailRowCount = 8;
     
     for (int i = 0; i < self.thumbnailRowCount; i++) {
         NSUInteger tmpIndex = (NSUInteger) ((indexPath.row * self.thumbnailRowCount) + i);
-        if (tmpIndex < [self.imageList itemCount]) {
+        if (tmpIndex < (self.imageList).itemCount) {
             TCHImageFeedItem *currentItem = ([self.imageList itemAtIndex:(NSUInteger)tmpIndex]);
             //assign the image
             TJMImageResourceView *res = (TJMImageResourceView *)[cell viewWithTag:(CellImageTag + i)];
@@ -255,7 +255,7 @@ static NSInteger iPadThumbnailRowCount = 8;
 
 - (void)updateFailed {
     [self.progressView setHidden:YES];
-    if ([self.imageList itemCount] == 0) [self showTouch];
+    if ((self.imageList).itemCount == 0) [self showTouch];
     [[UIApplication sharedApplication] showNetworkWarning];
 }
 

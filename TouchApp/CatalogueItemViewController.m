@@ -16,13 +16,13 @@
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-    if ([[[request URL] scheme] isEqualToString:@"js2objc"]) {
+    if ([request.URL.scheme isEqualToString:@"js2objc"]) {
         // remove leading / from path
-        if ([[[[request URL] path] substringFromIndex:1] isEqualToString:@"play"]) {
+        if ([[request.URL.path substringFromIndex:1] isEqualToString:@"play"]) {
             [self play];
-        } else if ([[[[request URL] path] substringFromIndex:1] isEqualToString:@"pause"]) {
+        } else if ([[request.URL.path substringFromIndex:1] isEqualToString:@"pause"]) {
             [self pause];
-        } else if ([[[[request URL] path] substringFromIndex:1] isEqualToString:@"buy"] && [self.item.itunesURL length] != 0) {
+        } else if ([[request.URL.path substringFromIndex:1] isEqualToString:@"buy"] && (self.item.itunesURL).length != 0) {
             [self buy];
         }
         return NO; // prevent request

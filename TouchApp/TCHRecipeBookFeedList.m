@@ -33,7 +33,7 @@
 	if (dictionary[self.recipeCategory]) {
 		returnVal = [NSString stringWithFormat:@"http://www.touchmusic.org.uk/recipebook/%@", dictionary[self.recipeCategory]];
 	} else {
-		returnVal = [NSString stringWithFormat:@"http://www.touchmusic.org.uk/recipebook/%@.xml", [[self.recipeCategory lowercaseString] stringByReplacingOccurrencesOfString:@" " withString:@""]];
+		returnVal = [NSString stringWithFormat:@"http://www.touchmusic.org.uk/recipebook/%@.xml", [(self.recipeCategory).lowercaseString stringByReplacingOccurrencesOfString:@" " withString:@""]];
 	}
   //NSLog(@"Getting recipe file: %@",returnVal);
   return returnVal;

@@ -40,8 +40,8 @@ NSString *const Key_Recipe_PubDate = @"pubDate";
         self.recipeExcerpt = [[element elementForName:Key_Recipe_Excerpt] stringValue];
         self.recipeDescription = [[element elementForName:Key_Recipe_Description] stringValue];
         NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
-        [inputFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
-        [inputFormatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss z"];
+        inputFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+        inputFormatter.dateFormat = @"EEE, dd MMM yyyy HH:mm:ss z";
         NSString *dateStr = [[element elementForName:Key_Recipe_PubDate] stringValue];
         self.recipePubDate = [inputFormatter dateFromString:dateStr];
     }

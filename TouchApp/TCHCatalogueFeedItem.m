@@ -110,18 +110,18 @@ NSString *const Key_Cat_Publisher = @"publisher";
 - (NSString *)htmlForWebView {
   NSString *streamLink = @"";
   
-  if ((self.mp3SampleURL) && ([self.mp3SampleURL length] > 0)) {
+  if ((self.mp3SampleURL) && ((self.mp3SampleURL).length > 0)) {
     streamLink = @"<div id='playerwrapper'><div><strong>Play</strong><br /><span class='subtitle'>Tap here to stream audio</span></div></div>";
   }
   
   NSString *catalogueNumberReleaseDateDiv = @"";
   
-  if ((self.releaseDateString) && ([self.releaseDateString length] > 0)) {
+  if ((self.releaseDateString) && ((self.releaseDateString).length > 0)) {
       NSDateFormatter *dateFormatSource = [[NSDateFormatter alloc] init];
-      [dateFormatSource setDateFormat:@"yyyy-MM-d"];
+      dateFormatSource.dateFormat = @"yyyy-MM-d";
       
       NSDateFormatter *dateFormatDestination = [[NSDateFormatter alloc] init];
-      [dateFormatDestination setDateFormat:@"d MMMM yyyy"];
+      dateFormatDestination.dateFormat = @"d MMMM yyyy";
       
       NSDate *formattedDate = [dateFormatSource dateFromString:self.releaseDateString];
       
@@ -131,23 +131,23 @@ NSString *const Key_Cat_Publisher = @"publisher";
       catalogueNumberReleaseDateDiv = [NSString stringWithFormat:@"<span id='release_date'>Released: %@</span>", releaseDateStringReformatted];
   }
   
-  if (((self.releaseDateString) && ([self.releaseDateString length] > 0)) && ((self.catalogueNumber) && ([self.catalogueNumber length] > 0))) {
+  if (((self.releaseDateString) && ((self.releaseDateString).length > 0)) && ((self.catalogueNumber) && ((self.catalogueNumber).length > 0))) {
       catalogueNumberReleaseDateDiv = [NSString stringWithFormat:@"%@&nbsp;&nbsp;|&nbsp;&nbsp;", catalogueNumberReleaseDateDiv];
   }
     
-  if ((self.catalogueNumber) && ([self.catalogueNumber length] > 0)) {
+  if ((self.catalogueNumber) && ((self.catalogueNumber).length > 0)) {
     catalogueNumberReleaseDateDiv = [NSString stringWithFormat:@"%@<span id='catalogue_number'>Catalogue #: %@</span>", catalogueNumberReleaseDateDiv,self.catalogueNumber];
   }
     
   NSString *trackListingDiv = @"";
   
-  if ((self.trackListing) && ([self.trackListing length] > 0)) {
+  if ((self.trackListing) && ((self.trackListing).length > 0)) {
       trackListingDiv = [NSString stringWithFormat:@"<div id=\"tracklistingcontainer\"><p id=\"tracklisting\"><p>Track listing:</p><p>%@</p></div>", self.trackListing];
   }
 
   NSString *buyLink = @"";
   
-  if ((self.itunesURL) && ([self.itunesURL length] > 0)) {
+  if ((self.itunesURL) && ((self.itunesURL).length > 0)) {
     buyLink = @"<div id='buywrapper'><div><strong>Buy</strong><br /><span class='subtitle'>Tap here to visit the iTunes Store page for this release</span></div></div>";
   }
   //inject some CSS

@@ -36,7 +36,7 @@ NSString *const LMSUCache = @"TouchCache";
 - (instancetype)init {
   if ((self = [super init])) {
     NSError *error;
-    self.cacheFolder = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:LMSUCache];    
+    self.cacheFolder = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:LMSUCache];    
     if (![[NSFileManager defaultManager] createDirectoryAtPath:self.cacheFolder withIntermediateDirectories:YES attributes:nil error:&error]) {
       NSLog(@"Error creating caches subfolder : %@", error);
     }
@@ -110,15 +110,15 @@ NSString *const LMSUCache = @"TouchCache";
   // then just refresh the news and super expensive catalogue
   // the others can wait till the user taps on them
   // but if it's been loaded before, just refresh them all...
-  if ([self.newsList itemCount] == 0) {
-    [[self newsList] refreshFeed];
-    [[self catalogueList] refreshFeed];
+  if ((self.newsList).itemCount == 0) {
+    [self.newsList refreshFeed];
+    [self.catalogueList refreshFeed];
   } else {
-    [[self newsList] refreshFeed];
-    [[self catalogueList] refreshFeed];
-    [[self radioList] refreshFeed];
-    [[self imageList] refreshFeed];
-    [[self recipeList] refreshFeed];
+    [self.newsList refreshFeed];
+    [self.catalogueList refreshFeed];
+    [self.radioList refreshFeed];
+    [self.imageList refreshFeed];
+    [self.recipeList refreshFeed];
   }
 }
 

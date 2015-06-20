@@ -40,7 +40,7 @@ NSString *const Key_RCat_Title = @"title";
     if (self) {
         NSString *numString = [[element elementForName:Key_RCat_Id] stringValue];
         NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
-        [f setNumberStyle:NSNumberFormatterDecimalStyle];
+        f.numberStyle = NSNumberFormatterDecimalStyle;
         self.recipeId = [f numberFromString:numString];
         self.recipeTitle = [[element elementForName:Key_RCat_Title] stringValue];
     }

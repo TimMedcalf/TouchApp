@@ -37,7 +37,7 @@
     self.contentMode = UIViewContentModeScaleAspectFit;
     self.url = item.imageURL;
     TJMImageResource *tmpImageResource = [[TJMImageResourceManager sharedInstance] resourceForURL:self.url];
-    UIImage *image = [tmpImageResource getImage];
+    UIImage *image = tmpImageResource.image;
     if (!tmpImageResource.imageIsDownloaded) {
       //NSLog(@"WIDTH = %f", self.frame.size.width);
       UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
@@ -48,7 +48,7 @@
       [self.spinner startAnimating];
       self.spinner.hidden = NO;
       self.spinner.autoresizingMask = UIViewAutoresizingNone;
-      image = [[[TJMImageResourceManager sharedInstance] resourceForURL:item.thumbnailURL] getImage];
+      image = [[TJMImageResourceManager sharedInstance] resourceForURL:item.thumbnailURL].image;
     }
     self.image = image;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateImage) name:TJMImageResourceImageNeedsUpdating object:tmpImageResource];
@@ -59,7 +59,7 @@
 - (void)setURL:(NSURL *)url {
   self.url = url;
   TJMImageResource *tmpImageResource = [[TJMImageResourceManager sharedInstance] resourceForURL:self.url];
-  self.image =  [tmpImageResource getImage];
+  self.image =  tmpImageResource.image;
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateImage) name:TJMImageResourceImageNeedsUpdating object:tmpImageResource];
 }
 
@@ -71,7 +71,7 @@
 - (void)updateImage {
   //NSLog(@"Updating image");
   TJMImageResource *tmpImageResource = [[TJMImageResourceManager sharedInstance] resourceForURL:self.url];
-  self.image = [tmpImageResource getImage];
+  self.image = tmpImageResource.image;
   if (self.spinner) [self.spinner stopAnimating];
 }
                                     

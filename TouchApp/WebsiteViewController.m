@@ -29,9 +29,9 @@
   self.webView.backgroundColor = [UIColor whiteColor];
 
   //remove shadow when scrolling the background of the webview
-  for (UIView *subView in [self.webView subviews]) {
+  for (UIView *subView in (self.webView).subviews) {
     if ([subView isKindOfClass:[UIScrollView class]]) {
-      for (UIView *shadowView in [subView subviews]) {
+      for (UIView *shadowView in subView.subviews) {
         if ([shadowView isKindOfClass:[UIImageView class]]) {
           [shadowView setHidden:YES];
         }
@@ -86,7 +86,7 @@
   self.webView.delegate = self;
   if (self.HTMLString) {
     //set the baeURL to be local the for CSS loading...
-    NSString *path = [[NSBundle mainBundle] bundlePath];
+    NSString *path = [NSBundle mainBundle].bundlePath;
     NSURL *baseURL = [NSURL fileURLWithPath:path];
     self.segmentControl.hidden = YES;
     [self.webView loadHTMLString:self.HTMLString baseURL:baseURL];
@@ -145,7 +145,7 @@
   [self.barTapTimer invalidate];
   if ((navigationType == UIWebViewNavigationTypeLinkClicked ) & self.openLinksInNewView) {
     WebsiteViewController *newWeb = [[WebsiteViewController alloc] initWithNibName:@"WebsiteViewController" bundle:nil];
-    newWeb.initialURL = [request.URL absoluteString];
+    newWeb.initialURL = (request.URL).absoluteString;
     newWeb.dontHideNavigationBar = YES;
     [self.navigationController pushViewController:newWeb animated:YES];
     return NO;
@@ -178,9 +178,9 @@
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
   [[UIApplication sharedApplication] tjm_popNetworkActivity];
-  if ([error code] != -999) {
+  if (error.code != -999) {
     // load error, hide the activity indicator in the status bar
-    if ([[error domain] isEqualToString:@"NSURLErrorDomain"]) {
+    if ([error.domain isEqualToString:@"NSURLErrorDomain"]) {
       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error - website not found." message:@"Please check that you are connected to the internet." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
       [alert show];
       return;

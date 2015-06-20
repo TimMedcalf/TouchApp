@@ -112,7 +112,7 @@
     [self addSubview:imageView];
     
     //TJM Investigate this line,
-    self.contentSize = [imageView.image size];
+    self.contentSize = (imageView.image).size;
     //NSLog(@"Image content size width=%f height=%f", self.contentSize.width, self.contentSize.height);
     [self setMaxMinZoomScalesForCurrentBounds];
     self.zoomScale = self.minimumZoomScale;
@@ -131,7 +131,7 @@
     // maximum zoom scale to 0.5.
     //         TJM was 3
     //CGFloat maxScale = 1.0 / [[UIScreen mainScreen] scale];
-    CGFloat maxScale = 5 / [[UIScreen mainScreen] scale];
+    CGFloat maxScale = 5 / [UIScreen mainScreen].scale;
     
     // don't let minScale exceed maxScale. (If the image is smaller than the screen, we don't want to force it to be zoomed.)
     if (minScale > maxScale) {

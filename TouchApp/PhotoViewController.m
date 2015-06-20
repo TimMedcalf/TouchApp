@@ -94,16 +94,16 @@
 
 - (void)loadView  {
     //self.wantsFullScreenLayout = YES; iOS7Change
-    UIView *tmpView = [[UIView alloc] initWithFrame:[self frameForPagingScrollView]];
+    UIView *tmpView = [[UIView alloc] initWithFrame:self.frameForPagingScrollView];
     self.view = tmpView;
     
     // Step 1: make the outer paging scroll view
-    CGRect pagingScrollViewFrame = [self frameForPagingScrollView];
+    CGRect pagingScrollViewFrame = self.frameForPagingScrollView;
     _pagingScrollView = [[UIScrollView alloc] initWithFrame:pagingScrollViewFrame];
     self.pagingScrollView.pagingEnabled = YES;
     //self.pagingScrollView.backgroundColor = [UIColor blackColor];
     self.pagingScrollView.backgroundColor = [UIColor whiteColor];
-    self.pagingScrollView.contentSize = [self contentSizeForPagingScrollView];
+    self.pagingScrollView.contentSize = self.contentSizeForPagingScrollView;
     self.pagingScrollView.delegate = self;
     self.pagingScrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
     self.pagingScrollView.multipleTouchEnabled = YES;
@@ -130,7 +130,7 @@
     
     UINavigationItem *tmpItem = [[UINavigationItem alloc] initWithTitle:@""];
     self.customNavigationItem = tmpItem;
-    [self.customNavigationBar setItems:@[self.customNavigationItem]];
+    (self.customNavigationBar).items = @[self.customNavigationItem];
     
     [self.view addSubview:self.customNavigationBar];
     self.customNavigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"702-share-toolbar"] style:UIBarButtonItemStylePlain target:self action:@selector(savePhoto)];
@@ -151,22 +151,22 @@
 - (void)savePhoto {
     //Create an activity view controller with the profile as its activity item. APLProfile conforms to the UIActivityItemSource protocol.
     //first up, go the direct route - will be better to do it with a profile i think...but for now...
-    TCHImageFeedItem *img = [self.imageList itemAtIndex:(NSUInteger)[self centerPhotoIndex]];
+    TCHImageFeedItem *img = [self.imageList itemAtIndex:(NSUInteger)self.centerPhotoIndex];
     TJMImageResource *tmpRes = [[TJMImageResourceManager sharedInstance] resourceForURL:img.imageURL];
-    UIImage *image = [tmpRes getImage];
+    UIImage *image = tmpRes.image;
     
     
     TCHActivityViewController *activityViewController = [[TCHActivityViewController alloc] initWithActivityItems:@[image] applicationActivities:nil];
     activityViewController.excludedActivityTypes = @[UIActivityTypeCopyToPasteboard,UIActivityTypePrint];
     
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
         //iPhone, present activity view controller as is.
         [self presentViewController:activityViewController animated:YES completion:nil];
     }
     else
     {
         //iPad, present the view controller inside a popover.
-        if (![self.activityPopover isPopoverVisible]) {
+        if (!(self.activityPopover).popoverVisible) {
             self.activityPopover = [[UIPopoverController alloc] initWithContentViewController:activityViewController];
             [self.activityPopover presentPopoverFromBarButtonItem:self.shareItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
         }
@@ -179,12 +179,12 @@
 }
 
 - (void)setViewState {
-    if ([self.imageList itemCount] > 1) {
-        self.customNavigationItem.title = [NSString stringWithFormat:@"%i of %lu", (int)[self centerPhotoIndex]+1, (unsigned long)[self.imageList itemCount]];
+    if ((self.imageList).itemCount > 1) {
+        self.customNavigationItem.title = [NSString stringWithFormat:@"%i of %lu", (int)self.centerPhotoIndex+1, (unsigned long)(self.imageList).itemCount];
     } else {
         self.title = @"";
     }
-    if ([self.pagingScrollView isTracking]) {
+    if ((self.pagingScrollView).tracking) {
         self.customNavigationBar.hidden = YES;
         //self.pagingScrollView.backgroundColor = [UIColor blackColor];
         
@@ -209,10 +209,10 @@
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
-	if (buttonIndex != [actionSheet cancelButtonIndex]) {
-        TCHImageFeedItem *img = [self.imageList itemAtIndex:(NSUInteger)[self centerPhotoIndex]];
+	if (buttonIndex != actionSheet.cancelButtonIndex) {
+        TCHImageFeedItem *img = [self.imageList itemAtIndex:(NSUInteger)self.centerPhotoIndex];
         TJMImageResource *tmpRes = [[TJMImageResourceManager sharedInstance] resourceForURL:img.imageURL];
-        UIImage *image = [tmpRes getImage];
+        UIImage *image = tmpRes.image;
         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
     }
 }
@@ -225,7 +225,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     self.navigationController.navigationBarHidden = YES;
     [super viewDidAppear:animated];
-    self.pagingScrollView.contentSize = [self contentSizeForPagingScrollView];
+    self.pagingScrollView.contentSize = self.contentSizeForPagingScrollView;
     //we use out own nav bar...
     [self tilePages];
     [self skipToPage:self.initialIndex];
@@ -256,7 +256,7 @@
     // add missing pages
     for (NSUInteger index = firstNeededPageIndex; index <= lastNeededPageIndex; index++) {
         if (![self isDisplayingPageForIndex:index]) {
-            ImageScrollView *page = [self dequeueRecycledPage];
+            ImageScrollView *page = self.dequeueRecycledPage;
             if (page == nil) {
                 page = [[ImageScrollView alloc] init];
             }
@@ -330,12 +330,12 @@
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
     // recalculate contentSize based on current orientation
-    self.pagingScrollView.contentSize = [self contentSizeForPagingScrollView];
+    self.pagingScrollView.contentSize = self.contentSizeForPagingScrollView;
     
     // adjust frames and configuration of each visible page
     for (ImageScrollView *page in visiblePages) {
-        CGPoint restorePoint = [page pointToCenterAfterRotation];
-        CGFloat restoreScale = [page scaleToRestoreAfterRotation];
+        CGPoint restorePoint = page.pointToCenterAfterRotation;
+        CGFloat restoreScale = page.scaleToRestoreAfterRotation;
         page.frame = [self frameForPageAtIndex:page.index];
         [page setMaxMinZoomScalesForCurrentBounds];
         [page restoreCenterPoint:restorePoint scale:restoreScale];
@@ -371,7 +371,7 @@
 #define PADDING  0
 
 - (CGRect)frameForPagingScrollView {
-    CGRect frame = [[UIScreen mainScreen] bounds];
+    CGRect frame = [UIScreen mainScreen].bounds;
     frame.origin.x -= PADDING;
     frame.size.width += (2 * PADDING);
     return frame;
@@ -392,7 +392,7 @@
     CGRect bounds = self.view.bounds;
     
     //NSLog(@"contentSizeForPagingScrollView = %@",NSStringFromCGRect(bounds));
-    return CGSizeMake(bounds.size.width * [self imageCount], bounds.size.height);
+    return CGSizeMake(bounds.size.width * self.imageCount, bounds.size.height);
 }
 
 #pragma mark - Image wrangling
@@ -417,7 +417,7 @@
 }
 
 - (NSUInteger)imageCount {
-    return [self.imageList itemCount];
+    return (self.imageList).itemCount;
 }
 
 - (NSInteger)centerPhotoIndex {

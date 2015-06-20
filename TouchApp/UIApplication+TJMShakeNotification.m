@@ -18,7 +18,7 @@ static NSUInteger tjm_shakeCount = 0;
 - (void)sendShakeNotification {
   //NSLog(@"Shake Start: lastShake=%ul shakeCount=%u",tjm_lastShake, tjm_shakeCount);
   NSDate *now = [NSDate date];
-  NSTimeInterval timeSince = [now timeIntervalSince1970];
+  NSTimeInterval timeSince = now.timeIntervalSince1970;
   if ((timeSince - tjm_lastShake) < 10) {
     tjm_shakeCount += 1;
     if (tjm_shakeCount > 2) {

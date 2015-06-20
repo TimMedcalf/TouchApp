@@ -64,8 +64,8 @@ NSString *const Key_ImageOverride = @"imageURL";
         self.subtitle = [[element elementForName:Key_Radio_SubTitle] stringValue];
 
         NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
-        [inputFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
-        [inputFormatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss z"];
+        inputFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+        inputFormatter.dateFormat = @"EEE, dd MMM yyyy HH:mm:ss z";
         NSString *dateStr = [[element elementForName:Key_Radio_PubDate] stringValue];
         self.pubDate = [inputFormatter dateFromString:dateStr];
 
@@ -75,7 +75,7 @@ NSString *const Key_ImageOverride = @"imageURL";
         self.imageURL = nil;
         NSString *imageOverride = [[element elementForName:Key_ImageOverride] stringValue];
         //first check if there is an image override location
-        if (imageOverride && ([imageOverride length] > 0)) {
+        if (imageOverride && (imageOverride.length > 0)) {
             self.imageURL = [[NSURL alloc] initWithString:imageOverride];
         }
         //if not, generate an image url as per normal...
@@ -113,7 +113,7 @@ NSString *const Key_ImageOverride = @"imageURL";
 
 - (NSString *)htmlForWebView {
   NSString *playerLink = @"";
-  if ([self.link length] > 0) {
+  if ((self.link).length > 0) {
     playerLink = @"<div id='playerwrapper'><div><strong>Play</strong><br /><span class='subtitle'>Tap here to stream audio</span></div></div>";
   }
   //inject some CSS

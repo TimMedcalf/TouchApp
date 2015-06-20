@@ -129,7 +129,7 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
       if (self.player.rate == 0) {
         //NSLog(@"Audio Paused");
         //just check that the audio is loaded - this will get hit even if the audio still caching...
-        TJMAudioStatus audio = [self statusCheck];
+        TJMAudioStatus audio = self.statusCheck;
         if (audio == TJMAudioStatusCurrentPaused) {
           if ((self.delegate) && ([self.delegate respondsToSelector:@selector(URLIsPaused:)]))
             [self.delegate URLIsPaused:self.URL];

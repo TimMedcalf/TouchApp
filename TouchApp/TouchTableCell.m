@@ -67,9 +67,9 @@ static const CGFloat kAccessoryInset = 15.;
   //now work out the height the label needs to be
   NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
   if (lineBreakingOn) {
-    [paragraphStyle setLineBreakMode:NSLineBreakByWordWrapping];
+    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
   } else {
-    [paragraphStyle setLineBreakMode:NSLineBreakByTruncatingTail];
+    paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
   }
   NSDictionary *attributes = @{NSFontAttributeName: font, NSParagraphStyleAttributeName : paragraphStyle};
   CGRect stringRect = [string boundingRectWithSize:CGSizeMake(maxWidth, MAXFLOAT)
@@ -97,7 +97,7 @@ static const CGFloat kAccessoryInset = 15.;
   //okay - we have the title height
   rollingHeight += ceil(aSize.height);
   //do we have a subtitle? if so, add the height of that to the rollingHeight
-  if (subtitle && ([subtitle length] > 0)) {
+  if (subtitle && (subtitle.length > 0)) {
     //add one to rollingHeight to include a minor gap
     rollingHeight += 1;
     //now work out the size of the subtitle (and only one line of it)
@@ -128,7 +128,7 @@ static const CGFloat kAccessoryInset = 15.;
     selView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.05];
     self.selectedBackgroundView = selView;
     //accessory
-    [self setAccessoryView:[[UIImageView alloc] initWithImage:[TouchTableCell accessoryImage]]];
+    self.accessoryView = [[UIImageView alloc] initWithImage:[TouchTableCell accessoryImage]];
     //initial config of the title
     self.titleLabel = [[UILabel alloc] init];
     self.titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;

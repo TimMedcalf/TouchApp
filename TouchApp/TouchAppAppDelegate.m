@@ -37,7 +37,7 @@
   //about whatever is stored already on the device
   NSUserDefaults *Def = [NSUserDefaults standardUserDefaults];
   NSString *Ver = [Def stringForKey:@"Version"];
-  NSString *CurVer = [[NSBundle mainBundle] infoDictionary][(NSString *)kCFBundleVersionKey];
+  NSString *CurVer = [NSBundle mainBundle].infoDictionary[(NSString *)kCFBundleVersionKey];
   if (Ver == nil || [Ver compare:CurVer] != 0) {
     if (Ver == nil) {
       //anything we want to run only once for the app?
@@ -46,9 +46,9 @@
     NSLog(@"Initialisation for version %@", CurVer);
     //clear the cache folder!
     NSError *error;
-    for (NSString *file in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[[AppManager sharedInstance] cacheFolder] error:&error]) {
+    for (NSString *file in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[AppManager sharedInstance].cacheFolder error:&error]) {
       NSLog(@"Clearing cached file : %@", file);
-      [[NSFileManager defaultManager] removeItemAtPath:[[[AppManager sharedInstance]cacheFolder] stringByAppendingPathComponent:file] error:&error];
+      [[NSFileManager defaultManager] removeItemAtPath:[[AppManager sharedInstance].cacheFolder stringByAppendingPathComponent:file] error:&error];
     }
     [Def setObject:CurVer forKey:@"Version"];
   }
@@ -57,7 +57,7 @@
   [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
   
   
-  self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+  self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   // Override point for customization after application launch.
   
   //load the settings dict...
