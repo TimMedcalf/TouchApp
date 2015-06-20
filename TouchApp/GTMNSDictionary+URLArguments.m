@@ -30,7 +30,7 @@
   while ((key = [keyEnumerator nextObject])) {
     [arguments addObject:[NSString stringWithFormat:@"%@=%@",
                           key.gtm_stringByEscapingForURLArgument,
-                          [[self objectForKey:key] description].gtm_stringByEscapingForURLArgument]];
+                          [self[key] description].gtm_stringByEscapingForURLArgument]];
   }
 
   return [arguments componentsJoinedByString:@"&"];
