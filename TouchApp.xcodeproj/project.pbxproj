@@ -919,6 +919,14 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "639AEDD9-A932-4AA1-8DC8-AFBEC644174A";
 				SDKROOT = iphoneos;
+				WARNING_CFLAGS = (
+					"-Wdeprecated-implementations",
+					"-Wempty-body",
+					"-Wimplicit-retain-self",
+					"-Wnewline-eof",
+					"-Wshadow",
+					"-Wundef",
+				);
 			};
 			name = Debug;
 		};
@@ -939,6 +947,14 @@
 				PROVISIONING_PROFILE = "639AEDD9-A932-4AA1-8DC8-AFBEC644174A";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+				WARNING_CFLAGS = (
+					"-Wdeprecated-implementations",
+					"-Wempty-body",
+					"-Wimplicit-retain-self",
+					"-Wnewline-eof",
+					"-Wshadow",
+					"-Wundef",
+				);
 			};
 			name = Release;
 		};

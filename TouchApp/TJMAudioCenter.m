@@ -126,7 +126,7 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
     }
   } else if ([keyPath isEqualToString:@"rate"]) {
     if ([(__bridge NSString *)context isEqual: CurrentPlayerObserver]) {
-      if (self.player.rate == 0) {
+      if (self.player.rate == 0.f) {
         //NSLog(@"Audio Paused");
         //just check that the audio is loaded - this will get hit even if the audio still caching...
         TJMAudioStatus audio = self.statusCheck;
@@ -148,7 +148,7 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
 - (TJMAudioStatus)statusCheckForURL:(NSURL *)url {
   if ([self.URL isEqual:url]) {
     if (self.player.currentItem.status == AVPlayerStatusReadyToPlay) {
-      return (self.player.rate == 1) ? TJMAudioStatusCurrentPlaying : TJMAudioStatusCurrentPaused;
+      return (self.player.rate == 1.f) ? TJMAudioStatusCurrentPlaying : TJMAudioStatusCurrentPaused;
     }
     if (self.player.currentItem.status == AVPlayerStatusFailed) return TJMAudioStatusCurrentFailed;
   }
@@ -157,7 +157,7 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
 
 - (TJMAudioStatus)statusCheck {
   if (self.player.currentItem.status == AVPlayerStatusReadyToPlay) {
-    return (self.player.rate == 1) ? TJMAudioStatusCurrentPlaying : TJMAudioStatusCurrentPaused;
+    return (self.player.rate == 1.f) ? TJMAudioStatusCurrentPlaying : TJMAudioStatusCurrentPaused;
   }
   if (self.player.currentItem.status == AVPlayerStatusFailed) return TJMAudioStatusCurrentFailed;
   //otherwise

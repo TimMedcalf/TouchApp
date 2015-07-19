@@ -239,9 +239,9 @@
 - (void)tilePages  {
     // Calculate which pages are visible
     CGRect visibleBounds = self.pagingScrollView.bounds;
-    NSUInteger firstNeededPageIndex = (NSUInteger)floorf(CGRectGetMinX(visibleBounds) / CGRectGetWidth(visibleBounds));
-    NSUInteger lastNeededPageIndex  = (NSUInteger)floorf((CGRectGetMaxX(visibleBounds)-1) / CGRectGetWidth(visibleBounds));
-    firstNeededPageIndex = MAX(firstNeededPageIndex, 0);
+    NSUInteger firstNeededPageIndex = (NSUInteger)floor(CGRectGetMinX(visibleBounds) / CGRectGetWidth(visibleBounds));
+    NSUInteger lastNeededPageIndex  = (NSUInteger)floor((CGRectGetMaxX(visibleBounds)-1) / CGRectGetWidth(visibleBounds));
+    firstNeededPageIndex = MAX(firstNeededPageIndex, (NSUInteger)0);
     lastNeededPageIndex  = MIN(lastNeededPageIndex, [self imageCount] - 1);
     
     // Recycle no-longer-visible pages
@@ -320,7 +320,7 @@
     CGFloat pageWidth = self.pagingScrollView.bounds.size.width;
     
     if (offset >= 0) {
-        firstVisiblePageIndexBeforeRotation = (int)floorf(offset / pageWidth);
+        firstVisiblePageIndexBeforeRotation = (int)floor(offset / pageWidth);
         percentScrolledIntoFirstVisiblePage = (offset - (firstVisiblePageIndexBeforeRotation * pageWidth)) / pageWidth;
     } else {
         firstVisiblePageIndexBeforeRotation = 0;

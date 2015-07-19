@@ -177,7 +177,7 @@ NSString static *const Key_IconTintB = @"iconTintB";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return (self.feedList).itemCount;
+    return (NSInteger)(self.feedList).itemCount;
 }
 
 #pragma mark FeedListConsumerDelegates
