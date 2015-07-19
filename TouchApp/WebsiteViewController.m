@@ -51,7 +51,7 @@
   [self.webView addGestureRecognizer:sgltapGesture];
   
   self.navigationItem.title = @"";
-  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back"
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Back",@"Back")
                                                                  style:UIBarButtonItemStyleBordered
                                                                 target:nil
                                                                 action:nil];
@@ -181,7 +181,10 @@
   if (error.code != -999) {
     // load error, hide the activity indicator in the status bar
     if ([error.domain isEqualToString:@"NSURLErrorDomain"]) {
-      UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error - website not found." message:@"Please check that you are connected to the internet." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error - website not found.",@"Error - website not found.")
+                                                        message:NSLocalizedString(@"Please check that you are connected to the internet.",@"Please check that you are connected to the internet.")
+                                                       delegate:self
+                                              cancelButtonTitle:NSLocalizedString(@"OK",@"OK") otherButtonTitles:nil];
       [alert show];
       return;
     }

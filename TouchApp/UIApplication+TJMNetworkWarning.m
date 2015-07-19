@@ -18,7 +18,10 @@ static NSTimeInterval tjm_lastNetworkWarning = 0;
   NSTimeInterval timeSince = now.timeIntervalSince1970;
   if ((timeSince - tjm_lastNetworkWarning) > 120) {
     tjm_lastNetworkWarning = timeSince;
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No connection" message:@"Please check you are connected to the internet." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+      UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"No connection",@"No connection")
+                                                      message:NSLocalizedString(@"Please check you are connected to the internet.",@"Please check you are connected to the internet.")
+                                                     delegate:nil
+                                            cancelButtonTitle:NSLocalizedString(@"Ok",@"Ok") otherButtonTitles:nil];
     [alert show];
   }
 }

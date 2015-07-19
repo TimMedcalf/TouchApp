@@ -75,7 +75,9 @@
 }
 
 - (void)URLDidFail:(NSURL *)url {
-  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Audio stream failed." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"Audio stream failed.",@"Audio stream failed.")
+                                                   delegate:nil cancelButtonTitle:NSLocalizedString(@"OK",@"OK")
+                                          otherButtonTitles:nil];
 	[alert show];
 }
 

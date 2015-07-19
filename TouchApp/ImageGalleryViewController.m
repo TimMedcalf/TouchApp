@@ -41,7 +41,7 @@ static NSInteger iPadThumbnailRowCount = 8;
     if (self) {
         self.imageList = imageList;
         self.imageList.delegate = self;
-        self.title = @"Photos";
+        self.title = NSLocalizedString(@"Photos",@"Photos");
         self.tabBarItem.image = [UIImage imageNamed:@"images"];
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.thumbnailRowCount = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? iPadThumbnailRowCount : iPhoneThumbnailRowCount;
@@ -68,7 +68,7 @@ static NSInteger iPadThumbnailRowCount = 8;
     
     self.navigationItem.title = @"";
     
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Back",@"Back") style:UIBarButtonItemStyleBordered target:nil action:nil];
     self.navigationItem.backBarButtonItem = backButton;
     
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"headerText_photos"]];
