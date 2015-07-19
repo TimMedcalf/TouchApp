@@ -73,7 +73,9 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 
 - (void)dealloc {
     //NSLog(@"list dealloc");
-    if (self.activeDownload) [self cancelDownload];
+    if (self.activeDownload) {
+        [self cancelDownload];
+    }
 }
 
 #pragma mark load/save

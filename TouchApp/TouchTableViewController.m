@@ -166,7 +166,7 @@ NSString static *const Key_IconTintB = @"iconTintB";
     return (interfaceOrientation == UIInterfaceOrientationPortrait) || (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad);
 }
 
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+- (NSUInteger)supportedInterfaceOrientations {
     return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)? UIInterfaceOrientationMaskAll : UIInterfaceOrientationMaskPortrait;
 }
 

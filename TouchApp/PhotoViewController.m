@@ -309,7 +309,7 @@
 - (BOOL)shouldAutorotate {
     return YES;
 }
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+- (NSUInteger)supportedInterfaceOrientations {
     return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? UIInterfaceOrientationMaskAll : UIInterfaceOrientationMaskAllButUpsideDown;
 }
 

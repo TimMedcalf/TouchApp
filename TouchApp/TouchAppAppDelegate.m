@@ -138,7 +138,8 @@
    See also applicationDidEnterBackground:.
    */
 }
-- (UIInterfaceOrientationMask)application:(nonnull UIApplication *)application supportedInterfaceOrientationsForWindow:(nullable UIWindow *)window {
+
+- (NSUInteger)application:(nonnull UIApplication *)application supportedInterfaceOrientationsForWindow:(nullable UIWindow *)window {
   return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? UIInterfaceOrientationMaskAll : UIInterfaceOrientationMaskAllButUpsideDown;
   //return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? UIInterfaceOrientationMaskAll : UIInterfaceOrientationMaskPortrait;
 }
