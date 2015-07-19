@@ -45,10 +45,9 @@
     //Run once-per-upgrade code, if any
     NSLog(@"Initialisation for version %@", CurVer);
     //clear the cache folder!
-    NSError *error;
-    for (NSString *file in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[AppManager sharedInstance].cacheFolder error:&error]) {
+    for (NSString *file in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[AppManager sharedInstance].cacheFolder error:NULL]) {
       NSLog(@"Clearing cached file : %@", file);
-      [[NSFileManager defaultManager] removeItemAtPath:[[AppManager sharedInstance].cacheFolder stringByAppendingPathComponent:file] error:&error];
+      [[NSFileManager defaultManager] removeItemAtPath:[[AppManager sharedInstance].cacheFolder stringByAppendingPathComponent:file] error:NULL];
     }
     [Def setObject:CurVer forKey:@"Version"];
   }
