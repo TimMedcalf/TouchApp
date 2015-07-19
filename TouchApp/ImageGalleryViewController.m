@@ -146,18 +146,11 @@ static NSInteger iPadThumbnailRowCount = 8;
     [super viewDidDisappear:animated];
 }
 
-- (BOOL)shouldAutorotate {
-    return YES;
-}
 
 - (NSUInteger)supportedInterfaceOrientations {
     return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? UIInterfaceOrientationMaskAll : UIInterfaceOrientationMaskPortrait;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait) || (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad);
-}
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)orientation duration:(NSTimeInterval)duration {
     [super willRotateToInterfaceOrientation:orientation duration:duration];

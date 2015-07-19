@@ -301,14 +301,7 @@
 }
 
 #pragma mark - View controller rotation methods
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
-    //iPad can be upside down, but stop the Phone going that way..
-    return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad || toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;
-}
 
-- (BOOL)shouldAutorotate {
-    return YES;
-}
 - (NSUInteger)supportedInterfaceOrientations {
     return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? UIInterfaceOrientationMaskAll : UIInterfaceOrientationMaskAllButUpsideDown;
 }

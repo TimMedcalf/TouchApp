@@ -124,9 +124,13 @@
   }
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-  // Overriden to allow any orientation.
-  return (!self.HTMLString);
+
+- (NSUInteger)supportedInterfaceOrientations {
+    return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? UIInterfaceOrientationMaskAll : UIInterfaceOrientationMaskPortrait;
+}
+
+- (BOOL)shouldAutorotate {
+   return (!self.HTMLString);
 }
 
 #pragma mark Gestures
