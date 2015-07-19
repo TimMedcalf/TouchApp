@@ -28,9 +28,7 @@
         }
       }
     }
-  }  
-  
-  self.webView.delegate = self;
+  }
 
   [self.webView setOpaque:NO];
   self.webView.scalesPageToFit = YES;
@@ -48,7 +46,6 @@
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   
-  //self.navigationController.toolbarHidden = NO;
   [self.navigationController setToolbarHidden:YES animated:YES];
   self.webView.delegate = self;
   if (self.HTMLString) {
@@ -126,6 +123,11 @@
     [[UIApplication sharedApplication] tjm_popNetworkActivity];
   }
   self.webView.delegate = nil;    // disconnect the delegate as the webView is hidden
+}
+
+- (void)dealloc {
+    // to avoid compiler warning from Fauxpas, i'm also setting the delegate to nil here...
+    self.webView.delegate = nil;    // disconnect the delegate as the webView is hidden
 }
 
 @end

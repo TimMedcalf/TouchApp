@@ -101,7 +101,6 @@
     CGRect pagingScrollViewFrame = self.frameForPagingScrollView;
     _pagingScrollView = [[UIScrollView alloc] initWithFrame:pagingScrollViewFrame];
     self.pagingScrollView.pagingEnabled = YES;
-    //self.pagingScrollView.backgroundColor = [UIColor blackColor];
     self.pagingScrollView.backgroundColor = [UIColor whiteColor];
     self.pagingScrollView.contentSize = self.contentSizeForPagingScrollView;
     self.pagingScrollView.delegate = self;
@@ -143,6 +142,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleBarsNotification:) name:@"TJMPhotoViewToggleBars" object:nil];
 }
+
 
 - (BOOL)prefersStatusBarHidden {
     return YES;
@@ -209,7 +209,7 @@
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
-	if (buttonIndex != actionSheet.cancelButtonIndex) {
+    if (buttonIndex != actionSheet.cancelButtonIndex) {
         TCHImageFeedItem *img = [self.imageList itemAtIndex:(NSUInteger)self.centerPhotoIndex];
         TJMImageResource *tmpRes = [[TJMImageResourceManager sharedInstance] resourceForURL:img.imageURL];
         UIImage *image = tmpRes.image;
@@ -232,6 +232,7 @@
 }
 
 - (void)dealloc {
+    self.pagingScrollView.delegate = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -414,8 +415,8 @@
 }
 
 - (NSInteger)centerPhotoIndex {
-	CGFloat pageWidth = self.pagingScrollView.frame.size.width;
-	return (int)floor((self.pagingScrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+    CGFloat pageWidth = self.pagingScrollView.frame.size.width;
+    return (int)floor((self.pagingScrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
 }
 
 - (void)skipToPage:(NSUInteger)page {
