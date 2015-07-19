@@ -13,7 +13,7 @@ static NSTimeInterval tjm_lastNetworkWarning = 0;
 
 @implementation UIApplication (TJMNetworkWarning)
 
-- (void)showNetworkWarning {
+- (void)tjmShowNetworkWarning {
   NSDate *now = [NSDate date];
   NSTimeInterval timeSince = now.timeIntervalSince1970;
   if ((timeSince - tjm_lastNetworkWarning) > 120) {
@@ -26,7 +26,7 @@ static NSTimeInterval tjm_lastNetworkWarning = 0;
   }
 }
 
-- (void)resetNetworkWarning {
+- (void)tjmResetNetworkWarning {
   tjm_lastNetworkWarning = 0;
 }
 

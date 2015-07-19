@@ -90,7 +90,7 @@
    
 - (void)touchTapped:(UITapGestureRecognizer *)tapper {
   //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
-  [[UIApplication sharedApplication] resetNetworkWarning];
+  [[UIApplication sharedApplication] tjmResetNetworkWarning];
   [self handleShake];
 }
 
