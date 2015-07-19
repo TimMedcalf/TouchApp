@@ -194,12 +194,9 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
     
     // Assign the Playback category to the audio session.
     NSError *audioSessionError = nil;
-    [mySession setCategory:AVAudioSessionCategoryPlayback
-                     error:&audioSessionError];
-    
-    if (audioSessionError != nil) {
-        //NSLog (@"Error setting audio session category.");
-        return;
+    if (![mySession setCategory:AVAudioSessionCategoryPlayback
+                         error:&audioSessionError]) {
+        NSLog (@"Error setting audio session category.");
     }
     
     
