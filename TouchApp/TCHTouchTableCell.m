@@ -128,7 +128,7 @@ static const CGFloat kAccessoryInset = 15.;
     selView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.05];
     self.selectedBackgroundView = selView;
     //accessory
-    self.accessoryView = [[UIImageView alloc] initWithImage:[TCHTouchTableCell accessoryImage]];
+    self.accessoryView = [[UIImageView alloc] initWithImage:[[self class] accessoryImage]];
     //initial config of the title
     _titleLabel = [[UILabel alloc] init];
     self.titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
