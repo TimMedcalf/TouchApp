@@ -15,17 +15,16 @@ extern NSString *const TJMImageResourceImageNeedsUpdating;
 
 @property (strong, nonatomic) NSURL *imageURL;
 @property (strong, nonatomic) NSDate *lastAccessed;
+@property (NS_NONATOMIC_IOSONLY, readonly) BOOL imageIsDownloaded;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) UIImage *image;
 
 - (instancetype)initWithURL:(NSURL *)imageURL;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
+
 - (NSDictionary *)dictionaryRepresentation;
 
 - (void)clearCachedFiles;
-
-@property (NS_NONATOMIC_IOSONLY, readonly) BOOL imageIsDownloaded;
 - (void)cacheImage;
-@property (NS_NONATOMIC_IOSONLY, getter=getImage, readonly, strong) UIImage *image;
-//- (UIImage *)getImageWithPreferredPlaceholder:(TJMImageResource *)placeholder;
-//- (UIImage *)getImageThumbnailOfSize:(CGSize)size;
+
 
 @end

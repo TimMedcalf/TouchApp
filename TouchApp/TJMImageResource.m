@@ -98,7 +98,7 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
 }
 
 #pragma mark image resourcing
-- (UIImage *)getImage {
+- (UIImage *)image {
     DDLogDebug(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
     if (self.imageIsDownloaded) {
         self.lastAccessed = nil;
