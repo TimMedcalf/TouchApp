@@ -96,8 +96,8 @@ NSString *const Key_ImageItem_DateTakenString = @"dateTakenString";
     self = [super initWithXMLElement:element andBaseURL:baseURL];
     if (self) {
         DDLogDebug(@"[%@ %@] %@", [self class], NSStringFromSelector(_cmd), element);
-        NSString *thumbnailSuffix = [TCHImageFeedItem thumbnailFlickrSuffix];
-        NSString *imageSuffix = [TCHImageFeedItem imageFlickrSuffix];
+        NSString *thumbnailSuffix = [[self class] thumbnailFlickrSuffix];
+        NSString *imageSuffix = [[self class] imageFlickrSuffix];
         
         NSString *tmpPath = nil;
         NSURL *tmpURL = nil;

@@ -151,7 +151,7 @@
   DDLogDebug(@"Should Load");
   [self.barTapTimer invalidate];
   if ((navigationType == UIWebViewNavigationTypeLinkClicked ) & self.openLinksInNewView) {
-    TCHWebsiteViewController *newWeb = [[TCHWebsiteViewController alloc] initWithNibName:@"TCHWebsiteViewController" bundle:nil];
+    TCHWebsiteViewController *newWeb = [[[self class] alloc] initWithNibName:@"TCHWebsiteViewController" bundle:nil];
     newWeb.initialURL = (request.URL).absoluteString;
     newWeb.dontHideNavigationBar = YES;
     [self.navigationController pushViewController:newWeb animated:YES];

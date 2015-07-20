@@ -52,7 +52,7 @@ static const CGFloat kAccessoryInset = 15.;
 }
 
 + (CGSize)accessorySize {
-  return [TCHTouchTableCell accessoryImage].size;
+  return [[self class] accessoryImage].size;
 }
 
 + (UIFont *)titleFont {
@@ -89,11 +89,11 @@ static const CGFloat kAccessoryInset = 15.;
   //first up, initialise a running total of the height so far
   CGFloat rollingHeight = 0;
   //so, the width of the content view will be the width of the table - minus the accessory inset - minus the width of the accessory view itself
-  CGFloat usableWidth = tableWidth - kAccessoryInset - [TCHTouchTableCell accessorySize].width;
+  CGFloat usableWidth = tableWidth - kAccessoryInset - [[self class] accessorySize].width;
   //then we need to take off the insets
-  usableWidth -= ([TCHTouchTableCell horizontalPadding] * 2);
+  usableWidth -= ([[self class] horizontalPadding] * 2);
   //okay - we know what the usable width of the strings can be - lets work out the heights - first up, the title
-  CGSize aSize = [TCHTouchTableCell sizeOfString:title withFont:[TCHTouchTableCell titleFont] lineBreakingOn:YES maxWidth:usableWidth];
+  CGSize aSize = [[self class] sizeOfString:title withFont:[[self class] titleFont] lineBreakingOn:YES maxWidth:usableWidth];
   //okay - we have the title height
   rollingHeight += ceil(aSize.height);
   //do we have a subtitle? if so, add the height of that to the rollingHeight
@@ -101,11 +101,11 @@ static const CGFloat kAccessoryInset = 15.;
     //add one to rollingHeight to include a minor gap
     rollingHeight += 1;
     //now work out the size of the subtitle (and only one line of it)
-    aSize = [TCHTouchTableCell sizeOfString:subtitle withFont:[TCHTouchTableCell subtitleFont] lineBreakingOn:NO maxWidth:usableWidth];
+    aSize = [[self class] sizeOfString:subtitle withFont:[[self class] subtitleFont] lineBreakingOn:NO maxWidth:usableWidth];
     rollingHeight += ceil(aSize.height);
   }
   //next up, add the top and bottom vertical padding
-  rollingHeight += [TCHTouchTableCell verticalPadding] * 2;
+  rollingHeight += [[self class] verticalPadding] * 2;
   //and that should be it!
   DDLogDebug(@"ActualHeight %f",ceil(rollingHeight));
   return ceil(rollingHeight);
@@ -137,7 +137,7 @@ static const CGFloat kAccessoryInset = 15.;
     self.titleLabel.backgroundColor = [UIColor clearColor];
     self.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     self.titleLabel.numberOfLines = 0;
-    self.titleLabel.font = [TCHTouchTableCell titleFont];
+    self.titleLabel.font = [[self class] titleFont];
     [self.contentView addSubview:self.titleLabel];
 
     //initial config of the subtitle (whether we show it or not)
@@ -148,7 +148,7 @@ static const CGFloat kAccessoryInset = 15.;
     self.subtitleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     self.subtitleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     self.subtitleLabel.numberOfLines = 1;
-    self.subtitleLabel.font = [TCHTouchTableCell subtitleFont];
+    self.subtitleLabel.font = [[self class] subtitleFont];
     [self.contentView addSubview:self.subtitleLabel];
   }
   return self;
@@ -186,20 +186,20 @@ static const CGFloat kAccessoryInset = 15.;
 - (void)layoutSubviews {
   [super layoutSubviews];
   //store an inset value that's different for each device
-  CGFloat titleInsetXVal = [TCHTouchTableCell horizontalPadding];
+  CGFloat titleInsetXVal = [[self class] horizontalPadding];
   
-  CGSize titleSize = [TCHTouchTableCell sizeOfString:self.titleString withFont:self.titleLabel.font lineBreakingOn:YES maxWidth:self.contentView.bounds.size.width - ([TCHTouchTableCell horizontalPadding] * 2)];
+  CGSize titleSize = [[self class] sizeOfString:self.titleString withFont:self.titleLabel.font lineBreakingOn:YES maxWidth:self.contentView.bounds.size.width - ([[self class] horizontalPadding] * 2)];
   if (self.subtitleString) {
-    CGSize subtitleSize = [TCHTouchTableCell sizeOfString:self.subtitleString withFont:self.subtitleLabel.font lineBreakingOn:NO  maxWidth:self.contentView.bounds.size.width - ([TCHTouchTableCell horizontalPadding] * 2)];
+    CGSize subtitleSize = [[self class] sizeOfString:self.subtitleString withFont:self.subtitleLabel.font lineBreakingOn:NO  maxWidth:self.contentView.bounds.size.width - ([[self class] horizontalPadding] * 2)];
     //title AND subtitle
     [self.subtitleLabel setHidden:false];
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
       //iPad
-      self.titleLabel.frame = CGRectMake(titleInsetXVal, [TCHTouchTableCell verticalPadding], self.contentView.frame.size.width - (titleInsetXVal * 2), titleSize.height);
+      self.titleLabel.frame = CGRectMake(titleInsetXVal, [[self class] verticalPadding], self.contentView.frame.size.width - (titleInsetXVal * 2), titleSize.height);
       self.subtitleLabel.frame = CGRectMake(titleInsetXVal, CGRectGetMaxY(self.titleLabel.frame) + 1, self.contentView.frame.size.width - (titleInsetXVal * 2), subtitleSize.height);
     } else {
       //iPhone
-      self.titleLabel.frame = CGRectMake(titleInsetXVal, [TCHTouchTableCell verticalPadding], self.contentView.frame.size.width - (titleInsetXVal * 2), titleSize.height);
+      self.titleLabel.frame = CGRectMake(titleInsetXVal, [[self class] verticalPadding], self.contentView.frame.size.width - (titleInsetXVal * 2), titleSize.height);
       self.subtitleLabel.frame = CGRectMake(titleInsetXVal, CGRectGetMaxY(self.titleLabel.frame) + 1, self.contentView.frame.size.width - (titleInsetXVal * 2), subtitleSize.height);
     }
   } else {
@@ -207,10 +207,10 @@ static const CGFloat kAccessoryInset = 15.;
     //just title
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
       //iPad
-      self.titleLabel.frame = CGRectMake(titleInsetXVal, [TCHTouchTableCell verticalPadding], self.contentView.frame.size.width - (titleInsetXVal * 2),  titleSize.height);
+      self.titleLabel.frame = CGRectMake(titleInsetXVal, [[self class] verticalPadding], self.contentView.frame.size.width - (titleInsetXVal * 2),  titleSize.height);
     } else {
       //iPhone
-      self.titleLabel.frame = CGRectMake(titleInsetXVal, [TCHTouchTableCell verticalPadding], self.contentView.frame.size.width - (titleInsetXVal * 2),  titleSize.height);
+      self.titleLabel.frame = CGRectMake(titleInsetXVal, [[self class] verticalPadding], self.contentView.frame.size.width - (titleInsetXVal * 2),  titleSize.height);
     }
   }
 }
