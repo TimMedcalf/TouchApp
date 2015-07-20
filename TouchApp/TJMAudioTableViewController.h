@@ -9,12 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "TCHBaseFeedList.h"
 
-@class TKProgressBarView;
+@class TKUProgressBarView;
 
 
 @interface TJMAudioTableViewController : UITableViewController <FeedListConsumerDelegate>
 
-@property (strong, nonatomic) TKProgressBarView *progressView;
+@property (strong, nonatomic) TKUProgressBarView *progressView;
 @property (strong, nonatomic) UIImageView *touchLogo;
 
 - (void)handleShake;

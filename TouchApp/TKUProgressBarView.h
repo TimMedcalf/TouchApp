@@ -31,16 +31,16 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSInteger,TKProgressBarViewStyle) {
-	TKProgressBarViewStyleLong,
-	TKProgressBarViewStyleShort
+typedef NS_ENUM(NSInteger,TKUProgressBarViewStyle) {
+	TKUProgressBarViewStyleLong,
+	TKUProgressBarViewStyleShort
 };
 
-@interface TKProgressBarView : UIView {
-	TKProgressBarViewStyle style;
+@interface TKUProgressBarView : UIView {
+	TKUProgressBarViewStyle style;
 }
 
-- (instancetype)initWithStyle:(TKProgressBarViewStyle)style;
+- (instancetype)initWithStyle:(TKUProgressBarViewStyle)style;
 @property (assign,nonatomic) CGFloat progress; // a value between 0.0 and 1.0
 
 @end

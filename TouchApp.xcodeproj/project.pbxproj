@@ -66,7 +66,7 @@
 		22804A891407544B0083CE40 /* TJMImageResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22804A851407544B0083CE40 /* TJMImageResourceManager.m */; };
 		22804A8A1407544B0083CE40 /* TJMImageResourceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22804A871407544B0083CE40 /* TJMImageResourceView.m */; };
 		22824AB717BDD74400C9D569 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22824AB617BDD74400C9D569 /* Security.framework */; };
-		2286E6D814357C5D00C4B275 /* TKProgressBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2286E6D714357C5D00C4B275 /* TKProgressBarView.m */; };
+		2286E6D814357C5D00C4B275 /* TKUProgressBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2286E6D714357C5D00C4B275 /* TKUProgressBarView.m */; };
 		229890271427556400345AD3 /* HTMLItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 229890251427556400345AD3 /* HTMLItemViewController.m */; };
 		22C2C25319703E020052BD21 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22C2C25219703E020052BD21 /* XCTest.framework */; };
 		22C2C25419703E020052BD21 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222951C813EC496F001D174D /* Foundation.framework */; };
@@ -202,8 +202,8 @@
 		22804A861407544B0083CE40 /* TJMImageResourceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJMImageResourceView.h; sourceTree = "<group>"; };
 		22804A871407544B0083CE40 /* TJMImageResourceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TJMImageResourceView.m; sourceTree = "<group>"; };
 		22824AB617BDD74400C9D569 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		2286E6D614357C5D00C4B275 /* TKProgressBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKProgressBarView.h; sourceTree = "<group>"; };
-		2286E6D714357C5D00C4B275 /* TKProgressBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKProgressBarView.m; sourceTree = "<group>"; };
+		2286E6D614357C5D00C4B275 /* TKUProgressBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKUProgressBarView.h; sourceTree = "<group>"; };
+		2286E6D714357C5D00C4B275 /* TKUProgressBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKUProgressBarView.m; sourceTree = "<group>"; };
 		229890241427556400345AD3 /* HTMLItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLItemViewController.h; sourceTree = "<group>"; };
 		229890251427556400345AD3 /* HTMLItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLItemViewController.m; sourceTree = "<group>"; };
 		22C2C25119703E020052BD21 /* TouchApp Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TouchApp Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -547,8 +547,8 @@
 		2286E6D414357C4300C4B275 /* tapku */ = {
 			isa = PBXGroup;
 			children = (
-				2286E6D614357C5D00C4B275 /* TKProgressBarView.h */,
-				2286E6D714357C5D00C4B275 /* TKProgressBarView.m */,
+				2286E6D614357C5D00C4B275 /* TKUProgressBarView.h */,
+				2286E6D714357C5D00C4B275 /* TKUProgressBarView.m */,
 			);
 			name = tapku;
 			sourceTree = "<group>";
@@ -831,7 +831,7 @@
 				2252536D141E289200157205 /* CatalogueItemViewController.m in Sources */,
 				22525373141E2CA500157205 /* RadioItemViewController.m in Sources */,
 				229890271427556400345AD3 /* HTMLItemViewController.m in Sources */,
-				2286E6D814357C5D00C4B275 /* TKProgressBarView.m in Sources */,
+				2286E6D814357C5D00C4B275 /* TKUProgressBarView.m in Sources */,
 				22F7C4DF162F5D1D002E2CB6 /* NewsItemViewController.m in Sources */,
 				220BBB4B165DE66500C5118B /* RotatingTabBarController.m in Sources */,
 				2211EB1D16B642560038C9B7 /* UIApplication+TJMNetworkWarning.m in Sources */,

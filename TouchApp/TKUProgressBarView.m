@@ -29,14 +29,14 @@
  
  */
 
-#import "TKProgressBarView.h"
+#import "TKUProgressBarView.h"
 
 
-@implementation TKProgressBarView
+@implementation TKUProgressBarView
 
-- (instancetype)initWithStyle:(TKProgressBarViewStyle)s{
+- (instancetype)initWithStyle:(TKUProgressBarViewStyle)s{
 	
-	CGRect r = s==TKProgressBarViewStyleLong ? CGRectMake(0, 0, 210, 20) : CGRectMake(0, 0, 180, 42);
+	CGRect r = s==TKUProgressBarViewStyleLong ? CGRectMake(0, 0, 210, 20) : CGRectMake(0, 0, 180, 42);
 	
   self = [super initWithFrame:r];
   
@@ -52,8 +52,8 @@
 - (void) setProgress:(CGFloat)p{
 	p = MIN(MAX(0,p),1);
 	
-	if(style == TKProgressBarViewStyleLong && p > 0 && p < 0.08) p = 0.08;
-	else if(style == TKProgressBarViewStyleShort && p > 0 && p < 0.17) p = 0.17;
+	if(style == TKUProgressBarViewStyleLong && p > 0 && p < 0.08) p = 0.08;
+	else if(style == TKUProgressBarViewStyleShort && p > 0 && p < 0.17) p = 0.17;
 	if(p == _progress) return;
 	_progress = p;
 	[self setNeedsDisplay];
@@ -103,7 +103,7 @@
 }
 - (void) drawRect:(CGRect)rect {
 
-	if(style == TKProgressBarViewStyleLong) 
+	if(style == TKUProgressBarViewStyleLong)
 		[self drawRect:rect borderRadius:8. borderWidth:2. barRadius:5. barInset:3];
 	else
 		[self drawRect:rect borderRadius:17. borderWidth:4. barRadius:11. barInset:6.];

@@ -9,7 +9,7 @@
 #import "TJMAudioTableViewController.h"
 #import "TouchConstants.h"
 #import "UIApplication+TJMNetworkWarning.h"
-#import "TKProgressBarView.h"
+#import "TKUProgressBarView.h"
 #import "TJMAudioCenter.h"
 
 
@@ -28,7 +28,7 @@
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(configureAudioControl) name:TJMAudioCenterStatusChange object:[TJMAudioCenter sharedInstance]];
   
   //create a progress bar that we can show in subclasses...
-  TKProgressBarView *tmpProgress = [[TKProgressBarView alloc] initWithStyle:TKProgressBarViewStyleLong];
+  TKUProgressBarView *tmpProgress = [[TKUProgressBarView alloc] initWithStyle:TKUProgressBarViewStyleLong];
   self.touchLogo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"TouchLogo"]];
   self.touchLogo.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds));
   self.touchLogo.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;

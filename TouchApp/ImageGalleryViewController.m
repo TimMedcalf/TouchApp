@@ -9,7 +9,7 @@
 #import "ImageGalleryViewController.h"
 #import "TJMImageResourceView.h"
 #import "UIApplication+TJMNetworkWarning.h"
-#import "TKProgressBarView.h"
+#import "TKUProgressBarView.h"
 
 static NSInteger CellImageTag = 51;
 

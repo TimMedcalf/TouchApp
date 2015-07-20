@@ -9,7 +9,7 @@
 #import "TouchTableViewController.h"
 #import "TouchTableCell.h"
 #import "UIApplication+TJMNetworkWarning.h"
-#import "TKProgressBarView.h"
+#import "TKUProgressBarView.h"
 
 
 #pragma clang diagnostic push
