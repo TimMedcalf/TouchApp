@@ -35,79 +35,79 @@
 @implementation TKUProgressBarView
 
 - (instancetype)initWithStyle:(TKUProgressBarViewStyle)s{
-	
-	CGRect r = s==TKUProgressBarViewStyleLong ? CGRectMake(0, 0, 210, 20) : CGRectMake(0, 0, 180, 42);
-	
-  self = [super initWithFrame:r];
-  
-	if (self)
-  {    
-    style = s;	
-    self.progress = 0;
-    self.backgroundColor = [UIColor clearColor];
-  }
-	return self;
+    
+    CGRect r = s==TKUProgressBarViewStyleLong ? CGRectMake(0, 0, 210, 20) : CGRectMake(0, 0, 180, 42);
+    
+    self = [super initWithFrame:r];
+    
+    if (self)
+    {
+        style = s;
+        _progress = 0;
+        self.backgroundColor = [UIColor clearColor];
+    }
+    return self;
 }
-
-- (void) setProgress:(CGFloat)p{
-	p = MIN(MAX(0,p),1);
 	
-	if(style == TKUProgressBarViewStyleLong && p > 0 && p < 0.08) p = 0.08;
-	else if(style == TKUProgressBarViewStyleShort && p > 0 && p < 0.17) p = 0.17;
-	if(p == _progress) return;
-	_progress = p;
-	[self setNeedsDisplay];
+- (void) setProgress:(CGFloat)p{
+    p = MIN(MAX(0,p),1);
+    
+    if(style == TKUProgressBarViewStyleLong && p > 0 && p < 0.08) p = 0.08;
+    else if(style == TKUProgressBarViewStyleShort && p > 0 && p < 0.17) p = 0.17;
+    if(p == _progress) return;
+    _progress = p;
+    [self setNeedsDisplay];
 }
 
 
 - (void) drawRect:(CGRect)rect borderRadius:(CGFloat)rad borderWidth:(CGFloat)thickness barRadius:(CGFloat)barRadius barInset:(CGFloat)barInset{
-	
-	CGContextRef context = UIGraphicsGetCurrentContext();
-	
-	CGRect rrect = CGRectInset(rect,thickness, thickness);
-	CGFloat radius = rad;
-	
-	CGFloat minx = CGRectGetMinX(rrect), midx = CGRectGetMidX(rrect), maxx = CGRectGetMaxX(rrect);
-	CGFloat miny = CGRectGetMinY(rrect), midy = CGRectGetMidY(rrect), maxy = CGRectGetMaxY(rrect);
-	
-	
-	CGContextMoveToPoint(context, minx, midy);
-	CGContextAddArcToPoint(context, minx, miny, midx, miny, radius);
-	CGContextAddArcToPoint(context, maxx, miny, maxx, midy, radius);
-	CGContextAddArcToPoint(context, maxx, maxy, midx, maxy, radius);
-	CGContextAddArcToPoint(context, minx, maxy, minx, midy, radius);
-	CGContextClosePath(context);
-	CGContextSetRGBStrokeColor(context, 0.878, 0.878, 0.878, 1);
-	CGContextSetLineWidth(context, thickness);
-	CGContextDrawPath(context, kCGPathStroke);
-	
-	
-	
-	radius = barRadius;
-	
-	rrect = CGRectInset(rrect, barInset, barInset);
-	rrect.size.width = rrect.size.width * self.progress;
-	minx = CGRectGetMinX(rrect), midx = CGRectGetMidX(rrect), maxx = CGRectGetMaxX(rrect);
-	miny = CGRectGetMinY(rrect), midy = CGRectGetMidY(rrect), maxy = CGRectGetMaxY(rrect);
-	CGContextMoveToPoint(context, minx, midy);
-	CGContextAddArcToPoint(context, minx, miny, midx, miny, radius);
-	CGContextAddArcToPoint(context, maxx, miny, maxx, midy, radius);
-	CGContextAddArcToPoint(context, maxx, maxy, midx, maxy, radius);
-	CGContextAddArcToPoint(context, minx, maxy, minx, midy, radius);
-	CGContextClosePath(context);
-  CGContextSetRGBFillColor(context, 0.878, 0.878, 0.878, 1);
-	CGContextDrawPath(context, kCGPathFill);
-	
-	
-	
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGRect rrect = CGRectInset(rect,thickness, thickness);
+    CGFloat radius = rad;
+    
+    CGFloat minx = CGRectGetMinX(rrect), midx = CGRectGetMidX(rrect), maxx = CGRectGetMaxX(rrect);
+    CGFloat miny = CGRectGetMinY(rrect), midy = CGRectGetMidY(rrect), maxy = CGRectGetMaxY(rrect);
+    
+    
+    CGContextMoveToPoint(context, minx, midy);
+    CGContextAddArcToPoint(context, minx, miny, midx, miny, radius);
+    CGContextAddArcToPoint(context, maxx, miny, maxx, midy, radius);
+    CGContextAddArcToPoint(context, maxx, maxy, midx, maxy, radius);
+    CGContextAddArcToPoint(context, minx, maxy, minx, midy, radius);
+    CGContextClosePath(context);
+    CGContextSetRGBStrokeColor(context, 0.878, 0.878, 0.878, 1);
+    CGContextSetLineWidth(context, thickness);
+    CGContextDrawPath(context, kCGPathStroke);
+    
+    
+    
+    radius = barRadius;
+    
+    rrect = CGRectInset(rrect, barInset, barInset);
+    rrect.size.width = rrect.size.width * self.progress;
+    minx = CGRectGetMinX(rrect), midx = CGRectGetMidX(rrect), maxx = CGRectGetMaxX(rrect);
+    miny = CGRectGetMinY(rrect), midy = CGRectGetMidY(rrect), maxy = CGRectGetMaxY(rrect);
+    CGContextMoveToPoint(context, minx, midy);
+    CGContextAddArcToPoint(context, minx, miny, midx, miny, radius);
+    CGContextAddArcToPoint(context, maxx, miny, maxx, midy, radius);
+    CGContextAddArcToPoint(context, maxx, maxy, midx, maxy, radius);
+    CGContextAddArcToPoint(context, minx, maxy, minx, midy, radius);
+    CGContextClosePath(context);
+    CGContextSetRGBFillColor(context, 0.878, 0.878, 0.878, 1);
+    CGContextDrawPath(context, kCGPathFill);
+    
+    
+    
 }
 - (void) drawRect:(CGRect)rect {
-
-	if(style == TKUProgressBarViewStyleLong)
-		[self drawRect:rect borderRadius:8. borderWidth:2. barRadius:5. barInset:3];
-	else
-		[self drawRect:rect borderRadius:17. borderWidth:4. barRadius:11. barInset:6.];
-	
+    
+    if(style == TKUProgressBarViewStyleLong)
+        [self drawRect:rect borderRadius:8. borderWidth:2. barRadius:5. barInset:3];
+    else
+        [self drawRect:rect borderRadius:17. borderWidth:4. barRadius:11. barInset:6.];
+    
 }
 
 

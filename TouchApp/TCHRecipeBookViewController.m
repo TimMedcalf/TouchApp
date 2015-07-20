@@ -27,7 +27,7 @@
 - (instancetype)initWithSettingsDictionary:(NSDictionary *)viewSettings andRecipeCategoryNamed:(NSString *)category {
   self = [super initWithViewSettingsDictionary:viewSettings];
   if (self) {
-    self.recipeCategory = category;
+    _recipeCategory = category;
   }
   return self;
 }

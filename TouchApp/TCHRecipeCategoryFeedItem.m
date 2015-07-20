@@ -28,8 +28,8 @@ NSString *const Key_RCat_Title = @"title";
 - (instancetype)initWithDictionary:(NSDictionary *)dict {
     self = [super initWithDictionary:dict];
     if (self) {
-        self.recipeId = dict[Key_RCat_Id];
-        self.recipeTitle = dict[Key_RCat_Title];
+        _recipeId = dict[Key_RCat_Id];
+        _recipeTitle = dict[Key_RCat_Title];
     }
     return self;
 }
@@ -41,8 +41,8 @@ NSString *const Key_RCat_Title = @"title";
         NSString *numString = [[element elementForName:Key_RCat_Id] stringValue];
         NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
         f.numberStyle = NSNumberFormatterDecimalStyle;
-        self.recipeId = [f numberFromString:numString];
-        self.recipeTitle = [[element elementForName:Key_RCat_Title] stringValue];
+        _recipeId = [f numberFromString:numString];
+        _recipeTitle = [[element elementForName:Key_RCat_Title] stringValue];
     }
     return self;
 }

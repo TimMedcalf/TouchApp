@@ -50,8 +50,8 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 - (instancetype)init {
     self = [self initWithoutLoading];
     if (self) {
-        self.feed = self.feedURL;
-        self.cacheFile = [[TCHAppManager sharedInstance].cacheFolder stringByAppendingPathComponent:[self.cacheFilename stringByAppendingPathExtension:@"plist"]];
+        _feed = self.feedURL;
+        _cacheFile = [[TCHAppManager sharedInstance].cacheFolder stringByAppendingPathComponent:[self.cacheFilename stringByAppendingPathExtension:@"plist"]];
         [self loadItems];
     }
     return self;
@@ -59,8 +59,8 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 
 - (instancetype)initWithoutLoading {
     if ((self = [super init])) {
-        self.lastRefresh = [NSDate distantPast];
-        self.items = [NSMutableArray array];
+        _lastRefresh = [NSDate distantPast];
+        _items = [NSMutableArray array];
     }
     return self;
 }

@@ -39,14 +39,14 @@ static NSInteger iPadThumbnailRowCount = 8;
 - (instancetype) initWithImagelist:(TCHImageFeedList *)imageList {
     self = [super initWithStyle:UITableViewStylePlain];
     if (self) {
-        self.imageList = imageList;
-        self.imageList.delegate = self;
+        _imageList = imageList;
+        _imageList.delegate = self;
         self.title = NSLocalizedString(@"Photos",@"Photos");
         self.tabBarItem.image = [UIImage imageNamed:@"images"];
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        self.thumbnailRowCount = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? iPadThumbnailRowCount : iPhoneThumbnailRowCount;
+        _thumbnailRowCount = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? iPadThumbnailRowCount : iPhoneThumbnailRowCount;
         //set default thumbnail width - will get overwritten in the viewdidload if on ipad
-        self.thumbnailWidth = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ?  iPadThumbnailWidthPortrait : iPhoneThumbnailWidth;
+        _thumbnailWidth = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ?  iPadThumbnailWidthPortrait : iPhoneThumbnailWidth;
     }
     return self;
 }

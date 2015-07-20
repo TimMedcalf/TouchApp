@@ -55,7 +55,7 @@ NSString static *const Key_IconTintB = @"iconTintB";
     if (self) {
         [self consumeViewSettings:viewSettings];
  
-        self.feedList = feedList;
+        _feedList = feedList;
         (self.navigationController.navigationBar).backIndicatorImage = [UIImage imageNamed:@"765-arrow-left-toolbar"];
         (self.navigationController.navigationBar).backIndicatorTransitionMaskImage = [UIImage imageNamed:@"765-arrow-left-toolbar"];
     }

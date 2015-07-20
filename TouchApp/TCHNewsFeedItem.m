@@ -24,10 +24,10 @@ NSString *const kTCHNewsFeedItemKey_PubDate = @"pubDate";
 - (instancetype)initWithDictionary:(NSDictionary *)dict {
     self = [super initWithDictionary:dict];
     if (self) {
-        self.pubDate = dict[kTCHNewsFeedItemKey_PubDate];
-        self.link = dict[kTCHNewsFeedItemKey_Link];
-        self.title = dict[kTCHNewsFeedItemKey_Title];
-        self.text = dict[kTCHNewsFeedItemKey_Text];
+        _pubDate = dict[kTCHNewsFeedItemKey_PubDate];
+        _link = dict[kTCHNewsFeedItemKey_Link];
+        _title = dict[kTCHNewsFeedItemKey_Title];
+        _text = dict[kTCHNewsFeedItemKey_Text];
     }
     return self;
 }
@@ -35,10 +35,10 @@ NSString *const kTCHNewsFeedItemKey_PubDate = @"pubDate";
 - (instancetype)initWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL {
     self = [super initWithXMLElement:element andBaseURL:baseURL];
     if (self) {
-        self.pubDate = [[element elementForName:kTCHNewsFeedItemKey_PubDate] stringValue];
-        self.link = [[element elementForName:kTCHNewsFeedItemKey_Link] stringValue];
-        self.title = [[element elementForName:kTCHNewsFeedItemKey_Title] stringValue];
-        self.text = [[element elementForName:kTCHNewsFeedItemKey_Text] stringValue];
+        _pubDate = [[element elementForName:kTCHNewsFeedItemKey_PubDate] stringValue];
+        _link = [[element elementForName:kTCHNewsFeedItemKey_Link] stringValue];
+        _title = [[element elementForName:kTCHNewsFeedItemKey_Title] stringValue];
+        _text = [[element elementForName:kTCHNewsFeedItemKey_Text] stringValue];
     }
     return self;
 }

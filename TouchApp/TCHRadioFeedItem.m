@@ -42,14 +42,14 @@ NSString *const Key_ImageOverride = @"imageURL";
 - (instancetype)initWithDictionary:(NSDictionary *)dict {
     self = [super initWithDictionary:dict];
     if (self) {
-        self.title = dict[Key_Radio_Title];
-        self.titleLabel = dict[Key_Radio_TitleLabel];
-        self.author = dict[Key_Radio_Author];
-        self.summary = dict[Key_Radio_Summary];
-        self.subtitle = dict[Key_Radio_SubTitle];
-        self.pubDate = dict[Key_Radio_PubDate];
-        self.link = dict[Key_Radio_Link];
-        self.episode_duration = dict[Key_Radio_Duration];;
+        _title = dict[Key_Radio_Title];
+        _titleLabel = dict[Key_Radio_TitleLabel];
+        _author = dict[Key_Radio_Author];
+        _summary = dict[Key_Radio_Summary];
+        _subtitle = dict[Key_Radio_SubTitle];
+        _pubDate = dict[Key_Radio_PubDate];
+        _link = dict[Key_Radio_Link];
+        _episode_duration = dict[Key_Radio_Duration];;
     }
     return self;
 }
@@ -57,20 +57,20 @@ NSString *const Key_ImageOverride = @"imageURL";
 - (instancetype)initWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL {
     self = [super initWithXMLElement:element andBaseURL:baseURL];
     if (self) {
-        self.title = [[element elementForName:Key_Radio_Title] stringValue];
-        self.titleLabel = [[element elementForName:Key_Radio_TitleLabel] stringValue];
-        self.author = [[element elementForName:Key_Radio_Author] stringValue];
-        self.summary = [[element elementForName:Key_Radio_Summary] stringValue];
-        self.subtitle = [[element elementForName:Key_Radio_SubTitle] stringValue];
+        _title = [[element elementForName:Key_Radio_Title] stringValue];
+        _titleLabel = [[element elementForName:Key_Radio_TitleLabel] stringValue];
+        _author = [[element elementForName:Key_Radio_Author] stringValue];
+        _summary = [[element elementForName:Key_Radio_Summary] stringValue];
+        _subtitle = [[element elementForName:Key_Radio_SubTitle] stringValue];
 
         NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
         inputFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
         inputFormatter.dateFormat = @"EEE, dd MMM yyyy HH:mm:ss z";
         NSString *dateStr = [[element elementForName:Key_Radio_PubDate] stringValue];
-        self.pubDate = [inputFormatter dateFromString:dateStr];
+        _pubDate = [inputFormatter dateFromString:dateStr];
 
-        self.link = [[element elementForName:Key_Radio_Link] stringValue];
-        self.episode_duration = [[element elementForName:Key_Radio_Duration] stringValue];
+        _link = [[element elementForName:Key_Radio_Link] stringValue];
+        _episode_duration = [[element elementForName:Key_Radio_Duration] stringValue];
 
         self.imageURL = nil;
         NSString *imageOverride = [[element elementForName:Key_ImageOverride] stringValue];

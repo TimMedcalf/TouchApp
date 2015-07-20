@@ -130,7 +130,7 @@ static const CGFloat kAccessoryInset = 15.;
     //accessory
     self.accessoryView = [[UIImageView alloc] initWithImage:[TCHTouchTableCell accessoryImage]];
     //initial config of the title
-    self.titleLabel = [[UILabel alloc] init];
+    _titleLabel = [[UILabel alloc] init];
     self.titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     self.titleLabel.textColor = [UIColor blackColor];
     self.titleLabel.textAlignment = NSTextAlignmentLeft;
@@ -141,7 +141,7 @@ static const CGFloat kAccessoryInset = 15.;
     [self.contentView addSubview:self.titleLabel];
 
     //initial config of the subtitle (whether we show it or not)
-    self.subtitleLabel = [[UILabel alloc] init];
+    _subtitleLabel = [[UILabel alloc] init];
     self.subtitleLabel.textColor = [UIColor grayColor];
     self.subtitleLabel.textAlignment = NSTextAlignmentLeft;
     self.subtitleLabel.backgroundColor = [UIColor clearColor];

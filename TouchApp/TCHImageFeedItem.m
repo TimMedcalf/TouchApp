@@ -75,16 +75,16 @@ NSString *const Key_ImageItem_DateTakenString = @"dateTakenString";
     self = [super initWithDictionary:dict];
     if (self) {
         self.imageURL = dict[Key_Image_Saved] ? [[NSURL alloc] initWithString:dict[Key_Image_Saved]] : nil;
-        self.thumbnailURL = dict[Key_Thumbnail_Saved] ? [[NSURL alloc] initWithString:dict[Key_Thumbnail_Saved]] : nil;
+        _thumbnailURL = dict[Key_Thumbnail_Saved] ? [[NSURL alloc] initWithString:dict[Key_Thumbnail_Saved]] : nil;
         
-        self.imageWidth = dict[Key_ImageItem_ImageWidth] ? ((NSNumber*)dict[Key_ImageItem_ImageWidth]).integerValue : 0;
-        self.imageHeight = dict[Key_ImageItem_ImageHeight] ? ((NSNumber*)dict[Key_ImageItem_ImageHeight]).integerValue : 0;
+        _imageWidth = dict[Key_ImageItem_ImageWidth] ? ((NSNumber*)dict[Key_ImageItem_ImageWidth]).integerValue : 0;
+        _imageHeight = dict[Key_ImageItem_ImageHeight] ? ((NSNumber*)dict[Key_ImageItem_ImageHeight]).integerValue : 0;
         
-        self.thumbnailWidth = dict[Key_ImageItem_ThumbnailWidth] ? ((NSNumber*)dict[Key_ImageItem_ThumbnailWidth]).integerValue : 0;
-        self.thumbnailHeight = dict[Key_ImageItem_ThumbnailHeight] ? ((NSNumber*)dict[Key_ImageItem_ThumbnailHeight]).integerValue : 0;
+        _thumbnailWidth = dict[Key_ImageItem_ThumbnailWidth] ? ((NSNumber*)dict[Key_ImageItem_ThumbnailWidth]).integerValue : 0;
+        _thumbnailHeight = dict[Key_ImageItem_ThumbnailHeight] ? ((NSNumber*)dict[Key_ImageItem_ThumbnailHeight]).integerValue : 0;
         
-        self.photoId = dict[Key_ImageItem_PhotoId];
-        self.dateTakenString = dict[Key_ImageItem_DateTakenString];
+        _photoId = dict[Key_ImageItem_PhotoId];
+        _dateTakenString = dict[Key_ImageItem_DateTakenString];
     }
     return self;
 }
@@ -105,22 +105,22 @@ NSString *const Key_ImageItem_DateTakenString = @"dateTakenString";
         tmpPath = [[element attributeForName:[NSString stringWithFormat:@"url_%@", thumbnailSuffix]] stringValue];
         if (tmpPath) {
             tmpURL = [[NSURL alloc] initWithString:tmpPath];
-            self.thumbnailURL = tmpURL;
+            _thumbnailURL = tmpURL;
         }
-        self.thumbnailWidth = [[element attributeForName:[NSString stringWithFormat:@"width_%@", thumbnailSuffix]] stringValue].integerValue;
-        self.thumbnailHeight = [[element attributeForName:[NSString stringWithFormat:@"height_%@", thumbnailSuffix]] stringValue].integerValue;
+        _thumbnailWidth = [[element attributeForName:[NSString stringWithFormat:@"width_%@", thumbnailSuffix]] stringValue].integerValue;
+        _thumbnailHeight = [[element attributeForName:[NSString stringWithFormat:@"height_%@", thumbnailSuffix]] stringValue].integerValue;
         
         tmpPath = [[element attributeForName:[NSString stringWithFormat:@"url_%@", imageSuffix]] stringValue];
         if (tmpPath) {
             tmpURL = [[NSURL alloc] initWithString:tmpPath];
             self.imageURL = tmpURL;
         }
-        self.imageWidth = [[element attributeForName:[NSString stringWithFormat:@"width_%@", imageSuffix]] stringValue].integerValue;
-        self.imageHeight = [[element attributeForName:[NSString stringWithFormat:@"height_%@", imageSuffix]] stringValue].integerValue;
+        _imageWidth = [[element attributeForName:[NSString stringWithFormat:@"width_%@", imageSuffix]] stringValue].integerValue;
+        _imageHeight = [[element attributeForName:[NSString stringWithFormat:@"height_%@", imageSuffix]] stringValue].integerValue;
         DDLogDebug(@"Image %ld x %ld", (long)self.imageWidth, (long)self.imageHeight);
-        self.photoId = [[element attributeForName:@"id"] stringValue];
+        _photoId = [[element attributeForName:@"id"] stringValue];
         
-        self.dateTakenString = [[element attributeForName:@"datetaken"] stringValue];
+        _dateTakenString = [[element attributeForName:@"datetaken"] stringValue];
     }
     return self;
 }

@@ -35,7 +35,7 @@
   self = [self initWithFrame:CGRectMake(0, 0, item.imageWidth, item.imageHeight)];
   if (self) {
     self.contentMode = UIViewContentModeScaleAspectFit;
-    self.url = item.imageURL;
+    _url = item.imageURL;
     TJMImageResource *tmpImageResource = [[TJMImageResourceManager sharedInstance] resourceForURL:self.url];
     UIImage *image = tmpImageResource.image;
     if (!tmpImageResource.imageIsDownloaded) {
@@ -43,7 +43,7 @@
       UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
       spinner.center = self.center;
       spinner.hidesWhenStopped = YES;
-      self.spinner = spinner;
+      _spinner = spinner;
       [self addSubview:self.spinner];
       [self.spinner startAnimating];
       self.spinner.hidden = NO;

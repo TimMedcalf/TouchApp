@@ -47,17 +47,17 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
 - (instancetype)initWithURL:(NSURL *)imageURL {
     self = [super init];
     if (self) {
-        self.imageURL = imageURL;
+        _imageURL = imageURL;
         //this is a new file...we need to come up with a filename;
-        self.localFileExtension = (self.imageURL).absoluteString.lastPathComponent.pathExtension;
+        _localFileExtension = (self.imageURL).absoluteString.lastPathComponent.pathExtension;
         CFUUIDRef theUUID = CFUUIDCreate(kCFAllocatorDefault);
         CFStringRef string = CFUUIDCreateString(kCFAllocatorDefault, theUUID);
         CFRelease(theUUID);
-        self.localFileName = (__bridge NSString *)string;
+        _localFileName = (__bridge NSString *)string;
         CFRelease(string);
-        self.lastChecked = [NSDate distantPast];
+        _lastChecked = [NSDate distantPast];
 
-        self.lastAccessed = [NSDate distantPast];
+        _lastAccessed = [NSDate distantPast];
     }
     return self;
 }
@@ -68,18 +68,18 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
         NSString *tmpURLString = dict[Key_TJMImageResource_imageURL];
         if (tmpURLString) {
             NSURL *tmpURL = [[NSURL alloc] initWithString:tmpURLString];
-            self.imageURL = tmpURL;
+            _imageURL = tmpURL;
         }
-        self.lastModified = dict[Key_TJMImageResource_lastModified];
+        _lastModified = dict[Key_TJMImageResource_lastModified];
         DDLogDebug(@"LM! = %@",self.lastModified);
-        self.etag = dict[Key_TJMImageResource_eTag];
+        _etag = dict[Key_TJMImageResource_eTag];
         DDLogDebug(@"Etag! = %@",self.etag);
-        self.localFileName = dict[Key_TJMImageResource_localFileName];
-        self.localFileExtension = dict[Key_TJMImageResource_localFileExtension];
-        self.lastChecked = dict[Key_TJMImageResource_lastChecked];
-        self.lastAccessed = dict[Key_TJMImageResource_lastAccessed];
-        if (!self.lastAccessed) self.lastAccessed = [NSDate distantPast];
-        self.thumbnailPath = dict[Key_TJMImageResource_thumbnailPath];
+        _localFileName = dict[Key_TJMImageResource_localFileName];
+        _localFileExtension = dict[Key_TJMImageResource_localFileExtension];
+        _lastChecked = dict[Key_TJMImageResource_lastChecked];
+        _lastAccessed = dict[Key_TJMImageResource_lastAccessed];
+        if (!_lastAccessed) _lastAccessed = [NSDate distantPast];
+        _thumbnailPath = dict[Key_TJMImageResource_thumbnailPath];
     }
     return self;
 }

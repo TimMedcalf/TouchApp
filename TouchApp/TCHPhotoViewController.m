@@ -86,7 +86,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.initialIndex = 0;
+        _initialIndex = 0;
         self.hidesBottomBarWhenPushed = YES;
     }
     return self;

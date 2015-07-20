@@ -24,10 +24,10 @@ NSString *const Key_Recipe_PubDate = @"pubDate";
 - (instancetype)initWithDictionary:(NSDictionary *)dict {
     self = [super initWithDictionary:dict];
     if (self) {
-        self.recipeTitle = dict[Key_Recipe_Title];
-        self.recipeExcerpt = dict[Key_Recipe_Excerpt];
-        self.recipeDescription = dict[Key_Recipe_Description];
-        self.recipePubDate = dict[Key_Recipe_PubDate];
+        _recipeTitle = dict[Key_Recipe_Title];
+        _recipeExcerpt = dict[Key_Recipe_Excerpt];
+        _recipeDescription = dict[Key_Recipe_Description];
+        _recipePubDate = dict[Key_Recipe_PubDate];
     }
     return self;
 }
@@ -36,14 +36,14 @@ NSString *const Key_Recipe_PubDate = @"pubDate";
 - (instancetype)initWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL {
     self = [super initWithXMLElement:element andBaseURL:baseURL];
     if (self) {
-        self.recipeTitle = [[element elementForName:Key_Recipe_Title] stringValue];
-        self.recipeExcerpt = [[element elementForName:Key_Recipe_Excerpt] stringValue];
-        self.recipeDescription = [[element elementForName:Key_Recipe_Description] stringValue];
+        _recipeTitle = [[element elementForName:Key_Recipe_Title] stringValue];
+        _recipeExcerpt = [[element elementForName:Key_Recipe_Excerpt] stringValue];
+        _recipeDescription = [[element elementForName:Key_Recipe_Description] stringValue];
         NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
         inputFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
         inputFormatter.dateFormat = @"EEE, dd MMM yyyy HH:mm:ss z";
         NSString *dateStr = [[element elementForName:Key_Recipe_PubDate] stringValue];
-        self.recipePubDate = [inputFormatter dateFromString:dateStr];
+        _recipePubDate = [inputFormatter dateFromString:dateStr];
     }
     return self;
 }

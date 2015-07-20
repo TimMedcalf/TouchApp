@@ -19,7 +19,7 @@ NSString *const FeedItem_ImageURLKey = @"imageURL";
 - (instancetype)initWithDictionary:(NSDictionary *)dict {
     self = [super init];
     if (self) {
-        self.imageURL = [NSURL URLWithString:dict[FeedItem_ImageURLKey]];
+        _imageURL = [NSURL URLWithString:dict[FeedItem_ImageURLKey]];
     }
     return self;
 }

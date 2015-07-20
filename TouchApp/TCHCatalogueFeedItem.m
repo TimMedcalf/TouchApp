@@ -35,17 +35,17 @@ NSString *const Key_Cat_Publisher = @"publisher";
 - (instancetype)initWithDictionary:(NSDictionary *)dict {
     self = [super initWithDictionary:dict];
     if (self) {
-        self.title = dict[Key_Cat_Title];
-        self.artist = dict[Key_Cat_Artist];
-        self.catalogueNumber = dict[Key_Cat_CatalogueNumber];
-        self.text = dict[Key_Cat_Text];
-        self.mp3SampleURL = dict[Key_Cat_MP3SampleURL];
-        self.releaseURL = dict[Key_Cat_ReleaseURL];
-        self.itunesURL = dict[Key_Cat_Itunes_URL];
-        self.releaseDateString = dict[Key_Cat_ReleaseDate];
-        self.releaseDuration = dict[Key_Cat_ReleaseDuration];
-        self.trackListing = dict[Key_Cat_TrackListing];
-        self.publisher = dict[Key_Cat_Publisher];
+        _title = dict[Key_Cat_Title];
+        _artist = dict[Key_Cat_Artist];
+        _catalogueNumber = dict[Key_Cat_CatalogueNumber];
+        _text = dict[Key_Cat_Text];
+        _mp3SampleURL = dict[Key_Cat_MP3SampleURL];
+        _releaseURL = dict[Key_Cat_ReleaseURL];
+        _itunesURL = dict[Key_Cat_Itunes_URL];
+        _releaseDateString = dict[Key_Cat_ReleaseDate];
+        _releaseDuration = dict[Key_Cat_ReleaseDuration];
+        _trackListing = dict[Key_Cat_TrackListing];
+        _publisher = dict[Key_Cat_Publisher];
     }
     return self;
 }
@@ -60,31 +60,31 @@ NSString *const Key_Cat_Publisher = @"publisher";
             self.imageURL = tmpURL;
         }
         //okay, now the stuff that's unique to us...
-        self.title = [[element elementForName:Key_Cat_Title] stringValue];
-        self.artist = [[element elementForName:Key_Cat_Artist] stringValue];
-        self.catalogueNumber = [[element elementForName:Key_Cat_CatalogueNumber] stringValue];
+        _title = [[element elementForName:Key_Cat_Title] stringValue];
+        _artist = [[element elementForName:Key_Cat_Artist] stringValue];
+        _catalogueNumber = [[element elementForName:Key_Cat_CatalogueNumber] stringValue];
 
         //tweak text for HTML display
-        self.text = [[element elementForName:Key_Cat_Text] stringValue];
-        self.text = [self.text stringByReplacingOccurrencesOfString:@"\n\n" withString:@"</p><p>"];
-        self.text = [self.text stringByReplacingOccurrencesOfString:@"\r\n" withString:@"</p><p>"];
+        _text = [[element elementForName:Key_Cat_Text] stringValue];
+        _text = [self.text stringByReplacingOccurrencesOfString:@"\n\n" withString:@"</p><p>"];
+        _text = [self.text stringByReplacingOccurrencesOfString:@"\r\n" withString:@"</p><p>"];
 
-        self.mp3SampleURL = [[element elementForName:Key_Cat_MP3SampleURL] stringValue];
-        self.mp3SampleURL = [self.mp3SampleURL stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        _mp3SampleURL = [[element elementForName:Key_Cat_MP3SampleURL] stringValue];
+        _mp3SampleURL = [self.mp3SampleURL stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 
-        self.releaseURL = [[element elementForName:Key_Cat_ReleaseURL] stringValue];
-        self.releaseURL = [self.releaseURL stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        _releaseURL = [[element elementForName:Key_Cat_ReleaseURL] stringValue];
+        _releaseURL = [self.releaseURL stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 
-        self.itunesURL = [[element elementForName:Key_Cat_Itunes_URL] stringValue];
-        self.itunesURL = [self.itunesURL stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        _itunesURL = [[element elementForName:Key_Cat_Itunes_URL] stringValue];
+        _itunesURL = [self.itunesURL stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 
-        self.releaseDateString = [[element elementForName:Key_Cat_ReleaseDate] stringValue];
-        self.releaseDuration = [[element elementForName:Key_Cat_ReleaseDuration] stringValue];
+        _releaseDateString = [[element elementForName:Key_Cat_ReleaseDate] stringValue];
+        _releaseDuration = [[element elementForName:Key_Cat_ReleaseDuration] stringValue];
 
-        self.trackListing = [[element elementForName:Key_Cat_TrackListing] stringValue];
-        self.trackListing = [self.trackListing stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
+        _trackListing = [[element elementForName:Key_Cat_TrackListing] stringValue];
+        _trackListing = [self.trackListing stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
 
-        self.publisher = [[element elementForName:Key_Cat_Publisher] stringValue];
+        _publisher = [[element elementForName:Key_Cat_Publisher] stringValue];
         DDLogDebug(@"%@ - %@ - %@", self.catalogueNumber, self.artist, self.title);
     }
     return self;
