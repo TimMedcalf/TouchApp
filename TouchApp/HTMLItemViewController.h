@@ -7,6 +7,6 @@
 
 @property (strong, nonatomic) UIWebView *webView;
 //load from a string
-@property (strong, nonatomic) NSString *HTMLString;
+@property (copy, nonatomic) NSString *HTMLString;
 
 @end

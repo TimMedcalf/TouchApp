@@ -12,13 +12,12 @@
 @interface TCHImageFeedItem : TCHBaseFeedItem
 
 @property (strong, nonatomic) NSURL *thumbnailURL;
-//@property (strong, nonatomic) NSURL *imageURL;
 @property (copy, nonatomic) NSString *photoId;
 @property (assign, nonatomic) NSInteger imageWidth;
 @property (assign, nonatomic) NSInteger imageHeight;
 @property (assign, nonatomic) NSInteger thumbnailWidth;
 @property (assign, nonatomic) NSInteger thumbnailHeight;
-@property (strong, nonatomic) NSString *dateTakenString;
+@property (copy, nonatomic) NSString *dateTakenString;
 
 
 + (NSString *)thumbnailFlickrSuffix;

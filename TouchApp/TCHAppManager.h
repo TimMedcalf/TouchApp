@@ -14,7 +14,7 @@
 
 @interface TCHAppManager : NSObject
 
-@property (strong, nonatomic) NSString *cacheFolder;
+@property (copy, nonatomic) NSString *cacheFolder;
 
 @property (NS_NONATOMIC_IOSONLY, readonly, strong) TCHNewsFeedList *newsList;
 @property (NS_NONATOMIC_IOSONLY, readonly, strong) TCHImageFeedList *imageList;
