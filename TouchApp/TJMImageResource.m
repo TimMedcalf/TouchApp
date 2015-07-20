@@ -71,9 +71,9 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
             self.imageURL = tmpURL;
         }
         self.lastModified = dict[Key_TJMImageResource_lastModified];
-        //NSLog(@"LM! = %@",self.lastModified);
+        DDLogDebug(@"LM! = %@",self.lastModified);
         self.etag = dict[Key_TJMImageResource_eTag];
-        //NSLog(@"Etag! = %@",self.etag);
+        DDLogDebug(@"Etag! = %@",self.etag);
         self.localFileName = dict[Key_TJMImageResource_localFileName];
         self.localFileExtension = dict[Key_TJMImageResource_localFileExtension];
         self.lastChecked = dict[Key_TJMImageResource_lastChecked];
@@ -99,7 +99,7 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
 
 #pragma mark image resourcing
 - (UIImage *)getImage {
-    //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
+    DDLogDebug(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
     if (self.imageIsDownloaded) {
         self.lastAccessed = nil;
         self.lastAccessed = [NSDate date];
@@ -159,7 +159,7 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     //store the etag and lastModified strings if they're present
-    //NSLog(@"%@",[(NSHTTPURLResponse *)response allHeaderFields]);
+    DDLogDebug(@"%@",[(NSHTTPURLResponse *)response allHeaderFields]);
     self.etag = ((NSHTTPURLResponse *)response).allHeaderFields[@"Etag"];
     self.lastModified = ((NSHTTPURLResponse *)response).allHeaderFields[@"Last-Modified"];
 }
@@ -173,10 +173,10 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    //NSLog(@"[%@ %@] size of download %ul", [self class], NSStringFromSelector(_cmd), [self.activeDownload length]);
+    DDLogDebug(@"[%@ %@] size of download %lul", [self class], NSStringFromSelector(_cmd), (unsigned long)[self.activeDownload length]);
     if ((self.activeDownload) && ((self.activeDownload).length > 0)) {
         if (![self.activeDownload writeToFile:self.fullPathForLocalBaseImage atomically:YES]) {
-            NSLog(@"Error: Couldn't write file '%@' to cache.", self.fullPathForLocalBaseImage);
+            DDLogError(@"Error: Couldn't write file '%@' to cache.", self.fullPathForLocalBaseImage);
         }
     }
     self.activeDownload = nil;

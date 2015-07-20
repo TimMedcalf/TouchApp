@@ -27,7 +27,6 @@
 @implementation TouchAppAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
     [DDLog addLogger:[DDASLLogger sharedInstance]];
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
     
@@ -46,10 +45,10 @@
       //anything we want to run only once for the app?
     }
     //Run once-per-upgrade code, if any
-    NSLog(@"Initialisation for version %@", CurVer);
+    DDLogInfo(@"Initialisation for version %@", CurVer);
     //clear the cache folder!
     for (NSString *file in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[AppManager sharedInstance].cacheFolder error:NULL]) {
-      NSLog(@"Clearing cached file : %@", file);
+      DDLogInfo(@"Clearing cached file : %@", file);
       [[NSFileManager defaultManager] removeItemAtPath:[[AppManager sharedInstance].cacheFolder stringByAppendingPathComponent:file] error:NULL];
     }
     [Def setObject:CurVer forKey:@"Version"];
@@ -129,7 +128,6 @@
   /*
    Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
    */
-  //NSLog(@"did become active");
   [[AppManager sharedInstance] refreshAllFeeds];
 }
   

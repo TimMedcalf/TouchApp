@@ -34,7 +34,6 @@
 #pragma mark - UITabBarControllerDelegate
 
 //- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
-//    NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
 //    CGFloat r = (arc4random() % 255) / 255.;
 //    CGFloat g = (arc4random() % 255) / 255.;
 //    CGFloat b = (arc4random() % 255) / 255.;

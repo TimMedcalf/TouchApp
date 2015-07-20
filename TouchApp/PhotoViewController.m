@@ -219,7 +219,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //NSLog(@"ViewDidLoad - %@", NSStringFromCGRect(self.view.frame));
+    DDLogDebug(@"ViewDidLoad - %@", NSStringFromCGRect(self.view.frame));
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -373,7 +373,7 @@
 
 - (CGRect)frameForPageAtIndex:(NSUInteger)index {
     CGRect bounds = self.view.bounds;
-    //NSLog(@"frameForPageAtIndex = %@",NSStringFromCGRect(bounds));
+    DDLogDebug(@"frameForPageAtIndex = %@",NSStringFromCGRect(bounds));
     CGRect pageFrame = bounds;
     pageFrame.size.width -= (2 * PADDING);
     pageFrame.origin.x = (bounds.size.width * index) + PADDING;
@@ -385,7 +385,7 @@
     
     CGRect bounds = self.view.bounds;
     
-    //NSLog(@"contentSizeForPagingScrollView = %@",NSStringFromCGRect(bounds));
+    DDLogDebug(@"contentSizeForPagingScrollView = %@",NSStringFromCGRect(bounds));
     return CGSizeMake(bounds.size.width * self.imageCount, bounds.size.height);
 }
 

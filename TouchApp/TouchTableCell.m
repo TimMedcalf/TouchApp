@@ -107,7 +107,7 @@ static const CGFloat kAccessoryInset = 15.;
   //next up, add the top and bottom vertical padding
   rollingHeight += [TouchTableCell verticalPadding] * 2;
   //and that should be it!
-  //NSLog(@"ActualHeight %f",ceil(rollingHeight));
+  DDLogDebug(@"ActualHeight %f",ceil(rollingHeight));
   return ceil(rollingHeight);
 }
 

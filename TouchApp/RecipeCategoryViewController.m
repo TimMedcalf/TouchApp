@@ -42,7 +42,7 @@
   //first up get the item
   TCHRecipeCategoryFeedItem *currentItem = (TCHRecipeCategoryFeedItem *) [self.feedList itemAtIndex:(NSUInteger)indexPath.row];
   //[cell configureWithTitle:currentItem.title subtitle:currentItem.pubDate];
-  //NSLog(@"Estimated %f", tableView.estimatedRowHeight);
+  DDLogDebug(@"Estimated %f", tableView.estimatedRowHeight);
   return [TouchTableCell actualRowHeightwithTitle:currentItem.recipeTitle subtitle:nil forTableWidth:tableView.bounds.size.width];
 }
 

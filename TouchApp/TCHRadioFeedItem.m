@@ -85,9 +85,9 @@ NSString *const Key_ImageOverride = @"imageURL";
             urlString = [urlString stringByReplacingOccurrencesOfString:@"touchradio/" withString:@"touchradio/images/"];
 
             self.imageURL = [[NSURL alloc] initWithString:urlString relativeToURL:baseURL];
-            //NSLog(@"Radio URL = %@", self.imageURL);
+            DDLogDebug(@"Radio URL = %@", self.imageURL);
         }
-        //NSLog(@"%@ - %@ - %@", self.catalogueNumber, self.artist, self.title);
+        DDLogDebug(@"%@ - %@ - %@", self.author, self.title, self.titleLabel);
     }
     return self;
 }

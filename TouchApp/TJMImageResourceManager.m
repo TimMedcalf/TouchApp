@@ -66,7 +66,7 @@ NSInteger TwoMonths = -5184000;
   NSMutableArray *saveArray = [[NSMutableArray alloc] initWithCapacity:(self.imageResourceDict).count];
   
   for (NSString *imageKey in self.imageResourceDict) {
-    //NSLog(@"Save %@",imageKey);
+    DDLogDebug(@"Save %@",imageKey);
     TJMImageResource *tmpRes = (self.imageResourceDict)[imageKey];
     if ((tmpRes.lastAccessed).timeIntervalSinceNow > TwoMonths) {
       //if the interval is greater than negative 2 months then they've used it in the last two months - add it to the save list
@@ -80,7 +80,7 @@ NSInteger TwoMonths = -5184000;
 
 - (TJMImageResource *)resourceForURL:(NSURL *)imageURL {
   //find the resource from the URL
-  //NSLog(@"Number of image resources %i", [self.imageResourceDict count]);
+  DDLogDebug(@"Number of image resources %lu", [self.imageResourceDict count]);
   TJMImageResource *resource = nil;
   if (imageURL) {
     resource = (self.imageResourceDict)[imageURL.absoluteString];

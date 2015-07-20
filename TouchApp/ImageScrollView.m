@@ -90,7 +90,7 @@
     }
     
     imageView.frame = frameToCenter;
-    //NSLog(@"[%@ %@] Frame = %f %f", [self class], NSStringFromSelector(_cmd), imageView.frame.size.width, imageView.frame.size.height);
+    DDLogDebug(@"[%@ %@] Frame = %f %f", [self class], NSStringFromSelector(_cmd), imageView.frame.size.width, imageView.frame.size.height);
 }
 
 #pragma mark - UIScrollView delegate methods
@@ -113,7 +113,7 @@
     
     //TJM Investigate this line,
     self.contentSize = (imageView.image).size;
-    //NSLog(@"Image content size width=%f height=%f", self.contentSize.width, self.contentSize.height);
+    DDLogDebug(@"Image content size width=%f height=%f", self.contentSize.width, self.contentSize.height);
     [self setMaxMinZoomScalesForCurrentBounds];
     self.zoomScale = self.minimumZoomScale;
 }
@@ -214,7 +214,7 @@
 }
 
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView {
-    //NSLog(@"Scale %f",scrollView.zoomScale);
+    DDLogDebug(@"Scale %f",scrollView.zoomScale);
     //resize the loading spinner to account for any scaling done on the view
     imageView.spinner.transform = CGAffineTransformMakeScale(1/scrollView.zoomScale, 1/scrollView.zoomScale);
 }

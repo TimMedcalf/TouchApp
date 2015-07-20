@@ -85,7 +85,7 @@ NSString *const Key_Cat_Publisher = @"publisher";
         self.trackListing = [self.trackListing stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
 
         self.publisher = [[element elementForName:Key_Cat_Publisher] stringValue];
-        //NSLog(@"%@ - %@ - %@", self.catalogueNumber, self.artist, self.title);
+        DDLogDebug(@"%@ - %@ - %@", self.catalogueNumber, self.artist, self.title);
     }
     return self;
 }

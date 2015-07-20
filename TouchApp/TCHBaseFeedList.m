@@ -72,7 +72,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 }
 
 - (void)dealloc {
-    //NSLog(@"list dealloc");
+    DDLogDebug(@"list dealloc");
     if (self.activeDownload) {
         [self cancelDownload];
     }
@@ -157,15 +157,15 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
     [[UIApplication sharedApplication] tjm_pushNetworkActivity];
     self.activeDownload = [NSMutableData data];
     // alloc+init and start an NSURLConnection; release on completion/failure
-    //NSLog(@"%@", self.feed);
+    DDLogDebug(@"%@", self.feed);
     //NSMutableURLRequest *tmpRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:self.feed] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60];
     NSMutableURLRequest *tmpRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:self.feed] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:60];
     if (self.etag) {
-        //NSLog(@"Adding If-None-Match Header");
+        DDLogDebug(@"Adding If-None-Match Header");
         [tmpRequest addValue:self.etag forHTTPHeaderField:@"If-None-Match"];
     }
     if (self.lastUpdated) {
-        //NSLog(@"Adding If-Modified-Since Header");
+        DDLogDebug(@"Adding If-Modified-Since Header");
         [tmpRequest addValue:self.lastUpdated forHTTPHeaderField:@"If-Modified-Since"];
     }
     
@@ -186,11 +186,9 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 //    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
 //    NSMutableURLRequest *tmpRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:self.feed]];
 //    if (self.etag) {
-//        //NSLog(@"Adding If-None-Match Header");
 //        [tmpRequest addValue:self.etag forHTTPHeaderField:@"If-None-Match"];
 //    }
 //    if (self.lastUpdated) {
-//        //NSLog(@"Adding If-Modified-Since Header");
 //        [tmpRequest addValue:self.lastUpdated forHTTPHeaderField:@"If-Modified-Since"];
 //    }
 //
@@ -217,23 +215,23 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
     self.bytesDownloaded += data.length;
     [self.activeDownload appendData:data];
-    //NSLog(@"Downloaded %d", [data length]);
+    DDLogDebug(@"Downloaded %lu", (unsigned long)[data length]);
     if ([self.delegate respondsToSelector:@selector(updateProgressWithPercent:)]) {
-        //NSLog(@"Updating progress");
+        DDLogDebug(@"Updating progress");
         [self.delegate updateProgressWithPercent:(CGFloat)self.bytesDownloaded / self.totalBytes];
     }
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    //NSLog(@"%@",[(NSHTTPURLResponse *)response allHeaderFields]);
+    DDLogDebug(@"%@",[(NSHTTPURLResponse *)response allHeaderFields]);
     
     //store the etag
     self.etag = ((NSHTTPURLResponse *)response).allHeaderFields[@"Etag"];
-    //NSLog(@"Etag=%@",self.etag);
+    DDLogDebug(@"Etag=%@",self.etag);
     
     //last modified date - keep it as a string to easily match the server's format.
     self.lastUpdated = ((NSHTTPURLResponse *)response).allHeaderFields[@"Last-Modified"];
-    //NSLog(@"Last Modified Date : %@", self.lastUpdated);
+    DDLogDebug(@"Last Modified Date : %@", self.lastUpdated);
     
     // lets keep track of how big we are...and how much we've downloaded
     self.totalBytes = response.expectedContentLength;
@@ -252,7 +250,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     if (self.activeDownload) {
         //download size check
-        //NSLog(@"Download: %@, %i", self.feedURL, [self.activeDownload length]);
+        DDLogDebug(@"Download: %@, %lu", self.feedURL, (unsigned long)[self.activeDownload length]);
         
         [self parseResultWithData:self.activeDownload];
         //then update the lastRefresh property
@@ -274,17 +272,16 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-    NSLog(@"Challenge!");
+    DDLogDebug(@"Challenge!");
     //[[challenge sender] useCredential:[NSURLCredential credentialWithUser:@"creode" password:@"creode" persistence:NSURLCredentialPersistenceForSession] forAuthenticationChallenge:challenge];
 }
 
 - (void)parseResultWithData:(NSData *)xmlData {
-    //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
-    //NSLog(@"%@",[NSString stringWithUTF8String:[xmlData bytes]]);
+    DDLogDebug(@"%@",[NSString stringWithUTF8String:[xmlData bytes]]);
     
     // Create a new rssParser object (DDXMLDocument), this is the object that actually grabs and processes the RSS data
     if (xmlData.length > 0) {
-        //NSLog(@"Parsing XML %u bytes from feed %@",[xmlData length], self.feed);
+        DDLogDebug(@"Parsing XML %lu bytes from feed %@",(unsigned long)[xmlData length], self.feed);
         DDXMLDocument *rssParser = [[DDXMLDocument alloc] initWithData:self.activeDownload options:0 error:nil];
         
         
@@ -325,7 +322,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
         }];
         //newFeedItems = nil;
     } else {
-        //NSLog(@"0 updated bytes from %@",self.feed);
+        DDLogDebug(@"0 updated bytes from %@",self.feed);
     }
 }
 

@@ -95,7 +95,7 @@
     self.segmentControl.hidden = YES;
     [self.webView loadHTMLString:self.HTMLString baseURL:baseURL];
   } else {
-   // NSLog(@"Loading URL");
+    DDLogDebug(@"Loading URL");
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.initialURL]]];
   }
 }
@@ -139,7 +139,6 @@
 
 #pragma mark Gestures
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-  //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
   return YES;
 }
 
@@ -149,7 +148,7 @@
 
 #pragma mark UIWebView Delegate
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-  //NSLog(@"Should Load");
+  DDLogDebug(@"Should Load");
   [self.barTapTimer invalidate];
   if ((navigationType == UIWebViewNavigationTypeLinkClicked ) & self.openLinksInNewView) {
     WebsiteViewController *newWeb = [[WebsiteViewController alloc] initWithNibName:@"WebsiteViewController" bundle:nil];

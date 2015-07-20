@@ -159,7 +159,7 @@ static NSInteger iPadThumbnailRowCount = 8;
 }
 
 - (void)performReloadAfterRotate {
-    //NSLog(@"Reloading Gallery");
+    DDLogDebug(@"Reloading Gallery");
     [self.tableView reloadData];
 }
 
@@ -253,7 +253,7 @@ static NSInteger iPadThumbnailRowCount = 8;
 }
 
 - (void)handleShake {
-    //NSLog(@"images - Shake!");
+    DDLogDebug(@"images - Shake!");
     [self.imageList refreshFeedForced:YES];
 }
 
