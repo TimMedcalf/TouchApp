@@ -27,41 +27,41 @@
 		1C098DD6C83F6E1B61B75D02 /* TCHRecipeCategoryFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C098047493095E8DEC68B5B /* TCHRecipeCategoryFeedItem.m */; };
 		1C098F3F778F9F6D4D43AFDE /* ipad_landscape.css in Resources */ = {isa = PBXBuildFile; fileRef = 1C098D83338619E9ABD3307D /* ipad_landscape.css */; };
 		1C098F8BA7D2C86029F0F971 /* TCHBaseFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C098892C3DBB572ED52ED19 /* TCHBaseFeedItem.m */; };
-		220BBB4B165DE66500C5118B /* RotatingTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 220BBB4A165DE66500C5118B /* RotatingTabBarController.m */; };
+		220BBB4B165DE66500C5118B /* TCHRotatingTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 220BBB4A165DE66500C5118B /* TCHRotatingTabBarController.m */; };
 		2211EB1D16B642560038C9B7 /* UIApplication+TJMNetworkWarning.m in Sources */ = {isa = PBXBuildFile; fileRef = 2211EB1C16B642560038C9B7 /* UIApplication+TJMNetworkWarning.m */; };
 		222951C713EC496F001D174D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222951C613EC496F001D174D /* UIKit.framework */; };
 		222951C913EC496F001D174D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222951C813EC496F001D174D /* Foundation.framework */; };
 		222951CB13EC496F001D174D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222951CA13EC496F001D174D /* CoreGraphics.framework */; };
 		222951D113EC496F001D174D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 222951CF13EC496F001D174D /* InfoPlist.strings */; };
 		222951D313EC496F001D174D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 222951D213EC496F001D174D /* main.m */; };
-		222951D713EC496F001D174D /* TouchAppAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 222951D613EC496F001D174D /* TouchAppAppDelegate.m */; };
-		222951F513EC4B5D001D174D /* CatalogueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 222951F313EC4B5D001D174D /* CatalogueViewController.m */; };
-		2229524413ECEC0B001D174D /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2229524213ECEC0B001D174D /* NewsViewController.m */; };
+		222951D713EC496F001D174D /* TCHTouchAppAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 222951D613EC496F001D174D /* TCHTouchAppAppDelegate.m */; };
+		222951F513EC4B5D001D174D /* TCHCatalogueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 222951F313EC4B5D001D174D /* TCHCatalogueViewController.m */; };
+		2229524413ECEC0B001D174D /* TCHNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2229524213ECEC0B001D174D /* TCHNewsViewController.m */; };
 		2229529913ECFC96001D174D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2229529813ECFC96001D174D /* QuartzCore.framework */; };
-		2229EBDF16FC24ED0087B090 /* TouchTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2229EBDE16FC24ED0087B090 /* TouchTableCell.m */; };
+		2229EBDF16FC24ED0087B090 /* TCHTouchTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2229EBDE16FC24ED0087B090 /* TCHTouchTableCell.m */; };
 		222DF1CA16D09C4000D749D2 /* UIApplication+TJMShakeNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 222DF1C916D09C4000D749D2 /* UIApplication+TJMShakeNotification.m */; };
 		222DF1CD16D09D3B00D749D2 /* TouchConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 222DF1CC16D09D3B00D749D2 /* TouchConstants.m */; };
-		223595D9140FE2C3004A08C8 /* RecipeItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 223595D7140FE2C3004A08C8 /* RecipeItemViewController.m */; };
+		223595D9140FE2C3004A08C8 /* TCHRecipeItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 223595D7140FE2C3004A08C8 /* TCHRecipeItemViewController.m */; };
 		22402BBA19715003006F0287 /* TCHRadioFeedItem_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22402BB919715003006F0287 /* TCHRadioFeedItem_Tests.m */; };
-		224FBC351407FE3700749E42 /* RecipeCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC331407FE3700749E42 /* RecipeCategoryViewController.m */; };
+		224FBC351407FE3700749E42 /* TCHRecipeCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC331407FE3700749E42 /* TCHRecipeCategoryViewController.m */; };
 		224FBC7C1408C47200749E42 /* RecipeCategories.plist in Resources */ = {isa = PBXBuildFile; fileRef = 224FBC7B1408C47200749E42 /* RecipeCategories.plist */; };
-		224FBC80140980B000749E42 /* RecipeBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC7E140980AF00749E42 /* RecipeBookViewController.m */; };
+		224FBC80140980B000749E42 /* TCHRecipeBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC7E140980AF00749E42 /* TCHRecipeBookViewController.m */; };
 		224FBC8E1409977B00749E42 /* GTMNSString+URLArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC8B1409977B00749E42 /* GTMNSString+URLArguments.m */; };
 		224FBC8F1409977B00749E42 /* GTMNSDictionary+URLArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC8D1409977B00749E42 /* GTMNSDictionary+URLArguments.m */; };
-		224FBC931409988200749E42 /* ImageGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC911409987F00749E42 /* ImageGalleryViewController.m */; };
-		2252536D141E289200157205 /* CatalogueItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2252536B141E289200157205 /* CatalogueItemViewController.m */; };
-		22525373141E2CA500157205 /* RadioItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22525371141E2CA500157205 /* RadioItemViewController.m */; };
+		224FBC931409988200749E42 /* TCHImageGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC911409987F00749E42 /* TCHImageGalleryViewController.m */; };
+		2252536D141E289200157205 /* TCHCatalogueItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2252536B141E289200157205 /* TCHCatalogueItemViewController.m */; };
+		22525373141E2CA500157205 /* TCHRadioItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22525371141E2CA500157205 /* TCHRadioItemViewController.m */; };
 		225C5BA716FC695400346816 /* viewConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 225C5BA616FC695300346816 /* viewConfig.plist */; };
-		225C5BAA16FC88B900346816 /* TouchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 225C5BA916FC88B900346816 /* TouchTableViewController.m */; };
+		225C5BAA16FC88B900346816 /* TCHTouchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 225C5BA916FC88B900346816 /* TCHTouchTableViewController.m */; };
 		225C5BAB16FCA5EA00346816 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22DEDC9D1661FD6400CAC08E /* SystemConfiguration.framework */; };
 		225E2A02166417DE00DB1B29 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 225E2A01166417DE00DB1B29 /* MediaPlayer.framework */; };
 		2263104914176F88001B7841 /* TJMAudioTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2263104814176F87001B7841 /* TJMAudioTableViewController.m */; };
 		226310511417E923001B7841 /* TJMAudioToggleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 226310501417E923001B7841 /* TJMAudioToggleViewController.m */; };
-		22675204140B4AFB00726FAE /* ImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 226751FF140B4AFB00726FAE /* ImageScrollView.m */; };
-		22675205140B4AFB00726FAE /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22675201140B4AFB00726FAE /* PhotoViewController.m */; };
+		22675204140B4AFB00726FAE /* TCHImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 226751FF140B4AFB00726FAE /* TCHImageScrollView.m */; };
+		22675205140B4AFB00726FAE /* TCHPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22675201140B4AFB00726FAE /* TCHPhotoViewController.m */; };
 		226B3E2A199499DF000CF349 /* TCHActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 226B3E29199499DF000CF349 /* TCHActivityViewController.m */; };
 		2272020A140E4BDD005DD4B7 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22720209140E4BDD005DD4B7 /* MessageUI.framework */; };
-		227C569014163D9200169F38 /* TouchApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 227C568F14163D9200169F38 /* TouchApplication.m */; };
+		227C569014163D9200169F38 /* TCHTouchApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 227C568F14163D9200169F38 /* TCHTouchApplication.m */; };
 		22804A881407544B0083CE40 /* TJMImageResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 22804A831407544B0083CE40 /* TJMImageResource.m */; };
 		22804A891407544B0083CE40 /* TJMImageResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22804A851407544B0083CE40 /* TJMImageResourceManager.m */; };
 		22804A8A1407544B0083CE40 /* TJMImageResourceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22804A871407544B0083CE40 /* TJMImageResourceView.m */; };
@@ -73,15 +73,15 @@
 		22C2C25519703E020052BD21 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222951C613EC496F001D174D /* UIKit.framework */; };
 		22C2C25B19703E020052BD21 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22C2C25919703E020052BD21 /* InfoPlist.strings */; };
 		22C2C25D19703E030052BD21 /* TouchApp_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C2C25C19703E030052BD21 /* TouchApp_Tests.m */; };
-		22CB4B8913EDD641008968D6 /* AppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4B8813EDD641008968D6 /* AppManager.m */; };
+		22CB4B8913EDD641008968D6 /* TCHAppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4B8813EDD641008968D6 /* TCHAppManager.m */; };
 		22CB4C0B13EE4A41008968D6 /* UIApplication+TJMNetworkActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4C0A13EE4A41008968D6 /* UIApplication+TJMNetworkActivity.m */; };
-		22CB4C1A13EEBC56008968D6 /* WebsiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4C1913EEBC55008968D6 /* WebsiteViewController.m */; };
-		22CB4C1C13EEBC6C008968D6 /* WebsiteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22CB4C1B13EEBC6C008968D6 /* WebsiteViewController.xib */; };
+		22CB4C1A13EEBC56008968D6 /* TCHWebsiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4C1913EEBC55008968D6 /* TCHWebsiteViewController.m */; };
+		22CB4C1C13EEBC6C008968D6 /* TCHWebsiteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22CB4C1B13EEBC6C008968D6 /* TCHWebsiteViewController.xib */; };
 		22CB4C3B13EFE2EB008968D6 /* TJMAudioCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4C3A13EFE2EB008968D6 /* TJMAudioCenter.m */; };
 		22CB4C3D13EFE383008968D6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22CB4C3C13EFE382008968D6 /* AVFoundation.framework */; };
 		22CB4C3F13EFE38F008968D6 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22CB4C3E13EFE38E008968D6 /* CoreMedia.framework */; };
-		22CB4CBE13F12BDA008968D6 /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4CBC13F12BDA008968D6 /* RadioViewController.m */; };
-		22F7C4DF162F5D1D002E2CB6 /* NewsItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F7C4DE162F5D1D002E2CB6 /* NewsItemViewController.m */; };
+		22CB4CBE13F12BDA008968D6 /* TCHRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4CBC13F12BDA008968D6 /* TCHRadioViewController.m */; };
+		22F7C4DF162F5D1D002E2CB6 /* TCHNewsItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F7C4DE162F5D1D002E2CB6 /* TCHNewsItemViewController.m */; };
 		495551F01877DE6F00F8330D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 495551EF1877DE6F00F8330D /* Images.xcassets */; };
 		DC3D662380AA40ED9E295110 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846741C095B429E9F68A96B /* libPods.a */; };
 		DEB0003E142582870059E43D /* jquery-1.6.4.min.js in Resources */ = {isa = PBXBuildFile; fileRef = DEB0003D142582870059E43D /* jquery-1.6.4.min.js */; };
@@ -133,8 +133,8 @@
 		1C098F5637C2F2DE13C31ABC /* TCHBaseFeedList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHBaseFeedList.m; sourceTree = "<group>"; };
 		1C098F7508B454ED3CB2D54C /* TCHNewsFeedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHNewsFeedItem.m; sourceTree = "<group>"; };
 		1C098F99A21C22D0C29B227B /* TCHRadioFeedItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHRadioFeedItem.h; sourceTree = "<group>"; };
-		220BBB49165DE66500C5118B /* RotatingTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotatingTabBarController.h; sourceTree = "<group>"; };
-		220BBB4A165DE66500C5118B /* RotatingTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotatingTabBarController.m; sourceTree = "<group>"; };
+		220BBB49165DE66500C5118B /* TCHRotatingTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHRotatingTabBarController.h; sourceTree = "<group>"; };
+		220BBB4A165DE66500C5118B /* TCHRotatingTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHRotatingTabBarController.m; sourceTree = "<group>"; };
 		2211EB1B16B642560038C9B7 /* UIApplication+TJMNetworkWarning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+TJMNetworkWarning.h"; sourceTree = "<group>"; };
 		2211EB1C16B642560038C9B7 /* UIApplication+TJMNetworkWarning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+TJMNetworkWarning.m"; sourceTree = "<group>"; };
 		222951C213EC496F001D174D /* TouchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,56 +145,56 @@
 		222951D013EC496F001D174D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		222951D213EC496F001D174D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		222951D413EC496F001D174D /* TouchApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TouchApp-Prefix.pch"; sourceTree = "<group>"; };
-		222951D513EC496F001D174D /* TouchAppAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TouchAppAppDelegate.h; sourceTree = "<group>"; };
-		222951D613EC496F001D174D /* TouchAppAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TouchAppAppDelegate.m; sourceTree = "<group>"; };
-		222951F213EC4B5D001D174D /* CatalogueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatalogueViewController.h; sourceTree = "<group>"; };
-		222951F313EC4B5D001D174D /* CatalogueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatalogueViewController.m; sourceTree = "<group>"; };
-		2229524113ECEC0B001D174D /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
-		2229524213ECEC0B001D174D /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
+		222951D513EC496F001D174D /* TCHTouchAppAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCHTouchAppAppDelegate.h; sourceTree = "<group>"; };
+		222951D613EC496F001D174D /* TCHTouchAppAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TCHTouchAppAppDelegate.m; sourceTree = "<group>"; };
+		222951F213EC4B5D001D174D /* TCHCatalogueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHCatalogueViewController.h; sourceTree = "<group>"; };
+		222951F313EC4B5D001D174D /* TCHCatalogueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHCatalogueViewController.m; sourceTree = "<group>"; };
+		2229524113ECEC0B001D174D /* TCHNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHNewsViewController.h; sourceTree = "<group>"; };
+		2229524213ECEC0B001D174D /* TCHNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHNewsViewController.m; sourceTree = "<group>"; };
 		2229529813ECFC96001D174D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		2229EBDD16FC24ED0087B090 /* TouchTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchTableCell.h; sourceTree = "<group>"; };
-		2229EBDE16FC24ED0087B090 /* TouchTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchTableCell.m; sourceTree = "<group>"; };
+		2229EBDD16FC24ED0087B090 /* TCHTouchTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHTouchTableCell.h; sourceTree = "<group>"; };
+		2229EBDE16FC24ED0087B090 /* TCHTouchTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHTouchTableCell.m; sourceTree = "<group>"; };
 		222DF1C816D09C4000D749D2 /* UIApplication+TJMShakeNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+TJMShakeNotification.h"; sourceTree = "<group>"; };
 		222DF1C916D09C4000D749D2 /* UIApplication+TJMShakeNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+TJMShakeNotification.m"; sourceTree = "<group>"; };
 		222DF1CB16D09D3A00D749D2 /* TouchConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchConstants.h; sourceTree = "<group>"; };
 		222DF1CC16D09D3B00D749D2 /* TouchConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchConstants.m; sourceTree = "<group>"; };
-		223595D6140FE2C3004A08C8 /* RecipeItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeItemViewController.h; sourceTree = "<group>"; };
-		223595D7140FE2C3004A08C8 /* RecipeItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeItemViewController.m; sourceTree = "<group>"; };
+		223595D6140FE2C3004A08C8 /* TCHRecipeItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHRecipeItemViewController.h; sourceTree = "<group>"; };
+		223595D7140FE2C3004A08C8 /* TCHRecipeItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHRecipeItemViewController.m; sourceTree = "<group>"; };
 		22402BB919715003006F0287 /* TCHRadioFeedItem_Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHRadioFeedItem_Tests.m; sourceTree = "<group>"; };
-		224FBC321407FE3700749E42 /* RecipeCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeCategoryViewController.h; sourceTree = "<group>"; };
-		224FBC331407FE3700749E42 /* RecipeCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeCategoryViewController.m; sourceTree = "<group>"; };
+		224FBC321407FE3700749E42 /* TCHRecipeCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHRecipeCategoryViewController.h; sourceTree = "<group>"; };
+		224FBC331407FE3700749E42 /* TCHRecipeCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHRecipeCategoryViewController.m; sourceTree = "<group>"; };
 		224FBC7B1408C47200749E42 /* RecipeCategories.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RecipeCategories.plist; sourceTree = "<group>"; };
-		224FBC7D140980AF00749E42 /* RecipeBookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeBookViewController.h; sourceTree = "<group>"; };
-		224FBC7E140980AF00749E42 /* RecipeBookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeBookViewController.m; sourceTree = "<group>"; };
+		224FBC7D140980AF00749E42 /* TCHRecipeBookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHRecipeBookViewController.h; sourceTree = "<group>"; };
+		224FBC7E140980AF00749E42 /* TCHRecipeBookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHRecipeBookViewController.m; sourceTree = "<group>"; };
 		224FBC891409977B00749E42 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 		224FBC8A1409977B00749E42 /* GTMNSString+URLArguments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+URLArguments.h"; sourceTree = "<group>"; };
 		224FBC8B1409977B00749E42 /* GTMNSString+URLArguments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+URLArguments.m"; sourceTree = "<group>"; };
 		224FBC8C1409977B00749E42 /* GTMNSDictionary+URLArguments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSDictionary+URLArguments.h"; sourceTree = "<group>"; };
 		224FBC8D1409977B00749E42 /* GTMNSDictionary+URLArguments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSDictionary+URLArguments.m"; sourceTree = "<group>"; };
-		224FBC901409987E00749E42 /* ImageGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageGalleryViewController.h; sourceTree = "<group>"; };
-		224FBC911409987F00749E42 /* ImageGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageGalleryViewController.m; sourceTree = "<group>"; };
-		2252536A141E289200157205 /* CatalogueItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatalogueItemViewController.h; sourceTree = "<group>"; };
-		2252536B141E289200157205 /* CatalogueItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatalogueItemViewController.m; sourceTree = "<group>"; };
-		22525370141E2CA500157205 /* RadioItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioItemViewController.h; sourceTree = "<group>"; };
-		22525371141E2CA500157205 /* RadioItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioItemViewController.m; sourceTree = "<group>"; };
+		224FBC901409987E00749E42 /* TCHImageGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHImageGalleryViewController.h; sourceTree = "<group>"; };
+		224FBC911409987F00749E42 /* TCHImageGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHImageGalleryViewController.m; sourceTree = "<group>"; };
+		2252536A141E289200157205 /* TCHCatalogueItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHCatalogueItemViewController.h; sourceTree = "<group>"; };
+		2252536B141E289200157205 /* TCHCatalogueItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHCatalogueItemViewController.m; sourceTree = "<group>"; };
+		22525370141E2CA500157205 /* TCHRadioItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHRadioItemViewController.h; sourceTree = "<group>"; };
+		22525371141E2CA500157205 /* TCHRadioItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHRadioItemViewController.m; sourceTree = "<group>"; };
 		225C5BA616FC695300346816 /* viewConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = viewConfig.plist; sourceTree = "<group>"; };
-		225C5BA816FC88B800346816 /* TouchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchTableViewController.h; sourceTree = "<group>"; };
-		225C5BA916FC88B900346816 /* TouchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchTableViewController.m; sourceTree = "<group>"; };
+		225C5BA816FC88B800346816 /* TCHTouchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHTouchTableViewController.h; sourceTree = "<group>"; };
+		225C5BA916FC88B900346816 /* TCHTouchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHTouchTableViewController.m; sourceTree = "<group>"; };
 		225E2A01166417DE00DB1B29 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		2263104714176F87001B7841 /* TJMAudioTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJMAudioTableViewController.h; sourceTree = "<group>"; };
 		2263104814176F87001B7841 /* TJMAudioTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TJMAudioTableViewController.m; sourceTree = "<group>"; };
 		2263104F1417E923001B7841 /* TJMAudioToggleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJMAudioToggleViewController.h; sourceTree = "<group>"; };
 		226310501417E923001B7841 /* TJMAudioToggleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TJMAudioToggleViewController.m; sourceTree = "<group>"; };
 		2263927E1569F69300191172 /* GCDSingleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GCDSingleton.h; sourceTree = "<group>"; };
-		226751FE140B4AFB00726FAE /* ImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageScrollView.h; sourceTree = "<group>"; };
-		226751FF140B4AFB00726FAE /* ImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageScrollView.m; sourceTree = "<group>"; };
-		22675200140B4AFB00726FAE /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
-		22675201140B4AFB00726FAE /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
+		226751FE140B4AFB00726FAE /* TCHImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHImageScrollView.h; sourceTree = "<group>"; };
+		226751FF140B4AFB00726FAE /* TCHImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHImageScrollView.m; sourceTree = "<group>"; };
+		22675200140B4AFB00726FAE /* TCHPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHPhotoViewController.h; sourceTree = "<group>"; };
+		22675201140B4AFB00726FAE /* TCHPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHPhotoViewController.m; sourceTree = "<group>"; };
 		226B3E28199499DF000CF349 /* TCHActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHActivityViewController.h; sourceTree = "<group>"; };
 		226B3E29199499DF000CF349 /* TCHActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHActivityViewController.m; sourceTree = "<group>"; };
 		22720209140E4BDD005DD4B7 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		227C568E14163D9100169F38 /* TouchApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchApplication.h; sourceTree = "<group>"; };
-		227C568F14163D9200169F38 /* TouchApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchApplication.m; sourceTree = "<group>"; };
+		227C568E14163D9100169F38 /* TCHTouchApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHTouchApplication.h; sourceTree = "<group>"; };
+		227C568F14163D9200169F38 /* TCHTouchApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHTouchApplication.m; sourceTree = "<group>"; };
 		22804A821407544B0083CE40 /* TJMImageResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJMImageResource.h; sourceTree = "<group>"; };
 		22804A831407544B0083CE40 /* TJMImageResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TJMImageResource.m; sourceTree = "<group>"; };
 		22804A841407544B0083CE40 /* TJMImageResourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJMImageResourceManager.h; sourceTree = "<group>"; };
@@ -212,22 +212,22 @@
 		22C2C25A19703E020052BD21 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		22C2C25C19703E030052BD21 /* TouchApp_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TouchApp_Tests.m; sourceTree = "<group>"; };
 		22C2C25E19703E030052BD21 /* TouchApp Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TouchApp Tests-Prefix.pch"; sourceTree = "<group>"; };
-		22CB4B8713EDD640008968D6 /* AppManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppManager.h; sourceTree = "<group>"; };
-		22CB4B8813EDD641008968D6 /* AppManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppManager.m; sourceTree = "<group>"; };
+		22CB4B8713EDD640008968D6 /* TCHAppManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHAppManager.h; sourceTree = "<group>"; };
+		22CB4B8813EDD641008968D6 /* TCHAppManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHAppManager.m; sourceTree = "<group>"; };
 		22CB4C0913EE4A41008968D6 /* UIApplication+TJMNetworkActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+TJMNetworkActivity.h"; sourceTree = "<group>"; };
 		22CB4C0A13EE4A41008968D6 /* UIApplication+TJMNetworkActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+TJMNetworkActivity.m"; sourceTree = "<group>"; };
-		22CB4C1813EEBC55008968D6 /* WebsiteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebsiteViewController.h; sourceTree = "<group>"; };
-		22CB4C1913EEBC55008968D6 /* WebsiteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebsiteViewController.m; sourceTree = "<group>"; };
-		22CB4C1B13EEBC6C008968D6 /* WebsiteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebsiteViewController.xib; sourceTree = "<group>"; };
+		22CB4C1813EEBC55008968D6 /* TCHWebsiteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHWebsiteViewController.h; sourceTree = "<group>"; };
+		22CB4C1913EEBC55008968D6 /* TCHWebsiteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHWebsiteViewController.m; sourceTree = "<group>"; };
+		22CB4C1B13EEBC6C008968D6 /* TCHWebsiteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCHWebsiteViewController.xib; sourceTree = "<group>"; };
 		22CB4C3913EFE2EA008968D6 /* TJMAudioCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJMAudioCenter.h; sourceTree = "<group>"; };
 		22CB4C3A13EFE2EB008968D6 /* TJMAudioCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TJMAudioCenter.m; sourceTree = "<group>"; };
 		22CB4C3C13EFE382008968D6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		22CB4C3E13EFE38E008968D6 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
-		22CB4CBB13F12BDA008968D6 /* RadioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioViewController.h; sourceTree = "<group>"; };
-		22CB4CBC13F12BDA008968D6 /* RadioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioViewController.m; sourceTree = "<group>"; };
+		22CB4CBB13F12BDA008968D6 /* TCHRadioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHRadioViewController.h; sourceTree = "<group>"; };
+		22CB4CBC13F12BDA008968D6 /* TCHRadioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHRadioViewController.m; sourceTree = "<group>"; };
 		22DEDC9D1661FD6400CAC08E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		22F7C4DD162F5D1D002E2CB6 /* NewsItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsItemViewController.h; sourceTree = "<group>"; };
-		22F7C4DE162F5D1D002E2CB6 /* NewsItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsItemViewController.m; sourceTree = "<group>"; };
+		22F7C4DD162F5D1D002E2CB6 /* TCHNewsItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHNewsItemViewController.h; sourceTree = "<group>"; };
+		22F7C4DE162F5D1D002E2CB6 /* TCHNewsItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHNewsItemViewController.m; sourceTree = "<group>"; };
 		2846741C095B429E9F68A96B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		495551EF1877DE6F00F8330D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		AC2C8A480DAD5F4DBDB71478 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -461,10 +461,10 @@
 		2229EBDC16FC24BD0087B090 /* Tables */ = {
 			isa = PBXGroup;
 			children = (
-				2229EBDD16FC24ED0087B090 /* TouchTableCell.h */,
-				2229EBDE16FC24ED0087B090 /* TouchTableCell.m */,
-				225C5BA816FC88B800346816 /* TouchTableViewController.h */,
-				225C5BA916FC88B900346816 /* TouchTableViewController.m */,
+				2229EBDD16FC24ED0087B090 /* TCHTouchTableCell.h */,
+				2229EBDE16FC24ED0087B090 /* TCHTouchTableCell.m */,
+				225C5BA816FC88B800346816 /* TCHTouchTableViewController.h */,
+				225C5BA916FC88B900346816 /* TCHTouchTableViewController.m */,
 			);
 			name = Tables;
 			sourceTree = "<group>";
@@ -481,12 +481,12 @@
 		224FBC311407FDB100749E42 /* recipes */ = {
 			isa = PBXGroup;
 			children = (
-				224FBC7D140980AF00749E42 /* RecipeBookViewController.h */,
-				224FBC7E140980AF00749E42 /* RecipeBookViewController.m */,
-				224FBC321407FE3700749E42 /* RecipeCategoryViewController.h */,
-				224FBC331407FE3700749E42 /* RecipeCategoryViewController.m */,
-				223595D6140FE2C3004A08C8 /* RecipeItemViewController.h */,
-				223595D7140FE2C3004A08C8 /* RecipeItemViewController.m */,
+				224FBC7D140980AF00749E42 /* TCHRecipeBookViewController.h */,
+				224FBC7E140980AF00749E42 /* TCHRecipeBookViewController.m */,
+				224FBC321407FE3700749E42 /* TCHRecipeCategoryViewController.h */,
+				224FBC331407FE3700749E42 /* TCHRecipeCategoryViewController.m */,
+				223595D6140FE2C3004A08C8 /* TCHRecipeItemViewController.h */,
+				223595D7140FE2C3004A08C8 /* TCHRecipeItemViewController.m */,
 			);
 			name = recipes;
 			sourceTree = "<group>";
@@ -494,10 +494,10 @@
 		224FBC951409989800749E42 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				224FBC901409987E00749E42 /* ImageGalleryViewController.h */,
-				224FBC911409987F00749E42 /* ImageGalleryViewController.m */,
-				220BBB49165DE66500C5118B /* RotatingTabBarController.h */,
-				220BBB4A165DE66500C5118B /* RotatingTabBarController.m */,
+				224FBC901409987E00749E42 /* TCHImageGalleryViewController.h */,
+				224FBC911409987F00749E42 /* TCHImageGalleryViewController.m */,
+				220BBB49165DE66500C5118B /* TCHRotatingTabBarController.h */,
+				220BBB4A165DE66500C5118B /* TCHRotatingTabBarController.m */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -505,9 +505,9 @@
 		2263104A14176F97001B7841 /* base */ = {
 			isa = PBXGroup;
 			children = (
-				22CB4C1813EEBC55008968D6 /* WebsiteViewController.h */,
-				22CB4C1913EEBC55008968D6 /* WebsiteViewController.m */,
-				22CB4C1B13EEBC6C008968D6 /* WebsiteViewController.xib */,
+				22CB4C1813EEBC55008968D6 /* TCHWebsiteViewController.h */,
+				22CB4C1913EEBC55008968D6 /* TCHWebsiteViewController.m */,
+				22CB4C1B13EEBC6C008968D6 /* TCHWebsiteViewController.xib */,
 				229890241427556400345AD3 /* HTMLItemViewController.h */,
 				229890251427556400345AD3 /* HTMLItemViewController.m */,
 				2263104714176F87001B7841 /* TJMAudioTableViewController.h */,
@@ -521,10 +521,10 @@
 		226751FD140B4AE400726FAE /* photoscroller */ = {
 			isa = PBXGroup;
 			children = (
-				226751FE140B4AFB00726FAE /* ImageScrollView.h */,
-				226751FF140B4AFB00726FAE /* ImageScrollView.m */,
-				22675200140B4AFB00726FAE /* PhotoViewController.h */,
-				22675201140B4AFB00726FAE /* PhotoViewController.m */,
+				226751FE140B4AFB00726FAE /* TCHImageScrollView.h */,
+				226751FF140B4AFB00726FAE /* TCHImageScrollView.m */,
+				22675200140B4AFB00726FAE /* TCHPhotoViewController.h */,
+				22675201140B4AFB00726FAE /* TCHPhotoViewController.m */,
 				226B3E28199499DF000CF349 /* TCHActivityViewController.h */,
 				226B3E29199499DF000CF349 /* TCHActivityViewController.m */,
 			);
@@ -578,12 +578,12 @@
 			children = (
 				224FBBEB14076A5A00749E42 /* AudioCenter */,
 				22804A8C140754600083CE40 /* ImageResource */,
-				222951D513EC496F001D174D /* TouchAppAppDelegate.h */,
-				222951D613EC496F001D174D /* TouchAppAppDelegate.m */,
-				22CB4B8713EDD640008968D6 /* AppManager.h */,
-				22CB4B8813EDD641008968D6 /* AppManager.m */,
-				227C568E14163D9100169F38 /* TouchApplication.h */,
-				227C568F14163D9200169F38 /* TouchApplication.m */,
+				222951D513EC496F001D174D /* TCHTouchAppAppDelegate.h */,
+				222951D613EC496F001D174D /* TCHTouchAppAppDelegate.m */,
+				22CB4B8713EDD640008968D6 /* TCHAppManager.h */,
+				22CB4B8813EDD641008968D6 /* TCHAppManager.m */,
+				227C568E14163D9100169F38 /* TCHTouchApplication.h */,
+				227C568F14163D9200169F38 /* TCHTouchApplication.m */,
 				222DF1CB16D09D3A00D749D2 /* TouchConstants.h */,
 				222DF1CC16D09D3B00D749D2 /* TouchConstants.m */,
 			);
@@ -611,10 +611,10 @@
 		22CB4C4A13EFE847008968D6 /* Catalogue */ = {
 			isa = PBXGroup;
 			children = (
-				2252536A141E289200157205 /* CatalogueItemViewController.h */,
-				2252536B141E289200157205 /* CatalogueItemViewController.m */,
-				222951F213EC4B5D001D174D /* CatalogueViewController.h */,
-				222951F313EC4B5D001D174D /* CatalogueViewController.m */,
+				2252536A141E289200157205 /* TCHCatalogueItemViewController.h */,
+				2252536B141E289200157205 /* TCHCatalogueItemViewController.m */,
+				222951F213EC4B5D001D174D /* TCHCatalogueViewController.h */,
+				222951F313EC4B5D001D174D /* TCHCatalogueViewController.m */,
 			);
 			name = Catalogue;
 			sourceTree = "<group>";
@@ -622,10 +622,10 @@
 		22CB4CB913F12B2D008968D6 /* News */ = {
 			isa = PBXGroup;
 			children = (
-				2229524113ECEC0B001D174D /* NewsViewController.h */,
-				2229524213ECEC0B001D174D /* NewsViewController.m */,
-				22F7C4DD162F5D1D002E2CB6 /* NewsItemViewController.h */,
-				22F7C4DE162F5D1D002E2CB6 /* NewsItemViewController.m */,
+				2229524113ECEC0B001D174D /* TCHNewsViewController.h */,
+				2229524213ECEC0B001D174D /* TCHNewsViewController.m */,
+				22F7C4DD162F5D1D002E2CB6 /* TCHNewsItemViewController.h */,
+				22F7C4DE162F5D1D002E2CB6 /* TCHNewsItemViewController.m */,
 			);
 			name = News;
 			sourceTree = "<group>";
@@ -633,10 +633,10 @@
 		22CB4CBA13F12BA4008968D6 /* Radio */ = {
 			isa = PBXGroup;
 			children = (
-				22525370141E2CA500157205 /* RadioItemViewController.h */,
-				22525371141E2CA500157205 /* RadioItemViewController.m */,
-				22CB4CBB13F12BDA008968D6 /* RadioViewController.h */,
-				22CB4CBC13F12BDA008968D6 /* RadioViewController.m */,
+				22525370141E2CA500157205 /* TCHRadioItemViewController.h */,
+				22525371141E2CA500157205 /* TCHRadioItemViewController.m */,
+				22CB4CBB13F12BDA008968D6 /* TCHRadioViewController.h */,
+				22CB4CBC13F12BDA008968D6 /* TCHRadioViewController.m */,
 			);
 			name = Radio;
 			sourceTree = "<group>";
@@ -743,7 +743,7 @@
 				DEB0004214258A260059E43D /* audiocontrol.js in Resources */,
 				DEB0003E142582870059E43D /* jquery-1.6.4.min.js in Resources */,
 				222951D113EC496F001D174D /* InfoPlist.strings in Resources */,
-				22CB4C1C13EEBC6C008968D6 /* WebsiteViewController.xib in Resources */,
+				22CB4C1C13EEBC6C008968D6 /* TCHWebsiteViewController.xib in Resources */,
 				224FBC7C1408C47200749E42 /* RecipeCategories.plist in Resources */,
 				495551F01877DE6F00F8330D /* Images.xcassets in Resources */,
 				225C5BA716FC695400346816 /* viewConfig.plist in Resources */,
@@ -805,40 +805,40 @@
 			buildActionMask = 2147483647;
 			files = (
 				222951D313EC496F001D174D /* main.m in Sources */,
-				222951D713EC496F001D174D /* TouchAppAppDelegate.m in Sources */,
-				222951F513EC4B5D001D174D /* CatalogueViewController.m in Sources */,
-				2229524413ECEC0B001D174D /* NewsViewController.m in Sources */,
-				22CB4B8913EDD641008968D6 /* AppManager.m in Sources */,
+				222951D713EC496F001D174D /* TCHTouchAppAppDelegate.m in Sources */,
+				222951F513EC4B5D001D174D /* TCHCatalogueViewController.m in Sources */,
+				2229524413ECEC0B001D174D /* TCHNewsViewController.m in Sources */,
+				22CB4B8913EDD641008968D6 /* TCHAppManager.m in Sources */,
 				22CB4C0B13EE4A41008968D6 /* UIApplication+TJMNetworkActivity.m in Sources */,
-				22CB4C1A13EEBC56008968D6 /* WebsiteViewController.m in Sources */,
+				22CB4C1A13EEBC56008968D6 /* TCHWebsiteViewController.m in Sources */,
 				226B3E2A199499DF000CF349 /* TCHActivityViewController.m in Sources */,
 				22CB4C3B13EFE2EB008968D6 /* TJMAudioCenter.m in Sources */,
-				22CB4CBE13F12BDA008968D6 /* RadioViewController.m in Sources */,
+				22CB4CBE13F12BDA008968D6 /* TCHRadioViewController.m in Sources */,
 				22804A881407544B0083CE40 /* TJMImageResource.m in Sources */,
 				22804A891407544B0083CE40 /* TJMImageResourceManager.m in Sources */,
 				22804A8A1407544B0083CE40 /* TJMImageResourceView.m in Sources */,
-				224FBC351407FE3700749E42 /* RecipeCategoryViewController.m in Sources */,
-				224FBC80140980B000749E42 /* RecipeBookViewController.m in Sources */,
+				224FBC351407FE3700749E42 /* TCHRecipeCategoryViewController.m in Sources */,
+				224FBC80140980B000749E42 /* TCHRecipeBookViewController.m in Sources */,
 				224FBC8E1409977B00749E42 /* GTMNSString+URLArguments.m in Sources */,
 				224FBC8F1409977B00749E42 /* GTMNSDictionary+URLArguments.m in Sources */,
-				224FBC931409988200749E42 /* ImageGalleryViewController.m in Sources */,
-				22675204140B4AFB00726FAE /* ImageScrollView.m in Sources */,
-				22675205140B4AFB00726FAE /* PhotoViewController.m in Sources */,
-				223595D9140FE2C3004A08C8 /* RecipeItemViewController.m in Sources */,
-				227C569014163D9200169F38 /* TouchApplication.m in Sources */,
+				224FBC931409988200749E42 /* TCHImageGalleryViewController.m in Sources */,
+				22675204140B4AFB00726FAE /* TCHImageScrollView.m in Sources */,
+				22675205140B4AFB00726FAE /* TCHPhotoViewController.m in Sources */,
+				223595D9140FE2C3004A08C8 /* TCHRecipeItemViewController.m in Sources */,
+				227C569014163D9200169F38 /* TCHTouchApplication.m in Sources */,
 				2263104914176F88001B7841 /* TJMAudioTableViewController.m in Sources */,
 				226310511417E923001B7841 /* TJMAudioToggleViewController.m in Sources */,
-				2252536D141E289200157205 /* CatalogueItemViewController.m in Sources */,
-				22525373141E2CA500157205 /* RadioItemViewController.m in Sources */,
+				2252536D141E289200157205 /* TCHCatalogueItemViewController.m in Sources */,
+				22525373141E2CA500157205 /* TCHRadioItemViewController.m in Sources */,
 				229890271427556400345AD3 /* HTMLItemViewController.m in Sources */,
 				2286E6D814357C5D00C4B275 /* TKUProgressBarView.m in Sources */,
-				22F7C4DF162F5D1D002E2CB6 /* NewsItemViewController.m in Sources */,
-				220BBB4B165DE66500C5118B /* RotatingTabBarController.m in Sources */,
+				22F7C4DF162F5D1D002E2CB6 /* TCHNewsItemViewController.m in Sources */,
+				220BBB4B165DE66500C5118B /* TCHRotatingTabBarController.m in Sources */,
 				2211EB1D16B642560038C9B7 /* UIApplication+TJMNetworkWarning.m in Sources */,
 				222DF1CA16D09C4000D749D2 /* UIApplication+TJMShakeNotification.m in Sources */,
 				222DF1CD16D09D3B00D749D2 /* TouchConstants.m in Sources */,
-				2229EBDF16FC24ED0087B090 /* TouchTableCell.m in Sources */,
-				225C5BAA16FC88B900346816 /* TouchTableViewController.m in Sources */,
+				2229EBDF16FC24ED0087B090 /* TCHTouchTableCell.m in Sources */,
+				225C5BAA16FC88B900346816 /* TCHTouchTableViewController.m in Sources */,
 				1C098F8BA7D2C86029F0F971 /* TCHBaseFeedItem.m in Sources */,
 				1C098B78FD4890778AF471F7 /* TCHBaseFeedList.m in Sources */,
 				1C09820FC491A079A797BF28 /* TCHImageFeedItem.m in Sources */,

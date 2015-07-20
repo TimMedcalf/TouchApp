@@ -8,7 +8,7 @@
 
 #import "TCHBaseFeedList.h"
 #import "TCHBaseFeedItem.h"
-#import "AppManager.h"
+#import "TCHAppManager.h"
 #import "UIApplication+TJMNetworkActivity.h"
 
 #pragma clang diagnostic push
@@ -51,7 +51,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
     self = [self initWithoutLoading];
     if (self) {
         self.feed = self.feedURL;
-        self.cacheFile = [[AppManager sharedInstance].cacheFolder stringByAppendingPathComponent:[self.cacheFilename stringByAppendingPathExtension:@"plist"]];
+        self.cacheFile = [[TCHAppManager sharedInstance].cacheFolder stringByAppendingPathComponent:[self.cacheFilename stringByAppendingPathExtension:@"plist"]];
         [self loadItems];
     }
     return self;
@@ -67,7 +67,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 
 - (void)continueLoading {
     self.feed = self.feedURL;
-    self.cacheFile = [[AppManager sharedInstance].cacheFolder stringByAppendingPathComponent:[self.cacheFilename stringByAppendingPathExtension:@"plist"]];
+    self.cacheFile = [[TCHAppManager sharedInstance].cacheFolder stringByAppendingPathComponent:[self.cacheFilename stringByAppendingPathExtension:@"plist"]];
     [self loadItems];
 }
 

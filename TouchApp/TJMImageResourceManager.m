@@ -7,7 +7,7 @@
 //
 
 #import "TJMImageResourceManager.h"
-#import "AppManager.h"
+#import "TCHAppManager.h"
 #import "TJMImageResource.h"
 
 #pragma clang diagnostic push
@@ -45,7 +45,7 @@ NSInteger TwoMonths = -5184000;
 
 - (void)loadFromFile {
   self.imageResourceDict = nil;
-  NSArray *tmpArray = [[NSArray alloc] initWithContentsOfFile:[[AppManager sharedInstance].cacheFolder stringByAppendingPathComponent:ResourceManifestFile]];
+  NSArray *tmpArray = [[NSArray alloc] initWithContentsOfFile:[[TCHAppManager sharedInstance].cacheFolder stringByAppendingPathComponent:ResourceManifestFile]];
   if (tmpArray) {
     NSMutableDictionary *tmpDict = [[NSMutableDictionary alloc] initWithCapacity:tmpArray.count];
     for (NSDictionary  *itemDict in tmpArray) {
@@ -75,7 +75,7 @@ NSInteger TwoMonths = -5184000;
       [tmpRes clearCachedFiles];
     }
   }
-  [saveArray writeToFile:[[AppManager sharedInstance].cacheFolder stringByAppendingPathComponent:ResourceManifestFile] atomically:YES];
+  [saveArray writeToFile:[[TCHAppManager sharedInstance].cacheFolder stringByAppendingPathComponent:ResourceManifestFile] atomically:YES];
 }
 
 - (TJMImageResource *)resourceForURL:(NSURL *)imageURL {

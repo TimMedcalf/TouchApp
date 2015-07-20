@@ -6,7 +6,7 @@
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
 #import "TJMImageResource.h"
-#import "AppManager.h"
+#import "TCHAppManager.h"
 #import "UIApplication+TJMNetworkActivity.h"
 
 #pragma clang diagnostic push
@@ -119,7 +119,7 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
 #pragma mark helpers
 - (NSString *)fullPathForLocalBaseImage {
     NSString *filename = [self.localFileName stringByAppendingPathExtension:self.localFileExtension];
-    return [[AppManager  sharedInstance].cacheFolder stringByAppendingPathComponent:filename];
+    return [[TCHAppManager  sharedInstance].cacheFolder stringByAppendingPathComponent:filename];
 }
 
 - (BOOL)imageIsDownloaded {

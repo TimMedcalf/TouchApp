@@ -1,6 +1,6 @@
 
 #import "HTMLItemViewController.h"
-#import "WebsiteViewController.h"
+#import "TCHWebsiteViewController.h"
 #import "UIApplication+TJMNetworkActivity.h"
 #import "TJMAudioCenter.h"
 
@@ -81,7 +81,7 @@
     }
     
     if (navigationType == UIWebViewNavigationTypeLinkClicked ) {
-        WebsiteViewController *newWeb = [[WebsiteViewController alloc] init];
+        TCHWebsiteViewController *newWeb = [[TCHWebsiteViewController alloc] init];
         newWeb.initialURL = (request.URL).absoluteString;
         newWeb.dontHideNavigationBar = YES;
         [self.navigationController pushViewController:newWeb animated:YES];
