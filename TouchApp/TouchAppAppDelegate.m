@@ -28,6 +28,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   //NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
+    [DDLog addLogger:[DDASLLogger sharedInstance]];
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    
 #ifndef DEBUG
   [Flurry setCrashReportingEnabled:YES];
   [Flurry startSession:@"EG1Y8QTDSQI2YWEFXFDJ"];
