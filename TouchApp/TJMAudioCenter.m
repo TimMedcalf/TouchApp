@@ -196,20 +196,13 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
     NSError *audioSessionError = nil;
     if (![mySession setCategory:AVAudioSessionCategoryPlayback
                          error:&audioSessionError]) {
-        NSLog (@"Error setting audio session category.");
-    }
-    
-    
+        DDLogError(@"Error setting audio session category: %@", audioSessionError.localizedDescription);
+    };
     // Activate the audio session
-    [mySession setActive:YES
-                   error:&audioSessionError];
-    
-    if (audioSessionError != nil) {
-        
-        //NSLog (@"Error activating audio session during initial setup.");
-        return;
+    if (![mySession setActive:YES
+                        error:&audioSessionError]) {
+        DDLogError(@"Error activating audio session: %@", audioSessionError.localizedDescription);
     }
-    
 }
 
 //#pragma mark AVAudioSessionInterruptionNotification
