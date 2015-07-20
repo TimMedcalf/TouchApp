@@ -15,7 +15,7 @@ static NSUInteger tjm_shakeCount = 0;
 
 @implementation UIApplication (TJMShakeNotification)
 
-- (void)tjmSendShakeNotification {
+- (void)tjm_SendShakeNotification {
   //NSLog(@"Shake Start: lastShake=%ul shakeCount=%u",tjm_lastShake, tjm_shakeCount);
   NSDate *now = [NSDate date];
   NSTimeInterval timeSince = now.timeIntervalSince1970;

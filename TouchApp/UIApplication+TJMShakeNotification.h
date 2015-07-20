@@ -10,6 +10,6 @@
 
 @interface UIApplication (TJMShakeNotification)
 
-- (void)tjmSendShakeNotification;
+- (void)tjm_SendShakeNotification;
 
 @end

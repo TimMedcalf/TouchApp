@@ -187,7 +187,7 @@ NSString static *const Key_IconTintB = @"iconTintB";
 - (void)updateFailed {
     [self.progressView setHidden:YES];
     if ((self.feedList).itemCount == 0) [self showTouch];
-    [[UIApplication sharedApplication] tjmShowNetworkWarning];
+    [[UIApplication sharedApplication] tjm_ShowNetworkWarning];
 }
 
 - (void)handleShake {

@@ -46,7 +46,7 @@
     if (event.subtype == UIEventSubtypeMotionShake) {
       //NSLog(@"Shakey!");
       //[[NSNotificationCenter defaultCenter] postNotificationName:TouchAppAllShookUp object:self];
-      [self tjmSendShakeNotification];
+      [self tjm_SendShakeNotification];
     }
   } else {
     [super sendEvent:event];

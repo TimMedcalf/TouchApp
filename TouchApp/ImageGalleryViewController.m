@@ -249,7 +249,7 @@ static NSInteger iPadThumbnailRowCount = 8;
 - (void)updateFailed {
     [self.progressView setHidden:YES];
     if ((self.imageList).itemCount == 0) [self showTouch];
-    [[UIApplication sharedApplication] tjmShowNetworkWarning];
+    [[UIApplication sharedApplication] tjm_ShowNetworkWarning];
 }
 
 - (void)handleShake {

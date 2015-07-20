@@ -10,7 +10,7 @@
 
 @interface UIApplication (TJMNetworkWarning)
 
-- (void)tjmShowNetworkWarning;
-- (void)tjmResetNetworkWarning;
+- (void)tjm_ShowNetworkWarning;
+- (void)tjm_ResetNetworkWarning;
 
 @end
