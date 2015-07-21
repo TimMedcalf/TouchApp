@@ -13,7 +13,7 @@
 int main(int argc, char *argv[])
 {
   @autoreleasepool {
-    return UIApplicationMain(argc, argv, @"TouchApplication", NSStringFromClass([TCHTouchAppAppDelegate class]));
+    return UIApplicationMain(argc, argv, @"TCHTouchApplication", NSStringFromClass([TCHTouchAppAppDelegate class]));
   }
 }
 #pragma clang diagnostic pop
