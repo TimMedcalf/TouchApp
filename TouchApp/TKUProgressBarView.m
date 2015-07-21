@@ -49,9 +49,9 @@
     return self;
 }
 	
-- (void) setProgress:(CGFloat)p{
-    p = MIN(MAX(0,p),1);
+- (void) setProgress:(CGFloat)newP {
     
+    CGFloat p = MIN(MAX(0,newP),1);
     if(style == TKUProgressBarViewStyleLong && p > 0 && p < 0.08) p = 0.08;
     else if(style == TKUProgressBarViewStyleShort && p > 0 && p < 0.17) p = 0.17;
     if(p == _progress) return;
