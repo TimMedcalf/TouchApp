@@ -117,10 +117,16 @@ NSString *const Key_Cat_Publisher = @"publisher";
   NSString *catalogueNumberReleaseDateDiv = @"";
   
   if ((self.releaseDateString) && ((self.releaseDateString).length > 0)) {
+     
+      NSLocale *enUSPOSIXLocale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
+      
       NSDateFormatter *dateFormatSource = [[NSDateFormatter alloc] init];
+      dateFormatSource.locale = enUSPOSIXLocale;
       dateFormatSource.dateFormat = @"yyyy-MM-d";
       
+      
       NSDateFormatter *dateFormatDestination = [[NSDateFormatter alloc] init];
+      dateFormatDestination.locale = enUSPOSIXLocale;
       dateFormatDestination.dateFormat = @"d MMMM yyyy";
       
       NSDate *formattedDate = [dateFormatSource dateFromString:self.releaseDateString];
