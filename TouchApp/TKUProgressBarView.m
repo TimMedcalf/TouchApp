@@ -34,11 +34,12 @@
 
 @implementation TKUProgressBarView
 
+
 - (instancetype)initWithStyle:(TKUProgressBarViewStyle)s{
     
     CGRect r = s==TKUProgressBarViewStyleLong ? CGRectMake(0, 0, 210, 20) : CGRectMake(0, 0, 180, 42);
     
-    self = [super initWithFrame:r];
+    self = [self initWithFrame:r];
     
     if (self)
     {
