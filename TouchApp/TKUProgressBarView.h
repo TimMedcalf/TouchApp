@@ -40,7 +40,7 @@ typedef NS_ENUM(NSInteger,TKUProgressBarViewStyle) {
 	TKUProgressBarViewStyle style;
 }
 
-- (instancetype)initWithStyle:(TKUProgressBarViewStyle)style NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithStyle:(TKUProgressBarViewStyle)style;
 @property (assign,nonatomic) CGFloat progress; // a value between 0.0 and 1.0
 
 @end
