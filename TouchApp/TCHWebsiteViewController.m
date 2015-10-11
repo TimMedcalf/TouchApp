@@ -52,7 +52,7 @@
   
   self.navigationItem.title = @"";
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Back",@"Back")
-                                                                 style:UIBarButtonItemStyleBordered
+                                                                 style:UIBarButtonItemStylePlain
                                                                 target:nil
                                                                 action:nil];
   

@@ -68,7 +68,7 @@ static NSInteger iPadThumbnailRowCount = 8;
     
     self.navigationItem.title = @"";
     
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Back",@"Back") style:UIBarButtonItemStyleBordered target:nil action:nil];
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Back",@"Back") style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = backButton;
     
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"headerText_photos"]];
@@ -106,7 +106,8 @@ static NSInteger iPadThumbnailRowCount = 8;
     nb.barStyle  = UIBarStyleBlack;
     nb.translucent = NO;
 	nb.tintColor = [UIColor colorWithRed:195/255.0 green:54/255.0 blue:37/255.0 alpha:1];
-    self.tabBarController.tabBar.selectedImageTintColor = [UIColor colorWithRed:195/255.0 green:54/255.0 blue:37/255.0 alpha:1];
+
+    self.tabBarController.tabBar.tintColor = [UIColor colorWithRed:195/255.0 green:54/255.0 blue:37/255.0 alpha:1];
     
     [nb setBackgroundImage:[UIImage imageNamed:@"shim_photos"] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBarHidden = NO;
