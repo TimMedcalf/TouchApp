@@ -83,6 +83,7 @@
 		22CB4CBE13F12BDA008968D6 /* TCHRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4CBC13F12BDA008968D6 /* TCHRadioViewController.m */; };
 		22F7C4DF162F5D1D002E2CB6 /* TCHNewsItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F7C4DE162F5D1D002E2CB6 /* TCHNewsItemViewController.m */; };
 		495551F01877DE6F00F8330D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 495551EF1877DE6F00F8330D /* Images.xcassets */; };
+		5EFDC2301BCCB0C900C4B862 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EFDC22F1BCCB0C900C4B862 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
 		DC3D662380AA40ED9E295110 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846741C095B429E9F68A96B /* libPods.a */; };
 		DEB0003E142582870059E43D /* jquery-1.6.4.min.js in Resources */ = {isa = PBXBuildFile; fileRef = DEB0003D142582870059E43D /* jquery-1.6.4.min.js */; };
 		DEB0004214258A260059E43D /* audiocontrol.js in Resources */ = {isa = PBXBuildFile; fileRef = DEB0004114258A260059E43D /* audiocontrol.js */; };
@@ -230,6 +231,7 @@
 		22F7C4DE162F5D1D002E2CB6 /* TCHNewsItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHNewsItemViewController.m; sourceTree = "<group>"; };
 		2846741C095B429E9F68A96B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		495551EF1877DE6F00F8330D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		5EFDC22F1BCCB0C900C4B862 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC2C8A480DAD5F4DBDB71478 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D978057030F0A6C882432C16 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		DEB0003D142582870059E43D /* jquery-1.6.4.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "jquery-1.6.4.min.js"; sourceTree = "<group>"; };
@@ -427,6 +429,7 @@
 				DEB00040142589960059E43D /* javascripts */,
 				495551EF1877DE6F00F8330D /* Images.xcassets */,
 				1C09829DFDA0F9499ABD7DB6 /* css */,
+				5EFDC22F1BCCB0C900C4B862 /* LaunchScreen.storyboard */,
 			);
 			path = TouchApp;
 			sourceTree = "<group>";
@@ -752,6 +755,7 @@
 				1C0989636333291D4CE91427 /* catalogue_item_iphone.css in Resources */,
 				1C0980FF9B6C23AB9C80D36C /* catalogue_item_ipad.css in Resources */,
 				1C0989FE81E0A68A63A9AE9E /* mobile.css in Resources */,
+				5EFDC2301BCCB0C900C4B862 /* LaunchScreen.storyboard in Resources */,
 				1C098F3F778F9F6D4D43AFDE /* ipad_landscape.css in Resources */,
 				1C09811792B633645AA35059 /* catalogue_item_ipad_landscape.css in Resources */,
 			);
