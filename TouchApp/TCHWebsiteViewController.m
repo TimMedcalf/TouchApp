@@ -12,8 +12,15 @@
 
 @interface TCHWebsiteViewController ()
 
-@property (strong, nonatomic) NSTimer *barTimer;
-@property (strong, nonatomic) NSTimer *barTapTimer;
+@property (nonatomic, strong) IBOutlet UIWebView *webView;
+@property (nonatomic, strong) UISegmentedControl *segmentControl;
+@property (nonatomic, strong) NSTimer *barTimer;
+@property (nonatomic, strong) NSTimer *barTapTimer;
+
+@property (nonatomic, copy) NSString *HTMLString; //load from a string
+
+@property (nonatomic, assign) BOOL openLinksInNewView;
+
 - (void)singleTapGesture:(UITapGestureRecognizer *)tapGesture;
 
 @end
