@@ -1,0 +1,3 @@
+- Bug fixes
+- Improved image sorting
+- Minor visual improvements on iOS7
