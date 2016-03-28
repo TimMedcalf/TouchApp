@@ -271,10 +271,6 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
     //[delegate appImageDidLoad:self.indexPathInTableView];
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-    DDLogDebug(@"Challenge!");
-    //[[challenge sender] useCredential:[NSURLCredential credentialWithUser:@"creode" password:@"creode" persistence:NSURLCredentialPersistenceForSession] forAuthenticationChallenge:challenge];
-}
 
 - (void)parseResultWithData:(NSData *)xmlData {
     DDLogDebug(@"%@",[NSString stringWithUTF8String:[xmlData bytes]]);
