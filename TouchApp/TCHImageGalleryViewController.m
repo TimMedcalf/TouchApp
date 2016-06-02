@@ -64,7 +64,7 @@ static NSInteger iPadThumbnailRowCount = 8;
     UINavigationBar *nb = self.navigationController.navigationBar;
     nb.barStyle  = UIBarStyleBlack;
     nb.translucent = NO;
-	nb.tintColor = [UIColor colorWithRed:195/255.0 green:54/255.0 blue:37/255.0 alpha:1];
+	nb.tintColor = [UIColor colorWithRed:(CGFloat) (195 / 255.0) green:(CGFloat) (54 / 255.0) blue:(CGFloat) (37 / 255.0) alpha:1];
     
     self.navigationItem.title = @"";
     
@@ -105,9 +105,9 @@ static NSInteger iPadThumbnailRowCount = 8;
 	UINavigationBar *nb = self.navigationController.navigationBar;
     nb.barStyle  = UIBarStyleBlack;
     nb.translucent = NO;
-	nb.tintColor = [UIColor colorWithRed:195/255.0 green:54/255.0 blue:37/255.0 alpha:1];
+	nb.tintColor = [UIColor colorWithRed:(CGFloat) (195 / 255.0) green:(CGFloat) (54 / 255.0) blue:(CGFloat) (37 / 255.0) alpha:1];
 
-    self.tabBarController.tabBar.tintColor = [UIColor colorWithRed:195/255.0 green:54/255.0 blue:37/255.0 alpha:1];
+    self.tabBarController.tabBar.tintColor = [UIColor colorWithRed:(CGFloat) (195 / 255.0) green:(CGFloat) (54 / 255.0) blue:(CGFloat) (37 / 255.0) alpha:1];
     
     [nb setBackgroundImage:[UIImage imageNamed:@"shim_photos"] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBarHidden = NO;
@@ -132,7 +132,7 @@ static NSInteger iPadThumbnailRowCount = 8;
 	UINavigationBar *nb = self.navigationController.navigationBar;
     nb.barStyle  = UIBarStyleBlack;
     nb.translucent = NO;
-	nb.tintColor = [UIColor colorWithRed:195/255.0 green:54/255.0 blue:37/255.0 alpha:1];
+	nb.tintColor = [UIColor colorWithRed:(CGFloat) (195 / 255.0) green:(CGFloat) (54 / 255.0) blue:(CGFloat) (37 / 255.0) alpha:1];
     [nb setBackgroundImage:[UIImage imageNamed:@"shim_photos"] forBarMetrics:UIBarMetricsDefault];
     
     [self.imageList refreshFeed];
@@ -173,7 +173,7 @@ static NSInteger iPadThumbnailRowCount = 8;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     lldiv_t res = lldiv((self.imageList).itemCount, self.thumbnailRowCount);
-    return (res.rem > 0) ? res.quot+1 : res.quot;
+    return (NSInteger) ((res.rem > 0) ? res.quot+1 : res.quot);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -204,12 +204,12 @@ static NSInteger iPadThumbnailRowCount = 8;
         if (tmpIndex < (self.imageList).itemCount) {
             TCHImageFeedItem *currentItem = ([self.imageList itemAtIndex:(NSUInteger)tmpIndex]);
             //assign the image
-            TJMImageResourceView *res = (TJMImageResourceView *)[cell viewWithTag:(CellImageTag + i)];
+            TJMImageResourceView *res = [cell viewWithTag:(CellImageTag + i)];
             res.index = tmpIndex;
             [res setURL:currentItem.thumbnailURL];
         } else {
             //if this cell is past the actual range of images we need to remove the preview...
-            TJMImageResourceView *res = (TJMImageResourceView *)[cell viewWithTag:(CellImageTag + i)];
+            TJMImageResourceView *res = [cell viewWithTag:(CellImageTag + i)];
             res.index = NSIntegerMax;
             [res setURL:nil];
         }
@@ -221,7 +221,7 @@ static NSInteger iPadThumbnailRowCount = 8;
 - (void)thumbnailTapped:(UITapGestureRecognizer *)sender {
     CGPoint touchCoords = [sender locationInView:sender.view];
     NSInteger cellIndex = (int)(touchCoords.x / self.thumbnailWidth);
-    TJMImageResourceView *res = (TJMImageResourceView *)[sender.view viewWithTag:(CellImageTag + cellIndex)];
+    TJMImageResourceView *res = [sender.view viewWithTag:(CellImageTag + cellIndex)];
     if (res.index != NSIntegerMax) {
         TCHPhotoViewController *photo = [[TCHPhotoViewController alloc] init];
         photo.imageList = self.imageList;

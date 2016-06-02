@@ -76,7 +76,7 @@ static const CGFloat kAccessoryInset = 15.;
                                            options:NSStringDrawingUsesLineFragmentOrigin
                                         attributes:attributes
                                            context:nil];
-  return CGSizeMake(ceil(stringRect.size.width), ceil(stringRect.size.height));
+  return CGSizeMake((CGFloat) ceil(stringRect.size.width), (CGFloat) ceil(stringRect.size.height));
 }
 
 

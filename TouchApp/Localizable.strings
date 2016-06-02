@@ -1,0 +1,12 @@
+/****************************************************************************/
+/* Localization file */
+
+
+"No connection" = "No connection";
+"Back" = "Back";
+"Photos" = "Photos";
+"Please check you are connected to the internet." = "Please check you are connected to the internet.";
+"Audio stream failed." = "Audio stream failed.";
+"Error - website not found." = "Error - website not found.";
+"Please check that you are connected to the internet." = "Please check that you are connected to the internet.";
+"OK" = "OK";

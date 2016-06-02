@@ -68,21 +68,21 @@ NSString static *const Key_IconTintB = @"iconTintB";
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:viewSettings[Key_HeaderText]]];
     self.tableHeaderName = viewSettings[Key_TableHeader];
     if (viewSettings[Key_BarTintW]) {
-        self.barColor = [UIColor colorWithWhite:((NSNumber *)viewSettings[Key_BarTintW]).floatValue alpha:1.];
+        self.barColor = [UIColor colorWithWhite:((NSNumber *) viewSettings[Key_BarTintW]).floatValue alpha:(CGFloat) 1.];
     } else {
-       self.barColor = [UIColor colorWithRed:((NSNumber *)viewSettings[Key_BarTintR]).floatValue
-                                   green:((NSNumber *)viewSettings[Key_BarTintG]).floatValue
-                                    blue:((NSNumber *)viewSettings[Key_BarTintB]).floatValue
-                                   alpha:1.];
+       self.barColor = [UIColor colorWithRed:((NSNumber *) viewSettings[Key_BarTintR]).floatValue
+                                       green:((NSNumber *) viewSettings[Key_BarTintG]).floatValue
+                                        blue:((NSNumber *) viewSettings[Key_BarTintB]).floatValue
+                                       alpha:(CGFloat) 1.];
     }
 
     if (viewSettings[Key_IconTintW]) {
-        self.iconColor = [UIColor colorWithWhite:((NSNumber *)viewSettings[Key_IconTintW]).floatValue alpha:1.];
+        self.iconColor = [UIColor colorWithWhite:((NSNumber *) viewSettings[Key_IconTintW]).floatValue alpha:(CGFloat) 1.];
     } else if (viewSettings[Key_IconTintR]) {
-        self.iconColor = [UIColor colorWithRed:((NSNumber *)viewSettings[Key_IconTintR]).floatValue
-                                    green:((NSNumber *)viewSettings[Key_IconTintG]).floatValue
-                                     blue:((NSNumber *)viewSettings[Key_IconTintB]).floatValue
-                                    alpha:1.];
+        self.iconColor = [UIColor colorWithRed:((NSNumber *) viewSettings[Key_IconTintR]).floatValue
+                                         green:((NSNumber *) viewSettings[Key_IconTintG]).floatValue
+                                          blue:((NSNumber *) viewSettings[Key_IconTintB]).floatValue
+                                         alpha:(CGFloat) 1.];
     } else {
         self.iconColor = self.barColor;
     }

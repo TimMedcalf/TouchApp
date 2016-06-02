@@ -182,8 +182,8 @@
     // 2a: convert our desired center point back to our own coordinate space
     CGPoint boundsCenter = [self convertPoint:oldCenter fromView:imageView];
     // 2b: calculate the content offset that would yield that center point
-    CGPoint offset = CGPointMake(boundsCenter.x - self.bounds.size.width / 2.0,
-                                 boundsCenter.y - self.bounds.size.height / 2.0);
+    CGPoint offset = CGPointMake((CGFloat) (boundsCenter.x - self.bounds.size.width / 2.0),
+            (CGFloat) (boundsCenter.y - self.bounds.size.height / 2.0));
     // 2c: restore offset, adjusted to be within the allowable range
     CGPoint maxOffset = [self maximumContentOffset];
     CGPoint minOffset = [self minimumContentOffset];
