@@ -1,0 +1,7 @@
+CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = $(SDKROOT)/usr/include/libxml2 $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/CocoaLumberjack" "${PODS_ROOT}/Headers/Public/Flurry-iOS-SDK" "${PODS_ROOT}/Headers/Public/KissXML"
+LIBRARY_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Flurry-iOS-SDK/Flurry"
+OTHER_CFLAGS = $(inherited) -DDDXML_LIBXML_MODULE_ENABLED=0 $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/CocoaLumberjack" -isystem "${PODS_ROOT}/Headers/Public/Flurry-iOS-SDK" -isystem "${PODS_ROOT}/Headers/Public/KissXML"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"CocoaLumberjack" -l"Flurry-iOS-SDK" -l"Flurry_7.6.3" -l"KissXML" -l"xml2" -framework "Foundation" -framework "Security" -framework "SystemConfiguration" -framework "UIKit" -weak_framework "WatchConnectivity"
+PODS_ROOT = ${SRCROOT}/Pods

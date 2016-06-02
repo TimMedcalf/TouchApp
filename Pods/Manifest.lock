@@ -1,0 +1,29 @@
+PODS:
+  - CocoaLumberjack (2.3.0):
+    - CocoaLumberjack/Default (= 2.3.0)
+    - CocoaLumberjack/Extensions (= 2.3.0)
+  - CocoaLumberjack/Core (2.3.0)
+  - CocoaLumberjack/Default (2.3.0):
+    - CocoaLumberjack/Core
+  - CocoaLumberjack/Extensions (2.3.0):
+    - CocoaLumberjack/Default
+  - Flurry-iOS-SDK (7.6.3):
+    - Flurry-iOS-SDK/FlurrySDK (= 7.6.3)
+  - Flurry-iOS-SDK/FlurrySDK (7.6.3)
+  - KissXML (5.0.3):
+    - KissXML/Standard (= 5.0.3)
+  - KissXML/Core (5.0.3)
+  - KissXML/Standard (5.0.3):
+    - KissXML/Core
+
+DEPENDENCIES:
+  - CocoaLumberjack
+  - Flurry-iOS-SDK
+  - KissXML
+
+SPEC CHECKSUMS:
+  CocoaLumberjack: 97fab7ee5f507fe54445cca7ea80f926729cfd15
+  Flurry-iOS-SDK: 5ea9c76a73ce16bff005d21a4f0b539d2c15d97d
+  KissXML: d19dd6dc65e0dc721ba92b3077b8ebdd240f1c1e
+
+COCOAPODS: 0.39.0
