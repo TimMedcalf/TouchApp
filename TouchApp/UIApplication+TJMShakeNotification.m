@@ -1,5 +1,5 @@
 //
-//  UIApplication+TJMShakeNotification.m
+//  UIApplication+TJMNotification.m
 //  TouchApp
 //
 //  Created by Tim Medcalf on 17/02/2013.
