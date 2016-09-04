@@ -35,10 +35,10 @@ NSString *const kTCHNewsFeedItemKey_PubDate = @"pubDate";
 - (instancetype)initWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL {
     self = [super initWithXMLElement:element andBaseURL:baseURL];
     if (self) {
-        _pubDate = [[element elementForName:kTCHNewsFeedItemKey_PubDate] stringValue];
-        _link = [[element elementForName:kTCHNewsFeedItemKey_Link] stringValue];
-        _title = [[element elementForName:kTCHNewsFeedItemKey_Title] stringValue];
-        _text = [[element elementForName:kTCHNewsFeedItemKey_Text] stringValue];
+        _pubDate = [element elementForName:kTCHNewsFeedItemKey_PubDate].stringValue;
+        _link = [element elementForName:kTCHNewsFeedItemKey_Link].stringValue;
+        _title = [element elementForName:kTCHNewsFeedItemKey_Title].stringValue;
+        _text = [element elementForName:kTCHNewsFeedItemKey_Text].stringValue;
     }
     return self;
 }

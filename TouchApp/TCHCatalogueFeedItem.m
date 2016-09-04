@@ -53,38 +53,38 @@ NSString *const Key_Cat_Publisher = @"publisher";
 - (instancetype)initWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL {
     self = [super initWithXMLElement:element andBaseURL:baseURL];
     if (self) {
-        NSString *tmpImage = [[element elementForName:Key_Cat_CoverArt] stringValue];
+        NSString *tmpImage = [element elementForName:Key_Cat_CoverArt].stringValue;
 
         if (tmpImage) {
             NSURL *tmpURL = [[NSURL alloc] initWithString:tmpImage relativeToURL:baseURL];
             self.imageURL = tmpURL;
         }
         //okay, now the stuff that's unique to us...
-        _title = [[element elementForName:Key_Cat_Title] stringValue];
-        _artist = [[element elementForName:Key_Cat_Artist] stringValue];
-        _catalogueNumber = [[element elementForName:Key_Cat_CatalogueNumber] stringValue];
+        _title = [element elementForName:Key_Cat_Title].stringValue;
+        _artist = [element elementForName:Key_Cat_Artist].stringValue;
+        _catalogueNumber = [element elementForName:Key_Cat_CatalogueNumber].stringValue;
 
         //tweak text for HTML display
-        _text = [[element elementForName:Key_Cat_Text] stringValue];
+        _text = [element elementForName:Key_Cat_Text].stringValue;
         _text = [self.text stringByReplacingOccurrencesOfString:@"\n\n" withString:@"</p><p>"];
         _text = [self.text stringByReplacingOccurrencesOfString:@"\r\n" withString:@"</p><p>"];
 
-        _mp3SampleURL = [[element elementForName:Key_Cat_MP3SampleURL] stringValue];
+        _mp3SampleURL = [element elementForName:Key_Cat_MP3SampleURL].stringValue;
         _mp3SampleURL = [self.mp3SampleURL stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 
-        _releaseURL = [[element elementForName:Key_Cat_ReleaseURL] stringValue];
+        _releaseURL = [element elementForName:Key_Cat_ReleaseURL].stringValue;
         _releaseURL = [self.releaseURL stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 
-        _itunesURL = [[element elementForName:Key_Cat_Itunes_URL] stringValue];
+        _itunesURL = [element elementForName:Key_Cat_Itunes_URL].stringValue;
         _itunesURL = [self.itunesURL stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 
-        _releaseDateString = [[element elementForName:Key_Cat_ReleaseDate] stringValue];
-        _releaseDuration = [[element elementForName:Key_Cat_ReleaseDuration] stringValue];
+        _releaseDateString = [element elementForName:Key_Cat_ReleaseDate].stringValue;
+        _releaseDuration = [element elementForName:Key_Cat_ReleaseDuration].stringValue;
 
-        _trackListing = [[element elementForName:Key_Cat_TrackListing] stringValue];
+        _trackListing = [element elementForName:Key_Cat_TrackListing].stringValue;
         _trackListing = [self.trackListing stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
 
-        _publisher = [[element elementForName:Key_Cat_Publisher] stringValue];
+        _publisher = [element elementForName:Key_Cat_Publisher].stringValue;
         DDLogDebug(@"%@ - %@ - %@", self.catalogueNumber, self.artist, self.title);
     }
     return self;

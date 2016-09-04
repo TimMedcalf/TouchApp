@@ -284,9 +284,9 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
         // Create a new Array object to be used with the looping of the results from the rssParser
         self.baseURL = nil;
         
-        NSString *baseURL = [[[rssParser rootElement] attributeForName:@"xml:base"] stringValue];
+        NSString *baseURL = [[rssParser rootElement] attributeForName:@"xml:base"].stringValue;
         if (baseURL) {
-            NSURL *tmpURL = [[NSURL alloc] initWithString:[[[rssParser rootElement] attributeForName:@"xml:base"] stringValue]];
+            NSURL *tmpURL = [[NSURL alloc] initWithString:[[rssParser rootElement] attributeForName:@"xml:base"].stringValue];
             self.baseURL = tmpURL;
         }
         
