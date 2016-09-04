@@ -73,10 +73,16 @@
 }
 
 - (void)URLDidFail:(NSURL *)url {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"Audio stream failed.",@"Audio stream failed.")
-                                                   delegate:nil cancelButtonTitle:NSLocalizedString(@"OK",@"OK")
-                                          otherButtonTitles:nil];
-    [alert show];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil
+                                                                   message:NSLocalizedString(@"Audio stream failed.", @"Audio stream failed.")
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK",@"OK") style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {}];
+    
+    [alert addAction:defaultAction];
+    
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {

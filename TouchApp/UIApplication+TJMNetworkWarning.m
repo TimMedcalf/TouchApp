@@ -14,20 +14,31 @@ static NSTimeInterval tjm_lastNetworkWarning = 0;
 @implementation UIApplication (TJMNetworkWarning)
 
 - (void)tjm_ShowNetworkWarning {
-  NSDate *now = [NSDate date];
-  NSTimeInterval timeSince = now.timeIntervalSince1970;
-  if ((timeSince - tjm_lastNetworkWarning) > 120) {
-    tjm_lastNetworkWarning = timeSince;
-      UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"No connection",@"No connection")
-                                                      message:NSLocalizedString(@"Please check you are connected to the internet.",@"Please check you are connected to the internet.")
-                                                     delegate:nil
-                                            cancelButtonTitle:NSLocalizedString(@"OK",@"OK") otherButtonTitles:nil];
-    [alert show];
-  }
+    NSDate *now = [NSDate date];
+    NSTimeInterval timeSince = now.timeIntervalSince1970;
+    if ((timeSince - tjm_lastNetworkWarning) > 120) {
+        tjm_lastNetworkWarning = timeSince;
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"No connection",@"No connection")
+                                                                       message:NSLocalizedString(@"Please check you are connected to the internet.",@"Please check you are connected to the internet.")
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK",@"OK") style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction * action) {}];
+        
+        [alert addAction:defaultAction];
+        
+        // StackOverflow http://stackoverflow.com/a/26735981/662208 (showing alertcontroller without a parent VC)
+        id rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
+        if ([rootViewController isKindOfClass:[UINavigationController class]]) {
+            rootViewController = [((UINavigationController *)rootViewController).viewControllers objectAtIndex:0];
+        }
+        [rootViewController presentViewController:alert animated:YES completion:nil];
+    }
 }
 
 - (void)tjm_ResetNetworkWarning {
-  tjm_lastNetworkWarning = 0;
+    tjm_lastNetworkWarning = 0;
 }
 
 @end

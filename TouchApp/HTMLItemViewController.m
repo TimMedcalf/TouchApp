@@ -105,11 +105,16 @@
     if (error.code != -999) {
         // load error, hide the activity indicator in the status bar
         if ([error.domain isEqualToString:@"NSURLErrorDomain"]) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error - website not found.",@"Error - website not found.")
-                                                            message:NSLocalizedString(@"Please check that you are connected to the internet.",@"Please check that you are connected to the internet.")
-                                                           delegate:self cancelButtonTitle:NSLocalizedString(@"OK",@"OK") otherButtonTitles:nil];
-            [alert show];
-            return;
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Error - website not found.",@"Error - website not found.")
+                                                                           message:NSLocalizedString(@"Please check that you are connected to the internet.",@"Please check that you are connected to the internet.")
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK",@"OK") style:UIAlertActionStyleDefault
+                                                                  handler:^(UIAlertAction * action) {}];
+            
+            [alert addAction:defaultAction];
+            
+            [self presentViewController:alert animated:YES completion:nil];
         }
     }
 }
