@@ -15,8 +15,8 @@
 @implementation TCHActivityViewController
 
 //stops the status bar interferring with the custom status bar used in the image viewer
-- (BOOL)prefersStatusBarHidden {
-    return ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone);
-}
+//- (BOOL)prefersStatusBarHidden {
+//    return ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone);
+//}
 
 @end

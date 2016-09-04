@@ -56,10 +56,18 @@ static NSInteger iPadThumbnailRowCount = 8;
     return self;
 }
 
+- (BOOL)prefersStatusBarHidden {
+    
+    return NO;
+}
+
+- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation {
+    
+    return UIStatusBarAnimationNone;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
     
     UINavigationBar *nb = self.navigationController.navigationBar;
     nb.barStyle  = UIBarStyleBlack;
@@ -93,13 +101,7 @@ static NSInteger iPadThumbnailRowCount = 8;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
-    //  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) { iOS7Change
-    //    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
-    //  } else {
-    //    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
-    //  }
+
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
 	UINavigationBar *nb = self.navigationController.navigationBar;
@@ -121,12 +123,6 @@ static NSInteger iPadThumbnailRowCount = 8;
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
-    //  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) { iOS7Change
-    //    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
-    //  } else {
-    //    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
-    //  }
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
 	UINavigationBar *nb = self.navigationController.navigationBar;

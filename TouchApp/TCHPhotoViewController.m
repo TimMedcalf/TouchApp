@@ -121,8 +121,6 @@
     recycledPages = [[NSMutableSet alloc] init];
     visiblePages  = [[NSMutableSet alloc] init];
     
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
-    
     UINavigationBar *tmpBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
     self.customNavigationBar = tmpBar;
     self.customNavigationBar.autoresizingMask =  UIViewAutoresizingFlexibleWidth;
@@ -139,13 +137,20 @@
     self.customNavigationBar.barStyle = UIBarStyleBlack;
     //self.customNavigationBar.barTintColor = [UIColor redColor];
     self.customNavigationBar.translucent = YES;
+    self.customNavigationBar.hidden = YES;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleBarsNotification:) name:@"TJMPhotoViewToggleBars" object:nil];
 }
 
 
 - (BOOL)prefersStatusBarHidden {
+
     return YES;
+}
+
+- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation {
+    
+    return UIStatusBarAnimationNone;
 }
 
 - (void)savePhoto {
@@ -187,8 +192,6 @@
     if ((self.pagingScrollView).tracking) {
         self.customNavigationBar.hidden = YES;
         //self.pagingScrollView.backgroundColor = [UIColor blackColor];
-        
-        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
     }
 }
 
@@ -199,7 +202,6 @@
 
 - (void)goBack {
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
         self.customNavigationBar.hidden = YES;
         //self.pagingScrollView.backgroundColor = [UIColor blackColor];
         [self.navigationController popViewControllerAnimated:YES];

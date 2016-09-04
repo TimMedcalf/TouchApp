@@ -55,7 +55,6 @@
   }
   //load the image resource stuff...
   [TJMImageResourceManager sharedInstance];
-  [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
   
   
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
