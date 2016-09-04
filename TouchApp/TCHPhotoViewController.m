@@ -55,7 +55,6 @@
 #import "TCHImageScrollView.h"
 #import "TJMImageResourceManager.h"
 #import "TJMImageResource.h"
-#import "TCHActivityViewController.h"
 
 
 @interface TCHPhotoViewController ()
@@ -161,7 +160,7 @@
     UIImage *image = tmpRes.image;
     
     
-    TCHActivityViewController *activityViewController = [[TCHActivityViewController alloc] initWithActivityItems:@[image] applicationActivities:nil];
+    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[image] applicationActivities:nil];
     activityViewController.excludedActivityTypes = @[UIActivityTypeCopyToPasteboard,UIActivityTypePrint];
     
     if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
