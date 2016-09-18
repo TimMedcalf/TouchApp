@@ -115,8 +115,9 @@ static NSInteger iPadThumbnailRowCount = 8;
     self.navigationController.navigationBarHidden = NO;
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        self.thumbnailWidth = (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) ? iPadThumbnailWidthLandscape : iPadThumbnailWidthPortrait;
+        self.thumbnailWidth = (self.view.bounds.size.width > self.view.bounds.size.height) ? iPadThumbnailWidthLandscape : iPadThumbnailWidthPortrait;
     }
+    
     [self performSelector:@selector(performReloadAfterRotate) withObject:nil afterDelay:0.0];
 }
 
