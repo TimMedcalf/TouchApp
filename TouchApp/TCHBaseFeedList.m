@@ -20,11 +20,12 @@ NSString *const Key_Feed_LastUpdated = @"lastupdated";
 NSString *const Key_Feed_BaseURL = @"baseURL";
 #pragma clang diagnostic pop
 
-@interface TCHBaseFeedList () <NSURLConnectionDataDelegate>
+@interface TCHBaseFeedList () <NSURLSessionDelegate, NSURLSessionDataDelegate, NSURLSessionTaskDelegate>
 
 //RSS Feed Updating
-@property (strong, nonatomic) NSMutableData *activeDownload;
-@property (strong, nonatomic) NSURLConnection *rssConnection;
+//@property (strong, nonatomic) NSMutableData *activeDownload;
+//@property (strong, nonatomic) NSURLConnection *rssConnection;
+@property (strong, nonatomic) NSURLSession *urlSession;
 @property (strong, nonatomic) NSString *feed;
 @property (strong, nonatomic) NSString *cacheFile;
 @property (strong, nonatomic) NSString *etag;
@@ -73,9 +74,9 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 
 - (void)dealloc {
     DDLogDebug(@"list dealloc");
-    if (self.activeDownload) {
-        [self cancelDownload];
-    }
+    //    if (self.activeDownload) {
+    //        [self cancelDownload];
+    //    }
 }
 
 #pragma mark load/save
@@ -127,102 +128,95 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 }
 
 - (void)refreshFeedForced:(BOOL)forced {
-    if (!self.activeDownload) {
-        if (((self.items).count == 0) ||
-            ([[NSDate date] timeIntervalSinceDate:self.lastRefresh] > self.refreshTimerCount) ||
-            forced) {
-            [self startDownload];
-        }
+    //    if (!self.activeDownload) {
+    if (((self.items).count == 0) ||
+        ([[NSDate date] timeIntervalSinceDate:self.lastRefresh] > self.refreshTimerCount) ||
+        forced) {
+        [self startDownload];
     }
+    //    }
 }
 
 - (void)cancelRefresh {
-    if (self.activeDownload) [self cancelDownload];
+    //    if (self.activeDownload) [self cancelDownload];
 }
 
-//- (void)afstartDownload {
-//    //TJM AF - should we still use the cache policy override?
-//    //NSMutableURLRequest *tmpRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:self.feed] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:60];
-//    NSMutableURLRequest *tmpRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:self.feed]];
-//    AFHTTPRequestOperation *afHTTP = [[AFHTTPRequestOperation alloc] initWithRequest:tmpRequest];
-//    afHTTP.responseSerializer = [AFXMLParserResponseSerializer]
-//    afHTTP setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        <#code#>
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        <#code#>
-//    }
-//}
 
 - (void)startDownload {
     [[UIApplication sharedApplication] tjm_pushNetworkActivity];
-    self.activeDownload = [NSMutableData data];
-    // alloc+init and start an NSURLConnection; release on completion/failure
-    DDLogDebug(@"%@", self.feed);
-    //NSMutableURLRequest *tmpRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:self.feed] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60];
-    NSMutableURLRequest *tmpRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:self.feed] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:60];
+    
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    self.urlSession = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:nil];
+    NSMutableURLRequest *tmpRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:self.feed]];
     if (self.etag) {
-        DDLogDebug(@"Adding If-None-Match Header");
         [tmpRequest addValue:self.etag forHTTPHeaderField:@"If-None-Match"];
     }
     if (self.lastUpdated) {
-        DDLogDebug(@"Adding If-Modified-Since Header");
         [tmpRequest addValue:self.lastUpdated forHTTPHeaderField:@"If-Modified-Since"];
     }
     
-    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:
-                             tmpRequest delegate:self];
-    
-    self.rssConnection = conn;
+    NSURLSessionDownloadTask *downloadTask = [self.urlSession downloadTaskWithRequest:tmpRequest];
+//                                                                    completionHandler:
+//                                              ^(NSURL *location, NSURLResponse *response, NSError *error) {
+//                                                  
+//                                                  if (error) {
+//                                                      // Clear the activeDownload property to allow later attempts
+//                                                      //            self.activeDownload = nil;
+//                                                      // Release the connection now that it's finished
+//                                                      
+//                                                      //self.rssConnection = nil;
+//                                                      [self.urlSession invalidateAndCancel];
+//                                                      self.urlSession = nil;
+//                                                      
+//                                                      
+//                                                      if (self.delegate) [self.delegate updateFailed];
+//                                                  } else {
+//                                                      
+//                                                      NSData *data = [NSData dataWithContentsOfURL:location];
+//                                                      if (data) {
+//                                                          //download size check
+//                                                          //                DDLogDebug(@"Download: %@, %lu", self.feedURL, (unsigned long)[self.activeDownload length]);
+//                                                          
+//                                                          [self parseResultWithData:data];
+//                                                          //then update the lastRefresh property
+//                                                          self.lastRefresh = [NSDate date];
+//                                                          //done...lets save the date
+//                                                          [self saveItems];
+//                                                          [self dataUpdated];
+//                                                          //tell delegate we've updated...
+//                                                          if (self.delegate) [self.delegate updateSource];
+//                                                      }
+//                                                      //            self.activeDownload = nil;
+//                                                      
+//                                                      // Release the connection now that it's finished
+//                                                      //self.rssConnection = nil;
+//                                                      [self.urlSession invalidateAndCancel];
+//                                                      self.urlSession = nil;
+//                                                  }
+//                                                  
+//                                                  // call our delegate and tell it that our icon is ready for display
+//                                                  //[delegate appImageDidLoad:self.indexPathInTableView];
+//                                                  
+//                                                  [[UIApplication sharedApplication] tjm_popNetworkActivity];
+//                                              }];
+    [downloadTask resume];
 }
 
 
-//- (void)tjmstartDownload {
-//    [[UIApplication sharedApplication] tjm_pushNetworkActivity];
-//    self.activeDownload = [NSMutableData data];
-//
-//    NSURL *url = [NSURL URLWithString:self.feed];
-//
-//    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-//    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
-//    NSMutableURLRequest *tmpRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:self.feed]];
-//    if (self.etag) {
-//        [tmpRequest addValue:self.etag forHTTPHeaderField:@"If-None-Match"];
-//    }
-//    if (self.lastUpdated) {
-//        [tmpRequest addValue:self.lastUpdated forHTTPHeaderField:@"If-Modified-Since"];
-//    }
-//
-//    NSURLSessionDataTask *sessionTask = [session dataTaskWithRequest:tmpRequest];
-//    [sessionTask resume];
-//
-//    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:
-//            tmpRequest delegate:self];
-//
-//    self.rssConnection = conn;
-//}
-
-
 - (void)cancelDownload {
-    [self.rssConnection cancel];
-    self.rssConnection = nil;
-    self.activeDownload = nil;
+    
+    [self.urlSession invalidateAndCancel];
+    self.urlSession = nil;
+    //    self.activeDownload = nil;
     self.etag = nil;
     self.lastUpdated = nil;
     [[UIApplication sharedApplication] tjm_popNetworkActivity];
 }
 
-#pragma mark Download support (NSURLConnectionDelegate)
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    self.bytesDownloaded += data.length;
-    [self.activeDownload appendData:data];
-    DDLogDebug(@"Downloaded %lu", (unsigned long)[data length]);
-    if ([self.delegate respondsToSelector:@selector(updateProgressWithPercent:)]) {
-        DDLogDebug(@"Updating progress");
-        [self.delegate updateProgressWithPercent:(CGFloat)self.bytesDownloaded / self.totalBytes];
-    }
-}
 
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+#pragma mark Download support (NSURLSessionDataDelegate)
+
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler {
     DDLogDebug(@"%@",[(NSHTTPURLResponse *)response allHeaderFields]);
     
     //store the etag
@@ -236,40 +230,74 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
     // lets keep track of how big we are...and how much we've downloaded
     self.totalBytes = response.expectedContentLength;
     self.bytesDownloaded = 0;
+    //TEST THIS
+    completionHandler(NSURLSessionResponseAllow);
 }
 
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    // Clear the activeDownload property to allow later attempts
-    self.activeDownload = nil;
-    // Release the connection now that it's finished
-    self.rssConnection = nil;
-    [[UIApplication sharedApplication] tjm_popNetworkActivity];
-    if (self.delegate) [self.delegate updateFailed];
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    if (self.activeDownload) {
-        //download size check
-        DDLogDebug(@"Download: %@, %lu", self.feedURL, (unsigned long)[self.activeDownload length]);
-        
-        [self parseResultWithData:self.activeDownload];
-        //then update the lastRefresh property
-        self.lastRefresh = [NSDate date];
-        //done...lets save the date
-        [self saveItems];
-        [self dataUpdated];
-        //tell delegate we've updated...
-        if (self.delegate) [self.delegate updateSource];
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data {
+    
+    self.bytesDownloaded += data.length;
+    //    [self.activeDownload appendData:data];
+    DDLogDebug(@"Downloaded %lu", (unsigned long)[data length]);
+    if ([self.delegate respondsToSelector:@selector(updateProgressWithPercent:)]) {
+        DDLogDebug(@"Updating progress");
+        [self.delegate updateProgressWithPercent:(CGFloat)self.bytesDownloaded / self.totalBytes];
     }
-    self.activeDownload = nil;
-    
-    // Release the connection now that it's finished
-    self.rssConnection = nil;
-    [[UIApplication sharedApplication] tjm_popNetworkActivity];
-    
-    // call our delegate and tell it that our icon is ready for display
-    //[delegate appImageDidLoad:self.indexPathInTableView];
 }
+
+//URLSession:task:didSendBodyData:totalBytesSent:totalBytesExpectedToSend
+//URLSession:downloadTask:didWriteData:totalBytesWritten:totalBytesWritten:totalBytesExpectedToWrite
+- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didWriteData:(int64_t)bytesWritten totalBytesWritten:(int64_t)totalBytesWritten totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
+    DDLogDebug(@"URLSession:downloadTask:didWriteData:totalBytesWritten:totalBytesWritten:totalBytesExpectedToWrite");
+}
+
+
+
+#pragma mark Download support (NSURLSessionTaskDelegate)
+
+
+//- (void)URLSession:(NSURLSession*)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
+//
+//    if (error) {
+//    // Clear the activeDownload property to allow later attempts
+//        self.activeDownload = nil;
+//        // Release the connection now that it's finished
+//
+//        //self.rssConnection = nil;
+//        [self.urlSession invalidateAndCancel];
+//        self.urlSession = nil;
+//
+//
+//        if (self.delegate) [self.delegate updateFailed];
+//    } else {
+//
+//        if (self.activeDownload) {
+//            //download size check
+//            DDLogDebug(@"Download: %@, %lu", self.feedURL, (unsigned long)[self.activeDownload length]);
+//
+//            [self parseResultWithData:self.activeDownload];
+//            //then update the lastRefresh property
+//            self.lastRefresh = [NSDate date];
+//            //done...lets save the date
+//            [self saveItems];
+//            [self dataUpdated];
+//            //tell delegate we've updated...
+//            if (self.delegate) [self.delegate updateSource];
+//        }
+//        self.activeDownload = nil;
+//
+//        // Release the connection now that it's finished
+//        //self.rssConnection = nil;
+//        [self.urlSession invalidateAndCancel];
+//        self.urlSession = nil;
+//    }
+//
+//    // call our delegate and tell it that our icon is ready for display
+//    //[delegate appImageDidLoad:self.indexPathInTableView];
+//
+//    [[UIApplication sharedApplication] tjm_popNetworkActivity];
+//}
+
 
 
 - (void)parseResultWithData:(NSData *)xmlData {
@@ -278,7 +306,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
     // Create a new rssParser object (DDXMLDocument), this is the object that actually grabs and processes the RSS data
     if (xmlData.length > 0) {
         DDLogDebug(@"Parsing XML %lu bytes from feed %@",(unsigned long)[xmlData length], self.feed);
-        DDXMLDocument *rssParser = [[DDXMLDocument alloc] initWithData:self.activeDownload options:0 error:nil];
+        DDXMLDocument *rssParser = [[DDXMLDocument alloc] initWithData:xmlData options:0 error:nil];
         
         
         // Create a new Array object to be used with the looping of the results from the rssParser

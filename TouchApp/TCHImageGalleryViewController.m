@@ -92,7 +92,9 @@ static NSInteger iPadThumbnailRowCount = 8;
         self.progressView.progress = 0;
         self.progressView.hidden = NO;
     }
-    [self.imageList refreshFeed];
+   
+    //TODO REVERT THIS
+    //[self.imageList refreshFeed];
 }
 
 - (void)dealloc {
