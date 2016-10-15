@@ -135,11 +135,16 @@ NSString static *const Key_IconTintB = @"iconTintB";
 
 - (void)configureTableHeader {
     UIImage *header = nil;
-    if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
-        //header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:self.tableHeaderName ofType:@"jpg"]];
+    
+    //hacky
+    UIInterfaceOrientation orientation = UIInterfaceOrientationPortrait;
+    if (self.view.bounds.size.width > self.view.bounds.size.height) {
+        orientation = UIInterfaceOrientationLandscapeLeft;
+    }
+    
+    if (UIInterfaceOrientationIsPortrait(orientation)) {
         header = [UIImage imageNamed:self.tableHeaderName];
     } else {
-        //header = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@_landscape", self.tableHeaderName] ofType:@"jpg"]];
         header = [UIImage imageNamed:[NSString stringWithFormat:@"%@_landscape", self.tableHeaderName]];
     }
     UIImageView *headerView = [[UIImageView alloc]initWithImage:header];
