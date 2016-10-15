@@ -23,7 +23,7 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
 #pragma clang diagnostic pop
 
 
-@interface TJMImageResource () <NSURLConnectionDataDelegate>
+@interface TJMImageResource () <NSURLSessionDelegate, NSURLSessionDataDelegate, NSURLSessionTaskDelegate>
 
 @property (strong, nonatomic) NSString *lastModified;
 @property (strong, nonatomic) NSString *etag;
@@ -31,8 +31,11 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
 @property (strong, nonatomic) NSString *localFileExtension;
 @property (strong, nonatomic) NSDate   *lastChecked;
 @property (strong, nonatomic) NSString *thumbnailPath;
-@property (strong, nonatomic) NSMutableData *activeDownload;
-@property (strong, nonatomic) NSURLConnection *activeConnection;
+
+//@property (strong, nonatomic) NSMutableData *activeDownload;
+//@property (strong, nonatomic) NSURLConnection *activeConnection;
+@property (strong, nonatomic) NSURLSessionDownloadTask *activeDownloadTask;
+@property (strong, nonatomic) NSURLSession *urlSession;
 
 - (void)startDownload;
 //- (void)cancelDownload;
@@ -125,69 +128,73 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
 - (BOOL)imageIsDownloaded {
     return (([[NSFileManager defaultManager] fileExistsAtPath:self.fullPathForLocalBaseImage]) &&
             ((self.lastChecked).timeIntervalSinceNow > -(3600 *24 *30)) &&
-            (!self.activeDownload));
+            (!self.activeDownloadTask));
 }
 
 #pragma mark downloads
 - (void)cacheImage {
-    if ((!self.imageIsDownloaded) && (!self.activeDownload))
+    if ((!self.imageIsDownloaded) && (!self.activeDownloadTask))
         [self startDownload];
 }
 
 - (void)startDownload {
-    //kick off the download process
+    
+    if (self.activeDownloadTask) {
+        return;
+    }
+    
     [[UIApplication sharedApplication] tjm_pushNetworkActivity];
-    self.activeDownload = [NSMutableData data];
+    
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    self.urlSession = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:nil];
     NSMutableURLRequest *tmpRequest = [[NSMutableURLRequest alloc] initWithURL:self.imageURL];
-    if (self.lastModified) [tmpRequest addValue:self.lastModified forHTTPHeaderField:@"If-Modified-Since"];
-    if (self.etag) [tmpRequest addValue:self.etag forHTTPHeaderField:@"If-None-Match"];
-    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:tmpRequest delegate:self];
-    self.activeConnection = conn;
+    
+    if (self.etag) {
+        [tmpRequest addValue:self.etag forHTTPHeaderField:@"If-None-Match"];
+    }
+    if (self.lastModified) {
+        [tmpRequest addValue:self.lastModified forHTTPHeaderField:@"If-Modified-Since"];
+    }
+    
+    self.activeDownloadTask = [self.urlSession downloadTaskWithRequest:tmpRequest];
+    
+    [self.activeDownloadTask resume];
+
 }
 
-//- (void)cancelDownload {
-//  [self.activeConnection cancel];
-//  self.activeConnection = nil;
-//  self.activeDownload = nil;
-//  [[UIApplication sharedApplication] tjm_popNetworkActivity];
-//}
 
 #pragma mark Download support (NSURLConnectionDelegate)
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    [self.activeDownload appendData:data];
-}
 
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    //store the etag and lastModified strings if they're present
-    DDLogDebug(@"%@",[(NSHTTPURLResponse *)response allHeaderFields]);
-    self.etag = ((NSHTTPURLResponse *)response).allHeaderFields[@"Etag"];
-    self.lastModified = ((NSHTTPURLResponse *)response).allHeaderFields[@"Last-Modified"];
-}
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    // Clear the activeDownload property to allow later attempts
-    self.activeDownload = nil;
-    // Release the connection now that it's finished
-    self.activeConnection = nil;
+-(void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
+    
+    self.activeDownloadTask = nil;
     [[UIApplication sharedApplication] tjm_popNetworkActivity];
+
 }
 
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    DDLogDebug(@"[%@ %@] size of download %lul", [self class], NSStringFromSelector(_cmd), (unsigned long)[self.activeDownload length]);
-    if ((self.activeDownload) && ((self.activeDownload).length > 0)) {
-        if (![self.activeDownload writeToFile:self.fullPathForLocalBaseImage atomically:YES]) {
-            DDLogError(@"Error: Couldn't write file '%@' to cache.", self.fullPathForLocalBaseImage);
-        }
+- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location {
+    DDLogDebug(@"[%@ %@] didFinish",[self class], NSStringFromSelector(_cmd));
+    
+    //load the data
+    NSData *downloadedData = [NSData dataWithContentsOfURL:location];
+    //write it to the permananent place
+    if (![downloadedData writeToFile:self.fullPathForLocalBaseImage atomically:YES]) {
+        DDLogError(@"Error: Couldn't write file '%@' to cache.", self.fullPathForLocalBaseImage);
     }
-    self.activeDownload = nil;
-
-    // Release the connection now that it's finished
-    self.activeConnection = nil;
+    
     self.lastChecked = [NSDate date];
-    [[UIApplication sharedApplication] tjm_popNetworkActivity];
-
-    // call our delegate and tell it that our icon is ready for display
-    [[NSNotificationCenter defaultCenter] postNotificationName:TJMImageResourceImageNeedsUpdating object:self];
+    
+    //extract the infos
+    NSHTTPURLResponse *response = (NSHTTPURLResponse *)downloadTask.response;
+    DDLogDebug(@"%@",[response allHeaderFields]);
+    self.etag = response.allHeaderFields[@"Etag"];
+    self.lastModified = response.allHeaderFields[@"Last-Modified"];
+    
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        //tell delegate we've updated...
+        // call our delegate and tell it that our icon is ready for display
+        [[NSNotificationCenter defaultCenter] postNotificationName:TJMImageResourceImageNeedsUpdating object:self];
+    });
 }
 
 @end

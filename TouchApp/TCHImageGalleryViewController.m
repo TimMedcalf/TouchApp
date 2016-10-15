@@ -92,7 +92,9 @@ static NSInteger iPadThumbnailRowCount = 8;
         self.progressView.progress = 0;
         self.progressView.hidden = NO;
     }
-    [self.imageList refreshFeed];
+   
+    //TODO REVERT THIS
+    //[self.imageList refreshFeed];
 }
 
 - (void)dealloc {
@@ -115,8 +117,9 @@ static NSInteger iPadThumbnailRowCount = 8;
     self.navigationController.navigationBarHidden = NO;
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        self.thumbnailWidth = (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) ? iPadThumbnailWidthLandscape : iPadThumbnailWidthPortrait;
+        self.thumbnailWidth = (self.view.bounds.size.width > self.view.bounds.size.height) ? iPadThumbnailWidthLandscape : iPadThumbnailWidthPortrait;
     }
+    
     [self performSelector:@selector(performReloadAfterRotate) withObject:nil afterDelay:0.0];
 }
 
@@ -149,11 +152,17 @@ static NSInteger iPadThumbnailRowCount = 8;
 }
 
 
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)orientation duration:(NSTimeInterval)duration {
-    [super willRotateToInterfaceOrientation:orientation duration:duration];
-    self.thumbnailWidth = (UIInterfaceOrientationIsLandscape(orientation)) ? iPadThumbnailWidthLandscape : iPadThumbnailWidthPortrait;
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        self.thumbnailWidth = iPhoneThumbnailWidth;
+    } else {
+        self.thumbnailWidth = (size.width > size.height) ? iPadThumbnailWidthLandscape : iPadThumbnailWidthPortrait;
+    }
     [self performSelector:@selector(performReloadAfterRotate) withObject:nil afterDelay:0.0];
 }
+
 
 - (void)performReloadAfterRotate {
     DDLogDebug(@"Reloading Gallery");
@@ -172,13 +181,17 @@ static NSInteger iPadThumbnailRowCount = 8;
     return (NSInteger) ((res.rem > 0) ? res.quot+1 : res.quot);
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *CellIdentifier;
-    if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
+    
+    //hacky
+    if (self.view.bounds.size.width > self.view.bounds.size.height) {
         CellIdentifier = @"ImageItemLandscape";
     } else {
         CellIdentifier = @"ImageItemPortrait";
     }
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
