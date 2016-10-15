@@ -23,9 +23,6 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 @interface TCHBaseFeedList () <NSURLSessionDelegate, NSURLSessionDataDelegate, NSURLSessionTaskDelegate>
 
 //RSS Feed Updating
-//@property (strong, nonatomic) NSMutableData *activeDownload;
-//@property (strong, nonatomic) NSURLConnection *rssConnection;
-
 @property (strong, nonatomic) NSURLSessionDownloadTask *activeDownloadTask;
 @property (strong, nonatomic) NSURLSession *urlSession;
 @property (strong, nonatomic) NSString *feed;

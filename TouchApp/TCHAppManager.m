@@ -111,19 +111,16 @@ NSString *const LMSUCache = @"TouchCache";
     // the others can wait till the user taps on them
     // but if it's been loaded before, just refresh them all...
     
-    //TODO revert this
-    [self.newsList refreshFeed];
-    
-//    if ((self.newsList).itemCount == 0) {
-//        [self.newsList refreshFeed];
-//        [self.catalogueList refreshFeed];
-//    } else {
-//        [self.newsList refreshFeed];
-//        [self.catalogueList refreshFeed];
-//        [self.radioList refreshFeed];
-//        [self.imageList refreshFeed];
-//        [self.recipeList refreshFeed];
-//    }
+    if ((self.newsList).itemCount == 0) {
+        [self.newsList refreshFeed];
+        [self.catalogueList refreshFeed];
+    } else {
+        [self.newsList refreshFeed];
+        [self.catalogueList refreshFeed];
+        [self.radioList refreshFeed];
+        [self.imageList refreshFeed];
+        [self.recipeList refreshFeed];
+    }
 }
 
 @end
