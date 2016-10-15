@@ -199,20 +199,10 @@
 
 - (void)goBack {
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        self.customNavigationBar.hidden = YES;
-        //self.pagingScrollView.backgroundColor = [UIColor blackColor];
+        self.customNavigationBar.hidden = YES;        //self.pagingScrollView.backgroundColor = [UIColor blackColor];
         [self.navigationController popViewControllerAnimated:YES];
     } else {
         [self.delegate dismissPhotoView:self];
-    }
-}
-
-- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if (buttonIndex != actionSheet.cancelButtonIndex) {
-        TCHImageFeedItem *img = [self.imageList itemAtIndex:(NSUInteger)self.centerPhotoIndex];
-        TJMImageResource *tmpRes = [[TJMImageResourceManager sharedInstance] resourceForURL:img.imageURL];
-        UIImage *image = tmpRes.image;
-        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
     }
 }
 
