@@ -156,9 +156,10 @@ NSString static *const Key_IconTintB = @"iconTintB";
     [self.feedList refreshFeed];
 }
 
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)orientation duration:(NSTimeInterval)duration {
-    [super willRotateToInterfaceOrientation:orientation duration:duration];
-    [self performSelector:@selector(configureTableHeader) withObject:nil afterDelay:duration / 2];
+
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    [self performSelector:@selector(configureTableHeader) withObject:nil afterDelay:0.2];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
