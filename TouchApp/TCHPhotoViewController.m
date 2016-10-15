@@ -66,7 +66,7 @@
     CGFloat       percentScrolledIntoFirstVisiblePage;
 }
 
-@property (nonatomic, strong) UIPopoverController *activityPopover;
+@property (nonatomic, strong) UIPopoverPresentationController *activityPopover;
 @property (nonatomic, strong) UIBarButtonItem *shareItem;
 
 @property (NS_NONATOMIC_IOSONLY, readonly) NSInteger centerPhotoIndex;
@@ -143,7 +143,7 @@
 
 
 - (BOOL)prefersStatusBarHidden {
-
+    
     return YES;
 }
 
@@ -169,16 +169,14 @@
     }
     else
     {
-        //iPad, present the view controller inside a popover.
-        if (!(self.activityPopover).popoverVisible) {
-            self.activityPopover = [[UIPopoverController alloc] initWithContentViewController:activityViewController];
-            [self.activityPopover presentPopoverFromBarButtonItem:self.shareItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-        }
-        else
-        {
-            //Dismiss if the button is tapped while popover is visible.
-            [self.activityPopover dismissPopoverAnimated:YES];
-        }
+        
+        activityViewController.modalPresentationStyle = UIModalPresentationPopover;
+        [self presentViewController:activityViewController animated: YES completion: nil];
+        
+        // Get the popover presentation controller and configure it.
+        self.activityPopover = [activityViewController popoverPresentationController];
+        self.activityPopover.permittedArrowDirections = UIPopoverArrowDirectionAny;
+        self.activityPopover.barButtonItem = self.shareItem;
     }
 }
 
