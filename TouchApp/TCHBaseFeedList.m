@@ -151,6 +151,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
     self.urlSession = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:nil];
     NSMutableURLRequest *tmpRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:self.feed]];
+    
     if (self.etag) {
         [tmpRequest addValue:self.etag forHTTPHeaderField:@"If-None-Match"];
     }
@@ -177,13 +178,6 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 
 #pragma mark Download support (NSURLSessionDataDelegate)
 
-
-
-- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
-    DDLogDebug(@"didFinish");
-    self.activeDownloadTask = nil;
-}
-
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didWriteData:(int64_t)bytesWritten totalBytesWritten:(int64_t)totalBytesWritten totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
     DDLogDebug(@"[%@ %@] Updating progress",[self class], NSStringFromSelector(_cmd));
     
@@ -203,6 +197,21 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
     
     [self parseResultWithData:[NSData dataWithContentsOfURL:location]];
     self.lastRefresh = [NSDate date];
+    
+    //extract the infos
+    NSHTTPURLResponse *response = (NSHTTPURLResponse *)downloadTask.response;
+    
+    DDLogDebug(@"%@",[response allHeaderFields]);
+    
+    //store the etag
+    self.etag = response.allHeaderFields[@"Etag"];
+    DDLogDebug(@"Etag=%@",self.etag);
+    
+    //last modified date - keep it as a string to easily match the server's format.
+    self.lastUpdated = response.allHeaderFields[@"Last-Modified"];
+    DDLogDebug(@"Last Modified Date : %@", self.lastUpdated);
+    
+    
     //done...lets save the date
     [self saveItems];
     [self dataUpdated];
