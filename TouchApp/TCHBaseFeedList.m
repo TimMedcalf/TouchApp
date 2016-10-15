@@ -184,7 +184,16 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
     if ([self.delegate respondsToSelector:@selector(updateProgressWithPercent:)]) {
         [self.delegate updateProgressWithPercent:totalBytesWritten / totalBytesExpectedToWrite];
     }
+}
+
+-(void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
+    
     self.activeDownloadTask = nil;
+    [[UIApplication sharedApplication] tjm_popNetworkActivity];
+    
+    if (error) {
+        [self.delegate updateFailed];
+    }
 }
 
 
@@ -192,8 +201,6 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
     
     
     DDLogDebug(@"[%@ %@] didFinish",[self class], NSStringFromSelector(_cmd));
-    
-    [[UIApplication sharedApplication] tjm_popNetworkActivity];
     
     [self parseResultWithData:[NSData dataWithContentsOfURL:location]];
     self.lastRefresh = [NSDate date];
@@ -210,7 +217,6 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
     //last modified date - keep it as a string to easily match the server's format.
     self.lastUpdated = response.allHeaderFields[@"Last-Modified"];
     DDLogDebug(@"Last Modified Date : %@", self.lastUpdated);
-    
     
     //done...lets save the date
     [self saveItems];
