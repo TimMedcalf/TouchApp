@@ -13,7 +13,7 @@
 #pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
 NSString *const kTCHNewsFeedItemKey_Title = @"title";
 NSString *const kTCHNewsFeedItemKey_Link = @"link";
-NSString *const kTCHNewsFeedItemKey_Text = @"description";
+NSString *const kTCHNewsFeedItemKey_Text = @"content:encoded";
 NSString *const kTCHNewsFeedItemKey_PubDate = @"pubDate";
 #pragma clang diagnostic pop
 
@@ -33,9 +33,25 @@ NSString *const kTCHNewsFeedItemKey_PubDate = @"pubDate";
 }
 
 - (instancetype)initWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL {
+    
     self = [super initWithXMLElement:element andBaseURL:baseURL];
     if (self) {
-        _pubDate = [element elementForName:kTCHNewsFeedItemKey_PubDate].stringValue;
+        
+        // TODO - these dateformatters shouldn't really be created for every item!
+        
+        //decode the string from text format 'Wed, 09 Nov 2016 19:32:01 +0000'
+        NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
+        inputFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+        inputFormatter.dateFormat = @"EEE, dd MMM yyyy HH:mm:ss z";
+        NSString *dateStr = [element elementForName:kTCHNewsFeedItemKey_PubDate].stringValue;
+        NSDate *tmpDate = [inputFormatter dateFromString:dateStr];
+        
+        //convert the date to be in string format "Posted on July 15, 2014"
+        NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
+        outputFormatter.locale = inputFormatter.locale;
+        outputFormatter.dateFormat = @"MMMM d, yyyy";
+        _pubDate = [NSString stringWithFormat:@"Posted on %@",[outputFormatter stringFromDate:tmpDate]];
+        
         _link = [element elementForName:kTCHNewsFeedItemKey_Link].stringValue;
         _title = [element elementForName:kTCHNewsFeedItemKey_Title].stringValue;
         _text = [element elementForName:kTCHNewsFeedItemKey_Text].stringValue;
