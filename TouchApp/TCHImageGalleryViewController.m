@@ -72,7 +72,7 @@ static NSInteger iPadThumbnailRowCount = 8;
     UINavigationBar *nb = self.navigationController.navigationBar;
     nb.barStyle  = UIBarStyleBlack;
     nb.translucent = NO;
-	nb.tintColor = [UIColor colorWithRed:(CGFloat) (195 / 255.0) green:(CGFloat) (54 / 255.0) blue:(CGFloat) (37 / 255.0) alpha:1];
+    nb.tintColor = [UIColor colorWithRed:(CGFloat) (195 / 255.0) green:(CGFloat) (54 / 255.0) blue:(CGFloat) (37 / 255.0) alpha:1];
     
     self.navigationItem.title = @"";
     
@@ -81,20 +81,13 @@ static NSInteger iPadThumbnailRowCount = 8;
     
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"headerText_photos"]];
     
-    //  TCHImageFeedList *tmpList = [[TCHImageFeedList alloc] init];
-    //  self.imageList = tmpList;
-    //  self.imageList.xpathOverride = @"//photo";
-    //  self.imageList.rawMode = YES;
-    //  self.imageList.delegate = self;
-    
     if ((self.imageList).itemCount == 0) {
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.progressView.progress = 0;
         self.progressView.hidden = NO;
     }
-   
-    //TODO REVERT THIS
-    //[self.imageList refreshFeed];
+    
+    [self.imageList refreshFeed];
 }
 
 - (void)dealloc {
@@ -103,22 +96,21 @@ static NSInteger iPadThumbnailRowCount = 8;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-
+    
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
-	UINavigationBar *nb = self.navigationController.navigationBar;
+    UINavigationBar *nb = self.navigationController.navigationBar;
     nb.barStyle  = UIBarStyleBlack;
     nb.translucent = NO;
-	nb.tintColor = [UIColor colorWithRed:(CGFloat) (195 / 255.0) green:(CGFloat) (54 / 255.0) blue:(CGFloat) (37 / 255.0) alpha:1];
-
+    nb.tintColor = [UIColor colorWithRed:(CGFloat) (195 / 255.0) green:(CGFloat) (54 / 255.0) blue:(CGFloat) (37 / 255.0) alpha:1];
+    
     self.tabBarController.tabBar.tintColor = [UIColor colorWithRed:(CGFloat) (195 / 255.0) green:(CGFloat) (54 / 255.0) blue:(CGFloat) (37 / 255.0) alpha:1];
     
     [nb setBackgroundImage:[UIImage imageNamed:@"shim_photos"] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBarHidden = NO;
     
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        self.thumbnailWidth = (self.view.bounds.size.width > self.view.bounds.size.height) ? iPadThumbnailWidthLandscape : iPadThumbnailWidthPortrait;
-    }
+    NSInteger divisor = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 8 : 4;
+    self.thumbnailWidth = ceilf(self.view.bounds.size.width / divisor);
     
     [self performSelector:@selector(performReloadAfterRotate) withObject:nil afterDelay:0.0];
 }
@@ -128,10 +120,10 @@ static NSInteger iPadThumbnailRowCount = 8;
     
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
-	UINavigationBar *nb = self.navigationController.navigationBar;
+    UINavigationBar *nb = self.navigationController.navigationBar;
     nb.barStyle  = UIBarStyleBlack;
     nb.translucent = NO;
-	nb.tintColor = [UIColor colorWithRed:(CGFloat) (195 / 255.0) green:(CGFloat) (54 / 255.0) blue:(CGFloat) (37 / 255.0) alpha:1];
+    nb.tintColor = [UIColor colorWithRed:(CGFloat) (195 / 255.0) green:(CGFloat) (54 / 255.0) blue:(CGFloat) (37 / 255.0) alpha:1];
     [nb setBackgroundImage:[UIImage imageNamed:@"shim_photos"] forBarMetrics:UIBarMetricsDefault];
     
     [self.imageList refreshFeed];
