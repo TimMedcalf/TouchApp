@@ -6,10 +6,8 @@
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
 
-#import "Flurry.h"
 #import "TJMAudioCenter.h"
 #import "GCDSingleton.h"
-
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
@@ -72,8 +70,8 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
         DDLogDebug(@"[%@ %@] Rate =1", [self class], NSStringFromSelector(_cmd));
     } else {
         if (title) {
-            DDLogDebug(@"Flurry Radio Played_FromStart %@", title);
-            [Flurry logEvent:@"Radio" withParameters:@{@"Played_FromStart": title}];
+            DDLogDebug(@"Radio Played_FromStart %@", title);
+//            [Flurry logEvent:@"Radio" withParameters:@{@"Played_FromStart": title}];
         }
         self.URLTitle = title;
         //remove notifications
@@ -164,8 +162,8 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
     DDLogDebug(@"Reached end of stream...");
     if (self.player) {
         if (self.URLTitle) {
-            DDLogDebug(@"Flurry Radio Played_ToEnd %@", self.URLTitle);
-            [Flurry logEvent:@"Radio" withParameters:@{@"Played_ToEnd": self.URLTitle}];
+            DDLogDebug(@"Radio Played_ToEnd %@", self.URLTitle);
+//            [Flurry logEvent:@"Radio" withParameters:@{@"Played_ToEnd": self.URLTitle}];
             self.URLTitle = nil;
         }
         

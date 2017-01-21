@@ -1,6 +1,5 @@
 
 #import "TCHCatalogueItemViewController.h"
-#import "Flurry.h"
 
 @implementation TCHCatalogueItemViewController
 
@@ -36,13 +35,13 @@
 }
 
 - (void)play {
-    [Flurry logEvent:@"Catalogue" withParameters:@{@"Played": _item.title}];
+    //[Flurry logEvent:@"Catalogue" withParameters:@{@"Played": _item.title}];
     [[TJMAudioCenter sharedInstance] setCurrentPlayingWithInfoForArtist:self.item.artist album:nil andTitle:self.item.title];
     [[TJMAudioCenter sharedInstance] playURL:[NSURL URLWithString:self.item.mp3SampleURL]];
 }
 
 - (void)buy {
-    [Flurry logEvent:@"Catalogue" withParameters:@{@"BuyPressed": _item.title}];
+    //[Flurry logEvent:@"Catalogue" withParameters:@{@"BuyPressed": _item.title}];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.item.itunesURL]];
 }
 

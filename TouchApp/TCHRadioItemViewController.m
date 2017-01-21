@@ -1,6 +1,5 @@
 
 #import "TCHRadioItemViewController.h"
-#import "Flurry.h"
 
 
 @implementation TCHRadioItemViewController
@@ -48,7 +47,7 @@
 }
 
 - (void)play {
-    [Flurry logEvent:@"Radio" withParameters:@{@"Played": _item.titleLabel}];
+    //[Flurry logEvent:@"Radio" withParameters:@{@"Played": _item.titleLabel}];
     DDLogDebug(@"Trying to play - %@",self.item.link);
     [[TJMAudioCenter sharedInstance] setCurrentPlayingWithInfoForArtist:nil album:self.item.title andTitle:self.item.titleLabel];
     [[TJMAudioCenter sharedInstance] playURL:[NSURL URLWithString:self.item.link] withTitle:_item.titleLabel];
