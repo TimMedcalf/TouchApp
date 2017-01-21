@@ -9,30 +9,40 @@
 #import "TCHRadioFeedList.h"
 #import "TCHRadioFeedItem.h"
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
+//OLD NSString *const kRadioFeedURLString = @"http://www.touchshop.org/touchradio/podcast.xml";
+// MIKE PREFERRED BUT NOT NSString *const kRadioFeedURLString = @"http://touchradio.org.uk/episodes/feed";
+NSString *const kRadioFeedURLString = @"http://touchradio.org.uk/category/episodes/feed";
+NSString *const kRadioCacheFileName = @"touchRadio";
+#pragma clang diagnostic pop
+
 
 @implementation TCHRadioFeedList
 
 //overrides
 
-//- (NSInteger)refreshTimerCount
-//{
-//  return 3600;
-//}
-
 - (TCHBaseFeedItem *)newItemWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL {
-  return [[TCHRadioFeedItem alloc] initWithXMLElement:element andBaseURL:baseURL];
+    
+    return [[TCHRadioFeedItem alloc] initWithXMLElement:element andBaseURL:baseURL];
 }
+
 
 - (TCHBaseFeedItem *)newItemWithDictionary:dictionary {
-  return [[TCHRadioFeedItem alloc]initWithDictionary:dictionary];
+    
+    return [[TCHRadioFeedItem alloc]initWithDictionary:dictionary];
 }
+
 
 - (NSString *)feedURL {
-  return @"http://www.touchshop.org/touchradio/podcast.xml";
+    
+    return kRadioFeedURLString;
 }
 
+
 - (NSString *)cacheFilename {
-  return @"touchRadio";
+    
+    return kRadioCacheFileName;
 }
 
 @end

@@ -40,187 +40,181 @@ static const CGFloat kAccessoryInset = 15.;
 
 #pragma mark private
 + (CGFloat)horizontalPadding {
-  return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 50 : 17;
+    return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 50 : 17;
 }
 
 + (CGFloat)verticalPadding {
-  return 14;
+    return 14;
 }
 
 + (UIImage *)accessoryImage {
-  return [UIImage imageNamed:@"go"];
+    return [UIImage imageNamed:@"go"];
 }
 
 + (CGSize)accessorySize {
-  return [[self class] accessoryImage].size;
+    return [[self class] accessoryImage].size;
 }
 
 + (UIFont *)titleFont {
-  return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? [UIFont fontWithName:@"Helvetica" size:21] : [UIFont fontWithName:@"Helvetica" size:14];
+    return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? [UIFont fontWithName:@"Helvetica" size:21] : [UIFont fontWithName:@"Helvetica" size:14];
 }
 
 + (UIFont *)subtitleFont {
-  return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? [UIFont fontWithName:@"Helvetica-Bold" size:15] : [UIFont fontWithName:@"Helvetica-Bold" size:10];
+    return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? [UIFont fontWithName:@"Helvetica-Bold" size:15] : [UIFont fontWithName:@"Helvetica-Bold" size:10];
 }
 
 + (CGSize)sizeOfString:(NSString *)string withFont:(UIFont *)font lineBreakingOn:(BOOL)lineBreakingOn maxWidth:(CGFloat)maxWidth {
-  //now work out the height the label needs to be
-  NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
-  if (lineBreakingOn) {
-    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
-  } else {
-    paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
-  }
-  NSDictionary *attributes = @{NSFontAttributeName: font, NSParagraphStyleAttributeName : paragraphStyle};
-  CGRect stringRect = [string boundingRectWithSize:CGSizeMake(maxWidth, MAXFLOAT)
-                                           options:NSStringDrawingUsesLineFragmentOrigin
-                                        attributes:attributes
-                                           context:nil];
-  return CGSizeMake((CGFloat) ceil(stringRect.size.width), (CGFloat) ceil(stringRect.size.height));
+    //now work out the height the label needs to be
+    NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    if (lineBreakingOn) {
+        paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+    } else {
+        paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
+    }
+    NSDictionary *attributes = @{NSFontAttributeName: font, NSParagraphStyleAttributeName : paragraphStyle};
+    CGRect stringRect = [string boundingRectWithSize:CGSizeMake(maxWidth, MAXFLOAT)
+                                             options:NSStringDrawingUsesLineFragmentOrigin
+                                          attributes:attributes
+                                             context:nil];
+    return CGSizeMake((CGFloat) ceil(stringRect.size.width), (CGFloat) ceil(stringRect.size.height));
 }
 
 
 #pragma mark public
 + (CGFloat)estimatedRowHeight {
-  return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 81 : 58;
+    return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 81 : 58;
 }
 
 + (CGFloat)actualRowHeightwithTitle:(NSString *)title subtitle:(NSString *)subtitle forTableWidth:(CGFloat)tableWidth {
-  //first up, initialise a running total of the height so far
-  CGFloat rollingHeight = 0;
-  //so, the width of the content view will be the width of the table - minus the accessory inset - minus the width of the accessory view itself
-  CGFloat usableWidth = tableWidth - kAccessoryInset - [[self class] accessorySize].width;
-  //then we need to take off the insets
-  usableWidth -= ([[self class] horizontalPadding] * 2);
-  //okay - we know what the usable width of the strings can be - lets work out the heights - first up, the title
-  CGSize aSize = [[self class] sizeOfString:title withFont:[[self class] titleFont] lineBreakingOn:YES maxWidth:usableWidth];
-  //okay - we have the title height
-  rollingHeight += ceil(aSize.height);
-  //do we have a subtitle? if so, add the height of that to the rollingHeight
-  if (subtitle && (subtitle.length > 0)) {
-    //add one to rollingHeight to include a minor gap
-    rollingHeight += 1;
-    //now work out the size of the subtitle (and only one line of it)
-    aSize = [[self class] sizeOfString:subtitle withFont:[[self class] subtitleFont] lineBreakingOn:NO maxWidth:usableWidth];
+    //first up, initialise a running total of the height so far
+    CGFloat rollingHeight = 0;
+    //so, the width of the content view will be the width of the table - minus the accessory inset - minus the width of the accessory view itself
+    CGFloat usableWidth = tableWidth - kAccessoryInset - [[self class] accessorySize].width;
+    //then we need to take off the insets
+    usableWidth -= ([[self class] horizontalPadding] * 2);
+    //okay - we know what the usable width of the strings can be - lets work out the heights - first up, the title
+    CGSize aSize = [[self class] sizeOfString:title withFont:[[self class] titleFont] lineBreakingOn:YES maxWidth:usableWidth];
+    //okay - we have the title height
     rollingHeight += ceil(aSize.height);
-  }
-  //next up, add the top and bottom vertical padding
-  rollingHeight += [[self class] verticalPadding] * 2;
-  //and that should be it!
-  DDLogDebug(@"ActualHeight %f",ceil(rollingHeight));
-  return ceil(rollingHeight);
+    //do we have a subtitle? if so, add the height of that to the rollingHeight
+    if (subtitle && (subtitle.length > 0)) {
+        //add one to rollingHeight to include a minor gap
+        rollingHeight += 1;
+        //now work out the size of the subtitle (and only one line of it)
+        aSize = [[self class] sizeOfString:subtitle withFont:[[self class] subtitleFont] lineBreakingOn:NO maxWidth:usableWidth];
+        rollingHeight += ceil(aSize.height);
+    }
+    //next up, add the top and bottom vertical padding
+    rollingHeight += [[self class] verticalPadding] * 2;
+    //and that should be it!
+    DDLogDebug(@"ActualHeight %f",ceil(rollingHeight));
+    return ceil(rollingHeight);
 }
 
 
 #pragma mark - lifecycle
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-  //touch cells can only handle the default and subtitle styles
-  self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-  if (self) {
-    //background colors
-    self.selectionStyle = UITableViewCellSelectionStyleGray;
-    self.contentView.backgroundColor = [UIColor whiteColor];
-      
-      
-    UIView *selView = [[UIView alloc] initWithFrame:self.bounds];
-    //selected state
-    selView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-    selView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.05];
-    self.selectedBackgroundView = selView;
-    //accessory
-    self.accessoryView = [[UIImageView alloc] initWithImage:[[self class] accessoryImage]];
-    //initial config of the title
-    _titleLabel = [[UILabel alloc] init];
-    self.titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    self.titleLabel.textColor = [UIColor blackColor];
-    self.titleLabel.textAlignment = NSTextAlignmentLeft;
-    self.titleLabel.backgroundColor = [UIColor clearColor];
-    self.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    self.titleLabel.numberOfLines = 0;
-    self.titleLabel.font = [[self class] titleFont];
-    [self.contentView addSubview:self.titleLabel];
-
-    //initial config of the subtitle (whether we show it or not)
-    _subtitleLabel = [[UILabel alloc] init];
-    self.subtitleLabel.textColor = [UIColor grayColor];
-    self.subtitleLabel.textAlignment = NSTextAlignmentLeft;
-    self.subtitleLabel.backgroundColor = [UIColor clearColor];
-    self.subtitleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
-    self.subtitleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    self.subtitleLabel.numberOfLines = 1;
-    self.subtitleLabel.font = [[self class] subtitleFont];
-    [self.contentView addSubview:self.subtitleLabel];
-  }
-  return self;
+    
+    //touch cells can only handle the default and subtitle styles
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        //background colors
+        self.selectionStyle = UITableViewCellSelectionStyleGray;
+        self.contentView.backgroundColor = [UIColor whiteColor];
+        
+        
+        UIView *selView = [[UIView alloc] initWithFrame:self.bounds];
+        //selected state
+        selView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        selView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.05];
+        self.selectedBackgroundView = selView;
+        //accessory
+        self.accessoryView = [[UIImageView alloc] initWithImage:[[self class] accessoryImage]];
+        //initial config of the title
+        _titleLabel = [[UILabel alloc] init];
+        self.titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+        self.titleLabel.textColor = [UIColor blackColor];
+        self.titleLabel.textAlignment = NSTextAlignmentLeft;
+        self.titleLabel.backgroundColor = [UIColor clearColor];
+        self.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        self.titleLabel.numberOfLines = 0;
+        self.titleLabel.font = [[self class] titleFont];
+        [self.contentView addSubview:self.titleLabel];
+        
+        //initial config of the subtitle (whether we show it or not)
+        _subtitleLabel = [[UILabel alloc] init];
+        self.subtitleLabel.textColor = [UIColor grayColor];
+        self.subtitleLabel.textAlignment = NSTextAlignmentLeft;
+        self.subtitleLabel.backgroundColor = [UIColor clearColor];
+        self.subtitleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+        self.subtitleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+        self.subtitleLabel.numberOfLines = 1;
+        self.subtitleLabel.font = [[self class] subtitleFont];
+        [self.contentView addSubview:self.subtitleLabel];
+    }
+    return self;
 }
 
 
 #pragma mark - property overrides
 - (void)setTitleString:(NSString *)titleString {
-  _titleString = titleString;
-  self.titleLabel.text = self.titleString;
+    _titleString = titleString;
+    self.titleLabel.text = self.titleString;
 }
 
 - (void)setSubtitleString:(NSString *)subtitleString {
-  _subtitleString = subtitleString;
-  self.subtitleLabel.text = self.subtitleString;
+    _subtitleString = subtitleString;
+    self.subtitleLabel.text = self.subtitleString;
 }
 
 #pragma mark - public config
 - (void)configureWithTitle:(NSString *)titleString subtitle:(NSString *)subtitleString {
-  self.titleString = titleString;
-  self.subtitleString = subtitleString;
-  [self setNeedsLayout];
+    self.titleString = titleString;
+    self.subtitleString = subtitleString;
+    [self setNeedsLayout];
 }
 
 - (void)configureWithTitle:(NSString *)titleString {
-  [self configureWithTitle:titleString subtitle:nil];
+    [self configureWithTitle:titleString subtitle:nil];
 }
 
 #pragma mark - super overrides
 - (void)prepareForReuse {
-  [super prepareForReuse];
-  [self configureWithTitle:nil];
+    [super prepareForReuse];
+    [self configureWithTitle:nil];
 }
 
 - (void)layoutSubviews {
-  [super layoutSubviews];
-  //store an inset value that's different for each device
-  CGFloat titleInsetXVal = [[self class] horizontalPadding];
-  
-  CGSize titleSize = [[self class] sizeOfString:self.titleString withFont:self.titleLabel.font lineBreakingOn:YES maxWidth:self.contentView.bounds.size.width - ([[self class] horizontalPadding] * 2)];
-  if (self.subtitleString) {
-    CGSize subtitleSize = [[self class] sizeOfString:self.subtitleString withFont:self.subtitleLabel.font lineBreakingOn:NO  maxWidth:self.contentView.bounds.size.width - ([[self class] horizontalPadding] * 2)];
-    //title AND subtitle
-    [self.subtitleLabel setHidden:false];
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-      //iPad
-      self.titleLabel.frame = CGRectMake(titleInsetXVal, [[self class] verticalPadding], self.contentView.frame.size.width - (titleInsetXVal * 2), titleSize.height);
-      self.subtitleLabel.frame = CGRectMake(titleInsetXVal, CGRectGetMaxY(self.titleLabel.frame) + 1, self.contentView.frame.size.width - (titleInsetXVal * 2), subtitleSize.height);
+    [super layoutSubviews];
+    //store an inset value that's different for each device
+    CGFloat titleInsetXVal = [[self class] horizontalPadding];
+    
+    CGSize titleSize = [[self class] sizeOfString:self.titleString withFont:self.titleLabel.font lineBreakingOn:YES maxWidth:self.contentView.bounds.size.width - ([[self class] horizontalPadding] * 2)];
+    if (self.subtitleString) {
+        CGSize subtitleSize = [[self class] sizeOfString:self.subtitleString withFont:self.subtitleLabel.font lineBreakingOn:NO  maxWidth:self.contentView.bounds.size.width - ([[self class] horizontalPadding] * 2)];
+        //title AND subtitle
+        [self.subtitleLabel setHidden:false];
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            //iPad
+            self.titleLabel.frame = CGRectMake(titleInsetXVal, [[self class] verticalPadding], self.contentView.frame.size.width - (titleInsetXVal * 2), titleSize.height);
+            self.subtitleLabel.frame = CGRectMake(titleInsetXVal, CGRectGetMaxY(self.titleLabel.frame) + 1, self.contentView.frame.size.width - (titleInsetXVal * 2), subtitleSize.height);
+        } else {
+            //iPhone
+            self.titleLabel.frame = CGRectMake(titleInsetXVal, [[self class] verticalPadding], self.contentView.frame.size.width - (titleInsetXVal * 2), titleSize.height);
+            self.subtitleLabel.frame = CGRectMake(titleInsetXVal, CGRectGetMaxY(self.titleLabel.frame) + 1, self.contentView.frame.size.width - (titleInsetXVal * 2), subtitleSize.height);
+        }
     } else {
-      //iPhone
-      self.titleLabel.frame = CGRectMake(titleInsetXVal, [[self class] verticalPadding], self.contentView.frame.size.width - (titleInsetXVal * 2), titleSize.height);
-      self.subtitleLabel.frame = CGRectMake(titleInsetXVal, CGRectGetMaxY(self.titleLabel.frame) + 1, self.contentView.frame.size.width - (titleInsetXVal * 2), subtitleSize.height);
+        [self.subtitleLabel setHidden:true];
+        //just title
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            //iPad
+            self.titleLabel.frame = CGRectMake(titleInsetXVal, [[self class] verticalPadding], self.contentView.frame.size.width - (titleInsetXVal * 2),  titleSize.height);
+        } else {
+            //iPhone
+            self.titleLabel.frame = CGRectMake(titleInsetXVal, [[self class] verticalPadding], self.contentView.frame.size.width - (titleInsetXVal * 2),  titleSize.height);
+        }
     }
-  } else {
-    [self.subtitleLabel setHidden:true];
-    //just title
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-      //iPad
-      self.titleLabel.frame = CGRectMake(titleInsetXVal, [[self class] verticalPadding], self.contentView.frame.size.width - (titleInsetXVal * 2),  titleSize.height);
-    } else {
-      //iPhone
-      self.titleLabel.frame = CGRectMake(titleInsetXVal, [[self class] verticalPadding], self.contentView.frame.size.width - (titleInsetXVal * 2),  titleSize.height);
-    }
-  }
 }
-
-
-
-
-
-
-
 
 
 @end
