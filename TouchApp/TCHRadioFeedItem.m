@@ -11,8 +11,8 @@
 NSString *const Key_Radio_Author = @"itunes:author";
 NSString *const Key_Radio_Title = @"title";
 
-//NSString *const Key_Radio_Summary = @"itunes:summary";
-NSString *const Key_Radio_Summary = @"content:encoded";
+NSString *const Key_Radio_Summary = @"itunes:summary";
+//NSString *const Key_Radio_Summary = @"content:encoded";
 
 NSString *const Key_Radio_SubTitle = @"itunes:subtitle";
 NSString *const Key_Radio_PubDate = @"pubDate";
