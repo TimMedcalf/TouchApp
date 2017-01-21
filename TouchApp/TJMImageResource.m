@@ -32,13 +32,10 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
 @property (strong, nonatomic) NSDate   *lastChecked;
 @property (strong, nonatomic) NSString *thumbnailPath;
 
-//@property (strong, nonatomic) NSMutableData *activeDownload;
-//@property (strong, nonatomic) NSURLConnection *activeConnection;
 @property (strong, nonatomic) NSURLSessionDownloadTask *activeDownloadTask;
 @property (strong, nonatomic) NSURLSession *urlSession;
 
 - (void)startDownload;
-//- (void)cancelDownload;
 @property (NS_NONATOMIC_IOSONLY, readonly, copy) NSString *fullPathForLocalBaseImage;
 
 @end
@@ -163,7 +160,7 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
 }
 
 
-#pragma mark Download support (NSURLConnectionDelegate)
+#pragma mark Download support (NSURLSessionDownloadDelegate)
 
 -(void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
     
