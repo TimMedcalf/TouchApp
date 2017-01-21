@@ -671,9 +671,10 @@
 				222951BE13EC496F001D174D /* Sources */,
 				222951BF13EC496F001D174D /* Frameworks */,
 				222951C013EC496F001D174D /* Resources */,
-				5E5A04881E337C390064D2E0 /* ShellScript */,
+				5E5A04881E337C390064D2E0 /* Auto Build Number */,
 				2D2B59ED4AF18B57BFE8CD31 /* [CP] Embed Pods Frameworks */,
 				28C721A78AEA1E1EA450EC54 /* [CP] Copy Pods Resources */,
+				5EFD04F61E3412D100934302 /* Bugsee dSym Uploads */,
 			);
 			buildRules = (
 			);
@@ -713,7 +714,8 @@
 				ORGANIZATIONNAME = "ErgoThis Ltd";
 				TargetAttributes = {
 					222951C113EC496F001D174D = {
-						DevelopmentTeam = 65668BBRTH;
+						DevelopmentTeam = 7TRKHY7B3F;
+						ProvisioningStyle = Automatic;
 					};
 					22C2C25019703E020052BD21 = {
 						TestTargetID = 222951C113EC496F001D174D;
@@ -817,18 +819,33 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TouchApp/Pods-TouchApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5E5A04881E337C390064D2E0 /* ShellScript */ = {
+		5E5A04881E337C390064D2E0 /* Auto Build Number */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Auto Build Number";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "#\n# Set the build number to the current git commit count.\n# If we're using the Dev scheme, then we'll suffix the build\n# number with the current branch name, to make collisions\n# far less likely across feature branches.\n# Based on: http://w3facility.info/question/how-do-i-force-xcode-to-rebuild-the-info-plist-file-in-my-project-every-time-i-build-the-project/\n#\n# Updated with dSYM handling from http://yellowfeather.co.uk/blog/auto-incrementing-build-number-in-xcode-revisited/\n#\n\ngit=`sh /etc/profile; which git`\nappBuild=`\"$git\" rev-list HEAD --count`\nif [ $CONFIGURATION = \"Debug\" ]; then\nbranchName=`\"$git\" rev-parse --abbrev-ref HEAD`\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $appBuild-$branchName\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $appBuild-$branchName\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}.dSYM/Contents/Info.plist\"\nelse\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $appBuild\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $appBuild\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}.dSYM/Contents/Info.plist\"\nfi\necho \"Incremented the build number ${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"";
+		};
+		5EFD04F61E3412D100934302 /* Bugsee dSym Uploads */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Bugsee dSym Uploads";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "SCRIPT_SRC=$(find \"$PROJECT_DIR\" -name 'BugseeAgent' | head -1)\nif [ ! \"${SCRIPT_SRC}\" ]; then\necho \"Error: BugseeAgent script not found.\"\necho \"If you link Bugsee.framework from outside the project folder, please copy the script\"\necho \"into your main project directory or manually update SCRIPT_SRC variable with the right path\"\nexit 1\nfi\n/usr/bin/python \"${SCRIPT_SRC}\" 0f9265fa-67d1-4538-8007-2ba6fa2f570e";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1027,8 +1044,11 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Michael Harding (H4X7VSZ24H)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 7TRKHY7B3F;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TouchApp/TouchApp-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
@@ -1048,9 +1068,10 @@
 					"$(inherited)",
 					"-lxml2",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = uk.org.touchmusic.touch;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.org.touchmusic.touchTim;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "61439cc8-fc03-44db-b7bd-f2a6c3446af9";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 				WRAPPER_EXTENSION = app;
@@ -1064,8 +1085,11 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Michael Harding (H4X7VSZ24H)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 7TRKHY7B3F;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TouchApp/TouchApp-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
@@ -1084,9 +1108,10 @@
 					"$(inherited)",
 					"-lxml2",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = uk.org.touchmusic.touch;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.org.touchmusic.touchTim;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "61439cc8-fc03-44db-b7bd-f2a6c3446af9";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 				WRAPPER_EXTENSION = app;

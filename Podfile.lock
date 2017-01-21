@@ -1,4 +1,5 @@
 PODS:
+  - Bugsee (1.11.2)
   - CocoaLumberjack (3.0.0):
     - CocoaLumberjack/Default (= 3.0.0)
     - CocoaLumberjack/Extensions (= 3.0.0)
@@ -12,13 +13,15 @@ PODS:
   - KissXML/Core (5.1.2)
 
 DEPENDENCIES:
+  - Bugsee
   - CocoaLumberjack
   - KissXML
 
 SPEC CHECKSUMS:
+  Bugsee: 3ae5b35e824a5f5d05d89bac103bda5c0a94b851
   CocoaLumberjack: c823149bccc5519a9447aeb433be7b1212a7d6a5
   KissXML: 246c842586bb77110e04fb88e19376d96245c856
 
-PODFILE CHECKSUM: b851a8b02f45761e1c2d047f56d5522f707fc16d
+PODFILE CHECKSUM: 62b43d6cc337541b4f5a5364223cc5bc67f36680
 
 COCOAPODS: 1.1.1
