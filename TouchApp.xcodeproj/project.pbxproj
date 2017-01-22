@@ -714,7 +714,7 @@
 				ORGANIZATIONNAME = "ErgoThis Ltd";
 				TargetAttributes = {
 					222951C113EC496F001D174D = {
-						DevelopmentTeam = 7TRKHY7B3F;
+						DevelopmentTeam = 65668BBRTH;
 						ProvisioningStyle = Automatic;
 					};
 					22C2C25019703E020052BD21 = {
@@ -1048,7 +1048,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Michael Harding (H4X7VSZ24H)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 7TRKHY7B3F;
+				DEVELOPMENT_TEAM = 65668BBRTH;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TouchApp/TouchApp-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
@@ -1068,7 +1068,7 @@
 					"$(inherited)",
 					"-lxml2",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = uk.org.touchmusic.touchTim;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.org.touchmusic.touch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1089,7 +1089,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Michael Harding (H4X7VSZ24H)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 7TRKHY7B3F;
+				DEVELOPMENT_TEAM = 65668BBRTH;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TouchApp/TouchApp-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
@@ -1108,7 +1108,7 @@
 					"$(inherited)",
 					"-lxml2",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = uk.org.touchmusic.touchTim;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.org.touchmusic.touch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
