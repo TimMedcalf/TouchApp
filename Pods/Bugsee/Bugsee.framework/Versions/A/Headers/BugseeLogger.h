@@ -9,9 +9,18 @@
 #import <UIKit/UIKit.h>
 
 #define BugseeLumberjackLogger (id <DDLogger>)[BugseeLogger sharedInstance]
+#define BugseeReactNativeLogger [[BugseeLogger sharedInstance] reactNativeLogger]
+
+typedef void (^BugseeRCTLogFunction)(
+    NSInteger level,
+    NSInteger source,
+    NSString *fileName,
+    NSNumber *lineNumber,
+    NSString *message
+);
 
 typedef enum : NSUInteger {
-    BugseeLogLevelLow = 0,
+    BugseeLogLevelInvalid = 0,
     BugseeLogLevelError,
     BugseeLogLevelWarning,
     BugseeLogLevelInfo,
@@ -22,6 +31,9 @@ typedef enum : NSUInteger {
 @interface BugseeLogger : NSObject 
 
 + (instancetype) sharedInstance;
+
+@property (nonatomic, strong) id logFormatter;
+@property (copy) BugseeRCTLogFunction reactNativeLogger;
 
 @end
 

@@ -43,7 +43,9 @@ extern NSString *const _Nonnull BugseeShakeToReportKey,
                 *const _Nonnull BugseeMonitorNetworkKey,
                 *const _Nonnull BugseeStatusBarInfoKey,
                 *const _Nonnull BugseeVideoEnabledKey,
-                *const _Nonnull BugseeStyleKey
+                *const _Nonnull BugseeStyleKey,
+                *const _Nonnull BugseeEnableMachExceptionsKey,
+                *const _Nonnull BugseeCaptureLogsKey
 ;
 
 /**

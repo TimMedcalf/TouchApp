@@ -207,13 +207,10 @@ def main():
 
     os.chdir(options.dsym_folder)
     for root, dirs, files in os.walk(options.dsym_folder):
-        # if first level, remove all folder which do not have dSYM suffix
-        if root == options.dsym_folder:
-            for dir in dirs[:]:
-                if (not dir.endswith('.dSYM')):
-                    dirs.remove(dir)
+        if not root.endswith('dSYM/Contents/Resources/DWARF'):
             continue
 
+        print root
         for f in files:
             if (os.path.islink(os.path.join(root, f))):
                 continue

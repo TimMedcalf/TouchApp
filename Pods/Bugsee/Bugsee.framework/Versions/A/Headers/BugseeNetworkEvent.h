@@ -17,33 +17,33 @@
 /**
  *  Network event URL
  */
-@property (nonatomic, strong) NSString * url;
+@property (nonatomic, strong, nullable) NSString * url;
 /**
  *  URL of Network event that we were redirected from
  */
-@property (nonatomic, strong) NSString * redirectedFromURL;
+@property (nonatomic, strong, nullable) NSString * redirectedFromURL;
 
 /**
  *  Raw body of the request or response were available.
  */
-@property (nonatomic, strong) NSData * body;
-@property (nonatomic, strong) NSDictionary * error;
+@property (nonatomic, strong, nullable) NSData * body;
+@property (nonatomic, strong, nullable) NSDictionary * error;
 /**
  *  HTTP headers
  */
-@property (nonatomic, strong) NSDictionary * headers;
+@property (nonatomic, strong, nullable) NSDictionary * headers;
 
 /**
  *  Http request method
  */
-@property (nonatomic, strong) NSString * method;
-@property (nonatomic, strong) NSString * noBodyReason;
+@property (nonatomic, strong, nonnull) NSString * method;
+@property (nonatomic, strong, nullable) NSString * noBodyReason;
 
 /**
  *  Can be one of BugseeNetworkEventBegin, BugseeNetworkEventComplete, BugseeNetworkEventCancel or BugseeNetworkEventError
  *  @see BugseeConstants
  */
-@property (nonatomic, strong) NSString * bugseeNetworkEventType;
+@property (nonatomic, strong, nonnull) NSString * bugseeNetworkEventType;
 
 /**
  *  Status code of current response, always 0 for BugseeNetworkEventBegin
