@@ -296,7 +296,22 @@
     return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? UIInterfaceOrientationMaskAll : UIInterfaceOrientationMaskAllButUpsideDown;
 }
 
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+//- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+//    // here, our pagingScrollView bounds have not yet been updated for the new interface orientation. So this is a good
+//    // place to calculate the content offset that we will need in the new orientation
+//    CGFloat offset = self.pagingScrollView.contentOffset.x;
+//    CGFloat pageWidth = self.pagingScrollView.bounds.size.width;
+//    
+//    if (offset >= 0) {
+//        firstVisiblePageIndexBeforeRotation = (int)floor(offset / pageWidth);
+//        percentScrolledIntoFirstVisiblePage = (offset - (firstVisiblePageIndexBeforeRotation * pageWidth)) / pageWidth;
+//    } else {
+//        firstVisiblePageIndexBeforeRotation = 0;
+//        percentScrolledIntoFirstVisiblePage = offset / pageWidth;
+//    }
+//}
+
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
     // here, our pagingScrollView bounds have not yet been updated for the new interface orientation. So this is a good
     // place to calculate the content offset that we will need in the new orientation
     CGFloat offset = self.pagingScrollView.contentOffset.x;
@@ -345,13 +360,13 @@
 }
 
 
-- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
-    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
-    __weak __typeof__(self) weakSelf = self;
-    [coordinator animateAlongsideTransition:nil completion:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
-        [weakSelf.delegate updateGalleryRotation];
-    }];
-}
+//- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+//    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+//    __weak __typeof__(self) weakSelf = self;
+//    [coordinator animateAlongsideTransition:nil completion:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
+//        [weakSelf.delegate updateGalleryRotation];
+//    }];
+//}
 
 #pragma mark -
 #pragma mark  Frame calculations
