@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DDXML.h"
 
+@class DDXMLElement;
 @class TCHBaseFeedItem;
 
 @protocol FeedListConsumerDelegate

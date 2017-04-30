@@ -24,8 +24,6 @@ NSString *const Key_Cat_Publisher = @"publisher";
 #pragma clang diagnostic pop
 
 #import "TCHCatalogueFeedItem.h"
-#import "DDXML.h"
-#import "DDXMLElementAdditions.h"
 
 @implementation TCHCatalogueFeedItem
 

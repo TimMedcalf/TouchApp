@@ -1076,6 +1076,13 @@
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
+				WARNING_CFLAGS = (
+					"-Wdeprecated-implementations",
+					"-Wempty-body",
+					"-Wimplicit-retain-self",
+					"-Wshadow",
+					"-Wundef",
+				);
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1116,6 +1123,13 @@
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
+				WARNING_CFLAGS = (
+					"-Wdeprecated-implementations",
+					"-Wempty-body",
+					"-Wimplicit-retain-self",
+					"-Wshadow",
+					"-Wundef",
+				);
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

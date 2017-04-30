@@ -19,6 +19,7 @@
 #import <MessageUI/MessageUI.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import <CocoaLumberjack/CocoaLumberjack.h>
+@import KissXML;
 
 #ifdef DEBUG
 static const DDLogLevel ddLogLevel = DDLogLevelVerbose;

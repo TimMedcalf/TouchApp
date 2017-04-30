@@ -22,10 +22,7 @@ NSString *const Key_Radio_TitleLabel = @"itunes:subtitle";
 NSString *const Key_ImageOverride = @"imageURL";
 #pragma clang diagnostic pop
 
-
 #import "TCHRadioFeedItem.h"
-#import "DDXML.h"
-#import "DDXMLElementAdditions.h"
 
 @implementation TCHRadioFeedItem
 
