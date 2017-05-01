@@ -69,7 +69,7 @@
 - (void)dealloc {
     // to avoid compiler warning from Fauxpas, i'm also setting the delegate to nil here...
     self.webView.delegate = nil;    // disconnect the delegate as the webView is hidden
-    [super dealloc];
+    //[super dealloc];
 }
 
 

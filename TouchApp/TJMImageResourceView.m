@@ -63,9 +63,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateImage) name:TJMImageResourceImageNeedsUpdating object:tmpImageResource];
 }
 
-- (void)dealloc {
+-(void)dealloc {
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self name:TJMImageResourceImageNeedsUpdating object:nil];
-    [super dealloc];
 }
 
 //update the image on screen when it gets updated...

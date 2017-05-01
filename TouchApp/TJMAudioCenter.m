@@ -55,7 +55,7 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
     [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:self.player.currentItem];
     //[self unobserveNotifications];
     
-    [super dealloc];
+    //[super dealloc];
 }
 
 

@@ -75,7 +75,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
     DDLogDebug(@"list dealloc");
     [self.urlSession invalidateAndCancel];
     self.urlSession = nil;
-    [super dealloc];
+    //[super dealloc];
 }
 
 #pragma mark load/save

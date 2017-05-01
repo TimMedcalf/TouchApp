@@ -87,7 +87,6 @@
 
 - (void)dealloc {
     self.webView.delegate = nil;
-    [super dealloc];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

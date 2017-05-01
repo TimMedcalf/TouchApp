@@ -49,7 +49,6 @@
 
 - (void)dealloc {
   [[NSNotificationCenter defaultCenter] removeObserver:self name:TJMAudioCenterStatusChange object:[TJMAudioCenter sharedInstance]];
-    [super dealloc];
 }
 
 - (void)togglePlay {
