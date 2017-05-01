@@ -223,6 +223,7 @@
 - (void)dealloc {
     self.pagingScrollView.delegate = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [super dealloc];
 }
 
 #pragma mark - Tiling and page configuration

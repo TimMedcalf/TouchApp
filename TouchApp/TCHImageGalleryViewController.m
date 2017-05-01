@@ -92,6 +92,7 @@ static NSInteger iPadThumbnailRowCount = 8;
 
 - (void)dealloc {
     [self.imageList setDelegate:nil];
+    [super dealloc];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

@@ -23,6 +23,7 @@
 
 - (void)dealloc {
   [self endReceivingRemoteControlEvents];
+    [super dealloc];
 }
 
 - (void)sendEvent:(UIEvent *)event {

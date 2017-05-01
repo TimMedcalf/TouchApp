@@ -131,6 +131,7 @@ NSString static *const Key_IconTintB = @"iconTintB";
 
 - (void)dealloc {
     self.feedList.delegate = nil;
+    [super dealloc];
 }
 
 - (void)configureTableHeader {

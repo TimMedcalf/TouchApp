@@ -91,6 +91,7 @@
 - (void)dealloc {
     if ([TJMAudioCenter sharedInstance].delegate == self)
         [TJMAudioCenter sharedInstance].delegate = nil;
+    [super dealloc];
 }
 
 @end

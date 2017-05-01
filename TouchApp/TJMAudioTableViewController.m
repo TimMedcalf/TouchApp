@@ -74,6 +74,7 @@
 - (void)dealloc {
   [[NSNotificationCenter defaultCenter] removeObserver:self name:TJMAudioCenterStatusChange object:[TJMAudioCenter sharedInstance]];
   [[NSNotificationCenter defaultCenter] removeObserver:self name:TCHAllShookUp object:nil];
+    [super dealloc];
 }
 
 - (void)viewWillLayoutSubviews {
