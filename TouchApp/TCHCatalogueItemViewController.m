@@ -42,7 +42,12 @@
 
 - (void)buy {
     //[Flurry logEvent:@"Catalogue" withParameters:@{@"BuyPressed": _item.title}];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.item.itunesURL]];
+
+    
+    NSURL *buyURL = [NSURL URLWithString:self.item.itunesURL];    
+    if (buyURL) {
+        [[UIApplication sharedApplication] openURL:buyURL options:@{} completionHandler:nil];
+    }
 }
 
 - (void)togglePlayPauseInWebView {
