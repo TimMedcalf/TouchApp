@@ -14,30 +14,30 @@
 
 //overrides
 - (TCHBaseFeedItem *)newItemWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL {
-  return [[TCHRecipeCategoryFeedItem alloc] initWithXMLElement:element andBaseURL:baseURL];
+    return [[TCHRecipeCategoryFeedItem alloc] initWithXMLElement:element andBaseURL:baseURL];
 }
 
 - (TCHBaseFeedItem *)newItemWithDictionary:dictionary {
-  return [[TCHRecipeCategoryFeedItem alloc]initWithDictionary:dictionary];
+    return [[TCHRecipeCategoryFeedItem alloc]initWithDictionary:dictionary];
 }
 
 - (NSString *)feedURL {
-  return @"http://www.touchmusic.org.uk/recipebook/categories.xml";
+    return @"http://www.touch33.net/recipebook/categories.xml";
 }
 
 - (NSString *)cacheFilename {
-  return @"touchRecipeCategories";
+    return @"touchRecipeCategories";
 }
 
 // what is this for?
 - (void)dataUpdated {
-  [super dataUpdated];
-  NSMutableArray *delete = [NSMutableArray array];
-  for (TCHRecipeCategoryFeedItem *item in self.itemArray) {
-      if (([item.recipeTitle isEqualToString:@"left"]) || ([item.recipeTitle isEqualToString:@"right"]))
-          [delete addObject:item];
-  }
-  [self removeItemsInArray:delete];
+    [super dataUpdated];
+    NSMutableArray *delete = [NSMutableArray array];
+    for (TCHRecipeCategoryFeedItem *item in self.itemArray) {
+        if (([item.recipeTitle isEqualToString:@"left"]) || ([item.recipeTitle isEqualToString:@"right"]))
+            [delete addObject:item];
+    }
+    [self removeItemsInArray:delete];
 }
 
 @end

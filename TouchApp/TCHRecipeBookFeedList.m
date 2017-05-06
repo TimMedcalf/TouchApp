@@ -9,6 +9,10 @@
 #import "TCHRecipeBookFeedList.h"
 #import "TCHRecipeFeedItem.h"
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
+NSString *const kRecipeBookFeed = @"http://www.touch33.net/recipebook";
+#pragma clang diagnostic pop
 
 @implementation TCHRecipeBookFeedList
 
@@ -31,9 +35,9 @@
   NSDictionary *dictionary = [[NSDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"RecipeCategories" ofType:@"plist"]];
 	NSString *returnVal;
 	if (dictionary[self.recipeCategory]) {
-		returnVal = [NSString stringWithFormat:@"http://www.touchmusic.org.uk/recipebook/%@", dictionary[self.recipeCategory]];
+		returnVal = [NSString stringWithFormat:@"%@/%@", kRecipeBookFeed,dictionary[self.recipeCategory]];
 	} else {
-		returnVal = [NSString stringWithFormat:@"http://www.touchmusic.org.uk/recipebook/%@.xml", [(self.recipeCategory).lowercaseString stringByReplacingOccurrencesOfString:@" " withString:@""]];
+		returnVal = [NSString stringWithFormat:@"%@/%@.xml", kRecipeBookFeed, [(self.recipeCategory).lowercaseString stringByReplacingOccurrencesOfString:@" " withString:@""]];
 	}
   DDLogDebug(@"Getting recipe file: %@",returnVal);
   return returnVal;
