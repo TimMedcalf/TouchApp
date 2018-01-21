@@ -710,7 +710,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = TCH;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = "ErgoThis Ltd";
 				TargetAttributes = {
 					222951C113EC496F001D174D = {
