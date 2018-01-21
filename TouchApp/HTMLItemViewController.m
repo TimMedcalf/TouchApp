@@ -13,6 +13,8 @@
     
     [super viewDidLoad];
     
+    self.hidesBottomBarWhenPushed = YES;
+    
     self.webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
     self.webView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     [self.view addSubview:self.webView];

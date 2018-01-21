@@ -28,6 +28,7 @@
   //TCHNewsFeedItem *curItem = (TCHNewsFeedItem *)self.feedList.items[(NSUInteger)indexPath.row];
   TCHNewsFeedItem *curItem = (TCHNewsFeedItem *) [self.feedList itemAtIndex:(NSUInteger)indexPath.row];
   TCHNewsItemViewController *controller = [[TCHNewsItemViewController alloc] init];
+    controller.hidesBottomBarWhenPushed = YES;
   controller.HTMLString = curItem.htmlForWebView;
   [self.navigationController pushViewController:controller animated:YES];
 }

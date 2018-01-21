@@ -174,6 +174,7 @@
         self.navigationItem.rightBarButtonItem.enabled = self.webView.canGoBack;
         [self.segmentControl setEnabled:self.webView.canGoBack forSegmentAtIndex:0];
         [self.segmentControl setEnabled:self.webView.canGoForward forSegmentAtIndex:1];
+
     }
 }
 
