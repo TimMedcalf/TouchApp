@@ -54,7 +54,7 @@ NSString static *const Key_IconTintB = @"iconTintB";
     self = [super initWithStyle:UITableViewStylePlain];
     if (self) {
         [self consumeViewSettings:viewSettings];
- 
+        
         _feedList = feedList;
         (self.navigationController.navigationBar).backIndicatorImage = [UIImage imageNamed:@"765-arrow-left-toolbar"];
         (self.navigationController.navigationBar).backIndicatorTransitionMaskImage = [UIImage imageNamed:@"765-arrow-left-toolbar"];
@@ -70,12 +70,12 @@ NSString static *const Key_IconTintB = @"iconTintB";
     if (viewSettings[Key_BarTintW]) {
         self.barColor = [UIColor colorWithWhite:((NSNumber *) viewSettings[Key_BarTintW]).floatValue alpha:(CGFloat) 1.];
     } else {
-       self.barColor = [UIColor colorWithRed:((NSNumber *) viewSettings[Key_BarTintR]).floatValue
-                                       green:((NSNumber *) viewSettings[Key_BarTintG]).floatValue
-                                        blue:((NSNumber *) viewSettings[Key_BarTintB]).floatValue
-                                       alpha:(CGFloat) 1.];
+        self.barColor = [UIColor colorWithRed:((NSNumber *) viewSettings[Key_BarTintR]).floatValue
+                                        green:((NSNumber *) viewSettings[Key_BarTintG]).floatValue
+                                         blue:((NSNumber *) viewSettings[Key_BarTintB]).floatValue
+                                        alpha:(CGFloat) 1.];
     }
-
+    
     if (viewSettings[Key_IconTintW]) {
         self.iconColor = [UIColor colorWithWhite:((NSNumber *) viewSettings[Key_IconTintW]).floatValue alpha:(CGFloat) 1.];
     } else if (viewSettings[Key_IconTintR]) {
@@ -87,7 +87,7 @@ NSString static *const Key_IconTintB = @"iconTintB";
         self.iconColor = self.barColor;
     }
     self.barShimName = viewSettings[Key_Shim];
-
+    
 }
 
 - (void)viewDidLoad {
@@ -117,13 +117,13 @@ NSString static *const Key_IconTintB = @"iconTintB";
     nb.translucent = NO;
     
     //tint color needs to be white so we can see the back button!
-	nb.tintColor = [UIColor whiteColor];
+    nb.tintColor = [UIColor whiteColor];
     [nb setBackgroundImage:[UIImage imageNamed:self.barShimName] forBarMetrics:UIBarMetricsDefault];
     
     nb.backIndicatorImage = [UIImage imageNamed:@"765-arrow-left-toolbar"];
     nb.backIndicatorTransitionMaskImage = [UIImage imageNamed:@"765-arrow-left-toolbar"];
     
-
+    
 }
 
 - (TCHBaseFeedList *)feedSetup {
@@ -195,8 +195,10 @@ NSString static *const Key_IconTintB = @"iconTintB";
 }
 
 - (void)updateFailed {
-    [self.progressView setHidden:YES];
-    if ((self.feedList).itemCount == 0) [self showTouch];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.progressView setHidden:YES];
+        if ((self.feedList).itemCount == 0) [self showTouch];
+    });
     [[UIApplication sharedApplication] tjm_ShowNetworkWarning];
 }
 
@@ -209,3 +211,4 @@ NSString static *const Key_IconTintB = @"iconTintB";
 }
 
 @end
+

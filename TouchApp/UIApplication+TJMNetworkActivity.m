@@ -14,7 +14,10 @@ static NSUInteger tjm_networkActivityCount = 0;
 @implementation UIApplication (UIApplication_TJMNetworkActivity)
 
 - (void)tjm_refreshNetworkActivityIndicator {
-  self.networkActivityIndicatorVisible = (tjm_networkActivityCount > 0);
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.networkActivityIndicatorVisible = (tjm_networkActivityCount > 0);
+    });
 }
 
 - (void)tjm_pushNetworkActivity {
