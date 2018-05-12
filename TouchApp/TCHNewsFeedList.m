@@ -11,7 +11,8 @@
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
-NSString *const kNewsFeedURLString = @"http://touch33.net/news/feed";
+//NSString *const kNewsFeedURLString = @"http://touch33.net/news/feed";
+NSString *const kNewsFeedURLString = @"http://www.touchshop.org/touch/iphone.xml";
 NSString *const kNewsCacheFileName = @"touchNews";
 #pragma clang diagnostic pop
 

@@ -37,21 +37,20 @@ NSString *const kTCHNewsFeedItemKey_PubDate = @"pubDate";
     self = [super initWithXMLElement:element andBaseURL:baseURL];
     if (self) {
         
-        // TODO - these dateformatters shouldn't really be created for every item!
-        
         //decode the string from text format 'Wed, 09 Nov 2016 19:32:01 +0000'
-        NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
-        inputFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
-        inputFormatter.dateFormat = @"EEE, dd MMM yyyy HH:mm:ss z";
-        NSString *dateStr = [element elementForName:kTCHNewsFeedItemKey_PubDate].stringValue;
-        NSDate *tmpDate = [inputFormatter dateFromString:dateStr];
-        
-        //convert the date to be in string format "Posted on July 15, 2014"
-        NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
-        outputFormatter.locale = inputFormatter.locale;
-        outputFormatter.dateFormat = @"MMMM d, yyyy";
-        _pubDate = [NSString stringWithFormat:@"Posted on %@",[outputFormatter stringFromDate:tmpDate]];
-        
+        //        NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
+        //        inputFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+        //        inputFormatter.dateFormat = @"EEE, dd MMM yyyy HH:mm:ss z";
+        //        NSString *dateStr = [element elementForName:kTCHNewsFeedItemKey_PubDate].stringValue;
+        //
+        //        NSDate *tmpDate = [inputFormatter dateFromString:dateStr];
+        //
+        //        //convert the date to be in string format "Posted on July 15, 2014"
+        //        NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
+        //        outputFormatter.locale = inputFormatter.locale;
+        //        outputFormatter.dateFormat = @"MMMM d, yyyy";
+        //        _pubDate = [NSString stringWithFormat:@"Posted on %@",[outputFormatter stringFromDate:tmpDate]];
+        _pubDate = [element elementForName:kTCHNewsFeedItemKey_PubDate].stringValue;
         _link = [element elementForName:kTCHNewsFeedItemKey_Link].stringValue;
         _title = [element elementForName:kTCHNewsFeedItemKey_Title].stringValue;
         _text = [element elementForName:kTCHNewsFeedItemKey_Text].stringValue;
@@ -69,14 +68,15 @@ NSString *const kTCHNewsFeedItemKey_PubDate = @"pubDate";
 }
 
 - (NSString *)htmlForWebView {
-  //inject some CSS
-  //note that strings can be run across multiple lines without having to reassign or append - just make sure quotes are at the start and end of each line
-  return [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width\" />"
-	"<link rel=\"stylesheet\" media=\"only screen and (max-device-width: 480px)\" href=\"mobile.css\" />"
-	"<link rel=\"stylesheet\" media=\"only screen and (min-device-width: 481px) and (max-device-width: 768px)\" href=\"ipad.css\" />"
-	"<link rel=\"stylesheet\" media=\"only screen and (min-device-width: 481px) and (orientation:landscape)\" href=\"ipad_landscape.css\" /></head>"
-	"<body><div id='headerwrapper'><div id='headercell'><div id='title'><strong>%@</strong><br /><span id='pubdate'>%@</span></div></div></div>"
-    "<div id=\"bodycopycontainer\"><p class='bodycopy'>%@</p></div></body></html>", self.title,self.pubDate,self.text];
+    //inject some CSS
+    //note that strings can be run across multiple lines without having to reassign or append - just make sure quotes are at the start and end of each line
+    return [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width\" />"
+            "<link rel=\"stylesheet\" media=\"only screen and (max-device-width: 480px)\" href=\"mobile.css\" />"
+            "<link rel=\"stylesheet\" media=\"only screen and (min-device-width: 481px) and (max-device-width: 768px)\" href=\"ipad.css\" />"
+            "<link rel=\"stylesheet\" media=\"only screen and (min-device-width: 481px) and (orientation:landscape)\" href=\"ipad_landscape.css\" /></head>"
+            "<body><div id='headerwrapper'><div id='headercell'><div id='title'><strong>%@</strong><br /><span id='pubdate'>%@</span></div></div></div>"
+            "<div id=\"bodycopycontainer\"><p class='bodycopy'>%@</p></div></body></html>", self.title,self.pubDate,self.text];
 }
 
 @end
+
