@@ -1,23 +1,29 @@
 PODS:
-  - Bugsee (1.17.7)
-  - CocoaLumberjack (3.4.0):
-    - CocoaLumberjack/Default (= 3.4.0)
-    - CocoaLumberjack/Extensions (= 3.4.0)
-  - CocoaLumberjack/Default (3.4.0)
-  - CocoaLumberjack/Extensions (3.4.0):
+  - Bugsee (1.18.4)
+  - CocoaLumberjack (3.4.2):
+    - CocoaLumberjack/Default (= 3.4.2)
+    - CocoaLumberjack/Extensions (= 3.4.2)
+  - CocoaLumberjack/Default (3.4.2)
+  - CocoaLumberjack/Extensions (3.4.2):
     - CocoaLumberjack/Default
-  - KissXML (5.2.0)
+  - KissXML (5.2.2)
 
 DEPENDENCIES:
   - Bugsee
   - CocoaLumberjack
   - KissXML
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Bugsee
+    - CocoaLumberjack
+    - KissXML
+
 SPEC CHECKSUMS:
-  Bugsee: f2e8fc06a99a5c4f439765581aea4a3de57ade83
-  CocoaLumberjack: e033a5d8513357af2dd456eb66e202c325c30627
-  KissXML: 1c1eeeb6b94e4522cd2f2373e5d0d03c9227738f
+  Bugsee: 0873aa9b8f11d06964f833184a628b8461d6da05
+  CocoaLumberjack: db7cc9e464771f12054c22ff6947c5a58d43a0fd
+  KissXML: 4418f32138aec43797891845d682b00fc8cd4677
 
 PODFILE CHECKSUM: a38e92daaee399545ade0e9e27fdc21f8b43d1eb
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.5.2
