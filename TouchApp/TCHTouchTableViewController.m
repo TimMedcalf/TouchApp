@@ -53,7 +53,9 @@ NSString static *const Key_IconTintB = @"iconTintB";
 - (instancetype)initWithViewSettingsDictionary:(NSDictionary *)viewSettings andFeedList:(TCHBaseFeedList *)feedList {
     self = [super initWithStyle:UITableViewStylePlain];
     if (self) {
-        [self consumeViewSettings:viewSettings];
+        //store the settings in case we need to pass them down to a child VC
+        _settings = viewSettings;
+        [self consumeViewSettings:_settings];
         
         _feedList = feedList;
         (self.navigationController.navigationBar).backIndicatorImage = [UIImage imageNamed:@"765-arrow-left-toolbar"];
@@ -63,6 +65,7 @@ NSString static *const Key_IconTintB = @"iconTintB";
 }
 
 - (void)consumeViewSettings:(NSDictionary *)viewSettings {
+    
     self.title = viewSettings[Key_Title];
     self.tabBarItem.image = [UIImage imageNamed:viewSettings[Key_TabBarImage]];
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:viewSettings[Key_HeaderText]]];

@@ -12,8 +12,6 @@
 
 @interface TCHRecipeBookViewController : TCHTouchTableViewController <FeedListConsumerDelegate>
 
-//@property (strong, nonatomic) NSString *categoryName;
-
 - (instancetype)initWithSettingsDictionary:(NSDictionary *)settings andRecipeCategoryNamed:(NSString *)category;
 
 @end

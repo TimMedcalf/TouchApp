@@ -25,7 +25,6 @@
 
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  //TCHNewsFeedItem *curItem = (TCHNewsFeedItem *)self.feedList.items[(NSUInteger)indexPath.row];
   TCHNewsFeedItem *curItem = (TCHNewsFeedItem *) [self.feedList itemAtIndex:(NSUInteger)indexPath.row];
   TCHNewsItemViewController *controller = [[TCHNewsItemViewController alloc] init];
     controller.hidesBottomBarWhenPushed = YES;
