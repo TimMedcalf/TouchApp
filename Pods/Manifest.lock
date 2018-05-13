@@ -1,29 +1,34 @@
 PODS:
-  - Bugsee (1.18.4)
   - CocoaLumberjack (3.4.2):
     - CocoaLumberjack/Default (= 3.4.2)
     - CocoaLumberjack/Extensions (= 3.4.2)
   - CocoaLumberjack/Default (3.4.2)
   - CocoaLumberjack/Extensions (3.4.2):
     - CocoaLumberjack/Default
+  - Crashlytics (3.10.1):
+    - Fabric (~> 1.7.5)
+  - Fabric (1.7.6)
   - KissXML (5.2.2)
 
 DEPENDENCIES:
-  - Bugsee
   - CocoaLumberjack
+  - Crashlytics
+  - Fabric
   - KissXML
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - Bugsee
     - CocoaLumberjack
+    - Crashlytics
+    - Fabric
     - KissXML
 
 SPEC CHECKSUMS:
-  Bugsee: 0873aa9b8f11d06964f833184a628b8461d6da05
   CocoaLumberjack: db7cc9e464771f12054c22ff6947c5a58d43a0fd
+  Crashlytics: aee1a064cbbf99b32efa3f056a5f458d846bc8ff
+  Fabric: f8d42c893bb187326a7968b62abe55c36a987a46
   KissXML: 4418f32138aec43797891845d682b00fc8cd4677
 
-PODFILE CHECKSUM: a38e92daaee399545ade0e9e27fdc21f8b43d1eb
+PODFILE CHECKSUM: 9f7a103c5199094679eb751c304c493f1609ee5e
 
 COCOAPODS: 1.5.2

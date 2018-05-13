@@ -7,8 +7,11 @@
 //
 
 #import "TCHTouchAppAppDelegate.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 #import "TCHAppManager.h"
 #import "TJMImageResourceManager.h"
+
 //root vc's
 #import "TCHNewsViewController.h"
 #import "TCHImageGalleryViewController.h"
@@ -18,7 +21,6 @@
 #import "TCHNewsFeedList.h"
 #import "TCHRecipeCategoryFeedList.h"
 #import "TCHRadioFeedList.h"
-@import Bugsee;
 
 
 @implementation TCHTouchAppAppDelegate
@@ -26,12 +28,20 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [DDLog addLogger:[DDASLLogger sharedInstance]];
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
+
+#ifndef DEBUG
+    [Fabric with:@[[Crashlytics class]]];
+#endif
     
-    //#ifndef DEBUG
-    //  [Flurry setCrashReportingEnabled:YES];
-    //  [Flurry startSession:@"EG1Y8QTDSQI2YWEFXFDJ"];
-    //  [Flurry logEvent:@"DeviceInfo" withParameters:@{@"Firmware": [[UIDevice currentDevice] systemVersion]}];
-    //#endif
+//*******
+#warning cache removal for testing
+    for (NSString *file in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[TCHAppManager sharedInstance].cacheFolder error:NULL]) {
+        DDLogInfo(@"Clearing cached file : %@", file);
+        [[NSFileManager defaultManager] removeItemAtPath:[[TCHAppManager sharedInstance].cacheFolder stringByAppendingPathComponent:file] error:NULL];
+    }
+//*******
+
+
     //clear the cache out whenever it's a new version - allows us to change data formats without worrying
     //about whatever is stored already on the device
     NSUserDefaults *Def = [NSUserDefaults standardUserDefaults];
@@ -94,7 +104,6 @@
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
     
-    [Bugsee launchWithToken:@"0f9265fa-67d1-4538-8007-2ba6fa2f570e"];
     
     return YES;
 }

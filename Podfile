@@ -4,7 +4,8 @@ target 'TouchApp' do
     
   use_frameworks!
 
-  pod 'Bugsee'  
+  pod 'Fabric'
+  pod 'Crashlytics'
   pod 'KissXML'
   pod 'CocoaLumberjack'
 end
