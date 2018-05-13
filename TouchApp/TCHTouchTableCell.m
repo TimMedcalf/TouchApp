@@ -64,6 +64,7 @@ static const CGFloat kAccessoryInset = 15.;
 }
 
 + (CGSize)sizeOfString:(NSString *)string withFont:(UIFont *)font lineBreakingOn:(BOOL)lineBreakingOn maxWidth:(CGFloat)maxWidth {
+
     //now work out the height the label needs to be
     NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     if (lineBreakingOn) {
@@ -107,7 +108,7 @@ static const CGFloat kAccessoryInset = 15.;
     //next up, add the top and bottom vertical padding
     rollingHeight += [[self class] verticalPadding] * 2;
     //and that should be it!
-    DDLogDebug(@"ActualHeight %f",ceil(rollingHeight));
+    //DDLogDebug(@"ActualHeight %f",ceil(rollingHeight));
     return ceil(rollingHeight);
 }
 
@@ -122,6 +123,7 @@ static const CGFloat kAccessoryInset = 15.;
         self.selectionStyle = UITableViewCellSelectionStyleGray;
         self.contentView.backgroundColor = [UIColor whiteColor];
         
+        //self.contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         
         UIView *selView = [[UIView alloc] initWithFrame:self.bounds];
         //selected state
@@ -186,10 +188,13 @@ static const CGFloat kAccessoryInset = 15.;
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+    
     //store an inset value that's different for each device
     CGFloat titleInsetXVal = [[self class] horizontalPadding];
     
-    CGSize titleSize = [[self class] sizeOfString:self.titleString withFont:self.titleLabel.font lineBreakingOn:YES maxWidth:self.contentView.bounds.size.width - ([[self class] horizontalPadding] * 2)];
+   CGSize titleSize = [[self class] sizeOfString:self.titleString withFont:self.titleLabel.font lineBreakingOn:YES maxWidth:self.contentView.bounds.size.width - ([[self class] horizontalPadding] * 2)];
+
+    
     if (self.subtitleString) {
         CGSize subtitleSize = [[self class] sizeOfString:self.subtitleString withFont:self.subtitleLabel.font lineBreakingOn:NO  maxWidth:self.contentView.bounds.size.width - ([[self class] horizontalPadding] * 2)];
         //title AND subtitle
