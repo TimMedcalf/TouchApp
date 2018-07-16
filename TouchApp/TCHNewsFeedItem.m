@@ -13,6 +13,7 @@
 #pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
 NSString *const kTCHNewsFeedItemKey_Title = @"title";
 NSString *const kTCHNewsFeedItemKey_Link = @"link";
+//NSString *const kTCHNewsFeedItemKey_Text = @"description";
 NSString *const kTCHNewsFeedItemKey_Text = @"content:encoded";
 NSString *const kTCHNewsFeedItemKey_PubDate = @"pubDate";
 #pragma clang diagnostic pop
@@ -38,7 +39,7 @@ NSString *const kTCHNewsFeedItemKey_PubDate = @"pubDate";
     if (self) {
         
         //testing - use the date string as is...
-        //_pubDate = [element elementForName:kTCHNewsFeedItemKey_PubDate].stringValue;
+        _pubDate = [element elementForName:kTCHNewsFeedItemKey_PubDate].stringValue;
         
         //convert the string - decode the string from text format 'Wed, 09 Nov 2016 19:32:01 +0000'
         NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
@@ -46,7 +47,7 @@ NSString *const kTCHNewsFeedItemKey_PubDate = @"pubDate";
         inputFormatter.dateFormat = @"EEE, dd MMM yyyy HH:mm:ss z";
         NSString *dateStr = [element elementForName:kTCHNewsFeedItemKey_PubDate].stringValue;
         NSDate *tmpDate = [inputFormatter dateFromString:dateStr];
-        
+
         //convert the date to be in string format "Posted on July 15, 2014"
         NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
         outputFormatter.locale = inputFormatter.locale;
