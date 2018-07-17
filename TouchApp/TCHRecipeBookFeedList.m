@@ -11,7 +11,8 @@
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
-NSString *const kRecipeBookFeed = @"http://www.touch33.net/recipebook";
+//NSString *const kRecipeBookFeed = @"http://www.touch33.net/recipebook";
+NSString *const kRecipeBookFeed = @"http://www.touchmusic.org.uk/recipebook";
 #pragma clang diagnostic pop
 
 @implementation TCHRecipeBookFeedList
