@@ -10,6 +10,7 @@
 #import "UIApplication+TJMShakeNotification.h"
 #import "TJMAudioCenter.h"
 
+static DDLogLevel ddLogLevel = DDLogLevelOff;
 
 @implementation TCHTouchApplication
 

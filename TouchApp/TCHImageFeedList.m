@@ -10,6 +10,7 @@
 #import "TCHImageFeedItem.h"
 #import "GTMNSDictionary+URLArguments.h"
 
+static DDLogLevel ddLogLevel = DDLogLevelDebug;
 
 @implementation TCHImageFeedList
 

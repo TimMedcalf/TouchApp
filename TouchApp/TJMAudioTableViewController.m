@@ -12,6 +12,7 @@
 #import "TKUProgressBarView.h"
 #import "TJMAudioCenter.h"
 
+static DDLogLevel ddLogLevel = DDLogLevelOff;
 
 @interface TJMAudioTableViewController ()
 

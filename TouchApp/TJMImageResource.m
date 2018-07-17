@@ -5,6 +5,9 @@
 //  Created by Tim Medcalf on 12/08/2011.
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
+
+static DDLogLevel ddLogLevel = DDLogLevelOff;
+
 #import "TJMImageResource.h"
 #import "TCHAppManager.h"
 #import "UIApplication+TJMNetworkActivity.h"
@@ -71,9 +74,9 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
             _imageURL = tmpURL;
         }
         _lastModified = dict[Key_TJMImageResource_lastModified];
-        DDLogDebug(@"LM! = %@",self.lastModified);
+        //DDLogDebug(@"LM! = %@",self.lastModified);
         _etag = dict[Key_TJMImageResource_eTag];
-        DDLogDebug(@"Etag! = %@",self.etag);
+        //DDLogDebug(@"Etag! = %@",self.etag);
         _localFileName = dict[Key_TJMImageResource_localFileName];
         _localFileExtension = dict[Key_TJMImageResource_localFileExtension];
         _lastChecked = dict[Key_TJMImageResource_lastChecked];
@@ -99,7 +102,7 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
 
 #pragma mark image resourcing
 - (UIImage *)image {
-    DDLogDebug(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
+    //DDLogDebug(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
     if (self.imageIsDownloaded) {
         self.lastAccessed = nil;
         self.lastAccessed = [NSDate date];
@@ -170,7 +173,7 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
 }
 
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location {
-    DDLogDebug(@"[%@ %@] didFinish",[self class], NSStringFromSelector(_cmd));
+    //DDLogDebug(@"[%@ %@] didFinish",[self class], NSStringFromSelector(_cmd));
     
     //load the data
     NSData *downloadedData = [NSData dataWithContentsOfURL:location];
@@ -183,13 +186,14 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
     
     //extract the infos
     NSHTTPURLResponse *response = (NSHTTPURLResponse *)downloadTask.response;
-    DDLogDebug(@"%@",[response allHeaderFields]);
+    //DDLogDebug(@"%@",[response allHeaderFields]);
     self.etag = response.allHeaderFields[@"Etag"];
     self.lastModified = response.allHeaderFields[@"Last-Modified"];
     
     dispatch_async(dispatch_get_main_queue(), ^(void){
         //tell delegate we've updated...
         // call our delegate and tell it that our icon is ready for display
+        //DDLogDebug(@"UPDATE");
         [[NSNotificationCenter defaultCenter] postNotificationName:TJMImageResourceImageNeedsUpdating object:self];
     });
 }

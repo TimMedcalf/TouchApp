@@ -11,6 +11,8 @@
 #import "UIApplication+TJMNetworkWarning.h"
 #import "TKUProgressBarView.h"
 
+static DDLogLevel ddLogLevel = DDLogLevelOff;
+
 static NSInteger CellImageTag = 51;
 
 static NSInteger iPhoneThumbnailWidth = 80;

@@ -6,6 +6,8 @@
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
 
+static DDLogLevel ddLogLevel = DDLogLevelOff;
+
 #import "TCHAppManager.h"
 #import "TCHBaseFeedList.h"
 #import "TCHNewsFeedList.h"

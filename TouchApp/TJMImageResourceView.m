@@ -6,6 +6,8 @@
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
 
+static DDLogLevel ddLogLevel = DDLogLevelOff;
+
 #import "TJMImageResourceView.h"
 #import "TJMImageResource.h"
 #import "TJMImageResourceManager.h"
@@ -63,14 +65,14 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateImage) name:TJMImageResourceImageNeedsUpdating object:tmpImageResource];
 }
 
--(void)dealloc {
+- (void)dealloc {
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:TJMImageResourceImageNeedsUpdating object:nil];
 }
 
 //update the image on screen when it gets updated...
 - (void)updateImage {
-    DDLogDebug(@"Updating image");
+    //DDLogDebug(@"Updating image");
     TJMImageResource *tmpImageResource = [[TJMImageResourceManager sharedInstance] resourceForURL:self.url];
     self.image = tmpImageResource.image;
     if (self.spinner) [self.spinner stopAnimating];

@@ -4,6 +4,7 @@
 #import "UIApplication+TJMNetworkActivity.h"
 #import "TJMAudioCenter.h"
 
+static DDLogLevel ddLogLevel = DDLogLevelOff;
 
 @implementation HTMLItemViewController
 

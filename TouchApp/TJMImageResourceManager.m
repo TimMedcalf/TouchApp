@@ -6,6 +6,8 @@
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
 
+static DDLogLevel ddLogLevel = DDLogLevelOff;
+
 #import "TJMImageResourceManager.h"
 #import "TCHAppManager.h"
 #import "TJMImageResource.h"
@@ -80,7 +82,7 @@ NSInteger TwoMonths = -5184000;
 
 - (TJMImageResource *)resourceForURL:(NSURL *)imageURL {
   //find the resource from the URL
-  DDLogDebug(@"Number of image resources %lu", (unsigned long)[self.imageResourceDict count]);
+  //DDLogDebug(@"Number of image resources %lu", (unsigned long)[self.imageResourceDict count]);
   TJMImageResource *resource = nil;
   if (imageURL) {
     resource = (self.imageResourceDict)[imageURL.absoluteString];

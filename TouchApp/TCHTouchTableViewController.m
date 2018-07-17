@@ -11,6 +11,7 @@
 #import "UIApplication+TJMNetworkWarning.h"
 #import "TKUProgressBarView.h"
 
+static DDLogLevel ddLogLevel = DDLogLevelOff;
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCNotLocalizedStringInspection"

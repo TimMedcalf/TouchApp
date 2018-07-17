@@ -9,6 +9,8 @@
 #import "UIApplication+TJMShakeNotification.h"
 #import "TouchConstants.h"
 
+static DDLogLevel ddLogLevel = DDLogLevelOff;
+
 static NSTimeInterval tjm_lastShake = 0;
 static NSUInteger tjm_shakeCount = 0;
 

@@ -11,6 +11,8 @@
 #import "TCHAppManager.h"
 #import "UIApplication+TJMNetworkActivity.h"
 
+static DDLogLevel ddLogLevel = DDLogLevelOff;
+
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
 NSString *const Key_FeedItems = @"FeedItems";

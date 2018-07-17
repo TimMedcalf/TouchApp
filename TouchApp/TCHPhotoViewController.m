@@ -56,6 +56,8 @@
 #import "TJMImageResourceManager.h"
 #import "TJMImageResource.h"
 
+static DDLogLevel ddLogLevel = DDLogLevelOff;
+
 
 @interface TCHPhotoViewController ()
 {

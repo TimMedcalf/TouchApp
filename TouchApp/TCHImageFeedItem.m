@@ -8,6 +8,8 @@
 
 #import "TCHImageFeedItem.h"
 
+static DDLogLevel ddLogLevel = DDLogLevelDebug;
+
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
 NSString *const Key_Image_Saved = @"image";

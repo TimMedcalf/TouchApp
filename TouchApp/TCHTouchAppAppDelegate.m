@@ -25,6 +25,8 @@
 
 @implementation TCHTouchAppAppDelegate
 
+static DDLogLevel ddLogLevel = DDLogLevelOff;
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [DDLog addLogger:[DDASLLogger sharedInstance]];
     [DDLog addLogger:[DDTTYLogger sharedInstance]];

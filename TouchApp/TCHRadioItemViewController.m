@@ -1,6 +1,7 @@
 
 #import "TCHRadioItemViewController.h"
 
+static DDLogLevel ddLogLevel = DDLogLevelOff;
 
 @implementation TCHRadioItemViewController
 

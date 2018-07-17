@@ -9,6 +9,8 @@
 #import "TCHRecipeBookFeedList.h"
 #import "TCHRecipeFeedItem.h"
 
+static DDLogLevel ddLogLevel = DDLogLevelOff;
+
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
 //NSString *const kRecipeBookFeed = @"http://www.touch33.net/recipebook";

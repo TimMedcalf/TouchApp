@@ -22,9 +22,9 @@
 @import KissXML;
 
 #ifdef DEBUG
-static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
+//static DDLogLevel ddLogLevel = DDLogLevelVerbose;
 #else
-static const DDLogLevel ddLogLevel = DDLogLevelWarning;
+static DDLogLevel ddLogLevel = DDLogLevelWarning;
 #endif
 
 #endif

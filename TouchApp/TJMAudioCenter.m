@@ -9,6 +9,8 @@
 #import "TJMAudioCenter.h"
 #import "GCDSingleton.h"
 
+static DDLogLevel ddLogLevel = DDLogLevelOff;
+
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
 NSString *const TJMAudioCenterStatusChange = @"TJMAudioCenterStatusChange";
@@ -16,6 +18,8 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
 #pragma clang diagnostic pop
 
 @interface TJMAudioCenter ()
+
+
 
 @property (strong, nonatomic) AVPlayer *player;
 @property (strong, nonatomic) NSURL *URL;

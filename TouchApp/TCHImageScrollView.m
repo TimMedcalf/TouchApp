@@ -53,6 +53,8 @@
 
 #import "TCHImageScrollView.h"
 
+static DDLogLevel ddLogLevel = DDLogLevelOff;
+
 
 @implementation TCHImageScrollView
 

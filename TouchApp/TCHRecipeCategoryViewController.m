@@ -6,6 +6,8 @@
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
 
+static DDLogLevel ddLogLevel = DDLogLevelOff;
+
 #import "TCHRecipeCategoryViewController.h"
 #import "TCHRecipeBookViewController.h"
 #import "TCHRecipeCategoryFeedItem.h"
