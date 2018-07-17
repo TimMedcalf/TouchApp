@@ -142,7 +142,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 
 
 - (void)startDownload {
-    
+    DDLogDebug(@"stary download");
     if (self.activeDownloadTask) {
         return;
     }
@@ -180,15 +180,19 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 #pragma mark Download support (NSURLSessionDataDelegate)
 
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didWriteData:(int64_t)bytesWritten totalBytesWritten:(int64_t)totalBytesWritten totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
-    DDLogDebug(@"[%@ %@] Updating progress",[self class], NSStringFromSelector(_cmd));
+    DDLogDebug(@"[%@ %@] Updating progress - Writing: %2lld     Written: %2lld     Expected: %2lld",[self class], NSStringFromSelector(_cmd), bytesWritten, totalBytesWritten, totalBytesExpectedToWrite);
     
     if ([self.delegate respondsToSelector:@selector(updateProgressWithPercent:)]) {
-        [self.delegate updateProgressWithPercent:totalBytesWritten / totalBytesExpectedToWrite];
+        if (totalBytesExpectedToWrite < 0) {
+            totalBytesExpectedToWrite = 100000;
+        }
+        DDLogDebug(@"Calling updateProgressWithPercent:%2lld  totalBytesExpectedToWrite:%2lld", totalBytesWritten, totalBytesExpectedToWrite);
+        [self.delegate updateProgressWithPercent:(CGFloat) totalBytesWritten / totalBytesExpectedToWrite];
     }
 }
 
--(void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
-    
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
+    DDLogDebug(@"didComplete");
     self.activeDownloadTask = nil;
     [[UIApplication sharedApplication] tjm_popNetworkActivity];
     
@@ -231,7 +235,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 
 
 - (void)parseResultWithData:(NSData *)xmlData {
-    //DDLogDebug(@"%@",[NSString stringWithUTF8String:[xmlData bytes]]);
+    DDLogDebug(@"Parse result %@",[NSString stringWithUTF8String:[xmlData bytes]]);
     
     // Create a new rssParser object (DDXMLDocument), this is the object that actually grabs and processes the RSS data
     if (xmlData.length > 0) {
@@ -307,6 +311,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 }
 
 - (void)dataUpdated {
+    DDLogDebug(@"data updated");
     //do nothing...
 }
 
