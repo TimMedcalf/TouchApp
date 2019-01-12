@@ -5,16 +5,16 @@ PODS:
   - CocoaLumberjack/Default (3.4.2)
   - CocoaLumberjack/Extensions (3.4.2):
     - CocoaLumberjack/Default
-  - Crashlytics (3.10.5):
-    - Fabric (~> 1.7.9)
-  - Fabric (1.7.9)
+  - Crashlytics (3.12.0):
+    - Fabric (~> 1.9.0)
+  - Fabric (1.9.0)
   - KissXML (5.2.3)
 
 DEPENDENCIES:
-  - CocoaLumberjack
-  - Crashlytics
-  - Fabric
-  - KissXML
+  - CocoaLumberjack (~> 3.4)
+  - Crashlytics (~> 3.12)
+  - Fabric (~> 1.9)
+  - KissXML (~> 5.2)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -25,10 +25,10 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   CocoaLumberjack: db7cc9e464771f12054c22ff6947c5a58d43a0fd
-  Crashlytics: 7f2e38d302d9da96475b3d64d86fb29e31a542b7
-  Fabric: a2917d3895e4c1569b9c3170de7320ea1b1e6661
+  Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
+  Fabric: f988e33c97f08930a413e08123064d2e5f68d655
   KissXML: 09f88ff8161fd058d67b70740b8b516687b52823
 
-PODFILE CHECKSUM: 9f7a103c5199094679eb751c304c493f1609ee5e
+PODFILE CHECKSUM: 102cc0aa97523400755f367413554281b6a84fb6
 
-COCOAPODS: 1.5.2
+COCOAPODS: 1.6.0.beta.2

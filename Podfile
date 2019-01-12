@@ -1,12 +1,13 @@
-platform :ios, '10.0'
+platform :ios, '11.0'
 
 target 'TouchApp' do
     
   use_frameworks!
 
-  pod 'Fabric'
-  pod 'Crashlytics'
-  pod 'KissXML'
-  pod 'CocoaLumberjack'
+  pod 'Fabric', '~> 1.9'
+  pod 'Crashlytics', '~> 3.12'
+  pod 'KissXML', '~> 5.2'
+  pod 'CocoaLumberjack', '~> 3.4'
+
 end
 
