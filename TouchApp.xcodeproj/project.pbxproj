@@ -709,7 +709,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = TCH;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "ErgoThis Ltd";
 				TargetAttributes = {
 					222951C113EC496F001D174D = {
@@ -725,10 +725,11 @@
 			};
 			buildConfigurationList = 222951BC13EC496F001D174D /* Build configuration list for PBXProject "TouchApp" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 222951B713EC496F001D174D;
 			productRefGroup = 222951C313EC496F001D174D /* Products */;
@@ -940,6 +941,7 @@
 		222951E713EC496F001D174D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -993,6 +995,7 @@
 		222951E813EC496F001D174D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
