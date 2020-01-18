@@ -28,7 +28,7 @@
 static DDLogLevel ddLogLevel = DDLogLevelOff;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [DDLog addLogger:[DDASLLogger sharedInstance]];
+    [DDLog addLogger:[DDOSLogger sharedInstance]];
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
 
 #ifndef DEBUG
