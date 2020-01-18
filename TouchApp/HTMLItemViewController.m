@@ -4,7 +4,6 @@
 #import "UIApplication+TJMNetworkActivity.h"
 #import "TJMAudioCenter.h"
 
-static DDLogLevel ddLogLevel = DDLogLevelOff;
 
 @implementation HTMLItemViewController
 
@@ -87,7 +86,7 @@ static DDLogLevel ddLogLevel = DDLogLevelOff;
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
     // if user taps a link to load a touch radio page, trap it and do nothing
     NSString *tmpStr = navigationAction.request.URL.absoluteString;
-    DDLogDebug(@"Should Load %@",tmpStr);
+    NSLog(@"Should Load %@",tmpStr);
     NSRange found = [tmpStr rangeOfString:@"http://www.touchradio.org.uk/"];
     if (found.location != NSNotFound) {
         decisionHandler(WKNavigationActionPolicyCancel);

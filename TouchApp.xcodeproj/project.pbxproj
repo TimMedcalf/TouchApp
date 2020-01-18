@@ -33,7 +33,6 @@
 		222951C913EC496F001D174D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222951C813EC496F001D174D /* Foundation.framework */; };
 		222951CB13EC496F001D174D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222951CA13EC496F001D174D /* CoreGraphics.framework */; };
 		222951D113EC496F001D174D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 222951CF13EC496F001D174D /* InfoPlist.strings */; };
-		222951D313EC496F001D174D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 222951D213EC496F001D174D /* main.m */; };
 		222951D713EC496F001D174D /* TCHTouchAppAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 222951D613EC496F001D174D /* TCHTouchAppAppDelegate.m */; };
 		222951F513EC4B5D001D174D /* TCHCatalogueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 222951F313EC4B5D001D174D /* TCHCatalogueViewController.m */; };
 		2229524413ECEC0B001D174D /* TCHNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2229524213ECEC0B001D174D /* TCHNewsViewController.m */; };
@@ -83,6 +82,8 @@
 		22F7C4DF162F5D1D002E2CB6 /* TCHNewsItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F7C4DE162F5D1D002E2CB6 /* TCHNewsItemViewController.m */; };
 		495551F01877DE6F00F8330D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 495551EF1877DE6F00F8330D /* Images.xcassets */; };
 		4E88A79B23D2685C009C6005 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E88A79A23D2685C009C6005 /* WebKit.framework */; };
+		4E88A7DA23D349D7009C6005 /* TouchAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E88A7D923D349D7009C6005 /* TouchAppDelegate.swift */; };
+		4E88A7DD23D3550D009C6005 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E88A7DC23D3550D009C6005 /* GoogleService-Info.plist */; };
 		5EFDC2301BCCB0C900C4B862 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EFDC22F1BCCB0C900C4B862 /* LaunchScreen.storyboard */; };
 		695B44E186493D3144A73D06 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 695B44703E911D49CB31DEAC /* Localizable.strings */; };
 		D3925E26A98C25EB4DB1C7ED /* Pods_TouchApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DF2AD46531A8B4AB77BF59 /* Pods_TouchApp.framework */; };
@@ -145,7 +146,6 @@
 		222951CA13EC496F001D174D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		222951CE13EC496F001D174D /* TouchApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TouchApp-Info.plist"; sourceTree = "<group>"; };
 		222951D013EC496F001D174D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		222951D213EC496F001D174D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		222951D413EC496F001D174D /* TouchApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TouchApp-Prefix.pch"; sourceTree = "<group>"; };
 		222951D513EC496F001D174D /* TCHTouchAppAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCHTouchAppAppDelegate.h; sourceTree = "<group>"; };
 		222951D613EC496F001D174D /* TCHTouchAppAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TCHTouchAppAppDelegate.m; sourceTree = "<group>"; };
@@ -231,6 +231,9 @@
 		2BBE2684C749FF4BF14BD8D3 /* Pods-TouchApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouchApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TouchApp/Pods-TouchApp.debug.xcconfig"; sourceTree = "<group>"; };
 		495551EF1877DE6F00F8330D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4E88A79A23D2685C009C6005 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		4E88A7D823D349D7009C6005 /* TouchApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TouchApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		4E88A7D923D349D7009C6005 /* TouchAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchAppDelegate.swift; sourceTree = "<group>"; };
+		4E88A7DC23D3550D009C6005 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5EFDC22F1BCCB0C900C4B862 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		695B44703E911D49CB31DEAC /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		A8DF2AD46531A8B4AB77BF59 /* Pods_TouchApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TouchApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -441,11 +444,11 @@
 		222951CD13EC496F001D174D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4E88A7DC23D3550D009C6005 /* GoogleService-Info.plist */,
 				222951CE13EC496F001D174D /* TouchApp-Info.plist */,
 				224FBC7B1408C47200749E42 /* RecipeCategories.plist */,
 				225C5BA616FC695300346816 /* viewConfig.plist */,
 				222951CF13EC496F001D174D /* InfoPlist.strings */,
-				222951D213EC496F001D174D /* main.m */,
 				222951D413EC496F001D174D /* TouchApp-Prefix.pch */,
 				2263927E1569F69300191172 /* GCDSingleton.h */,
 			);
@@ -583,6 +586,7 @@
 			children = (
 				224FBBEB14076A5A00749E42 /* AudioCenter */,
 				22804A8C140754600083CE40 /* ImageResource */,
+				4E88A7D923D349D7009C6005 /* TouchAppDelegate.swift */,
 				222951D513EC496F001D174D /* TCHTouchAppAppDelegate.h */,
 				222951D613EC496F001D174D /* TCHTouchAppAppDelegate.m */,
 				22CB4B8713EDD640008968D6 /* TCHAppManager.h */,
@@ -591,6 +595,7 @@
 				227C568F14163D9200169F38 /* TCHTouchApplication.m */,
 				222DF1CB16D09D3A00D749D2 /* TouchConstants.h */,
 				222DF1CC16D09D3B00D749D2 /* TouchConstants.m */,
+				4E88A7D823D349D7009C6005 /* TouchApp-Bridging-Header.h */,
 			);
 			name = globals;
 			sourceTree = "<group>";
@@ -718,7 +723,7 @@
 				TargetAttributes = {
 					222951C113EC496F001D174D = {
 						DevelopmentTeam = 65668BBRTH;
-						LastSwiftMigration = 0830;
+						LastSwiftMigration = 1130;
 						ProvisioningStyle = Automatic;
 					};
 					22C2C25019703E020052BD21 = {
@@ -760,6 +765,7 @@
 				225C5BA716FC695400346816 /* viewConfig.plist in Resources */,
 				1C0983AD44C39181B67563F5 /* ipad.css in Resources */,
 				1C0989636333291D4CE91427 /* catalogue_item_iphone.css in Resources */,
+				4E88A7DD23D3550D009C6005 /* GoogleService-Info.plist in Resources */,
 				1C0980FF9B6C23AB9C80D36C /* catalogue_item_ipad.css in Resources */,
 				1C0989FE81E0A68A63A9AE9E /* mobile.css in Resources */,
 				5EFDC2301BCCB0C900C4B862 /* LaunchScreen.storyboard in Resources */,
@@ -805,13 +811,17 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-TouchApp/Pods-TouchApp-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/KissXML/KissXML.framework",
+				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KissXML.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -852,7 +862,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				222951D313EC496F001D174D /* main.m in Sources */,
 				222951D713EC496F001D174D /* TCHTouchAppAppDelegate.m in Sources */,
 				222951F513EC4B5D001D174D /* TCHCatalogueViewController.m in Sources */,
 				2229524413ECEC0B001D174D /* TCHNewsViewController.m in Sources */,
@@ -893,6 +902,7 @@
 				1C098DD6C83F6E1B61B75D02 /* TCHRecipeCategoryFeedItem.m in Sources */,
 				1C09881282824EC8B5BF4FD6 /* TCHRecipeCategoryFeedList.m in Sources */,
 				1C0988B4F0B1E422011F1C95 /* TCHRecipeFeedItem.m in Sources */,
+				4E88A7DA23D349D7009C6005 /* TouchAppDelegate.swift in Sources */,
 				1C098B467CE23CD868C3D2FB /* TCHRecipeBookFeedList.m in Sources */,
 				1C0984D6B4040161BA6B3214 /* TCHRadioFeedItem.m in Sources */,
 				1C098C0402A83351575208E6 /* TCHRadioFeedList.m in Sources */,
@@ -985,6 +995,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "639AEDD9-A932-4AA1-8DC8-AFBEC644174A";
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
 				WARNING_CFLAGS = (
 					"-Wdeprecated-implementations",
 					"-Wempty-body",
@@ -1034,6 +1045,7 @@
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "639AEDD9-A932-4AA1-8DC8-AFBEC644174A";
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 				WARNING_CFLAGS = (
 					"-Wdeprecated-implementations",
@@ -1066,6 +1078,7 @@
 				);
 				INFOPLIST_FILE = "TouchApp/TouchApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -1078,6 +1091,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "TouchApp/TouchApp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 				WARNING_CFLAGS = (
@@ -1111,6 +1127,7 @@
 				);
 				INFOPLIST_FILE = "TouchApp/TouchApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -1123,6 +1140,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "TouchApp/TouchApp-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 				WARNING_CFLAGS = (
@@ -1139,6 +1158,7 @@
 		22C2C26119703E030052BD21 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TouchApp.app/TouchApp";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1186,6 +1206,7 @@
 		22C2C26219703E030052BD21 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TouchApp.app/TouchApp";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";

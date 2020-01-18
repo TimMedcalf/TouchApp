@@ -53,8 +53,6 @@
 
 #import "TCHImageScrollView.h"
 
-static DDLogLevel ddLogLevel = DDLogLevelOff;
-
 
 @implementation TCHImageScrollView
 
@@ -92,7 +90,7 @@ static DDLogLevel ddLogLevel = DDLogLevelOff;
     }
     
     imageView.frame = frameToCenter;
-    DDLogDebug(@"[%@ %@] Frame = %f %f", [self class], NSStringFromSelector(_cmd), imageView.frame.size.width, imageView.frame.size.height);
+    NSLog(@"[%@ %@] Frame = %f %f", [self class], NSStringFromSelector(_cmd), imageView.frame.size.width, imageView.frame.size.height);
 }
 
 #pragma mark - UIScrollView delegate methods
@@ -115,7 +113,7 @@ static DDLogLevel ddLogLevel = DDLogLevelOff;
     
     //TJM Investigate this line,
     self.contentSize = (imageView.image).size;
-    DDLogDebug(@"Image content size width=%f height=%f", self.contentSize.width, self.contentSize.height);
+    NSLog(@"Image content size width=%f height=%f", self.contentSize.width, self.contentSize.height);
     [self setMaxMinZoomScalesForCurrentBounds];
     self.zoomScale = self.minimumZoomScale;
 }
@@ -216,7 +214,7 @@ static DDLogLevel ddLogLevel = DDLogLevelOff;
 }
 
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView {
-    DDLogDebug(@"Scale %f",scrollView.zoomScale);
+    NSLog(@"Scale %f",scrollView.zoomScale);
     //resize the loading spinner to account for any scaling done on the view
     imageView.spinner.transform = CGAffineTransformMakeScale(1/scrollView.zoomScale, 1/scrollView.zoomScale);
 }

@@ -6,8 +6,6 @@
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
 
-static DDLogLevel ddLogLevel = DDLogLevelOff;
-
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
 NSString *const Key_Radio_Author = @"itunes:author";
@@ -87,9 +85,9 @@ NSString *const Key_ImageOverride = @"imageURL";
             urlString = [urlString stringByReplacingOccurrencesOfString:@"touchradio/" withString:@"touchradio/images/"];
 
             self.imageURL = [[NSURL alloc] initWithString:urlString relativeToURL:baseURL];
-            DDLogDebug(@"Radio URL = %@", self.imageURL);
+            NSLog(@"Radio URL = %@", self.imageURL);
         }
-        DDLogDebug(@"%@ - %@ - %@", self.author, self.title, self.titleLabel);
+        NSLog(@"%@ - %@ - %@", self.author, self.title, self.titleLabel);
     }
     return self;
 }

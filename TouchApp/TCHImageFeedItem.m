@@ -8,7 +8,6 @@
 
 #import "TCHImageFeedItem.h"
 
-static DDLogLevel ddLogLevel = DDLogLevelDebug;
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
@@ -96,7 +95,7 @@ NSString *const Key_ImageItem_DateTakenString = @"dateTakenString";
 - (instancetype)initWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL {
     self = [super initWithXMLElement:element andBaseURL:baseURL];
     if (self) {
-        DDLogDebug(@"[%@ %@] %@", [self class], NSStringFromSelector(_cmd), element);
+        NSLog(@"[%@ %@] %@", [self class], NSStringFromSelector(_cmd), element);
         NSString *thumbnailSuffix = [[self class] thumbnailFlickrSuffix];
         NSString *imageSuffix = [[self class] imageFlickrSuffix];
         
@@ -118,7 +117,7 @@ NSString *const Key_ImageItem_DateTakenString = @"dateTakenString";
         }
         _imageWidth = [element attributeForName:[NSString stringWithFormat:@"width_%@", imageSuffix]].stringValue.integerValue;
         _imageHeight = [element attributeForName:[NSString stringWithFormat:@"height_%@", imageSuffix]].stringValue.integerValue;
-        DDLogDebug(@"Image %ld x %ld", (long)self.imageWidth, (long)self.imageHeight);
+        NSLog(@"Image %ld x %ld", (long)self.imageWidth, (long)self.imageHeight);
         _photoId = [element attributeForName:@"id"].stringValue;
         
         _dateTakenString = [element attributeForName:@"datetaken"].stringValue;

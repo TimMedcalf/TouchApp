@@ -6,7 +6,6 @@
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
 
-static DDLogLevel ddLogLevel = DDLogLevelOff;
 
 #import "TJMImageResourceView.h"
 #import "TJMImageResource.h"
@@ -41,7 +40,7 @@ static DDLogLevel ddLogLevel = DDLogLevelOff;
         TJMImageResource *tmpImageResource = [[TJMImageResourceManager sharedInstance] resourceForURL:self.url];
         UIImage *image = tmpImageResource.image;
         if (!tmpImageResource.imageIsDownloaded) {
-            DDLogDebug(@"WIDTH = %f", self.frame.size.width);
+            NSLog(@"WIDTH = %f", self.frame.size.width);
             UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleLarge];
             spinner.center = self.center;
             spinner.hidesWhenStopped = YES;

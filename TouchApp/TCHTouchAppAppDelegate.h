@@ -6,14 +6,14 @@
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "TCHRotatingTabBarController.h"
+//#import <UIKit/UIKit.h>
+//#import "TCHRotatingTabBarController.h"
 
 
-@interface TCHTouchAppAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
-
-@property (strong, nonatomic) TCHRotatingTabBarController *tabBarController;
-
-@end
+//@interface TCHTouchAppAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate>
+//
+//@property (strong, nonatomic) UIWindow *window;
+//
+//@property (strong, nonatomic) TCHRotatingTabBarController *tabBarController;
+//
+//@end

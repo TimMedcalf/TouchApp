@@ -9,8 +9,6 @@
 #import "TJMAudioCenter.h"
 #import "GCDSingleton.h"
 
-static DDLogLevel ddLogLevel = DDLogLevelOff;
-
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
 NSString *const TJMAudioCenterStatusChange = @"TJMAudioCenterStatusChange";
@@ -69,14 +67,14 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
 
 - (void)playURL:(NSURL *)url withTitle:(NSString *)title {
     [self setupAudioSession];
-    DDLogDebug(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
+    NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
     //if url matches existing playing item, just makes sure it's playing
     if ([self.URL isEqual:url]) {
         self.player.rate = 1;
-        DDLogDebug(@"[%@ %@] Rate =1", [self class], NSStringFromSelector(_cmd));
+        NSLog(@"[%@ %@] Rate =1", [self class], NSStringFromSelector(_cmd));
     } else {
         if (title) {
-            DDLogDebug(@"Radio Played_FromStart %@", title);
+            NSLog(@"Radio Played_FromStart %@", title);
 //            [Flurry logEvent:@"Radio" withParameters:@{@"Played_FromStart": title}];
         }
         self.URLTitle = title;
@@ -101,7 +99,7 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
 }
 
 - (void)pauseURL:(NSURL *)url {
-    DDLogDebug(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
+    NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
     if ([self.URL isEqual:url]) {
         self.player.rate = 0;
     }
@@ -115,9 +113,9 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
                 if ((self.delegate) && ([self.delegate respondsToSelector:@selector(URLDidFail:)]))
                     [self.delegate URLDidFail:self.URL];
                 [[NSNotificationCenter defaultCenter] postNotificationName:TJMAudioCenterStatusChange object:self];
-                DDLogDebug(@"Audio Failed");
+                NSLog(@"Audio Failed");
             } else if (self.playWhenLoaded && (self.player.currentItem.status == AVPlayerStatusReadyToPlay)) {
-                DDLogDebug(@"Audio Ready To PLay");
+                NSLog(@"Audio Ready To PLay");
                 self.player.rate = 1;
                 self.playWhenLoaded = NO;
             }
@@ -125,7 +123,7 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
     } else if ([keyPath isEqualToString:@"rate"]) {
         if ([(__bridge NSString *)context isEqual: CurrentPlayerObserver]) {
             if (self.player.rate == 0.f) {
-                DDLogDebug(@"Audio Paused");
+                 NSLog(@"Audio Paused");
                 //just check that the audio is loaded - this will get hit even if the audio still caching...
                 TJMAudioStatus audio = self.statusCheck;
                 if (audio == TJMAudioStatusCurrentPaused) {
@@ -134,7 +132,7 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
                 }
                 [[NSNotificationCenter defaultCenter] postNotificationName:TJMAudioCenterStatusChange object:self];
             } else {
-                DDLogDebug(@"Audio Playing");
+                NSLog(@"Audio Playing");
                 if ((self.delegate) && ([self.delegate respondsToSelector:@selector(URLIsPlaying:)]))
                     [self.delegate URLIsPlaying:self.URL];
                 [[NSNotificationCenter defaultCenter] postNotificationName:TJMAudioCenterStatusChange object:self];
@@ -165,10 +163,10 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
 #pragma mark notifications
 //reset the stream to the start and pause it when it reaches the end, ready to play again.
 - (void)playerItemDidReachEnd:(NSNotification *)notification {
-    DDLogDebug(@"Reached end of stream...");
+    NSLog(@"Reached end of stream...");
     if (self.player) {
         if (self.URLTitle) {
-            DDLogDebug(@"Radio Played_ToEnd %@", self.URLTitle);
+            NSLog(@"Radio Played_ToEnd %@", self.URLTitle);
 //            [Flurry logEvent:@"Radio" withParameters:@{@"Played_ToEnd": self.URLTitle}];
             self.URLTitle = nil;
         }
@@ -188,7 +186,7 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
 - (void)setupAudioSession {
     if (self.audioSessionInitialised) return;
     self.audioSessionInitialised = YES;
-    DDLogDebug(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
+    NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
     AVAudioSession *mySession = [AVAudioSession sharedInstance];
     
     // Specify that this object is the delegate of the audio session, so that
@@ -200,12 +198,12 @@ NSString *const CurrentPlayerObserver = @"CurrentPlayerObserver";
     NSError *audioSessionError = nil;
     if (![mySession setCategory:AVAudioSessionCategoryPlayback
                          error:&audioSessionError]) {
-        DDLogError(@"Error setting audio session category: %@", audioSessionError.localizedDescription);
+        NSLog(@"Error setting audio session category: %@", audioSessionError.localizedDescription);
     };
     // Activate the audio session
     if (![mySession setActive:YES
                         error:&audioSessionError]) {
-        DDLogError(@"Error activating audio session: %@", audioSessionError.localizedDescription);
+        NSLog(@"Error activating audio session: %@", audioSessionError.localizedDescription);
     }
 }
 

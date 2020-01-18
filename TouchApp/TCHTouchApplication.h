@@ -1,14 +1,14 @@
+////
+////  TouchApplication.h
+////  TouchApp
+////
+////  Created by Tim Medcalf on 06/09/2011.
+////  Copyright 2011 ErgoThis Ltd. All rights reserved.
+////
 //
-//  TouchApplication.h
-//  TouchApp
+//#import <UIKit/UIKit.h>
 //
-//  Created by Tim Medcalf on 06/09/2011.
-//  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
-
-#import <UIKit/UIKit.h>
-
-
-@interface TCHTouchApplication : UIApplication
-
-@end
+//@interface TCHTouchApplication : UIApplication
+//
+//@end

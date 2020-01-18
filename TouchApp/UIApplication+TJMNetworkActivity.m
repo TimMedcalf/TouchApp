@@ -6,8 +6,6 @@
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
 
-static DDLogLevel ddLogLevel = DDLogLevelOff;
-
 #import "UIApplication+TJMNetworkActivity.h"
 
 static NSUInteger tjm_networkActivityCount = 0;
@@ -32,7 +30,7 @@ static NSUInteger tjm_networkActivityCount = 0;
     tjm_networkActivityCount--;
     [self tjm_refreshNetworkActivityIndicator];
   } else {
-      DDLogError(@"Unbalanced Network activity: activity count already 0.");
+      NSLog(@"Unbalanced Network activity: activity count already 0.");
   }
 }
 

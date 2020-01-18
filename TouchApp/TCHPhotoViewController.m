@@ -56,8 +56,6 @@
 #import "TJMImageResourceManager.h"
 #import "TJMImageResource.h"
 
-static DDLogLevel ddLogLevel = DDLogLevelOff;
-
 
 @interface TCHPhotoViewController ()
 {
@@ -210,7 +208,7 @@ static DDLogLevel ddLogLevel = DDLogLevelOff;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    DDLogDebug(@"ViewDidLoad - %@", NSStringFromCGRect(self.view.frame));
+    NSLog(@"ViewDidLoad - %@", NSStringFromCGRect(self.view.frame));
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -414,7 +412,7 @@ static DDLogLevel ddLogLevel = DDLogLevelOff;
 
 - (CGRect)frameForPageAtIndex:(NSUInteger)index {
     CGRect bounds = self.view.bounds;
-    DDLogDebug(@"frameForPageAtIndex = %@",NSStringFromCGRect(bounds));
+    NSLog(@"frameForPageAtIndex = %@",NSStringFromCGRect(bounds));
     CGRect pageFrame = bounds;
     pageFrame.size.width -= (2 * PADDING);
     pageFrame.origin.x = (bounds.size.width * index) + PADDING;
@@ -426,7 +424,7 @@ static DDLogLevel ddLogLevel = DDLogLevelOff;
     
     CGRect bounds = self.view.bounds;
     
-    DDLogDebug(@"contentSizeForPagingScrollView = %@",NSStringFromCGRect(bounds));
+    NSLog(@"contentSizeForPagingScrollView = %@",NSStringFromCGRect(bounds));
     return CGSizeMake(bounds.size.width * self.imageCount, bounds.size.height);
 }
 

@@ -11,8 +11,6 @@
 #import "UIApplication+TJMNetworkWarning.h"
 #import "TKUProgressBarView.h"
 
-static DDLogLevel ddLogLevel = DDLogLevelOff;
-
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
 NSString static *const Key_Title = @"title";
@@ -170,7 +168,7 @@ NSString static *const Key_IconTintB = @"iconTintB";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    DDLogDebug(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
+    NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
     self.tabBarController.tabBar.tintColor = self.iconColor;
     [self configureTableHeader];
 }

@@ -10,7 +10,6 @@
 #import "TCHImageFeedItem.h"
 #import "GTMNSDictionary+URLArguments.h"
 
-static DDLogLevel ddLogLevel = DDLogLevelDebug;
 
 @implementation TCHImageFeedList
 
@@ -34,7 +33,7 @@ static DDLogLevel ddLogLevel = DDLogLevelDebug;
   //set the extra key to request the right image sizes for the device
   parameters[@"extras"] = [NSString stringWithFormat:@"date_taken, url_%@, url_%@", [TCHImageFeedItem thumbnailFlickrSuffix], [TCHImageFeedItem imageFlickrSuffix]];
   NSString *returnString = [NSString stringWithFormat:@"https://api.flickr.com/services/rest/?%@", parameters.gtm_httpArgumentsString];
-  DDLogDebug(@"FLICKR CALL: %@",returnString);
+  NSLog(@"FLICKR CALL: %@",returnString);
   return returnString;
 }
 

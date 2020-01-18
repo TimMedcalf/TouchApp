@@ -6,8 +6,6 @@
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
 
-static DDLogLevel ddLogLevel = DDLogLevelOff;
-
 #import "TCHAppManager.h"
 #import "TCHBaseFeedList.h"
 #import "TCHNewsFeedList.h"
@@ -40,7 +38,7 @@ NSString *const LMSUCache = @"TouchCache";
         NSError *error;
         _cacheFolder = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:LMSUCache];
         if (![[NSFileManager defaultManager] createDirectoryAtPath:self.cacheFolder withIntermediateDirectories:YES attributes:nil error:&error]) {
-            DDLogError(@"Error creating caches subfolder : %@", error);
+            NSLog(@"Error creating caches subfolder : %@", error);
         }
     }
     

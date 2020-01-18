@@ -9,8 +9,6 @@
 #import "UIApplication+TJMShakeNotification.h"
 #import "TouchConstants.h"
 
-static DDLogLevel ddLogLevel = DDLogLevelOff;
-
 static NSTimeInterval tjm_lastShake = 0;
 static NSUInteger tjm_shakeCount = 0;
 
@@ -18,7 +16,7 @@ static NSUInteger tjm_shakeCount = 0;
 @implementation UIApplication (TJMShakeNotification)
 
 - (void)tjm_SendShakeNotification {
-  DDLogDebug(@"Shake Start: lastShake=%fl shakeCount=%lu",tjm_lastShake, (unsigned long)tjm_shakeCount);
+  NSLog(@"Shake Start: lastShake=%fl shakeCount=%lu",tjm_lastShake, (unsigned long)tjm_shakeCount);
   NSDate *now = [NSDate date];
   NSTimeInterval timeSince = now.timeIntervalSince1970;
   if ((timeSince - tjm_lastShake) < 10) {
@@ -31,7 +29,7 @@ static NSUInteger tjm_shakeCount = 0;
     tjm_shakeCount = 1;
   }
   tjm_lastShake = timeSince;
-  DDLogDebug(@"Shake End: lastShake=%f shakeCount=%lu",tjm_lastShake, (unsigned long)tjm_shakeCount);
+  NSLog(@"Shake End: lastShake=%f shakeCount=%lu",tjm_lastShake, (unsigned long)tjm_shakeCount);
 }
 
 @end

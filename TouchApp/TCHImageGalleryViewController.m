@@ -11,8 +11,6 @@
 #import "UIApplication+TJMNetworkWarning.h"
 #import "TKUProgressBarView.h"
 
-static DDLogLevel ddLogLevel = DDLogLevelOff;
-
 static NSInteger CellImageTag = 51;
 
 static NSInteger iPhoneThumbnailWidth = 80;
@@ -159,7 +157,7 @@ static NSInteger iPadThumbnailRowCount = 8;
 
 
 - (void)performReloadAfterRotate {
-    DDLogDebug(@"Reloading Gallery");
+    NSLog(@"Reloading Gallery");
     [self.tableView reloadData];
 }
 
@@ -257,7 +255,7 @@ static NSInteger iPadThumbnailRowCount = 8;
 }
 
 - (void)handleShake {
-    DDLogDebug(@"images - Shake!");
+    NSLog(@"images - Shake!");
     [self.imageList refreshFeedForced:YES];
 }
 

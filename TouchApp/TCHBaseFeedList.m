@@ -11,7 +11,6 @@
 #import "TCHAppManager.h"
 #import "UIApplication+TJMNetworkActivity.h"
 
-static DDLogLevel ddLogLevel = DDLogLevelOff;
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
@@ -74,7 +73,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 }
 
 - (void)dealloc {
-    DDLogDebug(@"list dealloc");
+    NSLog(@"list dealloc");
     [self.urlSession invalidateAndCancel];
     self.urlSession = nil;
     //[super dealloc];
@@ -144,7 +143,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 
 
 - (void)startDownload {
-    DDLogDebug(@"stary download");
+    NSLog(@"stary download");
     if (self.activeDownloadTask) {
         return;
     }
@@ -182,19 +181,19 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 #pragma mark Download support (NSURLSessionDataDelegate)
 
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didWriteData:(int64_t)bytesWritten totalBytesWritten:(int64_t)totalBytesWritten totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
-    DDLogDebug(@"[%@ %@] Updating progress - Writing: %2lld     Written: %2lld     Expected: %2lld",[self class], NSStringFromSelector(_cmd), bytesWritten, totalBytesWritten, totalBytesExpectedToWrite);
+    NSLog(@"[%@ %@] Updating progress - Writing: %2lld     Written: %2lld     Expected: %2lld",[self class], NSStringFromSelector(_cmd), bytesWritten, totalBytesWritten, totalBytesExpectedToWrite);
     
     if ([self.delegate respondsToSelector:@selector(updateProgressWithPercent:)]) {
         if (totalBytesExpectedToWrite < 0) {
             totalBytesExpectedToWrite = 100000;
         }
-        DDLogDebug(@"Calling updateProgressWithPercent:%2lld  totalBytesExpectedToWrite:%2lld", totalBytesWritten, totalBytesExpectedToWrite);
+        NSLog(@"Calling updateProgressWithPercent:%2lld  totalBytesExpectedToWrite:%2lld", totalBytesWritten, totalBytesExpectedToWrite);
         [self.delegate updateProgressWithPercent:(CGFloat) totalBytesWritten / totalBytesExpectedToWrite];
     }
 }
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
-    DDLogDebug(@"didComplete");
+    NSLog(@"didComplete");
     self.activeDownloadTask = nil;
     [[UIApplication sharedApplication] tjm_popNetworkActivity];
     
@@ -207,7 +206,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location {
     
     
-    DDLogDebug(@"[%@ %@] didFinish",[self class], NSStringFromSelector(_cmd));
+    NSLog(@"[%@ %@] didFinish",[self class], NSStringFromSelector(_cmd));
     
     [self parseResultWithData:[NSData dataWithContentsOfURL:location]];
     self.lastRefresh = [NSDate date];
@@ -215,15 +214,15 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
     //extract the infos
     NSHTTPURLResponse *response = (NSHTTPURLResponse *)downloadTask.response;
     
-    DDLogDebug(@"%@",[response allHeaderFields]);
+    NSLog(@"%@",[response allHeaderFields]);
     
     //store the etag
     self.etag = response.allHeaderFields[@"Etag"];
-    DDLogDebug(@"Etag=%@",self.etag);
+    NSLog(@"Etag=%@",self.etag);
     
     //last modified date - keep it as a string to easily match the server's format.
     self.lastUpdated = response.allHeaderFields[@"Last-Modified"];
-    DDLogDebug(@"Last Modified Date : %@", self.lastUpdated);
+    NSLog(@"Last Modified Date : %@", self.lastUpdated);
     
     //done...lets save the date
     [self saveItems];
@@ -237,11 +236,11 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 
 
 - (void)parseResultWithData:(NSData *)xmlData {
-    DDLogDebug(@"Parse result %@",[NSString stringWithUTF8String:[xmlData bytes]]);
+    NSLog(@"Parse result %@",[NSString stringWithUTF8String:[xmlData bytes]]);
     
     // Create a new rssParser object (DDXMLDocument), this is the object that actually grabs and processes the RSS data
     if (xmlData.length > 0) {
-        DDLogDebug(@"Parsing XML %lu bytes from feed %@",(unsigned long)[xmlData length], self.feed);
+        NSLog(@"Parsing XML %lu bytes from feed %@",(unsigned long)[xmlData length], self.feed);
         DDXMLDocument *rssParser = [[DDXMLDocument alloc] initWithData:xmlData options:0 error:nil];
         
         
@@ -282,7 +281,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
         }];
         //newFeedItems = nil;
     } else {
-        DDLogDebug(@"0 updated bytes from %@",self.feed);
+        NSLog(@"0 updated bytes from %@",self.feed);
     }
 }
 
@@ -313,7 +312,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 }
 
 - (void)dataUpdated {
-    DDLogDebug(@"data updated");
+    NSLog(@"data updated");
     //do nothing...
 }
 

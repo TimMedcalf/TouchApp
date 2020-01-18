@@ -9,7 +9,6 @@
 #import "TCHRecipeBookFeedList.h"
 #import "TCHRecipeFeedItem.h"
 
-static DDLogLevel ddLogLevel = DDLogLevelOff;
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
@@ -42,7 +41,7 @@ NSString *const kRecipeBookFeed = @"http://www.touchmusic.org.uk/recipebook";
 	} else {
 		returnVal = [NSString stringWithFormat:@"%@/%@.xml", kRecipeBookFeed, [(self.recipeCategory).lowercaseString stringByReplacingOccurrencesOfString:@" " withString:@""]];
 	}
-  DDLogDebug(@"Getting recipe file: %@",returnVal);
+  NSLog(@"Getting recipe file: %@",returnVal);
   return returnVal;
 }
 

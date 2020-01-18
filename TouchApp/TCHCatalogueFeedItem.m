@@ -6,8 +6,6 @@
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
 
-static DDLogLevel ddLogLevel = DDLogLevelOff;
-
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
 //keys for XML and Dictionaries
@@ -85,7 +83,7 @@ NSString *const Key_Cat_Publisher = @"publisher";
         _trackListing = [self.trackListing stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
 
         _publisher = [element elementForName:Key_Cat_Publisher].stringValue;
-        DDLogDebug(@"%@ - %@ - %@", self.catalogueNumber, self.artist, self.title);
+        NSLog(@"%@ - %@ - %@", self.catalogueNumber, self.artist, self.title);
     }
     return self;
 }

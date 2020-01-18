@@ -12,8 +12,6 @@
 #import "TKUProgressBarView.h"
 #import "TJMAudioCenter.h"
 
-static DDLogLevel ddLogLevel = DDLogLevelOff;
-
 @interface TJMAudioTableViewController ()
 
 - (void)configureAudioControl;
@@ -93,18 +91,18 @@ static DDLogLevel ddLogLevel = DDLogLevelOff;
 }
 
 - (void)touchTapped:(UITapGestureRecognizer *)tapper {
-    DDLogDebug(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
+    NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
     [[UIApplication sharedApplication] tjm_ResetNetworkWarning];
     [self handleShake];
 }
 
 - (void)handleShake {
-    DDLogInfo(@"View Shake!");
+    NSLog(@"View Shake!");
 }
 
 #pragma mark FeedListConsumer Delegates
 - (void)updateProgressWithPercent:(CGFloat)percentComplete {
-    DDLogDebug(@"Progress Update %f",percentComplete);
+    NSLog(@"Progress Update %f",percentComplete);
     dispatch_async(dispatch_get_main_queue(), ^{
         (self.progressView).progress = percentComplete;
     });

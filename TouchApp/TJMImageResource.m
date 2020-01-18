@@ -6,7 +6,6 @@
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
 
-static DDLogLevel ddLogLevel = DDLogLevelOff;
 
 #import "TJMImageResource.h"
 #import "TCHAppManager.h"
@@ -179,7 +178,7 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
     NSData *downloadedData = [NSData dataWithContentsOfURL:location];
     //write it to the permananent place
     if (![downloadedData writeToFile:self.fullPathForLocalBaseImage atomically:YES]) {
-        DDLogError(@"Error: Couldn't write file '%@' to cache.", self.fullPathForLocalBaseImage);
+        NSLog(@"Error: Couldn't write file '%@' to cache.", self.fullPathForLocalBaseImage);
     }
     
     self.lastChecked = [NSDate date];

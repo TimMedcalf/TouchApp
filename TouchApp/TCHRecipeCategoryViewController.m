@@ -6,8 +6,6 @@
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
 
-static DDLogLevel ddLogLevel = DDLogLevelOff;
-
 #import "TCHRecipeCategoryViewController.h"
 #import "TCHRecipeBookViewController.h"
 #import "TCHRecipeCategoryFeedItem.h"
@@ -44,7 +42,7 @@ static DDLogLevel ddLogLevel = DDLogLevelOff;
   //first up get the item
   TCHRecipeCategoryFeedItem *currentItem = (TCHRecipeCategoryFeedItem *) [self.feedList itemAtIndex:(NSUInteger)indexPath.row];
   //[cell configureWithTitle:currentItem.title subtitle:currentItem.pubDate];
-  DDLogDebug(@"Estimated %f", tableView.estimatedRowHeight);
+  NSLog(@"Estimated %f", tableView.estimatedRowHeight);
   return [TCHTouchTableCell actualRowHeightwithTitle:currentItem.recipeTitle subtitle:nil forTableWidth:tableView.bounds.size.width];
 }
 

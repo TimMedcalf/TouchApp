@@ -1,7 +1,6 @@
 
 #import "TCHRadioItemViewController.h"
 
-static DDLogLevel ddLogLevel = DDLogLevelOff;
 
 @implementation TCHRadioItemViewController
 
@@ -12,7 +11,7 @@ static DDLogLevel ddLogLevel = DDLogLevelOff;
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
-    DDLogDebug(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
+    NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
     [self togglePlayPauseInWebView];
     [super webView:webView didFinishNavigation:navigation];
 }
@@ -33,7 +32,7 @@ static DDLogLevel ddLogLevel = DDLogLevelOff;
 }
 
 - (void)togglePlayPauseInWebView {
-    DDLogDebug(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
+    NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
     TJMAudioStatus audio = [[TJMAudioCenter sharedInstance] statusCheckForURL:[NSURL URLWithString:self.item.link]];
     
     if (audio == TJMAudioStatusCurrentPlaying) {
@@ -48,7 +47,7 @@ static DDLogLevel ddLogLevel = DDLogLevelOff;
 }
 
 - (void)play {
-    DDLogDebug(@"Trying to play - %@",self.item.link);
+    NSLog(@"Trying to play - %@",self.item.link);
     [[TJMAudioCenter sharedInstance] setCurrentPlayingWithInfoForArtist:nil album:self.item.title andTitle:self.item.titleLabel];
     [[TJMAudioCenter sharedInstance] playURL:[NSURL URLWithString:self.item.link] withTitle:_item.titleLabel];
 }
@@ -56,14 +55,14 @@ static DDLogLevel ddLogLevel = DDLogLevelOff;
 #pragma mark TJM AudioCenterDelegate
 
 - (void)URLIsPlaying:(NSURL *)url {
-    DDLogDebug(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
+    NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
     if ([[NSURL URLWithString:self.item.link] isEqual:url]) {
         [self.webView evaluateJavaScript:@"showPauseButton();" completionHandler:nil];
     }
 }
 
 - (void)URLIsPaused:(NSURL *)url {
-    DDLogDebug(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
+    NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
     if ([[NSURL URLWithString:self.item.link] isEqual:url]) {
          [self.webView evaluateJavaScript:@"showPlayButton();" completionHandler:nil];
     }

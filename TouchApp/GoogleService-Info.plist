@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>213940564047-h410fvudf174gehrr74vdt8cr2e3sj0h.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.213940564047-h410fvudf174gehrr74vdt8cr2e3sj0h</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCXHFQOo0jQL1pN8VBkoUpWxeKH8zhK3O0</string>
+	<key>GCM_SENDER_ID</key>
+	<string>213940564047</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>uk.org.touchmusic.touch</string>
+	<key>PROJECT_ID</key>
+	<string>touchapp-daf7f</string>
+	<key>STORAGE_BUCKET</key>
+	<string>touchapp-daf7f.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:213940564047:ios:2cf2848f13afe4f0473a3a</string>
+	<key>DATABASE_URL</key>
+	<string>https://touchapp-daf7f.firebaseio.com</string>
+</dict>
+</plist>

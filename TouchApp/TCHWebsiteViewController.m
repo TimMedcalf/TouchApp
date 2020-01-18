@@ -6,7 +6,6 @@
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
 
-static DDLogLevel ddLogLevel = DDLogLevelOff;
 
 #import <WebKit/WebKit.h>
 
@@ -107,7 +106,7 @@ static DDLogLevel ddLogLevel = DDLogLevelOff;
         self.segmentControl.hidden = YES;
         [self.webView loadHTMLString:self.HTMLString baseURL:baseURL];
     } else {
-        DDLogDebug(@"Loading URL");
+        NSLog(@"Loading URL");
         [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.initialURL]]];
     }
 }
@@ -172,7 +171,7 @@ static DDLogLevel ddLogLevel = DDLogLevelOff;
 #pragma mark WKNavigation Delegate
 
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
-    DDLogDebug(@"Should Load");
+    NSLog(@"Should Load");
     [self.barTapTimer invalidate];
 
     if ((navigationAction.navigationType == WKNavigationTypeLinkActivated ) & self.openLinksInNewView) {

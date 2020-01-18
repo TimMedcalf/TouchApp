@@ -6,8 +6,6 @@
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
 
-static DDLogLevel ddLogLevel = DDLogLevelOff;
-
 #import "TJMImageResourceManager.h"
 #import "TCHAppManager.h"
 #import "TJMImageResource.h"
@@ -68,7 +66,7 @@ NSInteger TwoMonths = -5184000;
   NSMutableArray *saveArray = [[NSMutableArray alloc] initWithCapacity:(self.imageResourceDict).count];
   
   for (NSString *imageKey in self.imageResourceDict) {
-    DDLogDebug(@"Save %@",imageKey);
+    NSLog(@"Save %@",imageKey);
     TJMImageResource *tmpRes = (self.imageResourceDict)[imageKey];
     if ((tmpRes.lastAccessed).timeIntervalSinceNow > TwoMonths) {
       //if the interval is greater than negative 2 months then they've used it in the last two months - add it to the save list
