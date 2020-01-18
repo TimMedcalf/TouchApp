@@ -2,7 +2,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface TCHWebsiteViewController : UIViewController <UIWebViewDelegate, UIGestureRecognizerDelegate>
+@interface TCHWebsiteViewController : UIViewController <WKNavigationDelegate, UIGestureRecognizerDelegate>
 
 
 //load from a url

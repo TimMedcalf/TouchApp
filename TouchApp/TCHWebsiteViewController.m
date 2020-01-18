@@ -50,10 +50,11 @@ static DDLogLevel ddLogLevel = DDLogLevelOff;
         }
     }
     
-    self.webView.delegate = self;
+    self.webView.navigationDelegate = self;
     
     [self.webView setOpaque:NO];
-    self.webView.scalesPageToFit = YES;
+#warning reinstate webpage scale pages to fit?
+    //self.webView.scalesPageToFit = YES;
     self.webView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
     
     //single tap gesture to toggle navigation bar display
@@ -90,7 +91,7 @@ static DDLogLevel ddLogLevel = DDLogLevelOff;
 }
 
 - (void)dealloc {
-    self.webView.delegate = nil;
+    self.webView.navigationDelegate = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -98,7 +99,7 @@ static DDLogLevel ddLogLevel = DDLogLevelOff;
     
     //self.navigationController.toolbarHidden = NO;
     [self.navigationController setToolbarHidden:YES animated:YES];
-    self.webView.delegate = self;
+    self.webView.navigationDelegate = self;
     if (self.HTMLString) {
         //set the baeURL to be local the for CSS loading...
         NSString *path = [NSBundle mainBundle].bundlePath;
@@ -109,6 +110,17 @@ static DDLogLevel ddLogLevel = DDLogLevelOff;
         DDLogDebug(@"Loading URL");
         [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.initialURL]]];
     }
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    if ( self.webView.loading ) {
+        [self.webView stopLoading];
+        [[UIApplication sharedApplication] tjm_popNetworkActivity];
+    }
+    self.webView.navigationDelegate = nil;    // disconnect the delegate as the webView is hidden
+    [self.barTimer invalidate];
 }
 
 - (void)segmentAction:(id)sender {
@@ -157,32 +169,36 @@ static DDLogLevel ddLogLevel = DDLogLevelOff;
     self.barTapTimer = [NSTimer scheduledTimerWithTimeInterval:0.30 target:self selector:@selector(timerBarToggleMethod:) userInfo:nil repeats:NO];
 }
 
-#pragma mark UIWebView Delegate
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+#pragma mark WKNavigation Delegate
+
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
     DDLogDebug(@"Should Load");
     [self.barTapTimer invalidate];
-    if ((navigationType == UIWebViewNavigationTypeLinkClicked ) & self.openLinksInNewView) {
+
+    if ((navigationAction.navigationType == WKNavigationTypeLinkActivated ) & self.openLinksInNewView) {
         TCHWebsiteViewController *newWeb = [[[self class] alloc] initWithNibName:@"TCHWebsiteViewController" bundle:nil];
-        newWeb.initialURL = (request.URL).absoluteString;
+        newWeb.initialURL = (navigationAction.request.URL).absoluteString;
         newWeb.dontHideNavigationBar = YES;
         [self.navigationController pushViewController:newWeb animated:YES];
-        return NO;
+        //return NO;
+        decisionHandler(WKNavigationActionPolicyCancel);
     }
-    return YES;
+    decisionHandler(WKNavigationActionPolicyAllow);
 }
 
-- (void)webViewDidStartLoad:(UIWebView *)webView {
+
+- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
     // starting the load, show the activity indicator in the status bar
     [[UIApplication sharedApplication] tjm_pushNetworkActivity];
     if (!self.openLinksInNewView) {
         self.navigationItem.rightBarButtonItem.enabled = self.webView.canGoBack;
         [self.segmentControl setEnabled:self.webView.canGoBack forSegmentAtIndex:0];
         [self.segmentControl setEnabled:self.webView.canGoForward forSegmentAtIndex:1];
-
     }
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
+
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
     // finished loading, hide the activity indicator in the status bar
     [[UIApplication sharedApplication] tjm_popNetworkActivity];
     if (!self.dontHideNavigationBar) {
@@ -195,7 +211,7 @@ static DDLogLevel ddLogLevel = DDLogLevelOff;
     }
 }
 
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+- (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
     [[UIApplication sharedApplication] tjm_popNetworkActivity];
     if (error.code != -999) {
         // load error, hide the activity indicator in the status bar
@@ -213,17 +229,6 @@ static DDLogLevel ddLogLevel = DDLogLevelOff;
             [self presentViewController:alert animated:YES completion:nil];
         }
     }
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    
-    if ( self.webView.loading ) {
-        [self.webView stopLoading];
-        [[UIApplication sharedApplication] tjm_popNetworkActivity];
-    }
-    self.webView.delegate = nil;    // disconnect the delegate as the webView is hidden
-    [self.barTimer invalidate];
 }
 
 @end
