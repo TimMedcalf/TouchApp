@@ -20,10 +20,11 @@
     }
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
-    [super webViewDidFinishLoad:webView];
-    if (self.navigationItem.rightBarButtonItem)
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
+    [super webView:webView didFinishNavigation:navigation];
+    if (self.navigationItem.rightBarButtonItem) {
         self.navigationItem.rightBarButtonItem.enabled = YES;
+    }
     
 }
 
@@ -52,11 +53,8 @@
 }
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
-//    if (result == MFMailComposeResultSent) {
-//        [Flurry logEvent:@"Recipes" withParameters:@{@"Emailed": self.recipeItem.recipeExcerpt}];
-//    }
+
 	[self becomeFirstResponder];
-	//[self dismissModalViewControllerAnimated:YES]; iOS7Change
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }

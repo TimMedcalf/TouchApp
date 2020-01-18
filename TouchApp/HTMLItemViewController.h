@@ -5,7 +5,7 @@
 #import "TJMAudioToggleViewController.h"
 
 
-@interface HTMLItemViewController : TJMAudioToggleViewController <UIWebViewDelegate, UIGestureRecognizerDelegate>
+@interface HTMLItemViewController : TJMAudioToggleViewController <WKNavigationDelegate, UIGestureRecognizerDelegate>
 
 @property (strong, nonatomic) WKWebView *webView;
 //load from a string

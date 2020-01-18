@@ -16,7 +16,8 @@ static DDLogLevel ddLogLevel = DDLogLevelOff;
 
 @interface TCHWebsiteViewController ()
 
-@property (nonatomic, strong) IBOutlet WKWebView *webView;
+//@property (nonatomic, strong) IBOutlet WKWebView *webView;
+@property (strong, nonatomic) IBOutlet WKWebView *webView;
 @property (nonatomic, strong) UISegmentedControl *segmentControl;
 @property (nonatomic, strong) NSTimer *barTimer;
 @property (nonatomic, strong) NSTimer *barTapTimer;
@@ -38,7 +39,6 @@ static DDLogLevel ddLogLevel = DDLogLevelOff;
     [super viewDidLoad];
     
     self.webView.backgroundColor = [UIColor whiteColor];
-    
     //remove shadow when scrolling the background of the webview
     for (UIView *subView in (self.webView).subviews) {
         if ([subView isKindOfClass:[UIScrollView class]]) {
@@ -180,10 +180,10 @@ static DDLogLevel ddLogLevel = DDLogLevelOff;
         newWeb.initialURL = (navigationAction.request.URL).absoluteString;
         newWeb.dontHideNavigationBar = YES;
         [self.navigationController pushViewController:newWeb animated:YES];
-        //return NO;
         decisionHandler(WKNavigationActionPolicyCancel);
+    } else {
+        decisionHandler(WKNavigationActionPolicyAllow);
     }
-    decisionHandler(WKNavigationActionPolicyAllow);
 }
 
 

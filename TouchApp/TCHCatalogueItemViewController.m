@@ -9,25 +9,14 @@
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"headerText_catalog"]];
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
-    [self togglePlayPauseInWebView];
-    [super webViewDidFinishLoad:webView];
+- (void)dealloc {
+    if ([TJMAudioCenter sharedInstance].delegate == self) {
+        [TJMAudioCenter sharedInstance].delegate = nil;
+    }
 }
 
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-    if ([request.URL.scheme isEqualToString:@"js2objc"]) {
-        // remove leading / from path
-        if ([[request.URL.path substringFromIndex:1] isEqualToString:@"play"]) {
-            [self play];
-        } else if ([[request.URL.path substringFromIndex:1] isEqualToString:@"pause"]) {
-            [self pause];
-        } else if ([[request.URL.path substringFromIndex:1] isEqualToString:@"buy"] && (self.item.itunesURL).length != 0) {
-            [self buy];
-        }
-        return NO; // prevent request
-    } else {
-        return YES; // allow request
-    }
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    return ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) ? UIInterfaceOrientationMaskAll : UIInterfaceOrientationMaskPortrait;
 }
 
 - (void)pause {
@@ -42,8 +31,6 @@
 
 - (void)buy {
     //[Flurry logEvent:@"Catalogue" withParameters:@{@"BuyPressed": _item.title}];
-
-    
     NSURL *buyURL = [NSURL URLWithString:self.item.itunesURL];    
     if (buyURL) {
         [[UIApplication sharedApplication] openURL:buyURL options:@{} completionHandler:nil];
@@ -52,35 +39,54 @@
 
 - (void)togglePlayPauseInWebView {
     TJMAudioStatus audio = [[TJMAudioCenter sharedInstance] statusCheckForURL:[NSURL URLWithString:self.item.mp3SampleURL]];
-    
     if (audio == TJMAudioStatusCurrentPlaying) {
-        [self.webView stringByEvaluatingJavaScriptFromString:@"showPauseButton();"];
+        [self.webView evaluateJavaScript:@"showPauseButton();" completionHandler:nil];
     } else if (audio == TJMAudioStatusCurrentPaused) {
-        [self.webView stringByEvaluatingJavaScriptFromString:@"showPlayButton();"];
+        [self.webView evaluateJavaScript:@"showPlayButton();" completionHandler:nil];
     }
 }
 
-- (void)dealloc {
-    if ([TJMAudioCenter sharedInstance].delegate == self)
-        [TJMAudioCenter sharedInstance].delegate = nil;
-    //[super dealloc];
+#pragma mark - WKWebViewNavigation Delegate Methods
+
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    if ([navigationAction.request.URL.scheme isEqualToString:@"js2objc"]) {
+        // remove leading / from path
+        if ([[navigationAction.request.URL.path substringFromIndex:1] isEqualToString:@"play"]) {
+            [self play];
+        } else if ([[navigationAction.request.URL.path substringFromIndex:1] isEqualToString:@"pause"]) {
+            [self pause];
+        } else if ([[navigationAction.request.URL.path substringFromIndex:1] isEqualToString:@"buy"] && (self.item.itunesURL).length != 0) {
+            [self buy];
+        }
+        //return NO; // prevent request
+        decisionHandler(WKNavigationActionPolicyCancel);
+    } else {
+        decisionHandler(WKNavigationActionPolicyAllow);
+    }
 }
 
-#pragma mark TJM AudioCenterDelegate
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
+    [self togglePlayPauseInWebView];
+    [super webView:webView didFinishNavigation:navigation];
+}
+
+#pragma mark - TJMAudioCenterDelegate methodds
+
 //- (void)URLDidFinish:(NSURL *)url {
 //  if ([[NSURL URLWithString:self.item.mp3SampleURL] isEqual:url])
 //    [self.webView stringByEvaluatingJavaScriptFromString:@"showPlayButton();"];
 //}
 
 - (void)URLIsPlaying:(NSURL *)url {
-    if ([[NSURL URLWithString:self.item.mp3SampleURL] isEqual:url])
-        [self.webView stringByEvaluatingJavaScriptFromString:@"showPauseButton();"];
-    
+    if ([[NSURL URLWithString:self.item.mp3SampleURL] isEqual:url]) {
+        [self.webView evaluateJavaScript:@"showPauseButton();" completionHandler:nil];
+    }
 }
 
 - (void)URLIsPaused:(NSURL *)url {
-    if ([[NSURL URLWithString:self.item.mp3SampleURL] isEqual:url])
-        [self.webView stringByEvaluatingJavaScriptFromString:@"showPlayButton();"];
+    if ([[NSURL URLWithString:self.item.mp3SampleURL] isEqual:url]) {
+         [self.webView evaluateJavaScript:@"showPlayButton();" completionHandler:nil];
+    }
 }
 
 - (void)URLDidFail:(NSURL *)url {
@@ -95,13 +101,6 @@
     [alert addAction:defaultAction];
     
     [self presentViewController:alert animated:YES completion:nil];
-}
-
-
-#pragma mark autorotation
-
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
-    return ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) ? UIInterfaceOrientationMaskAll : UIInterfaceOrientationMaskPortrait;
 }
 
 @end
