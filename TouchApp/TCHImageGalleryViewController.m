@@ -96,10 +96,12 @@ static NSInteger iPadThumbnailRowCount = 8;
     [self.imageList setDelegate:nil];
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
     UINavigationBar *nb = self.navigationController.navigationBar;
     nb.barStyle  = UIBarStyleBlack;
@@ -119,8 +121,6 @@ static NSInteger iPadThumbnailRowCount = 8;
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
     UINavigationBar *nb = self.navigationController.navigationBar;
     nb.barStyle  = UIBarStyleBlack;
