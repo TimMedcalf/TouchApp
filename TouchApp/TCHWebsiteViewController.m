@@ -8,13 +8,15 @@
 
 static DDLogLevel ddLogLevel = DDLogLevelOff;
 
+#import <WebKit/WebKit.h>
+
 #import "TCHWebsiteViewController.h"
 #import "UIApplication+TJMNetworkActivity.h"
 
 
 @interface TCHWebsiteViewController ()
 
-@property (nonatomic, strong) IBOutlet UIWebView *webView;
+@property (nonatomic, strong) IBOutlet WKWebView *webView;
 @property (nonatomic, strong) UISegmentedControl *segmentControl;
 @property (nonatomic, strong) NSTimer *barTimer;
 @property (nonatomic, strong) NSTimer *barTapTimer;

@@ -82,6 +82,7 @@
 		22CB4CBE13F12BDA008968D6 /* TCHRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4CBC13F12BDA008968D6 /* TCHRadioViewController.m */; };
 		22F7C4DF162F5D1D002E2CB6 /* TCHNewsItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F7C4DE162F5D1D002E2CB6 /* TCHNewsItemViewController.m */; };
 		495551F01877DE6F00F8330D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 495551EF1877DE6F00F8330D /* Images.xcassets */; };
+		4E88A79B23D2685C009C6005 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E88A79A23D2685C009C6005 /* WebKit.framework */; };
 		5EFDC2301BCCB0C900C4B862 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EFDC22F1BCCB0C900C4B862 /* LaunchScreen.storyboard */; };
 		695B44E186493D3144A73D06 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 695B44703E911D49CB31DEAC /* Localizable.strings */; };
 		D3925E26A98C25EB4DB1C7ED /* Pods_TouchApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DF2AD46531A8B4AB77BF59 /* Pods_TouchApp.framework */; };
@@ -229,6 +230,7 @@
 		22F7C4DE162F5D1D002E2CB6 /* TCHNewsItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHNewsItemViewController.m; sourceTree = "<group>"; };
 		2BBE2684C749FF4BF14BD8D3 /* Pods-TouchApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouchApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TouchApp/Pods-TouchApp.debug.xcconfig"; sourceTree = "<group>"; };
 		495551EF1877DE6F00F8330D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		4E88A79A23D2685C009C6005 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		5EFDC22F1BCCB0C900C4B862 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		695B44703E911D49CB31DEAC /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		A8DF2AD46531A8B4AB77BF59 /* Pods_TouchApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TouchApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -244,6 +246,7 @@
 			files = (
 				22824AB717BDD74400C9D569 /* Security.framework in Frameworks */,
 				225C5BAB16FCA5EA00346816 /* SystemConfiguration.framework in Frameworks */,
+				4E88A79B23D2685C009C6005 /* WebKit.framework in Frameworks */,
 				225E2A02166417DE00DB1B29 /* MediaPlayer.framework in Frameworks */,
 				2272020A140E4BDD005DD4B7 /* MessageUI.framework in Frameworks */,
 				22CB4C3F13EFE38F008968D6 /* CoreMedia.framework in Frameworks */,
@@ -398,6 +401,7 @@
 		222951C513EC496F001D174D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4E88A79A23D2685C009C6005 /* WebKit.framework */,
 				22824AB617BDD74400C9D569 /* Security.framework */,
 				225E2A01166417DE00DB1B29 /* MediaPlayer.framework */,
 				22DEDC9D1661FD6400CAC08E /* SystemConfiguration.framework */,
