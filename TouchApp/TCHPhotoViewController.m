@@ -200,7 +200,7 @@ static DDLogLevel ddLogLevel = DDLogLevelOff;
 }
 
 - (void)goBack {
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         self.customNavigationBar.hidden = YES;        //self.pagingScrollView.backgroundColor = [UIColor blackColor];
         [self.navigationController popViewControllerAnimated:YES];
     } else {
@@ -295,7 +295,7 @@ static DDLogLevel ddLogLevel = DDLogLevelOff;
 #pragma mark - View controller rotation methods
 
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {
-    return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? UIInterfaceOrientationMaskAll : UIInterfaceOrientationMaskAllButUpsideDown;
+    return ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) ? UIInterfaceOrientationMaskAll : UIInterfaceOrientationMaskAllButUpsideDown;
 }
 
 //- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
@@ -313,9 +313,47 @@ static DDLogLevel ddLogLevel = DDLogLevelOff;
 //    }
 //}
 
-- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+- (void)viewWillTransitionToSize:(CGSize)size
+       withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
     // here, our pagingScrollView bounds have not yet been updated for the new interface orientation. So this is a good
     // place to calculate the content offset that we will need in the new orientation
+    
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
+        // recalculate contentSize based on current orientation
+        self.pagingScrollView.contentSize = self.contentSizeForPagingScrollView;
+        
+        // adjust frames and configuration of each visible page
+        for (TCHImageScrollView *page in self->visiblePages) {
+            CGPoint restorePoint = page.pointToCenterAfterRotation;
+            CGFloat restoreScale = page.scaleToRestoreAfterRotation;
+            page.frame = [self frameForPageAtIndex:page.index];
+            [page setMaxMinZoomScalesForCurrentBounds];
+            [page restoreCenterPoint:restorePoint scale:restoreScale];
+        }
+        
+        // adjust contentOffset to preserve page location based on values collected prior to location
+        CGFloat pageWidth = self.pagingScrollView.bounds.size.width;
+        CGFloat newOffset = (self->firstVisiblePageIndexBeforeRotation * pageWidth) + (self->percentScrolledIntoFirstVisiblePage * pageWidth);
+        self.pagingScrollView.contentOffset = CGPointMake(newOffset, 0);
+        
+        
+//        CGRect barFrame = self.customNavigationBar.frame;
+//        if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
+//            barFrame.size.height = 32;
+//            [UIView animateWithDuration:duration animations:^(void){
+//                self.customNavigationBar.frame = barFrame;
+//            }];
+//        } else {
+//            barFrame.size.height = 44;
+//            [UIView animateWithDuration:duration animations:^(void){
+//                self.customNavigationBar.frame = barFrame;
+//            }];
+//        }
+
+    } completion: nil];
+    
+    
+    
     CGFloat offset = self.pagingScrollView.contentOffset.x;
     CGFloat pageWidth = self.pagingScrollView.bounds.size.width;
     
@@ -328,46 +366,38 @@ static DDLogLevel ddLogLevel = DDLogLevelOff;
     }
 }
 
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    // recalculate contentSize based on current orientation
-    self.pagingScrollView.contentSize = self.contentSizeForPagingScrollView;
-    
-    // adjust frames and configuration of each visible page
-    for (TCHImageScrollView *page in visiblePages) {
-        CGPoint restorePoint = page.pointToCenterAfterRotation;
-        CGFloat restoreScale = page.scaleToRestoreAfterRotation;
-        page.frame = [self frameForPageAtIndex:page.index];
-        [page setMaxMinZoomScalesForCurrentBounds];
-        [page restoreCenterPoint:restorePoint scale:restoreScale];
-    }
-    
-    // adjust contentOffset to preserve page location based on values collected prior to location
-    CGFloat pageWidth = self.pagingScrollView.bounds.size.width;
-    CGFloat newOffset = (firstVisiblePageIndexBeforeRotation * pageWidth) + (percentScrolledIntoFirstVisiblePage * pageWidth);
-    self.pagingScrollView.contentOffset = CGPointMake(newOffset, 0);
-    
-    
-    CGRect barFrame = self.customNavigationBar.frame;
-    if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
-        barFrame.size.height = 32;
-        [UIView animateWithDuration:duration animations:^(void){
-            self.customNavigationBar.frame = barFrame;
-        }];
-    } else {
-        barFrame.size.height = 44;
-        [UIView animateWithDuration:duration animations:^(void){
-            self.customNavigationBar.frame = barFrame;
-        }];
-    }
-}
-
-
-//- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
-//    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
-//    __weak __typeof__(self) weakSelf = self;
-//    [coordinator animateAlongsideTransition:nil completion:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
-//        [weakSelf.delegate updateGalleryRotation];
-//    }];
+//- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+//                                         duration:(NSTimeInterval)duration {
+//    // recalculate contentSize based on current orientation
+//    self.pagingScrollView.contentSize = self.contentSizeForPagingScrollView;
+//    
+//    // adjust frames and configuration of each visible page
+//    for (TCHImageScrollView *page in visiblePages) {
+//        CGPoint restorePoint = page.pointToCenterAfterRotation;
+//        CGFloat restoreScale = page.scaleToRestoreAfterRotation;
+//        page.frame = [self frameForPageAtIndex:page.index];
+//        [page setMaxMinZoomScalesForCurrentBounds];
+//        [page restoreCenterPoint:restorePoint scale:restoreScale];
+//    }
+//    
+//    // adjust contentOffset to preserve page location based on values collected prior to location
+//    CGFloat pageWidth = self.pagingScrollView.bounds.size.width;
+//    CGFloat newOffset = (firstVisiblePageIndexBeforeRotation * pageWidth) + (percentScrolledIntoFirstVisiblePage * pageWidth);
+//    self.pagingScrollView.contentOffset = CGPointMake(newOffset, 0);
+//    
+//    
+//    CGRect barFrame = self.customNavigationBar.frame;
+//    if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
+//        barFrame.size.height = 32;
+//        [UIView animateWithDuration:duration animations:^(void){
+//            self.customNavigationBar.frame = barFrame;
+//        }];
+//    } else {
+//        barFrame.size.height = 44;
+//        [UIView animateWithDuration:duration animations:^(void){
+//            self.customNavigationBar.frame = barFrame;
+//        }];
+//    }
 //}
 
 #pragma mark -

@@ -28,7 +28,7 @@
 static DDLogLevel ddLogLevel = DDLogLevelOff;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [DDLog addLogger:[DDASLLogger sharedInstance]];
+    [DDLog addLogger:[DDOSLogger sharedInstance]];
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
 
 #ifndef DEBUG
@@ -149,7 +149,7 @@ static DDLogLevel ddLogLevel = DDLogLevelOff;
 }
 
 - (UIInterfaceOrientationMask)application:(nonnull UIApplication *)application supportedInterfaceOrientationsForWindow:(nullable UIWindow *)window {
-    return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? UIInterfaceOrientationMaskAll : UIInterfaceOrientationMaskAllButUpsideDown;
+    return ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) ? UIInterfaceOrientationMaskAll : UIInterfaceOrientationMaskAllButUpsideDown;
     //return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? UIInterfaceOrientationMaskAll : UIInterfaceOrientationMaskPortrait;
 }
 
