@@ -42,7 +42,7 @@ static DDLogLevel ddLogLevel = DDLogLevelOff;
         UIImage *image = tmpImageResource.image;
         if (!tmpImageResource.imageIsDownloaded) {
             DDLogDebug(@"WIDTH = %f", self.frame.size.width);
-            UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+            UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleLarge];
             spinner.center = self.center;
             spinner.hidesWhenStopped = YES;
             _spinner = spinner;
