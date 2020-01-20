@@ -95,19 +95,6 @@
 //    
 //    self.tabBarController = [[TCHRotatingTabBarController alloc] init];
 //    self.tabBarController.viewControllers = @[newsNav, photoNav, catNav, radioNav, recipeNav];
-//    //#ifndef DEBUG
-//    //  [Flurry logAllPageViewsForTarget:self.tabBarController];
-//    //  [Flurry logAllPageViewsForTarget:newsNav];
-//    //  [Flurry logAllPageViewsForTarget:photoNav];
-//    //  [Flurry logAllPageViewsForTarget:catNav];
-//    //  [Flurry logAllPageViewsForTarget:radioNav];
-//    //  [Flurry logAllPageViewsForTarget:recipeNav];
-//    //#endif
-//    self.window.rootViewController = self.tabBarController;
-//    [self.window makeKeyAndVisible];
-//    
-//    
-//    return YES;
 //}
 //
 //- (void)applicationWillResignActive:(UIApplication *)application {
