@@ -11,13 +11,42 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var tabBarController: TCHRotatingTabBarController?
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        //guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        //    //load the settings dict...
+        //    NSDictionary *masterSettings = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"viewConfig" ofType:@"plist"]];
+        
+        guard let configFilePath = Bundle.main.path(forResource: "viewConfig", ofType: "plist") else {
+            print("SceneDelegaste: No configFilePath")
+            return
+        }
+        
+        guard let masterSettings = NSDictionary.init(contentsOfFile: configFilePath) else {
+                   print("SceneDelegaste: No masterSettings")
+                   return
+        }
+            
+        guard let newsConfig = masterSettings.value(forKey: "news") as? [AnyHashable : Any], let newsList =
+            TCHAppManager.sharedInstance().newsList  else { return }
+        
+        guard let newsVC = TCHNewsViewController.init(viewSettingsDictionary: newsConfig, andFeedList: newsList) else { return }
+        
+        let newsNav = UINavigationController.init(rootViewController: newsVC)
+
+        tabBarController = TCHRotatingTabBarController.init()
+        tabBarController?.viewControllers = [newsNav]
+        
+        window = UIWindow(windowScene: windowScene)
+        window?.rootViewController = tabBarController
+        window?.makeKeyAndVisible()
+
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -50,4 +79,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
 }
+
+
+
+
 

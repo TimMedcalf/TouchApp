@@ -85,7 +85,6 @@
 		4E88A7DA23D349D7009C6005 /* TouchAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E88A7D923D349D7009C6005 /* TouchAppDelegate.swift */; };
 		4E88A7DD23D3550D009C6005 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E88A7DC23D3550D009C6005 /* GoogleService-Info.plist */; };
 		4E88A7DF23D60CED009C6005 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E88A7DE23D60CED009C6005 /* SceneDelegate.swift */; };
-		4E88A7E123D60ED5009C6005 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E88A7E023D60ED5009C6005 /* Main.storyboard */; };
 		4EDE383923D6278F009F1ACB /* TCHNewsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDE383823D6278F009F1ACB /* TCHNewsNavigationController.swift */; };
 		5EFDC2301BCCB0C900C4B862 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EFDC22F1BCCB0C900C4B862 /* LaunchScreen.storyboard */; };
 		695B44E186493D3144A73D06 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 695B44703E911D49CB31DEAC /* Localizable.strings */; };
@@ -238,7 +237,6 @@
 		4E88A7D923D349D7009C6005 /* TouchAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchAppDelegate.swift; sourceTree = "<group>"; };
 		4E88A7DC23D3550D009C6005 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4E88A7DE23D60CED009C6005 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4E88A7E023D60ED5009C6005 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		4EDE383823D6278F009F1ACB /* TCHNewsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCHNewsNavigationController.swift; sourceTree = "<group>"; };
 		5EFDC22F1BCCB0C900C4B862 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		695B44703E911D49CB31DEAC /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -442,7 +440,6 @@
 				495551EF1877DE6F00F8330D /* Images.xcassets */,
 				1C09829DFDA0F9499ABD7DB6 /* css */,
 				5EFDC22F1BCCB0C900C4B862 /* LaunchScreen.storyboard */,
-				4E88A7E023D60ED5009C6005 /* Main.storyboard */,
 				695B44703E911D49CB31DEAC /* Localizable.strings */,
 			);
 			path = TouchApp;
@@ -771,7 +768,6 @@
 				22CB4C1C13EEBC6C008968D6 /* TCHWebsiteViewController.xib in Resources */,
 				224FBC7C1408C47200749E42 /* RecipeCategories.plist in Resources */,
 				495551F01877DE6F00F8330D /* Images.xcassets in Resources */,
-				4E88A7E123D60ED5009C6005 /* Main.storyboard in Resources */,
 				225C5BA716FC695400346816 /* viewConfig.plist in Resources */,
 				1C0983AD44C39181B67563F5 /* ipad.css in Resources */,
 				1C0989636333291D4CE91427 /* catalogue_item_iphone.css in Resources */,

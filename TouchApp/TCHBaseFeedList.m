@@ -236,53 +236,51 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 
 
 - (void)parseResultWithData:(NSData *)xmlData {
-    NSLog(@"Parse result %@",[NSString stringWithUTF8String:[xmlData bytes]]);
     
-    // Create a new rssParser object (DDXMLDocument), this is the object that actually grabs and processes the RSS data
-    if (xmlData.length > 0) {
-        NSLog(@"Parsing XML %lu bytes from feed %@",(unsigned long)[xmlData length], self.feed);
-        DDXMLDocument *rssParser = [[DDXMLDocument alloc] initWithData:xmlData options:0 error:nil];
-        
-        
-        // Create a new Array object to be used with the looping of the results from the rssParser
-        self.baseURL = nil;
-        
-        NSString *baseURL = [[rssParser rootElement] attributeForName:@"xml:base"].stringValue;
-        if (baseURL) {
-            NSURL *tmpURL = [[NSURL alloc] initWithString:[[rssParser rootElement] attributeForName:@"xml:base"].stringValue];
-            self.baseURL = tmpURL;
-        }
-        
-        NSString *xpath;
-        
-        if (self.xpathOverride) {
-            xpath = self.xpathOverride;
-        } else {
-            xpath = @"//item";
-        }
-        
-        NSArray *resultNodes = [rssParser nodesForXPath:xpath error:nil];
-        
-        // Loop through the resultNodes to access each items' actual data
-        NSMutableArray *newFeedItems = [[NSMutableArray alloc] initWithCapacity:resultNodes.count];
-        
-        for (DDXMLElement *resultElement in resultNodes) {
-            [newFeedItems addObject:[self newItemWithXMLElement:resultElement andBaseURL:self.baseURL]];
-        }
-        //rssParser = nil;
-        [self.items removeAllObjects];
-        [self.items addObjectsFromArray:newFeedItems];
-        //nearly done, just need to make sure the items are sorted correctly
-        //descending pubDate order would probably be best
-        [self.items sortUsingComparator: ^(id obj1, id obj2) {
-            TCHBaseFeedItem *item1 = (TCHBaseFeedItem *)obj1;
-            TCHBaseFeedItem *item2 = (TCHBaseFeedItem *)obj2;
-            return [item1 compare:item2];
-        }];
-        //newFeedItems = nil;
-    } else {
+    if (xmlData.length <= 0 ) {
         NSLog(@"0 updated bytes from %@",self.feed);
+        return;
     }
+    // Create a new rssParser object (DDXMLDocument), this is the object that actually grabs and processes the RSS data
+    NSLog(@"Parsing XML %lu bytes from feed %@",(unsigned long)[xmlData length], self.feed);
+    DDXMLDocument *rssParser = [[DDXMLDocument alloc] initWithData:xmlData options:0 error:nil];
+        
+    // Create a new Array object to be used with the looping of the results from the rssParser
+    self.baseURL = nil;
+    
+    NSString *baseURL = [[rssParser rootElement] attributeForName:@"xml:base"].stringValue;
+    if (baseURL) {
+        NSURL *tmpURL = [[NSURL alloc] initWithString:[[rssParser rootElement] attributeForName:@"xml:base"].stringValue];
+        self.baseURL = tmpURL;
+    }
+    
+    NSString *xpath;
+    
+    if (self.xpathOverride) {
+        xpath = self.xpathOverride;
+    } else {
+        xpath = @"//item";
+    }
+    
+    NSArray *resultNodes = [rssParser nodesForXPath:xpath error:nil];
+    
+    // Loop through the resultNodes to access each items' actual data
+    NSMutableArray *newFeedItems = [[NSMutableArray alloc] initWithCapacity:resultNodes.count];
+    
+    for (DDXMLElement *resultElement in resultNodes) {
+        [newFeedItems addObject:[self newItemWithXMLElement:resultElement andBaseURL:self.baseURL]];
+    }
+    //rssParser = nil;
+    [self.items removeAllObjects];
+    [self.items addObjectsFromArray:newFeedItems];
+    //nearly done, just need to make sure the items are sorted correctly
+    //descending pubDate order would probably be best
+    [self.items sortUsingComparator: ^(id obj1, id obj2) {
+        TCHBaseFeedItem *item1 = (TCHBaseFeedItem *)obj1;
+        TCHBaseFeedItem *item2 = (TCHBaseFeedItem *)obj2;
+        return [item1 compare:item2];
+    }];
+    //newFeedItems = nil;
 }
 
 - (NSUInteger)itemCount {
@@ -340,3 +338,5 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 }
 
 @end
+
+

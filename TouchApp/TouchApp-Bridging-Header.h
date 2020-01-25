@@ -5,3 +5,8 @@
 #import "TCHRotatingTabBarController.h"
 #import "TJMImageResourceManager.h"
 #import "TJMImageResourceManager.h"
+#import "TCHNewsViewController.h"
+#import "TCHTouchTableViewController.h"
+#import "TJMAudioTableViewController.h"
+#import "TCHBaseFeedList.h"
+#import "TCHNewsFeedList.h"
