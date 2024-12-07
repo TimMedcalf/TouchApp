@@ -72,7 +72,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 }
 
 - (void)dealloc {
-//    DDLogDebug(@"list dealloc");
+    //DDLogDebug(@"list dealloc");
     [self.urlSession invalidateAndCancel];
     self.urlSession = nil;
 }
