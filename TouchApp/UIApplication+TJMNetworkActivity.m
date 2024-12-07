@@ -26,8 +26,8 @@ static NSUInteger tjm_networkActivityCount = 0;
   if (tjm_networkActivityCount > 0) {
     tjm_networkActivityCount--;
     [self tjm_refreshNetworkActivityIndicator];
-  } else {
-      DDLogError(@"Unbalanced Network activity: activity count already 0.");
+//  } else {
+//      //DDLogError(@"Unbalanced Network activity: activity count already 0.");
   }
 }
 

@@ -1,8 +1,8 @@
-platform :ios, '9.0'
+platform :ios, '18.0'
 
 target 'TouchApp' do
-  pod 'KissXML'
-  pod 'Flurry-iOS-SDK'
-  pod 'CocoaLumberjack'
+  use_frameworks!
+  #pod 'KissXML', '~> 5.3'
+  #pod 'Flurry-iOS-SDK', '~> 12.4'
+  # pod 'CocoaLumberjack', '~> 3.8'
 end
-

@@ -158,7 +158,7 @@ NSString static *const Key_IconTintB = @"iconTintB";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    DDLogDebug(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
+    //DDLogDebug(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
     self.tabBarController.tabBar.tintColor = self.iconColor;
     [self configureTableHeader];
 }

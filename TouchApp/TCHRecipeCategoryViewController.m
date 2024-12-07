@@ -10,6 +10,7 @@
 #import "TCHRecipeBookViewController.h"
 #import "TCHRecipeCategoryFeedItem.h"
 #import "TCHTouchTableCell.h"
+//#import <CocoaLumberjack.h>
 
 
 @implementation TCHRecipeCategoryViewController
@@ -42,7 +43,7 @@
   //first up get the item
   TCHRecipeCategoryFeedItem *currentItem = (TCHRecipeCategoryFeedItem *) [self.feedList itemAtIndex:(NSUInteger)indexPath.row];
   //[cell configureWithTitle:currentItem.title subtitle:currentItem.pubDate];
-  DDLogDebug(@"Estimated %f", tableView.estimatedRowHeight);
+//  DDLogDebug(@"Estimated %f", tableView.estimatedRowHeight);
   return [TCHTouchTableCell actualRowHeightwithTitle:currentItem.recipeTitle subtitle:nil forTableWidth:tableView.bounds.size.width];
 }
 

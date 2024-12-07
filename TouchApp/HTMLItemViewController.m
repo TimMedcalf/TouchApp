@@ -66,7 +66,7 @@
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     // if user taps a link to load a touch radio page, trap it and do nothing
     NSString *tmpStr = (request.URL).absoluteString;
-    DDLogDebug(@"Should Load %@",tmpStr);
+//    DDLogDebug(@"Should Load %@",tmpStr);
     NSRange found = [tmpStr rangeOfString:@"http://www.touchradio.org.uk/"];
     if (found.location != NSNotFound) {
         return NO;

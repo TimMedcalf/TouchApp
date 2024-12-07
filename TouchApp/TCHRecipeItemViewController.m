@@ -1,6 +1,7 @@
 
 #import "TCHRecipeItemViewController.h"
-#import "Flurry.h"
+//#import "Flurry.h"
+
 
 
 @implementation TCHRecipeItemViewController
@@ -54,7 +55,7 @@
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
     if (result == MFMailComposeResultSent) {
-        [Flurry logEvent:@"Recipes" withParameters:@{@"Emailed": self.recipeItem.recipeExcerpt}];
+        //[Flurry logEvent:@"Recipes" withParameters:@{@"Emailed": self.recipeItem.recipeExcerpt}];
     }
 	[self becomeFirstResponder];
 	//[self dismissModalViewControllerAnimated:YES]; iOS7Change

@@ -72,7 +72,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 }
 
 - (void)dealloc {
-    DDLogDebug(@"list dealloc");
+//    DDLogDebug(@"list dealloc");
     [self.urlSession invalidateAndCancel];
     self.urlSession = nil;
 }
@@ -179,7 +179,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 #pragma mark Download support (NSURLSessionDataDelegate)
 
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didWriteData:(int64_t)bytesWritten totalBytesWritten:(int64_t)totalBytesWritten totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
-    DDLogDebug(@"[%@ %@] Updating progress",[self class], NSStringFromSelector(_cmd));
+//    DDLogDebug(@"[%@ %@] Updating progress",[self class], NSStringFromSelector(_cmd));
     
     if ([self.delegate respondsToSelector:@selector(updateProgressWithPercent:)]) {
         [self.delegate updateProgressWithPercent:totalBytesWritten / totalBytesExpectedToWrite];
@@ -200,7 +200,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location {
     
     
-    DDLogDebug(@"[%@ %@] didFinish",[self class], NSStringFromSelector(_cmd));
+//    DDLogDebug(@"[%@ %@] didFinish",[self class], NSStringFromSelector(_cmd));
     
     [self parseResultWithData:[NSData dataWithContentsOfURL:location]];
     self.lastRefresh = [NSDate date];
@@ -208,15 +208,15 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
     //extract the infos
     NSHTTPURLResponse *response = (NSHTTPURLResponse *)downloadTask.response;
     
-    DDLogDebug(@"%@",[response allHeaderFields]);
+//    DDLogDebug(@"%@",[response allHeaderFields]);
     
     //store the etag
     self.etag = response.allHeaderFields[@"Etag"];
-    DDLogDebug(@"Etag=%@",self.etag);
+//    DDLogDebug(@"Etag=%@",self.etag);
     
     //last modified date - keep it as a string to easily match the server's format.
     self.lastUpdated = response.allHeaderFields[@"Last-Modified"];
-    DDLogDebug(@"Last Modified Date : %@", self.lastUpdated);
+//    DDLogDebug(@"Last Modified Date : %@", self.lastUpdated);
     
     //done...lets save the date
     [self saveItems];
@@ -229,55 +229,55 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 
 
 
-- (void)parseResultWithData:(NSData *)xmlData {
-    //DDLogDebug(@"%@",[NSString stringWithUTF8String:[xmlData bytes]]);
-    
-    // Create a new rssParser object (DDXMLDocument), this is the object that actually grabs and processes the RSS data
-    if (xmlData.length > 0) {
-        DDLogDebug(@"Parsing XML %lu bytes from feed %@",(unsigned long)[xmlData length], self.feed);
-        DDXMLDocument *rssParser = [[DDXMLDocument alloc] initWithData:xmlData options:0 error:nil];
-        
-        
-        // Create a new Array object to be used with the looping of the results from the rssParser
-        self.baseURL = nil;
-        
-        NSString *baseURL = [[rssParser rootElement] attributeForName:@"xml:base"].stringValue;
-        if (baseURL) {
-            NSURL *tmpURL = [[NSURL alloc] initWithString:[[rssParser rootElement] attributeForName:@"xml:base"].stringValue];
-            self.baseURL = tmpURL;
-        }
-        
-        NSString *xpath;
-        
-        if (self.xpathOverride) {
-            xpath = self.xpathOverride;
-        } else {
-            xpath = @"//item";
-        }
-        
-        NSArray *resultNodes = [rssParser nodesForXPath:xpath error:nil];
-        
-        // Loop through the resultNodes to access each items' actual data
-        NSMutableArray *newFeedItems = [[NSMutableArray alloc] initWithCapacity:resultNodes.count];
-        
-        for (DDXMLElement *resultElement in resultNodes) {
-            [newFeedItems addObject:[self newItemWithXMLElement:resultElement andBaseURL:self.baseURL]];
-        }
-        //rssParser = nil;
-        [self.items removeAllObjects];
-        [self.items addObjectsFromArray:newFeedItems];
-        //nearly done, just need to make sure the items are sorted correctly
-        //descending pubDate order would probably be best
-        [self.items sortUsingComparator: ^(id obj1, id obj2) {
-            TCHBaseFeedItem *item1 = (TCHBaseFeedItem *)obj1;
-            TCHBaseFeedItem *item2 = (TCHBaseFeedItem *)obj2;
-            return [item1 compare:item2];
-        }];
-        //newFeedItems = nil;
-    } else {
-        DDLogDebug(@"0 updated bytes from %@",self.feed);
-    }
-}
+//- (void)parseResultWithData:(NSData *)xmlData {
+//    //DDLogDebug(@"%@",[NSString stringWithUTF8String:[xmlData bytes]]);
+//    
+//    // Create a new rssParser object (DDXMLDocument), this is the object that actually grabs and processes the RSS data
+//    if (xmlData.length > 0) {
+////        DDLogDebug(@"Parsing XML %lu bytes from feed %@",(unsigned long)[xmlData length], self.feed);
+//        DDXMLDocument *rssParser = [[DDXMLDocument alloc] initWithData:xmlData options:0 error:nil];
+//        
+//        
+//        // Create a new Array object to be used with the looping of the results from the rssParser
+//        self.baseURL = nil;
+//        
+//        NSString *baseURL = [[rssParser rootElement] attributeForName:@"xml:base"].stringValue;
+//        if (baseURL) {
+//            NSURL *tmpURL = [[NSURL alloc] initWithString:[[rssParser rootElement] attributeForName:@"xml:base"].stringValue];
+//            self.baseURL = tmpURL;
+//        }
+//        
+//        NSString *xpath;
+//        
+//        if (self.xpathOverride) {
+//            xpath = self.xpathOverride;
+//        } else {
+//            xpath = @"//item";
+//        }
+//        
+//        NSArray *resultNodes = [rssParser nodesForXPath:xpath error:nil];
+//        
+//        // Loop through the resultNodes to access each items' actual data
+//        NSMutableArray *newFeedItems = [[NSMutableArray alloc] initWithCapacity:resultNodes.count];
+//        
+//        for (DDXMLElement *resultElement in resultNodes) {
+//            [newFeedItems addObject:[self newItemWithXMLElement:resultElement andBaseURL:self.baseURL]];
+//        }
+//        //rssParser = nil;
+//        [self.items removeAllObjects];
+//        [self.items addObjectsFromArray:newFeedItems];
+//        //nearly done, just need to make sure the items are sorted correctly
+//        //descending pubDate order would probably be best
+//        [self.items sortUsingComparator: ^(id obj1, id obj2) {
+//            TCHBaseFeedItem *item1 = (TCHBaseFeedItem *)obj1;
+//            TCHBaseFeedItem *item2 = (TCHBaseFeedItem *)obj2;
+//            return [item1 compare:item2];
+//        }];
+//        //newFeedItems = nil;
+//    } else {
+////        DDLogDebug(@"0 updated bytes from %@",self.feed);
+//    }
+//}
 
 - (NSUInteger)itemCount {
     return (self.items).count;

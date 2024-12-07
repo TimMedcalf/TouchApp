@@ -33,7 +33,7 @@
   //set the extra key to request the right image sizes for the device
   parameters[@"extras"] = [NSString stringWithFormat:@"date_taken, url_%@, url_%@", [TCHImageFeedItem thumbnailFlickrSuffix], [TCHImageFeedItem imageFlickrSuffix]];
   NSString *returnString = [NSString stringWithFormat:@"https://api.flickr.com/services/rest/?%@", parameters.gtm_httpArgumentsString];
-  DDLogDebug(@"FLICKR CALL: %@",returnString);
+  //DDLogDebug(@"FLICKR CALL: %@",returnString);
   return returnString;
 }
 

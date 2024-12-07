@@ -18,12 +18,12 @@
 #import <CoreMedia/CoreMedia.h>
 #import <MessageUI/MessageUI.h>
 #import <MediaPlayer/MediaPlayer.h>
-#import <CocoaLumberjack/CocoaLumberjack.h>
+//#import <CocoaLumberjack/CocoaLumberjack.h>
 
-#ifdef DEBUG
-static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
-#else
-static const DDLogLevel ddLogLevel = DDLogLevelWarn;
-#endif
+//#ifdef DEBUG
+//static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
+//#else
+//static const DDLogLevel ddLogLevel = DDLogLevelWarn;
+//#endif
 
 #endif

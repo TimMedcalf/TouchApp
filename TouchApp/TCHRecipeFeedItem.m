@@ -6,7 +6,8 @@
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
 
-#import <KissXML/DDXMLElementAdditions.h>
+//#import <KissXML/DDXMLElementAdditions.h>
+//#import <KissXML.h>
 #import "TCHRecipeFeedItem.h"
 
 #pragma clang diagnostic push
@@ -33,20 +34,20 @@ NSString *const Key_Recipe_PubDate = @"pubDate";
 }
 
 
-- (instancetype)initWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL {
-    self = [super initWithXMLElement:element andBaseURL:baseURL];
-    if (self) {
-        _recipeTitle = [element elementForName:Key_Recipe_Title].stringValue;
-        _recipeExcerpt = [element elementForName:Key_Recipe_Excerpt].stringValue;
-        _recipeDescription = [element elementForName:Key_Recipe_Description].stringValue;
-        NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
-        inputFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
-        inputFormatter.dateFormat = @"EEE, dd MMM yyyy HH:mm:ss z";
-        NSString *dateStr = [element elementForName:Key_Recipe_PubDate].stringValue;
-        _recipePubDate = [inputFormatter dateFromString:dateStr];
-    }
-    return self;
-}
+//- (instancetype)initWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL {
+//    self = [super initWithXMLElement:element andBaseURL:baseURL];
+//    if (self) {
+//        _recipeTitle = [element elementForName:Key_Recipe_Title].stringValue;
+//        _recipeExcerpt = [element elementForName:Key_Recipe_Excerpt].stringValue;
+//        _recipeDescription = [element elementForName:Key_Recipe_Description].stringValue;
+//        NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
+//        inputFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+//        inputFormatter.dateFormat = @"EEE, dd MMM yyyy HH:mm:ss z";
+//        NSString *dateStr = [element elementForName:Key_Recipe_PubDate].stringValue;
+//        _recipePubDate = [inputFormatter dateFromString:dateStr];
+//    }
+//    return self;
+//}
 
 
 - (NSDictionary *)dictionaryRepresentation {

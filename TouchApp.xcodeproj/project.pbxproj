@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E9DCB5B819AF9CDE38ECB41 /* libPods-TouchApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 071606E004056523B08E1D3A /* libPods-TouchApp.a */; };
 		1C09809594A2B1320C2A36A2 /* TCHCatalogueFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0983133115CEA6E2EC2383 /* TCHCatalogueFeedItem.m */; };
 		1C0980FF9B6C23AB9C80D36C /* catalogue_item_ipad.css in Resources */ = {isa = PBXBuildFile; fileRef = 1C0989A52451A5CFA349F3D7 /* catalogue_item_ipad.css */; };
 		1C09811792B633645AA35059 /* catalogue_item_ipad_landscape.css in Resources */ = {isa = PBXBuildFile; fileRef = 1C098A88DBA90276189F0513 /* catalogue_item_ipad_landscape.css */; };
@@ -100,7 +99,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		071606E004056523B08E1D3A /* libPods-TouchApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TouchApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C098047493095E8DEC68B5B /* TCHRecipeCategoryFeedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHRecipeCategoryFeedItem.m; sourceTree = "<group>"; };
 		1C098047BA783A886230A2D4 /* TCHImageFeedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHImageFeedItem.m; sourceTree = "<group>"; };
 		1C0980FE2BB5C6BF0618B936 /* TCHImageFeedList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHImageFeedList.m; sourceTree = "<group>"; };
@@ -228,11 +226,9 @@
 		22DEDC9D1661FD6400CAC08E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		22F7C4DD162F5D1D002E2CB6 /* TCHNewsItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHNewsItemViewController.h; sourceTree = "<group>"; };
 		22F7C4DE162F5D1D002E2CB6 /* TCHNewsItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHNewsItemViewController.m; sourceTree = "<group>"; };
-		2BBE2684C749FF4BF14BD8D3 /* Pods-TouchApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouchApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TouchApp/Pods-TouchApp.debug.xcconfig"; sourceTree = "<group>"; };
 		495551EF1877DE6F00F8330D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5EFDC22F1BCCB0C900C4B862 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		695B44703E911D49CB31DEAC /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		BB95E291A999E145637B1CAA /* Pods-TouchApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouchApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-TouchApp/Pods-TouchApp.release.xcconfig"; sourceTree = "<group>"; };
 		DEB0003D142582870059E43D /* jquery-1.6.4.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "jquery-1.6.4.min.js"; sourceTree = "<group>"; };
 		DEB0004114258A260059E43D /* audiocontrol.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = audiocontrol.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -252,7 +248,6 @@
 				222951C713EC496F001D174D /* UIKit.framework in Frameworks */,
 				222951C913EC496F001D174D /* Foundation.framework in Frameworks */,
 				222951CB13EC496F001D174D /* CoreGraphics.framework in Frameworks */,
-				0E9DCB5B819AF9CDE38ECB41 /* libPods-TouchApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,7 +375,7 @@
 				22C2C25619703E020052BD21 /* TouchApp Tests */,
 				222951C513EC496F001D174D /* Frameworks */,
 				222951C313EC496F001D174D /* Products */,
-				A3B04705FFADF2CBA611F4DB /* Pods */,
+				763FE46CEB0F788F80AFC9A3 /* Pods */,
 			);
 			indentWidth = 4;
 			sourceTree = "<group>";
@@ -409,7 +404,6 @@
 				222951C813EC496F001D174D /* Foundation.framework */,
 				222951CA13EC496F001D174D /* CoreGraphics.framework */,
 				22C2C25219703E020052BD21 /* XCTest.framework */,
-				071606E004056523B08E1D3A /* libPods-TouchApp.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -642,13 +636,11 @@
 			name = Radio;
 			sourceTree = "<group>";
 		};
-		A3B04705FFADF2CBA611F4DB /* Pods */ = {
+		763FE46CEB0F788F80AFC9A3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				2BBE2684C749FF4BF14BD8D3 /* Pods-TouchApp.debug.xcconfig */,
-				BB95E291A999E145637B1CAA /* Pods-TouchApp.release.xcconfig */,
 			);
-			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		DEB00040142589960059E43D /* javascripts */ = {
@@ -667,12 +659,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 222951E913EC496F001D174D /* Build configuration list for PBXNativeTarget "TouchApp" */;
 			buildPhases = (
-				205579CD1161C909C4EA5E6E /* [CP] Check Pods Manifest.lock */,
 				222951BE13EC496F001D174D /* Sources */,
 				222951BF13EC496F001D174D /* Frameworks */,
 				222951C013EC496F001D174D /* Resources */,
-				2D2B59ED4AF18B57BFE8CD31 /* [CP] Embed Pods Frameworks */,
-				28C721A78AEA1E1EA450EC54 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -724,6 +713,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 222951B713EC496F001D174D;
@@ -769,54 +759,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		205579CD1161C909C4EA5E6E /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		28C721A78AEA1E1EA450EC54 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TouchApp/Pods-TouchApp-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		2D2B59ED4AF18B57BFE8CD31 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TouchApp/Pods-TouchApp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		222951BE13EC496F001D174D /* Sources */ = {
@@ -949,7 +891,6 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "639AEDD9-A932-4AA1-8DC8-AFBEC644174A";
 				SDKROOT = iphoneos;
 				WARNING_CFLAGS = (
@@ -1008,13 +949,13 @@
 		};
 		222951EA13EC496F001D174D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2BBE2684C749FF4BF14BD8D3 /* Pods-TouchApp.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Michael Harding (H4X7VSZ24H)";
+				EXCLUDED_ARCHS = arm64;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TouchApp/TouchApp-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
@@ -1029,7 +970,6 @@
 					"$(inherited)",
 					"$(SRCROOT)",
 				);
-				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-lxml2",
@@ -1045,13 +985,13 @@
 		};
 		222951EB13EC496F001D174D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB95E291A999E145637B1CAA /* Pods-TouchApp.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Michael Harding (H4X7VSZ24H)";
+				EXCLUDED_ARCHS = arm64;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TouchApp/TouchApp-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DDXML.h"
+//#import "DDXML.h"
 
 @class TCHBaseFeedItem;
 
@@ -43,7 +43,7 @@
 
 //overrides
 @property (NS_NONATOMIC_IOSONLY, readonly) NSInteger refreshTimerCount;
-- (TCHBaseFeedItem *)newItemWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL;
+//- (TCHBaseFeedItem *)newItemWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL;
 - (TCHBaseFeedItem *)newItemWithDictionary:(NSDictionary *)dictionary;
 
 @property (NS_NONATOMIC_IOSONLY, readonly, copy) NSString *feedURL;

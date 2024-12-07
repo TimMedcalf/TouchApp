@@ -102,7 +102,7 @@
         self.segmentControl.hidden = YES;
         [self.webView loadHTMLString:self.HTMLString baseURL:baseURL];
     } else {
-        DDLogDebug(@"Loading URL");
+        //DDLogDebug(@"Loading URL");
         [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.initialURL]]];
     }
 }
@@ -155,7 +155,7 @@
 
 #pragma mark UIWebView Delegate
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-    DDLogDebug(@"Should Load");
+    //DDLogDebug(@"Should Load");
     [self.barTapTimer invalidate];
     if ((navigationType == UIWebViewNavigationTypeLinkClicked ) & self.openLinksInNewView) {
         TCHWebsiteViewController *newWeb = [[[self class] alloc] initWithNibName:@"TCHWebsiteViewController" bundle:nil];

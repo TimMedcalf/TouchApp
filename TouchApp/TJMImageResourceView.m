@@ -39,7 +39,7 @@
     TJMImageResource *tmpImageResource = [[TJMImageResourceManager sharedInstance] resourceForURL:self.url];
     UIImage *image = tmpImageResource.image;
     if (!tmpImageResource.imageIsDownloaded) {
-      DDLogDebug(@"WIDTH = %f", self.frame.size.width);
+      //DDLogDebug(@"WIDTH = %f", self.frame.size.width);
       UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
       spinner.center = self.center;
       spinner.hidesWhenStopped = YES;
@@ -69,7 +69,7 @@
 
 //update the image on screen when it gets updated...
 - (void)updateImage {
-  DDLogDebug(@"Updating image");
+  //DDLogDebug(@"Updating image");
   TJMImageResource *tmpImageResource = [[TJMImageResourceManager sharedInstance] resourceForURL:self.url];
   self.image = tmpImageResource.image;
   if (self.spinner) [self.spinner stopAnimating];

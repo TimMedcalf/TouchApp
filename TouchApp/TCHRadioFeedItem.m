@@ -21,8 +21,8 @@ NSString *const Key_ImageOverride = @"imageURL";
 
 
 #import "TCHRadioFeedItem.h"
-#import "DDXML.h"
-#import "DDXMLElementAdditions.h"
+//#import "DDXML.h"
+//#import "DDXMLElementAdditions.h"
 
 @implementation TCHRadioFeedItem
 
@@ -54,43 +54,43 @@ NSString *const Key_ImageOverride = @"imageURL";
     return self;
 }
 
-- (instancetype)initWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL {
-    self = [super initWithXMLElement:element andBaseURL:baseURL];
-    if (self) {
-        _title = [element elementForName:Key_Radio_Title].stringValue;
-        _titleLabel = [element elementForName:Key_Radio_TitleLabel].stringValue;
-        _author = [element elementForName:Key_Radio_Author].stringValue;
-        _summary = [element elementForName:Key_Radio_Summary].stringValue;
-        _subtitle = [element elementForName:Key_Radio_SubTitle].stringValue;
-
-        NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
-        inputFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
-        inputFormatter.dateFormat = @"EEE, dd MMM yyyy HH:mm:ss z";
-        NSString *dateStr = [element elementForName:Key_Radio_PubDate].stringValue;
-        _pubDate = [inputFormatter dateFromString:dateStr];
-
-        _link = [element elementForName:Key_Radio_Link].stringValue;
-        _episode_duration = [element elementForName:Key_Radio_Duration].stringValue;
-
-        self.imageURL = nil;
-        NSString *imageOverride = [element elementForName:Key_ImageOverride].stringValue;
-        //first check if there is an image override location
-        if (imageOverride && (imageOverride.length > 0)) {
-            self.imageURL = [[NSURL alloc] initWithString:imageOverride];
-        }
-        //if not, generate an image url as per normal...
-        if (!self.imageURL) {
-            NSString *urlString = [element elementForName:Key_Radio_Link].stringValue;
-            urlString = [urlString stringByReplacingOccurrencesOfString:@".mp3" withString:@".jpg"];
-            urlString = [urlString stringByReplacingOccurrencesOfString:@"touchradio/" withString:@"touchradio/images/"];
-
-            self.imageURL = [[NSURL alloc] initWithString:urlString relativeToURL:baseURL];
-            DDLogDebug(@"Radio URL = %@", self.imageURL);
-        }
-        DDLogDebug(@"%@ - %@ - %@", self.author, self.title, self.titleLabel);
-    }
-    return self;
-}
+//- (instancetype)initWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL {
+//    self = [super initWithXMLElement:element andBaseURL:baseURL];
+//    if (self) {
+//        _title = [element elementForName:Key_Radio_Title].stringValue;
+//        _titleLabel = [element elementForName:Key_Radio_TitleLabel].stringValue;
+//        _author = [element elementForName:Key_Radio_Author].stringValue;
+//        _summary = [element elementForName:Key_Radio_Summary].stringValue;
+//        _subtitle = [element elementForName:Key_Radio_SubTitle].stringValue;
+//
+//        NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
+//        inputFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+//        inputFormatter.dateFormat = @"EEE, dd MMM yyyy HH:mm:ss z";
+//        NSString *dateStr = [element elementForName:Key_Radio_PubDate].stringValue;
+//        _pubDate = [inputFormatter dateFromString:dateStr];
+//
+//        _link = [element elementForName:Key_Radio_Link].stringValue;
+//        _episode_duration = [element elementForName:Key_Radio_Duration].stringValue;
+//
+//        self.imageURL = nil;
+//        NSString *imageOverride = [element elementForName:Key_ImageOverride].stringValue;
+//        //first check if there is an image override location
+//        if (imageOverride && (imageOverride.length > 0)) {
+//            self.imageURL = [[NSURL alloc] initWithString:imageOverride];
+//        }
+//        //if not, generate an image url as per normal...
+//        if (!self.imageURL) {
+//            NSString *urlString = [element elementForName:Key_Radio_Link].stringValue;
+//            urlString = [urlString stringByReplacingOccurrencesOfString:@".mp3" withString:@".jpg"];
+//            urlString = [urlString stringByReplacingOccurrencesOfString:@"touchradio/" withString:@"touchradio/images/"];
+//
+//            self.imageURL = [[NSURL alloc] initWithString:urlString relativeToURL:baseURL];
+//            //DDLogDebug(@"Radio URL = %@", self.imageURL);
+//        }
+//        //DDLogDebug(@"%@ - %@ - %@", self.author, self.title, self.titleLabel);
+//    }
+//    return self;
+//}
 
 - (NSDictionary *)dictionaryRepresentation {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[super dictionaryRepresentation]];
