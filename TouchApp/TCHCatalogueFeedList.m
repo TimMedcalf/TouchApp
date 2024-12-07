@@ -6,7 +6,6 @@
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
 
-#import <KissXML/DDXMLElement.h>
 #import "TCHCatalogueFeedList.h"
 #import "TCHCatalogueFeedItem.h"
 

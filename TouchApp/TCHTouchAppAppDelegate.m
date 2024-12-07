@@ -18,6 +18,7 @@
 #import "TCHNewsFeedList.h"
 #import "TCHRecipeCategoryFeedList.h"
 #import "TCHRadioFeedList.h"
+//#import <CocoaLumberjack.h>
 
 #ifndef DEBUG
 #import "Flurry.h"
@@ -27,8 +28,8 @@
 @implementation TCHTouchAppAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [DDLog addLogger:[DDASLLogger sharedInstance]];
-    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+//    [DDLog addLogger:[DDASLLogger sharedInstance]];
+//    [DDLog addLogger:[DDTTYLogger sharedInstance]];
     
 #ifndef DEBUG
   [Flurry setCrashReportingEnabled:YES];
@@ -45,10 +46,10 @@
       //anything we want to run only once for the app?
     }
     //Run once-per-upgrade code, if any
-    DDLogInfo(@"Initialisation for version %@", CurVer);
+    //DDLogInfo(@"Initialisation for version %@", CurVer);
     //clear the cache folder!
     for (NSString *file in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[TCHAppManager sharedInstance].cacheFolder error:NULL]) {
-      DDLogInfo(@"Clearing cached file : %@", file);
+      //DDLogInfo(@"Clearing cached file : %@", file);
       [[NSFileManager defaultManager] removeItemAtPath:[[TCHAppManager sharedInstance].cacheFolder stringByAppendingPathComponent:file] error:NULL];
     }
     [Def setObject:CurVer forKey:@"Version"];

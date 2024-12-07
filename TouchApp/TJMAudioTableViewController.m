@@ -89,18 +89,18 @@
 }
    
 - (void)touchTapped:(UITapGestureRecognizer *)tapper {
-  DDLogDebug(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
+  //DDLogDebug(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
   [[UIApplication sharedApplication] tjm_ResetNetworkWarning];
   [self handleShake];
 }
 
 - (void)handleShake {
-  DDLogInfo(@"View Shake!");
+  //DDLogInfo(@"View Shake!");
 }
 
 #pragma mark FeedListConsumer Delegates
 - (void)updateProgressWithPercent:(CGFloat)percentComplete {
-  DDLogDebug(@"Progress Update %f",percentComplete);
+  //DDLogDebug(@"Progress Update %f",percentComplete);
   (self.progressView).progress = percentComplete;
 }
 

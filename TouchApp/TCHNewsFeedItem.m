@@ -6,7 +6,7 @@
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
 
-#import <KissXML/DDXMLElementAdditions.h>
+// #import <KissXML.h>
 #import "TCHNewsFeedItem.h"
 
 #pragma clang diagnostic push
@@ -32,16 +32,16 @@ NSString *const kTCHNewsFeedItemKey_PubDate = @"pubDate";
     return self;
 }
 
-- (instancetype)initWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL {
-    self = [super initWithXMLElement:element andBaseURL:baseURL];
-    if (self) {
-        _pubDate = [element elementForName:kTCHNewsFeedItemKey_PubDate].stringValue;
-        _link = [element elementForName:kTCHNewsFeedItemKey_Link].stringValue;
-        _title = [element elementForName:kTCHNewsFeedItemKey_Title].stringValue;
-        _text = [element elementForName:kTCHNewsFeedItemKey_Text].stringValue;
-    }
-    return self;
-}
+//- (instancetype)initWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL {
+//    self = [super initWithXMLElement:element andBaseURL:baseURL];
+//    if (self) {
+//        _pubDate = [element elementForName:kTCHNewsFeedItemKey_PubDate].stringValue;
+//        _link = [element elementForName:kTCHNewsFeedItemKey_Link].stringValue;
+//        _title = [element elementForName:kTCHNewsFeedItemKey_Title].stringValue;
+//        _text = [element elementForName:kTCHNewsFeedItemKey_Text].stringValue;
+//    }
+//    return self;
+//}
 
 - (NSDictionary *)dictionaryRepresentation {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[super dictionaryRepresentation]];

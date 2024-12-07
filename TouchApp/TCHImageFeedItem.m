@@ -7,7 +7,7 @@
 //
 
 #import "TCHImageFeedItem.h"
-#import "DDXML.h"
+//#import "DDXML.h"
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
@@ -92,38 +92,38 @@ NSString *const Key_ImageItem_DateTakenString = @"dateTakenString";
 
 #pragma mark overrides from FeedItem
 
-- (instancetype)initWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL {
-    self = [super initWithXMLElement:element andBaseURL:baseURL];
-    if (self) {
-        DDLogDebug(@"[%@ %@] %@", [self class], NSStringFromSelector(_cmd), element);
-        NSString *thumbnailSuffix = [[self class] thumbnailFlickrSuffix];
-        NSString *imageSuffix = [[self class] imageFlickrSuffix];
-        
-        NSString *tmpPath = nil;
-        NSURL *tmpURL = nil;
-        
-        tmpPath = [element attributeForName:[NSString stringWithFormat:@"url_%@", thumbnailSuffix]].stringValue;
-        if (tmpPath) {
-            tmpURL = [[NSURL alloc] initWithString:tmpPath];
-            _thumbnailURL = tmpURL;
-        }
-        _thumbnailWidth = [element attributeForName:[NSString stringWithFormat:@"width_%@", thumbnailSuffix]].stringValue.integerValue;
-        _thumbnailHeight = [element attributeForName:[NSString stringWithFormat:@"height_%@", thumbnailSuffix]].stringValue.integerValue;
-        
-        tmpPath = [element attributeForName:[NSString stringWithFormat:@"url_%@", imageSuffix]].stringValue;
-        if (tmpPath) {
-            tmpURL = [[NSURL alloc] initWithString:tmpPath];
-            self.imageURL = tmpURL;
-        }
-        _imageWidth = [element attributeForName:[NSString stringWithFormat:@"width_%@", imageSuffix]].stringValue.integerValue;
-        _imageHeight = [element attributeForName:[NSString stringWithFormat:@"height_%@", imageSuffix]].stringValue.integerValue;
-        DDLogDebug(@"Image %ld x %ld", (long)self.imageWidth, (long)self.imageHeight);
-        _photoId = [element attributeForName:@"id"].stringValue;
-        
-        _dateTakenString = [element attributeForName:@"datetaken"].stringValue;
-    }
-    return self;
-}
+//- (instancetype)initWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL {
+//    self = [super initWithXMLElement:element andBaseURL:baseURL];
+//    if (self) {
+//        //DDLogDebug(@"[%@ %@] %@", [self class], NSStringFromSelector(_cmd), element);
+//        NSString *thumbnailSuffix = [[self class] thumbnailFlickrSuffix];
+//        NSString *imageSuffix = [[self class] imageFlickrSuffix];
+//        
+//        NSString *tmpPath = nil;
+//        NSURL *tmpURL = nil;
+//        
+//        tmpPath = [element attributeForName:[NSString stringWithFormat:@"url_%@", thumbnailSuffix]].stringValue;
+//        if (tmpPath) {
+//            tmpURL = [[NSURL alloc] initWithString:tmpPath];
+//            _thumbnailURL = tmpURL;
+//        }
+//        _thumbnailWidth = [element attributeForName:[NSString stringWithFormat:@"width_%@", thumbnailSuffix]].stringValue.integerValue;
+//        _thumbnailHeight = [element attributeForName:[NSString stringWithFormat:@"height_%@", thumbnailSuffix]].stringValue.integerValue;
+//        
+//        tmpPath = [element attributeForName:[NSString stringWithFormat:@"url_%@", imageSuffix]].stringValue;
+//        if (tmpPath) {
+//            tmpURL = [[NSURL alloc] initWithString:tmpPath];
+//            self.imageURL = tmpURL;
+//        }
+//        _imageWidth = [element attributeForName:[NSString stringWithFormat:@"width_%@", imageSuffix]].stringValue.integerValue;
+//        _imageHeight = [element attributeForName:[NSString stringWithFormat:@"height_%@", imageSuffix]].stringValue.integerValue;
+//        //DDLogDebug(@"Image %ld x %ld", (long)self.imageWidth, (long)self.imageHeight);
+//        _photoId = [element attributeForName:@"id"].stringValue;
+//        
+//        _dateTakenString = [element attributeForName:@"datetaken"].stringValue;
+//    }
+//    return self;
+//}
 
 - (NSDictionary *)dictionaryRepresentation {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[super dictionaryRepresentation]];

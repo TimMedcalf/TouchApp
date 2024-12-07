@@ -3,11 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E9DCB5B819AF9CDE38ECB41 /* libPods-TouchApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 071606E004056523B08E1D3A /* libPods-TouchApp.a */; };
 		1C09809594A2B1320C2A36A2 /* TCHCatalogueFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0983133115CEA6E2EC2383 /* TCHCatalogueFeedItem.m */; };
 		1C0980FF9B6C23AB9C80D36C /* catalogue_item_ipad.css in Resources */ = {isa = PBXBuildFile; fileRef = 1C0989A52451A5CFA349F3D7 /* catalogue_item_ipad.css */; };
 		1C09811792B633645AA35059 /* catalogue_item_ipad_landscape.css in Resources */ = {isa = PBXBuildFile; fileRef = 1C098A88DBA90276189F0513 /* catalogue_item_ipad_landscape.css */; };
@@ -43,6 +42,9 @@
 		222DF1CA16D09C4000D749D2 /* UIApplication+TJMShakeNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 222DF1C916D09C4000D749D2 /* UIApplication+TJMShakeNotification.m */; };
 		222DF1CD16D09D3B00D749D2 /* TouchConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 222DF1CC16D09D3B00D749D2 /* TouchConstants.m */; };
 		223595D9140FE2C3004A08C8 /* TCHRecipeItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 223595D7140FE2C3004A08C8 /* TCHRecipeItemViewController.m */; };
+		223ECB892D04C53C00BD9FF2 /* CocoaLumberjack in Frameworks */ = {isa = PBXBuildFile; productRef = 223ECB882D04C53C00BD9FF2 /* CocoaLumberjack */; };
+		223ECB8B2D04C53C00BD9FF2 /* CocoaLumberjackSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 223ECB8A2D04C53C00BD9FF2 /* CocoaLumberjackSwift */; };
+		223ECB8D2D04C53C00BD9FF2 /* CocoaLumberjackSwiftLogBackend in Frameworks */ = {isa = PBXBuildFile; productRef = 223ECB8C2D04C53C00BD9FF2 /* CocoaLumberjackSwiftLogBackend */; };
 		22402BBA19715003006F0287 /* TCHRadioFeedItem_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22402BB919715003006F0287 /* TCHRadioFeedItem_Tests.m */; };
 		224FBC351407FE3700749E42 /* TCHRecipeCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 224FBC331407FE3700749E42 /* TCHRecipeCategoryViewController.m */; };
 		224FBC7C1408C47200749E42 /* RecipeCategories.plist in Resources */ = {isa = PBXBuildFile; fileRef = 224FBC7B1408C47200749E42 /* RecipeCategories.plist */; };
@@ -73,6 +75,9 @@
 		22C2C25519703E020052BD21 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222951C613EC496F001D174D /* UIKit.framework */; };
 		22C2C25B19703E020052BD21 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22C2C25919703E020052BD21 /* InfoPlist.strings */; };
 		22C2C25D19703E030052BD21 /* TouchApp_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C2C25C19703E030052BD21 /* TouchApp_Tests.m */; };
+		22CAF8C62D04CA3F005F53D4 /* CocoaLumberjack in Frameworks */ = {isa = PBXBuildFile; productRef = 22CAF8C52D04CA3F005F53D4 /* CocoaLumberjack */; };
+		22CAF8C82D04CA3F005F53D4 /* CocoaLumberjackSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 22CAF8C72D04CA3F005F53D4 /* CocoaLumberjackSwift */; };
+		22CAF8CA2D04CA3F005F53D4 /* CocoaLumberjackSwiftLogBackend in Frameworks */ = {isa = PBXBuildFile; productRef = 22CAF8C92D04CA3F005F53D4 /* CocoaLumberjackSwiftLogBackend */; };
 		22CB4B8913EDD641008968D6 /* TCHAppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4B8813EDD641008968D6 /* TCHAppManager.m */; };
 		22CB4C0B13EE4A41008968D6 /* UIApplication+TJMNetworkActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4C0A13EE4A41008968D6 /* UIApplication+TJMNetworkActivity.m */; };
 		22CB4C1A13EEBC56008968D6 /* TCHWebsiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CB4C1913EEBC55008968D6 /* TCHWebsiteViewController.m */; };
@@ -100,7 +105,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		071606E004056523B08E1D3A /* libPods-TouchApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TouchApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C098047493095E8DEC68B5B /* TCHRecipeCategoryFeedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHRecipeCategoryFeedItem.m; sourceTree = "<group>"; };
 		1C098047BA783A886230A2D4 /* TCHImageFeedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHImageFeedItem.m; sourceTree = "<group>"; };
 		1C0980FE2BB5C6BF0618B936 /* TCHImageFeedList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHImageFeedList.m; sourceTree = "<group>"; };
@@ -228,11 +232,9 @@
 		22DEDC9D1661FD6400CAC08E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		22F7C4DD162F5D1D002E2CB6 /* TCHNewsItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHNewsItemViewController.h; sourceTree = "<group>"; };
 		22F7C4DE162F5D1D002E2CB6 /* TCHNewsItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHNewsItemViewController.m; sourceTree = "<group>"; };
-		2BBE2684C749FF4BF14BD8D3 /* Pods-TouchApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouchApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TouchApp/Pods-TouchApp.debug.xcconfig"; sourceTree = "<group>"; };
 		495551EF1877DE6F00F8330D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5EFDC22F1BCCB0C900C4B862 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		695B44703E911D49CB31DEAC /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		BB95E291A999E145637B1CAA /* Pods-TouchApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouchApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-TouchApp/Pods-TouchApp.release.xcconfig"; sourceTree = "<group>"; };
 		DEB0003D142582870059E43D /* jquery-1.6.4.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "jquery-1.6.4.min.js"; sourceTree = "<group>"; };
 		DEB0004114258A260059E43D /* audiocontrol.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = audiocontrol.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -243,16 +245,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				22824AB717BDD74400C9D569 /* Security.framework in Frameworks */,
+				223ECB892D04C53C00BD9FF2 /* CocoaLumberjack in Frameworks */,
+				22CAF8C62D04CA3F005F53D4 /* CocoaLumberjack in Frameworks */,
+				223ECB8B2D04C53C00BD9FF2 /* CocoaLumberjackSwift in Frameworks */,
 				225C5BAB16FCA5EA00346816 /* SystemConfiguration.framework in Frameworks */,
 				225E2A02166417DE00DB1B29 /* MediaPlayer.framework in Frameworks */,
 				2272020A140E4BDD005DD4B7 /* MessageUI.framework in Frameworks */,
 				22CB4C3F13EFE38F008968D6 /* CoreMedia.framework in Frameworks */,
 				22CB4C3D13EFE383008968D6 /* AVFoundation.framework in Frameworks */,
 				2229529913ECFC96001D174D /* QuartzCore.framework in Frameworks */,
+				22CAF8CA2D04CA3F005F53D4 /* CocoaLumberjackSwiftLogBackend in Frameworks */,
+				223ECB8D2D04C53C00BD9FF2 /* CocoaLumberjackSwiftLogBackend in Frameworks */,
 				222951C713EC496F001D174D /* UIKit.framework in Frameworks */,
 				222951C913EC496F001D174D /* Foundation.framework in Frameworks */,
 				222951CB13EC496F001D174D /* CoreGraphics.framework in Frameworks */,
-				0E9DCB5B819AF9CDE38ECB41 /* libPods-TouchApp.a in Frameworks */,
+				22CAF8C82D04CA3F005F53D4 /* CocoaLumberjackSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,7 +387,7 @@
 				22C2C25619703E020052BD21 /* TouchApp Tests */,
 				222951C513EC496F001D174D /* Frameworks */,
 				222951C313EC496F001D174D /* Products */,
-				A3B04705FFADF2CBA611F4DB /* Pods */,
+				763FE46CEB0F788F80AFC9A3 /* Pods */,
 			);
 			indentWidth = 4;
 			sourceTree = "<group>";
@@ -409,7 +416,6 @@
 				222951C813EC496F001D174D /* Foundation.framework */,
 				222951CA13EC496F001D174D /* CoreGraphics.framework */,
 				22C2C25219703E020052BD21 /* XCTest.framework */,
-				071606E004056523B08E1D3A /* libPods-TouchApp.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -642,13 +648,11 @@
 			name = Radio;
 			sourceTree = "<group>";
 		};
-		A3B04705FFADF2CBA611F4DB /* Pods */ = {
+		763FE46CEB0F788F80AFC9A3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				2BBE2684C749FF4BF14BD8D3 /* Pods-TouchApp.debug.xcconfig */,
-				BB95E291A999E145637B1CAA /* Pods-TouchApp.release.xcconfig */,
 			);
-			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		DEB00040142589960059E43D /* javascripts */ = {
@@ -667,12 +671,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 222951E913EC496F001D174D /* Build configuration list for PBXNativeTarget "TouchApp" */;
 			buildPhases = (
-				205579CD1161C909C4EA5E6E /* [CP] Check Pods Manifest.lock */,
 				222951BE13EC496F001D174D /* Sources */,
 				222951BF13EC496F001D174D /* Frameworks */,
 				222951C013EC496F001D174D /* Resources */,
-				2D2B59ED4AF18B57BFE8CD31 /* [CP] Embed Pods Frameworks */,
-				28C721A78AEA1E1EA450EC54 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -724,9 +725,13 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 222951B713EC496F001D174D;
+			packageReferences = (
+				22CAF8C42D04CA3F005F53D4 /* XCRemoteSwiftPackageReference "CocoaLumberjack" */,
+			);
 			productRefGroup = 222951C313EC496F001D174D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -769,54 +774,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		205579CD1161C909C4EA5E6E /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		28C721A78AEA1E1EA450EC54 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TouchApp/Pods-TouchApp-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		2D2B59ED4AF18B57BFE8CD31 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TouchApp/Pods-TouchApp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		222951BE13EC496F001D174D /* Sources */ = {
@@ -949,7 +906,6 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "639AEDD9-A932-4AA1-8DC8-AFBEC644174A";
 				SDKROOT = iphoneos;
 				WARNING_CFLAGS = (
@@ -1008,13 +964,13 @@
 		};
 		222951EA13EC496F001D174D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2BBE2684C749FF4BF14BD8D3 /* Pods-TouchApp.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Michael Harding (H4X7VSZ24H)";
+				EXCLUDED_ARCHS = arm64;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TouchApp/TouchApp-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
@@ -1024,12 +980,11 @@
 					/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = "TouchApp/TouchApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
 				);
-				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-lxml2",
@@ -1045,13 +1000,13 @@
 		};
 		222951EB13EC496F001D174D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB95E291A999E145637B1CAA /* Pods-TouchApp.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Michael Harding (H4X7VSZ24H)";
+				EXCLUDED_ARCHS = arm64;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TouchApp/TouchApp-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
@@ -1061,7 +1016,7 @@
 					/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = "TouchApp/TouchApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -1201,6 +1156,58 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		223ECB872D04C53C00BD9FF2 /* XCRemoteSwiftPackageReference "CocoaLumberjack" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CocoaLumberjack/CocoaLumberjack.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.8.5;
+			};
+		};
+		22CAF8C42D04CA3F005F53D4 /* XCRemoteSwiftPackageReference "CocoaLumberjack" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CocoaLumberjack/CocoaLumberjack.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.8.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		223ECB882D04C53C00BD9FF2 /* CocoaLumberjack */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 223ECB872D04C53C00BD9FF2 /* XCRemoteSwiftPackageReference "CocoaLumberjack" */;
+			productName = CocoaLumberjack;
+		};
+		223ECB8A2D04C53C00BD9FF2 /* CocoaLumberjackSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 223ECB872D04C53C00BD9FF2 /* XCRemoteSwiftPackageReference "CocoaLumberjack" */;
+			productName = CocoaLumberjackSwift;
+		};
+		223ECB8C2D04C53C00BD9FF2 /* CocoaLumberjackSwiftLogBackend */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 223ECB872D04C53C00BD9FF2 /* XCRemoteSwiftPackageReference "CocoaLumberjack" */;
+			productName = CocoaLumberjackSwiftLogBackend;
+		};
+		22CAF8C52D04CA3F005F53D4 /* CocoaLumberjack */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22CAF8C42D04CA3F005F53D4 /* XCRemoteSwiftPackageReference "CocoaLumberjack" */;
+			productName = CocoaLumberjack;
+		};
+		22CAF8C72D04CA3F005F53D4 /* CocoaLumberjackSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22CAF8C42D04CA3F005F53D4 /* XCRemoteSwiftPackageReference "CocoaLumberjack" */;
+			productName = CocoaLumberjackSwift;
+		};
+		22CAF8C92D04CA3F005F53D4 /* CocoaLumberjackSwiftLogBackend */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22CAF8C42D04CA3F005F53D4 /* XCRemoteSwiftPackageReference "CocoaLumberjack" */;
+			productName = CocoaLumberjackSwiftLogBackend;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 222951B913EC496F001D174D /* Project object */;
 }

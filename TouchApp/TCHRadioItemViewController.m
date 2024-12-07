@@ -1,6 +1,6 @@
 
 #import "TCHRadioItemViewController.h"
-#import "Flurry.h"
+//#import "Flurry.h"
 
 
 @implementation TCHRadioItemViewController
@@ -12,7 +12,7 @@
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    DDLogDebug(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
+    //DDLogDebug(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
     [self togglePlayPauseInWebView];
     [super webViewDidFinishLoad:webView];
 }
@@ -33,7 +33,7 @@
 }
 
 - (void)togglePlayPauseInWebView {
-    DDLogDebug(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
+    //DDLogDebug(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
     TJMAudioStatus audio = [[TJMAudioCenter sharedInstance] statusCheckForURL:[NSURL URLWithString:self.item.link]];
     
     if (audio == TJMAudioStatusCurrentPlaying) {
@@ -48,8 +48,8 @@
 }
 
 - (void)play {
-    [Flurry logEvent:@"Radio" withParameters:@{@"Played": _item.titleLabel}];
-    DDLogDebug(@"Trying to play - %@",self.item.link);
+//    [Flurry logEvent:@"Radio" withParameters:@{@"Played": _item.titleLabel}];
+//    DDLogDebug(@"Trying to play - %@",self.item.link);
     [[TJMAudioCenter sharedInstance] setCurrentPlayingWithInfoForArtist:nil album:self.item.title andTitle:self.item.titleLabel];
     [[TJMAudioCenter sharedInstance] playURL:[NSURL URLWithString:self.item.link] withTitle:_item.titleLabel];
 }
@@ -61,13 +61,13 @@
 //}
 
 - (void)URLIsPlaying:(NSURL *)url {
-    DDLogDebug(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
+//    DDLogDebug(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
     if ([[NSURL URLWithString:self.item.link] isEqual:url])
         [self.webView stringByEvaluatingJavaScriptFromString:@"showPauseButton();"];
 }
 
 - (void)URLIsPaused:(NSURL *)url {
-    DDLogDebug(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
+//    DDLogDebug(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
     if ([[NSURL URLWithString:self.item.link] isEqual:url])
         [self.webView stringByEvaluatingJavaScriptFromString:@"showPlayButton();"];
 }

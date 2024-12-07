@@ -9,6 +9,7 @@
 #import "TCHAppManager.h"
 #import "UIApplication+TJMNetworkActivity.h"
 
+
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCNotLocalizedStringInspection"
 NSString *const TJMImageResourceImageNeedsUpdating = @"TJMImageResourceImageNeedsUpdating";
@@ -74,9 +75,9 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
             _imageURL = tmpURL;
         }
         _lastModified = dict[Key_TJMImageResource_lastModified];
-        DDLogDebug(@"LM! = %@",self.lastModified);
+//        DDLogDebug(@"LM! = %@",self.lastModified);
         _etag = dict[Key_TJMImageResource_eTag];
-        DDLogDebug(@"Etag! = %@",self.etag);
+//        DDLogDebug(@"Etag! = %@",self.etag);
         _localFileName = dict[Key_TJMImageResource_localFileName];
         _localFileExtension = dict[Key_TJMImageResource_localFileExtension];
         _lastChecked = dict[Key_TJMImageResource_lastChecked];
@@ -102,7 +103,7 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
 
 #pragma mark image resourcing
 - (UIImage *)image {
-    DDLogDebug(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
+    //DDLogDebug(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
     if (self.imageIsDownloaded) {
         self.lastAccessed = nil;
         self.lastAccessed = [NSDate date];
@@ -173,20 +174,20 @@ NSString *const Key_TJMImageResource_thumbnailPath = @"thumbnailPath";
 }
 
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location {
-    DDLogDebug(@"[%@ %@] didFinish",[self class], NSStringFromSelector(_cmd));
+    //DDLogDebug(@"[%@ %@] didFinish",[self class], NSStringFromSelector(_cmd));
     
     //load the data
     NSData *downloadedData = [NSData dataWithContentsOfURL:location];
     //write it to the permananent place
     if (![downloadedData writeToFile:self.fullPathForLocalBaseImage atomically:YES]) {
-        DDLogError(@"Error: Couldn't write file '%@' to cache.", self.fullPathForLocalBaseImage);
+        //DDLogError(@"Error: Couldn't write file '%@' to cache.", self.fullPathForLocalBaseImage);
     }
     
     self.lastChecked = [NSDate date];
     
     //extract the infos
     NSHTTPURLResponse *response = (NSHTTPURLResponse *)downloadTask.response;
-    DDLogDebug(@"%@",[response allHeaderFields]);
+    //DDLogDebug(@"%@",[response allHeaderFields]);
     self.etag = response.allHeaderFields[@"Etag"];
     self.lastModified = response.allHeaderFields[@"Last-Modified"];
     

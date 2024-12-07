@@ -6,7 +6,8 @@
 //  Copyright 2011 ErgoThis Ltd. All rights reserved.
 //
 
-#import <KissXML/DDXMLElementAdditions.h>
+//#import <KissXML/DDXMLElementAdditions.h>
+//#import <KissXML.h>
 #import "TCHRecipeCategoryFeedItem.h"
 
 #pragma clang diagnostic push
@@ -35,17 +36,17 @@ NSString *const Key_RCat_Title = @"title";
 }
 
 
-- (instancetype)initWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL {
-    self = [super initWithXMLElement:element andBaseURL:baseURL];
-    if (self) {
-        NSString *numString = [element elementForName:Key_RCat_Id].stringValue;
-        NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
-        f.numberStyle = NSNumberFormatterDecimalStyle;
-        _recipeId = [f numberFromString:numString];
-        _recipeTitle = [element elementForName:Key_RCat_Title].stringValue;
-    }
-    return self;
-}
+//- (instancetype)initWithXMLElement:(DDXMLElement *)element andBaseURL:(NSURL *)baseURL {
+//    self = [super initWithXMLElement:element andBaseURL:baseURL];
+//    if (self) {
+//        NSString *numString = [element elementForName:Key_RCat_Id].stringValue;
+//        NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+//        f.numberStyle = NSNumberFormatterDecimalStyle;
+//        _recipeId = [f numberFromString:numString];
+//        _recipeTitle = [element elementForName:Key_RCat_Title].stringValue;
+//    }
+//    return self;
+//}
 
 - (NSDictionary *)dictionaryRepresentation {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[super dictionaryRepresentation]];
