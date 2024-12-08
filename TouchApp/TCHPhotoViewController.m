@@ -200,7 +200,7 @@
 }
 
 - (void)goBack {
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
         self.customNavigationBar.hidden = YES;
         //self.pagingScrollView.backgroundColor = [UIColor blackColor];
         [self.navigationController popViewControllerAnimated:YES];
@@ -305,7 +305,7 @@
 #pragma mark - View controller rotation methods
 
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {
-    return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? UIInterfaceOrientationMaskAll : UIInterfaceOrientationMaskAllButUpsideDown;
+    return ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) ? UIInterfaceOrientationMaskAll : UIInterfaceOrientationMaskAllButUpsideDown;
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {

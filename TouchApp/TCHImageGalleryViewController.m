@@ -44,9 +44,9 @@ static NSInteger iPadThumbnailRowCount = 8;
         self.title = NSLocalizedString(@"Photos",@"Photos");
         self.tabBarItem.image = [UIImage imageNamed:@"images"];
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        _thumbnailRowCount = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? iPadThumbnailRowCount : iPhoneThumbnailRowCount;
+        _thumbnailRowCount = ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) ? iPadThumbnailRowCount : iPhoneThumbnailRowCount;
         //set default thumbnail width - will get overwritten in the viewdidload if on ipad
-        _thumbnailWidth = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ?  iPadThumbnailWidthPortrait : iPhoneThumbnailWidth;
+        _thumbnailWidth = ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) ?  iPadThumbnailWidthPortrait : iPhoneThumbnailWidth;
     }
     return self;
 }
@@ -116,7 +116,7 @@ static NSInteger iPadThumbnailRowCount = 8;
     [nb setBackgroundImage:[UIImage imageNamed:@"shim_photos"] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBarHidden = NO;
     
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
         self.thumbnailWidth = (self.view.bounds.size.width > self.view.bounds.size.height) ? iPadThumbnailWidthLandscape : iPadThumbnailWidthPortrait;
     }
     
@@ -148,14 +148,15 @@ static NSInteger iPadThumbnailRowCount = 8;
 
 
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {
-    return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? UIInterfaceOrientationMaskAll : UIInterfaceOrientationMaskPortrait;
+    return ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) ? UIInterfaceOrientationMaskAll : UIInterfaceOrientationMaskPortrait;
 }
 
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
     
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+    // Note that phone is the first option in this conditional
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
         self.thumbnailWidth = iPhoneThumbnailWidth;
     } else {
         self.thumbnailWidth = (size.width > size.height) ? iPadThumbnailWidthLandscape : iPadThumbnailWidthPortrait;
@@ -236,7 +237,7 @@ static NSInteger iPadThumbnailRowCount = 8;
         photo.imageList = self.imageList;
         photo.initialIndex = res.index;
         photo.delegate = self;
-        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
             [self.navigationController pushViewController:photo animated:YES];
         } else {
             //[self.navigationController presentModalViewController:photo animated:YES]; iOS7Change

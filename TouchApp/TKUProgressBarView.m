@@ -88,8 +88,17 @@
     
     rrect = CGRectInset(rrect, barInset, barInset);
     rrect.size.width = rrect.size.width * self.progress;
-    minx = CGRectGetMinX(rrect), midx = CGRectGetMidX(rrect), maxx = CGRectGetMaxX(rrect);
-    miny = CGRectGetMinY(rrect), midy = CGRectGetMidY(rrect), maxy = CGRectGetMaxY(rrect);
+    
+//    minx = CGRectGetMinX(rrect), midx = CGRectGetMidX(rrect), maxx = CGRectGetMaxX(rrect);
+    minx = CGRectGetMinX(rrect);
+    midx = CGRectGetMidX(rrect);
+    maxx = CGRectGetMaxX(rrect);
+    
+//    miny = CGRectGetMinY(rrect), midy = CGRectGetMidY(rrect), maxy = CGRectGetMaxY(rrect);
+    miny = CGRectGetMinY(rrect);
+    midy = CGRectGetMidY(rrect);
+    maxy = CGRectGetMaxY(rrect);
+    
     CGContextMoveToPoint(context, minx, midy);
     CGContextAddArcToPoint(context, minx, miny, midx, miny, radius);
     CGContextAddArcToPoint(context, maxx, miny, maxx, midy, radius);

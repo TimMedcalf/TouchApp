@@ -40,7 +40,7 @@ static const CGFloat kAccessoryInset = 15.;
 
 #pragma mark private
 + (CGFloat)horizontalPadding {
-  return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 50 : 17;
+    return ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) ? 50 : 17;
 }
 
 + (CGFloat)verticalPadding {
@@ -56,11 +56,11 @@ static const CGFloat kAccessoryInset = 15.;
 }
 
 + (UIFont *)titleFont {
-  return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? [UIFont fontWithName:@"Helvetica" size:21] : [UIFont fontWithName:@"Helvetica" size:14];
+  return ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) ? [UIFont fontWithName:@"Helvetica" size:21] : [UIFont fontWithName:@"Helvetica" size:14];
 }
 
 + (UIFont *)subtitleFont {
-  return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? [UIFont fontWithName:@"Helvetica-Bold" size:15] : [UIFont fontWithName:@"Helvetica-Bold" size:10];
+  return ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) ? [UIFont fontWithName:@"Helvetica-Bold" size:15] : [UIFont fontWithName:@"Helvetica-Bold" size:10];
 }
 
 + (CGSize)sizeOfString:(NSString *)string withFont:(UIFont *)font lineBreakingOn:(BOOL)lineBreakingOn maxWidth:(CGFloat)maxWidth {
@@ -82,7 +82,7 @@ static const CGFloat kAccessoryInset = 15.;
 
 #pragma mark public
 + (CGFloat)estimatedRowHeight {
-  return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 81 : 58;
+  return ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) ? 81 : 58;
 }
 
 + (CGFloat)actualRowHeightwithTitle:(NSString *)title subtitle:(NSString *)subtitle forTableWidth:(CGFloat)tableWidth {
@@ -193,7 +193,7 @@ static const CGFloat kAccessoryInset = 15.;
     CGSize subtitleSize = [[self class] sizeOfString:self.subtitleString withFont:self.subtitleLabel.font lineBreakingOn:NO  maxWidth:self.contentView.bounds.size.width - ([[self class] horizontalPadding] * 2)];
     //title AND subtitle
     [self.subtitleLabel setHidden:false];
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
       //iPad
       self.titleLabel.frame = CGRectMake(titleInsetXVal, [[self class] verticalPadding], self.contentView.frame.size.width - (titleInsetXVal * 2), titleSize.height);
       self.subtitleLabel.frame = CGRectMake(titleInsetXVal, CGRectGetMaxY(self.titleLabel.frame) + 1, self.contentView.frame.size.width - (titleInsetXVal * 2), subtitleSize.height);
@@ -205,7 +205,7 @@ static const CGFloat kAccessoryInset = 15.;
   } else {
     [self.subtitleLabel setHidden:true];
     //just title
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
       //iPad
       self.titleLabel.frame = CGRectMake(titleInsetXVal, [[self class] verticalPadding], self.contentView.frame.size.width - (titleInsetXVal * 2),  titleSize.height);
     } else {
