@@ -228,8 +228,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 }
 
 
-
-//- (void)parseResultWithData:(NSData *)xmlData {
+- (void)parseResultWithData:(NSData *)xmlData {
 //    //DDLogDebug(@"%@",[NSString stringWithUTF8String:[xmlData bytes]]);
 //    
 //    // Create a new rssParser object (DDXMLDocument), this is the object that actually grabs and processes the RSS data
@@ -277,7 +276,7 @@ NSString *const Key_Feed_BaseURL = @"baseURL";
 //    } else {
 ////        DDLogDebug(@"0 updated bytes from %@",self.feed);
 //    }
-//}
+}
 
 - (NSUInteger)itemCount {
     return (self.items).count;
