@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+   <channel>
+      <title>Touch Recipe Book</title>
+      <link>http://touch33.net/recipebook/</link>
+      <description>Artists and others offer their favourite recipes to mark the 25th anniversary of Touch</description>
+      <language>en</language>
+      <copyright>Copyright 2016</copyright>
+      <lastBuildDate>Mon, 28 Nov 2016 19:35:31 +0000</lastBuildDate>
+      <generator>http://www.sixapart.com/movabletype/</generator>
+      <docs>http://blogs.law.harvard.edu/tech/rss</docs> 
+
+            <item>
+         <title>Professor Tim Spector</title>
+         <excerpt>The Evolving Smoothie</excerpt>
+         <description><![CDATA[<p>"The Ugly Version" of a probiotic smoothie had spinach, dinosaur kale celery, bananas, pears, cucumber, lemon and mixed seeds, yogurt & milk - more information soon...</p>
+
+<p>Professor Tim Spector MB MSc MD FRCP. Tim Spector is a Professor of Genetic Epidemiology and Director of the TwinsUK Registry at Kings College, London.</p>]]></description>
+         <link>http://touch33.net/recipebook/healthdrinks/tim_spector.html</link>
+         <guid>http://touch33.net/recipebook/healthdrinks/tim_spector.html</guid>
+                  <category domain="http://www.sixapart.com/ns/types#category">Health Drinks</category>
+        
+        
+         <pubDate>Sun, 17 Jan 2016 11:15:24 +0000</pubDate>
+      </item>
+            <item>
+         <title>Mark Van Hoen</title>
+         <excerpt>Power Shot/Power Tea</excerpt>
+         <description><![CDATA[<p>All of the ingredients in this recipe have numerous and well documented health benefits. It’s a refreshing and invigorating drink that I recommend for cold & flu relief and prevention in the winter months..but it’s also a fine idea to drink this daily with breakfast to promote general health- if you take the time to research the ingredients, you’ll see that the health benefits of this drink extend vastly beyond colds & flu. Fine tune the ratio of ingredients to your taste, it’s a tasty and superior replacement for tea, coffee or traditional juice at breakfast time.</p>
+
+<p>1/2 Lemon (peeled) either juiced or squeezed.<br />
+1 turmeric root -  juiced or fine grated<br />
+1 heaped tablespoon (or more) of ginger root - juiced or fine grated<br />
+A dash of Cayenne Pepper<br />
+A dash of Black Pepper</p>
+
+<p>You can substitute the fresh ginger and/or the turmeric for their powdered equivalents, but this will be less potent and will not taste as good. I think it’s essential for at least the ginger to be fresh. I find the peppers offset the tart of the lemon, without resorting to sweetening the drink with honey or sugar - which lessens the health benefits.</p>
+
+<p>Add all the ingredients to a mug of hot water and enjoy with your breakfast.<br />
+Alternatively, if you have juiced everything you can down as a shot without the hot water.</p>]]></description>
+         <link>http://touch33.net/recipebook/healthdrinks/mark_van_hoen.html</link>
+         <guid>http://touch33.net/recipebook/healthdrinks/mark_van_hoen.html</guid>
+                  <category domain="http://www.sixapart.com/ns/types#category">Health Drinks</category>
+        
+        
+         <pubDate>Wed, 24 Jun 2015 01:07:39 +0000</pubDate>
+      </item>
+      
+   </channel>
+</rss>

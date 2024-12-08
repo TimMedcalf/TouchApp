@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+   <channel>
+      <title>Touch Recipe Book</title>
+      <link>http://touch33.net/recipebook/</link>
+      <description>Artists and others offer their favourite recipes to mark the 25th anniversary of Touch</description>
+      <language>en</language>
+      <copyright>Copyright 2016</copyright>
+      <lastBuildDate>Mon, 28 Nov 2016 19:35:31 +0000</lastBuildDate>
+      <generator>http://www.sixapart.com/movabletype/</generator>
+      <docs>http://blogs.law.harvard.edu/tech/rss</docs> 
+
+            <item>
+         <title>Ed Benndorf</title>
+         <excerpt>7 Potatoes &amp; 3 Tomatoes</excerpt>
+         <description><![CDATA[<p>Boil seven potatoes</p>
+
+<p>While boiling cut three tomatoes</p>
+
+<p>After boiling put the potatoes on a plate, cut them and add the tomatoes</p>
+
+<p>If needed add some salt<br />
+</p>]]></description>
+         <link>http://touch33.net/recipebook/prison_food/ed_benndorf.html</link>
+         <guid>http://touch33.net/recipebook/prison_food/ed_benndorf.html</guid>
+                  <category domain="http://www.sixapart.com/ns/types#category">Prison Food</category>
+        
+        
+         <pubDate>Wed, 23 Jun 2010 15:09:25 +0000</pubDate>
+      </item>
+            <item>
+         <title>Recipes for Hard Times</title>
+         <excerpt>Bureau of Prisons Inmate #26854-112</excerpt>
+         <description><![CDATA[<p>Penitentiary's follow a weekly meal plan. Without exception, inmates are served the same meals on a rotating basis each week for the duration of their sentence. Many choose to prepare their own meals in their cell blocks or units. The following are some favorite foods enjoyed by guest of the state. Recipes vary, but these are generally dishes meant to be prepared either in cells or common areas of the penitentiary & without the benefits of the common kitchen.</p>
+
+<p>Some foods are prepared & shared amongst friends, others are offered up for sale on the black market. Religious groups with dietary restrictions tend to prepare their own meals together, for instance.</p>
+
+<p>Prison Bowls</p>
+
+<p>Most inmates own a tupperware container & plastic flatware set purchased from the prison commissary. Three to ten individuals will regularly contribute towards an evening meal which is made in one large container & then served up into individual servings & delivered in their 'bowl'. Inmates working in the prison kitchen will secretly abscond with fresh ingredients that make their way into these meals via the black market, while items such as tortillas, crisps, crackers, tuna fish & other canned meats may be purchased from the prison commissary. A common bowl will consist of one layer of refried beans, one layer of rice, one layer of nacho cheese sauce, one layer of meat & one layer of tortilla chips on the top, sometimes with tortillas between each layer.</p>
+
+<p>Frito Tamale</p>
+
+<p>A bag of frito or other corn chips is crushed into meal, and a small amount of hot water is added. The mixture pressed & left to cool. Once cooled a seasoned & cooked beef mixture may be wrapped in the corn meal as one would a traditional tamale. With corn husks generally not being found in most prison cell blocks, these are generally wrapped in either sandwich bags, plastic wrap or newspaper. Individual tamales will be sold for between 2 & 4 stamps each, depending on quality.</p>]]></description>
+         <link>http://touch33.net/recipebook/prison_food/us_penitentiary.html</link>
+         <guid>http://touch33.net/recipebook/prison_food/us_penitentiary.html</guid>
+                  <category domain="http://www.sixapart.com/ns/types#category">Prison Food</category>
+        
+        
+         <pubDate>Sat, 19 Jul 2008 07:59:08 +0000</pubDate>
+      </item>
+      
+   </channel>
+</rss>
