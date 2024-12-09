@@ -19,6 +19,7 @@
     if (self) {
 //        self.delegate = self;
     }
+    [self setNeedsUpdateOfSupportedInterfaceOrientations];
     return self;
 }
 
@@ -27,9 +28,9 @@
     return ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) ? UIInterfaceOrientationMaskAll : UIInterfaceOrientationMaskPortrait;
 }
 
-- (BOOL)shouldAutorotate {
-  return YES;
-}
+//- (BOOL)shouldAutorotate {
+//  return YES;
+//}
 
 #pragma mark - UITabBarControllerDelegate
 

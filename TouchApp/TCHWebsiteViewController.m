@@ -32,7 +32,7 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    
+    [self setNeedsUpdateOfSupportedInterfaceOrientations];
     self.webView.backgroundColor = [UIColor whiteColor];
     
     //remove shadow when scrolling the background of the webview
@@ -140,9 +140,9 @@
     return ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) ? UIInterfaceOrientationMaskAll : UIInterfaceOrientationMaskPortrait;
 }
 
-- (BOOL)shouldAutorotate {
-    return (!self.HTMLString);
-}
+//- (BOOL)shouldAutorotate {
+//    return (!self.HTMLString);
+//}
 
 #pragma mark Gestures
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
