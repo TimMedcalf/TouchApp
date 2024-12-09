@@ -13,19 +13,19 @@ static NSUInteger tjm_networkActivityCount = 0;
 
 @implementation UIApplication (UIApplication_TJMNetworkActivity)
 
-- (void)tjm_refreshNetworkActivityIndicator {
-  self.networkActivityIndicatorVisible = (tjm_networkActivityCount > 0);
-}
+//- (void)tjm_refreshNetworkActivityIndicator {
+//  self.networkActivityIndicatorVisible = (tjm_networkActivityCount > 0);
+//}
 
 - (void)tjm_pushNetworkActivity {
   tjm_networkActivityCount++;
-  [self tjm_refreshNetworkActivityIndicator];
+//  [self tjm_refreshNetworkActivityIndicator];
 }
 
 - (void)tjm_popNetworkActivity {
   if (tjm_networkActivityCount > 0) {
     tjm_networkActivityCount--;
-    [self tjm_refreshNetworkActivityIndicator];
+//    [self tjm_refreshNetworkActivityIndicator];
 //  } else {
 //      //DDLogError(@"Unbalanced Network activity: activity count already 0.");
   }
