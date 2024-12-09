@@ -26,22 +26,25 @@
 - (NSString*)gtm_stringByEscapingForURLArgument {
   // Encode all the reserved characters, per RFC 3986
   // (<http://www.ietf.org/rfc/rfc3986.txt>)
-  NSString *escaped = 
-    (__bridge_transfer NSString*)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
-                                                       (__bridge CFStringRef)self,
-                                                       NULL,
-                                                       (CFStringRef)@"!*'();:@&=+$,/?%#[]",
-                                                       kCFStringEncodingUTF8);
+//  NSString *escaped = 
+//    (__bridge_transfer NSString*)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+//                                                       (__bridge CFStringRef)self,
+//                                                       NULL,
+//                                                       (CFStringRef)@"!*'();:@&=+$,/?%#[]",
+//                                                       kCFStringEncodingUTF8);
+    NSString *escaped = [self stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
   return escaped;
 }
 
 - (NSString*)gtm_stringByUnescapingFromURLArgument {
-  NSMutableString *resultString = [NSMutableString stringWithString:self];
-  [resultString replaceOccurrencesOfString:@"+"
-                                withString:@" "
-                                   options:NSLiteralSearch
-                                     range:NSMakeRange(0, resultString.length)];
-  return [resultString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//  NSMutableString *resultString = [NSMutableString stringWithString:self];
+//  [resultString replaceOccurrencesOfString:@"+"
+//                                withString:@" "
+//                                   options:NSLiteralSearch
+//                                     range:NSMakeRange(0, resultString.length)];
+ //return [resultString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+ NSString *resultString = [NSString stringWithString:self];
+ return [resultString stringByRemovingPercentEncoding];
 }
 
 @end
